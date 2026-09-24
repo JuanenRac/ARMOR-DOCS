@@ -20,6 +20,10 @@ What each capability is *today*, in three honest levels:
 | Offline via the node's MQTT last will | Simulated | Store rule tested; the firmware last will is not compiled or run |
 | Arm / disarm | Local | Requires the control token; exercised over HTTP in tests |
 | Audit trail | Local | Tests check that credentials are scrubbed |
+| State survives a restart (mode, nodes) | Local | Persistence tests, including damaged files and a restarted server |
+| Event history | Local | Event log and HTTP tests |
+| Alarm output (MQTT and signed webhook) | Local | Webhook tested against a local receiver (signature, retries, no retry on 4xx); **the MQTT alarm topic has not been seen by a real broker** |
+| Alert rules: dwell time and ignore zones | Local | Store and validation tests; zone coordinates are unproven against real radar frames |
 
 ## Cameras and evidence
 
@@ -59,5 +63,6 @@ What each capability is *today*, in three honest levels:
 | Capability | Level | Evidence |
 |---|---|---|
 | CM5 test bench installer (isolated, own ports) | Local | Deployed and health-checked on a real CM5 running other software, which stayed healthy |
-| Docker Compose topology | Simulated | `docker compose config` validates it; it has **not been run** |
+| Docker Compose topology and TLS profile | Simulated | Parsed as YAML only: **Docker is not installed on the development PC, so neither `docker compose config` nor a run has happened** |
+| Encrypted backup and restore | Local | Round-trip test script (wrong passphrase, damaged archive, restore over existing data) |
 | Network segmentation (VLANs, ACLs) | Absent | A design in [SECURITY_BASELINE](SECURITY_BASELINE.md) |
