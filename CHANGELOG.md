@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.9] - Catalogue versions
+
+- Studio 0.2.5 and DevOps 0.2.5 in the project catalogue.
+
 ## [0.2.8] - Colours and camera view in the capability matrix
 
 - One row for the designer's colours, names and per-camera field of view, with what was checked (tests and a rendered session) and that the 2D plan shows only some of the colours.
