@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.5] - Devices, alarms, automations and the shared design in the capability matrix
+
+- Capability matrix rows for devices, alarms, automations, arm and disarm from Studio, the design kept on the server and the radar configuration, each with what it was checked against and what was not; the project catalogue shows the new versions.
+
 ## [0.2.4] - Studio users, the radar map and the designer in the capability matrix
 
 - Capability matrix rows for user management, the radar map and the redesigned site designer, with what each was checked against and what was not; the project catalogue shows the new versions.

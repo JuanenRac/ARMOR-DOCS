@@ -19,7 +19,7 @@ What each capability is *today*, in three honest levels:
 | A node cannot speak for another over MQTT | Local | Topic/body check tested; the broker ACL restricting each node to its own topics was exercised on the CM5 |
 | Node state, stale/offline detection, disarm clearing alerts | Local | Store tests (time is injected) |
 | Offline via the node's MQTT last will | Simulated | Store rule tested; the firmware last will is not compiled or run |
-| Arm / disarm | Local | Requires the control token; exercised over HTTP in tests |
+| Arm / disarm | Local | Requires the control token, or a signed-in Studio session (audited with the user's name); exercised over HTTP in tests |
 | Audit trail | Local | Tests check that credentials are scrubbed |
 | Camera watchdog (reachability, offline alarm) | Local | Unit tests with an injected probe, and a real unreachable address in a rendered check; **not run against your cameras being unplugged** |
 | Operator-only status, minimal ingest answer, node cap | Local | HTTP tests |
@@ -28,6 +28,19 @@ What each capability is *today*, in three honest levels:
 | Event history | Local | Event log and HTTP tests |
 | Alarm output (MQTT and signed webhook) | Local | Webhook tested against a local receiver (signature, retries, no retry on 4xx); **the MQTT alarm topic has not been seen by a real broker** |
 | Alert rules: dwell time and ignore zones | Local | Store and validation tests; zone coordinates are unproven against real radar frames |
+
+## Devices, alarms and automation
+
+| Capability | Level | Evidence |
+|---|---|---|
+| Devices of every kind (smoke, CO, gas, flood, panic, door, window, motion, glass-break, vibration, climate, light level, plugs, lights, switches, sirens, locks, valves) reporting by MQTT or push | Local | 13 server tests (state normalisation, field maps, availability, expected-interval offline) with MQTT messages injected through the bus, **not a real broker and not a real Zigbee2MQTT, Tasmota or Shelly device**; the presets follow those projects' documented topics |
+| Commands to devices by MQTT and by HTTP (LAN addresses only) | Local | MQTT publishing checked with a test double and HTTP with a local receiver, including the refusal of a public address; **no real plug or light was switched** |
+| Alarms from devices (always for smoke, CO, gas, flood, panic; only while armed for contacts, motion, glass-break, vibration), acknowledge and clear | Local | Server tests and a scripted browser session that triggered a device and watched the alarm, its badge and the overview |
+| Automations (device, alarm or mode trigger, mode condition, up to six actions, revert after a time, rate limit) | Local | Server tests; **no siren or lamp was driven by a real rule** |
+| Arm and disarm from the Studio top bar, the overview and the alarms menu | Local | Server tests and a scripted browser session |
+| Site design kept on the server for every browser (revisions, conflict refusal) | Local | Server tests and a scripted session with two browsers: the second loaded the first one's design and picked up a third party's change |
+| Radar (LD2450) configuration in Studio: node, channel, position, height, facing, tilt, mirror, zones | Local | Scripted browser session (add, rename, delete, persisted). It describes the installation; **it is not sent to the radar module** |
+| Devices placed in the 2D and 3D designer | Local | Operation tests and a scripted browser session |
 
 ## Cameras and evidence
 
