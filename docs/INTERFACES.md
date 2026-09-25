@@ -12,6 +12,6 @@
 | Voice service | Intent, then a service-issued confirmation for arm and disarm | Server | Allow-list and signed single-use confirmation |
 
 The contracts live in **ARMOR-COMMON**: JSON Schemas (`telemetry`, `health`, `command`), the
-OpenAPI file for the server, 50 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server-0.4.0.yaml`) and generated TypeScript and Kotlin types. Any
+OpenAPI file for the server, 50 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server-0.5.0.yaml`) and generated TypeScript and Kotlin types. Any
 implementation change begins with a contract change and a conformance vector; consumers must not
 infer fields from undocumented payloads. Unknown fields are rejected everywhere.
