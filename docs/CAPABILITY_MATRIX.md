@@ -62,6 +62,7 @@ What each capability is *today*, in three honest levels:
 | Studio users: create, rename, password, role, removal; your own account | Local | Store and HTTP tests (validation, last administrator, sessions ended on a password or role change, no password on disk) and a rendered check of the Configuration tab. Not tried with the Android client |
 | Site designer: terrain, buildings with floors and roofs, openings, lamps, roof equipment, 2D and 3D editing, undo | Local | Geometry, operation and migration tests, and a scripted browser session (draw, reshape, rotate, drag, undo; 3D orbit, move, lift, place). No human usability test |
 | Radar map on the site design | Local | Placement tests and a rendered check against telemetry posted to a real server. **The radar's sideways axis is an assumption** until a real LD2450 frame is compared with where a person stood |
+| 270 degree node: three radars per node 75 degrees apart, created wired in Studio | Local | Geometry tests (the outer edges are 270 degrees apart, neighbours overlap 45), a test that the three sectors cover both sides of the middle radar and not the back, and a scripted browser session that created the node. **The radar's sideways axis is still an assumption** |
 | Camera monitor filling its frame for every view count | Local | Layout tests and measured tile sizes in the browser at three window sizes |
 | Studio on the CM5 test bench | Local | Deployed and opened from another computer; no cameras attached |
 | Android operator client: arm and disarm, alarms (acknowledge), devices (state and commands), history | Local | 25 unit tests (endpoint safety, alarm policy, event, alarm and device parsing, device wording) and a debug build; the requests follow the routes the server tests cover. **Not run on a phone against the server** |
@@ -72,12 +73,12 @@ What each capability is *today*, in three honest levels:
 | Capability | Level | Evidence |
 |---|---|---|
 | Node message serialiser | Local | Host tests and validation by ARMOR-COMMON |
-| Ambient-light reading (VEML7700) | **Absent** | No driver; the firmware withholds telemetry rather than invent a lux value |
+| Ambient-light reading (VEML7700) | Local | Driver with range selection and the datasheet's correction; the conversion and the range ladder are host-tested against the datasheet's figures. **Never run on a sensor**: compare it with a reference lux meter on the bench. Without the sensor the firmware withholds telemetry (or sends an explicit, logged bench value) rather than invent one |
 | LD2450 frame decoding | Local | Decoder written from the Hi-Link manual V1.00; the manual's worked example decodes to the manual's values, noisy streams resynchronise, and the resulting JSON is accepted by the contract. **No frame has been captured from a real module**, and a target's slot is not known to be a stable identity |
 | LD2461 frame decoding | **Absent** | No document for the LD2461 |
 | Dew point, heater and day/night logic | Local | Host tests |
 | Static-reflector map | Local | Host tests |
-| Firmware on the ESP32-S3 (UART, MQTT, SNTP, Ethernet) | **Not built** | Needs ESP-IDF and the board |
+| Firmware on the ESP32-S3-ETH (three UARTs, W5500 Ethernet, MQTT, SNTP, radar statistics) | Local | **Builds** in the ESP-IDF 5.4.2 container into one image per node (about 700 KB), and building it found and fixed real faults. **Never run on a board**: the W5500 pins are the manufacturer's table, the radar pins are unproven until wired, and the first day of [docs/BENCH_BRINGUP.md](../../ARMOR-RADAR/docs/BENCH_BRINGUP.md) is what verifies it |
 | Day/night vision profile, fusion policy | Local | Unit tests |
 | TensorRT inference, RTSP ingestion on the Jetson | **Absent** | Needs the Jetson |
 | Voice intents and signed confirmation | Local | Unit tests; no speech engine |
