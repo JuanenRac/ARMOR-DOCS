@@ -7,7 +7,7 @@
 | ARMOR-SERVER-AI | 0.2.0 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
 | ARMOR-VOICE-AI | 0.2.0 | Offline voice intents with signed confirmation | Functional baseline |
 | ARMOR-SERVER | 0.1.9 | Central state (persisted), users, event history, alarms, camera watchdog, cameras, evidence, audit | Functional |
-| ARMOR-STUDIO | 0.1.10 | Operations console, users, history, alert rules, PTZ, status bar, radar map and a 2D/3D site designer | Functional |
+| ARMOR-STUDIO | 0.2.0 | Operations console, users, history, alert rules, PTZ, status bar, radar map and a 2D/3D site designer | Functional |
 | ARMOR-ANDROID-CONTROL | 0.2.4 | Android operator client with history and alarm notifications | Functional baseline |
 | ARMOR-HARDWARE | 0.2.1 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.2.3 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
