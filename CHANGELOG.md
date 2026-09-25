@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.6] - Android with alarms, devices and arming in the capability matrix
+
+- The Android rows say what the phone can do now (arm and disarm, alarms, devices, device-alarm notifications) and what was checked, and the client boundary no longer says it cannot arm.
+
 ## [0.2.5] - Devices, alarms, automations and the shared design in the capability matrix
 
 - Capability matrix rows for devices, alarms, automations, arm and disarm from Studio, the design kept on the server and the radar configuration, each with what it was checked against and what was not; the project catalogue shows the new versions.
