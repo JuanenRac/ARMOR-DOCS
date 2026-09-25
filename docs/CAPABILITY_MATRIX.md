@@ -46,6 +46,10 @@ What each capability is *today*, in three honest levels:
 | Capability | Level | Evidence |
 |---|---|---|
 | Studio console, history (search, filters, export, clearing), alert rules with zones drawn on a plane, PTZ in every camera view, status bar, 2D/3D site designer, seven languages | Local | Unit tests and a rendered check of the console against a deployed server |
+| Studio users: create, rename, password, role, removal; your own account | Local | Store and HTTP tests (validation, last administrator, sessions ended on a password or role change, no password on disk) and a rendered check of the Configuration tab. Not tried with the Android client |
+| Site designer: terrain, buildings with floors and roofs, openings, lamps, roof equipment, 2D and 3D editing, undo | Local | Geometry, operation and migration tests, and a scripted browser session (draw, reshape, rotate, drag, undo; 3D orbit, move, lift, place). No human usability test |
+| Radar map on the site design | Local | Placement tests and a rendered check against telemetry posted to a real server. **The radar's sideways axis is an assumption** until a real LD2450 frame is compared with where a person stood |
+| Camera monitor filling its frame for every view count | Local | Layout tests and measured tile sizes in the browser at three window sizes |
 | Studio on the CM5 test bench | Local | Deployed and opened from another computer; no cameras attached |
 | Android operator client | Local | Endpoint-safety and alarm-policy unit tests and a debug build; **not run on a phone against the server** |
 | Android alarm notifications and background watch | Simulated | The decision logic is unit-tested; the permission flow and the foreground service were **never run on a device** |
