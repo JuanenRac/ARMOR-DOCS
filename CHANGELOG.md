@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.0] - Second audit pass
+
+- The audit document records the second pass: what was found, fixed and left open. The capability matrix and interfaces follow the new behaviour.
+
 ## [0.3.0] - Full audit and one-command checks
 
 - `tools/check_all.sh` runs every check of every repository and prints one PASS, FAIL or SKIP line each.

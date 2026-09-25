@@ -15,11 +15,15 @@ What each capability is *today*, in three honest levels:
 |---|---|---|
 | Telemetry, health and command contracts (JSON Schema) | Local | 50 conformance vectors run by Python and by ARMOR-SERVER |
 | HTTP ingest with an ingest token | Local | Server integration suite |
-| MQTT ingress | Simulated | Topic parsing is tested; **no real broker has been connected** |
+| MQTT ingress through a real broker | Local | Run on the CM5 against A.R.M.O.R.'s own Mosquitto: anonymous clients refused, a node's telemetry reached the server and raised an alert. The publishers were scripts, **not field-node firmware** |
+| A node cannot speak for another over MQTT | Local | Topic/body check tested; the broker ACL restricting each node to its own topics was exercised on the CM5 |
 | Node state, stale/offline detection, disarm clearing alerts | Local | Store tests (time is injected) |
 | Offline via the node's MQTT last will | Simulated | Store rule tested; the firmware last will is not compiled or run |
 | Arm / disarm | Local | Requires the control token; exercised over HTTP in tests |
 | Audit trail | Local | Tests check that credentials are scrubbed |
+| Camera watchdog (reachability, offline alarm) | Local | Unit tests with an injected probe, and a real unreachable address in a rendered check; **not run against your cameras being unplugged** |
+| Operator-only status, minimal ingest answer, node cap | Local | HTTP tests |
+| Load and chaos behaviour | Local | Seeded fuzzing, a 1000-message burst, random operations and crash cases in the test suite; **no soak test on the CM5** |
 | State survives a restart (mode, nodes) | Local | Persistence tests, including damaged files and a restarted server |
 | Event history | Local | Event log and HTTP tests |
 | Alarm output (MQTT and signed webhook) | Local | Webhook tested against a local receiver (signature, retries, no retry on 4xx); **the MQTT alarm topic has not been seen by a real broker** |
@@ -41,9 +45,10 @@ What each capability is *today*, in three honest levels:
 
 | Capability | Level | Evidence |
 |---|---|---|
-| Studio console, seven languages, site designer | Local | Unit tests and a rendered check of the console against a deployed server |
+| Studio console, history, alert rules with zones drawn on a plane, seven languages, site designer | Local | Unit tests and a rendered check of the console against a deployed server |
 | Studio on the CM5 test bench | Local | Deployed and opened from another computer; no cameras attached |
-| Android operator client | Local | Endpoint-safety unit tests and a debug build; **not run on a phone against the server** |
+| Android operator client | Local | Endpoint-safety and alarm-policy unit tests and a debug build; **not run on a phone against the server** |
+| Android alarm notifications and background watch | Simulated | The decision logic is unit-tested; the permission flow and the foreground service were **never run on a device** |
 
 ## Field node and AI
 
