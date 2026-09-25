@@ -38,7 +38,7 @@ What each capability is *today*, in three honest levels:
 | ONVIF endpoint containment | Local | Unit tests |
 | PTZ over Hi3510, PSIA, ONVIF | Simulated | Command allow-list tested; real cameras answer differently |
 | RTSP path discovery, network discovery | Local | Tested with fake probes; real network behaviour unproven |
-| Live MJPEG through FFmpeg, snapshots, recordings | Simulated | Failure paths tested; **not run against a real stream on the test bench** (no FFmpeg there) |
+| Live MJPEG through FFmpeg, snapshots, recordings | Verified on the bench | Run on the CM5 with FFmpeg 7.1 against the five real cameras: live frames from each (about 100 JPEG frames in 12 s), a snapshot and an MP4 recording saved. Not a soak test, and PTZ is a separate row |
 | Evidence retention, protection, SHA-256 | Local | Evidence tests |
 
 ## Clients
