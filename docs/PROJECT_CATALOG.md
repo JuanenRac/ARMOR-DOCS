@@ -7,11 +7,11 @@
 | ARMOR-SERVER-AI | 0.2.0 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
 | ARMOR-VOICE-AI | 0.2.0 | Offline voice intents with signed confirmation | Functional baseline |
 | ARMOR-SERVER | 0.2.0 | Central state (persisted), users, event history, alarms, devices, automations, camera watchdog, cameras, evidence, audit | Functional |
-| ARMOR-STUDIO | 0.2.3 | Operations console, alarms, devices, automations, users, history, alert rules, PTZ, radar map and configuration, and a 2D/3D site designer | Functional |
+| ARMOR-STUDIO | 0.2.4 | Operations console, alarms, devices, automations, users, history, alert rules, PTZ, radar map and configuration, and a 2D/3D site designer | Functional |
 | ARMOR-ANDROID-CONTROL | 0.2.5 | Android operator client: arm and disarm, alarms, devices, history and alarm notifications | Functional baseline |
 | ARMOR-HARDWARE | 0.2.1 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.2.4 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
-| ARMOR-DOCS | 0.2.7 | Canonical documentation and the capability matrix | Functional |
+| ARMOR-DOCS | 0.2.8 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.0 | Scenarios and repeatable faults | Functional |
 
 ## Dependency direction

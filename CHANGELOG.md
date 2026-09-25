@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.8] - Colours and camera view in the capability matrix
+
+- One row for the designer's colours, names and per-camera field of view, with what was checked (tests and a rendered session) and that the 2D plan shows only some of the colours.
+
 ## [0.2.7] - Firmware and the 270° node in the capability matrix
 
 - The field-node rows say what now exists (a firmware image that builds in the ESP-IDF container, the W5500 and VEML7700 drivers, the 270° node in Studio) and, unchanged, that none of it has run on a board.
