@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.4] - Studio users, the radar map and the designer in the capability matrix
+
+- Capability matrix rows for user management, the radar map and the redesigned site designer, with what each was checked against and what was not; the project catalogue shows the new versions.
+
 ## [0.2.3] - PTZ, history and designer verified
 
 - The capability matrix records PTZ against the real cameras (one answers, one refuses the stored login, two have no PTZ), the history management and the new designer.
