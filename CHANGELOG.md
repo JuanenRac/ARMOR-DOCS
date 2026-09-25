@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.0] - PTZ, history and designer verified
+
+- The capability matrix records PTZ against the real cameras (one answers, one refuses the stored login, two have no PTZ), the history management and the new designer.
+
 ## [0.4.0] - Second audit pass
 
 - The audit document records the second pass: what was found, fixed and left open. The capability matrix and interfaces follow the new behaviour.

@@ -36,7 +36,7 @@ What each capability is *today*, in three honest levels:
 | Encrypted camera vault, migration between keys | Local | Vault tests |
 | Digest authentication (RFC 7616) | Local | RFC 2617 worked example; **no camera firmware tested** |
 | ONVIF endpoint containment | Local | Unit tests |
-| PTZ over Hi3510, PSIA, ONVIF | Simulated | Command allow-list tested; real cameras answer differently |
+| PTZ over Hi3510, PSIA, ONVIF | Verified on one camera | Against the real cameras from the CM5: the Hi3510 unit (.210) confirms every command with `[Succeed]` and its picture changes; .203 and .204 answer nothing to Hi3510, PSIA or ONVIF (probably no PTZ hardware); .211 refuses the stored login for its web interface (its RTSP login works). A camera that confirms is the only one counted as moved; the auto-stop and press-and-hold are tested end to end in a browser against a stand-in camera |
 | RTSP path discovery, network discovery | Local | Tested with fake probes; real network behaviour unproven |
 | Live MJPEG through FFmpeg, snapshots, recordings | Verified on the bench | Run on the CM5 with FFmpeg 7.1 against the five real cameras: live frames from each (about 100 JPEG frames in 12 s), a snapshot and an MP4 recording saved. Not a soak test, and PTZ is a separate row |
 | Evidence retention, protection, SHA-256 | Local | Evidence tests |
@@ -45,7 +45,7 @@ What each capability is *today*, in three honest levels:
 
 | Capability | Level | Evidence |
 |---|---|---|
-| Studio console, history, alert rules with zones drawn on a plane, seven languages, site designer | Local | Unit tests and a rendered check of the console against a deployed server |
+| Studio console, history (search, filters, export, clearing), alert rules with zones drawn on a plane, PTZ in every camera view, status bar, 2D/3D site designer, seven languages | Local | Unit tests and a rendered check of the console against a deployed server |
 | Studio on the CM5 test bench | Local | Deployed and opened from another computer; no cameras attached |
 | Android operator client | Local | Endpoint-safety and alarm-policy unit tests and a debug build; **not run on a phone against the server** |
 | Android alarm notifications and background watch | Simulated | The decision logic is unit-tested; the permission flow and the foreground service were **never run on a device** |
