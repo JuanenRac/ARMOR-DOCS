@@ -4,13 +4,17 @@
 #
 #   tools/check_all.sh              # everything that can run on this machine
 #   tools/check_all.sh --android    # also the Gradle unit tests and debug build (slow)
+#   tools/check_all.sh --compose    # also build and run the Docker Compose topology (needs Docker or WSL, slow)
 #
 # A check that needs a tool this machine lacks is reported as SKIP with the reason,
 # never as PASS. The exit status is non-zero when any check FAILS.
 set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-ANDROID=0
-[[ "${1:-}" == "--android" ]] && ANDROID=1
+ANDROID=0; COMPOSE=0
+for argument in "$@"; do
+  [[ "$argument" == "--android" ]] && ANDROID=1
+  [[ "$argument" == "--compose" ]] && COMPOSE=1
+done
 
 PYTHON="${ARMOR_PYTHON:-$(command -v python3 || command -v python || true)}"
 SEP="$("$PYTHON" -c 'import os; print(os.pathsep)' 2>/dev/null || echo ':')"
@@ -55,6 +59,13 @@ else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs 
 if have bash && have openssl; then
   run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh'
 else skip ARMOR-DEVOPS "openssl is not installed"; fi
+
+# The Compose topology needs Docker; on Windows it lives in WSL, so it is run there when asked for.
+if [[ "$COMPOSE" -eq 1 ]]; then
+  if have docker; then run ARMOR-DEVOPS bash scripts/test_compose.sh
+  elif have wsl; then run ARMOR-DEVOPS wsl -d Ubuntu-24.04 -- bash "$(wslpath -a "$ROOT" 2>/dev/null || echo "$ROOT")/ARMOR-DEVOPS/scripts/test_compose.sh"
+  else skip "ARMOR-DEVOPS (compose)" "no Docker or WSL"; fi
+else skip "ARMOR-DEVOPS (compose)" "pass --compose to build and run the topology (needs Docker, slow)"; fi
 
 if [[ "$ANDROID" -eq 1 ]]; then
   if [[ -f "$ROOT/ARMOR-ANDROID-CONTROL/gradlew" ]]; then run ARMOR-ANDROID-CONTROL bash -c './gradlew testDebugUnitTest assembleDebug -q'
