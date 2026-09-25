@@ -3,13 +3,13 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.4.0 | Message contracts, validators, conformance vectors, generated types, OpenAPI, shared launcher | Functional |
-| ARMOR-RADAR | 0.2.0 | ESP32-S3 field-node firmware and its host-tested core | Scaffolding |
+| ARMOR-RADAR | 0.3.0 | ESP32-S3 field-node firmware, LD2450 decoder and its host-tested core | Scaffolding |
 | ARMOR-SERVER-AI | 0.2.0 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
 | ARMOR-VOICE-AI | 0.2.0 | Offline voice intents with signed confirmation | Functional baseline |
 | ARMOR-SERVER | 0.4.0 | Central state (persisted), event history, alarms, camera watchdog, cameras, evidence, audit | Functional |
 | ARMOR-STUDIO | 0.4.0 | Operations console, event history, alert rules and site designer | Functional |
 | ARMOR-ANDROID-CONTROL | 0.4.0 | Android operator client with history and alarm notifications | Functional baseline |
-| ARMOR-HARDWARE | 0.2.0 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
+| ARMOR-HARDWARE | 0.3.0 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.4.0 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
 | ARMOR-DOCS | 0.4.0 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.0 | Scenarios and repeatable faults | Functional |

@@ -55,7 +55,9 @@ What each capability is *today*, in three honest levels:
 | Capability | Level | Evidence |
 |---|---|---|
 | Node message serialiser | Local | Host tests and validation by ARMOR-COMMON |
-| Radar frame decoding (LD2450/LD2461) | **Absent** | Needs the vendor protocol document and captured UART data |
+| Ambient-light reading (VEML7700) | **Absent** | No driver; the firmware withholds telemetry rather than invent a lux value |
+| LD2450 frame decoding | Local | Decoder written from the Hi-Link manual V1.00; the manual's worked example decodes to the manual's values, noisy streams resynchronise, and the resulting JSON is accepted by the contract. **No frame has been captured from a real module**, and a target's slot is not known to be a stable identity |
+| LD2461 frame decoding | **Absent** | No document for the LD2461 |
 | Dew point, heater and day/night logic | Local | Host tests |
 | Static-reflector map | Local | Host tests |
 | Firmware on the ESP32-S3 (UART, MQTT, SNTP, Ethernet) | **Not built** | Needs ESP-IDF and the board |
@@ -68,6 +70,6 @@ What each capability is *today*, in three honest levels:
 | Capability | Level | Evidence |
 |---|---|---|
 | CM5 test bench installer (isolated, own ports) | Local | Deployed and health-checked on a real CM5 running other software, which stayed healthy |
-| Docker Compose topology and TLS profile | Simulated | Parsed as YAML only: **Docker is not installed on the development PC, so neither `docker compose config` nor a run has happened** |
+| Docker Compose topology and TLS profile | Local | Run for real with Docker Engine in WSL on the development PC (`scripts/test_compose.sh`, 12 checks): images built, broker, server (connected to the broker as `armor-server`) and Studio behind nginx answering, and HTTPS through Caddy answering. The first run found three real faults, now fixed. **Not run on the Jetson**, and the browser trust of Caddy's local authority is unverified |
 | Encrypted backup and restore | Local | Round-trip test script (wrong passphrase, damaged archive, restore over existing data) |
 | Network segmentation (VLANs, ACLs) | Absent | A design in [SECURITY_BASELINE](SECURITY_BASELINE.md) |
