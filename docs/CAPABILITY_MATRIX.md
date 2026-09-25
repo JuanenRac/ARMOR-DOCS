@@ -64,8 +64,8 @@ What each capability is *today*, in three honest levels:
 | Radar map on the site design | Local | Placement tests and a rendered check against telemetry posted to a real server. **The radar's sideways axis is an assumption** until a real LD2450 frame is compared with where a person stood |
 | Camera monitor filling its frame for every view count | Local | Layout tests and measured tile sizes in the browser at three window sizes |
 | Studio on the CM5 test bench | Local | Deployed and opened from another computer; no cameras attached |
-| Android operator client | Local | Endpoint-safety and alarm-policy unit tests and a debug build; **not run on a phone against the server** |
-| Android alarm notifications and background watch | Simulated | The decision logic is unit-tested; the permission flow and the foreground service were **never run on a device** |
+| Android operator client: arm and disarm, alarms (acknowledge), devices (state and commands), history | Local | 25 unit tests (endpoint safety, alarm policy, event, alarm and device parsing, device wording) and a debug build; the requests follow the routes the server tests cover. **Not run on a phone against the server** |
+| Android alarm notifications (nodes, cameras and device alarms) and background watch | Simulated | The decision logic is unit-tested, including that a device alarm wakes the phone once and node and camera alarms are not announced twice; the permission flow and the foreground service were **never run on a device** |
 
 ## Field node and AI
 
