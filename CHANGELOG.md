@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.2.7] - Firmware and the 270° node in the capability matrix
+
+- The field-node rows say what now exists (a firmware image that builds in the ESP-IDF container, the W5500 and VEML7700 drivers, the 270° node in Studio) and, unchanged, that none of it has run on a board.
+
 ## [0.2.6] - Android with alarms, devices and arming in the capability matrix
 
 - The Android rows say what the phone can do now (arm and disarm, alarms, devices, device-alarm notifications) and what was checked, and the client boundary no longer says it cannot arm.
