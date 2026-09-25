@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.2] - Six sensor models and the buttons of Studio
+
+- The capability matrix says what the LD2461 and the four presence sensors are (decoded from the manufacturers' documents and tested against their worked examples, none connected), the per-port sensor model of the node's panel, and drops the row that said the LD2461 had no document; the catalogue has the new versions; the README generator says the new counts and the six models.
+
+## [0.3.1] - Bluetooth configuration and the Wi-Fi station in the documentation
+
+- The capability matrix says what the Wi-Fi station with a network search and the Bluetooth configuration (firmware and app) are, and how much was checked; the catalogue has the new versions; the README of ARMOR-RADAR and of the Android client describe them.
+
 ## [0.3.0] - The node panel, the information message and the new versions
 
 - The capability matrix says what the node's web panel, the shared Wi-Fi, the mapped pins, the update path, the radar command channel, the panel link in Studio and the public-address login are, and how much of each was checked (all of it on a computer, none on a board).
