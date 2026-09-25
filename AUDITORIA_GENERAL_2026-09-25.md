@@ -50,3 +50,20 @@ en el código, tests en verde en los 11 repos. Nada verificado en hardware real.
 | 8 | Resuelto | Tiempo de permanencia (`ARMOR_ALERT_DWELL_MS`, 2 s por defecto) y zonas ignoradas, editables desde Studio |
 | 9 | Pendiente | Lo instalará el usuario (`ffmpeg` en la CM5) |
 | 10 | Resuelto | Límite de ingesta propio (1200/min) |
+
+## Segunda pasada (2026-09-25): seguridad, caos, cámaras, zonas, Android y broker propio
+
+Hallazgos nuevos encontrados al revisar el código de la primera pasada, todos corregidos:
+
+| Hallazgo | Gravedad | Corrección |
+|---|---|---|
+| `GET /api/v1/status` (y el modo en `/info`) eran públicos: cualquiera en la red sabía si el sistema estaba armado y dónde estaban los objetivos | Alta | Exigen operador |
+| La respuesta de la ingesta HTTP devolvía el estado completo del perímetro a quien tuviera el token de un nodo | Alta | Devuelve solo `accepted` y la revisión |
+| Un nodo comprometido podía suplantar a otro por MQTT (el cuerpo decía otro `node_id`) | Alta | El `node_id` del cuerpo debe ser el del topic; probado en el broker real de la CM5 |
+| Se podían inventar nombres de nodo sin límite (crecimiento del estado y del fichero) | Media | Máximo 256 nodos; `DELETE /api/v1/nodes/:id` para retirar uno |
+| Límite de ingesta de 1200/min insuficiente (3 nodos a 10 Hz ≈ 1800/min) | Media | 6000/min |
+| Una cámara caída no se notaba | Media | Vigilancia de cámaras con evento y alarma |
+
+Añadido: pruebas de carga y caos (107 tests en el servidor), zonas dibujadas sobre un plano en Studio, historial y avisos de alarma en Android (14 tests; **no probado en un teléfono**), broker MQTT propio de ARMOR en la CM5 (puerto 18883, distinto del 1883 de HYDRA), verificado de extremo a extremo.
+
+Sigue abierto: `ffmpeg` (lo instala el usuario), perfil TLS de Compose sin ejecutar, Android sin ejecutar en un teléfono, firmware sin compilar, nada en hardware real, y la ingesta HTTP con un único token compartido (se recomienda MQTT con una identidad por nodo).

@@ -25,7 +25,7 @@ report() { printf '%-24s %-5s %s\n' "$1" "$2" "$3"; [[ "$2" == "FAIL" ]] && FAIL
 run() {
   local name="$1"; shift
   if ( cd "$ROOT/$name" && "$@" ) >"$LOGS/$name.log" 2>&1; then
-    report "$name" PASS "$(grep -E '(passed|Ran [0-9]+ tests|[0-9]+ checks|Tests +[0-9]+ passed|tests [0-9]+|ℹ pass [0-9]+)' "$LOGS/$name.log" | tail -1 | sed 's/^ *//')"
+    report "$name" PASS "$(grep -E '(passed|Ran [0-9]+ tests|[0-9]+ checks|Tests +[0-9]+ passed|ℹ pass [0-9]+)' "$LOGS/$name.log" | tail -1 | sed 's/^ *//')"
   else
     report "$name" FAIL "see below"; sed 's/^/    | /' "$LOGS/$name.log" | tail -25
   fi

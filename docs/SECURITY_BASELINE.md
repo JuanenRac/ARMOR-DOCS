@@ -40,3 +40,11 @@ TLS on every hop, a secret store, broker TLS and per-node certificates, an audit
 Android release channel, backups with retention rules, and any penetration test. Do not expose
 A.R.M.O.R. beyond the loopback interface or a trusted test LAN until the end-to-end cookie test,
 a proxy and TLS are decided.
+
+## Application-level findings fixed in the second audit pass
+
+* The perimeter state (armed or not, and the targets) is no longer readable without an operator: `GET /api/v1/status` needs one, and `GET /api/v1/info` shows the mode only to an operator.
+* A field node's ingest token no longer returns the perimeter state (the answer is `accepted` and a revision).
+* Over MQTT the `node_id` in a message must equal the node of its topic, so a compromised node cannot impersonate a neighbour. Over HTTP all nodes share one ingest token, so a holder of it can still report as any node: use MQTT with one identity per node when that matters.
+* At most 256 distinct nodes are accepted; a decommissioned node is forgotten with `DELETE /api/v1/nodes/:id`.
+* Alarm webhooks do not follow redirects, are signed when a secret is set, and never block ingestion.
