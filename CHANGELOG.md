@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.0] - The node panel, the information message and the new versions
+
+- The capability matrix says what the node's web panel, the shared Wi-Fi, the mapped pins, the update path, the radar command channel, the panel link in Studio and the public-address login are, and how much of each was checked (all of it on a computer, none on a board).
+- ARMOR-RADAR's README (English and Spanish) describes the panel and the new tools; the catalogue and the interfaces page carry the new versions and the 68 conformance vectors.
+
 ## [0.2.9] - Catalogue versions
 
 - Studio 0.2.5 and DevOps 0.2.5 in the project catalogue.
