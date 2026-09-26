@@ -6,14 +6,14 @@ What each capability is *today*, in three honest levels:
 * **Local**: works and is tested on a computer (unit, integration or host tests) with no real device.
 * **Verified**: proven on the real hardware, with a measurement record.
 
-**Nothing is verified on hardware yet.** This page is updated with every change; a row moves to
+**Only the rows marked *Verified* have met real hardware (some IP cameras and the CM5 test bench); no radar, field-node board, inverter or battery has been connected.** This page is updated with every change; a row moves to
 *Verified* only with evidence (see [bench acceptance](../../ARMOR-HARDWARE/docs/BENCH_ACCEPTANCE.md)).
 
 ## Contracts and server
 
 | Capability | Level | Evidence |
 |---|---|---|
-| Telemetry, health and command contracts (JSON Schema) | Local | 50 conformance vectors run by Python and by ARMOR-SERVER |
+| Telemetry, health, command, node information and solar contracts (JSON Schema) | Local | 142 conformance vectors run by Python, by ARMOR-SERVER and by ARMOR-SOLAR's checks |
 | HTTP ingest with an ingest token | Local | Server integration suite |
 | MQTT ingress through a real broker | Local | Run on the CM5 against A.R.M.O.R.'s own Mosquitto: anonymous clients refused, a node's telemetry reached the server and raised an alert. The publishers were scripts, **not field-node firmware** |
 | A node cannot speak for another over MQTT | Local | Topic/body check tested; the broker ACL restricting each node to its own topics was exercised on the CM5 |

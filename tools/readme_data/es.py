@@ -1,0 +1,146 @@
+"""Español: las palabras que rodean cada README, la descripción de una línea de cada repositorio y los textos de los repositorios que cambiaron desde la primera
+generación (el resto está en legacy.py).
+
+Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
+"""
+from __future__ import annotations
+
+UI = {
+    "overview": "Descripción general", "structure": "Estructura del repositorio", "dev": "Entorno de desarrollo", "architecture": "Arquitectura",
+    "related": "Proyectos relacionados", "community": "Documentación y comunidad", "author": "AUTOR", "license": "LICENCIA",
+    "honesty": "Comprobación de honestidad - qué funciona hoy", "license_text": "GPL-3.0-or-later - véase [LICENSE](LICENSE).",
+    "family": "**A.R.M.O.R.** (Autonomous Radar & Multimodal Observation Range) es un sistema de seguridad perimetral hecho de repositorios independientes. Cada uno tiene su propia versión, sus propias pruebas y su propio README; esta es la familia:",
+    "here": "este repositorio",
+    "docs_intro": "Dónde leer más:",
+    "doc_matrix": "Matriz de capacidades: qué está probado y qué no",
+    "doc_catalog": "Catálogo de proyectos: versiones y cómo dependen unos de otros",
+    "doc_changelog": "Historial de cambios de este repositorio",
+    "doc_license": "Licencia (GPL-3.0-or-later)",
+    "contact": "Preguntas, ideas e informes: electrohobby3d@gmail.com",
+}
+
+RELATED = {
+    "ARMOR-COMMON": "Contratos de mensajes, validadores, vectores de conformidad y tipos generados",
+    "ARMOR-RADAR": "Firmware del nodo de campo para ESP32-S3 con tres radares y su propio panel web",
+    "ARMOR-SOLAR": "Protocolos de inversores y baterías solares y los mensajes de un nodo pasarela",
+    "ARMOR-SERVER": "Coordinador central: telemetría, alarmas, dispositivos, lecturas solares y cámaras",
+    "ARMOR-STUDIO": "Consola web: cámaras, radar, alarmas, energía solar y el diseñador de sitio 2D/3D",
+    "ARMOR-ANDROID-CONTROL": "Cliente Android del operador con radar 2D/3D en vivo",
+    "ARMOR-SERVER-AI": "Política de inferencia visual que explica sus decisiones y nunca actúa",
+    "ARMOR-VOICE-AI": "Intenciones de voz sin conexión con una confirmación imposible de falsificar",
+    "ARMOR-HARDWARE": "Cajas, electrónica y la matriz de aceptación en banco",
+    "ARMOR-DEVOPS": "Despliegue, el banco de pruebas de la CM5, copias de seguridad y TLS",
+    "ARMOR-SIMULATOR": "Simulador de telemetría sin conexión con fallos repetibles",
+    "ARMOR-DOCS": "Arquitectura, base de seguridad y la matriz de capacidades",
+}
+
+TEXT = {
+    "ARMOR-SOLAR": {
+        "tagline": "Monitorización de inversores solares y baterías: los protocolos serie y los mensajes de un nodo pasarela",
+        "honest": "**Madurez: scaffolding.** La biblioteca de protocolos (100 comprobaciones) decodifica los inversores Voltronic / MPP Solar y la consola de Pylontech, celda a celda y con las capacidades, a partir de respuestas típicas escritas a mano. Los mensajes que imprime los valida ARMOR-COMMON, los lee ARMOR-SERVER y los muestran los menús Inversores y Baterías de Studio, todo con lecturas generadas. **No se ha conectado ningún inversor ni batería**, aún no hay firmware del nodo y ANT-BMS no se decodifica porque su documento de protocolo no está en el proyecto.",
+        "bullets": [
+            "**Inversores Voltronic / MPP Solar** (Axpert, PIP, InfiniSolar y clones), RS232 a 2400 baudios: las tramas y su CRC, y las lecturas `QPIGS` (red, salida, batería, FV, bits de estado), `QMOD` (modo), `QPIWS` (avisos y averías por nombre) y `QPIRI` (valores nominales). Solo se pueden construir comandos de lectura: un ajuste cambia cómo se alimenta la casa.",
+            "**Baterías Pylontech** (US2000, US3000, US5000): la tabla `pwr` de la consola (tensión, corriente, temperaturas y estado de carga de cada módulo), `bat <n>` (tensión y temperatura de cada celda) e `info <n>` (modelo, capacidad restante y total, ciclos), resumidas como una pila con su capacidad y energía totales, y la trama RS485 con sus dos comprobaciones. Los formatos están escritos de memoria de la consola pública y pueden variar entre firmwares.",
+            "**Los mensajes de un nodo pasarela** (`armor/solar/<nodo>/<dispositivo>/state`, uno por inversor o pila de baterías), definidos en ARMOR-COMMON con esquemas y vectores de conformidad, serializados aquí y comprobados por un script.",
+            "**El diseño del resto:** qué placa (solo Wi-Fi o Ethernet con PoE), cómo cablear RS232 y RS485 con seguridad (conversión de niveles y aislamiento) y el orden en que se construyeron los menús de Studio.",
+            "**Todavía no:** ANT-BMS, el firmware del nodo y la pestaña de Android. No se ha conectado nada a un dispositivo real.",
+        ],
+        "note": "",
+    },
+    "ARMOR-DEVOPS": {
+        "bullets_replace": {
+            'Dispositivos en el broker': '**Dispositivos y lecturas en el broker del banco:** el servidor puede escuchar y ordenar `armor/device/#` y leer `armor/node/+/info` y `armor/solar/#`; `scripts/mqtt_identity.sh add device NAME` da a un dispositivo sus propios temas y `add bridge NAME` a un puente Zigbee2MQTT o Shelly todos ellos.',
+        },
+    },
+    "ARMOR-SERVER": {
+        "tagline": "Coordinador central de seguridad: entrada de telemetría, alarmas, dispositivos, lecturas solares y pasarela de cámaras",
+        "honest": "Cada ruta, sesión, cifrado y regla de evidencias de abajo es real y está cubierta por pruebas (`npm test`, 159 pruebas, con una suite completa de integración HTTP contra un servidor aislado). Ha funcionado con un broker MQTT real en la CM5 (con scripts, no con firmware de nodo de campo), y ha emitido vídeo en vivo, guardado una captura y grabado desde cinco cámaras IP reales mediante FFmpeg. Lo que **aún no está probado**: ONVIF con una cámara ONVIF real, PTZ en cada firmware de cámara (funciona en la unidad Hi3510), cualquier hardware Jetson y las rutas solares con un nodo pasarela real (se prueban con lecturas generadas).",
+        "intro": "**ARMOR-SERVER** es el centro de confianza de A.R.M.O.R. Los nodos de campo publican observaciones de radar, luz y salud; este servicio las valida, guarda el último estado conocido de cada nodo y lo sirve a la consola Studio y al cliente Android. También es dueño de todo lo que toca una cámara, de modo que **ningún navegador ni teléfono guarda jamás una contraseña de cámara ni una dirección RTSP**.",
+        "bullets": [
+            "**Entrada validada:** las observaciones por HTTP y MQTT se comprueban en la frontera (identificador, marcas de tiempo, rango de lux, como máximo 15 pistas) antes de llegar a la proyección de estado.",
+            "**Estado honesto de los nodos:** un nodo que deja de hablar se muestra como *obsoleto* y *desconectado* tras una ventana configurable, nunca como conectado con datos viejos. Desarmar borra una alerta alta al instante.",
+            "**Pasarela de cámaras:** bóveda de cámaras cifrada, PTZ ONVIF / Hi3510 / PSIA, descubrimiento de rutas RTSP, un relé FFmpeg compartido por cámara, capturas y grabación MP4, y un vigilante que convierte una cámara que deja de responder en un evento y, estando armado, en una alarma.",
+            "**Biblioteca de evidencias:** retención por antigüedad y tamaño empezando por lo más viejo, **evidencias protegidas** que nunca se borran y un SHA-256 para la cadena de custodia. Una línea de auditoría por cada acción relevante para la seguridad, sin credenciales.",
+            "**Estado que sobrevive:** el modo de seguridad y la última observación de cada nodo se restauran tras un reinicio (un reinicio nunca desarma el perímetro en silencio). Cada cambio de nivel de alerta, de estado de nodo y de modo queda en un historial de eventos.",
+            "**Salida de alarma:** las alertas altas y, estando armado, los nodos silenciosos o desconectados van a MQTT `armor/server/alert` y a un webhook opcional firmado con HMAC; el tiempo de permanencia antes de ALTA y las zonas ignoradas se ajustan desde Studio.",
+            "**Usuarios:** nombres y contraseñas (hashes scrypt), un rol `admin` que gestiona usuarios y un rol `operator` que opera; cambiar una contraseña o un rol cierra las demás sesiones de ese usuario.",
+            "**Dispositivos, alarmas y automatizaciones:** dispositivos de humo, gas, inundación, puerta, ventana, movimiento, clima, enchufe, luz, sirena y cerradura por MQTT o por envío autenticado, con estado normalizado, disponibilidad y comandos; alarmas con ciclo generada / reconocida / despejada; reglas que accionan dispositivos ante un suceso; armar y desarmar desde una sesión iniciada; y el diseño del sitio guardado en el servidor para todos los clientes.",
+            "**Lecturas solares:** los inversores y las pilas de baterías (con cada celda y las capacidades) llegan por HTTP o MQTT, los valida el contrato compartido, se guardan con un historial (una muestra cada 30 s durante un día) y totales, se marcan como obsoletos a los dos minutos y levantan cuatro alarmas (avería del inversor, batería baja, alarma de batería, equipo en silencio).",
+        ],
+        "sections": [
+            {"title": "Modelo de seguridad", "bullets": [
+                "Cuatro secretos separados: **ingesta** (enviar telemetría, salud y lecturas solares), **control** (armar / desarmar, eventos), **operador** (automatización) y el **acceso a Studio**; cada uno se compara en tiempo constante y ninguno sustituye a otro.",
+                "Toda ruta que configura, mueve, captura, graba, protege o borra exige un operador. El vídeo en vivo exige un operador o un ticket de emisión de corta duración ligado a una cámara.",
+                "Las contraseñas de las cámaras viven solo en `data/cameras.json`, cifradas con AES-256-GCM, y ninguna API las devuelve; las direcciones ONVIF deben quedarse en el host de la cámara y se rechazan las redirecciones.",
+                "Las sesiones de Studio son HttpOnly y SameSite=Strict durante 8 horas, el inicio de sesión tiene límite de intentos y los errores nunca llevan traza de pila.",
+                "El servidor escucha en 127.0.0.1 salvo que se indique `ARMOR_HOST` a propósito, y entonces se rechaza una contraseña de Studio de menos de 12 caracteres.",
+            ]},
+            {"title": "API", "bullets": [
+                "Pública: `GET /healthz`. Para un operador: estado, información, cámaras, medios, historial, reglas, dispositivos, alarmas, automatizaciones, el diseño del sitio y `GET /api/v1/solar` con su historial.",
+                "Para los nodos de campo y las pasarelas: `POST /api/v1/telemetry`, `/health` y `/solar` con el token de ingesta, y los temas MQTT `armor/node/#` y `armor/solar/#`. Los eventos llegan a las consolas por el WebSocket `/api/v1/events`.",
+                "Cada ruta, su regla de acceso y su esquema están en el archivo OpenAPI de [ARMOR-COMMON](../ARMOR-COMMON), y una prueba comprueba que no falte ninguna.",
+            ]},
+            {"title": "Configuración", "bullets": [
+                "Copia `.env.example` a `.env` (ignorado por Git), o deja que `run.bat` / `run.sh` genere secretos aleatorios en la primera ejecución.",
+                "Obligatorias: `ARMOR_INGEST_TOKEN` y `ARMOR_CONTROL_TOKEN` (24 caracteres o más, todas distintas) y `ARMOR_STUDIO_USERNAME` / `ARMOR_STUDIO_PASSWORD` (el primer administrador).",
+                "Habituales: `ARMOR_HOST` / `ARMOR_PORT`, `ARMOR_DATA_DIR`, `ARMOR_FFMPEG_PATH` (vídeo en vivo y captura), `ARMOR_MQTT_URL`, `ARMOR_STUDIO_ORIGIN`, `ARMOR_NODE_STALE_AFTER_S`, `ARMOR_CAMERA_CHECK_S`, `ARMOR_ALERT_DWELL_MS`, `ARMOR_ALERT_WEBHOOK_URL` y `ARMOR_COOKIE_SECURE` (ponlo a `1` detrás de TLS).",
+            ]},
+        ],
+        "note": "Para instalar en el banco de pruebas de la CM5 (aislado de todo otro proyecto, con usuario y puertos propios) véase [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+    },
+    "ARMOR-STUDIO": {
+        "tagline": "Consola de operaciones y diseño: cámaras, radar, alarmas, energía solar, evidencias y plano del sitio",
+        "honest": "Studio habla con [ARMOR-SERVER](../ARMOR-SERVER) y está cubierto por 176 pruebas unitarias (lectura de ajustes, fusión de cámaras, la aritmética de las gráficas solares, cada menú dibujado en los siete idiomas, el servidor estático). **No** está probado el vídeo en vivo y el PTZ con cada cámara real, los menús solares con un inversor o batería reales ni una revisión formal de accesibilidad o usabilidad. Mientras no se alcanza el servidor, Studio muestra datos de demostración y lo dice en la barra superior.",
+        "intro": "**ARMOR-STUDIO** es la consola del operador. Nunca guarda una contraseña de cámara, una dirección RTSP ni un token: inicia sesión en el servidor con usuario y contraseña, recibe una sesión **HttpOnly** de 8 horas y todo lo privilegiado viaja por esa sesión.",
+        "bullets": [
+            "**Monitor de cámaras:** 1, 2, 4, 6, 8, 9, 12 o 16 teselas que se ajustan a su marco (16:9, toda la matriz visible, sin recortes), una vista maximizada con mando PTZ acotado, captura y grabación MP4; una **biblioteca de grabaciones** para filtrar, previsualizar, reproducir, proteger y borrar evidencias.",
+            "**Alarmas, dispositivos y automatizaciones:** lo que necesita a una persona ahora mismo con reconocer y el registro cerrado; dispositivos de humo, gas, inundación, puerta, ventana, movimiento, clima, enchufe, luz, sirena y cerradura por Wi-Fi, Zigbee, Bluetooth o cable (preajustes para Zigbee2MQTT, Tasmota y Shelly); reglas que accionan dispositivos ante un suceso; un botón grande de armar / desarmar.",
+            "**Energía solar:** el menú *Inversores* dibuja la casa como un flujo de energía animado (paneles, red, inversor, batería y consumo, con guiones que corren más rápido cuanta más potencia), medidores, lecturas, avisos en palabras y gráficas de historial; el menú *Baterías* muestra cada pila con un nivel de líquido, sus **capacidades** (restante y total, Ah y kWh, ciclos, modelo), cada módulo y **cada celda** como una barra con su tensión y la diferencia en milivoltios, y gráficas de carga, tensión, corriente, rango de celdas y temperatura.",
+            "**Resumen y sistema:** el estado del perímetro, una tesela por parte, un mapa vivo del diseño con cada dispositivo y una página de sistema con el registro de auditoría para un administrador.",
+            "**Radar:** un mapa en vivo dibujado desde tu diseño del sitio (terreno, edificios, cámaras, radares y su cobertura) con los objetivos que informa cada radar, su recorrido reciente y las zonas ignoradas; estado de los nodos en vivo, con los nodos silenciosos como *obsoletos*; el panel propio de cada nodo queda a un clic.",
+            "**Diseñador del sitio:** dibuja el terreno (rectángulo o cualquier forma, con longitudes tecleadas), coloca edificios de varias plantas con cinco tipos de tejado, puertas y ventanas a cualquier planta y altura, farolas, chimeneas, paneles solares, antenas, pilares, mástiles, carreteras y caminos, y luego cámaras y radares donde quieras; un plano 2D estilo CAD y una vista 3D que puedes orbitar, cortar planta a planta y editar; deshacer y rehacer.",
+            "**Configuración:** dirección del servidor, cámaras (ONVIF/RTSP), descubrimiento, usuarios (tu cuenta y, para un administrador, la lista de usuarios, roles y contraseñas), tema e idioma; una exportación portátil del sitio **sin credenciales**.",
+            "**Siete idiomas** (inglés, español, alemán, francés, italiano, japonés y chino) y once temas, el predeterminado llamado *Armor*.",
+        ],
+        "sections": [
+            {"title": "Modelo de seguridad", "bullets": [
+                "**Ningún secreto en el navegador.** Las contraseñas de las cámaras se teclean una vez, se envían al servidor y después solo se ven como un estado \"guardada\" enmascarado. Las exportaciones del sitio omiten usuarios e indicadores de credenciales.",
+                "**Los ajustes guardados son entrada no fiable.** Se leen valor a valor: un origen, tema, idioma o forma no válidos se descartan, las posiciones se acotan y las listas se limitan.",
+                "**Ninguna petición a terceros.** Las fuentes son locales; el servidor estático envía `Content-Security-Policy: default-src 'self'` limitada al servidor configurado, `frame-ancestors 'none'`, `nosniff` y `no-referrer`.",
+                "El vídeo en vivo solo se muestra mediante una dirección de emisión que el servidor entrega a un operador.",
+            ]},
+        ],
+        "note": "`tools/serve.mjs` lee `ARMOR_STUDIO_HOST` (por defecto `127.0.0.1`), `ARMOR_STUDIO_PORT` (`5178`), `ARMOR_STUDIO_DIST` y `ARMOR_SERVER_ORIGIN`. Para instalar toda la pila en el banco de pruebas de la CM5 véase [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+    },
+    "ARMOR-COMMON": {
+        "tagline": "Contratos de mensajes, validación y el lanzador de proyectos compartido",
+        "honest": "Los esquemas, el validador de Python, los 142 vectores de conformidad compartidos, los tipos generados de TypeScript y Kotlin y el lanzador de proyectos compartido son reales y están probados (19 pruebas). El archivo de Kotlin está generado pero **aún no lo usa** ARMOR-ANDROID-CONTROL, y el comando `set_thresholds` lleva un único campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista firmware.",
+        "intro": "**ARMOR-COMMON** es dueño de lo que significa cada mensaje de A.R.M.O.R. Los nodos de radar, los nodos pasarela solares y el simulador producen estos mensajes; el servidor, la IA visual y el servicio de voz los consumen. Si dos proyectos discrepan sobre un campo, decide este repositorio.",
+        "bullets": [
+            "**Una única fuente de verdad:** esquemas JSON en `src/armor_common/schemas/` para telemetría, salud, comando, información del nodo y los dos mensajes solares (inversor, batería con celdas y capacidades). Los campos desconocidos se rechazan en todas partes.",
+            "**Un validador que no puede saltarse una regla:** interpreta el esquema directamente y rechaza un esquema que use una palabra clave que no implementa.",
+            "**Vectores de conformidad:** 142 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las comprobaciones de ARMOR-SOLAR), de modo que una deriva rompe la compilación.",
+            "**Clientes generados:** los tipos de TypeScript y Kotlin salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).",
+            "**Contrato HTTP:** `openapi/armor-server-0.1.9.yaml` describe cada ruta del servidor, su regla de acceso y su esquema.",
+            "**Lanzador compartido:** `tools/armor_project_tool.py` da a todos los repositorios de la familia el mismo flujo `build`, `build-test` y `run`.",
+        ],
+        "sections": [],
+        "note": "Temas del broker: `armor/node/{node_id}/telemetry | health | command | info` y `armor/solar/{node_id}/{device}/state`. Véase la [guía de contratos](docs/CONTRACTS.md). El lanzador compartido crea un `.env` ignorado en la primera ejecución de ARMOR-SERVER con secretos aleatorios y una contraseña de administrador aleatoria; no se imprime ni se sube nada.",
+    },
+    "ARMOR-DOCS": {
+        "tagline": "Arquitectura canónica, base de seguridad y la verdad sobre lo que está probado",
+        "honest": "Este repositorio documenta interfaces y procedimientos que se han validado, y dice sin rodeos lo que no. Lee la [matriz de capacidades](docs/CAPABILITY_MATRIX.md) antes de creer que una función está \"hecha\": indica de cada una si solo se simuló, se probó en un ordenador o se verificó en hardware real.",
+        "intro": "",
+        "bullets": [
+            "[Matriz de capacidades](docs/CAPABILITY_MATRIX.md): de cada capacidad, ¿está simulada, local o verificada en hardware?",
+            "[Arquitectura](docs/ARCHITECTURE.md): redes, fronteras de confianza, tiempo y orden.",
+            "[Base de seguridad](docs/SECURITY_BASELINE.md): el diseño de VLAN, lo que aplica el código y lo que aún falta.",
+            "[Catálogo de proyectos](docs/PROJECT_CATALOG.md): los doce repositorios, sus versiones y cómo dependen unos de otros.",
+            "[Interfaces](docs/INTERFACES.md): quién produce y consume cada interfaz y dónde se confía en ella.",
+            "[Primera rebanada vertical](docs/FIRST_VERTICAL_SLICE.md): qué demuestra la prueba de simulador a consola y qué no.",
+            "**Herramientas:** `make_readmes.py` escribe el README de cada repositorio en los siete idiomas, `make_brand.py` su banner e icono, `publication_check.py` busca cualquier cosa privada antes de una publicación y `clean_history.py` hace una copia publicable de un repositorio.",
+        ],
+        "sections": [],
+        "note": "Las auditorías de la familia (en español) están en la raíz de este repositorio.",
+    },
+}

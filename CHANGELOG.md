@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.6] - The READMEs in seven languages, a banner and an icon for every project
+
+- **Every repository has its README in English, Spanish, French, Italian, German, Chinese and Japanese** (`README.md` and `README_spa`, `_fra`, `_ita`, `_deu`, `_zho`, `_jpn`), all written by `tools/make_readmes.py` from `tools/readme_data/` (one module per language) with the same sections: overview, the architecture and the security model where they apply, the repository structure, the development environment, the family of projects, the documentation and the author. The four READMEs that used to be written by hand are generated too, with their numbers brought up to date (tests, vectors, menus, the solar readings).
+- **A banner and an icon for every project**, each with its own drawing inside the shield (a radar sweep, a sun, a rack, a monitor, a phone, an eye, a microphone, a cube, a gear, a flask, braces, a book), and `images/ARMOR_FAMILY.svg`, a map of who feeds whom. `tools/make_brand.py` writes them and escapes the `&` that broke four of the old banners.
+- The matrix no longer says that nothing has met hardware (the cameras and the CM5 bench have) and counts the 142 conformance vectors; the catalogue describes the solar work of the server and of Studio.
+
 ## [0.3.5] - Solar in the matrix and the catalogue
 
 - The capability matrix says what the solar contract, the server's ingestion and alarms and Studio's two menus are and how much was checked (all with generated readings, none with a real inverter or battery); the catalogue has the new versions; the interfaces document counts the vectors and names the current OpenAPI file.
