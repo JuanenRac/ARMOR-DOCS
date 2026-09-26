@@ -53,12 +53,12 @@ else
 fi
 
 if have cmake && (have g++ || have c++); then
-  run ARMOR-RADAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_core" && "$B/test_node" && "$B/test_sensors"'
-  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node"'
+  run ARMOR-RADAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_core" && "$B/test_node" && "$B/test_board_wifi" && "$B/test_sensors"'
+  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node" && "$B/test_board_eth"'
 else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; skip ARMOR-SOLAR "no C++ compiler or cmake"; fi
 
 if have bash && have openssl; then
-  run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh'
+  run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh && bash scripts/test_firewall.sh'
 else skip ARMOR-DEVOPS "openssl is not installed"; fi
 
 # The Compose topology needs Docker; on Windows it lives in WSL, so it is run there when asked for.

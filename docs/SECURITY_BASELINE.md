@@ -14,6 +14,9 @@ completed audit**.
 Default-deny between VLANs; allow only the explicitly required paths. Every field node needs a
 unique identity and a broker ACL before an outdoor deployment.
 
+The VLANs themselves are the router's and the switch's job and are still a design. What the software provides is the core machine's own side of it: `ARMOR-DEVOPS/scripts/firewall_core.sh` opens the
+broker's port only to the field network and the server's and Studio's ports only to the clients' network (see that project's deployment notes). It has not been loaded on a machine.
+
 ## What the software already enforces
 
 * Ingest, control, operator and Studio-login credentials are different; tokens are at least 24
