@@ -5,6 +5,7 @@ Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
     python tools/publication_check.py            # every ARMOR-* repository next to this one, tracked files and history
     python tools/publication_check.py ARMOR-RADAR --no-history
+    python tools/publication_check.py ARMOR-STUDIO --ref=publicacion      # only the history that branch reaches (see clean_history.py)
 
 It reads git only (tracked files, and with history every revision, commit authors and messages), never the ignored files, and it never
 prints the matched secret: a finding shows the file, the line number and the kind, with the value cut to its first characters.
@@ -75,7 +76,7 @@ def scan_text(name: str, where: str, text: str, findings: list[tuple[str, str, s
                 findings.append(("REVIEW", name, ref, f"literal {match.group(1).lower()} {value[:3]}..."))
 
 
-def check_repo(repo: Path, history: bool) -> list[tuple[str, str, str, str]]:
+def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[str, str, str, str]]:
     name = repo.name
     findings: list[tuple[str, str, str, str]] = []
     tracked = [path for path in git(repo, "ls-files").splitlines() if path]
@@ -89,7 +90,7 @@ def check_repo(repo: Path, history: bool) -> list[tuple[str, str, str, str]]:
         except (OSError, UnicodeDecodeError):
             continue
         scan_text(name, path, text, findings)
-    log = git(repo, "log", "--all", "--format=%H%x1f%an <%ae>%x1f%cn <%ce>%x1f%B%x1e")
+    log = git(repo, "log", ref or "--all", "--format=%H%x1f%an <%ae>%x1f%cn <%ce>%x1f%B%x1e")
     for record in [r for r in log.split("\x1e") if r.strip()]:
         parts = record.strip("\n").split("\x1f", 3)
         if len(parts) < 4:
@@ -101,7 +102,7 @@ def check_repo(repo: Path, history: bool) -> list[tuple[str, str, str, str]]:
             findings.append(("BLOCK", name, f"commit {sha}", "the message has a co-author, AI or sign-off trailer"))
     if history:
         seen: set[tuple[str, str]] = set()
-        revisions = git(repo, "rev-list", "--all").split()
+        revisions = git(repo, "rev-list", ref or "--all").split()
         for revision in revisions:
             names = git(repo, "ls-tree", "-r", "--name-only", revision).splitlines()
             for path in names:
@@ -109,7 +110,7 @@ def check_repo(repo: Path, history: bool) -> list[tuple[str, str, str, str]]:
                     seen.add(("path", path))
                     findings.append(("BLOCK", name, f"{path} @ {revision[:10]}", "a secrets, key or environment file was tracked in the history"))
         # removed lines only: what was once committed and later taken out is still public
-        diff = git(repo, "log", "--all", "-p", "--no-color", "--diff-filter=MD", "--unified=0", "--format=commit %h", check=False)
+        diff = git(repo, "log", ref or "--all", "-p", "--no-color", "--diff-filter=MD", "--unified=0", "--format=commit %h", check=False)
         current = ""
         for number, line in enumerate(diff.splitlines(), 1):
             if line.startswith("commit "):
@@ -127,17 +128,18 @@ def check_repo(repo: Path, history: bool) -> list[tuple[str, str, str, str]]:
 
 def main(argv: list[str]) -> int:
     history = "--no-history" not in argv
+    ref = next((a.split("=", 1)[1] for a in argv if a.startswith("--ref=")), None)
     names = [a for a in argv if not a.startswith("--")]
     repos = [ROOT / n for n in names] if names else sorted(p for p in ROOT.glob("ARMOR-*") if (p / ".git").exists())
     blocked = 0
     for repo in repos:
-        findings = check_repo(repo, history)
+        findings = check_repo(repo, history, ref)
         block = [f for f in findings if f[0] == "BLOCK"]
         review = [f for f in findings if f[0] == "REVIEW"]
         blocked += len(block)
         print(f"{repo.name:24} BLOCK {len(block):3}  REVIEW {len(review):3}")
-        for kind, _name, ref, what in findings[:60]:
-            print(f"   {kind:6} {ref}  {what}")
+        for kind, _name, where, what in findings[:60]:
+            print(f"   {kind:6} {where}  {what}")
         if len(findings) > 60:
             print(f"   ... and {len(findings) - 60} more")
     print("PUBLICATION_CHECK=" + ("FAIL" if blocked else "PASS"))

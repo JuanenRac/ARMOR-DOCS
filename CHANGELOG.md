@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.3] - HTTPS, stable tracks, the new Android look and two tools for publishing
+
+- The capability matrix says what the node's HTTPS panel, the stable track identities and the device states checked against the server are, and how much was checked; the Android rows describe the redesigned app, its live radar tab and what was exercised in an emulator; the catalogue and the READMEs carry the new versions and counts.
+- **`tools/clean_history.py`** makes a publishable copy of a repository: its current files as one commit, on a new branch, by the project's author, with no history behind it (the working history is not touched, and nothing is pushed). It refuses a repository with uncommitted changes or with findings in its files, and checks the new branch. **`tools/publication_check.py`** (0.3.2) can now check only what one branch reaches.
+
 ## [0.3.2] - Six sensor models and the buttons of Studio
 
 - The capability matrix says what the LD2461 and the four presence sensors are (decoded from the manufacturers' documents and tested against their worked examples, none connected), the per-port sensor model of the node's panel, and drops the row that said the LD2461 had no document; the catalogue has the new versions; the README generator says the new counts and the six models.
