@@ -72,7 +72,7 @@ TEXT = {
     },
     "ARMOR-SOLAR": {
         "tagline": "太阳能网关节点：通过最多十个串口读取逆变器和电池（ESP32-S3 固件、其网页面板和协议库）",
-        "honest": "**成熟度：scaffolding。** 固件能在 ESP-IDF 5.4.2 容器中构建，其核心（设置、与各类设备的交互、模拟 UART 的运算：684 项检查）已在电脑上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，网页面板已在浏览器中对着替身节点试用。**它从未在开发板上运行过，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。测试中的 ANT-BMS 帧是他人在自己的设备上抓取的，本项目自己还没有读过任何一台。",
+        "honest": "**成熟度：scaffolding。** 固件能在 ESP-IDF 5.4.2 容器中构建，其核心（设置、与各类设备的交互、模拟 UART 的运算：697 项检查）已在电脑上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，网页面板已在浏览器中对着替身节点试用。**它从未在开发板上运行过，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。测试中的 ANT-BMS 帧是他人在自己的设备上抓取的，本项目自己还没有读过任何一台。",
         "bullets": [
             "**两种开发板，一套固件：** 走 Wi-Fi 的 ESP32-S3-WROOM-1 N16R8（默认）和走以太网线的 Waveshare ESP32-S3-ETH（DHCP 或固定地址；保留自己的 Wi-Fi 网络以便从手机访问）。镜像在构建时选择（`tools/build_node.sh generic s3-wifi` 或 `generic s3-eth`）；引脚表、端口的默认引脚和接入方式随开发板而定，镜像只适用于对应的开发板。两者都能构建并已在电脑上测试，但都没在开发板上运行过。",
             "**节点固件**（Wi-Fi 的 ESP32-S3-WROOM-1 N16R8，或有线的 Waveshare ESP32-S3-ETH）：十个串口，三个硬件 UART 和七个模拟 UART（最高 19200 波特），每个都独立，可读取逆变器、电池或原始监视，因此一个节点可以只读逆变器、只读电池或两者混合。",
@@ -208,12 +208,12 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "消息契约、验证和共享的项目启动器",
-        "honest": "模式、Python 验证器、142 个共享的一致性向量、生成的 TypeScript 和 Kotlin 类型以及共享的项目启动器都是真实的并经过测试（19 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**；`set_thresholds` 命令只带一个 `sensitivity` 字段，因为在固件存在之前，真实的雷达参数尚未定义。",
+        "honest": "模式、Python 验证器、147 个共享的一致性向量、生成的 TypeScript 和 Kotlin 类型以及共享的项目启动器都是真实的并经过测试（19 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**；`set_thresholds` 命令只带一个 `sensitivity` 字段，因为在固件存在之前，真实的雷达参数尚未定义。",
         "intro": "**ARMOR-COMMON** 掌管每条 A.R.M.O.R. 消息的含义。雷达节点、太阳能网关节点和模拟器产生这些消息；服务器、视觉 AI 和语音服务消费它们。如果两个项目对某个字段有分歧，由本仓库裁决。",
         "bullets": [
             "**唯一的事实来源：** `src/armor_common/schemas/` 中的 JSON 模式，涵盖遥测、健康、命令、节点信息和两条太阳能消息（逆变器、带电芯和容量的电池）。未知字段在所有地方都会被拒绝。",
             "**不会跳过任何规则的验证器：** 它直接解释模式，并拒绝使用其未实现关键字的模式。",
-            "**一致性向量：** 142 个被接受和被拒绝的负载，由每个实现运行（此处的 Python、ARMOR-SERVER 中的 TypeScript、ARMOR-SOLAR 的检查），因此偏差会让构建失败。",
+            "**一致性向量：** 147 个被接受和被拒绝的负载，由每个实现运行（此处的 Python、ARMOR-SERVER 中的 TypeScript、ARMOR-SOLAR 的检查），因此偏差会让构建失败。",
             "**生成的客户端：** TypeScript 和 Kotlin 类型来自模式（`tools/generate_types.py --check` 使其保持最新）。",
             "**HTTP 契约：** `openapi/armor-server-0.2.0.yaml` 描述服务器的每条路由、其访问规则和模式。",
             "**共享启动器：** `tools/armor_project_tool.py` 让家族中的每个仓库都有相同的 `build`、`build-test` 和 `run` 流程。",
