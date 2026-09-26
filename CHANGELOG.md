@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.2] - Reading an ANT-BMS's settings in the matrix
+
+- The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node can read an ANT-BMS's model, version and settings (read only, never tried on a BMS) and that writing to BMSs and inverters is not implemented on purpose; the check counts are 600.
+
 ## [0.4.1] - Solar alarms on the phone in the matrix
 
 - The capability matrix and the Android README (seven languages) say that solar alarms are announced on the phone like device alarms (unit-tested, never on a phone); the catalogue has the new versions.
