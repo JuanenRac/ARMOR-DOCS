@@ -60,7 +60,7 @@ if have cmake && (have g++ || have c++); then
 else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; skip ARMOR-SOLAR "no C++ compiler or cmake"; skip ARMOR-ELECTRICAL "no C++ compiler or cmake"; fi
 
 if have bash && have openssl; then
-  run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh && bash scripts/test_firewall.sh'
+  run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh && bash scripts/test_firewall.sh && bash scripts/test_mqtt_identity.sh'
 else skip ARMOR-DEVOPS "openssl is not installed"; fi
 
 # The Compose topology needs Docker; on Windows it lives in WSL, so it is run there when asked for.

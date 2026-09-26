@@ -70,6 +70,7 @@ TEXT = {
             "**The bus:** a line with several meters is asked one at a time, with a timeout; the last good reading of each is kept and a meter that goes silent stops being published after ten seconds.",
             "**The message** `armor/electrical/<node>/state`: one entry per channel (a circuit, a line, the grid input, a DC bus) with AC or DC, voltage, current, power, energy, frequency, power factor, the state of a switch as the node sees it and an alarm; it is in the shared contract and carries a state, never a command.",
             "**The rules for switching,** apart from any hardware: a controller for the transfer between two sources that never commands both, needs the switching allowed, the node armed just before, both contactors confirmed open for the whole dead time, and turns a contactor that does not show what it was told into a fault that stays until it is acknowledged. **Switching is off by default and nothing drives any hardware.**",
+            "**The commands to a switch, not activated:** the state message can carry the state of the node's switches, and the shared contract has a command (`arm`, then `close_a` or `close_b` with a one-time token, `open`, `acknowledge`) and the node's answer; the core reads and answers them with the rules above, tested against the shared vectors and with stand-in contactors. No firmware image includes it, so nothing can drive a contactor, and ARMOR-SERVER refuses to send a command unless it was turned on (`ARMOR_ELECTRICAL_SWITCHING=1`) and the broker's ACL allows it.",
             "**Where it shows:** the *Electrical Designer* of ARMOR-STUDIO draws the house's network and shows on each element what its channel measures; ARMOR-SERVER keeps the readings, their history and the sums.",
             "**The firmware of the node** (ESP32-S3-WROOM-1 N16R8 on Wi-Fi, or the Waveshare ESP32-S3-ETH on its cable): the settings, one serial line for up to sixteen meters and the web panel of the other nodes (set-up, users, Wi-Fi, broker, update over the air, HTTPS) with its own Meters and Readings pages, in seven languages. It only reads: the rules for switching are not linked into it. See [the firmware](docs/NODE_FIRMWARE.md).",
             "**Configuration from a phone over Bluetooth,** the same channel as the radar node's: the ARMOR app finds the node as `ARMOR-XXXXXX` and sets its name, Wi-Fi, address, broker and Bluetooth mode with the panel's users and set-up code ([the protocol](docs/BLE_PROVISIONING.md)). It listens only while the node has no user, unless told otherwise. The radio side has never run on a board.",
@@ -96,7 +97,7 @@ TEXT = {
     },
     "ARMOR-DEVOPS": {
         "bullets_replace": {
-            'Devices on the bench broker': '**Devices and readings on the bench broker:** the server may listen on and command `armor/device/#` and read `armor/node/+/info`, `armor/solar/#` and `armor/electrical/#`; `scripts/mqtt_identity.sh add device NAME` gives one device its own topics and `add bridge NAME` a Zigbee2MQTT or Shelly bridge all of them.',
+            'Devices on the bench broker': '**Devices and readings on the bench broker:** the server may listen on and command `armor/device/#` and read `armor/node/+/info`, `armor/solar/#` and `armor/electrical/#`; `scripts/mqtt_identity.sh add device NAME` gives one device its own topics and `add bridge NAME` a Zigbee2MQTT or Shelly bridge all of them. `scripts/mqtt_identity.sh electrical-switching NODE_ID on` is the only thing that lets the server command the switch of an electrical node (off by default; `off` takes it away).',
         },
     },
     "ARMOR-SERVER": {
@@ -163,18 +164,18 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Message contracts, validation and the shared project launcher",
-        "honest": "The schemas, the Python validator, the 193 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (30 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
+        "honest": "The schemas, the Python validator, the 266 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (36 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
         "intro": "**ARMOR-COMMON** owns what every A.R.M.O.R. message means. Radar nodes, solar gateway nodes and the simulator produce these messages; the server, the visual AI and the voice service consume them. If two projects disagree about a field, this repository decides.",
         "bullets": [
             "**One source of truth:** JSON Schemas in `src/armor_common/schemas/` for telemetry, health, command, node information and the two solar messages (inverter, battery with cells and capacities). Unknown fields are rejected everywhere.",
             "**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.",
-            "**Conformance vectors:** 193 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
+            "**Conformance vectors:** 266 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
             "**Generated clients:** TypeScript and Kotlin types come from the schemas (`tools/generate_types.py --check` keeps them current).",
             "**HTTP contract:** `openapi/armor-server-0.2.0.yaml` describes every server route, its access rule and its schema.",
             "**Shared launcher:** `tools/armor_project_tool.py` gives every repository of the family the same `build`, `build-test` and `run` workflow.",
         ],
         "sections": [],
-        "note": "Broker topics: `armor/node/{node_id}/telemetry | health | command | info`, `armor/solar/{node_id}/{device}/state` and `armor/electrical/{node_id}/state`. See the [contracts guide](docs/CONTRACTS.md). The shared launcher creates an ignored `.env` on the first ARMOR-SERVER run with random secrets and a random administrator password; nothing is printed or committed.",
+        "note": "Broker topics: `armor/node/{node_id}/telemetry | health | command | info`, `armor/solar/{node_id}/{device}/state` and `armor/electrical/{node_id}/state | command | result`. See the [contracts guide](docs/CONTRACTS.md). The shared launcher creates an ignored `.env` on the first ARMOR-SERVER run with random secrets and a random administrator password; nothing is printed or committed.",
     },
     "ARMOR-DOCS": {
         "tagline": "Canonical architecture, security baseline and the truth about what is proven",

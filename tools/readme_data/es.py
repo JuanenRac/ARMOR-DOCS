@@ -70,6 +70,7 @@ TEXT = {
             "**El bus:** una línea con varios contadores se pregunta de uno en uno, con un tiempo de espera; se guarda la última lectura buena de cada uno y un contador que calla deja de publicarse a los diez segundos.",
             "**El mensaje** `armor/electrical/<nodo>/state`: una entrada por canal (un circuito, una línea, la entrada de red, un bus DC) con AC o DC, tensión, corriente, potencia, energía, frecuencia, factor de potencia, el estado de un interruptor tal como lo ve el nodo y una alarma; está en el contrato compartido y lleva un estado, nunca una orden.",
             "**Las reglas para maniobrar,** aparte de cualquier hardware: un controlador del cambio entre dos fuentes que nunca manda las dos, exige la maniobra permitida, el nodo armado justo antes y los dos contactores confirmados abiertos durante todo el tiempo muerto, y convierte un contactor que no muestra lo que se le ordenó en una avería que se queda hasta que se reconoce. **La maniobra está desactivada por defecto y nada maneja ningún hardware.**",
+            "**Las órdenes a un conmutador, sin activar:** el mensaje de estado puede llevar el estado de los conmutadores del nodo, y el contrato compartido tiene una orden (`arm`, y después `close_a` o `close_b` con un token de un solo uso, `open`, `acknowledge`) y la respuesta del nodo; el núcleo las lee y las contesta con las reglas anteriores, probado con los vectores compartidos y con contactores simulados. Ninguna imagen del firmware lo incluye, así que nada puede accionar un contactor, y ARMOR-SERVER se niega a enviar una orden si no se activó (`ARMOR_ELECTRICAL_SWITCHING=1`) y el ACL del broker no lo permite.",
             "**Dónde se ve:** el *Diseñador eléctrico* de ARMOR-STUDIO dibuja la red de la casa y muestra en cada elemento lo que mide su canal; ARMOR-SERVER guarda las lecturas, su historial y las sumas.",
             "**El firmware del nodo** (ESP32-S3-WROOM-1 N16R8 por Wi-Fi, o la Waveshare ESP32-S3-ETH por su cable): los ajustes, una línea serie para hasta dieciséis contadores y el panel web de los otros nodos (puesta en marcha, usuarios, Wi-Fi, broker, actualización por aire, HTTPS) con sus propias páginas de Contadores y Lecturas, en siete idiomas. Solo lee: las reglas para maniobrar no están enlazadas en él. Véase [el firmware](docs/NODE_FIRMWARE.md).",
             "**Configuración desde el móvil por Bluetooth,** el mismo canal que el del nodo radar: la app ARMOR encuentra el nodo como `ARMOR-XXXXXX` y ajusta su nombre, Wi-Fi, dirección, broker y modo de Bluetooth con los usuarios y el código de puesta en marcha del panel ([el protocolo](docs/BLE_PROVISIONING.md)). Solo escucha mientras el nodo no tiene usuarios, salvo que se indique otra cosa. La parte de radio nunca ha corrido en una placa.",
@@ -96,7 +97,7 @@ TEXT = {
     },
     "ARMOR-DEVOPS": {
         "bullets_replace": {
-            'Dispositivos en el broker': '**Dispositivos y lecturas en el broker del banco:** el servidor puede escuchar y ordenar `armor/device/#` y leer `armor/node/+/info`, `armor/solar/#` y `armor/electrical/#`; `scripts/mqtt_identity.sh add device NAME` da a un dispositivo sus propios temas y `add bridge NAME` a un puente Zigbee2MQTT o Shelly todos ellos.',
+            'Dispositivos en el broker': '**Dispositivos y lecturas en el broker del banco:** el servidor puede escuchar y ordenar `armor/device/#` y leer `armor/node/+/info`, `armor/solar/#` y `armor/electrical/#`; `scripts/mqtt_identity.sh add device NAME` da a un dispositivo sus propios temas y `add bridge NAME` a un puente Zigbee2MQTT o Shelly todos ellos. `scripts/mqtt_identity.sh electrical-switching NODE_ID on` es lo único que permite al servidor ordenar el conmutador de un nodo eléctrico (desactivado por defecto; `off` lo retira).',
         },
     },
     "ARMOR-SERVER": {
@@ -163,18 +164,18 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Contratos de mensajes, validación y el lanzador de proyectos compartido",
-        "honest": "Los esquemas, el validador de Python, los 193 vectores de conformidad compartidos, los tipos generados de TypeScript y Kotlin y el lanzador de proyectos compartido son reales y están probados (30 pruebas). El archivo de Kotlin está generado pero **aún no lo usa** ARMOR-ANDROID-CONTROL, y el comando `set_thresholds` lleva un único campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista firmware.",
+        "honest": "Los esquemas, el validador de Python, los 266 vectores de conformidad compartidos, los tipos generados de TypeScript y Kotlin y el lanzador de proyectos compartido son reales y están probados (36 pruebas). El archivo de Kotlin está generado pero **aún no lo usa** ARMOR-ANDROID-CONTROL, y el comando `set_thresholds` lleva un único campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista firmware.",
         "intro": "**ARMOR-COMMON** es dueño de lo que significa cada mensaje de A.R.M.O.R. Los nodos de radar, los nodos pasarela solares y el simulador producen estos mensajes; el servidor, la IA visual y el servicio de voz los consumen. Si dos proyectos discrepan sobre un campo, decide este repositorio.",
         "bullets": [
             "**Una única fuente de verdad:** esquemas JSON en `src/armor_common/schemas/` para telemetría, salud, comando, información del nodo y los dos mensajes solares (inversor, batería con celdas y capacidades). Los campos desconocidos se rechazan en todas partes.",
             "**Un validador que no puede saltarse una regla:** interpreta el esquema directamente y rechaza un esquema que use una palabra clave que no implementa.",
-            "**Vectores de conformidad:** 193 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las comprobaciones de ARMOR-SOLAR), de modo que una deriva rompe la compilación.",
+            "**Vectores de conformidad:** 266 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las comprobaciones de ARMOR-SOLAR), de modo que una deriva rompe la compilación.",
             "**Clientes generados:** los tipos de TypeScript y Kotlin salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).",
             "**Contrato HTTP:** `openapi/armor-server-0.2.0.yaml` describe cada ruta del servidor, su regla de acceso y su esquema.",
             "**Lanzador compartido:** `tools/armor_project_tool.py` da a todos los repositorios de la familia el mismo flujo `build`, `build-test` y `run`.",
         ],
         "sections": [],
-        "note": "Temas del broker: `armor/node/{node_id}/telemetry | health | command | info`, `armor/solar/{node_id}/{device}/state` y `armor/electrical/{node_id}/state`. Véase la [guía de contratos](docs/CONTRACTS.md). El lanzador compartido crea un `.env` ignorado en la primera ejecución de ARMOR-SERVER con secretos aleatorios y una contraseña de administrador aleatoria; no se imprime ni se sube nada.",
+        "note": "Temas del broker: `armor/node/{node_id}/telemetry | health | command | info`, `armor/solar/{node_id}/{device}/state` y `armor/electrical/{node_id}/state | command | result`. Véase la [guía de contratos](docs/CONTRACTS.md). El lanzador compartido crea un `.env` ignorado en la primera ejecución de ARMOR-SERVER con secretos aleatorios y una contraseña de administrador aleatoria; no se imprime ni se sube nada.",
     },
     "ARMOR-DOCS": {
         "tagline": "Arquitectura canónica, base de seguridad y la verdad sobre lo que está probado",
