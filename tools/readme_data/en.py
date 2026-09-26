@@ -54,7 +54,7 @@ TEXT = {
     },
     "ARMOR-SERVER": {
         "tagline": "Central security coordinator: telemetry ingress, alarms, devices, solar readings and the camera gateway",
-        "honest": "Every route, session, encryption and evidence rule below is real and covered by tests (`npm test`, 159 tests, including a full HTTP integration suite against an isolated server). It has run against a real MQTT broker on the CM5 (with scripts, not field-node firmware), and has streamed live video, saved a snapshot and recorded from five real IP cameras through FFmpeg. What is **not** proven yet: ONVIF against a real ONVIF camera, PTZ on every camera firmware (it works on the Hi3510 unit), any Jetson hardware, and the solar routes against a real gateway node (they are tested with generated readings).",
+        "honest": "Every route, session, encryption and evidence rule below is real and covered by tests (`npm test`, 161 tests, including a full HTTP integration suite against an isolated server). It has run against a real MQTT broker on the CM5 (with scripts, not field-node firmware), and has streamed live video, saved a snapshot and recorded from five real IP cameras through FFmpeg. What is **not** proven yet: ONVIF against a real ONVIF camera, PTZ on every camera firmware (it works on the Hi3510 unit), any Jetson hardware, and the solar routes against a real gateway node (they are tested with generated readings).",
         "intro": "**ARMOR-SERVER** is the trusted centre of A.R.M.O.R. Field nodes publish radar, light and health observations; this service validates them, keeps the last known state of every node, and serves that state to the Studio console and the Android client. It also owns everything that touches a camera, so that **no browser and no phone ever holds a camera password or an RTSP address**.",
         "bullets": [
             "**Validated ingest:** HTTP and MQTT observations are checked at the boundary (identifier, timestamps, lux range, at most 15 tracks) before they reach the state projection.",
@@ -101,6 +101,7 @@ TEXT = {
             "**Site designer:** draw the terrain (rectangle or any shape, with typed lengths), place buildings of several floors with five kinds of roof, doors and windows at any floor and height, lamps, chimneys, solar panels, antennas, pillars, masts, roads and paths, then cameras and radars anywhere; a CAD-style 2D plan and a 3D view you can orbit, cut floor by floor and edit; undo and redo.",
             "**Configuration:** server address, cameras (ONVIF/RTSP), discovery, users (your account and, for an administrator, the list of users, roles and passwords), theme and language; a portable site export **without credentials**.",
             "**Seven languages** (English, Spanish, German, French, Italian, Japanese, Chinese) and eleven themes, the default one called *Armor*.",
+            "**Declare your equipment:** in the Inverters and Batteries menus you add each inverter or battery stack with its name, model (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), connection (RS232, RS485, USB, CAN, Wi-Fi) and gateway node; it waits for its first real reading, and *Show example readings* lets you try the menu meanwhile.",
         ],
         "sections": [
             {"title": "Security model", "bullets": [
@@ -121,7 +122,7 @@ TEXT = {
             "**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.",
             "**Conformance vectors:** 142 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
             "**Generated clients:** TypeScript and Kotlin types come from the schemas (`tools/generate_types.py --check` keeps them current).",
-            "**HTTP contract:** `openapi/armor-server-0.1.9.yaml` describes every server route, its access rule and its schema.",
+            "**HTTP contract:** `openapi/armor-server-0.2.0.yaml` describes every server route, its access rule and its schema.",
             "**Shared launcher:** `tools/armor_project_tool.py` gives every repository of the family the same `build`, `build-test` and `run` workflow.",
         ],
         "sections": [],

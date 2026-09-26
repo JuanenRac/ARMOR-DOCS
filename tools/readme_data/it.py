@@ -36,13 +36,14 @@ RELATED = {
 TEXT = {
     "ARMOR-SIMULATOR": {
         "tagline": "Simulatore di telemetria offline con guasti ripetibili",
-        "honest": "Gli scenari, i guasti, l'invio a un server e i 24 test sono reali. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla è stato confrontato con hardware reale.",
+        "honest": "Gli scenari, i guasti, l'invio a un server e i 26 test sono reali. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla è stato confrontato con hardware reale.",
         "bullets": [
             "**Scenari:** `patrol`, `crossing`, `two-intruders` ed `empty`, su una geometria d'angolo a tre sensori, con un ciclo di luce giorno/notte o una notte fissa.",
             "**Guasti ripetibili:** un nodo muto, messaggi fuori ordine o duplicati, un nodo instabile e messaggi volutamente non validi (lux oltre il limite, campo sconosciuto, troppe tracce) per i test negativi.",
             "**Deterministico:** lo stesso seme stampa sempre le stesse righe; non viene inviato nulla senza `--server-url` e `--ingest-token`.",
             "**Verificato contro il contratto:** `--validate` fa passare ogni messaggio per ARMOR-COMMON prima di emetterlo.",
             "**Invio prudente:** si accetta solo un'origine http(s) semplice; un 4xx ferma l'esecuzione, un 5xx o un errore di rete viene ritentato.",
+            "**Impianto solare:** `--solar` aggiunge un inverter e un pacco batterie da due moduli (quindici celle ciascuno, con le capacità) su un giorno accelerato di 240 campioni, con un'interruzione di rete a fine giornata; i messaggi sono verificati contro il contratto solare di ARMOR-COMMON e consegnati a `/api/v1/solar`.",
         ],
         "note": "Tutte le opzioni, gli scenari e i guasti: [uso](docs/USAGE.md).",
     },
@@ -187,6 +188,7 @@ TEXT = {
             "**Progettista del sito:** disegna il terreno (rettangolo o qualsiasi forma, con lunghezze digitate), posiziona edifici di più piani con cinque tipi di tetto, porte e finestre a qualsiasi piano e altezza, lampioni, camini, pannelli solari, antenne, pilastri, pali, strade e sentieri, poi telecamere e radar dove vuoi; una pianta 2D in stile CAD e una vista 3D che puoi orbitare, tagliare piano per piano e modificare; annulla e ripeti.",
             "**Configurazione:** indirizzo del server, telecamere (ONVIF/RTSP), scoperta, utenti (il tuo account e, per un amministratore, l'elenco di utenti, ruoli e password), tema e lingua; un'esportazione portatile del sito **senza credenziali**.",
             "**Sette lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese) e undici temi, quello predefinito chiamato *Armor*.",
+            "**Dichiara il tuo dispositivo:** nei menu Inverter e Batterie aggiungi ogni inverter o pacco batterie con nome, modello (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), collegamento (RS232, RS485, USB, CAN, Wi-Fi) e nodo gateway; attende la prima lettura reale e *Mostra letture di esempio* permette di provare il menu nel frattempo.",
         ],
         "sections": [
             {"title": "Modello di sicurezza", "bullets": [
@@ -207,7 +209,7 @@ TEXT = {
             "**Un validatore che non può saltare una regola:** interpreta direttamente lo schema e rifiuta uno schema che usa una parola chiave che non implementa.",
             "**Vettori di conformità:** 142 payload accettati e rifiutati eseguiti da ogni implementazione (Python qui, TypeScript in ARMOR-SERVER, i controlli di ARMOR-SOLAR), così una deriva fa fallire la compilazione.",
             "**Client generati:** i tipi TypeScript e Kotlin nascono dagli schemi (`tools/generate_types.py --check` li mantiene aggiornati).",
-            "**Contratto HTTP:** `openapi/armor-server-0.1.9.yaml` descrive ogni rotta del server, la sua regola di accesso e il suo schema.",
+            "**Contratto HTTP:** `openapi/armor-server-0.2.0.yaml` descrive ogni rotta del server, la sua regola di accesso e il suo schema.",
             "**Lanciatore condiviso:** `tools/armor_project_tool.py` dà a ogni repository della famiglia lo stesso flusso `build`, `build-test` e `run`.",
         ],
         "sections": [],
