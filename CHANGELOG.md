@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.4] - ARMOR-SOLAR enters the family
+
+- **ARMOR-SOLAR** enters the catalogue, the README generator and `check_all.sh`; the matrix says what its protocols are and that nothing solar has met a real device. `check_all.sh` and the shared project tool now run every host test of ARMOR-RADAR (they only ran one of three).
+
 ## [0.3.3] - HTTPS, stable tracks, the new Android look and two tools for publishing
 
 - The capability matrix says what the node's HTTPS panel, the stable track identities and the device states checked against the server are, and how much was checked; the Android rows describe the redesigned app, its live radar tab and what was exercised in an emulator; the catalogue and the READMEs carry the new versions and counts.
