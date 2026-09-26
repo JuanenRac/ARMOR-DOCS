@@ -54,7 +54,7 @@ fi
 
 if have cmake && (have g++ || have c++); then
   run ARMOR-RADAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_core" && "$B/test_node" && "$B/test_sensors"'
-  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar"'
+  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node"'
 else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; skip ARMOR-SOLAR "no C++ compiler or cmake"; fi
 
 if have bash && have openssl; then
