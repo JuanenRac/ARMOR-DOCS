@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.5] - Solar in the matrix and the catalogue
+
+- The capability matrix says what the solar contract, the server's ingestion and alarms and Studio's two menus are and how much was checked (all with generated readings, none with a real inverter or battery); the catalogue has the new versions; the interfaces document counts the vectors and names the current OpenAPI file.
+
 ## [0.3.4] - ARMOR-SOLAR enters the family
 
 - **ARMOR-SOLAR** enters the catalogue, the README generator and `check_all.sh`; the matrix says what its protocols are and that nothing solar has met a real device. `check_all.sh` and the shared project tool now run every host test of ARMOR-RADAR (they only ran one of three).
