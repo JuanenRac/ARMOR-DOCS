@@ -119,12 +119,12 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Message contracts, validation and the shared project launcher",
-        "honest": "The schemas, the Python validator, the 147 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (19 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
+        "honest": "The schemas, the Python validator, the 177 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (19 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
         "intro": "**ARMOR-COMMON** owns what every A.R.M.O.R. message means. Radar nodes, solar gateway nodes and the simulator produce these messages; the server, the visual AI and the voice service consume them. If two projects disagree about a field, this repository decides.",
         "bullets": [
             "**One source of truth:** JSON Schemas in `src/armor_common/schemas/` for telemetry, health, command, node information and the two solar messages (inverter, battery with cells and capacities). Unknown fields are rejected everywhere.",
             "**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.",
-            "**Conformance vectors:** 147 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
+            "**Conformance vectors:** 177 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
             "**Generated clients:** TypeScript and Kotlin types come from the schemas (`tools/generate_types.py --check` keeps them current).",
             "**HTTP contract:** `openapi/armor-server-0.2.0.yaml` describes every server route, its access rule and its schema.",
             "**Shared launcher:** `tools/armor_project_tool.py` gives every repository of the family the same `build`, `build-test` and `run` workflow.",

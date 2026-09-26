@@ -7,6 +7,7 @@ All notable changes to this project are documented here.
 - The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node reads three inverter dialects and the newer Pylontech console layout, and that the catalogue lists more inverter families and battery models; the check counts are 684.
 - The matrix and the READMEs say the battery health is in the shared contract (147 vectors) and that the console's `info` and `stat` are tested with text real batteries printed; the check counts of the solar node are 697.
 - The matrix and the ARMOR-STUDIO README (seven languages) describe the Electrical Designer; Studio has 201 tests.
+- The matrix and the READMEs count the 177 conformance vectors of the contract, which now has the electrical message.
 
 ## [0.4.2] - Reading an ANT-BMS's settings in the matrix
 

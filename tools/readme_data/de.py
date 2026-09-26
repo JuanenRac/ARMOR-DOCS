@@ -209,12 +209,12 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Nachrichtenverträge, Validierung und der gemeinsame Projektstarter",
-        "honest": "Die Schemas, der Python-Validierer, die 147 gemeinsamen Konformitätsvektoren, die generierten TypeScript- und Kotlin-Typen und der gemeinsame Projektstarter sind real und getestet (19 Tests). Die Kotlin-Datei ist generiert, wird aber von ARMOR-ANDROID-CONTROL **noch nicht verwendet**, und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert werden, wenn es Firmware gibt.",
+        "honest": "Die Schemas, der Python-Validierer, die 177 gemeinsamen Konformitätsvektoren, die generierten TypeScript- und Kotlin-Typen und der gemeinsame Projektstarter sind real und getestet (19 Tests). Die Kotlin-Datei ist generiert, wird aber von ARMOR-ANDROID-CONTROL **noch nicht verwendet**, und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert werden, wenn es Firmware gibt.",
         "intro": "**ARMOR-COMMON** besitzt die Bedeutung jeder A.R.M.O.R.-Nachricht. Radarknoten, Solar-Gateway-Knoten und der Simulator erzeugen diese Nachrichten; der Server, die visuelle KI und der Sprachdienst verbrauchen sie. Wenn zwei Projekte über ein Feld uneins sind, entscheidet dieses Repository.",
         "bullets": [
             "**Eine einzige Wahrheitsquelle:** JSON-Schemas in `src/armor_common/schemas/` für Telemetrie, Zustand, Befehl, Knoteninformation und die zwei Solarnachrichten (Wechselrichter, Batterie mit Zellen und Kapazitäten). Unbekannte Felder werden überall abgelehnt.",
             "**Ein Validierer, der keine Regel überspringen kann:** er interpretiert das Schema direkt und lehnt ein Schema ab, das ein nicht implementiertes Schlüsselwort nutzt.",
-            "**Konformitätsvektoren:** 147 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in ARMOR-SERVER, die Prüfungen von ARMOR-SOLAR), sodass Abweichung den Build scheitern lässt.",
+            "**Konformitätsvektoren:** 177 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in ARMOR-SERVER, die Prüfungen von ARMOR-SOLAR), sodass Abweichung den Build scheitern lässt.",
             "**Generierte Clients:** TypeScript- und Kotlin-Typen entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).",
             "**HTTP-Vertrag:** `openapi/armor-server-0.2.0.yaml` beschreibt jede Serverroute, ihre Zugriffsregel und ihr Schema.",
             "**Gemeinsamer Starter:** `tools/armor_project_tool.py` gibt jedem Repository der Familie denselben Ablauf `build`, `build-test` und `run`.",
