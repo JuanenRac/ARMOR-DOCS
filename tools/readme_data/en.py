@@ -93,7 +93,7 @@ TEXT = {
     },
     "ARMOR-STUDIO": {
         "tagline": "Operations and design console: cameras, radar, alarms, solar energy, evidence and the site plan",
-        "honest": "Studio talks to [ARMOR-SERVER](../ARMOR-SERVER) and is covered by 176 unit tests (settings parsing, camera merging, the arithmetic of the solar charts, every menu rendered in the seven languages, the static host). What has **not** been proven is live video and PTZ against every real camera, the solar menus with a real inverter or battery, and a formal accessibility or usability review. While the server cannot be reached Studio shows demonstration data and says so in the top bar.",
+        "honest": "Studio talks to [ARMOR-SERVER](../ARMOR-SERVER) and is covered by 201 unit tests (settings parsing, camera merging, the arithmetic of the solar charts, every menu rendered in the seven languages, the static host). What has **not** been proven is live video and PTZ against every real camera, the solar menus with a real inverter or battery, and a formal accessibility or usability review. While the server cannot be reached Studio shows demonstration data and says so in the top bar.",
         "intro": "**ARMOR-STUDIO** is the operator's console. It never holds a camera password, an RTSP address or a token: it signs in to the server with a username and password, receives an 8-hour **HttpOnly** session, and everything privileged travels through that session.",
         "bullets": [
             "**Camera monitor:** 1, 2, 4, 6, 8, 9, 12 or 16 tiles that fit their frame (16:9, the whole matrix visible, no cropping), a maximized view with a bounded PTZ pad, snapshot and MP4 record; a **record library** to filter, preview, play, protect and delete evidence.",
@@ -105,6 +105,7 @@ TEXT = {
             "**Configuration:** server address, cameras (ONVIF/RTSP), discovery, users (your account and, for an administrator, the list of users, roles and passwords), theme and language; a portable site export **without credentials**.",
             "**Seven languages** (English, Spanish, German, French, Italian, Japanese, Chinese) and eleven themes, the default one called *Armor*.",
             "**Declare your equipment:** in the Inverters and Batteries menus you add each inverter or battery stack with its name, model (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), connection (RS232, RS485, USB, CAN, Wi-Fi) and gateway node; it waits for its first real reading, and *Show example readings* lets you try the menu meanwhile.",
+            "**Electrical Designer:** draw the house's electrical diagram (grid, meter, protections, transfer switches, distribution, PV, inverters, batteries and loads, AC and DC) with ports and wires, group it in panels, tie inverters and batteries to the solar devices the server reads to see their live values, and let the checks review it (two sources on one line, breakers and cables against the current, missing protections, DC voltages). The drawing is kept on the server; it is a drawing: nothing switches or measures anything yet.",
         ],
         "sections": [
             {"title": "Security model", "bullets": [

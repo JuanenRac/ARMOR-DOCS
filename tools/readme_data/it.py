@@ -183,7 +183,7 @@ TEXT = {
     },
     "ARMOR-STUDIO": {
         "tagline": "Console di esercizio e progettazione: telecamere, radar, allarmi, energia solare, prove e planimetria del sito",
-        "honest": "Studio dialoga con [ARMOR-SERVER](../ARMOR-SERVER) ed è coperto da 176 test unitari (lettura delle impostazioni, unione delle telecamere, aritmetica dei grafici solari, ogni menu mostrato nelle sette lingue, host statico). **Non** sono provati: il video dal vivo e il PTZ con ogni telecamera reale, i menu solari con un vero inverter o batteria, né una revisione formale di accessibilità o usabilità. Finché il server non è raggiungibile, Studio mostra dati dimostrativi e lo dice nella barra superiore.",
+        "honest": "Studio dialoga con [ARMOR-SERVER](../ARMOR-SERVER) ed è coperto da 201 test unitari (lettura delle impostazioni, unione delle telecamere, aritmetica dei grafici solari, ogni menu mostrato nelle sette lingue, host statico). **Non** sono provati: il video dal vivo e il PTZ con ogni telecamera reale, i menu solari con un vero inverter o batteria, né una revisione formale di accessibilità o usabilità. Finché il server non è raggiungibile, Studio mostra dati dimostrativi e lo dice nella barra superiore.",
         "intro": "**ARMOR-STUDIO** è la console dell'operatore. Non detiene mai una password di telecamera, un indirizzo RTSP o un token: accede al server con nome utente e password, riceve una sessione **HttpOnly** di 8 ore e tutto ciò che è privilegiato passa da quella sessione.",
         "bullets": [
             "**Monitor delle telecamere:** 1, 2, 4, 6, 8, 9, 12 o 16 riquadri che si adattano alla cornice (16:9, tutta la matrice visibile, senza ritagli), una vista ingrandita con joystick PTZ limitato, istantanea e registrazione MP4; una **libreria delle registrazioni** per filtrare, visualizzare, riprodurre, proteggere ed eliminare le prove.",
@@ -195,6 +195,7 @@ TEXT = {
             "**Configurazione:** indirizzo del server, telecamere (ONVIF/RTSP), scoperta, utenti (il tuo account e, per un amministratore, l'elenco di utenti, ruoli e password), tema e lingua; un'esportazione portatile del sito **senza credenziali**.",
             "**Sette lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese) e undici temi, quello predefinito chiamato *Armor*.",
             "**Dichiara il tuo dispositivo:** nei menu Inverter e Batterie aggiungi ogni inverter o pacco batterie con nome, modello (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), collegamento (RS232, RS485, USB, CAN, Wi-Fi) e nodo gateway; attende la prima lettura reale e *Mostra letture di esempio* permette di provare il menu nel frattempo.",
+            "**Progettista elettrico:** disegna lo schema elettrico della casa (rete, contatore, protezioni, commutatori, distribuzione, FV, inverter, batterie e carichi, in AC e DC) con porte e cavi, raggruppalo in quadri, collega inverter e batterie ai dispositivi solari letti dal server per vedere i loro valori in tempo reale e lascia che i controlli lo rivedano (due sorgenti su una linea, magnetotermici e cavi rispetto alla corrente, protezioni mancanti, tensioni DC). Il disegno è conservato sul server; è un disegno: per ora nulla comanda o misura.",
         ],
         "sections": [
             {"title": "Modello di sicurezza", "bullets": [
