@@ -36,13 +36,14 @@ RELATED = {
 TEXT = {
     "ARMOR-SIMULATOR": {
         "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
-        "honest": "Die Szenarien, die Fehler, die Übermittlung an einen Server und die 24 Tests sind real. Die Geometrie ist **illustrativ**, kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
+        "honest": "Die Szenarien, die Fehler, die Übermittlung an einen Server und die 26 Tests sind real. Die Geometrie ist **illustrativ**, kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
         "bullets": [
             "**Szenarien:** `patrol`, `crossing`, `two-intruders` und `empty` auf einer Eckgeometrie mit drei Sensoren, dazu ein Tag/Nacht-Lichtzyklus oder eine feste Nacht.",
             "**Wiederholbare Fehler:** ein stummer Knoten, vertauschte und doppelte Nachrichten, ein flatternder Knoten und absichtlich ungültige Nachrichten (Lux über dem Limit, unbekanntes Feld, zu viele Spuren) für Negativtests.",
             "**Deterministisch:** derselbe Seed druckt immer dieselben Zeilen; gesendet wird nur mit `--server-url` und `--ingest-token`.",
             "**Gegen den Vertrag geprüft:** `--validate` schickt jede Nachricht vor dem Ausgeben durch ARMOR-COMMON.",
             "**Sorgfältige Übermittlung:** nur ein einfacher http(s)-Ursprung wird akzeptiert; ein 4xx stoppt den Lauf, ein 5xx oder ein Netzwerkfehler wird wiederholt.",
+            "**Solaranlage:** `--solar` fügt einen Wechselrichter und einen Batteriestapel aus zwei Modulen (je fünfzehn Zellen, mit Kapazitäten) über einen Zeitraffer-Tag von 240 Werten hinzu, mit einem Netzausfall am späten Tag; die Nachrichten werden gegen den Solar-Vertrag von ARMOR-COMMON geprüft und an `/api/v1/solar` geliefert.",
         ],
         "note": "Alle Optionen, Szenarien und Fehler: [Verwendung](docs/USAGE.md).",
     },
@@ -140,7 +141,7 @@ TEXT = {
     },
     "ARMOR-SERVER": {
         "tagline": "Zentraler Sicherheitskoordinator: Telemetrie-Eingang, Alarme, Geräte, Solarmesswerte und Kamera-Gateway",
-        "honest": "Jede Route, Sitzung, Verschlüsselung und Beweisregel unten ist real und durch Tests abgedeckt (`npm test`, 159 Tests, darunter eine vollständige HTTP-Integrationssuite gegen einen isolierten Server). Er lief gegen einen echten MQTT-Broker auf der CM5 (mit Skripten, nicht mit Feldknoten-Firmware) und hat Live-Video gestreamt, einen Schnappschuss gespeichert und von fünf echten IP-Kameras über FFmpeg aufgezeichnet. **Noch nicht belegt:** ONVIF mit einer echten ONVIF-Kamera, PTZ auf jeder Kamera-Firmware (es funktioniert an der Hi3510-Einheit), jede Jetson-Hardware und die Solar-Routen mit einem echten Gateway-Knoten (sie sind mit erzeugten Messwerten getestet).",
+        "honest": "Jede Route, Sitzung, Verschlüsselung und Beweisregel unten ist real und durch Tests abgedeckt (`npm test`, 161 Tests, darunter eine vollständige HTTP-Integrationssuite gegen einen isolierten Server). Er lief gegen einen echten MQTT-Broker auf der CM5 (mit Skripten, nicht mit Feldknoten-Firmware) und hat Live-Video gestreamt, einen Schnappschuss gespeichert und von fünf echten IP-Kameras über FFmpeg aufgezeichnet. **Noch nicht belegt:** ONVIF mit einer echten ONVIF-Kamera, PTZ auf jeder Kamera-Firmware (es funktioniert an der Hi3510-Einheit), jede Jetson-Hardware und die Solar-Routen mit einem echten Gateway-Knoten (sie sind mit erzeugten Messwerten getestet).",
         "intro": "**ARMOR-SERVER** ist das vertrauenswürdige Zentrum von A.R.M.O.R. Feldknoten veröffentlichen Radar-, Licht- und Zustandsbeobachtungen; dieser Dienst validiert sie, hält den letzten bekannten Zustand jedes Knotens und stellt ihn der Studio-Konsole und dem Android-Client bereit. Er besitzt auch alles, was eine Kamera berührt, sodass **kein Browser und kein Telefon je ein Kamerapasswort oder eine RTSP-Adresse hält**.",
         "bullets": [
             "**Validierter Eingang:** HTTP- und MQTT-Beobachtungen werden an der Grenze geprüft (Kennung, Zeitstempel, Lux-Bereich, höchstens 15 Spuren), bevor sie die Zustandsprojektion erreichen.",
@@ -187,6 +188,7 @@ TEXT = {
             "**Standortdesigner:** das Gelände zeichnen (Rechteck oder beliebige Form, mit eingetippten Längen), Gebäude mit mehreren Stockwerken und fünf Dacharten platzieren, Türen und Fenster in jedem Stockwerk und jeder Höhe, Lampen, Schornsteine, Solarmodule, Antennen, Pfeiler, Masten, Straßen und Wege, dann Kameras und Radare, wo man will; ein 2D-Plan im CAD-Stil und eine 3D-Ansicht, die man umkreisen, stockwerksweise schneiden und bearbeiten kann; Rückgängig und Wiederholen.",
             "**Konfiguration:** Serveradresse, Kameras (ONVIF/RTSP), Suche, Benutzer (das eigene Konto und für einen Administrator die Liste von Benutzern, Rollen und Passwörtern), Thema und Sprache; ein portabler Standortexport **ohne Zugangsdaten**.",
             "**Sieben Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch) und elf Themen, das Standardthema heißt *Armor*.",
+            "**Deklariere dein Gerät:** in den Menüs Wechselrichter und Batterien fügst du jeden Wechselrichter oder Batteriestapel mit Name, Modell (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), Anschluss (RS232, RS485, USB, CAN, WLAN) und Gateway-Knoten hinzu; es wartet auf seinen ersten echten Messwert, und mit *Beispielwerte zeigen* lässt sich das Menü inzwischen ausprobieren.",
         ],
         "sections": [
             {"title": "Sicherheitsmodell", "bullets": [
@@ -207,7 +209,7 @@ TEXT = {
             "**Ein Validierer, der keine Regel überspringen kann:** er interpretiert das Schema direkt und lehnt ein Schema ab, das ein nicht implementiertes Schlüsselwort nutzt.",
             "**Konformitätsvektoren:** 142 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in ARMOR-SERVER, die Prüfungen von ARMOR-SOLAR), sodass Abweichung den Build scheitern lässt.",
             "**Generierte Clients:** TypeScript- und Kotlin-Typen entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).",
-            "**HTTP-Vertrag:** `openapi/armor-server-0.1.9.yaml` beschreibt jede Serverroute, ihre Zugriffsregel und ihr Schema.",
+            "**HTTP-Vertrag:** `openapi/armor-server-0.2.0.yaml` beschreibt jede Serverroute, ihre Zugriffsregel und ihr Schema.",
             "**Gemeinsamer Starter:** `tools/armor_project_tool.py` gibt jedem Repository der Familie denselben Ablauf `build`, `build-test` und `run`.",
         ],
         "sections": [],

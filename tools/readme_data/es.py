@@ -54,7 +54,7 @@ TEXT = {
     },
     "ARMOR-SERVER": {
         "tagline": "Coordinador central de seguridad: entrada de telemetría, alarmas, dispositivos, lecturas solares y pasarela de cámaras",
-        "honest": "Cada ruta, sesión, cifrado y regla de evidencias de abajo es real y está cubierta por pruebas (`npm test`, 159 pruebas, con una suite completa de integración HTTP contra un servidor aislado). Ha funcionado con un broker MQTT real en la CM5 (con scripts, no con firmware de nodo de campo), y ha emitido vídeo en vivo, guardado una captura y grabado desde cinco cámaras IP reales mediante FFmpeg. Lo que **aún no está probado**: ONVIF con una cámara ONVIF real, PTZ en cada firmware de cámara (funciona en la unidad Hi3510), cualquier hardware Jetson y las rutas solares con un nodo pasarela real (se prueban con lecturas generadas).",
+        "honest": "Cada ruta, sesión, cifrado y regla de evidencias de abajo es real y está cubierta por pruebas (`npm test`, 161 pruebas, con una suite completa de integración HTTP contra un servidor aislado). Ha funcionado con un broker MQTT real en la CM5 (con scripts, no con firmware de nodo de campo), y ha emitido vídeo en vivo, guardado una captura y grabado desde cinco cámaras IP reales mediante FFmpeg. Lo que **aún no está probado**: ONVIF con una cámara ONVIF real, PTZ en cada firmware de cámara (funciona en la unidad Hi3510), cualquier hardware Jetson y las rutas solares con un nodo pasarela real (se prueban con lecturas generadas).",
         "intro": "**ARMOR-SERVER** es el centro de confianza de A.R.M.O.R. Los nodos de campo publican observaciones de radar, luz y salud; este servicio las valida, guarda el último estado conocido de cada nodo y lo sirve a la consola Studio y al cliente Android. También es dueño de todo lo que toca una cámara, de modo que **ningún navegador ni teléfono guarda jamás una contraseña de cámara ni una dirección RTSP**.",
         "bullets": [
             "**Entrada validada:** las observaciones por HTTP y MQTT se comprueban en la frontera (identificador, marcas de tiempo, rango de lux, como máximo 15 pistas) antes de llegar a la proyección de estado.",
@@ -101,6 +101,7 @@ TEXT = {
             "**Diseñador del sitio:** dibuja el terreno (rectángulo o cualquier forma, con longitudes tecleadas), coloca edificios de varias plantas con cinco tipos de tejado, puertas y ventanas a cualquier planta y altura, farolas, chimeneas, paneles solares, antenas, pilares, mástiles, carreteras y caminos, y luego cámaras y radares donde quieras; un plano 2D estilo CAD y una vista 3D que puedes orbitar, cortar planta a planta y editar; deshacer y rehacer.",
             "**Configuración:** dirección del servidor, cámaras (ONVIF/RTSP), descubrimiento, usuarios (tu cuenta y, para un administrador, la lista de usuarios, roles y contraseñas), tema e idioma; una exportación portátil del sitio **sin credenciales**.",
             "**Siete idiomas** (inglés, español, alemán, francés, italiano, japonés y chino) y once temas, el predeterminado llamado *Armor*.",
+            "**Declara tu equipo:** en los menús Inversores y Baterías añades cada inversor o pila de baterías con su nombre, modelo (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), conexión (RS232, RS485, USB, CAN, Wi-Fi) y nodo pasarela; espera su primera lectura real y *Ver lecturas de ejemplo* te deja probar el menú mientras tanto.",
         ],
         "sections": [
             {"title": "Modelo de seguridad", "bullets": [
@@ -121,7 +122,7 @@ TEXT = {
             "**Un validador que no puede saltarse una regla:** interpreta el esquema directamente y rechaza un esquema que use una palabra clave que no implementa.",
             "**Vectores de conformidad:** 142 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las comprobaciones de ARMOR-SOLAR), de modo que una deriva rompe la compilación.",
             "**Clientes generados:** los tipos de TypeScript y Kotlin salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).",
-            "**Contrato HTTP:** `openapi/armor-server-0.1.9.yaml` describe cada ruta del servidor, su regla de acceso y su esquema.",
+            "**Contrato HTTP:** `openapi/armor-server-0.2.0.yaml` describe cada ruta del servidor, su regla de acceso y su esquema.",
             "**Lanzador compartido:** `tools/armor_project_tool.py` da a todos los repositorios de la familia el mismo flujo `build`, `build-test` y `run`.",
         ],
         "sections": [],

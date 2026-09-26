@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.7] - Declaring solar equipment in the matrix
+
+- The capability matrix says what declaring equipment, the example readings and the simulator's solar scenario are and how much was checked; the catalogue has the new versions.
+
 ## [0.3.6] - The READMEs in seven languages, a banner and an icon for every project
 
 - **Every repository has its README in English, Spanish, French, Italian, German, Chinese and Japanese** (`README.md` and `README_spa`, `_fra`, `_ita`, `_deu`, `_zho`, `_jpn`), all written by `tools/make_readmes.py` from `tools/readme_data/` (one module per language) with the same sections: overview, the architecture and the security model where they apply, the repository structure, the development environment, the family of projects, the documentation and the author. The four READMEs that used to be written by hand are generated too, with their numbers brought up to date (tests, vectors, menus, the solar readings).

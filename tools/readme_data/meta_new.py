@@ -7,7 +7,7 @@ from __future__ import annotations
 META = {
     "ARMOR-SERVER": {
         "emoji": "🛡️",
-        "badges": [("Language", "TypeScript", "3178c6"), ("Runtime", "Node%2020%2B", "43853d"), ("Tests", "159%20passing", "2ea44f"), ("Maturity", "functional", "00E5FF")],
+        "badges": [("Language", "TypeScript", "3178c6"), ("Runtime", "Node%2020%2B", "43853d"), ("Tests", "161%20passing", "2ea44f"), ("Maturity", "functional", "00E5FF")],
         "diagram": """```mermaid
 flowchart LR
     N["Field nodes (ESP32-S3)"] -->|MQTT / HTTP + ingest token| S["ARMOR-SERVER"]
@@ -20,7 +20,7 @@ flowchart LR
         "build": """```powershell
 npm install
 npm run typecheck   # tsc --noEmit
-npm test            # 159 tests: unit + full HTTP integration
+npm test            # 161 tests: unit + full HTTP integration
 npm run build       # dist/server.mjs
 .\\run.bat           # development server with hot reload
 ```""",
@@ -81,7 +81,7 @@ flowchart LR
     V --> P
     V --> T["ARMOR-SERVER tests"]
     V --> X["ARMOR-SOLAR checks"]
-    S --> O["OpenAPI 0.1.9"]
+    S --> O["OpenAPI 0.2.0"]
 ```""",
         "build": """```powershell
 python -m pip install -e .
@@ -94,7 +94,7 @@ ARMOR-COMMON/
 ├── src/armor_common/   contracts, schema (validator), envelope, schemas/*.json (telemetry, health, command, info, solar_inverter, solar_battery)
 ├── conformance/        accepted and rejected payloads shared by every implementation
 ├── generated/          TypeScript and Kotlin types (generated, do not edit)
-├── openapi/            armor-server-0.1.9.yaml
+├── openapi/            armor-server-0.2.0.yaml
 ├── tools/              armor_project_tool.py, generate_types.py, make_conformance.py
 ├── tests/              unit tests and conformance runner
 └── docs/               contracts guide
