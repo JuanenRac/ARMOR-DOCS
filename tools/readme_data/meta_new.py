@@ -91,7 +91,7 @@ ARMOR-ELECTRICAL/
 ├── core/    pzem (frames of the PZEM meters), pzem_bus (the line), meter_runner (one turn of the loop), electrical_json (the message), electrical_config (the settings),
 │            interlock (the rules for switching, NOT linked into the firmware), ble_frame + ble_dispatch (Bluetooth), auth, netplan, board_s3, json...
 ├── panel/   the web panel: index.html, app.js, text.js (7 languages), style.css
-├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs
+├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs
 ├── tests/   test_meters, test_runner, test_config, test_ble, test_interlock, emit_samples + check_samples.py (the messages against ARMOR-COMMON)
 ├── docs/    DESIGN, NODE_FIRMWARE, BLE_PROVISIONING, SAFETY, SWITCHING, PROTOCOLS, ELECTRICAL_MESSAGES, HARDWARE
 └── images/  brand assets
@@ -99,7 +99,7 @@ ARMOR-ELECTRICAL/
     },
     "ARMOR-COMMON": {
         "emoji": "🧾",
-        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "177", "00E5FF"), ("Maturity", "functional", "00E5FF")],
+        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "193", "00E5FF"), ("Maturity", "functional", "00E5FF")],
         "diagram": """```mermaid
 flowchart LR
     S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]
@@ -112,19 +112,21 @@ flowchart LR
 ```""",
         "build": """```powershell
 python -m pip install -e .
-python -m unittest discover -s tests      # 21 tests, 177 conformance vectors
+python -m unittest discover -s tests      # 30 tests, 193 conformance vectors
 python tools/generate_types.py --check    # generated types are current
 python tools/make_conformance.py          # regenerate the vectors after editing the case list
+python tools/sync_firmware_base.py check  # the firmware the node projects share has not drifted (see docs/FIRMWARE_BASE.md)
 ```""",
         "structure": """```text
 ARMOR-COMMON/
 ├── src/armor_common/   contracts, schema (validator), envelope, schemas/*.json (telemetry, health, command, info, solar_inverter, solar_battery, electrical)
 ├── conformance/        accepted and rejected payloads shared by every implementation
+├── firmware_base/      the firmware that ARMOR-RADAR, ARMOR-SOLAR and ARMOR-ELECTRICAL share, once (synced into each by tools/sync_firmware_base.py)
 ├── generated/          TypeScript and Kotlin types (generated, do not edit)
 ├── openapi/            armor-server-0.2.0.yaml
-├── tools/              armor_project_tool.py, generate_types.py, make_conformance.py
+├── tools/              armor_project_tool.py, generate_types.py, make_conformance.py, sync_firmware_base.py
 ├── tests/              unit tests and conformance runner
-└── docs/               contracts guide
+└── docs/               contracts guide, the shared firmware base
 ```""",
     },
     "ARMOR-DOCS": {
@@ -153,7 +155,7 @@ FIXES = {
     "ARMOR-SOLAR": {
         "build": """```bash
 cmake -S tests -B build/host && cmake --build build/host
-build/host/test_solar && build/host/test_node && build/host/test_board_eth && build/host/test_ble      # 765 checks, -Werror
+build/host/test_solar && build/host/test_node && build/host/test_board_eth && build/host/test_ble && build/host/test_mux && build/host/test_parallel && build/host/test_console      # 2,548 checks, -Werror
 build/host/emit_poller_samples | python tests/check_samples.py   # what the ports make is accepted by ARMOR-COMMON
 tools/build_node.sh generic                       # the firmware image for the N16R8 board in the ESP-IDF container: dist/generic-s3-wifi.bin
 tools/build_node.sh generic s3-eth               # the same firmware for the Waveshare ESP32-S3-ETH (Ethernet): dist/generic-s3-eth.bin
@@ -161,20 +163,20 @@ node tools/panel_mock.mjs --user admin:adminpass123   # the panel without a boar
 ```""",
         "structure": """```text
 ARMOR-SOLAR/
-├── main/    the ESP-IDF component: app_main, solar_manager (one task per port), uart_ports, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet
-├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, json (no hardware in them)
+├── main/    the ESP-IDF component: app_main, solar_manager (one task per port, or per group in the mux profile), uart_ports, mux_board, port_leds_hw, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet
+├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, mux_group, port_leds, console_probe, json (no hardware in them)
 ├── panel/   the web panel: index.html, app.js, text.js (7 languages), style.css
-├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs
-├── tests/   test_solar.cpp, test_node.cpp, test_board_eth.cpp, test_ble.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ the ANT-BMS frames)
+├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs
+├── tests/   test_solar.cpp, test_node.cpp, test_board_eth.cpp, test_ble.cpp, test_mux.cpp, test_parallel.cpp, test_console.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ the ANT-BMS frames)
 └── docs/    NODE_FIRMWARE, NODE_HARDWARE, BLE_PROVISIONING, PROTOCOLS, SOLAR_MESSAGES, STUDIO_MENUS
 ```""",
         "structure_es": """```text
 ARMOR-SOLAR/
-├── main/    el componente de ESP-IDF: app_main, solar_manager (una tarea por puerto), uart_ports, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet
-├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, json (sin hardware)
+├── main/    el componente de ESP-IDF: app_main, solar_manager (una tarea por puerto, o por grupo en el perfil mux), uart_ports, mux_board, port_leds_hw, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet
+├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, mux_group, port_leds, console_probe, json (sin hardware)
 ├── panel/   el panel web: index.html, app.js, text.js (7 idiomas), style.css
-├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs
-├── tests/   test_solar.cpp, test_node.cpp, test_board_eth.cpp, test_ble.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ las tramas del ANT-BMS)
+├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs
+├── tests/   test_solar.cpp, test_node.cpp, test_board_eth.cpp, test_ble.cpp, test_mux.cpp, test_parallel.cpp, test_console.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ las tramas del ANT-BMS)
 └── docs/    NODE_FIRMWARE, NODE_HARDWARE, BLE_PROVISIONING, PROTOCOLS, SOLAR_MESSAGES, STUDIO_MENUS
 ```""",
     },
@@ -267,14 +269,14 @@ ARMOR-DEVOPS/
     "ARMOR-SIMULATOR": {
         "structure": """```text
 ARMOR-SIMULATOR/
-├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), publisher, cli
-├── tests/                 26 tests, including a local HTTP server
+├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), electrical (an electrical node), publisher, cli
+├── tests/                 28 tests, including a local HTTP server
 └── docs/USAGE.md
 ```""",
         "structure_es": """```text
 ARMOR-SIMULATOR/
-├── src/armor_simulator/   scenarios, faults, solar (mensajes de inversor y batería), publisher, cli
-├── tests/                 26 tests, con un servidor HTTP local
+├── src/armor_simulator/   scenarios, faults, solar (mensajes de inversor y batería), electrical (un nodo eléctrico), publisher, cli
+├── tests/                 28 tests, con un servidor HTTP local
 └── docs/USAGE.md
 ```""",
     },

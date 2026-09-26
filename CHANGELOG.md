@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.5] - The solar base board, the electrical screen and the batch of software that followed
+
+- The capability matrix, the catalogue and the READMEs (seven languages) describe the mux profile of ARMOR-SOLAR 0.0.8, the second PV input and the parallel units (contract 0.2.3, 193 vectors), the electrical alarms and the Android screen (ARMOR-ANDROID-CONTROL 0.3.3), the simulator's `--electrical` (0.2.2) and the versions of the family.
+
+
 ## [0.4.4] - The documentation of the whole family checked against the code
 
 - **The counts are the real ones:** ARMOR-SERVER 168 tests, ARMOR-STUDIO 203, ARMOR-COMMON 21 (and 177 vectors), ARMOR-SOLAR 765 host checks, ARMOR-ELECTRICAL 135,990 (254 apart from the switching rules), ARMOR-RADAR 859. The Italian README of ARMOR-SERVER said 159, and the ARMOR-SOLAR build block said 600 and patched "83 checks" into "100": both were wrong and the patch is gone.
