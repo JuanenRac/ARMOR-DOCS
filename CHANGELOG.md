@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.6] - The commands to a switch in the documentation and in the checks
+
+- The READMEs of ARMOR-COMMON (266 conformance vectors and 36 tests now, the new topics `command` and `result`), ARMOR-ELECTRICAL (the commands to a switch, tested and not activated) and ARMOR-DEVOPS (the ACL step that makes a switch reachable) in the seven languages; the capability matrix has a row for electrical switching, marked local and not activated, and the interfaces guide the new vector count.
+- `tools/check_all.sh` also runs `ARMOR-DEVOPS/scripts/test_mqtt_identity.sh`.
+
 ## [0.4.5] - The solar base board, the electrical screen and the batch of software that followed
 
 - The capability matrix, the catalogue and the READMEs (seven languages) describe the mux profile of ARMOR-SOLAR 0.0.8, the second PV input and the parallel units (contract 0.2.3, 193 vectors), the electrical alarms and the Android screen (ARMOR-ANDROID-CONTROL 0.3.3), the simulator's `--electrical` (0.2.2) and the versions of the family.
