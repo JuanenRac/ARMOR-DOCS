@@ -7,6 +7,7 @@
 | ARMOR-SOLAR | 0.0.6 | Solar gateway node: the ESP32-S3 firmware and its panel (ten serial ports), and the protocols of Voltronic / MPP Solar inverters and Pylontech and ANT-BMS batteries | Scaffolding |
 | ARMOR-SERVER-AI | 0.2.0 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
 | ARMOR-VOICE-AI | 0.2.0 | Offline voice intents with signed confirmation | Functional baseline |
+| ARMOR-ELECTRICAL | 0.0.1 | Electrical node: the meters' frames, the bus, the message of the network's readings and the rules for switching (no firmware yet) | Scaffolding |
 | ARMOR-SERVER | 0.2.7 | Central state (persisted), users, event history, alarms, devices, automations, solar readings, camera watchdog, cameras, evidence, audit | Functional |
 | ARMOR-STUDIO | 0.3.4 | Operations console, alarms, devices, automations, users, history, alert rules, PTZ, radar map, solar menus (inverters, batteries, cells, capacities) and configuration, and a 2D/3D site designer | Functional |
 | ARMOR-ANDROID-CONTROL | 0.3.1 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history and alarm notifications | Functional baseline |

@@ -8,6 +8,7 @@ All notable changes to this project are documented here.
 - The matrix and the READMEs say the battery health is in the shared contract (147 vectors) and that the console's `info` and `stat` are tested with text real batteries printed; the check counts of the solar node are 697.
 - The matrix and the ARMOR-STUDIO README (seven languages) describe the Electrical Designer; Studio has 201 tests.
 - The matrix and the READMEs count the 177 conformance vectors of the contract, which now has the electrical message.
+- A new repository, **ARMOR-ELECTRICAL** (0.0.1, scaffolding), in the family map, the catalogue, the matrix, the READMEs (seven languages) and the check script.
 
 ## [0.4.2] - Reading an ANT-BMS's settings in the matrix
 

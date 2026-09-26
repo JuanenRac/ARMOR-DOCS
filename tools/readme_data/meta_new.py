@@ -70,6 +70,22 @@ ARMOR-STUDIO/
 └── images/           brand assets
 ```""",
     },
+    "ARMOR-ELECTRICAL": {
+        "emoji": "⚡",
+        "badges": [("Language", "C%2B%2B17", "00599c"), ("Meters", "PZEM--004T%20%2F%20017", "ffb020"), ("Checks", "135%2C789", "2ea44f"), ("Maturity", "scaffolding", "ff9800")],
+        "diagram": "",
+        "build": """```bash
+cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # the meters (53 checks) and the switching rules (135,736)
+build/host/emit_samples | python tests/check_samples.py                                     # the messages, against ARMOR-COMMON
+```""",
+        "structure": """```text
+ARMOR-ELECTRICAL/
+├── core/    pzem.hpp (frames of the PZEM meters), pzem_bus.hpp (the line), electrical_json.hpp (the message), interlock.hpp (the rules for switching), json.hpp
+├── tests/   test_meters.cpp, test_interlock.cpp, emit_samples.cpp + check_samples.py (the messages against ARMOR-COMMON)
+├── docs/    DESIGN, SAFETY, SWITCHING, PROTOCOLS, ELECTRICAL_MESSAGES, HARDWARE
+└── images/  brand assets
+```""",
+    },
     "ARMOR-COMMON": {
         "emoji": "🧾",
         "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "177", "00E5FF"), ("Maturity", "functional", "00E5FF")],

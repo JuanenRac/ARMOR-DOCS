@@ -23,6 +23,7 @@ RELATED = {
     "ARMOR-COMMON": "Contratos de mensajes, validadores, vectores de conformidad y tipos generados",
     "ARMOR-RADAR": "Firmware del nodo de campo para ESP32-S3 con tres radares y su propio panel web",
     "ARMOR-SOLAR": "Protocolos de inversores y baterías solares y los mensajes de un nodo pasarela",
+    "ARMOR-ELECTRICAL": "Nodo eléctrico: contadores, el mensaje de las lecturas de la red y las reglas para maniobrar",
     "ARMOR-SERVER": "Coordinador central: telemetría, alarmas, dispositivos, lecturas solares y cámaras",
     "ARMOR-STUDIO": "Consola web: cámaras, radar, alarmas, energía solar y el diseñador de sitio 2D/3D",
     "ARMOR-ANDROID-CONTROL": "Cliente Android del operador con radar 2D/3D en vivo",
@@ -35,6 +36,19 @@ RELATED = {
 }
 
 TEXT = {
+    "ARMOR-ELECTRICAL": {
+        "tagline": "Nodo eléctrico: lee las tensiones, corrientes, potencia y energía de la red AC y DC de la casa y guarda las reglas para maniobrarla (núcleo probado en el PC; el firmware aún está por hacer)",
+        "honest": "**Madurez: scaffolding.** El núcleo (las tramas de los contadores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo y las reglas para maniobrar: 53 comprobaciones de los contadores y 135.736 de las reglas de maniobra) se prueba en un ordenador con contadores y contactores simulados, y ARMOR-COMMON acepta los mensajes que hace. **Aún no hay firmware, no se ha conectado nada a un contador ni a un contactor, y nada de aquí maniobra nada.**",
+        "bullets": [
+            "**Lectura de contadores:** las tramas Modbus RTU de los **PZEM-004T v3** (AC) y **PZEM-017** (DC) de Peacefair: el CRC, la petición que lee los registros y la decodificación de la respuesta (tensión, corriente, potencia, energía, frecuencia, factor de potencia, alarma). Solo se construye la petición de lectura: las que escriben en un contador (su dirección, sus umbrales, el reinicio de su energía) no se construyen en ningún sitio. Se rechaza una respuesta que no cuadra o que trae un valor que ningún contador real podría dar.",
+            "**El bus:** una línea con varios contadores se pregunta de uno en uno, con un tiempo de espera; se guarda la última lectura buena de cada uno y un contador que calla deja de publicarse a los diez segundos.",
+            "**El mensaje** `armor/electrical/<nodo>/state`: una entrada por canal (un circuito, una línea, la entrada de red, un bus DC) con AC o DC, tensión, corriente, potencia, energía, frecuencia, factor de potencia, el estado de un interruptor tal como lo ve el nodo y una alarma; está en el contrato compartido y lleva un estado, nunca una orden.",
+            "**Las reglas para maniobrar,** aparte de cualquier hardware: un controlador del cambio entre dos fuentes que nunca manda las dos, exige la maniobra permitida, el nodo armado justo antes y los dos contactores confirmados abiertos durante todo el tiempo muerto, y convierte un contactor que no muestra lo que se le ordenó en una avería que se queda hasta que se reconoce. **La maniobra está desactivada por defecto y nada maneja ningún hardware.**",
+            "**Dónde se ve:** el *Diseñador eléctrico* de ARMOR-STUDIO dibuja la red de la casa y muestra en cada elemento lo que mide su canal; ARMOR-SERVER guarda las lecturas, su historial y las sumas.",
+            "**Todavía no:** el firmware del nodo (Wi-Fi, panel, MQTT, puertos serie), el hardware, ninguna medida de una instalación real y ninguna maniobra.",
+        ],
+        "note": "Véanse el [diseño](docs/DESIGN.md), las [notas de seguridad](docs/SAFETY.md), las [reglas para maniobrar](docs/SWITCHING.md), los [protocolos](docs/PROTOCOLS.md) y los [mensajes](docs/ELECTRICAL_MESSAGES.md).",
+    },
     "ARMOR-SOLAR": {
         "tagline": "Nodo pasarela solar: lee inversores y baterías por hasta diez puertos serie (firmware para ESP32-S3, su panel web y la biblioteca de protocolos)",
         "honest": "**Madurez: scaffolding.** El firmware se compila en el contenedor ESP-IDF 5.4.2, su núcleo (los ajustes, el intercambio con cada tipo de equipo, la aritmética de la UART emulada: 697 comprobaciones) está probado en un ordenador con equipos simulados, los mensajes que produce los acepta ARMOR-COMMON y el panel se probó en un navegador contra un nodo simulado. **Nunca ha funcionado en una placa y no se ha conectado ningún inversor ni batería**: el Wi-Fi, el panel con TLS, la actualización, las UART de hardware y emuladas y los formatos de los protocolos (escritos de documentos públicos y de memoria) están sin probar. Las tramas de ANT-BMS de sus pruebas las capturaron otras personas en sus propios equipos: este proyecto no ha leído ninguno.",

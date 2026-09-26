@@ -13,9 +13,11 @@
   <text x="1079.0" y="84" text-anchor="middle" font-family="monospace" font-size="13" fill="#00E5FF" opacity=".7" letter-spacing="3">OPERATIONS</text>
   <path d="M230.0 141.0 C371.0 141.0, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="512.0" cy="306.0" r="3.4" fill="#FFB020"/>
-  <path d="M230.0 251.0 C371.0 251.0, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
+  <path d="M230.0 223.5 C371.0 223.5, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="512.0" cy="306.0" r="3.4" fill="#FFB020"/>
-  <path d="M230.0 361.0 C371.0 361.0, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
+  <path d="M230.0 306.0 C371.0 306.0, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
+  <circle cx="512.0" cy="306.0" r="3.4" fill="#FFB020"/>
+  <path d="M230.0 388.5 C371.0 388.5, 371.0 306.0, 512.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="512.0" cy="306.0" r="3.4" fill="#FFB020"/>
   <path d="M512.0 141.0 C607.0 141.0, 607.0 306.0, 702.0 306.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="702.0" cy="306.0" r="3.4" fill="#FFB020"/>
@@ -28,12 +30,14 @@
   <path d="M984.0 223.5 C961.0 223.5, 961.0 223.5, 938.0 223.5" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="938.0" cy="223.5" r="3.4" fill="#FFB020"/>
   <path d="M230.0 141.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
-  <path d="M230.0 251.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
-  <path d="M230.0 361.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
+  <path d="M230.0 223.5 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
+  <path d="M230.0 306.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
+  <path d="M230.0 388.5 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
   <path d="M230.0 471.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
   <g transform="translate(40 110)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-RADAR</text></g>
-  <g transform="translate(40 220)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SOLAR</text></g>
-  <g transform="translate(40 330)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SIMULATOR</text></g>
+  <g transform="translate(40 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SOLAR</text></g>
+  <g transform="translate(40 275.0)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-ELECTRICAL</text></g>
+  <g transform="translate(40 357.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SIMULATOR</text></g>
   <g transform="translate(40 440)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-HARDWARE</text></g>
   <g transform="translate(276 275.0)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#FFB020" stroke-width="2" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-COMMON</text></g>
   <g transform="translate(512 110)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SERVER-AI</text></g>

@@ -22,6 +22,7 @@ RELATED = {
     "ARMOR-COMMON": "Nachrichtenverträge, Validierer, Konformitätsvektoren und generierte Typen",
     "ARMOR-RADAR": "Feldknoten-Firmware für ESP32-S3 mit drei Radaren und eigenem Web-Panel",
     "ARMOR-SOLAR": "Protokolle für Solar-Wechselrichter und -Batterien und die Nachrichten eines Gateway-Knotens",
+    "ARMOR-ELECTRICAL": "Elektroknoten: Zähler, die Nachricht der Netzmesswerte und die Regeln fürs Schalten",
     "ARMOR-SERVER": "Zentraler Koordinator: Telemetrie, Alarme, Geräte, Solarmesswerte und Kameras",
     "ARMOR-STUDIO": "Web-Konsole: Kameras, Radar, Alarme, Solarenergie und 2D/3D-Standortdesigner",
     "ARMOR-ANDROID-CONTROL": "Android-Bedienclient mit Live-Radar in 2D/3D",
@@ -69,6 +70,19 @@ TEXT = {
             "**Nur Empfehlungen:** ein akzeptierter Befehl wird an ARMOR-SERVER weitergegeben, der ihn weiterhin authentifiziert und autorisiert.",
         ],
         "note": "Siehe die [Sprachsicherheit](docs/SAFETY.md).",
+    },
+    "ARMOR-ELECTRICAL": {
+        "tagline": "Elektroknoten: liest Spannungen, Ströme, Leistung und Energie des AC- und DC-Netzes des Hauses und hält die Regeln fürs Schalten (am Rechner getesteter Kern; die Firmware fehlt noch)",
+        "honest": "**Reifegrad: Scaffolding.** Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens und die Regeln fürs Schalten: 53 Prüfungen der Zähler und 135.736 der Schaltregeln) wird auf einem Rechner mit nachgebildeten Zählern und Schützen getestet, und die Nachrichten, die er erzeugt, akzeptiert ARMOR-COMMON. **Es gibt noch keine Firmware, nichts wurde an einen Zähler oder ein Schütz angeschlossen, und hier schaltet nichts irgendetwas.**",
+        "bullets": [
+            "**Zähler lesen:** die Modbus-RTU-Rahmen der Peacefair-Zähler **PZEM-004T v3** (AC) und **PZEM-017** (DC): die CRC, die Anfrage, die die Register liest, und die Auswertung der Antwort (Spannung, Strom, Leistung, Energie, Frequenz, Leistungsfaktor, Alarm). Nur die Leseanfrage wird gebaut: die schreibenden (Adresse, Schwellen, Zurücksetzen der Energie) werden nirgends gebaut. Eine Antwort, die nicht passt oder einen Wert enthält, den kein echter Zähler liefern könnte, wird abgelehnt.",
+            "**Der Bus:** eine Leitung mit mehreren Zählern wird einzeln abgefragt, mit Zeitlimit; der letzte gute Wert jedes Zählers wird behalten, und ein Zähler, der schweigt, wird nach zehn Sekunden nicht mehr veröffentlicht.",
+            "**Die Nachricht** `armor/electrical/<Knoten>/state`: ein Eintrag je Kanal (ein Stromkreis, eine Leitung, der Netzanschluss, ein DC-Bus) mit AC oder DC, Spannung, Strom, Leistung, Energie, Frequenz, Leistungsfaktor, dem Zustand eines Schalters, wie ihn der Knoten sieht, und einem Alarm; sie steht im gemeinsamen Vertrag und trägt einen Zustand, nie einen Befehl.",
+            "**Die Regeln fürs Schalten,** unabhängig von jeder Hardware: ein Regler für den Wechsel zwischen zwei Quellen, der nie beide ansteuert, das erlaubte Schalten, den kurz zuvor scharfgeschalteten Knoten und beide Schütze über die ganze Totzeit als offen bestätigt verlangt und ein Schütz, das nicht zeigt, was ihm befohlen wurde, zu einer Störung macht, die bis zur Quittierung bleibt. **Schalten ist standardmäßig aus, und nichts steuert irgendeine Hardware.**",
+            "**Wo man es sieht:** der *Elektroplaner* von ARMOR-STUDIO zeichnet das Netz des Hauses und zeigt an jedem Element, was sein Kanal misst; ARMOR-SERVER speichert die Messwerte, ihren Verlauf und die Summen.",
+            "**Noch nicht:** die Firmware des Knotens (WLAN, Panel, MQTT, serielle Ports), die Hardware, jede Messung einer echten Anlage und jedes Schalten.",
+        ],
+        "note": "Siehe den [Entwurf](docs/DESIGN.md), die [Sicherheitshinweise](docs/SAFETY.md), die [Regeln fürs Schalten](docs/SWITCHING.md), die [Protokolle](docs/PROTOCOLS.md) und die [Nachrichten](docs/ELECTRICAL_MESSAGES.md).",
     },
     "ARMOR-SOLAR": {
         "tagline": "Solar-Gateway-Knoten: liest Wechselrichter und Batterien über bis zu zehn serielle Ports (ESP32-S3-Firmware, sein Web-Panel und die Protokollbibliothek)",
