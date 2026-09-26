@@ -9,10 +9,10 @@
 | ARMOR-VOICE-AI | 0.2.0 | Offline voice intents with signed confirmation | Functional baseline |
 | ARMOR-SERVER | 0.2.4 | Central state (persisted), users, event history, alarms, devices, automations, solar readings, camera watchdog, cameras, evidence, audit | Functional |
 | ARMOR-STUDIO | 0.3.2 | Operations console, alarms, devices, automations, users, history, alert rules, PTZ, radar map, solar menus (inverters, batteries, cells, capacities) and configuration, and a 2D/3D site designer | Functional |
-| ARMOR-ANDROID-CONTROL | 0.2.8 | Android operator client: arm and disarm, alarms, devices, history and alarm notifications | Functional baseline |
+| ARMOR-ANDROID-CONTROL | 0.2.9 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history and alarm notifications | Functional baseline |
 | ARMOR-HARDWARE | 0.2.1 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.2.9 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
-| ARMOR-DOCS | 0.3.8 | Canonical documentation and the capability matrix | Functional |
+| ARMOR-DOCS | 0.3.9 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.1 | Scenarios and repeatable faults | Functional |
 
 ## Dependency direction
