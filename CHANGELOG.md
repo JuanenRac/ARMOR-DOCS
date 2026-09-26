@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.8] - The solar node's firmware in the matrix
+
+- The capability matrix says what the solar node's firmware, its panel, its ten ports, its ANT-BMS decoder and its emulated UART are and how much was checked (builds, host-tested with stand-in equipment, never on a board); the catalogue has the new versions and `check_all.sh` runs the node's tests.
+
 ## [0.3.7] - Declaring solar equipment in the matrix
 
 - The capability matrix says what declaring equipment, the example readings and the simulator's solar scenario are and how much was checked; the catalogue has the new versions.
