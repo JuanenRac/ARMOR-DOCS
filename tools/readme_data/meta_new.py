@@ -72,7 +72,7 @@ ARMOR-STUDIO/
     },
     "ARMOR-COMMON": {
         "emoji": "🧾",
-        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "142", "00E5FF"), ("Maturity", "functional", "00E5FF")],
+        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "147", "00E5FF"), ("Maturity", "functional", "00E5FF")],
         "diagram": """```mermaid
 flowchart LR
     S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]
@@ -85,7 +85,7 @@ flowchart LR
 ```""",
         "build": """```powershell
 python -m pip install -e .
-python -m unittest discover -s tests      # 19 tests, 142 conformance vectors
+python -m unittest discover -s tests      # 19 tests, 147 conformance vectors
 python tools/generate_types.py --check    # generated types are current
 python tools/make_conformance.py          # regenerate the vectors after editing the case list
 ```""",

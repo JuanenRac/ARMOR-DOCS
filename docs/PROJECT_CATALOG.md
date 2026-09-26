@@ -2,7 +2,7 @@
 
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
-| ARMOR-COMMON | 0.2.1 | Message contracts, validators, conformance vectors, generated types, OpenAPI, shared launcher | Functional |
+| ARMOR-COMMON | 0.2.2 | Message contracts, validators, conformance vectors, generated types, OpenAPI, shared launcher | Functional |
 | ARMOR-RADAR | 0.2.8 | ESP32-S3 field-node firmware, decoders for the LD2450, LD2461 and presence sensors, and its host-tested core | Scaffolding |
 | ARMOR-SOLAR | 0.0.6 | Solar gateway node: the ESP32-S3 firmware and its panel (ten serial ports), and the protocols of Voltronic / MPP Solar inverters and Pylontech and ANT-BMS batteries | Scaffolding |
 | ARMOR-SERVER-AI | 0.2.0 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
