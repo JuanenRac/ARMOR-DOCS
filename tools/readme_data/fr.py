@@ -22,6 +22,7 @@ RELATED = {
     "ARMOR-COMMON": "Contrats de messages, validateurs, vecteurs de conformité et types générés",
     "ARMOR-RADAR": "Firmware du nœud de terrain pour ESP32-S3 avec trois radars et son propre panneau web",
     "ARMOR-SOLAR": "Protocoles des onduleurs et batteries solaires et messages d'un nœud passerelle",
+    "ARMOR-ELECTRICAL": "Nœud électrique : compteurs, le message des mesures du réseau et les règles de commutation",
     "ARMOR-SERVER": "Coordinateur central : télémétrie, alarmes, appareils, relevés solaires et caméras",
     "ARMOR-STUDIO": "Console web : caméras, radar, alarmes, énergie solaire et concepteur de site 2D/3D",
     "ARMOR-ANDROID-CONTROL": "Client Android de l'opérateur avec radar 2D/3D en direct",
@@ -69,6 +70,19 @@ TEXT = {
             "**Recommandations seulement :** une commande acceptée est transmise à ARMOR-SERVER, qui l'authentifie et l'autorise encore.",
         ],
         "note": "Voir la [sécurité vocale](docs/SAFETY.md).",
+    },
+    "ARMOR-ELECTRICAL": {
+        "tagline": "Nœud électrique : lit les tensions, courants, puissance et énergie du réseau AC et DC de la maison et détient les règles pour le commander (cœur testé sur ordinateur ; le firmware reste à faire)",
+        "honest": "**Maturité : scaffolding.** Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud et les règles de commutation : 53 contrôles des compteurs et 135 736 des règles de commutation) est testé sur ordinateur avec des compteurs et des contacteurs simulés, et les messages qu'il produit sont acceptés par ARMOR-COMMON. **Il n'y a pas encore de firmware, rien n'a été branché à un compteur ni à un contacteur, et rien ici ne commande quoi que ce soit.**",
+        "bullets": [
+            "**Lecture des compteurs :** les trames Modbus RTU des **PZEM-004T v3** (AC) et **PZEM-017** (DC) de Peacefair : le CRC, la requête qui lit les registres et le décodage de la réponse (tension, courant, puissance, énergie, fréquence, facteur de puissance, alarme). Seule la requête de lecture est construite : celles qui écrivent dans un compteur (son adresse, ses seuils, la remise à zéro de son énergie) ne le sont nulle part. Une réponse qui ne convient pas, ou qui contient une valeur qu'aucun compteur réel ne pourrait donner, est refusée.",
+            "**Le bus :** une ligne avec plusieurs compteurs est interrogée un par un, avec un délai ; la dernière bonne lecture de chacun est gardée et un compteur qui se tait n'est plus publié au bout de dix secondes.",
+            "**Le message** `armor/electrical/<nœud>/state` : une entrée par canal (un circuit, une ligne, l'entrée réseau, un bus DC) avec AC ou DC, tension, courant, puissance, énergie, fréquence, facteur de puissance, l'état d'un interrupteur tel que le nœud le voit et une alarme ; il est dans le contrat partagé et porte un état, jamais un ordre.",
+            "**Les règles de commutation,** indépendantes de tout matériel : un contrôleur du transfert entre deux sources qui ne commande jamais les deux, exige la commutation autorisée, le nœud armé juste avant et les deux contacteurs confirmés ouverts pendant tout le temps mort, et transforme un contacteur qui ne montre pas ce qu'on lui a demandé en défaut qui reste jusqu'à son acquittement. **La commutation est désactivée par défaut et rien ne pilote de matériel.**",
+            "**Où on le voit :** le *Concepteur électrique* d'ARMOR-STUDIO dessine le réseau de la maison et montre sur chaque élément ce que mesure son canal ; ARMOR-SERVER conserve les mesures, leur historique et les sommes.",
+            "**Pas encore :** le firmware du nœud (Wi-Fi, panneau, MQTT, ports série), le matériel, toute mesure d'une installation réelle et toute commutation.",
+        ],
+        "note": "Voir la [conception](docs/DESIGN.md), les [notes de sécurité](docs/SAFETY.md), les [règles de commutation](docs/SWITCHING.md), les [protocoles](docs/PROTOCOLS.md) et les [messages](docs/ELECTRICAL_MESSAGES.md).",
     },
     "ARMOR-SOLAR": {
         "tagline": "Nœud passerelle solaire : lit onduleurs et batteries par jusqu'à dix ports série (firmware ESP32-S3, son panneau web et la bibliothèque de protocoles)",

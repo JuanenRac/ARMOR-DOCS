@@ -22,6 +22,7 @@ RELATED = {
     "ARMOR-COMMON": "Contratti dei messaggi, validatori, vettori di conformità e tipi generati",
     "ARMOR-RADAR": "Firmware del nodo di campo per ESP32-S3 con tre radar e un proprio pannello web",
     "ARMOR-SOLAR": "Protocolli di inverter e batterie solari e messaggi di un nodo gateway",
+    "ARMOR-ELECTRICAL": "Nodo elettrico: contatori, il messaggio delle letture della rete e le regole di manovra",
     "ARMOR-SERVER": "Coordinatore centrale: telemetria, allarmi, dispositivi, letture solari e telecamere",
     "ARMOR-STUDIO": "Console web: telecamere, radar, allarmi, energia solare e progettista del sito 2D/3D",
     "ARMOR-ANDROID-CONTROL": "Client Android dell'operatore con radar 2D/3D in tempo reale",
@@ -69,6 +70,19 @@ TEXT = {
             "**Solo raccomandazioni:** un comando accettato viene passato ad ARMOR-SERVER, che lo autentica e lo autorizza comunque.",
         ],
         "note": "Vedi la [sicurezza vocale](docs/SAFETY.md).",
+    },
+    "ARMOR-ELECTRICAL": {
+        "tagline": "Nodo elettrico: legge tensioni, correnti, potenza ed energia della rete AC e DC della casa e custodisce le regole per manovrarla (nucleo testato sul PC; il firmware è ancora da fare)",
+        "honest": "**Maturità: scaffolding.** Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo e le regole di manovra: 53 controlli dei contatori e 135.736 delle regole di manovra) è testato su un computer con contatori e contattori simulati, e i messaggi che produce sono accettati da ARMOR-COMMON. **Non c'è ancora firmware, nulla è stato collegato a un contatore o a un contattore, e nulla qui comanda niente.**",
+        "bullets": [
+            "**Lettura dei contatori:** i frame Modbus RTU dei **PZEM-004T v3** (AC) e **PZEM-017** (DC) di Peacefair: il CRC, la richiesta che legge i registri e la decodifica della risposta (tensione, corrente, potenza, energia, frequenza, fattore di potenza, allarme). Si costruisce solo la richiesta di lettura: quelle che scrivono in un contatore (indirizzo, soglie, azzeramento dell'energia) non si costruiscono da nessuna parte. Una risposta che non torna, o con un valore che nessun contatore reale potrebbe dare, viene rifiutata.",
+            "**Il bus:** una linea con più contatori si interroga uno alla volta, con un timeout; si conserva l'ultima lettura buona di ciascuno e un contatore che tace non viene più pubblicato dopo dieci secondi.",
+            "**Il messaggio** `armor/electrical/<nodo>/state`: una voce per canale (un circuito, una linea, l'ingresso di rete, un bus DC) con AC o DC, tensione, corrente, potenza, energia, frequenza, fattore di potenza, lo stato di un interruttore come lo vede il nodo e un allarme; è nel contratto condiviso e porta uno stato, mai un comando.",
+            "**Le regole di manovra,** a prescindere da qualsiasi hardware: un controllore dello scambio tra due sorgenti che non comanda mai entrambe, richiede la manovra consentita, il nodo armato poco prima e i due contattori confermati aperti per tutto il tempo morto, e trasforma un contattore che non mostra ciò che gli è stato ordinato in un guasto che resta finché non viene riconosciuto. **La manovra è disattivata per impostazione predefinita e nulla pilota alcun hardware.**",
+            "**Dove si vede:** il *Progettista elettrico* di ARMOR-STUDIO disegna la rete della casa e mostra su ogni elemento ciò che misura il suo canale; ARMOR-SERVER conserva le letture, la loro cronologia e le somme.",
+            "**Non ancora:** il firmware del nodo (Wi-Fi, pannello, MQTT, porte seriali), l'hardware, qualsiasi misura di un impianto reale e qualsiasi manovra.",
+        ],
+        "note": "Vedi il [progetto](docs/DESIGN.md), le [note di sicurezza](docs/SAFETY.md), le [regole di manovra](docs/SWITCHING.md), i [protocolli](docs/PROTOCOLS.md) e i [messaggi](docs/ELECTRICAL_MESSAGES.md).",
     },
     "ARMOR-SOLAR": {
         "tagline": "Nodo gateway solare: legge inverter e batterie da fino a dieci porte seriali (firmware ESP32-S3, il suo pannello web e la libreria dei protocolli)",

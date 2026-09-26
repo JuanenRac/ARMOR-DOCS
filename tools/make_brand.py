@@ -27,6 +27,7 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-COMMON": ("MESSAGE CONTRACTS & VALIDATION", ["JSON-SCHEMA", "OPENAPI", "PYTHON", "TYPESCRIPT", "KOTLIN"]),
     "ARMOR-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
     "ARMOR-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
+    "ARMOR-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
     "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
     "ARMOR-VOICE-AI": ("OFFLINE VOICE INTENT BOUNDARY", ["WHISPER", "PIPER", "WYOMING", "PYTHON"]),
     "ARMOR-SERVER": ("CENTRAL SECURITY COORDINATOR", ["NODE", "TYPESCRIPT", "MQTT", "WEBSOCKET", "FFMPEG"]),
@@ -50,6 +51,8 @@ def glyph(name: str) -> str:
         "ARMOR-SOLAR": f"""<circle cy="-14" r="13" stroke="{AMBER}" stroke-width="4"/>
     <path d="M0,-40 v-6 M0,12 v6 M-26,-14 h-6 M26,-14 h6 M-18,-32 l-4,-4 M18,-32 l4,-4 M-18,4 l-4,4 M18,4 l4,4" stroke="{AMBER}" stroke-width="3"/>
     <path d="M-40,34 q10,-18 20,0 t20,0 t20,0 t20,0" stroke-width="4"/>""",
+        "ARMOR-ELECTRICAL": f"""<path d="M10,-46 L-24,4 H-2 L-10,46 L26,-8 H4 Z" stroke="{AMBER}" stroke-width="4"/>
+    <path d="M-44,-30 q8,-14 16,0 t16,0" stroke-width="3" opacity=".7"/><path d="M-44,30 h20 M24,30 h20" stroke-width="3" opacity=".7"/>""",
         "ARMOR-SERVER": f"""<rect x="-34" y="-40" width="68" height="24" rx="5"/><rect x="-34" y="-12" width="68" height="24" rx="5"/><rect x="-34" y="16" width="68" height="24" rx="5"/>
     <circle cx="-22" cy="-28" r="3" fill="{AMBER}" stroke="none"/><circle cx="-22" cy="0" r="3" fill="{AMBER}" stroke="none"/><circle cx="-22" cy="28" r="3" fill="{AMBER}" stroke="none"/>
     <path d="M-8,-28 h30 M-8,0 h30 M-8,28 h30" stroke-width="2" opacity=".6"/>""",
@@ -125,13 +128,13 @@ def icon(name: str) -> str:
 
 # name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom
 POSITIONS = {
-    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 1), "ARMOR-SIMULATOR": (0, 2), "ARMOR-HARDWARE": (0, 3),
+    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-SIMULATOR": (0, 2.25), "ARMOR-HARDWARE": (0, 3),
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
     "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-DOCS": (4, 2.25),
 }
-ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
+ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
           ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 

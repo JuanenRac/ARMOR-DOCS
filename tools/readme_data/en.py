@@ -23,6 +23,7 @@ RELATED = {
     "ARMOR-COMMON": "Message contracts, validators, conformance vectors and generated types",
     "ARMOR-RADAR": "Field-node firmware for ESP32-S3 with three radars and its own web panel",
     "ARMOR-SOLAR": "Solar inverter and battery protocols and the messages of a gateway node",
+    "ARMOR-ELECTRICAL": "Electrical node: meters, the message of the network's readings and the rules for switching",
     "ARMOR-SERVER": "Central coordinator: telemetry, alarms, devices, solar readings and cameras",
     "ARMOR-STUDIO": "Web console: cameras, radar, alarms, solar energy and the 2D/3D site designer",
     "ARMOR-ANDROID-CONTROL": "Android operator client with a live 2D/3D radar",
@@ -35,6 +36,19 @@ RELATED = {
 }
 
 TEXT = {
+    "ARMOR-ELECTRICAL": {
+        "tagline": "Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network and holds the rules for switching it (host-tested core; the firmware is still to come)",
+        "honest": "**Maturity: scaffolding.** The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node and the rules for switching: 53 checks of the meters and 135,736 of the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. **There is no firmware yet, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
+        "bullets": [
+            "**Reading the meters:** the Modbus RTU frames of the Peacefair **PZEM-004T v3** (AC) and **PZEM-017** (DC): the CRC, the request that reads the registers and the decoding of the reply (voltage, current, power, energy, frequency, power factor, alarm). Only the read request is built: the ones that write to a meter (its address, its thresholds, the reset of its energy) are not built anywhere. A reply that does not fit, or holds a value no real meter could give, is refused.",
+            "**The bus:** a line with several meters is asked one at a time, with a timeout; the last good reading of each is kept and a meter that goes silent stops being published after ten seconds.",
+            "**The message** `armor/electrical/<node>/state`: one entry per channel (a circuit, a line, the grid input, a DC bus) with AC or DC, voltage, current, power, energy, frequency, power factor, the state of a switch as the node sees it and an alarm; it is in the shared contract and carries a state, never a command.",
+            "**The rules for switching,** apart from any hardware: a controller for the transfer between two sources that never commands both, needs the switching allowed, the node armed just before, both contactors confirmed open for the whole dead time, and turns a contactor that does not show what it was told into a fault that stays until it is acknowledged. **Switching is off by default and nothing drives any hardware.**",
+            "**Where it shows:** the *Electrical Designer* of ARMOR-STUDIO draws the house's network and shows on each element what its channel measures; ARMOR-SERVER keeps the readings, their history and the sums.",
+            "**Not yet:** the firmware of the node (Wi-Fi, panel, MQTT, serial ports), the hardware, any measurement of a real installation and any switching.",
+        ],
+        "note": "See the [design](docs/DESIGN.md), the [safety notes](docs/SAFETY.md), the [rules for switching](docs/SWITCHING.md), the [protocols](docs/PROTOCOLS.md) and the [messages](docs/ELECTRICAL_MESSAGES.md).",
+    },
     "ARMOR-SOLAR": {
         "tagline": "Solar gateway node: reads inverters and batteries through up to ten serial ports (ESP32-S3 firmware, its web panel and the protocol library)",
         "honest": "**Maturity: scaffolding.** The firmware builds in the ESP-IDF 5.4.2 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART: 697 checks) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
