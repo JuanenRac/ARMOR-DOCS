@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.1] - Solar alarms on the phone in the matrix
+
+- The capability matrix and the Android README (seven languages) say that solar alarms are announced on the phone like device alarms (unit-tested, never on a phone); the catalogue has the new versions.
+- The matrix, the security baseline and ARMOR-DEVOPS's README (seven languages) describe the core machine's host firewall (rules tested as text, never loaded) and keep the VLANs as a design; `check_all.sh` runs its tests.
+
+## [0.4.0] - The four firmwares in the matrix
+
+- The capability matrix and the READMEs of ARMOR-RADAR and ARMOR-SOLAR (seven languages) say that each node has a version for each board (with Ethernet on the Waveshare ESP32-S3-ETH, and Wi-Fi only on the ESP32-S3-WROOM-1 N16R8) and that none has run on a board; `check_all.sh` runs the tests of both board profiles.
+
 ## [0.3.9] - The Android app's solar screen in the matrix
 
 - The capability matrix and the Android README (seven languages) say what the app's Solar screen is and how much was checked (unit tests and an emulator with example readings, never real equipment); the catalogue has the new versions.
