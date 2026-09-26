@@ -4,6 +4,8 @@
 flowchart LR
   subgraph field["VLAN 10 - field (no internet)"]
     N["ESP32-S3 field nodes<br/>3x radar, lux, climate"]
+    SN["Solar nodes<br/>inverters and batteries, read only"]
+    EN["Electrical nodes<br/>AC and DC meters, read only"]
     C["IP cameras (PTZ, RTSP)"]
   end
   subgraph core["VLAN 20 - core"]
@@ -17,6 +19,8 @@ flowchart LR
     A["ARMOR-ANDROID-CONTROL"]
   end
   N -->|"MQTT, one identity per node"| B
+  SN -->|"MQTT, one identity per node"| B
+  EN -->|"MQTT, one identity per node"| B
   B --> S
   C -->|"RTSP / ONVIF"| S
   C -->|"RTSP"| V
@@ -24,6 +28,9 @@ flowchart LR
   P -->|"confirmed intent"| S
   S -->|"authenticated session"| W
   S -->|"authenticated session"| A
+  A -.->|"Bluetooth: set-up only"| N
+  A -.->|"Bluetooth: set-up only"| SN
+  A -.->|"Bluetooth: set-up only"| EN
 ```
 
 ## Trust boundaries
@@ -39,7 +46,16 @@ flowchart LR
   service-issued confirmation for arm and disarm. The server authenticates and authorises
   every action.
 * **Studio and Android are clients of the server**, not of the field network. They never reach
-  a node's own configuration endpoint.
+  a node's own configuration endpoint. The one exception is the set-up of a node from the Android
+  app over **Bluetooth Low Energy** (below), which needs no network at all.
+* **Solar and electrical nodes only read.** They publish what their inverters, batteries and
+  meters report; no request that writes to a piece of equipment exists in their firmware, and the
+  rules for switching an electrical source are tested but not linked to any hardware.
+* **A phone sets a node up over Bluetooth** (name, Wi-Fi, address, broker): the same channel on the
+  radar, the solar and the electrical node. The link is encrypted, every operation but `hello`
+  needs the set-up code or a login, changing anything needs an administrator, and wrong
+  passwords are throttled. The "just works" pairing does not stop someone present while the phone
+  pairs; see the [security baseline](SECURITY_BASELINE.md).
 
 ## Time and ordering
 
@@ -55,6 +71,8 @@ configurable silence.
 |---|---|
 | What a message means | ARMOR-COMMON (JSON Schemas, conformance vectors, generated types, OpenAPI) |
 | Sensing and field firmware | ARMOR-RADAR |
+| Solar gateway nodes (inverters, batteries) | ARMOR-SOLAR |
+| Electrical nodes (meters) and the rules for switching | ARMOR-ELECTRICAL |
 | State, cameras, evidence, audit | ARMOR-SERVER |
 | Visual and voice decisions | ARMOR-SERVER-AI, ARMOR-VOICE-AI |
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |

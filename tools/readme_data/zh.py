@@ -81,13 +81,14 @@ TEXT = {
             "**开关规则，** 与任何硬件无关：两个电源之间转换的控制器，绝不同时指令两者，要求开关操作被允许、节点在刚才已布防、两个接触器在整个死区时间内都被确认断开，并把没有显示所指令状态的接触器当作故障，直到被确认才消除。**开关默认关闭，没有任何硬件被驱动。**",
             "**在哪里显示：** ARMOR-STUDIO 的*电气设计器*绘制住宅的电网，并在每个元件上显示其通道的测量值；ARMOR-SERVER 保存读数、历史和合计。",
             "**节点固件**（Wi-Fi 的 ESP32-S3-WROOM-1 N16R8，或有线的 Waveshare ESP32-S3-ETH）：设置、供最多十六块电表使用的一条串口线路，以及与其他节点相同的网页面板（设置、用户、Wi-Fi、代理、无线更新、HTTPS），另有自己的电表页和读数页（七种语言）。只读取：开关规则没有链接进去。参见[固件](docs/NODE_FIRMWARE.md)。",
+            "**通过蓝牙用手机配置：** 与雷达节点相同的通道。ARMOR 应用会以 `ARMOR-XXXXXX` 找到节点，并使用面板的用户和设置码来设置其名称、Wi-Fi、地址、代理和蓝牙模式（[协议](docs/BLE_PROVISIONING.md)）。除非另行设置，它只在节点还没有用户时监听。无线部分从未在电路板上运行过。",
             "**尚未完成：** 在电路板上运行的固件、硬件、对真实设施的任何测量以及任何开关操作。",
         ],
         "note": "参见[设计](docs/DESIGN.md)、[安全说明](docs/SAFETY.md)、[开关规则](docs/SWITCHING.md)、[协议](docs/PROTOCOLS.md)和[消息](docs/ELECTRICAL_MESSAGES.md)。",
     },
     "ARMOR-SOLAR": {
         "tagline": "太阳能网关节点：通过最多十个串口读取逆变器和电池（ESP32-S3 固件、其网页面板和协议库）",
-        "honest": "**成熟度：scaffolding。** 固件能在 ESP-IDF 5.4.2 容器中构建，其核心（设置、与各类设备的交互、模拟 UART 的运算：697 项检查）已在电脑上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，网页面板已在浏览器中对着替身节点试用。**它从未在开发板上运行过，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。测试中的 ANT-BMS 帧是他人在自己的设备上抓取的，本项目自己还没有读过任何一台。",
+        "honest": "**成熟度：scaffolding。** 固件能在 ESP-IDF 5.4.2 容器中构建，其核心（设置、与各类设备的交互、模拟 UART 的运算：765 项检查）已在电脑上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，网页面板已在浏览器中对着替身节点试用。**它从未在开发板上运行过，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。测试中的 ANT-BMS 帧是他人在自己的设备上抓取的，本项目自己还没有读过任何一台。",
         "bullets": [
             "**两种开发板，一套固件：** 走 Wi-Fi 的 ESP32-S3-WROOM-1 N16R8（默认）和走以太网线的 Waveshare ESP32-S3-ETH（DHCP 或固定地址；保留自己的 Wi-Fi 网络以便从手机访问）。镜像在构建时选择（`tools/build_node.sh generic s3-wifi` 或 `generic s3-eth`）；引脚表、端口的默认引脚和接入方式随开发板而定，镜像只适用于对应的开发板。两者都能构建并已在电脑上测试，但都没在开发板上运行过。",
             "**节点固件**（Wi-Fi 的 ESP32-S3-WROOM-1 N16R8，或有线的 Waveshare ESP32-S3-ETH）：十个串口，三个硬件 UART 和七个模拟 UART（最高 19200 波特），每个都独立，可读取逆变器、电池或原始监视，因此一个节点可以只读逆变器、只读电池或两者混合。",
@@ -96,6 +97,7 @@ TEXT = {
             "**Pylontech 电池**（US2000、US3000、US5000）：控制台的 `pwr` 表（每个模块的电压、电流、温度和电量）、`bat <n>`（每个电芯的电压和温度）以及 `info <n>`（型号、剩余和满容量、循环次数），汇总为一个电池组及其总容量和能量，还有带两项校验的 RS485 帧。这些格式是凭对公开控制台的记忆写成的，不同固件可能不同。各列按表头名称查找（包括带 Id 列、MosTempr 和 SysAlarm.St 的 US5000 V2.3 格式），剩余电量和均衡来自 `bat`，型号、额定容量和循环次数来自 `info` 和 `stat`，只询问一次并保留半小时。",
             "**节点的消息**（`armor/solar/<节点>/<设备>/state`，每台逆变器或电池组一条），在 ARMOR-COMMON 中以模式和一致性向量定义；各端口生成的内容会对照它们检查。",
             "**ANT-BMS 电池**（自制电池组上的黑色板，7S 至 32S），3.3 V UART，19200 波特：支持其固件的两种协议（节点先用一种询问，无应答再用另一种，并保持在有应答的那种），读取电芯、温度、荷电状态、电流、容量以及 MOSFET 和均衡器状态，并用在四种真实型号上抓取的帧做了验证。只读：其写入命令可能在带载时断开电池。端口页面上的按钮还可读取 BMS 的型号、版本以及 56 项保护和均衡设置（新协议，只读）。",
+            "**通过蓝牙用手机配置：** 与雷达节点相同的通道。ARMOR 应用会以 `ARMOR-XXXXXX` 找到节点，并使用面板的用户和设置码来设置其名称、Wi-Fi、地址、代理和蓝牙模式（[协议](docs/BLE_PROVISIONING.md)）。除非另行设置，它只在节点还没有用户时监听。无线部分从未在电路板上运行过。",
             "**尚未完成：** ANT-BMS 的蓝牙连接（节点使用更稳定的线缆）、Android 标签页，以及在真实开发板上用真实设备的运行。",
         ],
         "note": "参见[固件指南](docs/NODE_FIRMWARE.md)（开发板、端口、首次启动和台架检查清单）以及[接线说明](docs/NODE_HARDWARE.md)。",
@@ -153,7 +155,7 @@ TEXT = {
             "**核心主机的防火墙**（`scripts/firewall_core.sh`）：代理（broker）端口只允许现场网络访问，服务器和 Studio 的端口只允许客户端网络访问（如已指定），放在只提及这些端口、其余一概放行的独立表中；`apply --rollback-after` 会在未确认时自动移除规则，因此配置错误不会把你锁在外面。规则和拒绝情形已有测试（36 项，不会加载任何内容）；尚未在任何机器上加载，VLAN 本身仍是面向路由器和交换机的设计。",
             "**CM5 测试台：** `scripts/deploy_cm5.sh` 在干净的副本中构建，发送一个压缩包并运行 `scripts/install_cm5.sh`，后者创建自己的用户、自己的目录和两个使用各自端口的 systemd 单元（加 `--with-mqtt` 为三个：A.R.M.O.R. 自己的 Mosquitto，端口 18883，已在真实 CM5 上验证），带资源限制，且绝不触碰其他项目（[详情](docs/CM5_TEST_BENCH.md)）。",
             "**Compose 拓扑：** 非匿名的 Mosquitto 代理，每个节点一个身份；服务器；以及位于转发 `/api/` 的 nginx 之后的 Studio；只有 Studio 被发布，且仅在回环上。加固的容器、内部核心网络和用于保存状态的命名卷。",
-            "**测试台代理上的设备与读数：** 服务器可以监听并控制 `armor/device/#`，并读取 `armor/node/+/info` 和 `armor/solar/#`；`scripts/mqtt_identity.sh add device NAME` 为一个设备提供专属主题，`add bridge NAME` 为 Zigbee2MQTT 或 Shelly 桥接提供全部主题。",
+            "**测试台代理上的设备与读数：** 服务器可以监听并控制 `armor/device/#`，并读取 `armor/node/+/info`、`armor/solar/#` 和 `armor/electrical/#`；`scripts/mqtt_identity.sh add device NAME` 为一个设备提供专属主题，`add bridge NAME` 为 Zigbee2MQTT 或 Shelly 桥接提供全部主题。",
             "**机密：** `scripts/generate_secrets.sh` 创建随机机密且不打印任何一个；`scripts/check-required-env.sh` 拒绝缺失、示例、过短或重复的值。",
             "**备份与恢复：** `scripts/backup_data.sh` 生成服务器数据的 AES-256 加密、已验证且带校验和的压缩包（除非要求，否则不含证据）；`scripts/restore_data.sh` 列出或恢复它，且绝不覆盖现有数据。摄像头密钥有意**不**放入压缩包。",
             "**TLS：** 可选的 `tls` Compose 配置在 Studio 前放置带自己本地证书颁发机构的 Caddy（[详情](docs/BACKUP_AND_TLS.md)）。",
@@ -162,7 +164,7 @@ TEXT = {
     },
     "ARMOR-SERVER": {
         "tagline": "中央安全协调器：遥测入口、报警、设备、太阳能读数和摄像头网关",
-        "honest": "下面的每条路由、会话、加密和证据规则都是真实的，并有测试覆盖（`npm test`，161 个测试，其中包括针对隔离服务器的完整 HTTP 集成测试）。它已在 CM5 上对着真实的 MQTT 代理运行过（用的是脚本，不是现场节点固件），并通过 FFmpeg 从五台真实 IP 摄像头推送过实时视频、保存过快照并录过像。**尚未证实的：** 对真实 ONVIF 摄像头的 ONVIF、每种摄像头固件上的 PTZ（在 Hi3510 设备上可用）、任何 Jetson 硬件，以及对真实网关节点的太阳能路由（它们用生成的读数测试）。",
+        "honest": "下面的每条路由、会话、加密和证据规则都是真实的，并有测试覆盖（`npm test`，168 个测试，其中包括针对隔离服务器的完整 HTTP 集成测试）。它已在 CM5 上对着真实的 MQTT 代理运行过（用的是脚本，不是现场节点固件），并通过 FFmpeg 从五台真实 IP 摄像头推送过实时视频、保存过快照并录过像。**尚未证实的：** 对真实 ONVIF 摄像头的 ONVIF、每种摄像头固件上的 PTZ（在 Hi3510 设备上可用）、任何 Jetson 硬件，以及对真实网关节点的太阳能路由（它们用生成的读数测试）。",
         "intro": "**ARMOR-SERVER** 是 A.R.M.O.R. 的可信中心。现场节点发布雷达、光照和健康观测；本服务验证它们，保存每个节点最后已知的状态，并提供给 Studio 控制台和 Android 客户端。它还掌管一切接触摄像头的事务，因此**没有任何浏览器或手机持有摄像头密码或 RTSP 地址**。",
         "bullets": [
             "**经过验证的入口：** HTTP 和 MQTT 观测在边界处检查（标识符、时间戳、lux 范围、最多 15 条轨迹），之后才进入状态投影。",
@@ -185,7 +187,7 @@ TEXT = {
             ]},
             {"title": "API", "bullets": [
                 "公开：`GET /healthz`。对操作员：状态、信息、摄像头、媒体、历史、规则、设备、报警、自动化、场地设计，以及带历史的 `GET /api/v1/solar`。",
-                "对现场节点和网关：使用摄取令牌的 `POST /api/v1/telemetry`、`/health` 和 `/solar`，以及 MQTT 主题 `armor/node/#` 和 `armor/solar/#`。事件通过 WebSocket `/api/v1/events` 到达控制台。",
+                "对现场节点和网关：使用摄取令牌的 `POST /api/v1/telemetry`、`/health`、`/solar` 和 `/electrical/readings`，以及 MQTT 主题 `armor/node/#`、`armor/solar/#` 和 `armor/electrical/#`。事件通过 WebSocket `/api/v1/events` 到达控制台。",
                 "每条路由、其访问规则和模式都在 [ARMOR-COMMON](../ARMOR-COMMON) 的 OpenAPI 文件中，并有测试确保没有遗漏的路由。",
             ]},
             {"title": "配置", "bullets": [
@@ -198,7 +200,7 @@ TEXT = {
     },
     "ARMOR-STUDIO": {
         "tagline": "运营与设计控制台：摄像头、雷达、报警、太阳能、证据和场地平面图",
-        "honest": "Studio 与 [ARMOR-SERVER](../ARMOR-SERVER) 通信，并有 201 个单元测试覆盖（设置解析、摄像头合并、太阳能图表的算术、每个菜单在七种语言下的渲染、静态主机）。**尚未证实的：** 每种真实摄像头的实时视频和 PTZ、太阳能菜单与真实逆变器或电池的配合，以及正式的无障碍或可用性评审。当服务器无法访问时，Studio 显示演示数据，并在顶部栏中说明。",
+        "honest": "Studio 与 [ARMOR-SERVER](../ARMOR-SERVER) 通信，并有 203 个单元测试覆盖（设置解析、摄像头合并、太阳能图表的算术、每个菜单在七种语言下的渲染、静态主机）。**尚未证实的：** 每种真实摄像头的实时视频和 PTZ、太阳能菜单与真实逆变器或电池的配合，以及正式的无障碍或可用性评审。当服务器无法访问时，Studio 显示演示数据，并在顶部栏中说明。",
         "intro": "**ARMOR-STUDIO** 是操作员的控制台。它从不持有摄像头密码、RTSP 地址或令牌：它用用户名和密码登录服务器，获得 8 小时的 **HttpOnly** 会话，一切特权操作都经由该会话。",
         "bullets": [
             "**摄像头监控：** 1、2、4、6、8、9、12 或 16 个画面块，适应其画框（16:9，整个矩阵可见，不裁切），带受限 PTZ 控制盘的最大化视图、快照和 MP4 录像；**录像库**可过滤、预览、播放、保护和删除证据。",
@@ -224,7 +226,7 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "消息契约、验证和共享的项目启动器",
-        "honest": "模式、Python 验证器、177 个共享的一致性向量、生成的 TypeScript 和 Kotlin 类型以及共享的项目启动器都是真实的并经过测试（19 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**；`set_thresholds` 命令只带一个 `sensitivity` 字段，因为在固件存在之前，真实的雷达参数尚未定义。",
+        "honest": "模式、Python 验证器、177 个共享的一致性向量、生成的 TypeScript 和 Kotlin 类型以及共享的项目启动器都是真实的并经过测试（21 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**；`set_thresholds` 命令只带一个 `sensitivity` 字段，因为在固件存在之前，真实的雷达参数尚未定义。",
         "intro": "**ARMOR-COMMON** 掌管每条 A.R.M.O.R. 消息的含义。雷达节点、太阳能网关节点和模拟器产生这些消息；服务器、视觉 AI 和语音服务消费它们。如果两个项目对某个字段有分歧，由本仓库裁决。",
         "bullets": [
             "**唯一的事实来源：** `src/armor_common/schemas/` 中的 JSON 模式，涵盖遥测、健康、命令、节点信息和两条太阳能消息（逆变器、带电芯和容量的电池）。未知字段在所有地方都会被拒绝。",
@@ -235,7 +237,7 @@ TEXT = {
             "**共享启动器：** `tools/armor_project_tool.py` 让家族中的每个仓库都有相同的 `build`、`build-test` 和 `run` 流程。",
         ],
         "sections": [],
-        "note": "代理主题：`armor/node/{node_id}/telemetry | health | command | info` 和 `armor/solar/{node_id}/{device}/state`。参见[契约指南](docs/CONTRACTS.md)。共享启动器在 ARMOR-SERVER 首次运行时创建被忽略的 `.env`，含随机机密和随机的管理员密码；不会打印或提交任何内容。",
+        "note": "代理主题：`armor/node/{node_id}/telemetry | health | command | info`、`armor/solar/{node_id}/{device}/state` 和 `armor/electrical/{node_id}/state`。参见[契约指南](docs/CONTRACTS.md)。共享启动器在 ARMOR-SERVER 首次运行时创建被忽略的 `.env`，含随机机密和随机的管理员密码；不会打印或提交任何内容。",
     },
     "ARMOR-DOCS": {
         "tagline": "规范的架构、安全基线，以及关于哪些已被证实的真相",
