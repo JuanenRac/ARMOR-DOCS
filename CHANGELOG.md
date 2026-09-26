@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.3.9] - The Android app's solar screen in the matrix
+
+- The capability matrix and the Android README (seven languages) say what the app's Solar screen is and how much was checked (unit tests and an emulator with example readings, never real equipment); the catalogue has the new versions.
+
 ## [0.3.8] - The solar node's firmware in the matrix
 
 - The capability matrix says what the solar node's firmware, its panel, its ten ports, its ANT-BMS decoder and its emulated UART are and how much was checked (builds, host-tested with stand-in equipment, never on a board); the catalogue has the new versions and `check_all.sh` runs the node's tests.
