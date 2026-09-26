@@ -43,7 +43,8 @@ if have npm; then
 else skip ARMOR-SERVER "npm is not installed"; skip ARMOR-STUDIO "npm is not installed"; fi
 
 if [[ -n "$PYTHON" ]]; then
-  run ARMOR-COMMON env PYTHONPATH=src "$PYTHON" -m unittest discover -s tests
+  # the contracts, and the firmware the three node projects share: no copy may have drifted from ARMOR-COMMON/firmware_base
+  run ARMOR-COMMON bash -c "PYTHONPATH=src \"$PYTHON\" -m unittest discover -s tests && \"$PYTHON\" tools/sync_firmware_base.py check"
   for repo in ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI; do
     run "$repo" env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
   done
@@ -54,8 +55,8 @@ fi
 
 if have cmake && (have g++ || have c++); then
   run ARMOR-RADAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_core" && "$B/test_node" && "$B/test_board_wifi" && "$B/test_sensors"'
-  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node" && "$B/test_board_eth"'
-  run ARMOR-ELECTRICAL bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_meters" && "$B/test_interlock"'
+  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node" && "$B/test_board_eth" && "$B/test_ble" && "$B/test_mux" && "$B/test_parallel" && "$B/test_console"'
+  run ARMOR-ELECTRICAL bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_meters" && "$B/test_interlock" && "$B/test_config" && "$B/test_runner" && "$B/test_ble"'
 else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; skip ARMOR-SOLAR "no C++ compiler or cmake"; skip ARMOR-ELECTRICAL "no C++ compiler or cmake"; fi
 
 if have bash && have openssl; then
