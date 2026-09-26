@@ -146,7 +146,7 @@ Mejora:
 ### P2.3 Siete idiomas coherentes con el ecosistema
 
 Studio expone actualmente `en`, `es`, `de`, `fr`, `it`, `pt` y `ja`. El
-ecosistema HYDRA-UMC usa ingles, espanol, aleman, frances, italiano, japones y
+conjunto de idiomas previsto usa ingles, espanol, aleman, frances, italiano, japones y
 chino. Por tanto, falta chino y se incluyo portugues en su lugar. Ademas, varias
 adiciones japonesas de Record/video recurren a ingles.
 

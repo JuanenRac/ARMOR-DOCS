@@ -64,6 +64,6 @@ Hallazgos nuevos encontrados al revisar el código de la primera pasada, todos c
 | Límite de ingesta de 1200/min insuficiente (3 nodos a 10 Hz ≈ 1800/min) | Media | 6000/min |
 | Una cámara caída no se notaba | Media | Vigilancia de cámaras con evento y alarma |
 
-Añadido: pruebas de carga y caos (107 tests en el servidor), zonas dibujadas sobre un plano en Studio, historial y avisos de alarma en Android (14 tests; **no probado en un teléfono**), broker MQTT propio de ARMOR en la CM5 (puerto 18883, distinto del 1883 de HYDRA), verificado de extremo a extremo.
+Añadido: pruebas de carga y caos (107 tests en el servidor), zonas dibujadas sobre un plano en Studio, historial y avisos de alarma en Android (14 tests; **no probado en un teléfono**), broker MQTT propio de ARMOR en la CM5 (puerto 18883, distinto del 1883 habitual), verificado de extremo a extremo.
 
 Sigue abierto: `ffmpeg` (lo instala el usuario), perfil TLS de Compose sin ejecutar, Android sin ejecutar en un teléfono, firmware sin compilar, nada en hardware real, y la ingesta HTTP con un único token compartido (se recomienda MQTT con una identidad por nodo).
