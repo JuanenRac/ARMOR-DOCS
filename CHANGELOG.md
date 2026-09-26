@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.3] - Inverter dialects and the model catalogue in the matrix
+
+- The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node reads three inverter dialects and the newer Pylontech console layout, and that the catalogue lists more inverter families and battery models; the check counts are 678.
+
 ## [0.4.2] - Reading an ANT-BMS's settings in the matrix
 
 - The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node can read an ANT-BMS's model, version and settings (read only, never tried on a BMS) and that writing to BMSs and inverters is not implemented on purpose; the check counts are 600.
