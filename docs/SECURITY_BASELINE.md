@@ -32,6 +32,8 @@ broker's port only to the field network and the server's and Studio's ports only
 * Discovery scans one private /24, sends no credentials and runs one scan at a time.
 * Sessions and tickets are bounded in number and lifetime; login is rate limited.
 * Field commands are an allow-list of three; unknown fields in any message are rejected.
+* Solar and electrical nodes only read their equipment: no request that writes to an inverter, a battery or a meter is built anywhere, and the switching rules are not linked to any hardware.
+* A node's Bluetooth set-up channel writes only over an encrypted link (LE Secure Connections, "just works"); every operation but `hello` needs the set-up code or a login, changing anything needs an administrator, wrong passwords lock the channel for 30 seconds (doubling to five minutes) and one phone connects at a time. "Just works" stops a passive listener, **not** someone present while the phone pairs.
 * Security-relevant actions are written to an audit log with credentials scrubbed.
 * Android sends a password only over HTTPS or over HTTP to a private-LAN IPv4 literal; a host *name*
   that merely starts like a private address is refused.
@@ -39,7 +41,7 @@ broker's port only to the field network and the server's and Studio's ports only
 
 ## Not done yet
 
-TLS on every hop, a secret store, broker TLS and per-node certificates, an audited ACL, a signed
+The Bluetooth channel has never run on a board or against a phone. TLS on every hop, a secret store, broker TLS and per-node certificates, an audited ACL, a signed
 Android release channel, backups with retention rules, and any penetration test. Do not expose
 A.R.M.O.R. beyond the loopback interface or a trusted test LAN until the end-to-end cookie test,
 a proxy and TLS are decided.

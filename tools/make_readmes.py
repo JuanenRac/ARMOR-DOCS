@@ -19,7 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from readme_data.legacy import REPOS as LEGACY  # noqa: E402
-from readme_data.meta_new import META as META_NEW  # noqa: E402
+from readme_data.meta_new import FIXES, META as META_NEW  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -32,7 +32,7 @@ LANGUAGES = [
 ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI",
          "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-SIMULATOR", "ARMOR-DOCS"]
 SECTION_ICONS = ["🔒", "🌐", "⚙️"]
-PATCHES = {"ARMOR-SOLAR": [("83 checks", "100 checks"), ("83 comprobaciones", "100 comprobaciones")]}
+PATCHES: dict = {}
 
 _modules = {code: importlib.import_module(f"readme_data.{code}") for code, *_ in LANGUAGES}
 
@@ -50,7 +50,9 @@ def meta(name: str) -> dict:
     code, _ = split_build(legacy["en"]["build"])
     for old, new in PATCHES.get(name, []):
         code = code.replace(old, new)
-    return {"emoji": legacy["emoji"], "badges": legacy["badges"], "diagram": "", "build": code, "structure": legacy["en"]["structure"]}
+    result = {"emoji": legacy["emoji"], "badges": legacy["badges"], "diagram": "", "build": code, "structure": legacy["en"]["structure"]}
+    result.update({k: v for k, v in FIXES.get(name, {}).items() if k in ("build", "structure", "badges")})
+    return result
 
 
 def texts(name: str, language: str) -> dict:
@@ -80,6 +82,8 @@ def render(name: str, language: str) -> str:
     bar = " |\n  ".join(f"{flag} <b>{title}</b>" if code == language else f'<a href="{file}">{flag} {title}</a>' for code, file, flag, title in LANGUAGES)
     bullets = "\n".join(f"* {item}" for item in text["bullets"])
     structure = text.get("structure_text") if language == "es" and "structure_text" in text else m["structure"]
+    if language == "es" and "structure_es" in FIXES.get(name, {}):
+        structure = FIXES[name]["structure_es"]
     parts = [f'''<p align="center">
   <img src="images/ARMOR_BANNER.svg" alt="{name} banner" width="100%">
 </p>

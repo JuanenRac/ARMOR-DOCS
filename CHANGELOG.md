@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.4] - The documentation of the whole family checked against the code
+
+- **The counts are the real ones:** ARMOR-SERVER 168 tests, ARMOR-STUDIO 203, ARMOR-COMMON 21 (and 177 vectors), ARMOR-SOLAR 765 host checks, ARMOR-ELECTRICAL 135,990 (254 apart from the switching rules), ARMOR-RADAR 859. The Italian README of ARMOR-SERVER said 159, and the ARMOR-SOLAR build block said 600 and patched "83 checks" into "100": both were wrong and the patch is gone.
+- **The structure blocks match the trees:** ARMOR-SOLAR, ARMOR-RADAR, ARMOR-ELECTRICAL, ARMOR-ANDROID-CONTROL, ARMOR-DEVOPS, ARMOR-SIMULATOR, ARMOR-SERVER, ARMOR-STUDIO and ARMOR-COMMON list the files and folders they have now (the Bluetooth files, the electrical node, the Electrical Designer, the solar and electrical schemas). The Spanish structure block of ARMOR-SOLAR was in English. A `FIXES` table in `readme_data/meta_new.py` corrects the first-generation blocks, in English and in Spanish.
+- **Bluetooth for the three kinds of node:** the matrix, the catalogue and the READMEs of ARMOR-SOLAR and ARMOR-ELECTRICAL (seven languages) say that a phone can set them up like the radar node.
+- **The core documents know the whole family:** the architecture (solar and electrical nodes, the Bluetooth set-up boundary), the interfaces, the security baseline (read-only equipment, the Bluetooth channel), the contracts guide (the electrical message) and the server's integration notes (the solar and electrical topics and routes).
+- **The server's broker ACL:** the documents say what ARMOR-DEVOPS now installs: `armor-server` reads `armor/electrical/#` too.
+
 ## [0.4.3] - Inverter dialects and the model catalogue in the matrix
 
 - The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node reads three inverter dialects and the newer Pylontech console layout, and that the catalogue lists more inverter families and battery models; the check counts are 684.
