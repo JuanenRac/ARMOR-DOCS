@@ -73,6 +73,7 @@ configurable silence.
 | Sensing and field firmware | ARMOR-RADAR |
 | Solar gateway nodes (inverters, batteries) | ARMOR-SOLAR |
 | Electrical nodes (meters) and the rules for switching | ARMOR-ELECTRICAL |
+| The local network: devices, internet, changes | ARMOR-NETWORK |
 | State, cameras, evidence, audit | ARMOR-SERVER |
 | Visual and voice decisions | ARMOR-SERVER-AI, ARMOR-VOICE-AI |
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |

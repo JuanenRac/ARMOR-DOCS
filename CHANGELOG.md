@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.7] - ARMOR-NETWORK joins the family
+
+- The new project **ARMOR-NETWORK** (the local network: devices, the internet and what changes) in the catalogue, the architecture, the interfaces and the capability matrix, in its README in the seven languages and in the brand (an icon, a banner and a place in the map of the family); the commands `armor_project_tool.py` runs for it and `tools/check_all.sh`, which runs its tests. The vector count is 330 now.
+
 ## [0.4.6] - The commands to a switch in the documentation and in the checks
 
 - The READMEs of ARMOR-COMMON (266 conformance vectors and 36 tests now, the new topics `command` and `result`), ARMOR-ELECTRICAL (the commands to a switch, tested and not activated) and ARMOR-DEVOPS (the ACL step that makes a switch reachable) in the seven languages; the capability matrix has a row for electrical switching, marked local and not activated, and the interfaces guide the new vector count.

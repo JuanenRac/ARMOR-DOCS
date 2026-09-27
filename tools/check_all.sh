@@ -45,12 +45,12 @@ else skip ARMOR-SERVER "npm is not installed"; skip ARMOR-STUDIO "npm is not ins
 if [[ -n "$PYTHON" ]]; then
   # the contracts, and the firmware the three node projects share: no copy may have drifted from ARMOR-COMMON/firmware_base
   run ARMOR-COMMON bash -c "PYTHONPATH=src \"$PYTHON\" -m unittest discover -s tests && \"$PYTHON\" tools/sync_firmware_base.py check"
-  for repo in ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI; do
+  for repo in ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI ARMOR-NETWORK; do
     run "$repo" env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
   done
   run ARMOR-DOCS bash -c "\"$PYTHON\" tools/make_brand.py --check && \"$PYTHON\" tools/make_readmes.py --check"
 else
-  for repo in ARMOR-COMMON ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI ARMOR-DOCS; do skip "$repo" "python is not installed"; done
+  for repo in ARMOR-COMMON ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI ARMOR-NETWORK ARMOR-DOCS; do skip "$repo" "python is not installed"; done
 fi
 
 if have cmake && (have g++ || have c++); then

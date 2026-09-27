@@ -31,11 +31,27 @@ RELATED = {
     "ARMOR-VOICE-AI": "Offline voice intents with a confirmation that cannot be forged",
     "ARMOR-HARDWARE": "Enclosures, electronics and the bench acceptance matrix",
     "ARMOR-DEVOPS": "Deployment, the CM5 test bench, backup and TLS",
+    "ARMOR-NETWORK": "The local network: its devices, the internet and what changes",
     "ARMOR-SIMULATOR": "Offline telemetry simulator with repeatable faults",
     "ARMOR-DOCS": "Architecture, security baseline and the capability matrix",
 }
 
 TEXT = {
+    "ARMOR-NETWORK": {
+        "tagline": "Watches the local network: the devices on it, whether the internet is there, what changes and what is new (a Python program with no dependencies, read-only; it runs on a machine of the network and reports to ARMOR-SERVER)",
+        "honest": "**Maturity: scaffolding.** The scanner, the inventory that tells what changed, the internet check and the message are tested on a computer against a scripted network (53 tests; every message is accepted by ARMOR-COMMON's contract), and the program has been run once on a real network, which had a router and a phone on it. It has not watched a whole house for days, it only asks the router and never configures it, and what a device is (its kind, its system, its maker) is a guess. It does not capture packets: it cannot see who talks to whom, and traffic per device and intrusion detection in the strict sense need the router's counters or a mirror port, which is a later step.",
+        "bullets": [
+            "**What is on the network:** the neighbour table of the machine, a poke of every address so that it fills, an echo to each device found (latency and TTL) and what devices announce about themselves (mDNS, UPnP, NetBIOS, reverse DNS). For each device: address, MAC, maker (from the IEEE register of 40,000 blocks), name, kind, system, open ports with what each says, and when it was first and last seen.",
+            "**Ports:** a TCP connection to 17 (or 44) ports of each device, twelve at a time, reading at most a few hundred bytes of what answers; never a login, never an exploit. A new device is looked at at once, the others every quarter of an hour.",
+            "**What changes:** a device that appears (the first scan only learns), goes quiet or comes back, changes its address, a port that opens or closes, and two machines answering for one address (the router's above all). Every event has an id, so it is told once.",
+            "**The internet:** every few seconds an echo to the router, a TCP connection, two DNS questions to chosen resolvers and a web page. An outage takes three rounds to be called one and two to be over, is dated from its first failed round and counted to the first good one, and says whose fault it is: the provider's (the router answers and nothing beyond it does) or this side's (the router does not answer either). Latency, loss and the outages of the last 24 hours.",
+            "**It only looks at your own network:** it refuses any address that is not private (10/8, 172.16/12, 192.168/16) and any range larger than a /22; a skip list keeps it away from what is fragile; nothing is sent to a device that is not a question.",
+            "**The message** `armor/network/<node>/state`: the interface, the internet, every device and the latest events; it is in the shared contract (330 vectors) and carries findings, never commands. `python -m armor_network scan` prints it as a table, `watch` tells ARMOR-SERVER, `demo` plays a made-up house (a new device joins, a camera opens Telnet, the internet falls and comes back, someone answers for the router) without touching any network.",
+            "**Where it shows:** the Network menu of ARMOR-STUDIO (the devices, the internet with its outages and latency, the traffic and the events; an administrator names devices and marks the known ones, which quiets the alarm of a new device), the Network Designer (the drawing of the house's network, compared with what was found, and able to draw it) and the Network screen of the Android app. ARMOR-SERVER raises the alarms.",
+            "**Not yet:** the router's own counters (traffic per device), packet capture, controlling anything (blocking a device, closing a port, changing the router) and weeks on a real network.",
+        ],
+        "note": "See the [design](docs/DESIGN.md), the [safety notes](docs/SAFETY.md), the [usage](docs/USAGE.md) and the [messages](docs/MESSAGES.md).",
+    },
     "ARMOR-SIMULATOR": {
         "bullets": [
             "**Scenarios:** `patrol`, `crossing`, `two-intruders` and `empty`, on a three-sensor corner geometry, plus a day/night light cycle or a fixed night.",
@@ -164,12 +180,12 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Message contracts, validation and the shared project launcher",
-        "honest": "The schemas, the Python validator, the 266 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (36 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
+        "honest": "The schemas, the Python validator, the 330 shared conformance vectors, the generated TypeScript and Kotlin types and the shared project launcher are real and tested (36 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL, and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
         "intro": "**ARMOR-COMMON** owns what every A.R.M.O.R. message means. Radar nodes, solar gateway nodes and the simulator produce these messages; the server, the visual AI and the voice service consume them. If two projects disagree about a field, this repository decides.",
         "bullets": [
             "**One source of truth:** JSON Schemas in `src/armor_common/schemas/` for telemetry, health, command, node information and the two solar messages (inverter, battery with cells and capacities). Unknown fields are rejected everywhere.",
             "**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.",
-            "**Conformance vectors:** 266 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
+            "**Conformance vectors:** 330 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of ARMOR-SOLAR), so drift fails a build.",
             "**Generated clients:** TypeScript and Kotlin types come from the schemas (`tools/generate_types.py --check` keeps them current).",
             "**HTTP contract:** `openapi/armor-server-0.2.0.yaml` describes every server route, its access rule and its schema.",
             "**Shared launcher:** `tools/armor_project_tool.py` gives every repository of the family the same `build`, `build-test` and `run` workflow.",
