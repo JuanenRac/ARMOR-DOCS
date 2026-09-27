@@ -36,6 +36,7 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-ANDROID-CONTROL": ("MOBILE OPERATOR CLIENT", ["KOTLIN", "COMPOSE", "MJPEG", "PTZ"]),
     "ARMOR-HARDWARE": ("ENCLOSURES & ELECTRONICS", ["OPENSCAD", "KICAD", "ASA/PETG", "24GHZ"]),
     "ARMOR-DEVOPS": ("DEPLOYMENT & OPERATIONS", ["DOCKER", "SYSTEMD", "ARM64", "BASH"]),
+    "ARMOR-UPDATER": ("REPOSITORY DISCOVERY & UPDATE", ["GITHUB-API", "GIT", "PYTHON", "QT-QUICK"]),
     "ARMOR-DOCS": ("TECHNICAL DOCUMENTATION", ["MARKDOWN", "MERMAID", "ARCHITECTURE"]),
     "ARMOR-SIMULATOR": ("OFFLINE TELEMETRY SIMULATOR", ["PYTHON", "MQTT", "RTSP", "TESTING"]),
 }
@@ -79,6 +80,8 @@ def glyph(name: str) -> str:
     <path d="M-24,22 h48" stroke="{AMBER}" stroke-width="3"/><circle cx="-6" cy="10" r="3" fill="{AMBER}" stroke="none"/><circle cx="8" cy="-2" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="4" cy="30" r="3.4" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-COMMON": f"""<path d="M-14,-42 q-14,0 -14,14 v10 q0,10 -10,18 q10,8 10,18 v10 q0,14 14,14"/><path d="M14,-42 q14,0 14,14 v10 q0,10 10,18 q-10,8 -10,18 v10 q0,14 -14,14"/>
     <circle r="6" fill="{AMBER}" stroke="none"/><path d="M-10,0 h-2 M12,0 h-2" stroke="{AMBER}" stroke-width="3"/>""",
+        "ARMOR-UPDATER": f"""<rect x="-38" y="-40" width="76" height="56" rx="6"/><path d="M0,-14 v34 M-14,8 l14,14 l14,-14" stroke="{AMBER}" stroke-width="3.4"/>
+    <path d="M-38,-40 a38,20 0 0 1 76,0" opacity=".7"/><circle cx="-24" cy="-40" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="-14" cy="-40" r="2.4" fill="{AMBER}" stroke="none"/>""",
     }
     return g[name]
 
@@ -136,7 +139,7 @@ POSITIONS = {
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
     "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25),
-    "ARMOR-DEVOPS": (4, 0.75), "ARMOR-DOCS": (4, 2.25),
+    "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
 }
 ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
           ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]

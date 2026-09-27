@@ -81,6 +81,7 @@ Las auditorías de la familia (en español) están en la raíz de este repositor
 * **[ARMOR-HARDWARE](../ARMOR-HARDWARE)** - Cajas, electrónica y la matriz de aceptación en banco
 * **[ARMOR-DEVOPS](../ARMOR-DEVOPS)** - Despliegue, el banco de pruebas de la CM5, copias de seguridad y TLS
 * **[ARMOR-SIMULATOR](../ARMOR-SIMULATOR)** - Simulador de telemetría sin conexión con fallos repetibles
+* **[ARMOR-UPDATER](../ARMOR-UPDATER)** - Detecta, instala y actualiza los propios repositorios del ecosistema
 * **ARMOR-DOCS** (este repositorio) - Arquitectura, base de seguridad y la matriz de capacidades
 
 ## 📚 Documentación y comunidad

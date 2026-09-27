@@ -72,6 +72,28 @@ ARMOR-STUDIO/
 └── images/           brand assets
 ```""",
     },
+    "ARMOR-UPDATER": {
+        "emoji": "🛠️",
+        "badges": [("Language", "Python%203.10%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Tests", "103", "00E5FF"), ("Maturity", "scaffolding", "ff9800")],
+        "diagram": "",
+        "build": """```bash
+pip install -e ".[dev]"                                # or ".[dev,gui]" for the optional Qt Quick desktop shell
+python -m pytest tests -q                              # 103 tests
+armor-updater status                                    # local + GitHub state of every repository (needs GITHUB_TOKEN)
+armor-updater install ARMOR-NETWORK                     # clone and build one repository that is not installed yet
+armor-updater update ARMOR-NETWORK                      # atomic-by-verification update
+```
+
+See `docs/CLI_REFERENCE.md`.""",
+        "structure": """```text
+ARMOR-UPDATER/
+├── src/armor_updater/  project_manifest, registry, detect (local), github_client (remote, GITHUB_TOKEN required), install (atomic staging-clone
+│                       update), evidence, main (CLI), settings, version_parse, i18n, gui/qt_gui/qml (optional Qt Quick shell)
+├── tools/              armor_ci_validate.py, _armor_readme_parity.py, armor_project_tool.py (vendored from ARMOR-COMMON), bump_version.py
+├── tests/              9 test modules
+└── docs/               CLI_REFERENCE.md, QML_DESKTOP_GUI.md
+```""",
+    },
     "ARMOR-NETWORK": {
         "emoji": "🛰️",
         "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Tests", "53", "00E5FF"), ("Maturity", "scaffolding", "ff9800")],

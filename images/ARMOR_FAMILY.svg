@@ -37,6 +37,7 @@
   <path d="M230.0 388.5 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
   <path d="M230.0 471.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
   <path d="M230.0 553.5 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
+  <path d="M1174.0 306.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
   <g transform="translate(40 110)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-RADAR</text></g>
   <g transform="translate(40 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-SOLAR</text></g>
   <g transform="translate(40 275.0)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-ELECTRICAL</text></g>
@@ -50,6 +51,7 @@
   <g transform="translate(748 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-STUDIO</text></g>
   <g transform="translate(748 357.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#FFF">ARMOR-ANDROID-CONTROL</text></g>
   <g transform="translate(984 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-DEVOPS</text></g>
+  <g transform="translate(984 275.0)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-UPDATER</text></g>
   <g transform="translate(984 357.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-DOCS</text></g>
   <text x="600" y="614" text-anchor="middle" font-family="monospace" font-size="12" fill="#5DF0C4" opacity=".7">dashed: every message follows the contract of ARMOR-COMMON  ·  solid: who feeds whom</text>
   </svg>
