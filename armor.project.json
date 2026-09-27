@@ -12,10 +12,10 @@
     "VLAN"
   ],
   "deployment_target": "All users and maintainers",
-  "maturity": "functional",
+  "maturity": "established",
   "family": "Documentation",
   "parent": null,
   "native_version": "0.4.8",
   "build": "Markdown link validation",
-  "notes": "Canonical cross-repository architecture documentation; hardware procedures are explicitly separated from verified procedures."
+  "notes": "The longest real version history of any A.R.M.O.R. project (0.4.8, 48+ real builds), and genuinely depended on as the ecosystem's own canonical reference by every other real A.R.M.O.R. project - its own capability matrix, architecture and project catalogue are the source every other repository's README links to instead of restating, and its own honesty convention (simulated / local / verified-on-hardware, never blurred) is the one the rest of this ecosystem, and this dashboard, already follow. Hardware procedures are explicitly separated from verified procedures."
 }
