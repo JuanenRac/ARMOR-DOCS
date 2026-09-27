@@ -220,7 +220,7 @@ TEXT = {
             {"title": "API", "bullets": [
                 "公開：`GET /healthz`。オペレーター向け：状態、情報、カメラ、メディア、履歴、規則、デバイス、アラーム、自動化、サイト設計、履歴付きの `GET /api/v1/solar`。",
                 "フィールドノードとゲートウェイ向け：取り込みトークンを使う `POST /api/v1/telemetry`、`/health`、`/solar`、`/electrical/readings` と、MQTT トピック `armor/node/#`、`armor/solar/#`、`armor/electrical/#`。イベントは WebSocket `/api/v1/events` でコンソールに届きます。",
-                "すべてのルート、そのアクセス規則、スキーマは [ARMOR-COMMON](../ARMOR-COMMON) の OpenAPI ファイルにあり、漏れがないことをテストが確認します。",
+                "すべてのルート、そのアクセス規則、スキーマは [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) の OpenAPI ファイルにあり、漏れがないことをテストが確認します。",
             ]},
             {"title": "設定", "bullets": [
                 "`.env.example` を `.env`（Git は無視）にコピーするか、`run.bat` / `run.sh` に初回実行でランダムなシークレットを生成させます。",
@@ -228,11 +228,11 @@ TEXT = {
                 "よく使う：`ARMOR_HOST` / `ARMOR_PORT`、`ARMOR_DATA_DIR`、`ARMOR_FFMPEG_PATH`（ライブ映像と撮影）、`ARMOR_MQTT_URL`、`ARMOR_STUDIO_ORIGIN`、`ARMOR_NODE_STALE_AFTER_S`、`ARMOR_CAMERA_CHECK_S`、`ARMOR_ALERT_DWELL_MS`、`ARMOR_ALERT_WEBHOOK_URL`、`ARMOR_COOKIE_SECURE`（TLS の背後では `1`）。",
             ]},
         ],
-        "note": "CM5 テストベンチ（他のすべてのプロジェクトから隔離され、専用のユーザーとポートを持つ）へのインストールは [ARMOR-DEVOPS](../ARMOR-DEVOPS) を参照。",
+        "note": "CM5 テストベンチ（他のすべてのプロジェクトから隔離され、専用のユーザーとポートを持つ）へのインストールは [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS) を参照。",
     },
     "ARMOR-STUDIO": {
         "tagline": "運用と設計のコンソール：カメラ、レーダー、アラーム、太陽光発電、証拠、サイトの平面図",
-        "honest": "Studio は [ARMOR-SERVER](../ARMOR-SERVER) と通信し、203 件の単体テスト（設定の読み取り、カメラの統合、太陽光グラフの計算、7 言語すべてでの各メニューの描画、静的ホスト）で網羅されています。**実証されていないもの：** すべての実カメラでのライブ映像と PTZ、実際のインバーターやバッテリーでの太陽光メニュー、そして正式なアクセシビリティやユーザビリティの評価。サーバーに接続できない間、Studio はデモデータを表示し、上部バーでそう伝えます。",
+        "honest": "Studio は [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) と通信し、203 件の単体テスト（設定の読み取り、カメラの統合、太陽光グラフの計算、7 言語すべてでの各メニューの描画、静的ホスト）で網羅されています。**実証されていないもの：** すべての実カメラでのライブ映像と PTZ、実際のインバーターやバッテリーでの太陽光メニュー、そして正式なアクセシビリティやユーザビリティの評価。サーバーに接続できない間、Studio はデモデータを表示し、上部バーでそう伝えます。",
         "intro": "**ARMOR-STUDIO** はオペレーターのコンソールです。カメラのパスワード、RTSP アドレス、トークンを決して持ちません。ユーザー名とパスワードでサーバーにサインインし、8 時間の **HttpOnly** セッションを受け取り、権限の要る操作はすべてそのセッションを通ります。",
         "bullets": [
             "**カメラモニター：** 枠に収まる 1、2、4、6、8、9、12、16 タイル（16:9、マトリクス全体が見え、切り取りなし）、範囲を制限した PTZ パッド付きの最大化表示、スナップショットと MP4 録画。**録画ライブラリ**で証拠を絞り込み、プレビュー、再生、保護、削除できます。",
@@ -254,7 +254,7 @@ TEXT = {
                 "ライブ映像は、サーバーがオペレーターに発行するストリームアドレスを通じてのみ表示されます。",
             ]},
         ],
-        "note": "`tools/serve.mjs` は `ARMOR_STUDIO_HOST`（既定 `127.0.0.1`）、`ARMOR_STUDIO_PORT`（`5178`）、`ARMOR_STUDIO_DIST`、`ARMOR_SERVER_ORIGIN` を読みます。CM5 テストベンチにスタック全体をインストールするには [ARMOR-DEVOPS](../ARMOR-DEVOPS) を参照。",
+        "note": "`tools/serve.mjs` は `ARMOR_STUDIO_HOST`（既定 `127.0.0.1`）、`ARMOR_STUDIO_PORT`（`5178`）、`ARMOR_STUDIO_DIST`、`ARMOR_SERVER_ORIGIN` を読みます。CM5 テストベンチにスタック全体をインストールするには [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS) を参照。",
     },
     "ARMOR-COMMON": {
         "tagline": "メッセージ契約、検証、共有のプロジェクトランチャー",

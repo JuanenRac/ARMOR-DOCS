@@ -220,7 +220,7 @@ TEXT = {
             {"title": "API", "bullets": [
                 "公开：`GET /healthz`。对操作员：状态、信息、摄像头、媒体、历史、规则、设备、报警、自动化、场地设计，以及带历史的 `GET /api/v1/solar`。",
                 "对现场节点和网关：使用摄取令牌的 `POST /api/v1/telemetry`、`/health`、`/solar` 和 `/electrical/readings`，以及 MQTT 主题 `armor/node/#`、`armor/solar/#` 和 `armor/electrical/#`。事件通过 WebSocket `/api/v1/events` 到达控制台。",
-                "每条路由、其访问规则和模式都在 [ARMOR-COMMON](../ARMOR-COMMON) 的 OpenAPI 文件中，并有测试确保没有遗漏的路由。",
+                "每条路由、其访问规则和模式都在 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的 OpenAPI 文件中，并有测试确保没有遗漏的路由。",
             ]},
             {"title": "配置", "bullets": [
                 "把 `.env.example` 复制为 `.env`（Git 会忽略它），或让 `run.bat` / `run.sh` 在首次运行时生成随机机密。",
@@ -228,11 +228,11 @@ TEXT = {
                 "常用：`ARMOR_HOST` / `ARMOR_PORT`、`ARMOR_DATA_DIR`、`ARMOR_FFMPEG_PATH`（实时视频和抓拍）、`ARMOR_MQTT_URL`、`ARMOR_STUDIO_ORIGIN`、`ARMOR_NODE_STALE_AFTER_S`、`ARMOR_CAMERA_CHECK_S`、`ARMOR_ALERT_DWELL_MS`、`ARMOR_ALERT_WEBHOOK_URL` 和 `ARMOR_COOKIE_SECURE`（在 TLS 之后设为 `1`）。",
             ]},
         ],
-        "note": "要安装到 CM5 测试台（与其他项目隔离，使用独立用户和端口），参见 [ARMOR-DEVOPS](../ARMOR-DEVOPS)。",
+        "note": "要安装到 CM5 测试台（与其他项目隔离，使用独立用户和端口），参见 [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)。",
     },
     "ARMOR-STUDIO": {
         "tagline": "运营与设计控制台：摄像头、雷达、报警、太阳能、证据和场地平面图",
-        "honest": "Studio 与 [ARMOR-SERVER](../ARMOR-SERVER) 通信，并有 203 个单元测试覆盖（设置解析、摄像头合并、太阳能图表的算术、每个菜单在七种语言下的渲染、静态主机）。**尚未证实的：** 每种真实摄像头的实时视频和 PTZ、太阳能菜单与真实逆变器或电池的配合，以及正式的无障碍或可用性评审。当服务器无法访问时，Studio 显示演示数据，并在顶部栏中说明。",
+        "honest": "Studio 与 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 通信，并有 203 个单元测试覆盖（设置解析、摄像头合并、太阳能图表的算术、每个菜单在七种语言下的渲染、静态主机）。**尚未证实的：** 每种真实摄像头的实时视频和 PTZ、太阳能菜单与真实逆变器或电池的配合，以及正式的无障碍或可用性评审。当服务器无法访问时，Studio 显示演示数据，并在顶部栏中说明。",
         "intro": "**ARMOR-STUDIO** 是操作员的控制台。它从不持有摄像头密码、RTSP 地址或令牌：它用用户名和密码登录服务器，获得 8 小时的 **HttpOnly** 会话，一切特权操作都经由该会话。",
         "bullets": [
             "**摄像头监控：** 1、2、4、6、8、9、12 或 16 个画面块，适应其画框（16:9，整个矩阵可见，不裁切），带受限 PTZ 控制盘的最大化视图、快照和 MP4 录像；**录像库**可过滤、预览、播放、保护和删除证据。",
@@ -254,7 +254,7 @@ TEXT = {
                 "实时视频只通过服务器发给操作员的视频流地址显示。",
             ]},
         ],
-        "note": "`tools/serve.mjs` 读取 `ARMOR_STUDIO_HOST`（默认 `127.0.0.1`）、`ARMOR_STUDIO_PORT`（`5178`）、`ARMOR_STUDIO_DIST` 和 `ARMOR_SERVER_ORIGIN`。要把整套系统安装到 CM5 测试台，参见 [ARMOR-DEVOPS](../ARMOR-DEVOPS)。",
+        "note": "`tools/serve.mjs` 读取 `ARMOR_STUDIO_HOST`（默认 `127.0.0.1`）、`ARMOR_STUDIO_PORT`（`5178`）、`ARMOR_STUDIO_DIST` 和 `ARMOR_SERVER_ORIGIN`。要把整套系统安装到 CM5 测试台，参见 [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)。",
     },
     "ARMOR-COMMON": {
         "tagline": "消息契约、验证和共享的项目启动器",

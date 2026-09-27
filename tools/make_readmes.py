@@ -120,12 +120,25 @@ def render(name: str, language: str) -> str:
         parts.append(f"## {SECTION_ICONS[index % len(SECTION_ICONS)]} {section['title']}\n\n" + "\n".join(f"* {item}" for item in section["bullets"]) + "\n")
     parts.append(f"## 📂 {ui['structure']}\n\n{structure}\n")
     parts.append(f"## 🛠️ {ui['dev']}\n\n{m['build']}\n" + (f"\n{text['note']}\n" if text.get("note") else ""))
+    # A relative link like `../ARMOR-COMMON` only ever worked for someone
+    # Browse a local sibling-folder checkout: each A.R.M.O.R. repository is
+    # its own separate GitHub repository, not a folder inside a monorepo, so
+    # `../` resolves to a nonexistent path on github.com (relative to the
+    # FILE's own blob path, not the account) and 404s. Cross-repository
+    # links use the real, absolute GitHub URL instead; a same-repository
+    # link (docs/*.md within ARMOR-DOCS's own README, or another file
+    # already relative in this function) is unaffected and stays relative.
+    GITHUB_OWNER = "JuanenRac"
+    def repo_url(repo: str) -> str:
+        return f"https://github.com/{GITHUB_OWNER}/{repo}"
     related = "\n".join(
-        f"* **[{other}](../{other})** - {_modules[language].RELATED[other]}" if other != name else f"* **{other}** ({ui['here']}) - {_modules[language].RELATED[other]}"
+        f"* **[{other}]({repo_url(other)})** - {_modules[language].RELATED[other]}" if other != name else f"* **{other}** ({ui['here']}) - {_modules[language].RELATED[other]}"
         for other in ORDER)
     parts.append(f"## 🔗 {ui['related']}\n\n{ui['family']}\n\n{related}\n")
+    doc_matrix_link = "docs/CAPABILITY_MATRIX.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/CAPABILITY_MATRIX.md"
+    doc_catalog_link = "docs/PROJECT_CATALOG.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/PROJECT_CATALOG.md"
     parts.append(f"## 📚 {ui['community']}\n\n{ui['docs_intro']}\n\n"
-                 f"* [{ui['doc_matrix']}](../ARMOR-DOCS/docs/CAPABILITY_MATRIX.md)\n* [{ui['doc_catalog']}](../ARMOR-DOCS/docs/PROJECT_CATALOG.md)\n"
+                 f"* [{ui['doc_matrix']}]({doc_matrix_link})\n* [{ui['doc_catalog']}]({doc_catalog_link})\n"
                  f"* [{ui['doc_changelog']}](CHANGELOG.md)\n* [{ui['doc_license']}](LICENSE)\n* {ui['contact']}\n")
     parts.append(f"## 👤 {ui['author']}\n\n**JuanenRac (Electro Hobby 3D)** · electrohobby3d@gmail.com\n\n## 📜 {ui['license']}\n\n{ui['license_text']}\n")
     return "\n".join(parts)
