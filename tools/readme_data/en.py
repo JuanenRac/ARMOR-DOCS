@@ -154,7 +154,7 @@ TEXT = {
             {"title": "API", "bullets": [
                 "Public: `GET /healthz`. For an operator: status, information, cameras, media, history, rules, devices, alarms, automations, the site design, and `GET /api/v1/solar` with its history.",
                 "For the field nodes and the gateways: `POST /api/v1/telemetry`, `/health`, `/solar` and `/electrical/readings` with the ingest token, and the MQTT topics `armor/node/#`, `armor/solar/#` and `armor/electrical/#`. Events reach the consoles by the WebSocket `/api/v1/events`.",
-                "Every route, its access rule and its schema is in the OpenAPI file of [ARMOR-COMMON](../ARMOR-COMMON), and a test checks that no route is missing from it.",
+                "Every route, its access rule and its schema is in the OpenAPI file of [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON), and a test checks that no route is missing from it.",
             ]},
             {"title": "Configuration", "bullets": [
                 "Copy `.env.example` to `.env` (ignored by Git), or let `run.bat` / `run.sh` generate random secrets on the first run.",
@@ -162,11 +162,11 @@ TEXT = {
                 "Common: `ARMOR_HOST` / `ARMOR_PORT`, `ARMOR_DATA_DIR`, `ARMOR_FFMPEG_PATH` (live video and capture), `ARMOR_MQTT_URL`, `ARMOR_STUDIO_ORIGIN`, `ARMOR_NODE_STALE_AFTER_S`, `ARMOR_CAMERA_CHECK_S`, `ARMOR_ALERT_DWELL_MS`, `ARMOR_ALERT_WEBHOOK_URL` and `ARMOR_COOKIE_SECURE` (set it to `1` behind TLS).",
             ]},
         ],
-        "note": "To install on the CM5 test bench (isolated from every other project, own user, own ports) see [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+        "note": "To install on the CM5 test bench (isolated from every other project, own user, own ports) see [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS).",
     },
     "ARMOR-STUDIO": {
         "tagline": "Operations and design console: cameras, radar, alarms, solar energy, evidence and the site plan",
-        "honest": "Studio talks to [ARMOR-SERVER](../ARMOR-SERVER) and is covered by 203 unit tests (settings parsing, camera merging, the arithmetic of the solar charts, every menu rendered in the seven languages, the static host). What has **not** been proven is live video and PTZ against every real camera, the solar menus with a real inverter or battery, and a formal accessibility or usability review. While the server cannot be reached Studio shows demonstration data and says so in the top bar.",
+        "honest": "Studio talks to [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) and is covered by 203 unit tests (settings parsing, camera merging, the arithmetic of the solar charts, every menu rendered in the seven languages, the static host). What has **not** been proven is live video and PTZ against every real camera, the solar menus with a real inverter or battery, and a formal accessibility or usability review. While the server cannot be reached Studio shows demonstration data and says so in the top bar.",
         "intro": "**ARMOR-STUDIO** is the operator's console. It never holds a camera password, an RTSP address or a token: it signs in to the server with a username and password, receives an 8-hour **HttpOnly** session, and everything privileged travels through that session.",
         "bullets": [
             "**Camera monitor:** 1, 2, 4, 6, 8, 9, 12 or 16 tiles that fit their frame (16:9, the whole matrix visible, no cropping), a maximized view with a bounded PTZ pad, snapshot and MP4 record; a **record library** to filter, preview, play, protect and delete evidence.",
@@ -188,7 +188,7 @@ TEXT = {
                 "Live video is shown only through a stream address the server issues to an operator.",
             ]},
         ],
-        "note": "`tools/serve.mjs` reads `ARMOR_STUDIO_HOST` (default `127.0.0.1`), `ARMOR_STUDIO_PORT` (`5178`), `ARMOR_STUDIO_DIST` and `ARMOR_SERVER_ORIGIN`. To install the whole stack on the CM5 test bench see [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+        "note": "`tools/serve.mjs` reads `ARMOR_STUDIO_HOST` (default `127.0.0.1`), `ARMOR_STUDIO_PORT` (`5178`), `ARMOR_STUDIO_DIST` and `ARMOR_SERVER_ORIGIN`. To install the whole stack on the CM5 test bench see [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS).",
     },
     "ARMOR-COMMON": {
         "tagline": "Message contracts, validation and the shared project launcher",

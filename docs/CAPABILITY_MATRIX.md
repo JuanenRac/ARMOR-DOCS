@@ -7,7 +7,7 @@ What each capability is *today*, in three honest levels:
 * **Verified**: proven on the real hardware, with a measurement record.
 
 **Only the rows marked *Verified* have met real hardware (some IP cameras and the CM5 test bench); no radar, field-node board, inverter or battery has been connected.** This page is updated with every change; a row moves to
-*Verified* only with evidence (see [bench acceptance](../../ARMOR-HARDWARE/docs/BENCH_ACCEPTANCE.md)).
+*Verified* only with evidence (see [bench acceptance](https://github.com/JuanenRac/ARMOR-HARDWARE/blob/main/docs/BENCH_ACCEPTANCE.md)).
 
 ## Contracts and server
 
@@ -106,7 +106,7 @@ What each capability is *today*, in three honest levels:
 | Sensor model chosen per port in the node's panel, with the commands each model has | Local | Panel exercised in a real browser against a stand-in node (model, speed, device name, presence and distance, the commands of each model, the error texts in seven languages) and the firmware image builds; the settings' checks are host-tested |
 | Dew point, heater and day/night logic | Local | Host tests |
 | Static-reflector map | Local | Host tests |
-| Firmware on the ESP32-S3-ETH (three UARTs, W5500 Ethernet, Wi-Fi, HTTP panel, MQTT, SNTP, radar statistics, mapped pins, OTA) | Local | **Builds** clean in the ESP-IDF 5.4.2 container into one image per node (about 1.3 MB with the panel), and building it found and fixed real faults. **Never run on a board**: the W5500 pins are the manufacturer's table, the radar pins are unproven until wired, and the first day of [docs/BENCH_BRINGUP.md](../../ARMOR-RADAR/docs/BENCH_BRINGUP.md) is what verifies it |
+| Firmware on the ESP32-S3-ETH (three UARTs, W5500 Ethernet, Wi-Fi, HTTP panel, MQTT, SNTP, radar statistics, mapped pins, OTA) | Local | **Builds** clean in the ESP-IDF 5.4.2 container into one image per node (about 1.3 MB with the panel), and building it found and fixed real faults. **Never run on a board**: the W5500 pins are the manufacturer's table, the radar pins are unproven until wired, and the first day of [docs/BENCH_BRINGUP.md](https://github.com/JuanenRac/ARMOR-RADAR/blob/main/docs/BENCH_BRINGUP.md) is what verifies it |
 | Radar node firmware on an ESP32-S3-WROOM-1 N16R8 with no Ethernet (Wi-Fi only) | Local | The same code base built without the W5500 driver and the bridge (`tools/build_node.sh generic s3-wifi`); its pin table, defaults, the refusal of an Ethernet setting and its layouts are host-tested (62 checks); its set-up asks for the Wi-Fi network to join. **Never run on a board** |
 | Node web panel: set-up code, login, users, network, Wi-Fi, broker, radars, pins, update, log, in seven languages | Local | Exercised in a real browser (headless Edge) against a stand-in node: set-up, login, every page in every language with no untranslated text, saving with the node's field problems, pins, radar commands and phone width. The node side (HTTP server, sessions, storage) host-tests its logic (397 checks) and **builds**; it has never served a page from a board. **Plain HTTP** |
 | Wi-Fi access point bridged to the Ethernet port, one SSID over several nodes on 1, 6 and 11 | Local | The network plan (five layouts, the channel by MAC, the set-up network) is host-tested; the driver code follows ESP-IDF's bridge example and builds. Throughput, roaming and the bridge on a real board are **unmeasured** |

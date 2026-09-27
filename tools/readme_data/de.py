@@ -220,7 +220,7 @@ TEXT = {
             {"title": "API", "bullets": [
                 "Öffentlich: `GET /healthz`. Für einen Operator: Status, Informationen, Kameras, Medien, Verlauf, Regeln, Geräte, Alarme, Automatisierungen, der Standortentwurf und `GET /api/v1/solar` mit Verlauf.",
                 "Für Feldknoten und Gateways: `POST /api/v1/telemetry`, `/health`, `/solar` und `/electrical/readings` mit dem Ingest-Token sowie die MQTT-Topics `armor/node/#`, `armor/solar/#` und `armor/electrical/#`. Ereignisse erreichen die Konsolen über den WebSocket `/api/v1/events`.",
-                "Jede Route, ihre Zugriffsregel und ihr Schema stehen in der OpenAPI-Datei von [ARMOR-COMMON](../ARMOR-COMMON), und ein Test prüft, dass keine Route fehlt.",
+                "Jede Route, ihre Zugriffsregel und ihr Schema stehen in der OpenAPI-Datei von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON), und ein Test prüft, dass keine Route fehlt.",
             ]},
             {"title": "Konfiguration", "bullets": [
                 "`.env.example` nach `.env` kopieren (von Git ignoriert) oder `run.bat` / `run.sh` beim ersten Lauf zufällige Geheimnisse erzeugen lassen.",
@@ -228,11 +228,11 @@ TEXT = {
                 "Üblich: `ARMOR_HOST` / `ARMOR_PORT`, `ARMOR_DATA_DIR`, `ARMOR_FFMPEG_PATH` (Live-Video und Aufnahme), `ARMOR_MQTT_URL`, `ARMOR_STUDIO_ORIGIN`, `ARMOR_NODE_STALE_AFTER_S`, `ARMOR_CAMERA_CHECK_S`, `ARMOR_ALERT_DWELL_MS`, `ARMOR_ALERT_WEBHOOK_URL` und `ARMOR_COOKIE_SECURE` (hinter TLS auf `1`).",
             ]},
         ],
-        "note": "Zur Installation auf dem CM5-Prüfstand (isoliert von jedem anderen Projekt, eigener Benutzer, eigene Ports) siehe [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+        "note": "Zur Installation auf dem CM5-Prüfstand (isoliert von jedem anderen Projekt, eigener Benutzer, eigene Ports) siehe [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS).",
     },
     "ARMOR-STUDIO": {
         "tagline": "Betriebs- und Entwurfskonsole: Kameras, Radar, Alarme, Solarenergie, Beweise und Standortplan",
-        "honest": "Studio spricht mit [ARMOR-SERVER](../ARMOR-SERVER) und ist durch 203 Unit-Tests abgedeckt (Einstellungen lesen, Kameras zusammenführen, die Arithmetik der Solar-Diagramme, jedes Menü in den sieben Sprachen dargestellt, der statische Host). **Nicht belegt** sind Live-Video und PTZ mit jeder echten Kamera, die Solarmenüs mit einem echten Wechselrichter oder einer echten Batterie und eine formale Barrierefreiheits- oder Usability-Prüfung. Solange der Server nicht erreichbar ist, zeigt Studio Demodaten und sagt das in der oberen Leiste.",
+        "honest": "Studio spricht mit [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) und ist durch 203 Unit-Tests abgedeckt (Einstellungen lesen, Kameras zusammenführen, die Arithmetik der Solar-Diagramme, jedes Menü in den sieben Sprachen dargestellt, der statische Host). **Nicht belegt** sind Live-Video und PTZ mit jeder echten Kamera, die Solarmenüs mit einem echten Wechselrichter oder einer echten Batterie und eine formale Barrierefreiheits- oder Usability-Prüfung. Solange der Server nicht erreichbar ist, zeigt Studio Demodaten und sagt das in der oberen Leiste.",
         "intro": "**ARMOR-STUDIO** ist die Konsole des Bedieners. Sie hält nie ein Kamerapasswort, eine RTSP-Adresse oder ein Token: sie meldet sich mit Benutzername und Passwort am Server an, erhält eine **HttpOnly**-Sitzung von 8 Stunden, und alles Privilegierte läuft über diese Sitzung.",
         "bullets": [
             "**Kameramonitor:** 1, 2, 4, 6, 8, 9, 12 oder 16 Kacheln, die in ihren Rahmen passen (16:9, die ganze Matrix sichtbar, ohne Beschnitt), eine maximierte Ansicht mit begrenztem PTZ-Pad, Schnappschuss und MP4-Aufnahme; eine **Aufnahmebibliothek** zum Filtern, Vorschauen, Abspielen, Schützen und Löschen von Beweisen.",
@@ -254,7 +254,7 @@ TEXT = {
                 "Live-Video wird nur über eine Stream-Adresse gezeigt, die der Server einem Operator ausstellt.",
             ]},
         ],
-        "note": "`tools/serve.mjs` liest `ARMOR_STUDIO_HOST` (Standard `127.0.0.1`), `ARMOR_STUDIO_PORT` (`5178`), `ARMOR_STUDIO_DIST` und `ARMOR_SERVER_ORIGIN`. Zur Installation des ganzen Stacks auf dem CM5-Prüfstand siehe [ARMOR-DEVOPS](../ARMOR-DEVOPS).",
+        "note": "`tools/serve.mjs` liest `ARMOR_STUDIO_HOST` (Standard `127.0.0.1`), `ARMOR_STUDIO_PORT` (`5178`), `ARMOR_STUDIO_DIST` und `ARMOR_SERVER_ORIGIN`. Zur Installation des ganzen Stacks auf dem CM5-Prüfstand siehe [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS).",
     },
     "ARMOR-COMMON": {
         "tagline": "Nachrichtenverträge, Validierung und der gemeinsame Projektstarter",
