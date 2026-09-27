@@ -29,7 +29,7 @@ LANGUAGES = [
     ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"), ("ja", "README_jpn.md", "🇯🇵", "日本語"),
 ]
 # the order of the repositories in the family list
-ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI",
+ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-NETWORK", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI",
          "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-SIMULATOR", "ARMOR-DOCS"]
 SECTION_ICONS = ["🔒", "🌐", "⚙️"]
 PATCHES: dict = {}

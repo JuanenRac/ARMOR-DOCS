@@ -28,6 +28,7 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
     "ARMOR-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
     "ARMOR-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
+    "ARMOR-NETWORK": ("LOCAL NETWORK MONITORING", ["DEVICES", "INTERNET", "OUTAGES", "READ-ONLY", "PYTHON"]),
     "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
     "ARMOR-VOICE-AI": ("OFFLINE VOICE INTENT BOUNDARY", ["WHISPER", "PIPER", "WYOMING", "PYTHON"]),
     "ARMOR-SERVER": ("CENTRAL SECURITY COORDINATOR", ["NODE", "TYPESCRIPT", "MQTT", "WEBSOCKET", "FFMPEG"]),
@@ -71,6 +72,9 @@ def glyph(name: str) -> str:
     <path d="M0,-44 v14 M0,44 v-14 M-44,0 h14 M44,0 h-14 M-31,-31 l10,10 M31,31 l-10,-10 M31,-31 l-10,10 M-31,31 l10,-10" stroke-width="7"/>""",
         "ARMOR-DOCS": f"""<path d="M-42,-30 Q-20,-38 0,-26 Q20,-38 42,-30 V30 Q20,22 0,34 Q-20,22 -42,30 Z"/><path d="M0,-26 V34" stroke-width="2.4" opacity=".7"/>
     <path d="M-32,-14 q12,-4 22,4 M-32,0 q12,-4 22,4 M10,-10 q10,-8 22,-4 M10,4 q10,-8 22,-4" stroke="{AMBER}" stroke-width="2.4"/>""",
+        "ARMOR-NETWORK": f"""<circle cy="-30" r="10"/><circle cx="-32" cy="26" r="8"/><circle cx="32" cy="26" r="8"/><circle cy="34" r="6" opacity=".7"/>
+    <path d="M-6,-21 L-27,19 M6,-21 L27,19 M0,-20 V28" stroke-width="2.4" opacity=".8"/><path d="M-22,-46 a30,30 0 0 1 44,0 M-14,-40 a20,20 0 0 1 28,0" stroke="{AMBER}" stroke-width="3"/>
+    <circle cx="-32" cy="26" r="3" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-SIMULATOR": f"""<path d="M-14,-44 h28 M-8,-44 v26 L-38,36 Q-40,44 -32,44 H32 Q40,44 38,36 L8,-18 v-26"/>
     <path d="M-24,22 h48" stroke="{AMBER}" stroke-width="3"/><circle cx="-6" cy="10" r="3" fill="{AMBER}" stroke="none"/><circle cx="8" cy="-2" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="4" cy="30" r="3.4" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-COMMON": f"""<path d="M-14,-42 q-14,0 -14,14 v10 q0,10 -10,18 q10,8 10,18 v10 q0,14 14,14"/><path d="M14,-42 q14,0 14,14 v10 q0,10 10,18 q-10,8 -10,18 v10 q0,14 -14,14"/>
@@ -128,19 +132,19 @@ def icon(name: str) -> str:
 
 # name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom
 POSITIONS = {
-    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-SIMULATOR": (0, 2.25), "ARMOR-HARDWARE": (0, 3),
+    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-NETWORK": (0, 2.25), "ARMOR-SIMULATOR": (0, 3), "ARMOR-HARDWARE": (0, 3.75),
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
     "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-DOCS": (4, 2.25),
 }
-ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
+ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
           ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 
 
 def family_map() -> str:
-    width, height, box_w, box_h = 1200, 560, 190, 62
+    width, height, box_w, box_h = 1200, 640, 190, 62
     def centre(name: str) -> tuple[float, float]:
         column, row = POSITIONS[name]
         return 40 + column * 236 + box_w / 2, 110 + row * 110 + box_h / 2

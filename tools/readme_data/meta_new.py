@@ -72,6 +72,30 @@ ARMOR-STUDIO/
 └── images/           brand assets
 ```""",
     },
+    "ARMOR-NETWORK": {
+        "emoji": "🛰️",
+        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Tests", "53", "00E5FF"), ("Maturity", "scaffolding", "ff9800")],
+        "diagram": "",
+        "build": """```bash
+python -m unittest discover -s tests                  # 53 tests: the parsers with real samples, the guard on what may be probed, the inventory, the internet, the whole agent against a scripted house
+python -m armor_network scan                          # look at the network once and print it (only the private network of this machine)
+python -m armor_network watch --server-url http://127.0.0.1:8080 --ingest-token ...    # keep watching and tell ARMOR-SERVER
+python -m armor_network demo --count 3                # a made-up house: nothing on any network is touched
+python tools/fetch_oui.py                             # refresh the table of makers from the IEEE register (run by a person, now and then)
+```
+
+See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).""",
+        "structure": """```text
+ARMOR-NETWORK/
+├── src/armor_network/  ipnet (what may be probed), oui (makers), neighbors + parsers + dnswire (what the system and the devices say), services (ports and guesses), inventory (devices and their events),
+│                       internet (the outage state machine), agent (what to look at and how often), system_io (the real network), sim_io (a scripted one), publisher, cli
+│   └── data/           oui.tsv.gz, the IEEE register of makers
+├── tools/              fetch_oui.py
+├── tests/              test_network.py
+├── docs/               DESIGN, SAFETY, USAGE, MESSAGES
+└── images/             brand assets
+```""",
+    },
     "ARMOR-ELECTRICAL": {
         "emoji": "⚡",
         "badges": [("Language", "C%2B%2B17", "00599c"), ("Meters", "PZEM--004T%20%2F%20017", "ffb020"), ("Checks", "135%2C990", "2ea44f"), ("Maturity", "scaffolding", "ff9800")],
@@ -99,7 +123,7 @@ ARMOR-ELECTRICAL/
     },
     "ARMOR-COMMON": {
         "emoji": "🧾",
-        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "266", "00E5FF"), ("Maturity", "functional", "00E5FF")],
+        "badges": [("Language", "Python%203.11%2B", "3776ab"), ("Dependencies", "none", "2ea44f"), ("Vectors", "330", "00E5FF"), ("Maturity", "functional", "00E5FF")],
         "diagram": """```mermaid
 flowchart LR
     S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]
@@ -112,7 +136,7 @@ flowchart LR
 ```""",
         "build": """```powershell
 python -m pip install -e .
-python -m unittest discover -s tests      # 36 tests, 266 conformance vectors
+python -m unittest discover -s tests      # 39 tests, 330 conformance vectors
 python tools/generate_types.py --check    # generated types are current
 python tools/make_conformance.py          # regenerate the vectors after editing the case list
 python tools/sync_firmware_base.py check  # the firmware the node projects share has not drifted (see docs/FIRMWARE_BASE.md)

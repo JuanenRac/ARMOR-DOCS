@@ -30,11 +30,27 @@ RELATED = {
     "ARMOR-VOICE-AI": "Offline-Sprachabsichten mit einer nicht fälschbaren Bestätigung",
     "ARMOR-HARDWARE": "Gehäuse, Elektronik und die Abnahmematrix am Prüfstand",
     "ARMOR-DEVOPS": "Bereitstellung, CM5-Prüfstand, Backup und TLS",
+    "ARMOR-NETWORK": "Das lokale Netzwerk: seine Geräte, das Internet und was sich ändert",
     "ARMOR-SIMULATOR": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
     "ARMOR-DOCS": "Architektur, Sicherheitsgrundlage und die Fähigkeitsmatrix",
 }
 
 TEXT = {
+    "ARMOR-NETWORK": {
+        "tagline": "Überwacht das lokale Netzwerk: welche Geräte es gibt, ob das Internet da ist, was sich ändert und was neu ist (ein Python-Programm ohne Abhängigkeiten, nur lesend; es läuft auf einem Rechner des Netzwerks und meldet an ARMOR-SERVER)",
+        "honest": "**Reife: Scaffolding.** Der Scanner, das Inventar, das sagt, was sich geändert hat, die Internetprüfung und die Nachricht werden auf einem Rechner gegen ein gestelltes Netzwerk getestet (53 Tests; ARMOR-COMMON akzeptiert jede Nachricht), und das Programm lief einmal in einem echten Netzwerk mit einem Router und einem Handy. Es hat noch kein ganzes Haus tagelang beobachtet, es fragt den Router nur und konfiguriert ihn nie, und was ein Gerät ist (Art, System, Hersteller), ist eine Vermutung. Es zeichnet keine Pakete auf: Es sieht nicht, wer mit wem spricht, und Verkehr je Gerät sowie Einbruchserkennung im engeren Sinn brauchen die Zähler des Routers oder einen Mirror-Port, was ein späterer Schritt ist.",
+        "bullets": [
+            "**Was im Netzwerk ist:** die Nachbartabelle des Rechners, ein Anstupsen jeder Adresse, damit sie sich füllt, ein Echo an jedes gefundene Gerät (Latenz und TTL) und was Geräte über sich selbst ankündigen (mDNS, UPnP, NetBIOS, Reverse-DNS). Je Gerät: Adresse, MAC, Hersteller (aus dem IEEE-Register mit 40.000 Blöcken), Name, Art, System, offene Ports mit dem, was jeder sagt, und wann es zuerst und zuletzt gesehen wurde.",
+            "**Ports:** eine TCP-Verbindung zu 17 (oder 44) Ports je Gerät, zwölf gleichzeitig, mit höchstens einigen hundert gelesenen Bytes der Antwort; nie ein Login, nie ein Exploit. Ein neues Gerät wird sofort angesehen, die anderen alle Viertelstunde.",
+            "**Was sich ändert:** ein Gerät, das auftaucht (der erste Scan lernt nur), verstummt oder zurückkommt, seine Adresse ändert, ein Port, der sich öffnet oder schließt, und zwei Rechner, die für eine Adresse antworten (vor allem die des Routers). Jedes Ereignis hat eine ID und wird daher nur einmal gemeldet.",
+            "**Das Internet:** alle paar Sekunden ein Echo an den Router, eine TCP-Verbindung, zwei DNS-Fragen an gewählte Resolver und eine Webseite. Ein Ausfall braucht drei Runden, um so zu heißen, und zwei, um beendet zu sein, wird ab der ersten fehlgeschlagenen Runde datiert und bis zur ersten guten gezählt und sagt, wessen Schuld es ist: die des Anbieters (der Router antwortet, dahinter nichts) oder die dieser Seite (auch der Router antwortet nicht). Latenz, Verlust und die Ausfälle der letzten 24 Stunden.",
+            "**Es sieht nur Ihr eigenes Netzwerk:** es verweigert jede nicht private Adresse (10/8, 172.16/12, 192.168/16) und jeden Bereich über /22; eine Ausschlussliste hält es von Empfindlichem fern; an ein Gerät wird nichts gesendet, was keine Frage ist.",
+            "**Die Nachricht** `armor/network/<Knoten>/state`: die Schnittstelle, das Internet, jedes Gerät und die letzten Ereignisse; sie steht im gemeinsamen Vertrag (330 Vektoren) und trägt Befunde, nie Befehle. `python -m armor_network scan` druckt sie als Tabelle, `watch` meldet an ARMOR-SERVER, `demo` spielt ein erfundenes Haus (ein neues Gerät kommt hinzu, eine Kamera öffnet Telnet, das Internet fällt aus und kommt zurück, jemand antwortet für den Router) ohne ein Netzwerk zu berühren.",
+            "**Wo man es sieht:** das Netzwerk-Menü von ARMOR-STUDIO (die Geräte, das Internet mit Ausfällen und Latenz, der Datenverkehr und die Ereignisse; ein Administrator benennt Geräte und markiert bekannte, was den Alarm eines neuen Geräts beruhigt), der Netzwerkplaner (die Zeichnung des Hausnetzwerks, verglichen mit dem Gefundenen und fähig, es zu zeichnen) und der Netzwerk-Bildschirm der Android-App. ARMOR-SERVER löst die Alarme aus.",
+            "**Noch nicht:** die Zähler des Routers selbst (Verkehr je Gerät), Paketmitschnitt, irgendetwas steuern (ein Gerät sperren, einen Port schließen, den Router ändern) und Wochen in einem echten Netzwerk.",
+        ],
+        "note": "Siehe den [Entwurf](docs/DESIGN.md), die [Sicherheitshinweise](docs/SAFETY.md), die [Benutzung](docs/USAGE.md) und die [Nachrichten](docs/MESSAGES.md).",
+    },
     "ARMOR-SIMULATOR": {
         "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
         "honest": "Die Szenarien, die Fehler, die Übermittlung an einen Server und die 28 Tests sind real. Die Geometrie ist **illustrativ**, kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
@@ -230,12 +246,12 @@ TEXT = {
     },
     "ARMOR-COMMON": {
         "tagline": "Nachrichtenverträge, Validierung und der gemeinsame Projektstarter",
-        "honest": "Die Schemas, der Python-Validierer, die 266 gemeinsamen Konformitätsvektoren, die generierten TypeScript- und Kotlin-Typen und der gemeinsame Projektstarter sind real und getestet (36 Tests). Die Kotlin-Datei ist generiert, wird aber von ARMOR-ANDROID-CONTROL **noch nicht verwendet**, und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert werden, wenn es Firmware gibt.",
+        "honest": "Die Schemas, der Python-Validierer, die 330 gemeinsamen Konformitätsvektoren, die generierten TypeScript- und Kotlin-Typen und der gemeinsame Projektstarter sind real und getestet (36 Tests). Die Kotlin-Datei ist generiert, wird aber von ARMOR-ANDROID-CONTROL **noch nicht verwendet**, und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert werden, wenn es Firmware gibt.",
         "intro": "**ARMOR-COMMON** besitzt die Bedeutung jeder A.R.M.O.R.-Nachricht. Radarknoten, Solar-Gateway-Knoten und der Simulator erzeugen diese Nachrichten; der Server, die visuelle KI und der Sprachdienst verbrauchen sie. Wenn zwei Projekte über ein Feld uneins sind, entscheidet dieses Repository.",
         "bullets": [
             "**Eine einzige Wahrheitsquelle:** JSON-Schemas in `src/armor_common/schemas/` für Telemetrie, Zustand, Befehl, Knoteninformation und die zwei Solarnachrichten (Wechselrichter, Batterie mit Zellen und Kapazitäten). Unbekannte Felder werden überall abgelehnt.",
             "**Ein Validierer, der keine Regel überspringen kann:** er interpretiert das Schema direkt und lehnt ein Schema ab, das ein nicht implementiertes Schlüsselwort nutzt.",
-            "**Konformitätsvektoren:** 266 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in ARMOR-SERVER, die Prüfungen von ARMOR-SOLAR), sodass Abweichung den Build scheitern lässt.",
+            "**Konformitätsvektoren:** 330 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in ARMOR-SERVER, die Prüfungen von ARMOR-SOLAR), sodass Abweichung den Build scheitern lässt.",
             "**Generierte Clients:** TypeScript- und Kotlin-Typen entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).",
             "**HTTP-Vertrag:** `openapi/armor-server-0.2.0.yaml` beschreibt jede Serverroute, ihre Zugriffsregel und ihr Schema.",
             "**Gemeinsamer Starter:** `tools/armor_project_tool.py` gibt jedem Repository der Familie denselben Ablauf `build`, `build-test` und `run`.",
