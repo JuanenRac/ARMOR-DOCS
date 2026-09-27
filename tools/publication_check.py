@@ -35,7 +35,18 @@ LITERAL = re.compile(r"""(?ix)\b(pass(?:word|wd)?|secret|token|api[_-]?key|psk)\
 BAD_PATH = re.compile(r"(^|/)(secrets/(?!.*example)|\.env$|.*\.env$|.*\.pem$|.*\.key$|id_[a-z0-9]+$)", re.I)
 BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".webp", ".pdf", ".zip", ".gz", ".bin", ".woff", ".woff2", ".ttf", ".jar", ".apk", ".stl", ".step", ".fcstd"}
 # addresses that are public but say nothing about anyone: the well-known DNS resolvers and the boundary values that the private-address tests use
-BENIGN_IPS = {"8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1", "9.9.9.9", "1.2.3.4", "8.8.8.0", "8.0.0.1", "11.0.0.1", "172.15.0.1", "172.32.0.1", "192.169.0.1", "172.15.255.255", "172.32.0.0"}
+BENIGN_IPS = {
+    "8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1", "9.9.9.9", "1.2.3.4", "8.8.8.0", "8.0.0.1", "11.0.0.1",
+    "172.15.0.1", "172.32.0.1", "192.169.0.1", "172.15.255.255", "172.32.0.0",
+    # ARMOR-NETWORK's own private-range boundary tests and a parser fixture (a
+    # fabricated DNS answer decoding to a real but unrelated public address,
+    # not anyone's own infrastructure).
+    "172.15.0.0", "1.0.0.0", "104.16.132.229",
+    # ARMOR-SOLAR's inverter/BMS protocol fixtures: firmware version strings
+    # ("Main Soft version : B69.12.0.0") that coincidentally parse as a
+    # dotted-quad shape.
+    "69.12.0.0", "68.8.0.0",
+}
 # words that make a "literal" obviously not a secret
 HARMLESS = re.compile(r"(?i)(example|placeholder|changeme|change-me|your[-_ ]|xxxx|\*{4}|test|fake|dummy|sample|correct-horse|adminpass|secret-for|0000|1111|aaaa|cccc|iiii|kkkk|oooo|\.\.\.)")
 
