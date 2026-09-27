@@ -40,6 +40,30 @@ def main() -> int:
     stale: list[str] = []
     written = 0
 
+    # ARMOR-COMMON is the canonical source of the vendored files below - it
+    # never vendors a copy of its own tools/ onto itself - but it still
+    # needs the workflow file to actually run CI, the same as everywhere
+    # else. Found for real: this was missing outright (no
+    # .github/workflows/ directory at all), so ARMOR-COMMON's own CI never
+    # ran once - `gh api repos/.../actions/workflows` showed zero
+    # registered workflows.
+    workflow_only_targets = ("ARMOR-COMMON",)
+
+    for name in workflow_only_targets:
+        repo = ROOT / name
+        if not repo.is_dir():
+            print(f"SKIP {name}: no local checkout")
+            continue
+        (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
+        destination = repo / ".github" / "workflows" / "ci.yml"
+        current = destination.read_text(encoding="utf-8") if destination.is_file() else None
+        if current != workflow:
+            if check:
+                stale.append(f"{name}/.github/workflows/ci.yml")
+            else:
+                destination.write_text(workflow, encoding="utf-8")
+                written += 1
+
     for name in TARGETS:
         repo = ROOT / name
         if not repo.is_dir():
