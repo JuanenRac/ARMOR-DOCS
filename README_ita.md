@@ -81,6 +81,7 @@ Gli audit della famiglia (in spagnolo) si trovano nella radice di questo reposit
 * **[ARMOR-HARDWARE](../ARMOR-HARDWARE)** - Contenitori, elettronica e matrice di accettazione da banco
 * **[ARMOR-DEVOPS](../ARMOR-DEVOPS)** - Distribuzione, banco di prova CM5, backup e TLS
 * **[ARMOR-SIMULATOR](../ARMOR-SIMULATOR)** - Simulatore di telemetria offline con guasti ripetibili
+* **[ARMOR-UPDATER](../ARMOR-UPDATER)** - Rileva, installa e aggiorna i repository stessi dell'ecosistema
 * **ARMOR-DOCS** (questo repository) - Architettura, base di sicurezza e matrice delle capacità
 
 ## 📚 Documentazione e comunità

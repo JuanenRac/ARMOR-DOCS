@@ -79,6 +79,7 @@ configurable silence.
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |
 | Enclosures and electronics | ARMOR-HARDWARE |
 | Deployment | ARMOR-DEVOPS |
+| Ecosystem-wide CI baseline and cross-machine install/update | ARMOR-COMMON, ARMOR-UPDATER |
 | Offline testing and faults | ARMOR-SIMULATOR |
 
 See the [capability matrix](CAPABILITY_MATRIX.md) for what is simulated, local or verified.

@@ -33,10 +33,22 @@ RELATED = {
     "ARMOR-DEVOPS": "Despliegue, el banco de pruebas de la CM5, copias de seguridad y TLS",
     "ARMOR-NETWORK": "La red local: sus dispositivos, internet y lo que cambia",
     "ARMOR-SIMULATOR": "Simulador de telemetría sin conexión con fallos repetibles",
+    "ARMOR-UPDATER": "Detecta, instala y actualiza los propios repositorios del ecosistema",
     "ARMOR-DOCS": "Arquitectura, base de seguridad y la matriz de capacidades",
 }
 
 TEXT = {
+    "ARMOR-UPDATER": {
+        "tagline": "Detecta, instala y actualiza cada repositorio de A.R.M.O.R. en la máquina donde se ejecuta (un programa en Python sin dependencias obligatorias, construido desde cero para un ecosistema privado)",
+        "honest": "**Madurez: andamiaje.** El descubrimiento por manifiesto, la comparación de versiones, la instalación/actualización atómica-por-verificación y el registro de evidencia están probados (103 pruebas) contra la forma real del manifiesto de A.R.M.O.R.; nunca ha instalado ni actualizado un repositorio de A.R.M.O.R. real de principio a fin, porque todos son privados y eso exige un GITHUB_TOKEN real que este programa aún no ha recibido.",
+        "bullets": [
+            "**Descubrimiento, sin lista fija:** una carpeta local se une en cuanto lleva un `armor.project.json` válido que declara `ecosystem: \"A.R.M.O.R.\"`; en remoto, se revisa igual cada repositorio que un `GITHUB_TOKEN` pueda ver en GitHub - todos los repositorios de A.R.M.O.R. son privados, así que ese token es obligatorio en todo momento, sin el respaldo de 60 peticiones a la hora al que recurriría un ecosistema público.",
+            "**Instalar y actualizar, nunca en el sitio:** una actualización se construye y verifica primero en un clon de ensayo independiente, y solo se promueve -dos renombrados de carpeta, la instalación anterior guardada como copia de seguridad- cuando esa construcción realmente tiene éxito; un cambio local de verdad sin commitear se rechaza sin más, nunca se descarta en silencio.",
+            "**Evidencia:** cada intento, con éxito o no, añade una línea a un registro local con el proyecto, la versión y el commit antes y después, y el motivo de un fallo.",
+            "**Una CLI y una interfaz de escritorio opcional:** `armor-updater status`/`install`/`update`, y una interfaz Qt Quick (`pip install \".[gui]\"`) en los siete idiomas del ecosistema.",
+        ],
+        "note": "Ver `CONTRIBUTING.md` para saber cómo se une un repositorio al ecosistema que describe `armor.project.json`.",
+    },
     "ARMOR-NETWORK": {
         "tagline": "Vigila la red local: los dispositivos que hay, si hay internet, qué cambia y qué es nuevo (un programa de Python sin dependencias, de solo lectura; se ejecuta en una máquina de la red y informa a ARMOR-SERVER)",
         "honest": "**Madurez: scaffolding.** El escáner, el inventario que dice qué ha cambiado, la comprobación de internet y el mensaje se prueban en un ordenador contra una red simulada (53 pruebas; ARMOR-COMMON acepta todos los mensajes), y el programa se ha ejecutado una vez en una red real, que tenía un router y un móvil. No ha vigilado una casa entera durante días, al router solo le pregunta y nunca lo configura, y lo que es un dispositivo (su tipo, su sistema, su fabricante) es una suposición. No captura paquetes: no ve quién habla con quién, y el tráfico por dispositivo y la detección de intrusiones en sentido estricto necesitan los contadores del router o un puerto espejo, que es un paso posterior.",
