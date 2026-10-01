@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "ecosystem": "A.R.M.O.R.",
   "name": "ARMOR-DOCS",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "role": "System architecture and operator documentation",
   "stack": "Markdown / Mermaid",
   "technologies": [
@@ -15,7 +15,7 @@
   "maturity": "established",
   "family": "Documentation",
   "parent": null,
-  "native_version": "0.4.9",
+  "native_version": "0.4.10",
   "build": "Markdown link validation",
   "notes": "The longest real version history of any A.R.M.O.R. project (0.4.8, 48+ real builds), and genuinely depended on as the ecosystem's own canonical reference by every other real A.R.M.O.R. project - its own capability matrix, architecture and project catalogue are the source every other repository's README links to instead of restating, and its own honesty convention (simulated / local / verified-on-hardware, never blurred) is the one the rest of this ecosystem, and this dashboard, already follow. Hardware procedures are explicitly separated from verified procedures."
 }
