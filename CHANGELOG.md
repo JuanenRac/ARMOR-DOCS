@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.9] - The matrix and the catalog caught up
+
+- **Capability matrix:** the touch panel's firmware now builds (it has not run on a board), the ESP32-S3-ETH firmware has run on one real board, the network node's orders on request and `inspect` with a device login, the machine metrics, the connection settings and the device logins have rows of their own.
+- **Project catalog:** nine versions that had fallen behind are read again from each project's manifest.
+
 ## [0.4.8] - A CI baseline for the whole family, and ARMOR-UPDATER joins it
 
 - **The new project ARMOR-UPDATER** (detects, installs and updates the ecosystem's repositories on the machine it runs on; the same atomic-by-verification install/update design as an established open ecosystem's updater, adapted for a private one) in the catalogue, the architecture and the capability matrix.
