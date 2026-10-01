@@ -23,6 +23,7 @@ RELATED = {
     "ARMOR-RADAR": "Feldknoten-Firmware für ESP32-S3 mit drei Radaren und eigenem Web-Panel",
     "ARMOR-SOLAR": "Protokolle für Solar-Wechselrichter und -Batterien und die Nachrichten eines Gateway-Knotens",
     "ARMOR-ELECTRICAL": "Elektroknoten: Zähler, die Nachricht der Netzmesswerte und die Regeln fürs Schalten",
+    "ARMOR-HMI": 'Touch-Panel: der Systemzustand auf einem Wandbildschirm, Scharf- und Quittieren sowie das Zuhause des Sprachassistenten',
     "ARMOR-SERVER": "Zentraler Koordinator: Telemetrie, Alarme, Geräte, Solarmesswerte und Kameras",
     "ARMOR-STUDIO": "Web-Konsole: Kameras, Radar, Alarme, Solarenergie und 2D/3D-Standortdesigner",
     "ARMOR-ANDROID-CONTROL": "Android-Bedienclient mit Live-Radar in 2D/3D",
@@ -47,6 +48,19 @@ TEXT = {
             "**Eine CLI und eine optionale Desktop-Oberfläche:** `armor-updater status`/`install`/`update`, sowie eine Qt-Quick-Oberfläche (`pip install \".[gui]\"`) in den sieben Sprachen des Ökosystems.",
         ],
         "note": "Siehe `CONTRIBUTING.md`, wie ein Repository dem Ökosystem beitritt, das `armor.project.json` beschreibt.",
+    },
+    "ARMOR-HMI": {
+        "tagline": 'Das Touch-Panel des Hauses: ein 7-Zoll-Bildschirm an der Wand, der den Systemzustand zeigt, es scharf und unscharf schaltet und Alarme quittiert, mit Mikrofon und Lautsprecher für den kommenden Sprachassistenten (ein Knoten der Familie auf dem ESP32-S3-Touch-LCD-7C-BOX mit eigener Webseite für die Einstellungen)',
+        "honest": '**Reifegrad: Gerüst.** Was nicht vom Board abhängt, ist echt und auf einem Computer getestet (die Einstellungen, was das Panel vom Server weiß und wann das veraltet ist, das Sprachgespräch, die Pins des Boards und die Bildschirmtexte in sieben Sprachen: vier Testprogramme), ebenso die Webseite (gegen einen Ersatz in einem echten Browser ausgeführt). **Die Firmware wurde nie auf einem Board gebaut oder ausgeführt:** Bildschirm, Touch, Ton und die Verbindung zum Server sind nach Waveshares Beispielen für diese Boardfamilie geschrieben und brauchen ihre erste Kompilierung und ihren ersten Start. Der Sprachdienst, mit dem der Assistent spricht, existiert noch nicht, und es gibt kein Aktivierungswort: es ist Push-to-talk.',
+        "bullets": [
+            '**Ein Client von ARMOR-SERVER wie die Android-App:** Es meldet sich mit einem Benutzer an, den ein Administrator dafür angelegt hat, fragt alle paar Sekunden `GET /api/v1/panel/summary` ab (wenige hundert Byte: Modus, Knoten online und die Alarme, die einen Menschen brauchen) und schaltet scharf, unscharf oder quittiert, wenn die Person die Taste berührt und bestätigt. Antwortet der Server nicht mehr, sagt der Bildschirm, dass das Gezeigte alt ist, und die Taste ist gesperrt.',
+            '**Der Bildschirm (800x480, LVGL):** der Modus in der Farbe des schlimmsten ungesehenen Alarms, eine große Scharf/Unscharf-Taste mit vorheriger Rückfrage, die Knoten online, die Alarme (die ungesehenen zuerst), eine Nacht, die ihn dimmt, Ruhezustand nach einer Zeit ohne Berührung, ein Ton und Aufwecken bei neuem Alarm sowie sieben Sprachen mit Akzenten, Japanisch und Chinesisch mit genau für die verwendeten Zeichen erzeugten Schriften.',
+            '**Ein Knoten wie die anderen:** derselbe Einstellungsspeicher, WLAN, Webseite in sieben Sprachen, Bluetooth-Einrichtung vom Handy, Firmware-Update mit Rückfall und HTTPS wie ARMOR-RADAR, ARMOR-SOLAR und ARMOR-ELECTRICAL (sie teilen `ARMOR-COMMON/firmware_base`), dazu Seiten für Server, Bildschirm, Ton und Sprache; es meldet sich per MQTT bei Studio an, damit Studio es mit seiner Seite auflistet.',
+            '**Der Sprachassistent, Push-to-talk:** Eine Berührung öffnet das Mikrofon, das Audio geht nur an den Sprachdienst, dessen Adresse in den Einstellungen steht (standardmäßig aus), die Antwort wird angezeigt und gesprochen; Reihenfolge der Schritte, Zeitlimits und die Wirkung einer Berührung sind ein getesteter Zustandsautomat, und das Panel führt keinen Befehl von selbst aus ([der Vertrag](docs/VOICE.md)).',
+            '**Das Board:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB Flash, 16 MB PSRAM, 7-Zoll-RGB-Bildschirm mit GT911-Touch, vier Mikrofone, ein Lautsprecher); die Pins stammen aus Waveshares Beispielen, und ein Test beweist, dass keine zwei Funktionen einen GPIO teilen ([das Board](docs/HARDWARE.md)).',
+            '**Noch nicht:** eine erste Kompilierung und ein erster Start der Firmware, ein Aktivierungswort, der Sprachdienst auf dem Jetson und eine Kameraansicht auf dem Bildschirm.',
+        ],
+        "note": 'Siehe den [Entwurf](docs/DESIGN.md), das [Board](docs/HARDWARE.md), den [Sprachassistenten](docs/VOICE.md), die [Firmware-Anleitung](docs/NODE_FIRMWARE.md) und die [Schriften](docs/FONTS.md).',
     },
     "ARMOR-NETWORK": {
         "tagline": "Überwacht das lokale Netzwerk: welche Geräte es gibt, ob das Internet da ist, was sich ändert und was neu ist (ein Python-Programm ohne Abhängigkeiten, nur lesend; es läuft auf einem Rechner des Netzwerks und meldet an ARMOR-SERVER)",

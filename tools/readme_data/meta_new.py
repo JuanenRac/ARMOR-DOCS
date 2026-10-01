@@ -118,6 +118,30 @@ ARMOR-NETWORK/
 └── images/             brand assets
 ```""",
     },
+    "ARMOR-HMI": {
+        "emoji": "🖥️",
+        "badges": [("Language", "C%2B%2B17", "00599c"), ("Board", "ESP32--S3--Touch--LCD--7C--BOX", "e7352c"), ("Checks", "4%20programs", "2ea44f"), ("Maturity", "scaffolding", "ff9800")],
+        "diagram": "",
+        "build": """```bash
+cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # the settings, the server view, the voice conversation, the board's pins and the screen's words
+node tools/panel_mock.mjs --user admin:adminpass123                                       # the web page without a board
+node tools/panel_browser_test.mjs                                                         # the page in a real browser, every page in seven languages
+tools/build_node.sh generic                                                               # the firmware image in the ESP-IDF container: dist/generic-lcd7box.bin (never built yet)
+```
+
+See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).""",
+        "structure": """```text
+ARMOR-HMI/
+├── main/    the ESP-IDF component: app_main, display (RGB panel, GT911, LVGL), ui (the screen), audio (I2S, ES7210, ES8389), voice, server_link (HTTP to ARMOR-SERVER), board_io (I2C and the expander),
+│            network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision (the shared node firmware), fonts/ (generated)
+├── core/    hmi_config (the settings), server_view (the summary, the link, what is new), voice_session (the conversation), screen_text (seven languages), board_s3 (the pins), auth, netplan, json...
+├── panel/   the web page: index.html, app.js, text.js (7 languages), style.css
+├── tests/   test_config, test_view, test_voice, test_board
+├── tools/   build_node.sh, make_fonts.py, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs
+├── docs/    DESIGN, HARDWARE, VOICE, NODE_FIRMWARE, FONTS, BLE_PROVISIONING
+└── images/  brand assets
+```""",
+    },
     "ARMOR-ELECTRICAL": {
         "emoji": "⚡",
         "badges": [("Language", "C%2B%2B17", "00599c"), ("Meters", "PZEM--004T%20%2F%20017", "ffb020"), ("Checks", "135%2C990", "2ea44f"), ("Maturity", "scaffolding", "ff9800")],

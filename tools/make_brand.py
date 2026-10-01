@@ -28,6 +28,7 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
     "ARMOR-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
     "ARMOR-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
+    "ARMOR-HMI": ("TOUCH PANEL & VOICE ASSISTANT", ["ESP32-S3", "LVGL", "I2S", "MQTT", "C++"]),
     "ARMOR-NETWORK": ("LOCAL NETWORK MONITORING", ["DEVICES", "INTERNET", "OUTAGES", "READ-ONLY", "PYTHON"]),
     "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
     "ARMOR-VOICE-AI": ("OFFLINE VOICE INTENT BOUNDARY", ["WHISPER", "PIPER", "WYOMING", "PYTHON"]),
@@ -55,6 +56,9 @@ def glyph(name: str) -> str:
     <path d="M-40,34 q10,-18 20,0 t20,0 t20,0 t20,0" stroke-width="4"/>""",
         "ARMOR-ELECTRICAL": f"""<path d="M10,-46 L-24,4 H-2 L-10,46 L26,-8 H4 Z" stroke="{AMBER}" stroke-width="4"/>
     <path d="M-44,-30 q8,-14 16,0 t16,0" stroke-width="3" opacity=".7"/><path d="M-44,30 h20 M24,30 h20" stroke-width="3" opacity=".7"/>""",
+        "ARMOR-HMI": f"""<rect x="-44" y="-36" width="88" height="56" rx="7"/><path d="M-30,-20 h30 M-30,-8 h44 M-30,4 h22" stroke-width="3" opacity=".7"/>
+    <rect x="12" y="-6" width="9" height="16" rx="4.5" stroke="{AMBER}" stroke-width="3"/><path d="M8,6 a9,9 0 0 0 17,0 M16.5,15 v6" stroke="{AMBER}" stroke-width="2.6"/>
+    <path d="M-16,34 h32 M0,20 v14" stroke-width="3"/>""",
         "ARMOR-SERVER": f"""<rect x="-34" y="-40" width="68" height="24" rx="5"/><rect x="-34" y="-12" width="68" height="24" rx="5"/><rect x="-34" y="16" width="68" height="24" rx="5"/>
     <circle cx="-22" cy="-28" r="3" fill="{AMBER}" stroke="none"/><circle cx="-22" cy="0" r="3" fill="{AMBER}" stroke="none"/><circle cx="-22" cy="28" r="3" fill="{AMBER}" stroke="none"/>
     <path d="M-8,-28 h30 M-8,0 h30 M-8,28 h30" stroke-width="2" opacity=".6"/>""",
@@ -138,11 +142,11 @@ POSITIONS = {
     "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-NETWORK": (0, 2.25), "ARMOR-SIMULATOR": (0, 3), "ARMOR-HARDWARE": (0, 3.75),
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
-    "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25),
+    "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-HMI": (3, 3),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
 }
 ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
-          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
+          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 
 
@@ -170,7 +174,7 @@ def family_map() -> str:
         if name in ("ARMOR-COMMON", "ARMOR-DOCS", "ARMOR-DEVOPS"):
             continue
         x, y = centre(name)
-        if name in ("ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL"):
+        if name in ("ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-HMI"):
             continue
         parts.append(f'<path d="M{x + box_w / 2} {y} L{cx - box_w / 2} {cy}" fill="none" stroke="{GREEN}" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>')
     for name, (column, row) in POSITIONS.items():

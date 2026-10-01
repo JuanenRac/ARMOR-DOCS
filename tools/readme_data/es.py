@@ -24,6 +24,7 @@ RELATED = {
     "ARMOR-RADAR": "Firmware del nodo de campo para ESP32-S3 con tres radares y su propio panel web",
     "ARMOR-SOLAR": "Protocolos de inversores y baterías solares y los mensajes de un nodo pasarela",
     "ARMOR-ELECTRICAL": "Nodo eléctrico: contadores, el mensaje de las lecturas de la red y las reglas para maniobrar",
+    "ARMOR-HMI": 'Panel táctil: el estado del sistema en una pantalla de pared, armar y reconocer alarmas, y el hogar del asistente de voz',
     "ARMOR-SERVER": "Coordinador central: telemetría, alarmas, dispositivos, lecturas solares y cámaras",
     "ARMOR-STUDIO": "Consola web: cámaras, radar, alarmas, energía solar y el diseñador de sitio 2D/3D",
     "ARMOR-ANDROID-CONTROL": "Cliente Android del operador con radar 2D/3D en vivo",
@@ -48,6 +49,19 @@ TEXT = {
             "**Una CLI y una interfaz de escritorio opcional:** `armor-updater status`/`install`/`update`, y una interfaz Qt Quick (`pip install \".[gui]\"`) en los siete idiomas del ecosistema.",
         ],
         "note": "Ver `CONTRIBUTING.md` para saber cómo se une un repositorio al ecosistema que describe `armor.project.json`.",
+    },
+    "ARMOR-HMI": {
+        "tagline": 'El panel táctil de la casa: una pantalla de 7 pulgadas en la pared que muestra el estado del sistema, lo arma y desarma y reconoce alarmas, con micrófono y altavoz para el asistente de voz que vendrá (un nodo de la familia en la ESP32-S3-Touch-LCD-7C-BOX, con su propia página web de ajustes)',
+        "honest": '**Madurez: andamiaje.** Lo que no depende de la placa es real y está probado en un ordenador (los ajustes, lo que el panel sabe del servidor y cuándo está caducado, la conversación de voz, los pines de la placa y los textos de la pantalla en siete idiomas: cuatro programas de prueba) y también la página web (ejecutada contra un sustituto en un navegador real). **El firmware nunca se ha compilado ni ejecutado en una placa:** la pantalla, el tacto, el sonido y el enlace con el servidor están escritos a partir de los ejemplos de Waveshare para esta familia de placas y necesitan su primera compilación y su primer encendido. El servicio de voz con el que habla el asistente todavía no existe y no hay palabra de activación: es pulsar para hablar.',
+        "bullets": [
+            '**Cliente de ARMOR-SERVER, como la app de Android:** entra con un usuario que un administrador creó para él, pide `GET /api/v1/panel/summary` (unos cientos de bytes: el modo, los nodos conectados y las alarmas que necesitan a una persona) cada pocos segundos y, cuando la persona toca el botón y confirma, arma, desarma o reconoce. Si el servidor deja de responder, la pantalla avisa de que lo que muestra es antiguo y el botón se desactiva.',
+            '**La pantalla (800x480, LVGL):** el modo en el color de la peor alarma que nadie ha visto, un botón grande de armar/desarmar con pregunta previa, los nodos conectados, las alarmas (las no vistas primero), una noche que la atenúa, un reposo tras un tiempo sin toques, un aviso sonoro y que se despierte cuando llega una alarma nueva, y siete idiomas con acentos, japonés y chino dibujados con fuentes generadas justo para los caracteres usados.',
+            '**Un nodo como los demás:** el mismo almacén de ajustes, Wi-Fi, página web en siete idiomas, configuración por Bluetooth desde el móvil, actualización de firmware con vuelta atrás y HTTPS que ARMOR-RADAR, ARMOR-SOLAR y ARMOR-ELECTRICAL (comparten `ARMOR-COMMON/firmware_base`), más páginas para el servidor, la pantalla, el sonido y la voz; avisa a Studio de que existe por MQTT para que lo liste con su página.',
+            '**El asistente de voz, pulsar para hablar:** un toque abre el micrófono, el audio va solo al servicio de voz cuya dirección está en los ajustes (apagado por defecto), la respuesta se muestra y se dice; el orden de los pasos, los límites de tiempo y lo que hace un toque son una máquina de estados probada, y el panel no ejecuta ninguna orden por sí mismo ([el contrato](docs/VOICE.md)).',
+            '**La placa:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB de flash, 16 MB de PSRAM, pantalla RGB de 7 pulgadas con tacto GT911, cuatro micrófonos, un altavoz); los pines vienen de los ejemplos de Waveshare y una prueba demuestra que dos funciones no comparten un GPIO ([la placa](docs/HARDWARE.md)).',
+            '**Todavía no:** una primera compilación y encendido del firmware, una palabra de activación, el servicio de voz en la Jetson y una vista de las cámaras en la pantalla.',
+        ],
+        "note": 'Mira el [diseño](docs/DESIGN.md), la [placa](docs/HARDWARE.md), el [asistente de voz](docs/VOICE.md), la [guía del firmware](docs/NODE_FIRMWARE.md) y las [fuentes](docs/FONTS.md).',
     },
     "ARMOR-NETWORK": {
         "tagline": "Vigila la red local: los dispositivos que hay, si hay internet, qué cambia y qué es nuevo (un programa de Python sin dependencias, de solo lectura; se ejecuta en una máquina de la red y informa a ARMOR-SERVER)",
