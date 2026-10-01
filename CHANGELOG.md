@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## [0.4.10] - Internal audit notes leave the public repository
+## [0.5.0] - Internal audit notes leave the public repository
 
 - Three audit documents (in Spanish, dated, with working notes and a mention of private notes) sat in the root of this repository; they were never part of the documentation. They are removed from the repository. The capability matrix and the catalogue are the public record.
 
