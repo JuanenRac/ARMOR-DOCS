@@ -23,6 +23,7 @@ RELATED = {
     "ARMOR-RADAR": "Firmware du nœud de terrain pour ESP32-S3 avec trois radars et son propre panneau web",
     "ARMOR-SOLAR": "Protocoles des onduleurs et batteries solaires et messages d'un nœud passerelle",
     "ARMOR-ELECTRICAL": "Nœud électrique : compteurs, le message des mesures du réseau et les règles de commutation",
+    "ARMOR-HMI": "Panneau tactile : l'état du système sur un écran mural, armer et acquitter, et la maison de l'assistant vocal",
     "ARMOR-SERVER": "Coordinateur central : télémétrie, alarmes, appareils, relevés solaires et caméras",
     "ARMOR-STUDIO": "Console web : caméras, radar, alarmes, énergie solaire et concepteur de site 2D/3D",
     "ARMOR-ANDROID-CONTROL": "Client Android de l'opérateur avec radar 2D/3D en direct",
@@ -47,6 +48,19 @@ TEXT = {
             "**Une CLI et une interface de bureau optionnelle :** `armor-updater status`/`install`/`update`, et une interface Qt Quick (`pip install \".[gui]\"`) dans les sept langues de l'écosystème.",
         ],
         "note": "Voir `CONTRIBUTING.md` pour savoir comment un dépôt rejoint l'écosystème que décrit `armor.project.json`.",
+    },
+    "ARMOR-HMI": {
+        "tagline": "Le panneau tactile de la maison : un écran de 7 pouces au mur qui montre l'état du système, l'arme et le désarme et acquitte les alarmes, avec un micro et un haut-parleur pour l'assistant vocal à venir (un nœud de la famille sur l'ESP32-S3-Touch-LCD-7C-BOX, avec sa propre page web de réglages)",
+        "honest": "**Maturité : échafaudage.** Ce qui ne dépend pas de la carte est réel et testé sur un ordinateur (les réglages, ce que le panneau sait du serveur et quand c'est périmé, la conversation vocale, les broches de la carte et les textes de l'écran en sept langues : quatre programmes de test), ainsi que la page web (exécutée contre un substitut dans un vrai navigateur). **Le firmware n'a jamais été compilé ni exécuté sur une carte :** l'écran, le tactile, le son et la liaison avec le serveur sont écrits d'après les exemples de Waveshare pour cette famille de cartes et ont besoin de leur première compilation et de leur première mise sous tension. Le service vocal avec lequel parle l'assistant n'existe pas encore et il n'y a pas de mot de réveil : c'est appuyer pour parler.",
+        "bullets": [
+            "**Un client d'ARMOR-SERVER, comme l'application Android :** il se connecte avec un utilisateur qu'un administrateur a créé pour lui, demande `GET /api/v1/panel/summary` (quelques centaines d'octets : le mode, les nœuds en ligne et les alarmes qui demandent une personne) toutes les quelques secondes et, quand la personne touche le bouton et confirme, arme, désarme ou acquitte. Si le serveur ne répond plus, l'écran dit que ce qu'il montre est ancien et le bouton est désactivé.",
+            "**L'écran (800x480, LVGL) :** le mode dans la couleur de la pire alarme que personne n'a vue, un grand bouton armer/désarmer avec une question d'abord, les nœuds en ligne, les alarmes (les non vues d'abord), une nuit qui l'atténue, une veille après un temps sans toucher, un son et un réveil à l'arrivée d'une nouvelle alarme, et sept langues avec accents, japonais et chinois dessinés avec des polices générées pour exactement les caractères utilisés.",
+            "**Un nœud comme les autres :** le même stockage de réglages, Wi-Fi, page web en sept langues, configuration Bluetooth depuis le téléphone, mise à jour du firmware avec retour arrière et HTTPS comme ARMOR-RADAR, ARMOR-SOLAR et ARMOR-ELECTRICAL (ils partagent `ARMOR-COMMON/firmware_base`), plus des pages pour le serveur, l'écran, le son et la voix ; il signale son existence à Studio par MQTT pour que Studio le liste avec sa page.",
+            "**L'assistant vocal, appuyer pour parler :** un toucher ouvre le micro, le son part seulement vers le service vocal dont l'adresse est dans les réglages (désactivé par défaut), la réponse est affichée et dite ; l'ordre des étapes, les limites de temps et ce que fait un toucher sont une machine à états testée, et le panneau n'exécute aucune commande de lui-même ([le contrat](docs/VOICE.md)).",
+            '**La carte :** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 Mo de flash, 16 Mo de PSRAM, écran RGB de 7 pouces avec tactile GT911, quatre micros, un haut-parleur) ; les broches viennent des exemples de Waveshare et un test prouve que deux fonctions ne partagent pas un GPIO ([la carte](docs/HARDWARE.md)).',
+            "**Pas encore :** une première compilation et mise sous tension du firmware, un mot de réveil, le service vocal sur le Jetson et une vue des caméras à l'écran.",
+        ],
+        "note": "Voir la [conception](docs/DESIGN.md), la [carte](docs/HARDWARE.md), l'[assistant vocal](docs/VOICE.md), le [guide du firmware](docs/NODE_FIRMWARE.md) et les [polices](docs/FONTS.md).",
     },
     "ARMOR-NETWORK": {
         "tagline": "Surveille le réseau local : les appareils qui y sont, si internet est là, ce qui change et ce qui est nouveau (un programme Python sans dépendances, en lecture seule ; il tourne sur une machine du réseau et rapporte à ARMOR-SERVER)",

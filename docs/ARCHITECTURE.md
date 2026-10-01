@@ -77,6 +77,7 @@ configurable silence.
 | State, cameras, evidence, audit | ARMOR-SERVER |
 | Visual and voice decisions | ARMOR-SERVER-AI, ARMOR-VOICE-AI |
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |
+| The touch panel on the wall (state, arming, the voice assistant) | ARMOR-HMI |
 | Enclosures and electronics | ARMOR-HARDWARE |
 | Deployment | ARMOR-DEVOPS |
 | Ecosystem-wide CI baseline and cross-machine install/update | ARMOR-COMMON, ARMOR-UPDATER |

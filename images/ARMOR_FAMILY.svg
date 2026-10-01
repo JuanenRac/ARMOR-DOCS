@@ -29,6 +29,8 @@
   <circle cx="748.0" cy="223.5" r="3.4" fill="#FFB020"/>
   <path d="M702.0 306.0 C725.0 306.0, 725.0 388.5, 748.0 388.5" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="748.0" cy="388.5" r="3.4" fill="#FFB020"/>
+  <path d="M702.0 306.0 C725.0 306.0, 725.0 471.0, 748.0 471.0" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
+  <circle cx="748.0" cy="471.0" r="3.4" fill="#FFB020"/>
   <path d="M984.0 223.5 C961.0 223.5, 961.0 223.5, 938.0 223.5" fill="none" stroke="#00E5FF" stroke-width="1.6" opacity=".45"/>
   <circle cx="938.0" cy="223.5" r="3.4" fill="#FFB020"/>
   <path d="M230.0 141.0 L276.0 306.0" fill="none" stroke="#5DF0C4" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>
@@ -50,6 +52,7 @@
   <g transform="translate(512 440)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-VOICE-AI</text></g>
   <g transform="translate(748 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-STUDIO</text></g>
   <g transform="translate(748 357.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#FFF">ARMOR-ANDROID-CONTROL</text></g>
+  <g transform="translate(748 440)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-HMI</text></g>
   <g transform="translate(984 192.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-DEVOPS</text></g>
   <g transform="translate(984 275.0)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-UPDATER</text></g>
   <g transform="translate(984 357.5)"><rect width="190" height="62" rx="12" fill="#0d1a22" stroke="#00E5FF" stroke-width="1.4" opacity=".95"/><text x="95.0" y="36.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#FFF">ARMOR-DOCS</text></g>

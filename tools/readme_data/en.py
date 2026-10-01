@@ -24,6 +24,7 @@ RELATED = {
     "ARMOR-RADAR": "Field-node firmware for ESP32-S3 with three radars and its own web panel",
     "ARMOR-SOLAR": "Solar inverter and battery protocols and the messages of a gateway node",
     "ARMOR-ELECTRICAL": "Electrical node: meters, the message of the network's readings and the rules for switching",
+    "ARMOR-HMI": 'Touch panel: the state of the system on a wall screen, arming and acknowledging, and the home of the voice assistant',
     "ARMOR-SERVER": "Central coordinator: telemetry, alarms, devices, solar readings and cameras",
     "ARMOR-STUDIO": "Web console: cameras, radar, alarms, solar energy and the 2D/3D site designer",
     "ARMOR-ANDROID-CONTROL": "Android operator client with a live 2D/3D radar",
@@ -48,6 +49,19 @@ TEXT = {
             "**A CLI and an optional desktop shell:** `armor-updater status`/`install`/`update`, and a Qt Quick interface (`pip install \".[gui]\"`) in the ecosystem's seven languages.",
         ],
         "note": "See `CONTRIBUTING.md` for how a repository joins the ecosystem `armor.project.json` describes.",
+    },
+    "ARMOR-HMI": {
+        "tagline": 'The touch panel of the house: a 7-inch screen on the wall that shows the state of the system, arms and disarms it and acknowledges alarms, with a microphone and a speaker for the voice assistant to come (a node of the family on the ESP32-S3-Touch-LCD-7C-BOX, with its own web page for the settings)',
+        "honest": "**Maturity: scaffolding.** What does not depend on the board is real and tested on a computer (the settings, what the panel knows of the server and when that is stale, the voice conversation, the board's pins and the words of the screen in seven languages: four test programs) and so is the web page (run against a stand-in in a real browser). **The firmware has never been built or run on a board:** the screen, the touch, the sound and the link to the server are written from Waveshare's examples for this family of boards and need their first compilation and their first power-up. The speech service the assistant talks to does not exist yet and there is no wake word: it is push to talk.",
+        "bullets": [
+            '**A client of ARMOR-SERVER, like the Android app:** it signs in with a user an administrator made for it, asks `GET /api/v1/panel/summary` (a few hundred bytes: the mode, the nodes online and the alarms that need a person) every few seconds and, when the person touches the button and confirms, arms, disarms or acknowledges. If the server stops answering the screen says that what it shows is old and the button is disabled.',
+            '**The screen (800x480, LVGL):** the mode in the colour of the worst alarm nobody has seen, a large arm/disarm button with a question first, the nodes online, the alarms (the unseen first), a night that dims it, a sleep after a time without touches, a tone and a wake-up when a new alarm arrives, and seven languages with accents, Japanese and Chinese drawn with fonts generated for exactly the characters used.',
+            '**A node like the others:** the same settings store, Wi-Fi, web page in seven languages, Bluetooth set-up from the phone, firmware update with roll-back and HTTPS as ARMOR-RADAR, ARMOR-SOLAR and ARMOR-ELECTRICAL (they share `ARMOR-COMMON/firmware_base`), plus pages for the server, the screen, the sound and the voice; it tells Studio it exists over MQTT so Studio lists it with its page.',
+            '**The voice assistant, push to talk:** a touch opens the microphone, the audio goes only to the speech service whose address is in the settings (off by default), the reply is shown and spoken; the order of the steps, the time limits and what a touch does are a tested state machine, and the panel carries out no command by itself ([the contract](docs/VOICE.md)).',
+            "**The board:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB flash, 16 MB PSRAM, a 7-inch RGB screen with a GT911 touch, four microphones, a speaker); the pins come from Waveshare's examples and a test proves that no two functions share a GPIO ([the board](docs/HARDWARE.md)).",
+            '**Not yet:** a first compilation and power-up of the firmware, a wake word, the speech service on the Jetson, and a view of the cameras on the screen.',
+        ],
+        "note": 'See the [design](docs/DESIGN.md), the [board](docs/HARDWARE.md), the [voice assistant](docs/VOICE.md), the [firmware guide](docs/NODE_FIRMWARE.md) and the [fonts](docs/FONTS.md).',
     },
     "ARMOR-NETWORK": {
         "tagline": "Watches the local network: the devices on it, whether the internet is there, what changes and what is new (a Python program with no dependencies, read-only; it runs on a machine of the network and reports to ARMOR-SERVER)",
