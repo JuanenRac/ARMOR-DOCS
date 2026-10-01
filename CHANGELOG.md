@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.4.10] - Internal audit notes leave the public repository
+
+- Three audit documents (in Spanish, dated, with working notes and a mention of private notes) sat in the root of this repository; they were never part of the documentation. They are removed from the repository. The capability matrix and the catalogue are the public record.
+
 ## [0.4.9] - The matrix and the catalog caught up
 
 - **Capability matrix:** the touch panel's firmware now builds (it has not run on a board), the ESP32-S3-ETH firmware has run on one real board, the network node's orders on request and `inspect` with a device login, the machine metrics, the connection settings and the device logins have rows of their own.
