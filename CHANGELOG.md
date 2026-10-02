@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.2] - The version table catches up again, this time including itself
+
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.3, ARMOR-RADAR 0.3.6, ARMOR-HMI 0.0.4, ARMOR-STUDIO 0.5.9, ARMOR-DEVOPS 0.3.5), and its own row corrected to 0.5.2 - 0.5.1's refresh had updated every other project but forgot to update the row for ARMOR-DOCS itself.
+
 ## [0.5.1] - The version table catches up
 
 - **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.2, ARMOR-RADAR 0.3.5, ARMOR-SOLAR 0.1.4, ARMOR-ELECTRICAL 0.1.0, ARMOR-HMI 0.0.3, ARMOR-SERVER 0.4.0, ARMOR-STUDIO 0.5.8, ARMOR-ANDROID-CONTROL 0.4.0), and the Server and Studio descriptions now mention the electrical, network, services and weather menus.
