@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.1] - The version table catches up
+
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.2, ARMOR-RADAR 0.3.5, ARMOR-SOLAR 0.1.4, ARMOR-ELECTRICAL 0.1.0, ARMOR-HMI 0.0.3, ARMOR-SERVER 0.4.0, ARMOR-STUDIO 0.5.8, ARMOR-ANDROID-CONTROL 0.4.0), and the Server and Studio descriptions now mention the electrical, network, services and weather menus.
+
 ## [0.5.0] - Internal audit notes leave the public repository
 
 - Three audit documents (in Spanish, dated, with working notes and a mention of private notes) sat in the root of this repository; they were never part of the documentation. They are removed from the repository. The capability matrix and the catalogue are the public record.
