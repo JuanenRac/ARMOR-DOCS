@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.5] - The version table catches up once more
+
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-RADAR 0.4.3, ARMOR-SOLAR 0.1.9, ARMOR-ELECTRICAL 0.1.5, ARMOR-HMI 0.0.9).
+
 ## [0.5.4] - The version table catches up once more
 
 - **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-RADAR 0.3.9, ARMOR-SOLAR 0.1.7, ARMOR-ELECTRICAL 0.1.3, ARMOR-HMI 0.0.7).
