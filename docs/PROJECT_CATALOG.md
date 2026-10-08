@@ -12,10 +12,10 @@
 | ARMOR-NETWORK | 0.0.6 | Local network monitor: the devices on the house's network, the state of the internet (and whose side an outage is on), what changes; it only observes | Scaffolding |
 | ARMOR-SERVER | 0.4.3 | Central state (persisted), users, event history, alarms, devices, automations, solar readings, electrical readings and switching, the local network, system services, camera watchdog, cameras, evidence, audit | Functional |
 | ARMOR-STUDIO | 0.6.1 | Operations console: alarms, devices, automations, users, history, alert rules, PTZ, radar map, solar and electrical live menus, local network, system services, weather (with a live rain-and-cloud radar), a node finder, configuration, and a 2D/3D site designer | Functional |
-| ARMOR-ANDROID-CONTROL | 0.4.5 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history and alarm notifications | Functional baseline |
+| ARMOR-ANDROID-CONTROL | 0.4.6 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history and alarm notifications | Functional baseline |
 | ARMOR-HARDWARE | 0.2.3 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.3.8 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
-| ARMOR-DOCS | 0.5.9 | Canonical documentation and the capability matrix | Functional |
+| ARMOR-DOCS | 0.6.0 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.3 | Scenarios and repeatable faults | Functional |
 | ARMOR-UPDATER | 0.0.7 | Detects, installs and updates the ecosystem's repositories (atomic-by-verification, adapted for a private ecosystem) | Scaffolding |
 

@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.0] - Catalog with the Android client version
+
+- `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.6 and this project's own row at 0.6.0.
+
+
 ## [0.5.9] - The catalog row of this project
 
 - `docs/PROJECT_CATALOG.md` listed this project with a version several releases old; the row now carries the current one.
