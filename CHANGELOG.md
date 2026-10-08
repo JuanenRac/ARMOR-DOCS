@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.1] - Catalog with the Android and radar versions
+
+- `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.7 and ARMOR-RADAR 0.5.4.
+
+
 ## [0.6.0] - Catalog with the Android client version
 
 - `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.6 and this project's own row at 0.6.0.
