@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.6] - The version table, and what the capability matrix says about hardware
+
+- **PROJECT_CATALOG.md:** every version number brought up to date.
+- **CAPABILITY_MATRIX.md:** it said no radar or field-node board had ever been connected; one ARMOR-RADAR board with its LD2450 radars has been flashed and run on a bench, so it now says that (and that nothing else of the kind has).
+- **Manifest:** `native_version` was behind `version`, which the CI check refuses; they are equal again.
+
 ## [0.5.5] - The version table catches up once more
 
 - **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-RADAR 0.4.3, ARMOR-SOLAR 0.1.9, ARMOR-ELECTRICAL 0.1.5, ARMOR-HMI 0.0.9).
