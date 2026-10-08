@@ -2,7 +2,9 @@
 
 All notable changes to this project are documented here.
 
-## [0.5.7] - Project catalog with the current versions
+## [0.5.8] - Project catalog with the current versions
+
+- The catalog also lists the versions of SERVER, VOICE-AI, UPDATER and ANDROID-CONTROL after their latest changes.
 
 - `docs/PROJECT_CATALOG.md` lists the current versions of COMMON, RADAR, ELECTRICAL, HMI, DEVOPS, UPDATER and ANDROID-CONTROL.
 
