@@ -6,7 +6,7 @@
 | ARMOR-RADAR | 0.5.4 | ESP32-S3 field-node firmware, decoders for the LD2450, LD2461 and presence sensors, and its host-tested core | Scaffolding |
 | ARMOR-SOLAR | 0.2.3 | Solar gateway node: the ESP32-S3 firmware and its panel (ten serial ports), and the protocols of Voltronic / MPP Solar inverters and Pylontech and ANT-BMS batteries | Scaffolding |
 | ARMOR-SERVER-AI | 0.2.1 | Visual profile selection, explainable fusion policy, engine registry | Functional baseline |
-| ARMOR-VOICE-AI | 0.2.2 | Offline voice intents with signed confirmation | Functional baseline |
+| ARMOR-VOICE-AI | 0.3.0 | Offline voice intents with signed confirmation | Functional baseline |
 | ARMOR-ELECTRICAL | 0.1.8 | Electrical node: the firmware (sixteen PZEM meters on one serial line, web panel, MQTT), the meters' frames, the message of the network's readings and the rules for switching | Scaffolding |
 | ARMOR-HMI | 0.1.2 | Touch panel for the Waveshare ESP32-S3-Touch-LCD-7C-BOX: the system's state on a wall screen, arm/disarm/acknowledge, push-to-talk voice, and the web page of the node; the firmware has never run on a board | Scaffolding |
 | ARMOR-NETWORK | 0.0.6 | Local network monitor: the devices on the house's network, the state of the internet (and whose side an outage is on), what changes; it only observes | Scaffolding |
@@ -15,7 +15,7 @@
 | ARMOR-ANDROID-CONTROL | 0.4.7 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history and alarm notifications | Functional baseline |
 | ARMOR-HARDWARE | 0.2.3 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.3.8 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker | Functional |
-| ARMOR-DOCS | 0.6.2 | Canonical documentation and the capability matrix | Functional |
+| ARMOR-DOCS | 0.6.3 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.3 | Scenarios and repeatable faults | Functional |
 | ARMOR-UPDATER | 0.0.7 | Detects, installs and updates the ecosystem's repositories (atomic-by-verification, adapted for a private ecosystem) | Scaffolding |
 
