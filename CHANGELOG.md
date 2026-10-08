@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.7] - Project catalog with the current versions
+
+- `docs/PROJECT_CATALOG.md` lists the current versions of COMMON, RADAR, ELECTRICAL, HMI, DEVOPS, UPDATER and ANDROID-CONTROL.
+
+
 ## [0.5.6] - The version table, and what the capability matrix says about hardware
 
 - **PROJECT_CATALOG.md:** every version number brought up to date.
