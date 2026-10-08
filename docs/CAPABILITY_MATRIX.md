@@ -6,7 +6,7 @@ What each capability is *today*, in three honest levels:
 * **Local**: works and is tested on a computer (unit, integration or host tests) with no real device.
 * **Verified**: proven on the real hardware, with a measurement record.
 
-**Only the rows marked *Verified* have met real hardware (some IP cameras and the CM5 test bench); no radar, field-node board, inverter or battery has been connected.** This page is updated with every change; a row moves to
+**Only the rows marked *Verified* have met real hardware (some IP cameras and the CM5 test bench); one ARMOR-RADAR board with its LD2450 radars has been flashed and run on a bench, but no inverter, battery, electrical meter or touch panel has been connected.** This page is updated with every change; a row moves to
 *Verified* only with evidence (see [bench acceptance](https://github.com/JuanenRac/ARMOR-HARDWARE/blob/main/docs/BENCH_ACCEPTANCE.md)).
 
 ## Contracts and server
