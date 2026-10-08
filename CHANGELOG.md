@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.5.9] - The catalog row of this project
+
+- `docs/PROJECT_CATALOG.md` listed this project with a version several releases old; the row now carries the current one.
+
+
 ## [0.5.8] - Project catalog with the current versions
 
 - The catalog also lists the versions of SERVER, VOICE-AI, UPDATER and ANDROID-CONTROL after their latest changes.
