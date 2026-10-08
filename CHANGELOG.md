@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.2] - Catalog with the node firmware work
+
+- `docs/PROJECT_CATALOG.md` lists SERVER 0.4.4, STUDIO 0.6.2 and COMMON 0.3.7 (updating the firmware of the nodes from Studio).
+
+
 ## [0.6.1] - Catalog with the Android and radar versions
 
 - `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.7 and ARMOR-RADAR 0.5.4.
