@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.7] - Catalog with the notifications work
+
+- `docs/PROJECT_CATALOG.md` lists SERVER 0.4.8, STUDIO 0.6.4 and COMMON 0.3.9.
+
 ## [0.6.6] - Catalog with the services fix
 
 - `docs/PROJECT_CATALOG.md` lists ARMOR-SERVER 0.4.7.
