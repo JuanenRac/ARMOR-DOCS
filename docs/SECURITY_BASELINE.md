@@ -41,7 +41,7 @@ broker's port only to the field network and the server's and Studio's ports only
 
 ## Not done yet
 
-The Bluetooth channel has never run on a board or against a phone. TLS on every hop, a secret store, broker TLS and per-node certificates, an audited ACL, a signed
+The Bluetooth channel has not yet been recorded running between a board and a phone. TLS on every hop, a secret store, broker TLS and per-node certificates, an audited ACL, a signed
 Android release channel, backups with retention rules, and any penetration test. Do not expose
 A.R.M.O.R. beyond the loopback interface or a trusted test LAN until the end-to-end cookie test,
 a proxy and TLS are decided.

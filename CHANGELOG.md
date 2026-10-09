@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.1] - What has run on real hardware, said the same way everywhere
+
+- The capability matrix, the security baseline and the ARMOR-RADAR pages said, in different places, that the radar firmware had never run on a board or had run on one board without radars. Two real nodes (Waveshare ESP32-S3-ETH) run it: the firmware row and the link from Studio to a node's panel are now *Verified*, and what is still not recorded on a real node (the Wi-Fi bridge, mapped pins, joining a router's Wi-Fi, Bluetooth between a board and a phone, real targets for the track identities) is worded as "not yet recorded" instead of "never".
+
 ## [0.7.0] - The documentation follows what the system does today
 
 - The capability matrix lists what was added: the node firmware update from a file or from GitHub (seen on a real radar board), the live map of a radar node, the weather radar of the app, the motion watching, the fifteen voice commands, the alarms to Telegram and Home Assistant, the configurator of a node in the app and Studio's administration of the machine - each at the honest level it has reached.
