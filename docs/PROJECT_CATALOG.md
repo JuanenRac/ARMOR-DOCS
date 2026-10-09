@@ -3,12 +3,12 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.4.1 | Message contracts, validators, conformance vectors, generated types, OpenAPI, shared launcher | Functional |
-| ARMOR-RADAR | 0.5.4 | ESP32-S3 field-node firmware, decoders for the LD2450, LD2461 and presence sensors, its host-tested core, updates from GitHub with a progress bar and a live map | Scaffolding |
-| ARMOR-SOLAR | 0.2.3 | Solar gateway node: the ESP32-S3 firmware and its panel (ten serial ports), and the protocols of Voltronic / MPP Solar inverters and Pylontech and ANT-BMS batteries | Scaffolding |
+| ARMOR-RADAR | 0.5.5 | ESP32-S3 field-node firmware, decoders for the LD2450, LD2461 and presence sensors, its host-tested core, updates from GitHub with a progress bar and a live map | Scaffolding |
+| ARMOR-SOLAR | 0.2.4 | Solar gateway node: the ESP32-S3 firmware and its panel (ten serial ports), and the protocols of Voltronic / MPP Solar inverters and Pylontech and ANT-BMS batteries | Scaffolding |
 | ARMOR-SERVER-AI | 0.2.3 | Motion-watching service, visual profile selection, explainable fusion policy, engine registry | Functional baseline |
 | ARMOR-VOICE-AI | 0.2.5 | Offline voice service: fifteen commands in seven languages, arm and disarm confirmed with a signed token | Functional baseline |
-| ARMOR-ELECTRICAL | 0.1.8 | Electrical node: the firmware (sixteen PZEM meters on one serial line, web panel, MQTT), the meters' frames, the message of the network's readings and the rules for switching | Scaffolding |
-| ARMOR-HMI | 0.1.2 | Touch panel for the Waveshare ESP32-S3-Touch-LCD-7C-BOX: the system's state on a wall screen, arm/disarm/acknowledge, push-to-talk voice, and the web page of the node; the firmware has never run on a board | Scaffolding |
+| ARMOR-ELECTRICAL | 0.1.9 | Electrical node: the firmware (sixteen PZEM meters on one serial line, web panel, MQTT), the meters' frames, the message of the network's readings and the rules for switching | Scaffolding |
+| ARMOR-HMI | 0.1.3 | Touch panel for the Waveshare ESP32-S3-Touch-LCD-7C-BOX: the system's state on a wall screen, arm/disarm/acknowledge, push-to-talk voice, and the web page of the node; the firmware has never run on a board | Scaffolding |
 | ARMOR-NETWORK | 0.0.6 | Local network monitor: the devices on the house's network, the state of the internet (and whose side an outage is on), what changes; it only observes | Scaffolding |
 | ARMOR-SERVER | 0.5.0 | Central state (persisted), users, event history, alarms, devices, automations, solar readings, electrical readings and switching, the local network, system services, camera watchdog, cameras, evidence, audit, node firmware updates, Telegram and Home Assistant notices, voice commands | Functional |
 | ARMOR-STUDIO | 0.6.5 | Operations console: alarms, devices, automations, users, history, alert rules, PTZ, radar map, solar and electrical live menus, local network, system services, weather (with a live rain-and-cloud radar), a node finder, configuration, node firmware updates, notifications, and a 2D/3D site designer | Functional |
