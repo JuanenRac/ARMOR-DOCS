@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.4] - Catalog with the firmware progress work
+
+- `docs/PROJECT_CATALOG.md` lists SERVER 0.4.5 and STUDIO 0.6.3.
+
+
 ## [0.6.3] - Catalog with the voice gateway version
 
 - `docs/PROJECT_CATALOG.md` lists ARMOR-VOICE-AI 0.3.0 (seven languages).
