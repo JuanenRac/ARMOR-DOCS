@@ -15,7 +15,7 @@
 | ARMOR-ANDROID-CONTROL | 0.4.9 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history, alarm notifications, an assistant for written and spoken commands and the configurator of the nodes | Functional baseline |
 | ARMOR-HARDWARE | 0.2.3 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
 | ARMOR-DEVOPS | 0.4.2 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker, observation and voice services, administration agent | Functional |
-| ARMOR-DOCS | 0.7.0 | Canonical documentation and the capability matrix | Functional |
+| ARMOR-DOCS | 0.7.1 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.3 | Scenarios and repeatable faults | Functional |
 | ARMOR-UPDATER | 0.0.7 | Detects, installs and updates the ecosystem's repositories (atomic-by-verification, adapted for a private ecosystem) | Scaffolding |
 
