@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.9] - Catalog with the voice commands and the node configurator
+
+- `docs/PROJECT_CATALOG.md` lists VOICE-AI 0.2.5, SERVER 0.5.0, SERVER-AI 0.2.3, COMMON 0.4.1 and ANDROID-CONTROL 0.4.9.
+
 ## [0.6.8] - Catalog with the observation service work
 
 - `docs/PROJECT_CATALOG.md` lists SERVER 0.4.9, STUDIO 0.6.5, COMMON 0.4.0, DEVOPS 0.4.0 and SERVER-AI 0.2.2.
