@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.0] - The documentation follows what the system does today
+
+- The capability matrix lists what was added: the node firmware update from a file or from GitHub (seen on a real radar board), the live map of a radar node, the weather radar of the app, the motion watching, the fifteen voice commands, the alarms to Telegram and Home Assistant, the configurator of a node in the app and Studio's administration of the machine - each at the honest level it has reached.
+- `docs/INTERFACES.md` lists the new links (firmware to the nodes, Telegram and Home Assistant, the observation service, the administration agent) and points at the current OpenAPI file; the architecture says a spoken command is carried out with the session of the person who gave it.
+- The catalogue's descriptions of SERVER, STUDIO, ANDROID-CONTROL, DEVOPS, RADAR, SERVER-AI and VOICE-AI name their new features.
+
 ## [0.6.9] - Catalog with the voice commands and the node configurator
 
 - `docs/PROJECT_CATALOG.md` lists VOICE-AI 0.2.5, SERVER 0.5.0, SERVER-AI 0.2.3, COMMON 0.4.1 and ANDROID-CONTROL 0.4.9.

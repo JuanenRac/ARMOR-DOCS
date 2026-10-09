@@ -44,7 +44,7 @@ flowchart LR
 * **The AI services recommend, they never act.** The visual policy returns a severity with
   reasons and `authorizes_action = false`; the voice service returns an intent and needs a
   service-issued confirmation for arm and disarm. The server authenticates and authorises
-  every action.
+  every action, and carries out a spoken or written command with the session of the person who gave it.
 * **Studio and Android are clients of the server**, not of the field network. They never reach
   a node's own configuration endpoint. The one exception is the set-up of a node from the Android
   app over **Bluetooth Low Energy** (below), which needs no network at all.
