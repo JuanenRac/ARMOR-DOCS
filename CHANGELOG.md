@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.8] - Catalog with the observation service work
+
+- `docs/PROJECT_CATALOG.md` lists SERVER 0.4.9, STUDIO 0.6.5, COMMON 0.4.0, DEVOPS 0.4.0 and SERVER-AI 0.2.2.
+
 ## [0.6.7] - Catalog with the notifications work
 
 - `docs/PROJECT_CATALOG.md` lists SERVER 0.4.8, STUDIO 0.6.4 and COMMON 0.3.9.
