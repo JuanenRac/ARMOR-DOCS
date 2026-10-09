@@ -14,7 +14,7 @@
 | ARMOR-STUDIO | 0.6.5 | Operations console: alarms, devices, automations, users, history, alert rules, PTZ, radar map, solar and electrical live menus, local network, system services, weather (with a live rain-and-cloud radar), a node finder, configuration, node firmware updates, notifications, and a 2D/3D site designer | Functional |
 | ARMOR-ANDROID-CONTROL | 0.4.9 | Android operator client: arm and disarm, alarms, devices, live radar, solar inverters and batteries, history, alarm notifications, an assistant for written and spoken commands and the configurator of the nodes | Functional baseline |
 | ARMOR-HARDWARE | 0.2.3 | Enclosure design and the bench acceptance matrix | Functional mechanical baseline |
-| ARMOR-DEVOPS | 0.4.1 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker, observation and voice services, administration agent | Functional |
+| ARMOR-DEVOPS | 0.4.2 | Compose topology, CM5 test-bench installer, backup and restore, TLS profile, own MQTT broker, observation and voice services, administration agent | Functional |
 | ARMOR-DOCS | 0.7.0 | Canonical documentation and the capability matrix | Functional |
 | ARMOR-SIMULATOR | 0.2.3 | Scenarios and repeatable faults | Functional |
 | ARMOR-UPDATER | 0.0.7 | Detects, installs and updates the ecosystem's repositories (atomic-by-verification, adapted for a private ecosystem) | Scaffolding |
