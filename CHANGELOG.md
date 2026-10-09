@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.6.5] - Catalog with the voice work
+
+- `docs/PROJECT_CATALOG.md` lists SERVER 0.4.6, VOICE-AI 0.2.4 (its earlier 0.3.0 was renumbered, it skipped a minor), DEVOPS 0.3.9 and ANDROID-CONTROL 0.4.8.
+
+
 ## [0.6.4] - Catalog with the firmware progress work
 
 - `docs/PROJECT_CATALOG.md` lists SERVER 0.4.5 and STUDIO 0.6.3.
