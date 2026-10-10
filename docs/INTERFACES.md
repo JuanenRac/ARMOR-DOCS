@@ -20,6 +20,6 @@
 | Studio | Services, broker and configuration files | Administration agent of the machine | A Unix socket for the `armor` group and a closed list of actions |
 
 The contracts live in **ARMOR-COMMON**: JSON Schemas (`telemetry`, `health`, `command`, `info`, `solar_inverter`, `solar_battery`, `electrical`, `electrical_command`, `electrical_result`, `network`), the
-OpenAPI file for the server, 330 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server-0.4.2.yaml`) and generated TypeScript and Kotlin types. Any
+OpenAPI file for the server, 330 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server-0.4.3.yaml`) and generated TypeScript and Kotlin types. Any
 implementation change begins with a contract change and a conformance vector; consumers must not
 infer fields from undocumented payloads. Unknown fields are rejected everywhere.

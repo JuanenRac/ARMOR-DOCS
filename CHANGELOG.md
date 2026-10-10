@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.2] - The alarm node joins the matrix
+
+- **Capability matrix:** ARMOR-ALARM's firmware, its messages in the shared contract, the server's alarm nodes (commands off by default) and the Alarm panels of Studio and the phone, each with what has and has not been proven; nothing has run on a board.
+- **Catalogue:** the versions of the projects that moved (ARMOR-COMMON 0.4.3, ARMOR-ALARM 0.1.0, the server, Studio, the phone, the electrical, solar, radar and touch-panel nodes and DevOps), and the interface file's new name.
+
 ## [0.7.1] - What has run on real hardware, said the same way everywhere
 
 - The capability matrix, the security baseline and the ARMOR-RADAR pages said, in different places, that the radar firmware had never run on a board or had run on one board without radars. Two real nodes (Waveshare ESP32-S3-ETH) run it: the firmware row and the link from Studio to a node's panel are now *Verified*, and what is still not recorded on a real node (the Wi-Fi bridge, mapped pins, joining a router's Wi-Fi, Bluetooth between a board and a phone, real targets for the track identities) is worded as "not yet recorded" instead of "never".
