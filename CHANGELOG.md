@@ -5,6 +5,7 @@ All notable changes to this project are documented here.
 ## [0.7.3] - The alarm node's radio takeover, and the solar board's ten ports
 
 - **Capability matrix:** ARMOR-ALARM's firmware now says that it takes the Zigbee radio over itself (and what has and has not been tried: only frames on a computer), and the solar base board's row says ten ports in 4, 4 and 2, the LEDs (eight on a shift register, two on a pin each) and the warning for a pair that mixes hardware.
+- **Threat model** (`docs/THREAT_MODEL.md`): what the system protects, from whom, where its pieces trust each other, what each piece does about each threat, what is left and what to do first, written from what the code does and honest that it is not an audit.
 - **Catalogue:** the versions that moved (ARMOR-COMMON 0.4.4, ARMOR-SOLAR 0.3.2, ARMOR-ALARM 0.2.0) and ARMOR-ALARM's description.
 
 ## [0.7.2] - The alarm node joins the matrix

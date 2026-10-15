@@ -38,6 +38,7 @@
 * [機能マトリクス](docs/CAPABILITY_MATRIX.md)：各機能はシミュレーション、ローカル、ハードウェア検証済みのどれか。
 * [アーキテクチャ](docs/ARCHITECTURE.md)：ネットワーク、信頼の境界、時間と順序。
 * [セキュリティ基準](docs/SECURITY_BASELINE.md)：VLAN の設計、コードが強制するもの、まだ足りないもの。
+* [脅威モデル](docs/THREAT_MODEL.md)：何を守るか、誰から守るか、各部品がどこで互いを信頼するか、各部品が脅威にどう対処するか、何が残るか。
 * [プロジェクト一覧](docs/PROJECT_CATALOG.md)：12 のリポジトリ、そのバージョン、依存関係。
 * [インターフェース](docs/INTERFACES.md)：各インターフェースを誰が作り誰が使い、どこで信頼されるか。
 * [最初の垂直スライス](docs/FIRST_VERTICAL_SLICE.md)：シミュレーターからコンソールまでのテストが証明することと、しないこと。
@@ -47,7 +48,7 @@
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
 ├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
 ├── brand/    the emblem
 └── images/   this repository's banner and icon

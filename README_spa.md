@@ -38,6 +38,7 @@
 * [Matriz de capacidades](docs/CAPABILITY_MATRIX.md): de cada capacidad, ¿está simulada, local o verificada en hardware?
 * [Arquitectura](docs/ARCHITECTURE.md): redes, fronteras de confianza, tiempo y orden.
 * [Base de seguridad](docs/SECURITY_BASELINE.md): el diseño de VLAN, lo que aplica el código y lo que aún falta.
+* [Modelo de amenazas](docs/THREAT_MODEL.md): qué se protege, de quién, dónde se fían las piezas entre sí, qué hace cada una ante cada amenaza y qué queda.
 * [Catálogo de proyectos](docs/PROJECT_CATALOG.md): los doce repositorios, sus versiones y cómo dependen unos de otros.
 * [Interfaces](docs/INTERFACES.md): quién produce y consume cada interfaz y dónde se confía en ella.
 * [Primera rebanada vertical](docs/FIRST_VERTICAL_SLICE.md): qué demuestra la prueba de simulador a consola y qué no.
@@ -47,7 +48,7 @@
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
 ├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
 ├── brand/    the emblem
 └── images/   this repository's banner and icon

@@ -38,6 +38,7 @@
 * [能力矩阵](docs/CAPABILITY_MATRIX.md)：每项能力是模拟的、本地的，还是已在硬件上验证？
 * [架构](docs/ARCHITECTURE.md)：网络、信任边界、时间和顺序。
 * [安全基线](docs/SECURITY_BASELINE.md)：VLAN 设计、代码强制执行的内容以及仍然缺少的部分。
+* [威胁模型](docs/THREAT_MODEL.md)：保护什么、防谁、各部分在哪里相互信任、各部分如何应对每种威胁以及还剩下什么。
 * [项目目录](docs/PROJECT_CATALOG.md)：十二个仓库、它们的版本以及相互依赖。
 * [接口](docs/INTERFACES.md)：谁产生和消费每个接口，以及在哪里被信任。
 * [第一个垂直切片](docs/FIRST_VERTICAL_SLICE.md)：从模拟器到控制台的测试证明了什么，没证明什么。
@@ -47,7 +48,7 @@
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
 ├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
 ├── brand/    the emblem
 └── images/   this repository's banner and icon
