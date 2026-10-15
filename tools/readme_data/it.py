@@ -259,6 +259,8 @@ TEXT = {
             "**Sette lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese) e undici temi, quello predefinito chiamato *Armor*.",
             "**Dichiara il tuo dispositivo:** nei menu Inverter e Batterie aggiungi ogni inverter o pacco batterie con nome, modello (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), collegamento (RS232, RS485, USB, CAN, Wi-Fi) e nodo gateway; attende la prima lettura reale e *Mostra letture di esempio* permette di provare il menu nel frattempo.",
             "**Progettista elettrico:** disegna lo schema elettrico della casa (rete, contatore, protezioni, commutatori, distribuzione, FV, inverter, batterie e carichi, in AC e DC) con porte e cavi, raggruppalo in quadri, collega inverter e batterie ai dispositivi solari letti dal server per vedere i loro valori in tempo reale e lascia che i controlli lo rivedano (due sorgenti su una linea, magnetotermici e cavi rispetto alla corrente, protezioni mancanti, tensioni DC). Il disegno è conservato sul server; è un disegno: per ora nulla comanda o misura.",
+            "**Progettista di allarme:** disegna l'allarme della casa - centrali, espansioni, contatti di porte e finestre, rilevatori di movimento, fumo, gas e allagamento, pulsanti antipanico, sirene, tastiere e l'alimentazione - con anelli cablati, collegamenti radio, uscita sirena, bus dati e alimentazione uniti porta a porta. Nel menu *Centrali di allarme* collega una centrale disegnata a una reale e un sensore a una delle sue zone, e ogni elemento mostra in diretta ciò che dice la sua centrale; \"disegna ciò che hanno le centrali\" riempie il disegno dalle centrali, e i controlli avvisano di un sensore che nessuno ascolta, una centrale senza sirena, tastiera o batteria tampone, o un rilevatore di fumo che tacerebbe a impianto disattivato. Il disegno è conservato sul server con le sue versioni precedenti.",
+            "**Un menu a gruppi e una guida su misura:** Sorveglianza, Sicurezza, Energia, Casa e rete, Progetto e Amministrazione, ogni gruppo comprimibile; ogni domanda è posta in una finestra della pagina (il browser non può mai silenziarla); un nuovo allarme critico suona e compare come notifica; le prove si possono proteggere dalla potatura automatica; e la Guida spiega ogni menu nelle sette lingue.",
         ],
         "sections": [
             {"title": "Modello di sicurezza", "bullets": [
@@ -299,6 +301,5 @@ TEXT = {
             "**Strumenti:** `make_readmes.py` scrive il README di ogni repository in sette lingue, `make_brand.py` il suo banner e la sua icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione e `clean_history.py` crea una copia pubblicabile di un repository.",
         ],
         "sections": [],
-        "note": "Gli audit della famiglia (in spagnolo) si trovano nella radice di questo repository.",
     },
 }

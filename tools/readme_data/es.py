@@ -193,6 +193,8 @@ TEXT = {
             "**Siete idiomas** (inglés, español, alemán, francés, italiano, japonés y chino) y once temas, el predeterminado llamado *Armor*.",
             "**Declara tu equipo:** en los menús Inversores y Baterías añades cada inversor o pila de baterías con su nombre, modelo (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), conexión (RS232, RS485, USB, CAN, Wi-Fi) y nodo pasarela; espera su primera lectura real y *Ver lecturas de ejemplo* te deja probar el menú mientras tanto.",
             "**Diseñador eléctrico:** dibuja el esquema eléctrico de la casa (red, contador, protecciones, conmutadores, distribución, FV, inversores, baterías y cargas, en AC y DC) con puertos y cables, agrúpalo en cuadros, une inversores y baterías con los dispositivos solares que lee el servidor para ver sus valores en directo, y deja que las comprobaciones lo revisen (dos fuentes en una línea, magnetotérmicos y cables frente a la corriente, protecciones que faltan, tensiones DC). El dibujo se guarda en el servidor; es un dibujo: de momento nada maniobra ni mide.",
+            "**Diseñador de alarma:** dibuja la alarma de la casa - centrales, expansores, contactos de puertas y ventanas, detectores de movimiento, humo, gas e inundación, botones de pánico, sirenas, teclados y la alimentación - con lazos cableados, enlaces por radio, la salida de sirena, el bus de datos y la alimentación unidos puerto a puerto. Vincula una central dibujada con una real y un sensor con una de sus zonas en el menú *Centrales de alarma* y cada elemento muestra en vivo lo que dice su central; \"dibujar lo que tienen las centrales\" rellena el dibujo desde las centrales, y las comprobaciones avisan de un sensor al que nadie escucha, una central sin sirena, teclado o batería de respaldo, o un detector de humo que callaría con el sistema desarmado. El dibujo se guarda en el servidor con sus versiones anteriores.",
+            "**Un menú en grupos y una ayuda a su medida:** Vigilancia, Seguridad, Energía, Casa y red, Diseño y Administración, con cada grupo plegable; toda pregunta se hace en un diálogo de la página (el navegador nunca puede silenciarla); una alarma crítica nueva suena y se muestra como notificación; las evidencias se pueden proteger de la poda automática; y la Ayuda explica cada menú en los siete idiomas.",
         ],
         "sections": [
             {"title": "Modelo de seguridad", "bullets": [
@@ -233,6 +235,5 @@ TEXT = {
             "**Herramientas:** `make_readmes.py` escribe el README de cada repositorio en los siete idiomas, `make_brand.py` su banner e icono, `publication_check.py` busca cualquier cosa privada antes de una publicación y `clean_history.py` hace una copia publicable de un repositorio.",
         ],
         "sections": [],
-        "note": "Las auditorías de la familia (en español) están en la raíz de este repositorio.",
     },
 }

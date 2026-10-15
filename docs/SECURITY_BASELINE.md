@@ -49,7 +49,7 @@ Android release channel, backups with retention rules, and any penetration test.
 A.R.M.O.R. beyond the loopback interface or a trusted test LAN until the end-to-end cookie test,
 a proxy and TLS are decided.
 
-## Application-level findings fixed in the second audit pass
+## Application-level findings fixed
 
 * The perimeter state (armed or not, and the targets) is no longer readable without an operator: `GET /api/v1/status` needs one, and `GET /api/v1/info` shows the mode only to an operator.
 * A field node's ingest token no longer returns the perimeter state (the answer is `accepted` and a revision).

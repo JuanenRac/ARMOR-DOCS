@@ -259,6 +259,8 @@ TEXT = {
             "**Sept langues** (anglais, espagnol, allemand, français, italien, japonais, chinois) et onze thèmes, celui par défaut s'appelant *Armor*.",
             "**Déclarez votre équipement :** dans les menus Onduleurs et Batteries, vous ajoutez chaque onduleur ou pile de batteries avec son nom, son modèle (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), sa connexion (RS232, RS485, USB, CAN, Wi-Fi) et son nœud passerelle ; il attend son premier relevé réel, et *Voir des relevés d'exemple* permet d'essayer le menu en attendant.",
             "**Concepteur électrique :** dessinez le schéma électrique de la maison (réseau, compteur, protections, commutateurs, distribution, PV, onduleurs, batteries et charges, AC et DC) avec ports et câbles, regroupez-le en tableaux, reliez onduleurs et batteries aux appareils solaires lus par le serveur pour voir leurs valeurs en direct, et laissez les contrôles le relire (deux sources sur une ligne, disjoncteurs et câbles face au courant, protections manquantes, tensions DC). Le dessin est conservé sur le serveur ; c'est un dessin : rien ne commande ni ne mesure encore.",
+            "**Concepteur d'alarme :** dessinez l'alarme de la maison - centrales, extensions, contacts de portes et de fenêtres, détecteurs de mouvement, de fumée, de gaz et d'inondation, boutons panique, sirènes, claviers et l'alimentation - avec boucles filaires, liaisons radio, sortie sirène, bus de données et alimentation reliés port à port. Liez dans le menu *Centrales d'alarme* une centrale dessinée à une vraie et un capteur à l'une de ses zones, et chaque élément montre en direct ce que dit sa centrale ; « dessiner ce que les centrales ont » remplit le dessin depuis les centrales, et les contrôles signalent un capteur que personne n'écoute, une centrale sans sirène, clavier ou batterie de secours, ou un détecteur de fumée qui resterait muet système désarmé. Le dessin est conservé sur le serveur avec ses versions précédentes.",
+            "**Un menu en groupes et une aide à sa mesure :** Surveillance, Sécurité, Énergie, Maison et réseau, Conception et Administration, chaque groupe repliable ; toute question est posée dans une boîte de la page (le navigateur ne peut jamais la faire taire) ; une nouvelle alarme critique sonne et s'affiche en notification ; les preuves peuvent être protégées de l'élagage automatique ; et l'Aide explique chaque menu dans les sept langues.",
         ],
         "sections": [
             {"title": "Modèle de sécurité", "bullets": [
@@ -299,6 +301,5 @@ TEXT = {
             "**Outils :** `make_readmes.py` écrit le README de chaque dépôt en sept langues, `make_brand.py` sa bannière et son icône, `publication_check.py` cherche tout élément privé avant une publication et `clean_history.py` fait une copie publiable d'un dépôt.",
         ],
         "sections": [],
-        "note": "Les audits de la famille (en espagnol) se trouvent à la racine de ce dépôt.",
     },
 }

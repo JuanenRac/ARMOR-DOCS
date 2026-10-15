@@ -193,6 +193,8 @@ TEXT = {
             "**Seven languages** (English, Spanish, German, French, Italian, Japanese, Chinese) and eleven themes, the default one called *Armor*.",
             "**Declare your equipment:** in the Inverters and Batteries menus you add each inverter or battery stack with its name, model (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), connection (RS232, RS485, USB, CAN, Wi-Fi) and gateway node; it waits for its first real reading, and *Show example readings* lets you try the menu meanwhile.",
             "**Electrical Designer:** draw the house's electrical diagram (grid, meter, protections, transfer switches, distribution, PV, inverters, batteries and loads, AC and DC) with ports and wires, group it in panels, tie inverters and batteries to the solar devices the server reads to see their live values, and let the checks review it (two sources on one line, breakers and cables against the current, missing protections, DC voltages). The drawing is kept on the server; it is a drawing: nothing switches or measures anything yet.",
+            "**Alarm Designer:** draw the house's alarm - panels, expanders, door and window contacts, motion, smoke, gas and flood detectors, panic buttons, sirens, keypads and the supply - with wired loops, radio links, the siren output, the data bus and the power joined port to port. Tie a drawn panel to a real one and a sensor to one of its zones in the *Alarm panels* menu and each element shows what its panel says, live; \"draw what the panels have\" fills the drawing from the panels, and the checks warn of a sensor nobody listens to, a panel without siren, keypad or backup battery, or a smoke sensor that would be silent while disarmed. The drawing is kept on the server with its earlier versions.",
+            "**A menu in groups and a help to match:** Monitor, Security, Energy, House and network, Design and Administration, each group foldable; every question is asked in a dialog of the page (the browser can never silence it); a new critical alarm sounds and shows as a notification; evidence can be protected from the automatic pruning; and the Help explains every menu in the seven languages.",
         ],
         "sections": [
             {"title": "Security model", "bullets": [
@@ -233,6 +235,5 @@ TEXT = {
             "**Tools:** `make_readmes.py` writes the README of every repository in the seven languages, `make_brand.py` its banner and icon, `publication_check.py` looks for anything private before a publication and `clean_history.py` makes a publishable copy of a repository.",
         ],
         "sections": [],
-        "note": "The audits of the family (in Spanish) are kept in this repository's root.",
     },
 }

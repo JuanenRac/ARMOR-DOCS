@@ -259,6 +259,8 @@ TEXT = {
             "**Sieben Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch) und elf Themen, das Standardthema heißt *Armor*.",
             "**Deklariere dein Gerät:** in den Menüs Wechselrichter und Batterien fügst du jeden Wechselrichter oder Batteriestapel mit Name, Modell (Voltronic, MPP Solar, Pylontech US2000 / US3000 / US5000, ANT-BMS), Anschluss (RS232, RS485, USB, CAN, WLAN) und Gateway-Knoten hinzu; es wartet auf seinen ersten echten Messwert, und mit *Beispielwerte zeigen* lässt sich das Menü inzwischen ausprobieren.",
             "**Elektroplaner:** zeichnen Sie den Stromlaufplan des Hauses (Netz, Zähler, Schutzorgane, Umschalter, Verteilung, PV, Wechselrichter, Batterien und Verbraucher, AC und DC) mit Anschlüssen und Leitungen, gruppieren Sie ihn in Tafeln, verbinden Sie Wechselrichter und Batterien mit den vom Server gelesenen Solargeräten, um ihre Live-Werte zu sehen, und lassen Sie die Prüfungen ihn durchsehen (zwei Quellen an einer Leitung, Schutzschalter und Kabel gegen den Strom, fehlende Schutzorgane, DC-Spannungen). Die Zeichnung liegt auf dem Server; es ist eine Zeichnung: noch schaltet oder misst nichts.",
+            "**Alarmplaner:** zeichnen Sie die Alarmanlage des Hauses - Zentralen, Erweiterungen, Tür- und Fensterkontakte, Bewegungs-, Rauch-, Gas- und Wassermelder, Panikknöpfe, Sirenen, Bedienteile und die Versorgung - mit verdrahteten Schleifen, Funkverbindungen, Sirenenausgang, Datenbus und Versorgung, Anschluss an Anschluss verbunden. Verknüpfen Sie im Menü *Alarmzentralen* eine gezeichnete Zentrale mit einer echten und einen Melder mit einer ihrer Zonen, und jedes Element zeigt live, was seine Zentrale meldet; „Zeichnen, was die Zentralen haben“ füllt die Zeichnung aus den Zentralen, und die Prüfungen warnen vor einem Melder, den niemand hört, einer Zentrale ohne Sirene, Bedienteil oder Pufferbatterie oder einem Rauchmelder, der bei unscharfer Anlage schwiege. Die Zeichnung liegt mit ihren früheren Versionen auf dem Server.",
+            "**Ein Menü in Gruppen und eine passende Hilfe:** Überwachung, Sicherheit, Energie, Haus und Netzwerk, Entwurf und Verwaltung, jede Gruppe einklappbar; jede Frage wird in einem Dialog der Seite gestellt (der Browser kann ihn nie unterdrücken); ein neuer kritischer Alarm ertönt und erscheint als Benachrichtigung; Beweise lassen sich vor der automatischen Bereinigung schützen; und die Hilfe erklärt jedes Menü in sieben Sprachen.",
         ],
         "sections": [
             {"title": "Sicherheitsmodell", "bullets": [
@@ -299,6 +301,5 @@ TEXT = {
             "**Werkzeuge:** `make_readmes.py` schreibt das README jedes Repositorys in sieben Sprachen, `make_brand.py` sein Banner und Symbol, `publication_check.py` sucht vor einer Veröffentlichung nach Privatem und `clean_history.py` erstellt eine veröffentlichbare Kopie eines Repositorys.",
         ],
         "sections": [],
-        "note": "Die Audits der Familie (auf Spanisch) liegen im Stammverzeichnis dieses Repositorys.",
     },
 }
