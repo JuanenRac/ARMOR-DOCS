@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.5] - Audit round two: versions of the catalog
+
+- The project catalog carries the versions of the projects changed in the second round of the audit.
+
 ## [0.7.4] - The PIN to disarm, the restart that keeps the house armed and ARMOR-VISION in the documentation
 
 - `docs/PROJECT_CATALOG.md` lists every version as its manifest says and the new ARMOR-VISION; `docs/CAPABILITY_MATRIX.md` has the rows of the PIN to disarm, the alarm node that keeps its mode through a restart, the publish queue and watchdog, the recovery of damaged files and ARMOR-VISION; `docs/INTERFACES.md` lists the alarm, info, electrical and relay topics and says that the node command topic is reserved; `docs/THREAT_MODEL.md` and `docs/SECURITY_BASELINE.md` say what the PIN, the recovery and the watchdog do and what they leave.
