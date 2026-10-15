@@ -34,6 +34,9 @@ broker's port only to the field network and the server's and Studio's ports only
 * Field commands are an allow-list of three; unknown fields in any message are rejected.
 * Solar and electrical nodes only read their equipment: no request that writes to an inverter, a battery or a meter is built anywhere, and the switching rules are not linked to any hardware.
 * A node's Bluetooth set-up channel writes only over an encrypted link (LE Secure Connections, "just works"); every operation but `hello` needs the set-up code or a login, changing anything needs an administrator, wrong passwords lock the channel for 30 seconds (doubling to five minutes) and one phone connects at a time. "Just works" stops a passive listener, **not** someone present while the phone pairs.
+* Disarming asks for the PIN of the signed-in user whenever the user has one (`ARMOR_DISARM_PIN=required` makes it compulsory): in the mode of the system, in a command to an alarm node and in the voice. Three wrong PINs lock the user for a minute, then five, then fifteen; the duress PIN disarms and warns in silence.
+* The server's files are forced to the disk before they take their name; the state and the users keep their last good copy, and a server that finds its state unreadable starts armed.
+* Erasing the history or every recording, and lowering how much a circuit matters, need an administrator; the list of the cameras needs a session.
 * Security-relevant actions are written to an audit log with credentials scrubbed.
 * Android sends a password only over HTTPS or over HTTP to a private-LAN IPv4 literal; a host *name*
   that merely starts like a private address is refused.

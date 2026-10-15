@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.4] - The PIN to disarm, the restart that keeps the house armed and ARMOR-VISION in the documentation
+
+- `docs/PROJECT_CATALOG.md` lists every version as its manifest says and the new ARMOR-VISION; `docs/CAPABILITY_MATRIX.md` has the rows of the PIN to disarm, the alarm node that keeps its mode through a restart, the publish queue and watchdog, the recovery of damaged files and ARMOR-VISION; `docs/INTERFACES.md` lists the alarm, info, electrical and relay topics and says that the node command topic is reserved; `docs/THREAT_MODEL.md` and `docs/SECURITY_BASELINE.md` say what the PIN, the recovery and the watchdog do and what they leave.
+
 ## [0.7.3] - The alarm node's radio takeover, and the solar board's ten ports
 
 - **Capability matrix:** ARMOR-ALARM's firmware now says that it takes the Zigbee radio over itself (and what has and has not been tried: only frames on a computer), and the solar base board's row says ten ports in 4, 4 and 2, the LEDs (eight on a shift register, two on a pin each) and the warning for a pair that mixes hardware.
