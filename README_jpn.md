@@ -20,15 +20,25 @@
 <p align="center">
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
-  <img src="https://img.shields.io/badge/Languages-7-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Maturity-functional-00E5FF.svg" alt="Maturity">
+  <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
+  <img src="https://img.shields.io/badge/Version-0.7.6-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
 ---
 
-**正直さのチェック - 今日動いているもの:** このリポジトリは検証済みのインターフェースと手順を文書化し、そうでないものははっきり述べます。機能が「完成」と信じる前に[機能マトリクス](docs/CAPABILITY_MATRIX.md)を読んでください。各機能がシミュレーションのみか、コンピューターでテスト済みか、実ハードウェアで検証済みかが書かれています。
+**正直さのチェック - 今日動いているもの:** このリポジトリは検証済みのインターフェースと手順を文書化し、検証されていないものは率直に述べます。ある機能が「完成」と信じる前に[能力マトリクス](docs/CAPABILITY_MATRIX.md)を読んでください。各機能が、シミュレーションのみ、コンピューター上でのテスト、実機での検証のどれかを示しています。18 のリポジトリの README は 1 つのソース（`tools/readme_src/`）から 8 言語で作られ、各プロジェクトのバージョンと成熟度は自身のマニフェストから読み取るため、プロジェクトと違うことは書けません。
 
 ---
+
+## 📋 ひと目で
+
+| | |
+|---|---|
+| バージョン | `0.7.6` |
+| 成熟度 | 確立 |
+| 技術 | Markdown / Mermaid |
+| 実機での確認 | 該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します |
 
 ## 🎯 概要
 
@@ -36,28 +46,39 @@
   <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
 </p>
 
-* [機能マトリクス](docs/CAPABILITY_MATRIX.md)：各機能はシミュレーション、ローカル、ハードウェア検証済みのどれか。
-* [アーキテクチャ](docs/ARCHITECTURE.md)：ネットワーク、信頼の境界、時間と順序。
-* [セキュリティ基準](docs/SECURITY_BASELINE.md)：VLAN の設計、コードが強制するもの、まだ足りないもの。
-* [プロジェクト一覧](docs/PROJECT_CATALOG.md)：12 のリポジトリ、そのバージョン、依存関係。
-* [インターフェース](docs/INTERFACES.md)：各インターフェースを誰が作り誰が使い、どこで信頼されるか。
-* [最初の垂直スライス](docs/FIRST_VERTICAL_SLICE.md)：シミュレーターからコンソールまでのテストが証明することと、しないこと。
-* **ツール：** `make_readmes.py` は各リポジトリの README を 7 言語で書き、`make_brand.py` はバナーとアイコンを作り、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` はリポジトリの公開用コピーを作ります。
+<p align="center">
+  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
+</p>
+
+* [能力マトリクス](docs/CAPABILITY_MATRIX.md)：各能力はシミュレーションのみか、コンピューター上でテスト済みか、実機で検証済みか。
+* [アーキテクチャ](docs/ARCHITECTURE.md)：ネットワーク、信頼境界、時刻と順序。
+* [セキュリティベースライン](docs/SECURITY_BASELINE.md)：VLAN 設計、コードが強制するもの、まだ足りないもの。[脅威モデル](docs/THREAT_MODEL.md)も。
+* [プロジェクトカタログ](docs/PROJECT_CATALOG.md)：18 のリポジトリ、そのバージョン、互いの依存関係。
+* [インターフェース](docs/INTERFACES.md)：各インターフェースを誰が生成・利用し、どこで信頼されるか。
+* [最初の垂直スライス](docs/FIRST_VERTICAL_SLICE.md)：シミュレーターからコンソールまでのテストが証明するものとしないもの。
+* **ツール：**`make_readmes.py` は `readme_src/` から全リポジトリの README を 8 言語で作り、`make_catalog.py` はカタログのバージョンを書き、`make_brand.py` はバナーとアイコン、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` は公開用のコピーを作り、`sync_ci_tools.py` はファミリーの CI 検査を揃えます。
+
+## 🧩 A.R.M.O.R. での役割
+
+ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュリティベースライン、能力マトリクスがここにあり、各リポジトリで実際に実機で動いたものを示す場所です。18 のリポジトリすべての README を 1 つのソースから書くツールもここにあり、8 言語がずれないようにしています。
 
 ## 📂 リポジトリの構成
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
-├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, THREAT_MODEL, FIRST_VERTICAL_SLICE
+├── tools/    make_readmes.py (+ readme_src/: the facts and the words of every repository in eight languages), make_catalog.py, make_brand.py, publication_check.py, clean_history.py, sync_ci_tools.py, check_all.sh
 ├── brand/    the emblem
-└── images/   this repository's banner and icon
+└── images/   this repository's banner, icon and the family picture
 ```
 
 ## 🛠️ 開発環境
 
+**必要なもの:** Python 3.11+ for the tools
+
 ```bash
-python tools/make_readmes.py --check      # the READMEs (7 languages) are current
+python tools/make_readmes.py --check      # the READMEs (8 languages) are current
+python tools/make_catalog.py --check     # the versions and maturity of the catalogue are current
 python tools/make_brand.py --check        # the banners and icons are current
 python tools/publication_check.py         # nothing private would leave with a publication
 bash tools/check_all.sh                   # every repository's own tests, in one run
@@ -71,12 +92,14 @@ bash tools/check_all.sh                   # every repository's own tests, in one
 * **[ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR)** - ESP32-S3 用フィールドノードのファームウェア。レーダー 3 基と独自の Web パネル付き
 * **[ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR)** - 太陽光インバーターとバッテリーのプロトコル、およびゲートウェイノードのメッセージ
 * **[ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL)** - 電気ノード：電力量計、電力網の計測メッセージ、開閉のルール
+* **[ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM)** - 警報ノードと警報盤：警戒区域、警戒セット、遅延、サイレン、PIN。サーバーがあってもなくても
 * **[ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI)** - タッチパネル：壁面ディスプレイでのシステム状態表示、警戒・確認操作、音声アシスタントの拠点
 * **[ARMOR-NETWORK](https://github.com/JuanenRac/ARMOR-NETWORK)** - ローカルネットワーク：機器、インターネット、そして変化
 * **[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)** - 中央コーディネーター：テレメトリ、アラーム、デバイス、太陽光の測定値、カメラ
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - Web コンソール：カメラ、レーダー、アラーム、太陽光発電、2D/3D サイト設計
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - リアルタイム 2D/3D レーダー付きの Android オペレータークライアント
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - 判断を説明し、決して動作しない視覚推論ポリシー
+* **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Jetson Orin NX 向けのカメラのゾーン、マスク、検知ルール
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - 偽造できない確認を備えたオフライン音声インテント
 * **[ARMOR-HARDWARE](https://github.com/JuanenRac/ARMOR-HARDWARE)** - 筐体、電子部品、ベンチ受け入れマトリクス
 * **[ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)** - デプロイ、CM5 テストベンチ、バックアップ、TLS

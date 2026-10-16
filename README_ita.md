@@ -20,15 +20,25 @@
 <p align="center">
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
-  <img src="https://img.shields.io/badge/Languages-7-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Maturity-functional-00E5FF.svg" alt="Maturity">
+  <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
+  <img src="https://img.shields.io/badge/Version-0.7.6-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
 ---
 
-**Controllo di onestà - cosa funziona oggi:** Questo repository documenta interfacce e procedure che sono state validate, e dice chiaramente ciò che non lo è. Leggi la [matrice delle capacità](docs/CAPABILITY_MATRIX.md) prima di credere che una funzione sia «finita»: indica per ognuna se è stata solo simulata, testata su computer o verificata su hardware reale.
+**Controllo di onestà - cosa funziona oggi:** Questo repository documenta interfacce e procedure che sono state validate, e dice chiaramente ciò che non lo è. Leggi la [matrice delle capacità](docs/CAPABILITY_MATRIX.md) prima di credere che una funzione sia "fatta": dice per ciascuna se è stata solo simulata, provata su un computer o verificata su hardware reale. I README dei diciotto repository sono scritti da un'unica fonte (`tools/readme_src/`) in otto lingue, con la versione e la maturità di ciascuno lette dal suo manifesto, così non possono dire qualcosa di diverso dal progetto.
 
 ---
+
+## 📋 In breve
+
+| | |
+|---|---|
+| Versione | `0.7.6` |
+| Maturità | Consolidato |
+| Tecnologia | Markdown / Mermaid |
+| Su hardware reale | Non applicabile: è documentazione; registra ciò che gli altri repository hanno fatto girare su hardware reale |
 
 ## 🎯 Panoramica
 
@@ -36,28 +46,39 @@
   <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
 </p>
 
-* [Matrice delle capacità](docs/CAPABILITY_MATRIX.md): per ogni capacità, simulata, locale o verificata su hardware?
+<p align="center">
+  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
+</p>
+
+* [Matrice delle capacità](docs/CAPABILITY_MATRIX.md): per ogni capacità, è simulata, provata su un computer o verificata su hardware?
 * [Architettura](docs/ARCHITECTURE.md): reti, confini di fiducia, tempo e ordine.
-* [Base di sicurezza](docs/SECURITY_BASELINE.md): il progetto delle VLAN, ciò che il codice impone e ciò che manca ancora.
-* [Catalogo dei progetti](docs/PROJECT_CATALOG.md): i dodici repository, le loro versioni e le dipendenze.
+* [Base di sicurezza](docs/SECURITY_BASELINE.md): il progetto delle VLAN, ciò che il codice impone e ciò che manca ancora; e il [modello delle minacce](docs/THREAT_MODEL.md).
+* [Catalogo dei progetti](docs/PROJECT_CATALOG.md): i diciotto repository, le loro versioni e come dipendono l'uno dall'altro.
 * [Interfacce](docs/INTERFACES.md): chi produce e consuma ogni interfaccia e dove ci si fida.
 * [Prima fetta verticale](docs/FIRST_VERTICAL_SLICE.md): cosa dimostra il test dal simulatore alla console e cosa no.
-* **Strumenti:** `make_readmes.py` scrive il README di ogni repository in sette lingue, `make_brand.py` il suo banner e la sua icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione e `clean_history.py` crea una copia pubblicabile di un repository.
+* **Strumenti:** `make_readmes.py` scrive il README di ogni repository nelle otto lingue da `readme_src/`, `make_catalog.py` scrive le versioni del catalogo, `make_brand.py` il suo banner e l'icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione, `clean_history.py` fa una copia pubblicabile di un repository e `sync_ci_tools.py` mantiene uguali i controlli di CI della famiglia.
+
+## 🧩 Ruolo in A.R.M.O.R.
+
+ARMOR-DOCS è la memoria della famiglia: è dove vivono l'architettura, la base di sicurezza e la matrice delle capacità, e il luogo che dice, per ogni repository, cosa ha davvero girato su hardware. Tiene anche lo strumento che scrive i README di tutti e diciotto i repository da un'unica fonte, perché le otto lingue non divergano.
 
 ## 📂 Struttura del repository
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
-├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, THREAT_MODEL, FIRST_VERTICAL_SLICE
+├── tools/    make_readmes.py (+ readme_src/: the facts and the words of every repository in eight languages), make_catalog.py, make_brand.py, publication_check.py, clean_history.py, sync_ci_tools.py, check_all.sh
 ├── brand/    the emblem
-└── images/   this repository's banner and icon
+└── images/   this repository's banner, icon and the family picture
 ```
 
 ## 🛠️ Ambiente di sviluppo
 
+**Requisiti:** Python 3.11+ for the tools
+
 ```bash
-python tools/make_readmes.py --check      # the READMEs (7 languages) are current
+python tools/make_readmes.py --check      # the READMEs (8 languages) are current
+python tools/make_catalog.py --check     # the versions and maturity of the catalogue are current
 python tools/make_brand.py --check        # the banners and icons are current
 python tools/publication_check.py         # nothing private would leave with a publication
 bash tools/check_all.sh                   # every repository's own tests, in one run
@@ -71,12 +92,14 @@ bash tools/check_all.sh                   # every repository's own tests, in one
 * **[ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR)** - Firmware del nodo di campo per ESP32-S3 con tre radar e un proprio pannello web
 * **[ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR)** - Protocolli di inverter e batterie solari e messaggi di un nodo gateway
 * **[ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL)** - Nodo elettrico: contatori, il messaggio delle letture della rete e le regole di manovra
+* **[ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM)** - Nodo e centrale d'allarme: zone, inserimento, ritardi, sirena e PIN, con il server o senza
 * **[ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI)** - Pannello touch: lo stato del sistema su uno schermo a parete, attivare e riconoscere gli allarmi, e la casa dell'assistente vocale
 * **[ARMOR-NETWORK](https://github.com/JuanenRac/ARMOR-NETWORK)** - La rete locale: i suoi dispositivi, internet e ciò che cambia
 * **[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)** - Coordinatore centrale: telemetria, allarmi, dispositivi, letture solari e telecamere
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - Console web: telecamere, radar, allarmi, energia solare e progettista del sito 2D/3D
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - Client Android dell'operatore con radar 2D/3D in tempo reale
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - Politica di inferenza visiva che spiega le sue decisioni e non agisce mai
+* **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Zone delle telecamere, maschere e regole di rilevamento per la Jetson Orin NX
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - Intenti vocali offline con una conferma impossibile da falsificare
 * **[ARMOR-HARDWARE](https://github.com/JuanenRac/ARMOR-HARDWARE)** - Contenitori, elettronica e matrice di accettazione da banco
 * **[ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)** - Distribuzione, banco di prova CM5, backup e TLS

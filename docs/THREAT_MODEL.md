@@ -90,7 +90,7 @@ One identity per node and an access list that lets each write only its own topic
 * **A stolen administrator session** can therefore restart services and change settings files: the damage is bounded by that list, not by what an attacker thinks of.
 * **The services** run as an unprivileged user with the system's hardening options (no new privileges, a read-only system, only the paths they write); an option set too tight can break a service in ways a test machine does not show, so they are meant to be tried on the real one.
 * **Dependencies**: the server and Studio have a small list (`npm audit` is run on them); the firmware builds with a fixed version of the toolchain; no dependency is fetched at run time.
-* **The repositories**: commits are by one account; the CI checks that versions, documentation in seven languages and the shared firmware agree. Nothing signs a commit or a release.
+* **The repositories**: commits are by one account; the CI checks that versions, documentation in eight languages and the shared firmware agree. Nothing signs a commit or a release.
 
 ## What this model says to do first
 

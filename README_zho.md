@@ -20,15 +20,25 @@
 <p align="center">
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
-  <img src="https://img.shields.io/badge/Languages-7-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Maturity-functional-00E5FF.svg" alt="Maturity">
+  <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
+  <img src="https://img.shields.io/badge/Version-0.7.6-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
 ---
 
-**诚实性检查 - 今天真正能运行的部分:** 本仓库记录已被验证的接口和流程，并明确说明哪些没有。在相信某个功能“已完成”之前，请先读[能力矩阵](docs/CAPABILITY_MATRIX.md)：它会说明每项能力只是模拟过、在电脑上测试过，还是在真实硬件上验证过。
+**诚实性检查 - 今天真正能运行的部分:** 本仓库记录已验证的接口和流程，并明确说明哪些尚未验证。在相信某项功能“已完成”之前，请先阅读[能力矩阵](docs/CAPABILITY_MATRIX.md)：它对每一项说明它只是模拟过、在计算机上测试过，还是在真实硬件上验证过。十八个仓库的 README 来自同一个来源（`tools/readme_src/`），以八种语言编写，每个项目的版本和成熟度都读自它自己的清单，因此不会与项目说的不一样。
 
 ---
+
+## 📋 速览
+
+| | |
+|---|---|
+| 版本 | `0.7.6` |
+| 成熟度 | 成熟 |
+| 技术栈 | Markdown / Mermaid |
+| 真实硬件 | 不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容 |
 
 ## 🎯 概述
 
@@ -36,28 +46,39 @@
   <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
 </p>
 
-* [能力矩阵](docs/CAPABILITY_MATRIX.md)：每项能力是模拟的、本地的，还是已在硬件上验证？
+<p align="center">
+  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
+</p>
+
+* [能力矩阵](docs/CAPABILITY_MATRIX.md)：每项能力是模拟的、在计算机上测试的，还是在硬件上验证的？
 * [架构](docs/ARCHITECTURE.md)：网络、信任边界、时间和顺序。
-* [安全基线](docs/SECURITY_BASELINE.md)：VLAN 设计、代码强制执行的内容以及仍然缺少的部分。
-* [项目目录](docs/PROJECT_CATALOG.md)：十二个仓库、它们的版本以及相互依赖。
-* [接口](docs/INTERFACES.md)：谁产生和消费每个接口，以及在哪里被信任。
-* [第一个垂直切片](docs/FIRST_VERTICAL_SLICE.md)：从模拟器到控制台的测试证明了什么，没证明什么。
-* **工具：** `make_readmes.py` 用七种语言写出每个仓库的 README，`make_brand.py` 生成其横幅和图标，`publication_check.py` 在发布前查找任何私有内容，`clean_history.py` 生成仓库的可发布副本。
+* [安全基线](docs/SECURITY_BASELINE.md)：VLAN 设计、代码强制实施的内容以及仍然缺少的内容；以及[威胁模型](docs/THREAT_MODEL.md)。
+* [项目目录](docs/PROJECT_CATALOG.md)：十八个仓库、它们的版本以及相互依赖关系。
+* [接口](docs/INTERFACES.md)：谁产生和使用每个接口，以及在哪里被信任。
+* [第一个垂直切片](docs/FIRST_VERTICAL_SLICE.md)：从模拟器到控制台的测试证明了什么、没有证明什么。
+* **工具：**`make_readmes.py` 从 `readme_src/` 以八种语言写出每个仓库的 README，`make_catalog.py` 写出目录中的版本，`make_brand.py` 写出其横幅和图标，`publication_check.py` 在发布前查找任何私有内容，`clean_history.py` 制作仓库的可发布副本，`sync_ci_tools.py` 让家族的 CI 检查保持一致。
+
+## 🧩 在 A.R.M.O.R. 中的角色
+
+ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里，也是说明每个仓库究竟在硬件上运行过什么的地方。它还保存着从同一个来源编写全部十八个仓库 README 的工具，使八种语言不会各行其是。
 
 ## 📂 仓库结构
 
 ```text
 ARMOR-DOCS/
-├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE
-├── tools/    make_readmes.py (+ readme_data/), make_brand.py, publication_check.py, clean_history.py, check_all.sh
+├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, THREAT_MODEL, FIRST_VERTICAL_SLICE
+├── tools/    make_readmes.py (+ readme_src/: the facts and the words of every repository in eight languages), make_catalog.py, make_brand.py, publication_check.py, clean_history.py, sync_ci_tools.py, check_all.sh
 ├── brand/    the emblem
-└── images/   this repository's banner and icon
+└── images/   this repository's banner, icon and the family picture
 ```
 
 ## 🛠️ 开发环境
 
+**环境要求:** Python 3.11+ for the tools
+
 ```bash
-python tools/make_readmes.py --check      # the READMEs (7 languages) are current
+python tools/make_readmes.py --check      # the READMEs (8 languages) are current
+python tools/make_catalog.py --check     # the versions and maturity of the catalogue are current
 python tools/make_brand.py --check        # the banners and icons are current
 python tools/publication_check.py         # nothing private would leave with a publication
 bash tools/check_all.sh                   # every repository's own tests, in one run
@@ -71,12 +92,14 @@ bash tools/check_all.sh                   # every repository's own tests, in one
 * **[ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR)** - 适用于 ESP32-S3 的现场节点固件，带三个雷达和自带网页面板
 * **[ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR)** - 太阳能逆变器与电池的协议，以及网关节点的消息
 * **[ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL)** - 电气节点：电表、电网读数消息和开关规则
+* **[ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM)** - 报警节点与报警主机：防区、布防、延时、警笛和 PIN，有无服务器均可
 * **[ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI)** - 触摸面板：墙面屏幕上的系统状态、布防与确认，以及语音助手的所在
 * **[ARMOR-NETWORK](https://github.com/JuanenRac/ARMOR-NETWORK)** - 本地网络：其设备、互联网以及变化
 * **[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)** - 中央协调器：遥测、报警、设备、太阳能读数和摄像头
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - 网页控制台：摄像头、雷达、报警、太阳能和 2D/3D 场地设计器
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - 带实时 2D/3D 雷达的 Android 操作员客户端
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - 会解释决策且从不执行动作的视觉推理策略
+* **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Jetson Orin NX 上的摄像头区域、遮罩与检测规则
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - 带无法伪造确认的离线语音意图
 * **[ARMOR-HARDWARE](https://github.com/JuanenRac/ARMOR-HARDWARE)** - 外壳、电子器件和台架验收矩阵
 * **[ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)** - 部署、CM5 测试台、备份与 TLS

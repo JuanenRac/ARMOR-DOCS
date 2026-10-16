@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Render the README of every A.R.M.O.R. repository in the seven languages of the family.
+"""Render the README of every A.R.M.O.R. repository in the eight languages of the family.
 
 Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
-Each repository is described once per language, so the seven files of a repository can never drift apart in structure:
-README.md (English) and README_spa / _deu / _fra / _ita / _jpn / _zho. The texts live in tools/readme_data/ (one module per language, the
-language-neutral badges, build and structure blocks in legacy.py and meta_new.py).
+Every repository is described once, in tools/readme_src/repos/<REPOSITORY>.py: the FACTS that do not depend on the language (the badges, the diagram, the commands, the structure) and the
+TEXT of each language. The words around every README and the one-line description of each repository are in tools/readme_src/ui.py. The eight files of a repository are rendered
+from the same data, so they can never drift apart in structure: README.md (English) and README_spa / _fra / _ita / _deu / _zho / _jpn / _por.
 
     python tools/make_readmes.py          # write the READMEs
     python tools/make_readmes.py --check  # fail when one is out of date
@@ -14,82 +14,71 @@ from __future__ import annotations
 
 import argparse
 import importlib
+import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from readme_data.legacy import REPOS as LEGACY  # noqa: E402
-from readme_data.meta_new import FIXES, META as META_NEW  # noqa: E402
+from readme_src.ui import RELATED, UI  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
+GITHUB_OWNER = "JuanenRac"
 
 # code, README file name, flag and name of each language, in the order of the language bar
 LANGUAGES = [
     ("en", "README.md", "🇺🇸", "English"), ("es", "README_spa.md", "🇪🇸", "Español"), ("fr", "README_fra.md", "🇫🇷", "Français"),
-    ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"), ("ja", "README_jpn.md", "🇯🇵", "日本語"), ("pt", "README_por.md", "🇵🇹", "Português"),
+    ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"),
+    ("ja", "README_jpn.md", "🇯🇵", "日本語"), ("pt", "README_por.md", "🇵🇹", "Português"),
 ]
-# the order of the repositories in the family list
-ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-HMI", "ARMOR-NETWORK", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI",
-         "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-SIMULATOR", "ARMOR-UPDATER", "ARMOR-DOCS"]
+# the order of the repositories in the family list (every repository of the family appears in it)
+ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-ALARM", "ARMOR-HMI", "ARMOR-NETWORK", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL",
+         "ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-SIMULATOR", "ARMOR-UPDATER", "ARMOR-DOCS"]
 SECTION_ICONS = ["🔒", "🌐", "⚙️"]
-PATCHES: dict = {}
-
-# Portuguese is kept as finished files (readme_data/pt_files/<repository>.md), not rebuilt from fields
-_modules = {code: importlib.import_module(f"readme_data.{code}") for code, *_ in LANGUAGES if code != "pt"}
 
 
-def split_build(block: str) -> tuple[str, str]:
-    """A legacy build block is code fences followed by a sentence; split them."""
-    end = block.rfind("```") + 3
-    return block[:end], block[end:].strip()
+def load(name: str):
+    return importlib.import_module(f"readme_src.repos.{name.replace('-', '_')}")
 
 
-def meta(name: str) -> dict:
-    if name in META_NEW:
-        return META_NEW[name]
-    legacy = LEGACY[name]
-    code, _ = split_build(legacy["en"]["build"])
-    for old, new in PATCHES.get(name, []):
-        code = code.replace(old, new)
-    result = {"emoji": legacy["emoji"], "badges": legacy["badges"], "diagram": "", "build": code, "structure": legacy["en"]["structure"]}
-    result.update({k: v for k, v in FIXES.get(name, {}).items() if k in ("build", "structure", "badges")})
-    return result
+MATURITY_COLOR = {"scaffolding": "FFB020", "functional": "00E5FF", "established": "2EA44F"}
 
 
-def texts(name: str, language: str) -> dict:
-    """The words of one repository in one language: the module of the language wins over the first generation (legacy)."""
-    own = _modules[language].TEXT.get(name, {})
-    if name in LEGACY and language in ("en", "es"):
-        base = dict(LEGACY[name][language])
-        _, base["note"] = split_build(base["build"])
-        base["bullets"] = list(base["bullets"])
-        for old, new in PATCHES.get(name, []):
-            base["honest"] = base["honest"].replace(old, new)
-        replace = own.get("bullets_replace", {})
-        for prefix, new in replace.items():
-            matches = [i for i, item in enumerate(base["bullets"]) if prefix in item]
-            assert len(matches) == 1, (name, language, prefix)
-            base["bullets"][matches[0]] = new
-        base.update({k: v for k, v in own.items() if k != "bullets_replace"})
-        base["structure_text"] = LEGACY[name][language]["structure"]
-        return base
-    assert own and "tagline" in own, f"no text for {name} in {language}"
-    return own
+def manifest(name: str) -> dict:
+    return json.loads((ROOT / name / "armor.project.json").read_text(encoding="utf-8"))
+
+
+def glance(name: str, language: str, info: dict, facts: dict, text: dict, ui: dict) -> str:
+    """A small table with the facts that go stale first: version and maturity (from the manifest), the tests, the stack and what has run on real hardware."""
+    if "hardware" not in text:
+        return ""
+    rows = [(ui["g_version"], f"`{info['version']}`"), (ui["g_maturity"], ui["m_" + info["maturity"]])]
+    if facts.get("tests"):
+        rows.append((ui["g_tests"], facts["tests"]))
+    rows.append((ui["g_stack"], info.get("stack", "")))
+    rows.append((ui["g_hardware"], text["hardware"]))
+    body = "\n".join(f"| {a} | {b} |" for a, b in rows)
+    return f"## 📋 {ui['glance']}\n\n| | |\n|---|---|\n{body}\n\n"
 
 
 def render(name: str, language: str) -> str:
-    m, text, ui = meta(name), texts(name, language), _modules[language].UI
-    badges = "\n".join(f'  <img src="https://img.shields.io/badge/{label}-{value}-{color}.svg" alt="{label}">' for label, value, color in m["badges"])
+    data = load(name)
+    facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
+    emoji = text.get("emoji_own", facts["emoji"])
+    info = manifest(name)
+    # the version and the maturity are never written by hand: they come from the manifest of the repository, so a README cannot be behind its project
+    badges = [badge for badge in text.get("badges_own", facts["badges"]) if badge[0] not in ("Maturity", "Version")]
+    badges.append(["Version", info["version"], "0f6cbd"])
+    badges.append(["Maturity", info["maturity"], MATURITY_COLOR[info["maturity"]]])
+    badge_html = "\n".join(f'  <img src="https://img.shields.io/badge/{label}-{value}-{color}.svg" alt="{label}">' for label, value, color in badges)
     bar = " |\n  ".join(f"{flag} <b>{title}</b>" if code == language else f'<a href="{file}">{flag} {title}</a>' for code, file, flag, title in LANGUAGES)
-    bullets = "\n".join(f"* {item}" for item in text["bullets"])
-    structure = text.get("structure_text") if language == "es" and "structure_text" in text else m["structure"]
-    if language == "es" and "structure_es" in FIXES.get(name, {}):
-        structure = FIXES[name]["structure_es"]
+    structure = text.get("structure_own", facts["structure"])
+    build = text.get("build_own", facts["build"])
+    diagram = text.get("diagram_own", facts.get("diagram", ""))
     parts = [f'''<p align="center">
   <img src="images/ARMOR_BANNER.svg" alt="{name} banner" width="100%">
 </p>
 
-# {m['emoji']} {name}
+# {emoji} {name}
 
 <p align="center">
   {bar}
@@ -99,47 +88,44 @@ def render(name: str, language: str) -> str:
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
-{badges}
+{badge_html}
 </p>
 
 ---
 
-**{ui['honesty']}:** {text['honest']}
+{ui['honesty_prefix']}{text['honest']}
 
 ---
 
-## 🎯 {ui['overview']}
+{glance(name, language, info, facts, text, ui)}## 🎯 {ui['overview']}
 ''']
     if text.get("intro"):
         parts.append(text["intro"] + "\n")
     if name == "ARMOR-DOCS":
         parts.append('<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>\n')
-    parts.append(bullets + "\n")
-    if m.get("diagram"):
-        parts.append(f"## 🔄 {ui['architecture']}\n\n{m['diagram']}\n")
-    for index, section in enumerate(text.get("sections", [])):
-        parts.append(f"## {SECTION_ICONS[index % len(SECTION_ICONS)]} {section['title']}\n\n" + "\n".join(f"* {item}" for item in section["bullets"]) + "\n")
+    parts.append("\n".join(f"* {item}" for item in text["bullets"]) + "\n")
+    if text.get("fit"):
+        parts.append(f"## 🧩 {ui['fit']}\n\n{text['fit']}\n")
+    if diagram:
+        parts.append(f"## 🔄 {ui['architecture']}\n\n{diagram}\n")
+    for section in text.get("sections", []):
+        parts.append(f"## {section['icon']} {section['title']}\n\n" + "\n".join(f"* {item}" for item in section["bullets"]) + "\n")
     parts.append(f"## 📂 {ui['structure']}\n\n{structure}\n")
-    parts.append(f"## 🛠️ {ui['dev']}\n\n{m['build']}\n" + (f"\n{text['note']}\n" if text.get("note") else ""))
-    # A relative link like `../ARMOR-COMMON` only ever worked for someone
-    # Browse a local sibling-folder checkout: each A.R.M.O.R. repository is
-    # its own separate GitHub repository, not a folder inside a monorepo, so
-    # `../` resolves to a nonexistent path on github.com (relative to the
-    # FILE's own blob path, not the account) and 404s. Cross-repository
-    # links use the real, absolute GitHub URL instead; a same-repository
-    # link (docs/*.md within ARMOR-DOCS's own README, or another file
-    # already relative in this function) is unaffected and stays relative.
-    GITHUB_OWNER = "JuanenRac"
+    requirements = facts.get("requirements")
+    needs = f"**{ui['requirements']}:** " + ", ".join(requirements) + "\n\n" if requirements else ""
+    parts.append(f"## 🛠️ {ui['dev']}\n\n{needs}{build}\n" + (f"\n{text['note']}\n" if text.get("note") else ""))
+
     def repo_url(repo: str) -> str:
         return f"https://github.com/{GITHUB_OWNER}/{repo}"
+
     related = "\n".join(
-        f"* **[{other}]({repo_url(other)})** - {_modules[language].RELATED[other]}" if other != name else f"* **{other}** ({ui['here']}) - {_modules[language].RELATED[other]}"
+        f"* **[{other}]({repo_url(other)})** - {RELATED[language][other]}" if other != name else f"* **{other}** ({ui['here']}) - {RELATED[language][other]}"
         for other in ORDER)
     parts.append(f"## 🔗 {ui['related']}\n\n{ui['family']}\n\n{related}\n")
-    doc_matrix_link = "docs/CAPABILITY_MATRIX.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/CAPABILITY_MATRIX.md"
-    doc_catalog_link = "docs/PROJECT_CATALOG.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/PROJECT_CATALOG.md"
+    matrix = "docs/CAPABILITY_MATRIX.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/CAPABILITY_MATRIX.md"
+    catalog = "docs/PROJECT_CATALOG.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/PROJECT_CATALOG.md"
     parts.append(f"## 📚 {ui['community']}\n\n{ui['docs_intro']}\n\n"
-                 f"* [{ui['doc_matrix']}]({doc_matrix_link})\n* [{ui['doc_catalog']}]({doc_catalog_link})\n"
+                 f"* [{ui['doc_matrix']}]({matrix})\n* [{ui['doc_catalog']}]({catalog})\n"
                  f"* [{ui['doc_changelog']}](CHANGELOG.md)\n* [{ui['doc_license']}](LICENSE)\n* {ui['contact']}\n")
     parts.append(f"## 👤 {ui['author']}\n\n**JuanenRac (Electro Hobby 3D)** · electrohobby3d@gmail.com\n\n## 📜 {ui['license']}\n\n{ui['license_text']}\n")
     return "\n".join(parts)
@@ -149,10 +135,7 @@ def outputs() -> dict[Path, str]:
     files: dict[Path, str] = {}
     for name in ORDER:
         for code, file, *_ in LANGUAGES:
-            if code == "pt":
-                files[ROOT / name / file] = (Path(__file__).resolve().parent / "readme_data" / "pt_files" / f"{name}.txt").read_text(encoding="utf-8")
-            else:
-                files[ROOT / name / file] = render(name, code)
+            files[ROOT / name / file] = render(name, code)
     return files
 
 
@@ -162,7 +145,7 @@ def main() -> int:
     args = parser.parse_args()
     stale = []
     for path, content in outputs().items():
-        current = path.read_text(encoding="utf-8") if path.exists() else None
+        current = path.read_text(encoding="utf-8").replace("\r\n", "\n") if path.exists() else None
         if current == content:
             continue
         stale.append(str(path))
