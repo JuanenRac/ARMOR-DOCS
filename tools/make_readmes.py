@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 # code, README file name, flag and name of each language, in the order of the language bar
 LANGUAGES = [
     ("en", "README.md", "🇺🇸", "English"), ("es", "README_spa.md", "🇪🇸", "Español"), ("fr", "README_fra.md", "🇫🇷", "Français"),
-    ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"), ("ja", "README_jpn.md", "🇯🇵", "日本語"),
+    ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"), ("ja", "README_jpn.md", "🇯🇵", "日本語"), ("pt", "README_por.md", "🇵🇹", "Português"),
 ]
 # the order of the repositories in the family list
 ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-HMI", "ARMOR-NETWORK", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI",
@@ -34,7 +34,8 @@ ORDER = ["ARMOR-COMMON", "ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMO
 SECTION_ICONS = ["🔒", "🌐", "⚙️"]
 PATCHES: dict = {}
 
-_modules = {code: importlib.import_module(f"readme_data.{code}") for code, *_ in LANGUAGES}
+# Portuguese is kept as finished files (readme_data/pt_files/<repository>.md), not rebuilt from fields
+_modules = {code: importlib.import_module(f"readme_data.{code}") for code, *_ in LANGUAGES if code != "pt"}
 
 
 def split_build(block: str) -> tuple[str, str]:
@@ -148,7 +149,10 @@ def outputs() -> dict[Path, str]:
     files: dict[Path, str] = {}
     for name in ORDER:
         for code, file, *_ in LANGUAGES:
-            files[ROOT / name / file] = render(name, code)
+            if code == "pt":
+                files[ROOT / name / file] = (Path(__file__).resolve().parent / "readme_data" / "pt_files" / f"{name}.txt").read_text(encoding="utf-8")
+            else:
+                files[ROOT / name / file] = render(name, code)
     return files
 
 
