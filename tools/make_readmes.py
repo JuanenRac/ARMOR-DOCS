@@ -19,6 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from readme_src.shots import CAPTIONS, HEADING as SHOTS_HEADING, NOTE as SHOTS_NOTE, SHOTS  # noqa: E402
 from readme_src.ui import RELATED, UI  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -104,6 +105,10 @@ def render(name: str, language: str) -> str:
     if name == "ARMOR-DOCS":
         parts.append('<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>\n')
     parts.append("\n".join(f"* {item}" for item in text["bullets"]) + "\n")
+    if SHOTS.get(name):
+        cells = [f'<td width="50%" valign="top"><img src="images/screenshots/{file}.png" alt="{CAPTIONS[key][language]}" width="100%"><br><sub>{CAPTIONS[key][language]}</sub></td>' for file, key in SHOTS[name]]
+        rows = "\n".join("<tr>" + "".join(cells[i:i + 2]) + "</tr>" for i in range(0, len(cells), 2))
+        parts.append(f"## 🖼️ {SHOTS_HEADING[language]}\n\n{SHOTS_NOTE[language]}\n\n<table>\n{rows}\n</table>\n")
     if text.get("fit"):
         parts.append(f"## 🧩 {ui['fit']}\n\n{text['fit']}\n")
     if diagram:
