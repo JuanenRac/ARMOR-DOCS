@@ -48,6 +48,7 @@ TEXT = {
    "**Bluetooth pairing with a PIN:** the six-digit PIN is derived from the set-up code, printed on the USB console and shown to an administrator in the panel; the phone has to enter it before it may write the node's settings.",
    "**Not yet:** the firmware running on a board, the hardware, any measurement of a real installation and any switching.",
    "**Only the house may use the panel:** the panel answers the private network by default (or the networks its owner lists, such as a VPN), refuses a list that would lock out whoever saves it, counts wrong passwords for each person as well as each address, and works behind the server's proxy so that it can be reached from outside the house without publishing the node."
+   "**Estimates say so:** a channel made from a current input carries `power_estimated`, so Studio and the server show its power as an estimate (apparent power from a current and a nominal voltage) and mark a grid figure that includes one.",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nSee the [design](docs/DESIGN.md), the [safety notes](docs/SAFETY.md), the [rules for switching](docs/SWITCHING.md), the [protocols](docs/PROTOCOLS.md) and the [messages](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "None yet: no board built and no meter or contactor connected; nothing switches anything",
@@ -69,6 +70,7 @@ TEXT = {
    "**Emparejamiento Bluetooth con PIN:** el PIN de seis cifras se deriva del código de configuración, se imprime en la consola USB y se muestra a un administrador en el panel; el móvil tiene que escribirlo antes de poder cambiar los ajustes del nodo.",
    "**Todavía no:** el firmware funcionando en una placa, el hardware, ninguna medida de una instalación real y ninguna maniobra.",
    "**Solo la casa puede usar el panel:** el panel responde por defecto a la red privada (o a las redes que su dueño indique, como una VPN), rechaza una lista que dejaría fuera a quien la guarda, cuenta las contraseñas erróneas por persona y por dirección, y funciona detrás del proxy del servidor para llegar a él desde fuera de casa sin publicar el nodo."
+   "**Las estimaciones lo dicen:** un canal hecho con una entrada de corriente lleva `power_estimated`, así que Studio y el servidor muestran su potencia como estimada (potencia aparente a partir de una corriente y una tensión nominal) y marcan una cifra de red que incluya una.",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nVéanse el [diseño](docs/DESIGN.md), las [notas de seguridad](docs/SAFETY.md), las [reglas para maniobrar](docs/SWITCHING.md), los [protocolos](docs/PROTOCOLS.md) y los [mensajes](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "Ninguno todavía: ninguna placa montada ni medidor o contactor conectado; nada conmuta nada",
@@ -90,6 +92,7 @@ TEXT = {
    "**Appairage Bluetooth avec un PIN :** le PIN à six chiffres est dérivé du code de configuration, imprimé sur la console USB et montré à un administrateur dans le panneau ; le téléphone doit le saisir avant de pouvoir écrire les réglages du nœud.",
    "**Pas encore :** le firmware qui tourne sur une carte, le matériel, toute mesure d'une installation réelle et toute commutation.",
    "**Seule la maison peut utiliser le panneau :** le panneau répond par défaut au réseau privé (ou aux réseaux que son propriétaire indique, comme un VPN), refuse une liste qui exclurait celui qui l'enregistre, compte les mauvais mots de passe par personne et par adresse, et fonctionne derrière le proxy du serveur pour être atteint depuis l'extérieur sans publier le nœud."
+   "**Les estimations le disent :** un canal fait à partir d'une entrée de courant porte `power_estimated` ; Studio et le serveur affichent sa puissance comme une estimation (puissance apparente à partir d'un courant et d'une tension nominale) et signalent une valeur réseau qui en contient une.",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nVoir la [conception](docs/DESIGN.md), les [notes de sécurité](docs/SAFETY.md), les [règles de commutation](docs/SWITCHING.md), les [protocoles](docs/PROTOCOLS.md) et les [messages](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "Aucun pour l'instant : aucune carte montée ni compteur ou contacteur connecté ; rien ne commute quoi que ce soit",
@@ -111,6 +114,7 @@ TEXT = {
    "**Abbinamento Bluetooth con PIN:** il PIN a sei cifre deriva dal codice di configurazione, è stampato sulla console USB e mostrato a un amministratore nel pannello; il telefono deve inserirlo prima di poter scrivere le impostazioni del nodo.",
    "**Non ancora:** il firmware in funzione su una scheda, l'hardware, qualsiasi misura di un impianto reale e qualsiasi manovra.",
    "**Solo la casa può usare il pannello:** il pannello risponde per impostazione predefinita alla rete privata (o alle reti indicate dal proprietario, come una VPN), rifiuta un elenco che escluderebbe chi lo salva, conta le password errate per persona e per indirizzo e funziona dietro il proxy del server per essere raggiunto da fuori casa senza pubblicare il nodo."
+   "**Le stime lo dicono:** un canale ricavato da un ingresso di corrente porta `power_estimated`; Studio e il server mostrano la sua potenza come stima (potenza apparente da una corrente e una tensione nominale) e segnalano un valore di rete che ne include una.",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nVedi il [progetto](docs/DESIGN.md), le [note di sicurezza](docs/SAFETY.md), le [regole di manovra](docs/SWITCHING.md), i [protocolli](docs/PROTOCOLS.md) e i [messaggi](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "Ancora nessuno: nessuna scheda montata né contatore o contattore collegati; nulla commuta niente",
@@ -132,6 +136,7 @@ TEXT = {
    "**Bluetooth-Kopplung mit PIN:** die sechsstellige PIN wird aus dem Einrichtungscode abgeleitet, auf der USB-Konsole ausgegeben und einem Administrator im Panel angezeigt; das Telefon muss sie eingeben, bevor es die Einstellungen des Knotens schreiben darf.",
    "**Noch nicht:** die Firmware auf einer Platine, die Hardware, jede Messung einer echten Anlage und jedes Schalten.",
    "**Nur das Haus darf das Panel nutzen:** Das Panel antwortet standardmäßig dem privaten Netz (oder den Netzen, die der Besitzer nennt, etwa einem VPN), lehnt eine Liste ab, die den Speichernden aussperren würde, zählt falsche Passwörter je Person und je Adresse und funktioniert hinter dem Proxy des Servers, sodass man es von außerhalb des Hauses erreicht, ohne den Knoten zu veröffentlichen."
+   "**Schätzungen sagen es:** ein aus einem Stromeingang gebildeter Kanal trägt `power_estimated`; Studio und Server zeigen seine Leistung als Schätzung (Scheinleistung aus Strom und Nennspannung) und kennzeichnen einen Netzwert, der eine enthält.",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nSiehe den [Entwurf](docs/DESIGN.md), die [Sicherheitshinweise](docs/SAFETY.md), die [Regeln fürs Schalten](docs/SWITCHING.md), die [Protokolle](docs/PROTOCOLS.md) und die [Nachrichten](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "Noch keiner: keine Platine aufgebaut und kein Zähler oder Schütz angeschlossen; nichts schaltet irgendetwas",
@@ -153,6 +158,7 @@ TEXT = {
    "**带 PIN 的蓝牙配对：**六位 PIN 由设置码派生，打印在 USB 控制台上并向管理员显示在面板中；手机必须输入它才能写入节点的设置。",
    "**尚未完成：** 在电路板上运行的固件、硬件、对真实设施的任何测量以及任何开关操作。",
    "**只有家中才能使用面板：**面板默认只响应私有网络（或所有者列出的网络，如 VPN），拒绝会把保存者自己挡在外面的列表，按人和按地址统计错误密码，并可在服务器代理之后工作，从而无需公开节点就能在家外访问。"
+   "**估算值会标明：** 由电流输入生成的通道带有 `power_estimated`，Studio 和服务器会把它的功率显示为估算值（由电流和额定电压得出的视在功率），并标记包含它的电网数值。",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\n参见[设计](docs/DESIGN.md)、[安全说明](docs/SAFETY.md)、[开关规则](docs/SWITCHING.md)、[协议](docs/PROTOCOLS.md)和[消息](docs/ELECTRICAL_MESSAGES.md)。",
   "hardware": "暂无：没有制作板子，也没有连接电表或接触器；不会切换任何设备",
@@ -174,6 +180,7 @@ TEXT = {
    "**PIN 付きの Bluetooth ペアリング：**6 桁の PIN は設定コードから導出され、USB コンソールに表示され、管理者にはパネルにも表示されます。スマートフォンはこれを入力して初めてノードの設定を書き込めます。",
    "**まだ：** 基板上で動作するファームウェア、ハードウェア、実際の設備での計測、そして開閉。",
    "**パネルを使えるのは家だけ：**パネルは既定でプライベートネットワーク（または所有者が指定した VPN などのネットワーク）にだけ応答し、保存する本人を締め出す一覧は拒否します。誤ったパスワードは人ごと・アドレスごとに数え、サーバーのプロキシの背後でも動くので、ノードを公開せずに家の外から使えます。"
+   "**推定値はそう示されます：** 電流入力から作られたチャンネルには `power_estimated` が付き、Studio とサーバーはその電力を推定値（電流と公称電圧からの皮相電力）として表示し、それを含む系統値にも印を付けます。",
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\n[設計](docs/DESIGN.md)、[安全に関する注意](docs/SAFETY.md)、[開閉のルール](docs/SWITCHING.md)、[プロトコル](docs/PROTOCOLS.md)、[メッセージ](docs/ELECTRICAL_MESSAGES.md)を参照してください。",
   "hardware": "まだありません：基板は未製作で、メーターも接触器も未接続。何も切り替えません",
@@ -195,6 +202,7 @@ TEXT = {
    "**Emparelhamento Bluetooth com PIN:** o PIN de seis dígitos deriva do código de configuração, é impresso na consola USB e mostrado a um administrador no painel; o telemóvel tem de o introduzir antes de poder escrever as definições do nó.",
    "**Ainda não:** o firmware a correr numa placa, o hardware, qualquer medição de uma instalação real e qualquer comutação.",
    "**Só a casa pode usar o painel:** o painel responde por omissão à rede privada (ou às redes que o dono indicar, como uma VPN), recusa uma lista que deixaria de fora quem a guarda, conta as palavras-passe erradas por pessoa e por endereço e funciona atrás do proxy do servidor para ser alcançado de fora de casa sem publicar o nó."
+   "**As estimativas dizem-no:** um canal feito a partir de uma entrada de corrente leva `power_estimated`, por isso o Studio e o servidor mostram a sua potência como estimada (potência aparente a partir de uma corrente e uma tensão nominal) e marcam um valor de rede que inclua uma.",
   ],
   "note": "Veja o [guia do firmware](docs/NODE_FIRMWARE.md) e o [canal Bluetooth](docs/BLE_PROVISIONING.md).\n\nVeja o [desenho](docs/DESIGN.md), as [notas de segurança](docs/SAFETY.md), as [regras de comutação](docs/SWITCHING.md), os [protocolos](docs/PROTOCOLS.md) e as [mensagens](docs/ELECTRICAL_MESSAGES.md).",
   "hardware": "Nenhum ainda: nenhuma placa montada nem contador ou contactor ligados; nada comuta coisa alguma",

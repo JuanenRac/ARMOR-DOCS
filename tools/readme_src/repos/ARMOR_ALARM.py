@@ -48,6 +48,7 @@ TEXT = {
    "**Bluetooth pairing with a PIN:** the six-digit PIN is derived from the set-up code, printed on the USB console and shown to an administrator in the panel; the phone has to enter it before it may write the node's settings.",
    "**Siren and restarts:** the siren's relay belongs to the alarm alone (the broker, the central and the panel cannot move it, and it does not fall back to open when the broker is lost); a zone that has not sounded yet sounds the siren again after it timed out; an alarm of smoke or panic with the system disarmed, a silenced alarm and a lockout come back after a restart; a reset by hand is refused while the alarm is armed; a Zigbee sensor that never speaks counts as lost.",
    "**Only the house may use the panel:** the panel answers the private network by default (or the networks its owner lists, such as a VPN), refuses a list that would lock out whoever saves it, counts wrong passwords for each person as well as each address, and works behind the server's proxy so that it can be reached from outside the house without publishing the node."
+   "**A zone that cannot be read is not shown as closed:** if the converter does not start or a loop gives no reading for five rounds in a row, the zone is in *trouble* - it is not guarding, it never sounds the siren, it stops an arming (unless forced, and then it is left out and noted) and the server warns.",
   ],
   "note": "See the [design](docs/DESIGN.md), [how the panel takes over from the server](docs/FAILOVER.md) and the [safety notes](docs/SAFETY.md).",
   "hardware": "None yet: no board, zone, siren or Zigbee coordinator connected (host tests, the build and the panel in a browser only)",
@@ -69,6 +70,7 @@ TEXT = {
    "**Emparejamiento Bluetooth con PIN:** el PIN de seis cifras se deriva del código de configuración, se imprime en la consola USB y se muestra a un administrador en el panel; el móvil tiene que escribirlo antes de poder cambiar los ajustes del nodo.",
    "**Sirena y reinicios:** el relé de la sirena es solo de la alarma (ni el broker, ni la central, ni el panel pueden moverlo, y no se abre al perder el broker); una zona que aún no había sonado vuelve a hacer sonar la sirena pasado su tiempo; tras un reinicio vuelven una alarma de humo o pánico con el sistema desarmado, una alarma silenciada y un bloqueo; un reset a mano se rechaza con la alarma armada; un sensor Zigbee que nunca habla cuenta como perdido.",
    "**Solo la casa puede usar el panel:** el panel responde por defecto a la red privada (o a las redes que su dueño indique, como una VPN), rechaza una lista que dejaría fuera a quien la guarda, cuenta las contraseñas erróneas por persona y por dirección, y funciona detrás del proxy del servidor para llegar a él desde fuera de casa sin publicar el nodo."
+   "**Una zona que no se puede leer no se muestra como cerrada:** si el conversor no arranca o un lazo no da lectura cinco rondas seguidas, la zona pasa a *avería* (trouble): no vigila, nunca hace sonar la sirena, impide armar (salvo forzando, y entonces queda excluida y anotada) y el servidor avisa.",
   ],
   "note": "Véanse [el diseño](docs/DESIGN.md), [cómo la central toma el relevo del servidor](docs/FAILOVER.md) y las [notas de seguridad](docs/SAFETY.md).",
   "hardware": "Ninguno todavía: ninguna placa, zona, sirena ni coordinador Zigbee conectados (solo tests en ordenador, la compilación y el panel en un navegador)",
@@ -90,6 +92,7 @@ TEXT = {
    "**Appairage Bluetooth avec un PIN :** le PIN à six chiffres est dérivé du code de configuration, imprimé sur la console USB et montré à un administrateur dans le panneau ; le téléphone doit le saisir avant de pouvoir écrire les réglages du nœud.",
    "**Sirène et redémarrages :** le relais de la sirène appartient à l'alarme seule (ni le broker, ni la centrale, ni le panneau ne peuvent le bouger, et il ne s'ouvre pas à la perte du broker) ; une zone qui n'avait pas encore sonné refait sonner la sirène après son délai ; après un redémarrage reviennent une alarme de fumée ou de panique système désarmé, une alarme silencieuse et un blocage ; une réinitialisation à la main est refusée alarme armée ; un capteur Zigbee qui ne parle jamais compte comme perdu.",
    "**Seule la maison peut utiliser le panneau :** le panneau répond par défaut au réseau privé (ou aux réseaux que son propriétaire indique, comme un VPN), refuse une liste qui exclurait celui qui l'enregistre, compte les mauvais mots de passe par personne et par adresse, et fonctionne derrière le proxy du serveur pour être atteint depuis l'extérieur sans publier le nœud."
+   "**Une zone illisible n'est pas affichée comme fermée :** si le convertisseur ne démarre pas ou qu'une boucle ne donne aucune lecture pendant cinq tours de suite, la zone passe en *défaut* (trouble) - elle ne surveille pas, ne fait jamais sonner la sirène, empêche l'armement (sauf en le forçant, et elle est alors exclue et notée) et le serveur avertit.",
   ],
   "note": "Voir [la conception](docs/DESIGN.md), [comment la centrale prend le relais du serveur](docs/FAILOVER.md) et les [notes de sécurité](docs/SAFETY.md).",
   "hardware": "Aucun pour l'instant : ni carte, ni zone, ni sirène, ni coordinateur Zigbee connectés (seulement des tests sur ordinateur, la compilation et le panneau dans un navigateur)",
@@ -111,6 +114,7 @@ TEXT = {
    "**Abbinamento Bluetooth con PIN:** il PIN a sei cifre deriva dal codice di configurazione, è stampato sulla console USB e mostrato a un amministratore nel pannello; il telefono deve inserirlo prima di poter scrivere le impostazioni del nodo.",
    "**Sirena e riavvii:** il relè della sirena appartiene solo all'allarme (né il broker, né la centrale, né il pannello possono muoverlo, e non si apre alla perdita del broker); una zona che non aveva ancora suonato fa suonare di nuovo la sirena dopo il suo tempo; dopo un riavvio tornano un allarme di fumo o panico a sistema disinserito, un allarme silenziato e un blocco; un ripristino a mano viene rifiutato con l'allarme inserito; un sensore Zigbee che non parla mai conta come perso.",
    "**Solo la casa può usare il pannello:** il pannello risponde per impostazione predefinita alla rete privata (o alle reti indicate dal proprietario, come una VPN), rifiuta un elenco che escluderebbe chi lo salva, conta le password errate per persona e per indirizzo e funziona dietro il proxy del server per essere raggiunto da fuori casa senza pubblicare il nodo."
+   "**Una zona illeggibile non viene mostrata come chiusa:** se il convertitore non parte o un anello non dà lettura per cinque giri di fila, la zona passa in *guasto* (trouble) - non sorveglia, non fa mai suonare la sirena, impedisce l'inserimento (salvo forzandolo, e allora viene esclusa e annotata) e il server avvisa.",
   ],
   "note": "Vedi [il progetto](docs/DESIGN.md), [come la centrale subentra al server](docs/FAILOVER.md) e le [note di sicurezza](docs/SAFETY.md).",
   "hardware": "Ancora nessuno: nessuna scheda, zona, sirena o coordinatore Zigbee collegati (solo test su computer, la compilazione e il pannello in un browser)",
@@ -132,6 +136,7 @@ TEXT = {
    "**Bluetooth-Kopplung mit PIN:** die sechsstellige PIN wird aus dem Einrichtungscode abgeleitet, auf der USB-Konsole ausgegeben und einem Administrator im Panel angezeigt; das Telefon muss sie eingeben, bevor es die Einstellungen des Knotens schreiben darf.",
    "**Sirene und Neustarts:** Das Sirenenrelais gehört allein der Alarmanlage (weder Broker noch Zentrale noch Panel können es bewegen, und es öffnet sich beim Verlust des Brokers nicht); eine Zone, die noch nicht gelöst hatte, lässt die Sirene nach ihrer Zeit erneut ertönen; nach einem Neustart kehren ein Rauch- oder Panikalarm bei unscharfem System, ein stummgeschalteter Alarm und eine Sperre zurück; ein Zurücksetzen von Hand wird bei scharfer Anlage abgelehnt; ein Zigbee-Sensor, der nie spricht, gilt als verloren.",
    "**Nur das Haus darf das Panel nutzen:** Das Panel antwortet standardmäßig dem privaten Netz (oder den Netzen, die der Besitzer nennt, etwa einem VPN), lehnt eine Liste ab, die den Speichernden aussperren würde, zählt falsche Passwörter je Person und je Adresse und funktioniert hinter dem Proxy des Servers, sodass man es von außerhalb des Hauses erreicht, ohne den Knoten zu veröffentlichen."
+   "**Eine Zone, die sich nicht lesen lässt, gilt nicht als geschlossen:** startet der Wandler nicht oder liefert eine Schleife fünf Runden lang keinen Wert, steht die Zone auf *Störung* (trouble) - sie überwacht nicht, löst nie die Sirene aus, verhindert das Scharfschalten (außer erzwungen; dann wird sie ausgelassen und vermerkt) und der Server warnt.",
   ],
   "note": "Siehe [den Entwurf](docs/DESIGN.md), [wie die Zentrale vom Server übernimmt](docs/FAILOVER.md) und die [Sicherheitshinweise](docs/SAFETY.md).",
   "hardware": "Noch keiner: keine Platine, Zone, Sirene oder kein Zigbee-Koordinator angeschlossen (nur Computertests, der Build und das Panel im Browser)",
@@ -153,6 +158,7 @@ TEXT = {
    "**带 PIN 的蓝牙配对：**六位 PIN 由设置码派生，打印在 USB 控制台上并向管理员显示在面板中；手机必须输入它才能写入节点的设置。",
    "**警笛与重启：**警笛继电器只属于报警系统（代理、中心和面板都不能控制它，失去代理时它也不会断开）；尚未鸣响过的防区会在警笛超时后让它再次鸣响；重启后，撤防状态下的烟雾或紧急报警、已静音的报警和锁定都会恢复；布防时拒绝手动复位；从未发声的 Zigbee 传感器视为丢失。",
    "**只有家中才能使用面板：**面板默认只响应私有网络（或所有者列出的网络，如 VPN），拒绝会把保存者自己挡在外面的列表，按人和按地址统计错误密码，并可在服务器代理之后工作，从而无需公开节点就能在家外访问。"
+   "**无法读取的防区不会显示为已闭合：** 如果转换器无法启动，或某回路连续五轮没有读数，该防区会进入*故障*（trouble）状态：它不守护、从不触发警笛、会阻止布防（强制布防时将其排除并记录），服务器会发出警告。",
   ],
   "note": "参见[设计](docs/DESIGN.md)、[主机如何接替服务器](docs/FAILOVER.md)和[安全说明](docs/SAFETY.md)。",
   "hardware": "暂无：没有连接板子、防区、警笛或 Zigbee 协调器（仅有计算机测试、构建和浏览器中的面板）",
@@ -174,6 +180,7 @@ TEXT = {
    "**PIN 付きの Bluetooth ペアリング：**6 桁の PIN は設定コードから導出され、USB コンソールに表示され、管理者にはパネルにも表示されます。スマートフォンはこれを入力して初めてノードの設定を書き込めます。",
    "**サイレンと再起動：**サイレンのリレーは警報だけのものです（ブローカー、センター、パネルは動かせず、ブローカーを失っても開きません）。まだ鳴っていないゾーンは、サイレンがタイムアウトした後に再び鳴らします。再起動後は、解除状態の煙・パニック警報、消音された警報、ロックアウトが復元されます。警戒中は手動リセットを拒否します。一度も応答しない Zigbee センサーは失われたものとして扱います。",
    "**パネルを使えるのは家だけ：**パネルは既定でプライベートネットワーク（または所有者が指定した VPN などのネットワーク）にだけ応答し、保存する本人を締め出す一覧は拒否します。誤ったパスワードは人ごと・アドレスごとに数え、サーバーのプロキシの背後でも動くので、ノードを公開せずに家の外から使えます。"
+   "**読み取れないゾーンは「閉」と表示されません：** コンバーターが起動しない、またはループが5ラウンド続けて値を返さない場合、ゾーンは*障害*（trouble）になります。監視せず、サイレンを鳴らすことはなく、警戒開始を止め（強制時は除外して記録）、サーバーが警告します。",
   ],
   "note": "[設計](docs/DESIGN.md)、[警報盤がサーバーから引き継ぐ方法](docs/FAILOVER.md)、[安全に関する注意](docs/SAFETY.md)を参照してください。",
   "hardware": "まだありません：基板、警戒区域、サイレン、Zigbee コーディネーターはいずれも未接続（コンピューター上のテスト、ビルド、ブラウザーでのパネルのみ）",
@@ -195,6 +202,7 @@ TEXT = {
    "**Emparelhamento Bluetooth com PIN:** o PIN de seis dígitos deriva do código de configuração, é impresso na consola USB e mostrado a um administrador no painel; o telemóvel tem de o introduzir antes de poder escrever as definições do nó.",
    "**Sirene e reinícios:** o relé da sirene pertence só ao alarme (nem o broker, nem a central, nem o painel o podem mover, e não abre ao perder o broker); uma zona que ainda não tinha tocado volta a fazer soar a sirene depois do seu tempo; após um reinício voltam um alarme de fumo ou pânico com o sistema desarmado, um alarme silenciado e um bloqueio; um reset à mão é recusado com o alarme armado; um sensor Zigbee que nunca fala conta como perdido.",
    "**Só a casa pode usar o painel:** o painel responde por omissão à rede privada (ou às redes que o dono indicar, como uma VPN), recusa uma lista que deixaria de fora quem a guarda, conta as palavras-passe erradas por pessoa e por endereço e funciona atrás do proxy do servidor para ser alcançado de fora de casa sem publicar o nó."
+   "**Uma zona que não pode ser lida não aparece como fechada:** se o conversor não arranca ou um laço não dá leitura cinco rondas seguidas, a zona passa a *avaria* (trouble) - não vigia, nunca faz soar a sirene, impede armar (salvo forçando, e então fica excluída e registada) e o servidor avisa.",
   ],
   "note": "Veja o [desenho](docs/DESIGN.md), [como a central toma o lugar do servidor](docs/FAILOVER.md) e as [notas de segurança](docs/SAFETY.md).",
   "hardware": "Nenhum ainda: nenhuma placa, zona, sirene ou coordenador Zigbee ligados (só testes no computador, a compilação e o painel num navegador)",
