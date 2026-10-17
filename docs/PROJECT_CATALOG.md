@@ -3,16 +3,16 @@
 <!-- catalog:begin -->
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
-| ARMOR-COMMON | 0.5.6 | Shared contracts and validation library | Established |
+| ARMOR-COMMON | 0.5.7 | Shared contracts and validation library | Established |
 | ARMOR-RADAR | 0.6.8 | ESP32-S3 PoE field-node firmware | Established |
 | ARMOR-SOLAR | 0.4.3 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-ELECTRICAL | 0.3.5 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
 | ARMOR-ALARM | 0.3.2 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
 | ARMOR-HMI | 0.2.6 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NETWORK | 0.1.1 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
-| ARMOR-SERVER | 0.6.8 | Central event coordinator and web API | Established |
+| ARMOR-SERVER | 0.6.9 | Central event coordinator and web API | Established |
 | ARMOR-STUDIO | 0.8.0.2 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.5.9 | Android operator client | Established |
+| ARMOR-ANDROID-CONTROL | 0.6.0 | Android operator client | Established |
 | ARMOR-SERVER-AI | 0.2.6 | Camera movement observation service (CM5 today, Jetson planned) | Functional |
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Functional |
