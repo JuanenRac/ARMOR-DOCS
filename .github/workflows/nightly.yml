@@ -1,0 +1,73 @@
+# ARMOR-DOCS - the nightly run across the whole family.
+# Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
+#
+# The CI of one repository only sees that repository. What is written from the others (the READMEs, the banners, the version catalogue, the tools copied into every repository) and
+# what must agree between them (the firmware the nodes share, the contracts) can only be compared with all of them side by side, so every night, and when asked, all the repositories
+# are fetched next to this one and every check is run. A failing night opens (or updates) one issue.
+name: A.R.M.O.R. nightly family check
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  family:
+    name: Compare every repository with the others
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v5
+        with:
+          path: ARMOR-DOCS
+
+      - name: Fetch the other repositories next to it
+        run: |
+          for repository in ARMOR-COMMON ARMOR-RADAR ARMOR-SOLAR ARMOR-ELECTRICAL ARMOR-ALARM ARMOR-HMI ARMOR-NETWORK ARMOR-SERVER ARMOR-STUDIO ARMOR-ANDROID-CONTROL \
+                            ARMOR-SERVER-AI ARMOR-VISION ARMOR-VOICE-AI ARMOR-HARDWARE ARMOR-DEVOPS ARMOR-SIMULATOR ARMOR-UPDATER; do
+            git clone --depth 1 "https://github.com/JuanenRac/${repository}.git" "${repository}"
+          done
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Compare what is generated, copied and shared
+        id: compare
+        working-directory: ARMOR-DOCS
+        run: |
+          set -o pipefail
+          python -m pip install --quiet pyyaml openapi-spec-validator
+          status=0
+          for check in "tools/make_readmes.py --check" "tools/make_brand.py --check" "tools/make_catalog.py --check" "tools/sync_ci_tools.py --check" \
+                       "../ARMOR-COMMON/tools/sync_firmware_base.py check" "../ARMOR-COMMON/tools/generate_types.py --check" "../ARMOR-COMMON/tools/make_conformance.py --check"; do
+            echo "== python ${check}"
+            python ${check} || status=1
+          done
+          echo "== python tools/publication_check.py"
+          python tools/publication_check.py --no-history ARMOR-COMMON ARMOR-DOCS || true
+          exit $status
+
+      - name: Run the tests of the repositories that can run here
+        working-directory: ARMOR-DOCS
+        run: bash tools/check_all.sh
+
+      - name: Open an issue when the night failed
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="The nightly family check failed"
+          existing=$(gh issue list --repo "${{ github.repository }}" --state open --search "${title} in:title" --json number --jq '.[0].number')
+          body="The nightly run of all the repositories found something that does not agree: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          if [ -n "$existing" ]; then gh issue comment "$existing" --repo "${{ github.repository }}" --body "$body"; else gh issue create --repo "${{ github.repository }}" --title "$title" --body "$body"; fi

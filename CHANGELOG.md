@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.7] - The pages say what the code does, and the whole family is compared every night
+
+- **Security pages brought up to date:** firmware is signed as a manifest (project, board, version, hash) and the server checks it too; Bluetooth pairing uses a PIN derived from the set-up code and what that leaves open is said; the nodes' relays and switch channel are named instead of "only read"; every command is an allow-list and the unknown-field rule says who drops and who rejects; the core machine is the CM5 of the bench, with the AI planned for a Jetson-class machine; and the CI is described as it is.
+- **Architecture and interfaces:** the alarm, network and touch-panel nodes are in the diagram, Bluetooth set-up is listed for every node, time may be the node's uptime stamped by the server, the Zigbee feed and the orders of the network answer are interfaces, and the contract counts are 17 schemas and 523 vectors.
+- **Capability matrix:** the counts match the vectors and the host programs, a table that was cut in two is whole, and the legend names the levels the table really uses.
+- **Tools:** `sync_ci_tools.py` includes ARMOR-VISION and a check writes nothing; `check_all.sh` runs every host test a node registers (also the alarm node's), the vision and updater repositories, and the catalogue and tool checks; the publication check accepts both spellings of the author's name and follows renames; the history made for publishing says "Initial commit"; the catalogue and the READMEs know the maturity "production"; the family map and the banners include the alarm panel and the vision repository; the README of this repository shows the family picture once.
+- **Nightly run:** `.github/workflows/nightly.yml` fetches every repository next to this one, compares what is generated and shared, runs the checks and opens an issue when something does not agree.
+
 ## [0.7.6] - Catalog versions and the alarm designer
 
 - The project catalog carries the new versions, and the description of ARMOR-STUDIO mentions the Alarm Designer.

@@ -5,7 +5,10 @@ flowchart LR
   subgraph field["VLAN 10 - field (no internet)"]
     N["ESP32-S3 field nodes<br/>3x radar, lux, climate"]
     SN["Solar nodes<br/>inverters and batteries, read only"]
-    EN["Electrical nodes<br/>AC and DC meters, read only"]
+    EN["Electrical nodes<br/>AC and DC meters, relays"]
+    AN["Alarm nodes<br/>zones, siren, PIN"]
+    NN["Network node<br/>devices, internet"]
+    HM["Touch panel (ARMOR-HMI)<br/>wall screen, voice"]
     C["IP cameras (PTZ, RTSP)"]
   end
   subgraph core["VLAN 20 - core"]
@@ -21,6 +24,9 @@ flowchart LR
   N -->|"MQTT, one identity per node"| B
   SN -->|"MQTT, one identity per node"| B
   EN -->|"MQTT, one identity per node"| B
+  AN -->|"MQTT, one identity per node"| B
+  NN -->|"MQTT, one identity per node"| B
+  HM -->|"HTTP session as a wall panel"| S
   B --> S
   C -->|"RTSP / ONVIF"| S
   C -->|"RTSP"| V
@@ -31,13 +37,16 @@ flowchart LR
   A -.->|"Bluetooth: set-up only"| N
   A -.->|"Bluetooth: set-up only"| SN
   A -.->|"Bluetooth: set-up only"| EN
+  A -.->|"Bluetooth: set-up only"| AN
+  A -.->|"Bluetooth: set-up only"| HM
 ```
 
 ## Trust boundaries
 
 * **Field nodes** publish observations and health. Each has its own broker identity and can
   write only its own topics; the broker is the boundary, and the server validates every payload
-  again against the published contract. A node never receives an instruction it can execute
+  again against the published contract (dropping and counting a field it does not know, so that an
+  old server keeps working with a newer node). A node never receives an instruction it can execute
   without an allow-listed command.
 * **The server is the only place that touches a camera.** No client receives a camera password
   or an RTSP address. Clients get JSON, MJPEG and files through an HttpOnly session.
@@ -48,18 +57,20 @@ flowchart LR
 * **Studio and Android are clients of the server**, not of the field network. They never reach
   a node's own configuration endpoint. The one exception is the set-up of a node from the Android
   app over **Bluetooth Low Energy** (below), which needs no network at all.
-* **Solar and electrical nodes only read.** They publish what their inverters, batteries and
-  meters report; no request that writes to a piece of equipment exists in their firmware, and the
-  rules for switching an electrical source are tested but not linked to any hardware.
+* **Solar and electrical nodes only read their equipment.** They publish what their inverters,
+  batteries and meters report; no request that writes to a piece of equipment exists in their
+  firmware. What a node can move is relays (off by default in three places) and, for a
+  source-transfer switch, a channel that is off by default and needs a two-step command.
 * **A phone sets a node up over Bluetooth** (name, Wi-Fi, address, broker): the same channel on the
-  radar, the solar and the electrical node. The link is encrypted, every operation but `hello`
-  needs the set-up code or a login, changing anything needs an administrator, and wrong
-  passwords are throttled. The "just works" pairing does not stop someone present while the phone
-  pairs; see the [security baseline](SECURITY_BASELINE.md).
+  radar, solar, electrical, alarm and touch-panel nodes. The link is encrypted with a PIN derived from
+  the node's set-up code, every operation but `hello` needs the set-up code or a login, changing
+  anything needs an administrator, and wrong passwords are throttled; see the
+  [security baseline](SECURITY_BASELINE.md) for what that does not stop.
 
 ## Time and ordering
 
-Every message carries a wall-clock millisecond timestamp (SNTP on the node). The server ignores
+Every message carries a millisecond timestamp: wall-clock time when the node's clock is set (SNTP), or the time since the node started when it is not, in which case the server stamps the
+message with the time it received it (alarm events go as "seconds ago" for the same reason). The server ignores
 a newer-than-received "online" message that is older than the last one it holds, always applies an
 "offline" message (an MQTT last will cannot know the time of its own death) and never moves a node's
 stored time backwards. A node that stops talking is shown *stale* and *offline* after a

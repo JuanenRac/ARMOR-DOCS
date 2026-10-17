@@ -28,6 +28,8 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
     "ARMOR-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
     "ARMOR-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
+    "ARMOR-ALARM": ("ALARM PANEL, ZONES & SIREN", ["ESP32-S3", "ZIGBEE", "PIN", "MQTT", "C++"]),
+    "ARMOR-VISION": ("CAMERA ZONES & DETECTION RULES", ["JETSON", "ZONES", "MASKS", "RTSP", "PYTHON"]),
     "ARMOR-HMI": ("TOUCH PANEL & VOICE ASSISTANT", ["ESP32-S3", "LVGL", "I2S", "MQTT", "C++"]),
     "ARMOR-NETWORK": ("LOCAL NETWORK MONITORING", ["DEVICES", "INTERNET", "OUTAGES", "READ-ONLY", "PYTHON"]),
     "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
@@ -84,6 +86,10 @@ def glyph(name: str) -> str:
     <path d="M-24,22 h48" stroke="{AMBER}" stroke-width="3"/><circle cx="-6" cy="10" r="3" fill="{AMBER}" stroke="none"/><circle cx="8" cy="-2" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="4" cy="30" r="3.4" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-COMMON": f"""<path d="M-14,-42 q-14,0 -14,14 v10 q0,10 -10,18 q10,8 10,18 v10 q0,14 14,14"/><path d="M14,-42 q14,0 14,14 v10 q0,10 10,18 q-10,8 -10,18 v10 q0,14 -14,14"/>
     <circle r="6" fill="{AMBER}" stroke="none"/><path d="M-10,0 h-2 M12,0 h-2" stroke="{AMBER}" stroke-width="3"/>""",
+        "ARMOR-ALARM": f"""<path d="M-28,24 H28 L22,8 Q20,-6 20,-18 Q20,-34 0,-34 Q-20,-34 -20,-18 Q-20,-6 -22,8 Z"/><path d="M0,-34 v-9" stroke-width="4"/>
+    <path d="M-8,32 a8,6 0 0 0 16,0" stroke="{AMBER}" stroke-width="3.4"/><path d="M34,-22 q9,9 0,18 M42,-30 q15,17 0,34 M-34,-22 q-9,9 0,18 M-42,-30 q-15,17 0,34" stroke="{AMBER}" stroke-width="3" opacity=".85"/>""",
+        "ARMOR-VISION": f"""<path d="M-40,-18 v-18 h18 M22,-36 h18 v18 M40,18 v18 h-18 M-22,36 h-18 v-18" stroke-width="4"/>
+    <path d="M-18,10 L-4,-16 L22,-8 L14,16 Z" stroke="{AMBER}" stroke-width="3" opacity=".9"/><circle cx="4" cy="-2" r="4" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-UPDATER": f"""<rect x="-38" y="-40" width="76" height="56" rx="6"/><path d="M0,-14 v34 M-14,8 l14,14 l14,-14" stroke="{AMBER}" stroke-width="3.4"/>
     <path d="M-38,-40 a38,20 0 0 1 76,0" opacity=".7"/><circle cx="-24" cy="-40" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="-14" cy="-40" r="2.4" fill="{AMBER}" stroke="none"/>""",
     }
@@ -139,19 +145,19 @@ def icon(name: str) -> str:
 
 # name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom
 POSITIONS = {
-    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-NETWORK": (0, 2.25), "ARMOR-SIMULATOR": (0, 3), "ARMOR-HARDWARE": (0, 3.75),
+    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-ALARM": (0, 2.25), "ARMOR-NETWORK": (0, 3), "ARMOR-SIMULATOR": (0, 3.75), "ARMOR-HARDWARE": (0, 4.5),
     "ARMOR-COMMON": (1, 1.5),
-    "ARMOR-SERVER-AI": (2, 0), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
+    "ARMOR-SERVER-AI": (2, 0), "ARMOR-VISION": (2, 0.75), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
     "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-HMI": (3, 3),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
 }
-ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
+ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-ALARM", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-VISION", "ARMOR-SERVER-AI"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
           ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 
 
 def family_map() -> str:
-    width, height, box_w, box_h = 1200, 640, 190, 62
+    width, height, box_w, box_h = 1200, 720, 190, 62
     def centre(name: str) -> tuple[float, float]:
         column, row = POSITIONS[name]
         return 40 + column * 236 + box_w / 2, 110 + row * 110 + box_h / 2
@@ -174,7 +180,7 @@ def family_map() -> str:
         if name in ("ARMOR-COMMON", "ARMOR-DOCS", "ARMOR-DEVOPS"):
             continue
         x, y = centre(name)
-        if name in ("ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-HMI"):
+        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-HMI"):
             continue
         parts.append(f'<path d="M{x + box_w / 2} {y} L{cx - box_w / 2} {cy}" fill="none" stroke="{GREEN}" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>')
     for name, (column, row) in POSITIONS.items():
@@ -202,7 +208,8 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[2])
     args = parser.parse_args()
     stale = []
-    for path, content in outputs(args.root).items():
+    files = outputs(args.root)
+    for path, content in files.items():
         if not path.parent.parent.exists():
             continue
         current = path.read_text(encoding="utf-8") if path.exists() else None
@@ -215,7 +222,7 @@ def main() -> int:
     if args.check and stale:
         print("out of date:", *(str(path) for path in stale), sep="\n  ", file=sys.stderr)
         return 1
-    print(f"brand assets {'current' if args.check else 'written'}: {len(outputs(args.root))} files")
+    print(f"brand assets {'current' if args.check else 'written'}: {len(files)} files")
     return 0
 
 

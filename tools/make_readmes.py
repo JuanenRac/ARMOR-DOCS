@@ -41,7 +41,7 @@ def load(name: str):
     return importlib.import_module(f"readme_src.repos.{name.replace('-', '_')}")
 
 
-MATURITY_COLOR = {"scaffolding": "FFB020", "functional": "00E5FF", "established": "2EA44F"}
+MATURITY_COLOR = {"scaffolding": "FFB020", "functional": "00E5FF", "established": "2EA44F", "production": "1F883D"}
 
 
 def manifest(name: str) -> dict:
@@ -102,8 +102,6 @@ def render(name: str, language: str) -> str:
 ''']
     if text.get("intro"):
         parts.append(text["intro"] + "\n")
-    if name == "ARMOR-DOCS":
-        parts.append('<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>\n')
     parts.append("\n".join(f"* {item}" for item in text["bullets"]) + "\n")
     if SHOTS.get(name):
         cells = [f'<td width="50%" valign="top"><img src="images/screenshots/{file}.png" alt="{CAPTIONS[key][language]}" width="100%"><br><sub>{CAPTIONS[key][language]}</sub></td>' for file, key in SHOTS[name]]
@@ -149,7 +147,8 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     stale = []
-    for path, content in outputs().items():
+    files = outputs()
+    for path, content in files.items():
         current = path.read_text(encoding="utf-8").replace("\r\n", "\n") if path.exists() else None
         if current == content:
             continue
@@ -159,7 +158,7 @@ def main() -> int:
     if args.check and stale:
         print("READMEs out of date:", *stale, sep="\n  ", file=sys.stderr)
         return 1
-    print("READMEs current" if args.check else f"READMEs written: {len(outputs())}")
+    print("READMEs current" if args.check else f"READMEs written: {len(files)}")
     return 0
 
 

@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_readmes import ORDER  # noqa: E402
 
 BEGIN, END = "<!-- catalog:begin -->", "<!-- catalog:end -->"
-MATURITY = {"scaffolding": "Scaffolding", "functional": "Functional", "established": "Established"}
+MATURITY = {"scaffolding": "Scaffolding", "functional": "Functional", "established": "Established", "production": "Production"}
 
 
 def table() -> str:

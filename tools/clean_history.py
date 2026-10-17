@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import publication_check as check  # noqa: E402
 
 BRANCH = "publicacion"
-MESSAGE = "Commit inicial"
+MESSAGE = "Initial commit"
 
 
 def git(repo: Path, *args: str, env: dict[str, str] | None = None) -> str:

@@ -32,7 +32,8 @@ UI = {
   "requirements": "Requirements",
   "m_scaffolding": "Scaffolding",
   "m_functional": "Functional",
-  "m_established": "Established"
+  "m_established": "Established",
+  "m_production": "Production"
  },
  "es": {
   "overview": "Descripción general",
@@ -64,7 +65,8 @@ UI = {
   "requirements": "Requisitos",
   "m_scaffolding": "Andamiaje",
   "m_functional": "Funcional",
-  "m_established": "Establecido"
+  "m_established": "Establecido",
+  "m_production": "En producción"
  },
  "fr": {
   "overview": "Présentation",
@@ -96,7 +98,8 @@ UI = {
   "requirements": "Prérequis",
   "m_scaffolding": "Ébauche",
   "m_functional": "Fonctionnel",
-  "m_established": "Établi"
+  "m_established": "Établi",
+  "m_production": "En production"
  },
  "it": {
   "overview": "Panoramica",
@@ -128,7 +131,8 @@ UI = {
   "requirements": "Requisiti",
   "m_scaffolding": "Impalcatura",
   "m_functional": "Funzionale",
-  "m_established": "Consolidato"
+  "m_established": "Consolidato",
+  "m_production": "In produzione"
  },
  "de": {
   "overview": "Überblick",
@@ -160,7 +164,8 @@ UI = {
   "requirements": "Voraussetzungen",
   "m_scaffolding": "Gerüst",
   "m_functional": "Funktionsfähig",
-  "m_established": "Etabliert"
+  "m_established": "Etabliert",
+  "m_production": "Im Betrieb"
  },
  "zh": {
   "overview": "概述",
@@ -192,7 +197,8 @@ UI = {
   "requirements": "环境要求",
   "m_scaffolding": "雏形",
   "m_functional": "可用",
-  "m_established": "成熟"
+  "m_established": "成熟",
+  "m_production": "生产"
  },
  "ja": {
   "overview": "概要",
@@ -224,7 +230,8 @@ UI = {
   "requirements": "必要なもの",
   "m_scaffolding": "足場段階",
   "m_functional": "機能する",
-  "m_established": "確立"
+  "m_established": "確立",
+  "m_production": "本番運用"
  },
  "pt": {
   "overview": "Visão geral",
@@ -256,7 +263,8 @@ UI = {
   "requirements": "Requisitos",
   "m_scaffolding": "Estrutura inicial",
   "m_functional": "Funcional",
-  "m_established": "Estabelecido"
+  "m_established": "Estabelecido",
+  "m_production": "Em produção"
  }
 }
 

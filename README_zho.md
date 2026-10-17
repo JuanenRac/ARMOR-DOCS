@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.7.6-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.7.7-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -35,16 +35,12 @@
 
 | | |
 |---|---|
-| 版本 | `0.7.6` |
+| 版本 | `0.7.7` |
 | 成熟度 | 成熟 |
 | 技术栈 | Markdown / Mermaid |
 | 真实硬件 | 不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容 |
 
 ## 🎯 概述
-
-<p align="center">
-  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
-</p>
 
 <p align="center">
   <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">

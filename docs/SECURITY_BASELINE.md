@@ -8,7 +8,7 @@ completed audit**.
 | VLAN | Members | Rule |
 |---|---|---|
 | 10 (field) | Cameras, ESP32-S3 nodes, perimeter Wi-Fi | No internet. Reach only the broker, RTSP and the API paths the core needs |
-| 20 (core) | Jetson: server, AI, voice; the broker | Default deny in from the other VLANs except the paths above |
+| 20 (core) | The core machine: the server and the broker (the CM5 of the test bench); the AI and the voice, planned for a Jetson-class machine | Default deny in from the other VLANs except the paths above |
 | 30 (clients) | Android, Studio | Restricted access through TLS or a VPN |
 
 Default-deny between VLANs; allow only the explicitly required paths. Every field node needs a
@@ -31,16 +31,16 @@ broker's port only to the field network and the server's and Studio's ports only
   are refused.
 * Discovery scans one private /24, sends no credentials and runs one scan at a time.
 * Sessions and tickets are bounded in number and lifetime; login is rate limited.
-* Field commands are an allow-list of three; unknown fields in any message are rejected.
-* Solar and electrical nodes only read their equipment: no request that writes to an inverter, a battery or a meter is built anywhere, and the switching rules are not linked to any hardware.
-* A node's Bluetooth set-up channel writes only over an encrypted link (LE Secure Connections, "just works"); every operation but `hello` needs the set-up code or a login, changing anything needs an administrator, wrong passwords lock the channel for 30 seconds (doubling to five minutes) and one phone connects at a time. "Just works" stops a passive listener, **not** someone present while the phone pairs.
+* Every command is an allow-list: a node's three, the alarm's arm and disarm, the five actions of a switch, a relay's ON, OFF and TOGGLE, and the seven orders of the network node. The validators reject an unknown field in any message; the server, on its ingest routes, drops what it does not know and counts it, so that an old server keeps working with a node of a newer firmware.
+* Solar and electrical nodes only read their equipment: no request that writes to an inverter, a battery or a meter is built anywhere. What a node can move is its relays (off by default in three places) and a source-transfer switch (a channel that is off by default, two steps, never both sources closed).
+* A node's Bluetooth set-up channel writes only over an encrypted link (LE Secure Connections with a six-digit PIN derived from the node's set-up code); every operation but `hello` needs the set-up code or a login, changing anything needs an administrator, a phone that fails its login is blocked for 30 seconds (doubling to five minutes), twenty failures from all phones together block the channel, five failed pairings close the door for five minutes, and one phone connects at a time. The PIN does not change while the set-up code does not: **whoever learns the code can pair**.
 * Disarming asks for the PIN of the signed-in user whenever the user has one (`ARMOR_DISARM_PIN=required` makes it compulsory): in the mode of the system, in a command to an alarm node and in the voice. Three wrong PINs lock the user for a minute, then five, then fifteen; the duress PIN disarms and warns in silence.
 * The server's files are forced to the disk before they take their name; the state and the users keep their last good copy, and a server that finds its state unreadable starts armed.
 * Erasing the history or every recording, and lowering how much a circuit matters, need an administrator; the list of the cameras needs a session.
 * Security-relevant actions are written to an audit log with credentials scrubbed.
 * Android sends a password only over HTTPS or over HTTP to a private-LAN IPv4 literal; a host *name*
   that merely starts like a private address is refused.
-* The Studio static host sends a strict Content-Security-Policy and makes no third-party request.
+* The Studio static host (and the nginx of its container image) sends a strict Content-Security-Policy on every file and makes no third-party request, except the Weather menu's (Open-Meteo, RainViewer, EUMETSAT, ArcGIS), which asks nothing until the account has a place saved.
 
 ## Not done yet
 

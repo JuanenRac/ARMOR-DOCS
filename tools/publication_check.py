@@ -25,7 +25,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-ALLOWED_AUTHOR = "Electro Hobby 3D <electrohobby3d@gmail.com>"
+ALLOWED_AUTHOR = "JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>"   # the one clean_history.py gives the single commit it makes
+ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
 
 PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
@@ -107,7 +108,7 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
         if len(parts) < 4:
             continue
         sha, author, committer, message = parts[0][:10], parts[1], parts[2], parts[3]
-        if author != ALLOWED_AUTHOR or committer != ALLOWED_AUTHOR:
+        if author not in ALLOWED_AUTHORS or committer not in ALLOWED_AUTHORS:
             findings.append(("BLOCK", name, f"commit {sha}", f"author or committer is not the project's ({author.split('<')[0].strip()})"))
         if re.search(r"(?im)^(co-authored-by|generated with|signed-off-by)\b", message) or "claude" in message.lower():
             findings.append(("BLOCK", name, f"commit {sha}", "the message has a co-author, AI or sign-off trailer"))
@@ -121,7 +122,7 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
                     seen.add(("path", path))
                     findings.append(("BLOCK", name, f"{path} @ {revision[:10]}", "a secrets, key or environment file was tracked in the history"))
         # removed lines only: what was once committed and later taken out is still public
-        diff = git(repo, "log", ref or "--all", "-p", "--no-color", "--diff-filter=MD", "--unified=0", "--format=commit %h", check=False)
+        diff = git(repo, "log", ref or "--all", "-p", "--no-color", "-M", "--diff-filter=MDR", "--unified=0", "--format=commit %h", check=False)
         current = ""
         for number, line in enumerate(diff.splitlines(), 1):
             if line.startswith("commit "):

@@ -26,7 +26,7 @@ VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readm
 TARGETS = (
     "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-RADAR", "ARMOR-SOLAR",
     "ARMOR-ELECTRICAL", "ARMOR-ALARM", "ARMOR-HMI", "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-DOCS", "ARMOR-SIMULATOR",
-    "ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-NETWORK", "ARMOR-UPDATER",
+    "ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-NETWORK", "ARMOR-UPDATER", "ARMOR-VISION",
 )
 
 
@@ -54,7 +54,8 @@ def main() -> int:
         if not repo.is_dir():
             print(f"SKIP {name}: no local checkout")
             continue
-        (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
+        if not check:
+            (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
         destination = repo / ".github" / "workflows" / "ci.yml"
         current = destination.read_text(encoding="utf-8") if destination.is_file() else None
         if current != workflow:
@@ -69,8 +70,9 @@ def main() -> int:
         if not repo.is_dir():
             print(f"SKIP {name}: no local checkout")
             continue
-        (repo / "tools").mkdir(exist_ok=True)
-        (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
+        if not check:   # a check reads and never creates
+            (repo / "tools").mkdir(exist_ok=True)
+            (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
 
         for filename in VENDORED_FILES:
             source_text = (SOURCE / filename).read_text(encoding="utf-8")

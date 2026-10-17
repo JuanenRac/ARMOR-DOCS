@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.7.6-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.7.7-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -35,16 +35,12 @@
 
 | | |
 |---|---|
-| Version | `0.7.6` |
+| Version | `0.7.7` |
 | Maturity | Established |
 | Stack | Markdown / Mermaid |
 | On real hardware | Not applicable: it is documentation; it records what the other repositories have run on real hardware |
 
 ## 🎯 Overview
-
-<p align="center">
-  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">
-</p>
 
 <p align="center">
   <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">

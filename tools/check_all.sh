@@ -43,22 +43,26 @@ if have npm; then
 else skip ARMOR-SERVER "npm is not installed"; skip ARMOR-STUDIO "npm is not installed"; fi
 
 if [[ -n "$PYTHON" ]]; then
-  # the contracts, and the firmware the three node projects share: no copy may have drifted from ARMOR-COMMON/firmware_base
+  # the contracts, and the firmware the five node projects share: no copy may have drifted from ARMOR-COMMON/firmware_base
   run ARMOR-COMMON bash -c "PYTHONPATH=src \"$PYTHON\" -m unittest discover -s tests && \"$PYTHON\" tools/sync_firmware_base.py check"
   for repo in ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI ARMOR-NETWORK; do
     run "$repo" env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
   done
-  run ARMOR-DOCS bash -c "\"$PYTHON\" tools/make_brand.py --check && \"$PYTHON\" tools/make_readmes.py --check"
+  # the documents that are written from the others: the READMEs, the banners, the catalogue and the tools copied into every repository
+  run ARMOR-DOCS bash -c "\"$PYTHON\" tools/make_brand.py --check && \"$PYTHON\" tools/make_readmes.py --check && \"$PYTHON\" tools/make_catalog.py --check && \"$PYTHON\" tools/sync_ci_tools.py --check"
+  # the repositories whose tests the shared launcher knows how to run (the vision one has its own, the updater needs pytest)
+  run ARMOR-VISION env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
+  run ARMOR-UPDATER "$PYTHON" tools/armor_project_tool.py build-test .
 else
   for repo in ARMOR-COMMON ARMOR-SIMULATOR ARMOR-SERVER-AI ARMOR-VOICE-AI ARMOR-NETWORK ARMOR-DOCS; do skip "$repo" "python is not installed"; done
 fi
 
 if have cmake && (have g++ || have c++); then
-  run ARMOR-RADAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_core" && "$B/test_node" && "$B/test_board_wifi" && "$B/test_sensors"'
-  run ARMOR-SOLAR bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_solar" && "$B/test_node" && "$B/test_board_eth" && "$B/test_ble" && "$B/test_mux" && "$B/test_parallel" && "$B/test_console"'
-  run ARMOR-HMI bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_config" && "$B/test_view" && "$B/test_voice" && "$B/test_board"'
-  run ARMOR-ELECTRICAL bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && "$B/test_meters" && "$B/test_interlock" && "$B/test_config" && "$B/test_runner" && "$B/test_ble"'
-else skip ARMOR-RADAR "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; skip ARMOR-SOLAR "no C++ compiler or cmake"; skip ARMOR-ELECTRICAL "no C++ compiler or cmake"; skip ARMOR-HMI "no C++ compiler or cmake"; fi
+  # every host test a node registers with CMake (ctest), the ones of the shared firmware included - not a list written here
+  for node in ARMOR-RADAR ARMOR-SOLAR ARMOR-ELECTRICAL ARMOR-ALARM ARMOR-HMI; do
+    run "$node" bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && ctest --test-dir "$B" --output-on-failure'
+  done
+else for node in ARMOR-RADAR ARMOR-SOLAR ARMOR-ELECTRICAL ARMOR-ALARM ARMOR-HMI; do skip "$node" "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; done; fi
 
 if have bash && have openssl; then
   run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh && bash scripts/test_firewall.sh && bash scripts/test_mqtt_identity.sh'
