@@ -25,6 +25,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+FIXTURE_PATH = re.compile(r"(^|/)(tests?|conformance)/|(^|/)test_[^/]*$")
 ALLOWED_AUTHOR = "JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>"   # the one clean_history.py gives the single commit it makes
 ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
@@ -124,13 +125,19 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
         # removed lines only: what was once committed and later taken out is still public
         diff = git(repo, "log", ref or "--all", "-p", "--no-color", "-M", "--diff-filter=MDR", "--unified=0", "--format=commit %h", check=False)
         current = ""
+        current_path = ""
         for number, line in enumerate(diff.splitlines(), 1):
             if line.startswith("commit "):
                 current = line[7:]
+            elif line.startswith("--- "):
+                current_path = line[4:].removeprefix("a/")
             elif line.startswith("-") and not line.startswith("---"):
                 extra: list[tuple[str, str, str, str]] = []
                 scan_text(name, f"history {current}", line[1:], extra)
                 for item in extra:
+                    # An address written in a test or a conformance fixture is there to be "outside the house" (8.8.8.8, 1.1.1.1...): it is data of the test, not of anybody's network.
+                    if item[3].startswith("public IP address") and FIXTURE_PATH.search(current_path):
+                        continue
                     key = (item[2], item[3])
                     if key not in seen:
                         seen.add(key)

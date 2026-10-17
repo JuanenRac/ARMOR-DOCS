@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.9] - The publication check no longer flags example addresses written in test fixtures
+
+The history scan of the publication check ignores public-looking addresses that only appear in lines removed from tests and conformance fixtures (they are there to stand for outside the house); keys, e-mail addresses and every other finding are still reported.
+
 ## [0.7.8] - The wall panel in the interfaces, and the READMEs of this batch
 
 - **Interfaces:** the touch panel's own conversation with the server (its account, its four routes, its broker identity, the voice route) is in the table.
