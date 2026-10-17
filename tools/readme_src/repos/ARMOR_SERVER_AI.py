@@ -16,14 +16,14 @@ FACTS = {
   ],
   [
    "Tests",
-   "42%20passing",
+   "46%20passing",
    "2ea44f"
   ]
  ],
  "diagram": "",
- "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 42 tests\necho '{\"label\":\"person\",\"confidence\":0.9,\"lux\":4,\"radar_tracks\":1}' | python -m armor_server_ai.cli\npython -m armor_server_ai.service --once   # one pass of the observation service\n```",
- "structure": "```text\nARMOR-SERVER-AI/\n├── src/armor_server_ai/   profile (day/night), policy (fusion), motion (movement and ignore zones), engine_registry, service (the observation service), cli\n├── tests/                 42 tests\n└── docs/                  INFERENCE_BOUNDARY.md, SERVICE.md\n```",
- "tests": "42 (`python -m unittest discover -s tests`)",
+ "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 46 tests\necho '{\"label\":\"person\",\"confidence\":0.9,\"lux\":4,\"radar_tracks\":1}' | python -m armor_server_ai.cli\npython -m armor_server_ai.service --once   # one pass of the observation service\n```",
+ "structure": "```text\nARMOR-SERVER-AI/\n├── src/armor_server_ai/   profile (day/night), policy (fusion), motion (movement and ignore zones), engine_registry, service (the observation service), cli\n├── tests/                 46 tests\n└── docs/                  INFERENCE_BOUNDARY.md, SERVICE.md\n```",
+ "tests": "46 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+",
   "optional: a Jetson Orin NX with TensorRT engines (not proven)"
@@ -33,9 +33,9 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Observation service: movement on the cameras weighed with the radars; it decides and explains, never actuates",
-  "honest": "The decision layer and the movement detector are real and tested (42 tests), and the observation service **runs on the CM5 test bench**: while the system is armed it looks at tiny grey frames of the real IP cameras and reports movement weighed with the radars. It cannot tell a person from a cat or a branch: **there is no detection model yet**, and nothing has run on the Jetson, TensorRT or an RTSP stream decoded there.",
+  "honest": "The decision layer and the movement detector are real and tested (46 tests), and the observation service **runs on the CM5 test bench**: while the system is armed it looks at tiny grey frames of the real IP cameras and reports movement weighed with the radars. It cannot tell a person from a cat or a branch: **there is no detection model yet**, and nothing has run on the Jetson, TensorRT or an RTSP stream decoded there.",
   "bullets": [
-   "**The observation service:** `python -m armor_server_ai.service` asks nothing of the server and is asked of nothing: while the system is **armed** it takes one tiny grey frame (64 x 36, from the camera's stream, never stored) of each camera every few seconds, measures how much of the picture moved and, when radar tracks agree, reports it to ARMOR-SERVER with its token.",
+   "**The observation service:** `python -m armor_server_ai.service` is never called by the server (it asks the server, with its own token): while the system is **armed** it takes one tiny grey frame (64 x 36, from the camera's stream, never stored) of each camera every few seconds, measures how much of the picture moved and, when radar tracks agree, reports it to ARMOR-SERVER with its token.",
    "**Zones of the picture to ignore:** the server hands it the ignore zones of each camera and the pixels inside them count for nothing (a tree that waves, a road); a picture that is almost all ignored is not judged and at most sixteen zones count.",
    "**Day/night profile with hysteresis:** low-light below 30 lux, back to daylight only above 60 lux and never twice within 30 s, so dusk cannot make it flap.",
    "**Explainable fusion:** each detection or movement and the radar tracks give a severity (`ignore`, `review`, `high`) with the reasons behind it; strong movement **and** a radar track agree is `high`, weaker movement is a `review`.",
@@ -49,9 +49,9 @@ TEXT = {
  },
  "es": {
   "tagline": "Servicio de observación: el movimiento en las cámaras sopesado con los radares; decide y explica, nunca actúa",
-  "honest": "La capa de decisión y el detector de movimiento son reales y están probados (42 tests), y el servicio de observación **corre en el banco de pruebas de la CM5**: con el sistema armado mira pequeños fotogramas grises de las cámaras IP reales e informa del movimiento sopesado con los radares. No distingue a una persona de un gato o una rama: **todavía no hay modelo de detección**, y nada ha corrido en la Jetson, TensorRT ni un flujo RTSP decodificado allí.",
+  "honest": "La capa de decisión y el detector de movimiento son reales y están probados (46 tests), y el servicio de observación **corre en el banco de pruebas de la CM5**: con el sistema armado mira pequeños fotogramas grises de las cámaras IP reales e informa del movimiento sopesado con los radares. No distingue a una persona de un gato o una rama: **todavía no hay modelo de detección**, y nada ha corrido en la Jetson, TensorRT ni un flujo RTSP decodificado allí.",
   "bullets": [
-   "**El servicio de observación:** `python -m armor_server_ai.service` no pide nada al servidor y nadie le pide nada: con el sistema **armado** toma un diminuto fotograma gris (64 x 36, del flujo de la cámara, nunca guardado) de cada cámara cada pocos segundos, mide cuánto de la imagen se movió y, cuando las pistas de radar coinciden, lo comunica a ARMOR-SERVER con su token.",
+   "**El servicio de observación:** `python -m armor_server_ai.service` el servidor nunca lo llama (es él quien le pregunta al servidor, con su propio token): con el sistema **armado** toma un diminuto fotograma gris (64 x 36, del flujo de la cámara, nunca guardado) de cada cámara cada pocos segundos, mide cuánto de la imagen se movió y, cuando las pistas de radar coinciden, lo comunica a ARMOR-SERVER con su token.",
    "**Zonas de la imagen que se ignoran:** el servidor le da las zonas a ignorar de cada cámara y los píxeles dentro de ellas no cuentan (un árbol que se mueve, una carretera); una imagen casi toda ignorada no se juzga y cuentan como mucho dieciséis zonas.",
    "**Perfil día/noche con histéresis:** poca luz por debajo de 30 lux, vuelve a día solo por encima de 60 lux y nunca dos veces en 30 s, para que el crepúsculo no lo haga oscilar.",
    "**Fusión explicable:** cada detección o movimiento y las pistas de radar dan una gravedad (`ignore`, `review`, `high`) con las razones; movimiento fuerte **y** una pista de radar coincidente es `high`, un movimiento más débil es un `review`.",
@@ -65,9 +65,9 @@ TEXT = {
  },
  "fr": {
   "tagline": "Service d'observation : le mouvement sur les caméras pesé avec les radars ; il décide et explique, n'actionne jamais",
-  "honest": "La couche de décision et le détecteur de mouvement sont réels et testés (42 tests), et le service d'observation **tourne sur le banc de test CM5** : système armé, il regarde de minuscules images grises des vraies caméras IP et signale le mouvement pesé avec les radars. Il ne distingue pas une personne d'un chat ou d'une branche : **il n'y a pas encore de modèle de détection**, et rien n'a tourné sur le Jetson, TensorRT ni un flux RTSP décodé là.",
+  "honest": "La couche de décision et le détecteur de mouvement sont réels et testés (46 tests), et le service d'observation **tourne sur le banc de test CM5** : système armé, il regarde de minuscules images grises des vraies caméras IP et signale le mouvement pesé avec les radars. Il ne distingue pas une personne d'un chat ou d'une branche : **il n'y a pas encore de modèle de détection**, et rien n'a tourné sur le Jetson, TensorRT ni un flux RTSP décodé là.",
   "bullets": [
-   "**Le service d'observation :** `python -m armor_server_ai.service` ne demande rien au serveur et rien ne lui est demandé : système **armé**, il prend une minuscule image grise (64 x 36, du flux de la caméra, jamais stockée) de chaque caméra toutes les quelques secondes, mesure quelle part de l'image a bougé et, quand des pistes radar concordent, le signale à ARMOR-SERVER avec son jeton.",
+   "**Le service d'observation :** `python -m armor_server_ai.service` n'est jamais appelé par le serveur (c'est lui qui interroge le serveur, avec son propre jeton) : système **armé**, il prend une minuscule image grise (64 x 36, du flux de la caméra, jamais stockée) de chaque caméra toutes les quelques secondes, mesure quelle part de l'image a bougé et, quand des pistes radar concordent, le signale à ARMOR-SERVER avec son jeton.",
    "**Zones de l'image à ignorer :** le serveur lui donne les zones à ignorer de chaque caméra et les pixels qu'elles contiennent ne comptent pas (un arbre qui bouge, une route) ; une image presque entièrement ignorée n'est pas jugée et seize zones au plus comptent.",
    "**Profil jour/nuit avec hystérésis :** faible lumière sous 30 lux, retour au jour seulement au-dessus de 60 lux et jamais deux fois en 30 s, pour que le crépuscule ne le fasse pas osciller.",
    "**Fusion explicable :** chaque détection ou mouvement et les pistes radar donnent une gravité (`ignore`, `review`, `high`) avec les raisons ; un mouvement fort **et** une piste radar concordante est `high`, un mouvement plus faible est un `review`.",
@@ -81,9 +81,9 @@ TEXT = {
  },
  "it": {
   "tagline": "Servizio di osservazione: il movimento sulle telecamere pesato con i radar; decide e spiega, non aziona mai",
-  "honest": "Lo strato decisionale e il rilevatore di movimento sono reali e provati (42 test), e il servizio di osservazione **gira sul banco di prova CM5**: a sistema inserito guarda minuscoli fotogrammi grigi delle vere telecamere IP e riferisce il movimento pesato con i radar. Non distingue una persona da un gatto o da un ramo: **non c'è ancora un modello di rilevamento**, e nulla ha girato sul Jetson, TensorRT o su un flusso RTSP decodificato lì.",
+  "honest": "Lo strato decisionale e il rilevatore di movimento sono reali e provati (46 test), e il servizio di osservazione **gira sul banco di prova CM5**: a sistema inserito guarda minuscoli fotogrammi grigi delle vere telecamere IP e riferisce il movimento pesato con i radar. Non distingue una persona da un gatto o da un ramo: **non c'è ancora un modello di rilevamento**, e nulla ha girato sul Jetson, TensorRT o su un flusso RTSP decodificato lì.",
   "bullets": [
-   "**Il servizio di osservazione:** `python -m armor_server_ai.service` non chiede nulla al server e nulla gli viene chiesto: a sistema **inserito** prende un minuscolo fotogramma grigio (64 x 36, dal flusso della telecamera, mai salvato) di ogni telecamera ogni pochi secondi, misura quanta parte dell'immagine si è mossa e, quando le tracce radar concordano, lo riferisce ad ARMOR-SERVER con il suo token.",
+   "**Il servizio di osservazione:** `python -m armor_server_ai.service` non viene mai chiamato dal server (è lui a interrogare il server, con il proprio token): a sistema **inserito** prende un minuscolo fotogramma grigio (64 x 36, dal flusso della telecamera, mai salvato) di ogni telecamera ogni pochi secondi, misura quanta parte dell'immagine si è mossa e, quando le tracce radar concordano, lo riferisce ad ARMOR-SERVER con il suo token.",
    "**Zone dell'immagine da ignorare:** il server gli dà le zone da ignorare di ogni telecamera e i pixel al loro interno non contano (un albero che si muove, una strada); un'immagine quasi tutta ignorata non è giudicata e contano al massimo sedici zone.",
    "**Profilo giorno/notte con isteresi:** poca luce sotto 30 lux, torna al giorno solo sopra 60 lux e mai due volte in 30 s, così il crepuscolo non lo fa oscillare.",
    "**Fusione spiegabile:** ogni rilevamento o movimento e le tracce radar danno una gravità (`ignore`, `review`, `high`) con le ragioni; movimento forte **e** una traccia radar concorde è `high`, un movimento più debole è una `review`.",
@@ -97,9 +97,9 @@ TEXT = {
  },
  "de": {
   "tagline": "Beobachtungsdienst: Bewegung auf den Kameras, gegen die Radare abgewogen; er entscheidet und erklärt, schaltet nie",
-  "honest": "Die Entscheidungsschicht und der Bewegungsdetektor sind real und getestet (42 Tests), und der Beobachtungsdienst **läuft am CM5-Testaufbau**: Bei scharfem System sieht er winzige Graubilder der echten IP-Kameras an und meldet Bewegung, gegen die Radare abgewogen. Er kann eine Person nicht von einer Katze oder einem Ast unterscheiden: **Es gibt noch kein Erkennungsmodell**, und nichts lief auf dem Jetson, mit TensorRT oder einem dort dekodierten RTSP-Strom.",
+  "honest": "Die Entscheidungsschicht und der Bewegungsdetektor sind real und getestet (46 Tests), und der Beobachtungsdienst **läuft am CM5-Testaufbau**: Bei scharfem System sieht er winzige Graubilder der echten IP-Kameras an und meldet Bewegung, gegen die Radare abgewogen. Er kann eine Person nicht von einer Katze oder einem Ast unterscheiden: **Es gibt noch kein Erkennungsmodell**, und nichts lief auf dem Jetson, mit TensorRT oder einem dort dekodierten RTSP-Strom.",
   "bullets": [
-   "**Der Beobachtungsdienst:** `python -m armor_server_ai.service` fragt den Server nichts und wird nichts gefragt: Bei **scharfem** System nimmt er alle paar Sekunden ein winziges Graubild (64 x 36, aus dem Kamerastrom, nie gespeichert) jeder Kamera auf, misst, wie viel vom Bild sich bewegt hat, und meldet es, wenn Radarspuren übereinstimmen, mit seinem Token an ARMOR-SERVER.",
+   "**Der Beobachtungsdienst:** `python -m armor_server_ai.service` wird nie vom Server aufgerufen (er fragt den Server, mit seinem eigenen Token): Bei **scharfem** System nimmt er alle paar Sekunden ein winziges Graubild (64 x 36, aus dem Kamerastrom, nie gespeichert) jeder Kamera auf, misst, wie viel vom Bild sich bewegt hat, und meldet es, wenn Radarspuren übereinstimmen, mit seinem Token an ARMOR-SERVER.",
    "**Zu ignorierende Bildzonen:** der Server gibt ihm die zu ignorierenden Zonen jeder Kamera, und die Pixel darin zählen nicht (ein wehender Baum, eine Straße); ein fast ganz ignoriertes Bild wird nicht beurteilt, und höchstens sechzehn Zonen zählen.",
    "**Tag/Nacht-Profil mit Hysterese:** Dunkelheit unter 30 Lux, zurück zu Tageslicht erst über 60 Lux und nie zweimal innerhalb von 30 s, damit die Dämmerung es nicht flattern lässt.",
    "**Erklärbare Fusion:** jede Erkennung oder Bewegung und die Radarspuren ergeben eine Stufe (`ignore`, `review`, `high`) mit den Gründen; starke Bewegung **und** eine übereinstimmende Radarspur ist `high`, schwächere Bewegung ist `review`.",
@@ -113,9 +113,9 @@ TEXT = {
  },
  "zh": {
   "tagline": "观察服务：把摄像头上的移动与雷达对照权衡；它做出决定并给出解释，从不执行动作",
-  "honest": "决策层和移动检测器是真实的并经过测试（42 个测试），观察服务**在 CM5 测试台上运行**：系统布防时，它查看真实 IP 摄像头的微小灰度帧，并报告与雷达对照权衡后的移动。它分不清人、猫或树枝：**目前还没有检测模型**，也没有任何东西在 Jetson、TensorRT 或在那里解码的 RTSP 流上运行过。",
+  "honest": "决策层和移动检测器是真实的并经过测试（46 个测试），观察服务**在 CM5 测试台上运行**：系统布防时，它查看真实 IP 摄像头的微小灰度帧，并报告与雷达对照权衡后的移动。它分不清人、猫或树枝：**目前还没有检测模型**，也没有任何东西在 Jetson、TensorRT 或在那里解码的 RTSP 流上运行过。",
   "bullets": [
-   "**观察服务：**`python -m armor_server_ai.service` 不向服务器要任何东西，也没有任何东西向它要：系统**布防**时，它每隔几秒从每个摄像头的码流取一帧微小的灰度图（64 x 36，从不保存），测量画面移动了多少，当雷达轨迹一致时，带着自己的令牌上报给 ARMOR-SERVER。",
+   "**观察服务：**`python -m armor_server_ai.service` 服务器从不调用它（是它用自己的令牌向服务器询问）：系统**布防**时，它每隔几秒从每个摄像头的码流取一帧微小的灰度图（64 x 36，从不保存），测量画面移动了多少，当雷达轨迹一致时，带着自己的令牌上报给 ARMOR-SERVER。",
    "**要忽略的画面区域：**服务器把每个摄像头的忽略区域交给它，区域内的像素不计入（摇动的树、公路）；几乎全被忽略的画面不做判断，最多计入十六个区域。",
    "**带滞回的昼夜配置：**低于 30 勒克斯为弱光，只有高于 60 勒克斯才回到白天，且 30 秒内绝不切换两次，因此黄昏不会让它来回抖动。",
    "**可解释的融合：**每次检测或移动与雷达轨迹给出一个严重级别（`ignore`、`review`、`high`）及理由；强移动**并且**有一致的雷达轨迹为 `high`，较弱的移动为 `review`。",
@@ -129,9 +129,9 @@ TEXT = {
  },
  "ja": {
   "tagline": "観察サービス：カメラ上の動きをレーダーと照らし合わせます。判断して説明するだけで、決して動作させません",
-  "honest": "判断レイヤーと動き検出器は実在し、テストされています（42 件）。観察サービスは **CM5 テストベンチで動作**しており、システムの警戒中に実際の IP カメラの小さなグレーフレームを見て、レーダーと照らし合わせた動きを報告します。人と猫や枝の区別はできません。**検出モデルはまだなく**、Jetson、TensorRT、そこでデコードした RTSP ストリームでは何も動いていません。",
+  "honest": "判断レイヤーと動き検出器は実在し、テストされています（46 件）。観察サービスは **CM5 テストベンチで動作**しており、システムの警戒中に実際の IP カメラの小さなグレーフレームを見て、レーダーと照らし合わせた動きを報告します。人と猫や枝の区別はできません。**検出モデルはまだなく**、Jetson、TensorRT、そこでデコードした RTSP ストリームでは何も動いていません。",
   "bullets": [
-   "**観察サービス：**`python -m armor_server_ai.service` はサーバーに何も求めず、何も求められません。システムが**警戒中**のあいだ、数秒ごとに各カメラのストリームから小さなグレーフレーム（64 x 36、保存しない）を 1 枚取り、画面のどれだけが動いたかを測り、レーダーの軌跡と一致すれば、自分のトークンで ARMOR-SERVER に報告します。",
+   "**観察サービス：**`python -m armor_server_ai.service` はサーバーから呼び出されることはなく（自分のトークンでサーバーに問い合わせます）、システムが**警戒中**のあいだ、数秒ごとに各カメラのストリームから小さなグレーフレーム（64 x 36、保存しない）を 1 枚取り、画面のどれだけが動いたかを測り、レーダーの軌跡と一致すれば、自分のトークンで ARMOR-SERVER に報告します。",
    "**無視する映像ゾーン：**サーバーが各カメラの無視ゾーンを渡し、その中のピクセルは数えません（揺れる木、道路）。ほとんどが無視される画像は判断せず、数えるゾーンは最大 16 個です。",
    "**ヒステリシス付きの昼夜プロファイル：**30 ルクス未満で低照度、60 ルクスを超えたときだけ昼に戻り、30 秒以内に 2 度は切り替えないため、夕暮れでばたつきません。",
    "**説明できる融合：**検出や動きとレーダーの軌跡から、理由付きで重大度（`ignore`、`review`、`high`）を出します。強い動き**かつ**一致するレーダーの軌跡は `high`、弱い動きは `review` です。",
@@ -145,9 +145,9 @@ TEXT = {
  },
  "pt": {
   "tagline": "Serviço de observação: o movimento nas câmaras pesado com os radares; decide e explica, nunca aciona",
-  "honest": "A camada de decisão e o detetor de movimento são reais e estão testados (42 testes), e o serviço de observação **corre na bancada de testes do CM5**: com o sistema armado olha para pequenas imagens cinzentas das câmaras IP reais e comunica o movimento pesado com os radares. Não distingue uma pessoa de um gato ou de um ramo: **ainda não há modelo de deteção**, e nada correu no Jetson, no TensorRT nem num fluxo RTSP descodificado aí.",
+  "honest": "A camada de decisão e o detetor de movimento são reais e estão testados (46 testes), e o serviço de observação **corre na bancada de testes do CM5**: com o sistema armado olha para pequenas imagens cinzentas das câmaras IP reais e comunica o movimento pesado com os radares. Não distingue uma pessoa de um gato ou de um ramo: **ainda não há modelo de deteção**, e nada correu no Jetson, no TensorRT nem num fluxo RTSP descodificado aí.",
   "bullets": [
-   "**O serviço de observação:** `python -m armor_server_ai.service` não pede nada ao servidor e nada lhe é pedido: com o sistema **armado** tira uma pequena imagem cinzenta (64 x 36, do fluxo da câmara, nunca guardada) de cada câmara de poucos em poucos segundos, mede quanto da imagem se moveu e, quando as pistas de radar coincidem, comunica-o ao ARMOR-SERVER com o seu token.",
+   "**O serviço de observação:** `python -m armor_server_ai.service` nunca é chamado pelo servidor (é ele que pergunta ao servidor, com o seu próprio token): com o sistema **armado** tira uma pequena imagem cinzenta (64 x 36, do fluxo da câmara, nunca guardada) de cada câmara de poucos em poucos segundos, mede quanto da imagem se moveu e, quando as pistas de radar coincidem, comunica-o ao ARMOR-SERVER com o seu token.",
    "**Zonas da imagem a ignorar:** o servidor dá-lhe as zonas a ignorar de cada câmara e os píxeis dentro delas não contam (uma árvore que se mexe, uma estrada); uma imagem quase toda ignorada não é julgada e contam no máximo dezasseis zonas.",
    "**Perfil dia/noite com histerese:** pouca luz abaixo de 30 lux, volta ao dia só acima de 60 lux e nunca duas vezes em 30 s, para que o crepúsculo não o faça oscilar.",
    "**Fusão explicável:** cada deteção ou movimento e as pistas de radar dão uma gravidade (`ignore`, `review`, `high`) com as razões; movimento forte **e** uma pista de radar coincidente é `high`, um movimento mais fraco é um `review`.",

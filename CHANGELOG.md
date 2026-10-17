@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [0.7.8] - The wall panel in the interfaces, and the READMEs of this batch
+
+- **Interfaces:** the touch panel's own conversation with the server (its account, its four routes, its broker identity, the voice route) is in the table.
+- **Catalogue and READMEs:** the versions of this batch of releases, and the pages of the projects that moved (the test counts, the honest lines and the structure of each).
+- The generators of ARMOR-NETWORK, ARMOR-SERVER-AI, ARMOR-VISION, ARMOR-VOICE-AI, ARMOR-SIMULATOR, ARMOR-HARDWARE, ARMOR-DEVOPS, ARMOR-SERVER and ARMOR-UPDATER carry the new numbers and wording in the eight languages.
+
 ## [0.7.7] - The pages say what the code does, and the whole family is compared every night
 
 - **Security pages brought up to date:** firmware is signed as a manifest (project, board, version, hash) and the server checks it too; Bluetooth pairing uses a PIN derived from the set-up code and what that leaves open is said; the nodes' relays and switch channel are named instead of "only read"; every command is an allow-list and the unknown-field rule says who drops and who rejects; the core machine is the CM5 of the bench, with the AI planned for a Jetson-class machine; and the CI is described as it is.

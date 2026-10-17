@@ -16,14 +16,14 @@ FACTS = {
   ],
   [
    "Tests",
-   "38%20passing",
+   "42%20passing",
    "2ea44f"
   ]
  ],
  "diagram": "",
- "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_vision simulate --mode away\npython -m armor_vision check-config my_cameras.json\npython -m unittest discover -s tests   # 38 tests\n```",
- "structure": "```text\nARMOR-VISION/\n├── src/armor_vision/   geometry, config (zones, masks, profiles), motion, tracker, rules, detector, pipeline, cli\n├── tests/              38 tests\n└── docs/USAGE.md\n```",
- "tests": "38 (`python -m unittest discover -s tests`)",
+ "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_vision simulate --mode away\npython -m armor_vision check-config my_cameras.json\npython -m unittest discover -s tests   # 42 tests\n```",
+ "structure": "```text\nARMOR-VISION/\n├── src/armor_vision/   geometry, config (zones, masks, profiles), motion, tracker, rules, detector, pipeline, cli\n├── tests/              42 tests\n└── docs/USAGE.md\n```",
+ "tests": "42 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)"
  ]
@@ -32,7 +32,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Zones, masks and detection rules for the cameras",
-  "honest": "The zones, the motion check, the tracker, the rules and the 38 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
+  "honest": "The zones, the motion check, the tracker, the rules and the 42 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
   "bullets": [
    "**Zones and masks:** polygons drawn on normalised coordinates (0 to 1), so one drawing works at any resolution; a zone counts detections, a mask ignores movement. Each zone has a label filter, a kind (`alert` or `detection`) and an inertia in pictures and seconds.",
    "**Motion first:** the expensive detector runs only when enough of the picture, outside the masks, has changed.",
@@ -46,7 +46,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Zonas, máscaras y reglas de detección para las cámaras",
-  "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 38 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
+  "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 42 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
   "bullets": [
    "**Zonas y máscaras:** polígonos dibujados en coordenadas normalizadas (de 0 a 1), así un mismo dibujo vale a cualquier resolución; una zona cuenta detecciones, una máscara ignora el movimiento. Cada zona tiene un filtro de etiquetas, un tipo (`alert` o `detection`) y una inercia en fotogramas y segundos.",
    "**Primero el movimiento:** el detector, que es caro, solo se ejecuta cuando ha cambiado lo bastante de la imagen fuera de las máscaras.",
@@ -60,7 +60,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Zones, masques et règles de détection pour les caméras",
-  "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 38 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
+  "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 42 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
   "bullets": [
    "**Zones et masques :** des polygones dessinés en coordonnées normalisées (de 0 à 1), un même dessin sert donc à toute résolution ; une zone compte les détections, un masque ignore le mouvement. Chaque zone a un filtre d'étiquettes, un type (`alert` ou `detection`) et une inertie en images et en secondes.",
    "**D'abord le mouvement :** le détecteur, coûteux, ne s'exécute que lorsque assez de l'image a changé en dehors des masques.",
@@ -74,7 +74,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Zone, maschere e regole di rilevamento per le telecamere",
-  "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 38 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
+  "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 42 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
   "bullets": [
    "**Zone e maschere:** poligoni disegnati in coordinate normalizzate (da 0 a 1), così lo stesso disegno vale a qualsiasi risoluzione; una zona conta i rilevamenti, una maschera ignora il movimento. Ogni zona ha un filtro di etichette, un tipo (`alert` o `detection`) e un'inerzia in immagini e secondi.",
    "**Prima il movimento:** il rilevatore, costoso, viene eseguito solo quando è cambiata abbastanza immagine fuori dalle maschere.",
@@ -88,7 +88,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Zonen, Masken und Erkennungsregeln für die Kameras",
-  "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 38 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
+  "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 42 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
   "bullets": [
    "**Zonen und Masken:** Polygone in normalisierten Koordinaten (0 bis 1), eine Zeichnung gilt also bei jeder Auflösung; eine Zone zählt Erkennungen, eine Maske ignoriert Bewegung. Jede Zone hat einen Label-Filter, eine Art (`alert` oder `detection`) und eine Trägheit in Bildern und Sekunden.",
    "**Zuerst die Bewegung:** der teure Detektor läuft nur, wenn sich außerhalb der Masken genug vom Bild verändert hat.",
@@ -102,7 +102,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "摄像头的区域、遮罩与检测规则",
-  "honest": "区域、运动检查、跟踪、规则和 38 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
+  "honest": "区域、运动检查、跟踪、规则和 42 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
   "bullets": [
    "**区域与遮罩：** 用归一化坐标（0 到 1）绘制的多边形，因此同一张图在任何分辨率下都适用；区域统计检测结果，遮罩忽略运动。每个区域有标签过滤、类型（`alert` 或 `detection`）以及以帧数和秒数表示的惰性。",
    "**先看运动：** 只有当遮罩之外的画面变化足够多时，开销很大的检测器才会运行。",
@@ -116,7 +116,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "カメラのゾーン、マスク、検知ルール",
-  "honest": "ゾーン、動きの確認、追跡、ルール、38 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
+  "honest": "ゾーン、動きの確認、追跡、ルール、42 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
   "bullets": [
    "**ゾーンとマスク:** 正規化座標（0 から 1）で描いた多角形なので、同じ図がどの解像度でも使えます。ゾーンは検知を数え、マスクは動きを無視します。各ゾーンにはラベルのフィルター、種類（`alert` または `detection`）、画像数と秒数の慣性があります。",
    "**まず動き:** 高価な検知器は、マスクの外で画面が十分に変化したときだけ動きます。",
@@ -130,7 +130,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Zonas, máscaras e regras de deteção para as câmaras",
-  "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 38 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
+  "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 42 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
   "bullets": [
    "**Zonas e máscaras:** polígonos desenhados em coordenadas normalizadas (0 a 1), para que um só desenho funcione em qualquer resolução; uma zona conta deteções, uma máscara ignora o movimento. Cada zona tem um filtro de etiquetas, um tipo (`alert` ou `detection`) e uma inércia em imagens e segundos.",
    "**Primeiro o movimento:** o detetor caro só corre quando mudou o suficiente da imagem, fora das máscaras.",

@@ -13,6 +13,8 @@
 | Relays of electrical and alarm nodes | `armor/device/{node}/{relay}/state`, `/availability` and `/set` (MQTT) | Server | Reachable only after `electrical-relays` or `alarm-relays` is run for that node |
 | Network node | `armor/network/{id}/state` (MQTT) or `POST /api/v1/network/state` | Server | The same; the answer of the HTTP route carries the manual orders waiting for the node, with any login only sealed for that node |
 | Server | `armor/alarm/{id}/zigbee` (MQTT): the state of the Zigbee sensor of a zone, while the server holds the radio | Alarm node | Information only, never a command; the broker lets only the server write it |
+| Wall panel (touch-panel node) | HTTP to the server with the session of its panel account (`studio/session`, `panel/summary`, `mode`, `alarms/acknowledge`), and `armor/node/{id}/health` and `/info` (MQTT) | Server | The `panel` role may do only those four things; the broker identity `hmi-node-*` may write only health and info |
+| Wall panel (touch-panel node) | `POST /api/v1/voice/turn` (or `/api/v1/voice/v1/turn`): the audio of one spoken turn | Server, which passes it to the voice gateway on its own machine | The voice token the panel was given; the gateway listens on the loopback only |
 | Android app | Bluetooth Low Energy: the set-up channel of a node (framed JSON on a GATT service) | Radar, solar, electrical, alarm and touch-panel nodes | Encrypted link, then the set-up code or a login; an administrator to change anything |
 | Simulator | HTTP ingest with the ingest token | Server | The same validation as a real node |
 | Server | Session-authenticated HTTP API, MJPEG, WebSocket events | Studio, Android | HttpOnly session or a camera-bound stream ticket |
