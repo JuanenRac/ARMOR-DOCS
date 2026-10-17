@@ -15,7 +15,7 @@
 | ARMOR-ANDROID-CONTROL | 0.5.9 | Android operator client | Established |
 | ARMOR-SERVER-AI | 0.2.6 | Camera movement observation service (CM5 today, Jetson planned) | Functional |
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
-| ARMOR-VOICE-AI | 0.2.10 | Offline speech and intent gateway | Functional |
+| ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Functional |
 | ARMOR-HARDWARE | 0.2.4 | Open hardware and parametric enclosure designs | Functional |
 | ARMOR-DEVOPS | 0.5.4 | Repeatable deployment and operations | Functional |
 | ARMOR-SIMULATOR | 0.2.5 | Offline telemetry and environment simulator | Established |
