@@ -4,11 +4,11 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.5.6 | Shared contracts and validation library | Established |
-| ARMOR-RADAR | 0.6.7 | ESP32-S3 PoE field-node firmware | Established |
-| ARMOR-SOLAR | 0.4.2 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
-| ARMOR-ELECTRICAL | 0.3.4 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
-| ARMOR-ALARM | 0.3.1 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
-| ARMOR-HMI | 0.2.5 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
+| ARMOR-RADAR | 0.6.8 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-SOLAR | 0.4.3 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
+| ARMOR-ELECTRICAL | 0.3.5 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
+| ARMOR-ALARM | 0.3.2 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
+| ARMOR-HMI | 0.2.6 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NETWORK | 0.1.1 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
 | ARMOR-SERVER | 0.6.8 | Central event coordinator and web API | Established |
 | ARMOR-STUDIO | 0.8.0.2 | Web administration and calibration console | Established |
