@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.0] - The README sources describe the optional encrypted link to the broker
+
+- The sources of the READMEs of ARMOR-DEVOPS, ARMOR-COMMON, the five nodes, ARMOR-SERVER and ARMOR-STUDIO have a bullet in the eight languages about the optional encrypted link to the broker (TLS), and the file trees list the new script, tests and modules; the number of tests of the server is updated.
+
 ## [0.7.9] - The publication check no longer flags example addresses written in test fixtures
 
 - The history scan of the publication check ignores public-looking addresses that only appear in lines removed from tests and conformance fixtures (they are there to stand for outside the house); keys, e-mail addresses and every other finding are still reported.
