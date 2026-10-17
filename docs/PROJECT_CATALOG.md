@@ -17,7 +17,7 @@
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Functional |
 | ARMOR-HARDWARE | 0.2.4 | Open hardware and parametric enclosure designs | Functional |
-| ARMOR-DEVOPS | 0.5.5 | Repeatable deployment and operations | Functional |
+| ARMOR-DEVOPS | 0.5.6 | Repeatable deployment and operations | Functional |
 | ARMOR-SIMULATOR | 0.2.5 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.1.2 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
 | ARMOR-DOCS | 0.7.8 | System architecture and operator documentation | Established |
