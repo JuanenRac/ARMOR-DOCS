@@ -55,6 +55,7 @@ TEXT = {
    "**Eight languages** (English, Spanish, German, French, Italian, Japanese, Chinese and Portuguese), chosen in *More > Settings* or following the phone; every phrase is checked to be in the eight tables.",
    "**Careful with the password:** plain HTTP is allowed only to a private-LAN or loopback IPv4 *literal*; a host name that merely starts like a private address (`10.attacker.example`) or an address with a leading zero is refused. The look is made of icons: near-black surfaces, a cyan accent, amber for attention.",
    "**Security from the phone:** the second factor and its recovery codes, the open sessions, a check of how the server sees the phone, the new proof of identity for critical actions from outside, and, for an administrator, the VPN (devices with their configuration) and the dynamic DNS name."
+   "**The whole system on the status screen, and the way in from outside:** the status screen summarises the alarm panels, the services, the cameras that are recording and the security and remote access, each card opening its screen; and when the address typed is outside the house without https, the sign-in says why it cannot go on and a guide explains the two safe ways (VPN, or a public address with https).",
   ],
   "note": "Releases are published on GitHub, from where the app itself checks for updates; the APK is signed today with the maintainer's Android debug certificate, not with a release key. See the [client boundary](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Used on a real phone against the CM5 test bench; the solar, electrical and alarm-panel screens wait for real nodes",
@@ -78,6 +79,7 @@ TEXT = {
    "**Ocho idiomas** (inglés, español, alemán, francés, italiano, japonés, chino y portugués), elegidos en *Más > Ajustes* o siguiendo al móvil; se comprueba que cada frase está en las ocho tablas.",
    "**Cuidado con la contraseña:** HTTP plano solo se permite a un *literal* IPv4 de LAN privada o loopback; se rechaza un nombre de host que solo empieza como una dirección privada (`10.attacker.example`) o una dirección con cero a la izquierda. El aspecto está hecho de iconos: superficies casi negras, acento cian, ámbar para la atención.",
    "**Seguridad desde el móvil:** el segundo factor y sus códigos de recuperación, las sesiones abiertas, una comprobación de cómo ve el servidor al móvil, la nueva prueba de identidad para acciones críticas desde fuera y, para un administrador, la VPN (dispositivos con su configuración) y el nombre de DNS dinámico."
+   "**Todo el sistema en la pantalla de estado y la entrada desde fuera:** la pantalla de estado resume las centrales de alarma, los servicios, las cámaras que graban y la seguridad y el acceso remoto, y cada tarjeta abre su pantalla; y cuando la dirección escrita está fuera de casa y sin https, el inicio de sesión dice por qué no puede seguir y una guía explica las dos vías seguras (VPN, o dirección pública con https).",
   ],
   "note": "Las versiones se publican en GitHub, desde donde la propia app busca actualizaciones; hoy el APK se firma con el certificado de depuración de Android del responsable, no con una clave de publicación. Véase el [límite del cliente](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usada en un móvil real contra el banco de pruebas de la CM5; las pantallas solar, eléctrica y de centrales de alarma esperan nodos reales",
@@ -101,6 +103,7 @@ TEXT = {
    "**Huit langues** (anglais, espagnol, allemand, français, italien, japonais, chinois et portugais), choisies dans *Plus > Réglages* ou suivant le téléphone ; on vérifie que chaque phrase est dans les huit tables.",
    "**Prudence avec le mot de passe :** le HTTP en clair n'est permis que vers un *littéral* IPv4 de LAN privé ou de boucle locale ; un nom d'hôte qui ressemble seulement à une adresse privée (`10.attacker.example`) ou une adresse avec un zéro initial est refusé. L'apparence est faite d'icônes : surfaces quasi noires, accent cyan, ambre pour l'attention.",
    "**La sécurité depuis le téléphone :** le second facteur et ses codes de récupération, les sessions ouvertes, une vérification de la façon dont le serveur voit le téléphone, la nouvelle preuve d'identité pour les actions critiques depuis l'extérieur et, pour un administrateur, le VPN (appareils avec leur configuration) et le nom DNS dynamique."
+   "**Tout le système sur l'écran d'état et l'entrée depuis l'extérieur :** l'écran d'état résume les centrales d'alarme, les services, les caméras qui enregistrent et la sécurité et l'accès à distance, chaque carte ouvrant son écran ; et quand l'adresse saisie est hors de la maison et sans https, la connexion dit pourquoi elle ne peut pas continuer et un guide explique les deux voies sûres (VPN, ou adresse publique avec https).",
   ],
   "note": "Les versions sont publiées sur GitHub, d'où l'application cherche elle-même les mises à jour ; aujourd'hui l'APK est signé avec le certificat de débogage Android du responsable, pas avec une clé de publication. Voir la [frontière du client](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Utilisée sur un vrai téléphone contre le banc de test CM5 ; les écrans solaire, électrique et centrales d'alarme attendent de vrais nœuds",
@@ -124,6 +127,7 @@ TEXT = {
    "**Otto lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese), scelte in *Altro > Impostazioni* o seguendo il telefono; si controlla che ogni frase sia nelle otto tabelle.",
    "**Attenzione alla password:** l'HTTP in chiaro è ammesso solo verso un *letterale* IPv4 di LAN privata o loopback; un nome host che inizia soltanto come un indirizzo privato (`10.attacker.example`) o un indirizzo con zero iniziale è rifiutato. L'aspetto è fatto di icone: superfici quasi nere, accento ciano, ambra per l'attenzione.",
    "**La sicurezza dal telefono:** il secondo fattore e i suoi codici di recupero, le sessioni aperte, un controllo di come il server vede il telefono, la nuova prova di identità per le azioni critiche da fuori e, per un amministratore, la VPN (dispositivi con la loro configurazione) e il nome DNS dinamico."
+   "**Tutto il sistema nella schermata di stato e l'ingresso da fuori:** la schermata di stato riassume le centrali d'allarme, i servizi, le telecamere che registrano e la sicurezza e l'accesso remoto, ogni scheda apre la sua schermata; e quando l'indirizzo scritto è fuori casa e senza https, l'accesso dice perché non può proseguire e una guida spiega le due vie sicure (VPN, o indirizzo pubblico con https).",
   ],
   "note": "Le versioni sono pubblicate su GitHub, da dove l'app stessa cerca gli aggiornamenti; oggi l'APK è firmato con il certificato di debug di Android del responsabile, non con una chiave di rilascio. Vedi il [confine del client](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usata su un vero telefono contro il banco di prova CM5; le schermate solare, elettrica e delle centrali d'allarme attendono nodi reali",
@@ -147,6 +151,7 @@ TEXT = {
    "**Acht Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und Portugiesisch), gewählt unter *Mehr > Einstellungen* oder dem Telefon folgend; geprüft wird, dass jeder Satz in den acht Tabellen steht.",
    "**Vorsicht mit dem Passwort:** Klartext-HTTP ist nur zu einem IPv4-*Literal* eines privaten LANs oder Loopbacks erlaubt; ein Hostname, der nur wie eine private Adresse beginnt (`10.attacker.example`), oder eine Adresse mit führender Null wird abgelehnt. Das Aussehen besteht aus Symbolen: fast schwarze Flächen, ein Cyan-Akzent, Bernstein für Aufmerksamkeit.",
    "**Sicherheit vom Handy aus:** der zweite Faktor und seine Wiederherstellungscodes, die offenen Sitzungen, eine Prüfung, wie der Server das Handy sieht, der neue Identitätsnachweis für kritische Aktionen von außen und, für einen Administrator, das VPN (Geräte mit ihrer Konfiguration) und der dynamische DNS-Name."
+   "**Das ganze System auf dem Statusbildschirm und der Weg von außen:** der Statusbildschirm fasst Alarmzentralen, Dienste, aufzeichnende Kameras sowie Sicherheit und Fernzugriff zusammen, jede Karte öffnet ihren Bildschirm; und ist die eingegebene Adresse außerhalb des Hauses und ohne https, sagt die Anmeldung, warum sie nicht weitergeht, und eine Anleitung erklärt die zwei sicheren Wege (VPN oder öffentliche Adresse mit https).",
   ],
   "note": "Die Versionen werden auf GitHub veröffentlicht, von wo die App selbst nach Updates sucht; heute ist die APK mit dem Android-Debug-Zertifikat des Betreuers signiert, nicht mit einem Release-Schlüssel. Siehe die [Client-Grenze](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Auf einem echten Telefon gegen den CM5-Testaufbau im Einsatz; die Solar-, Elektro- und Alarmzentralen-Bildschirme warten auf echte Knoten",
@@ -170,6 +175,7 @@ TEXT = {
    "**八种语言**（英语、西班牙语、德语、法语、意大利语、日语、中文和葡萄牙语），在*更多 > 设置*中选择或跟随手机；会检查每一句话都在八张表中。",
    "**谨慎对待密码：**明文 HTTP 只允许用于私有局域网或回环的 IPv4 *字面量*；仅看起来像私有地址的主机名（`10.attacker.example`）或带前导零的地址会被拒绝。界面由图标构成：近黑色表面、青色强调、琥珀色表示注意。",
    "**在手机上管理安全：**第二重验证及其恢复码、已打开的会话、检查服务器如何看待手机、从外部执行关键操作时的重新身份验证，以及面向管理员的 VPN（带配置的设备）和动态 DNS 名称。"
+   "**状态屏幕展示整个系统，以及从外部进入的方式：** 状态屏幕汇总报警主机、服务、正在录像的摄像头以及安全与远程访问，每张卡片都会打开对应屏幕；当输入的地址在家外且没有 https 时，登录会说明为何无法继续，并由向导讲解两种安全方式（VPN，或带 https 的公网地址）。",
   ],
   "note": "版本发布在 GitHub 上，应用自己会从那里检查更新；目前 APK 使用维护者的 Android 调试证书签名，而不是发布密钥。参见[客户端边界](docs/CLIENT_BOUNDARY.md)。",
   "hardware": "在真实手机上对照 CM5 测试台使用；太阳能、电气和报警主机界面在等待真实节点",
@@ -193,6 +199,7 @@ TEXT = {
    "**8 言語**（英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ポルトガル語）を*その他 > 設定*で選ぶか端末に従います。すべての文が 8 つの表にあることを検査します。",
    "**パスワードの扱い：**平文 HTTP は、プライベート LAN またはループバックの IPv4 *リテラル*にのみ許可されます。プライベートアドレスのように始まるだけのホスト名（`10.attacker.example`）や先頭にゼロのあるアドレスは拒否されます。見た目はアイコン中心で、ほぼ黒の面、シアンのアクセント、注意にはアンバーを使います。",
    "**スマホからのセキュリティ：**2 段階認証と復旧コード、開いているセッション、サーバーから見たスマホの確認、外からの重要な操作での再認証、そして管理者向けに VPN（設定付きの端末）とダイナミック DNS の名前。"
+   "**ステータス画面にシステム全体、そして外からの接続：** ステータス画面は警報パネル、サービス、録画中のカメラ、セキュリティとリモートアクセスをまとめ、各カードがその画面を開きます。入力したアドレスが自宅の外で https でない場合は、サインインが先に進めない理由を示し、2つの安全な方法（VPN、または https の公開アドレス）をガイドが説明します。",
   ],
   "note": "リリースは GitHub で公開され、アプリ自身がそこから更新を確認します。現在 APK は管理者の Android デバッグ証明書で署名されており、リリース用の鍵ではありません。[クライアントの境界](docs/CLIENT_BOUNDARY.md)を参照してください。",
   "hardware": "実際のスマートフォンで CM5 テストベンチに対して使用。ソーラー・電気・警報盤の画面は実ノードを待っています",
@@ -216,6 +223,7 @@ TEXT = {
    "**Oito idiomas** (inglês, espanhol, alemão, francês, italiano, japonês, chinês e português), escolhidos em *Mais > Definições* ou seguindo o telemóvel; verifica-se que cada frase está nas oito tabelas.",
    "**Cuidado com a palavra-passe:** HTTP simples só é permitido para um *literal* IPv4 de LAN privada ou loopback; um nome de anfitrião que só começa como um endereço privado (`10.attacker.example`) ou um endereço com zero à esquerda é recusado. O aspeto é feito de ícones: superfícies quase pretas, um destaque ciano, âmbar para a atenção.",
    "**Segurança a partir do telemóvel:** o segundo fator e os seus códigos de recuperação, as sessões abertas, uma verificação de como o servidor vê o telemóvel, a nova prova de identidade para ações críticas de fora e, para um administrador, a VPN (dispositivos com a sua configuração) e o nome de DNS dinâmico."
+   "**Todo o sistema no ecrã de estado e a entrada a partir de fora:** o ecrã de estado resume as centrais de alarme, os serviços, as câmaras que gravam e a segurança e o acesso remoto, e cada cartão abre o seu ecrã; e quando o endereço escrito está fora de casa e sem https, o início de sessão diz porque não pode continuar e um guia explica as duas vias seguras (VPN, ou endereço público com https).",
   ],
   "note": "As versões são publicadas no GitHub, de onde a própria aplicação procura atualizações; hoje o APK é assinado com o certificado de depuração do Android do responsável, não com uma chave de publicação. Veja o [limite do cliente](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usada num telemóvel real contra a bancada de testes do CM5; os ecrãs solar, elétrico e de centrais de alarme esperam nós reais",
