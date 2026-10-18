@@ -12,7 +12,7 @@
 | ARMOR-NETWORK | 0.1.3 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
 | ARMOR-SERVER | 0.7.7 | Central event coordinator and web API | Established |
 | ARMOR-STUDIO | 0.8.0.3 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.6.8 | Android operator client | Established |
+| ARMOR-ANDROID-CONTROL | 0.6.9 | Android operator client | Established |
 | ARMOR-SERVER-AI | 0.2.6 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Established |
