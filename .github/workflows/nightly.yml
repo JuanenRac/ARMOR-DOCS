@@ -58,6 +58,12 @@ jobs:
           python tools/publication_check.py --no-history ARMOR-COMMON ARMOR-DOCS || true
           exit $status
 
+      - name: Install the dependencies of the Node.js projects
+        run: |
+          for project in ARMOR-SERVER ARMOR-STUDIO; do
+            (cd "${project}" && npm ci --no-audit --no-fund)
+          done
+
       - name: Run the tests of the repositories that can run here
         working-directory: ARMOR-DOCS
         run: bash tools/check_all.sh
