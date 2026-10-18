@@ -16,14 +16,14 @@ FACTS = {
   ],
   [
    "Tests",
-   "36%20passing",
+   "57%20passing",
    "2ea44f"
   ]
  ],
  "diagram": "",
- "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_simulator --count 20 --scenario crossing --seed 1 --validate\npython -m unittest discover -s tests   # 36 tests\n```",
- "structure": "```text\nARMOR-SIMULATOR/\n├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), electrical (an electrical node), publisher, cli\n├── tests/                 36 tests, including a local HTTP server\n└── docs/USAGE.md\n```",
- "tests": "36 (`python -m unittest discover -s tests`)",
+ "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_simulator --count 20 --scenario crossing --seed 1 --validate\npython -m unittest discover -s tests   # 57 tests\n```",
+ "structure": "```text\nARMOR-SIMULATOR/\n├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), electrical (an electrical node), publisher, cli\n├── tests/                 57 tests, including a local HTTP server\n└── docs/USAGE.md\n```",
+ "tests": "57 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)"
  ]
@@ -32,7 +32,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Offline telemetry simulator with repeatable faults",
-  "honest": "Scenarios, faults, delivery to a server and the 36 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
+  "honest": "Scenarios, faults, delivery to a server and the 57 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
   "bullets": [
    "**Scenarios:** `patrol`, `crossing`, `two-intruders` and `empty`, on a three-sensor corner geometry, plus a day/night light cycle or a fixed night.",
    "**Repeatable faults:** a silent node, out-of-order and duplicated messages, a flapping node, and deliberately invalid messages (lux over the limit, unknown field, too many tracks) for negative tests.",
@@ -48,7 +48,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Simulador de telemetría sin conexión con fallos repetibles",
-  "honest": "Los escenarios, los fallos, la entrega a un servidor y los 36 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
+  "honest": "Los escenarios, los fallos, la entrega a un servidor y los 57 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
   "bullets": [
    "**Escenarios:** `patrol`, `crossing`, `two-intruders` y `empty`, con una geometría de esquina de tres sensores, más un ciclo de luz día/noche o una noche fija.",
    "**Fallos repetibles:** nodo en silencio, mensajes desordenados y duplicados, nodo intermitente y mensajes inválidos a propósito (lux por encima del límite, campo desconocido, demasiadas pistas) para pruebas negativas.",
@@ -64,7 +64,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
-  "honest": "Les scénarios, les pannes, la livraison à un serveur et les 36 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
+  "honest": "Les scénarios, les pannes, la livraison à un serveur et les 57 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
   "bullets": [
    "**Scénarios :** `patrol`, `crossing`, `two-intruders` et `empty`, sur une géométrie d'angle à trois capteurs, avec un cycle de lumière jour/nuit ou une nuit fixe.",
    "**Pannes reproductibles :** un nœud muet, des messages désordonnés ou dupliqués, un nœud instable et des messages volontairement invalides (lux hors limite, champ inconnu, trop de pistes) pour les tests négatifs.",
@@ -80,7 +80,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Simulatore di telemetria offline con guasti ripetibili",
-  "honest": "Gli scenari, i guasti, la consegna a un server e i 36 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
+  "honest": "Gli scenari, i guasti, la consegna a un server e i 57 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
   "bullets": [
    "**Scenari:** `patrol`, `crossing`, `two-intruders` ed `empty`, su una geometria d'angolo a tre sensori, con un ciclo di luce giorno/notte o una notte fissa.",
    "**Guasti ripetibili:** un nodo muto, messaggi fuori ordine o duplicati, un nodo instabile e messaggi volutamente non validi (lux oltre il limite, campo sconosciuto, troppe tracce) per i test negativi.",
@@ -96,7 +96,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
-  "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 36 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
+  "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 57 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
   "bullets": [
    "**Szenarien:** `patrol`, `crossing`, `two-intruders` und `empty` auf einer Eckgeometrie mit drei Sensoren, dazu ein Tag/Nacht-Lichtzyklus oder eine feste Nacht.",
    "**Wiederholbare Fehler:** ein stummer Knoten, vertauschte und doppelte Nachrichten, ein flatternder Knoten und absichtlich ungültige Nachrichten (Lux über dem Limit, unbekanntes Feld, zu viele Spuren) für Negativtests.",
@@ -112,7 +112,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "带可重复故障的离线遥测模拟器",
-  "honest": "场景、故障、向服务器的投递和 36 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
+  "honest": "场景、故障、向服务器的投递和 57 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
   "bullets": [
    "**场景：** `patrol`、`crossing`、`two-intruders` 和 `empty`，基于三传感器的拐角几何，另有昼夜光照周期或固定夜晚。",
    "**可重复的故障：** 静默节点、乱序和重复的消息、抖动的节点，以及为负面测试特意构造的无效消息（lux 超限、未知字段、轨迹过多）。",
@@ -128,7 +128,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
-  "honest": "シナリオ、故障、サーバーへの送信、36 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
+  "honest": "シナリオ、故障、サーバーへの送信、57 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
   "bullets": [
    "**シナリオ：** `patrol`、`crossing`、`two-intruders`、`empty`。センサー 3 基のコーナー配置で、昼夜の光サイクルまたは固定の夜を選べます。",
    "**再現可能な故障：** 沈黙するノード、順序が入れ替わったり重複したりするメッセージ、不安定なノード、そして否定テスト用にわざと無効にしたメッセージ（lux の上限超過、未知のフィールド、トラックが多すぎる）。",
@@ -144,7 +144,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Simulador de telemetria offline com falhas repetíveis",
-  "honest": "Os cenários, as falhas, a entrega a um servidor e os 36 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
+  "honest": "Os cenários, as falhas, a entrega a um servidor e os 57 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
   "bullets": [
    "**Cenários:** `patrol`, `crossing`, `two-intruders` e `empty`, numa geometria de canto com três sensores, mais um ciclo de luz dia/noite ou uma noite fixa.",
    "**Falhas repetíveis:** um nó silencioso, mensagens fora de ordem e duplicadas, um nó que oscila, e mensagens deliberadamente inválidas (lux acima do limite, campo desconhecido, demasiados rastos) para testes negativos.",

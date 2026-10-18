@@ -64,6 +64,7 @@ ARMOR-DOCS is the family's memory: it is where the architecture, the security ba
 ARMOR-DOCS/
 ├── docs/     CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, PROJECT_CATALOG, INTERFACES, THREAT_MODEL, FIRST_VERTICAL_SLICE
 ├── tools/    make_readmes.py (+ readme_src/: the facts and the words of every repository in eight languages), make_catalog.py, make_brand.py, publication_check.py, clean_history.py, sync_ci_tools.py, check_all.sh
+├── tests/    the tests of these tools: the publication check, the history cleaner, the README, catalogue and brand generators, the copy of the CI tools and the shared workflow tool
 ├── brand/    the emblem
 └── images/   this repository's banner, icon and the family picture
 ```
@@ -78,6 +79,7 @@ python tools/make_catalog.py --check     # the versions and maturity of the cata
 python tools/make_brand.py --check        # the banners and icons are current
 python tools/publication_check.py         # nothing private would leave with a publication
 bash tools/check_all.sh                   # every repository's own tests, in one run
+python -m unittest discover -s tests     # the tests of these tools (they need no other repository)
 ```
 
 ## 🔗 Related Projects

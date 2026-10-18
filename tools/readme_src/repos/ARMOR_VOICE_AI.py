@@ -21,14 +21,14 @@ FACTS = {
   ],
   [
    "Tests",
-   "54%20passing",
+   "83%20passing",
    "2ea44f"
   ]
  ],
  "diagram": "",
- "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 54 tests\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\npython -m armor_voice_ai.service        # the local HTTP service the server asks (loopback only)\n```",
+ "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 83 tests\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\npython -m armor_voice_ai.service        # the local HTTP service the server asks (loopback only)\n```",
  "structure": "```text\nARMOR-VOICE-AI/\n├── src/armor_voice_ai/   phrases, intent, confirmation, session, gateway (stdin), service (HTTP), turn (speech to text, order, text to speech)\n├── tests/                gateway, languages, service and turn tests\n└── docs/                 SAFETY.md, SERVICE.md\n```",
- "tests": "54 (`python -m unittest discover -s tests`)",
+ "tests": "83 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)",
   "optional: a speech-to-text and a text-to-speech command for `/v1/turn`"
@@ -38,7 +38,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Offline voice intents in eight languages, with a confirmation the caller cannot forge",
-  "honest": "The intent rules, the eight languages, the signed confirmation tied to its speaker, the local service, the turn endpoint and the audit are real and tested (54 tests), and the server asks the service on the CM5 test bench. **No speech recognition or synthesis engine is part of this repository**: `/v1/turn` runs the commands you configure for them, and none has been tried with a real microphone yet; the touch panel that is meant to carry the assistant has not run on a board.",
+  "honest": "The intent rules, the eight languages, the signed confirmation tied to its speaker, the local service, the turn endpoint and the audit are real and tested (83 tests), and the server asks the service on the CM5 test bench. **No speech recognition or synthesis engine is part of this repository**: `/v1/turn` runs the commands you configure for them, and none has been tried with a real microphone yet; the touch panel that is meant to carry the assistant has not run on a board.",
   "bullets": [
    "**A closed allow-list of fifteen commands:** `status`, `silence`, `arm`, `disarm`, and the ones that ask - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - plus switching the lights on and off, in **eight languages** (English, Spanish, German, French, Italian, Japanese, Chinese and Portuguese), after normalising accents, punctuation and polite filler. Anything else, or anything ambiguous, is not understood.",
    "**A confirmation the service issues:** `arm` and `disarm` return a signed token on the first turn and are accepted only when a later turn echoes it for the same intent within 30 s, **for the same user**. It cannot be forged by the caller, a stale one is refused and the nonces of the unexpired ones are never forgotten to make room.",
@@ -53,7 +53,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Órdenes de voz sin conexión en ocho idiomas, con una confirmación que quien llama no puede falsificar",
-  "honest": "Las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, el servicio local, el punto de turno y la auditoría son reales y están probados (54 tests), y el servidor pregunta al servicio en el banco de pruebas de la CM5. **Ningún motor de reconocimiento ni de síntesis de voz forma parte de este repositorio**: `/v1/turn` ejecuta los comandos que configures para ellos, y ninguno se ha probado todavía con un micrófono real; el panel táctil pensado para llevar al asistente no ha corrido en una placa.",
+  "honest": "Las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, el servicio local, el punto de turno y la auditoría son reales y están probados (83 tests), y el servidor pregunta al servicio en el banco de pruebas de la CM5. **Ningún motor de reconocimiento ni de síntesis de voz forma parte de este repositorio**: `/v1/turn` ejecuta los comandos que configures para ellos, y ninguno se ha probado todavía con un micrófono real; el panel táctil pensado para llevar al asistente no ha corrido en una placa.",
   "bullets": [
    "**Una lista cerrada de quince comandos:** `status`, `silence`, `arm`, `disarm`, y los que preguntan - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - más encender y apagar las luces, en **ocho idiomas** (inglés, español, alemán, francés, italiano, japonés, chino y portugués), tras normalizar acentos, puntuación y muletillas de cortesía. Cualquier otra cosa, o cualquier cosa ambigua, no se entiende.",
    "**Una confirmación que emite el servicio:** `arm` y `disarm` devuelven un token firmado en el primer turno y solo se aceptan cuando un turno posterior lo repite para la misma intención en 30 s, **del mismo usuario**. El que llama no puede falsificarla, una caducada se rechaza y los nonces de las no caducadas nunca se olvidan para hacer sitio.",
@@ -68,7 +68,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Intentions vocales hors ligne en huit langues, avec une confirmation que l'appelant ne peut pas falsifier",
-  "honest": "Les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, le service local, le point de tour et l'audit sont réels et testés (54 tests), et le serveur interroge le service sur le banc de test CM5. **Aucun moteur de reconnaissance ni de synthèse vocale ne fait partie de ce dépôt** : `/v1/turn` exécute les commandes que vous configurez pour eux, et aucun n'a encore été essayé avec un vrai microphone ; le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
+  "honest": "Les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, le service local, le point de tour et l'audit sont réels et testés (83 tests), et le serveur interroge le service sur le banc de test CM5. **Aucun moteur de reconnaissance ni de synthèse vocale ne fait partie de ce dépôt** : `/v1/turn` exécute les commandes que vous configurez pour eux, et aucun n'a encore été essayé avec un vrai microphone ; le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
   "bullets": [
    "**Une liste fermée de quinze commandes :** `status`, `silence`, `arm`, `disarm`, et celles qui interrogent - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - plus allumer et éteindre les lumières, en **huit langues** (anglais, espagnol, allemand, français, italien, japonais, chinois et portugais), après normalisation des accents, de la ponctuation et des politesses. Tout le reste, ou tout ce qui est ambigu, n'est pas compris.",
    "**Une confirmation émise par le service :** `arm` et `disarm` renvoient un jeton signé au premier tour et ne sont acceptés que lorsqu'un tour suivant le répète pour la même intention en 30 s, **pour le même utilisateur**. L'appelant ne peut pas la falsifier, une confirmation périmée est refusée et les nonces de celles non périmées ne sont jamais oubliés pour faire de la place.",
@@ -83,7 +83,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Intenti vocali offline in otto lingue, con una conferma che chi chiama non può falsificare",
-  "honest": "Le regole di intento, le otto lingue, la conferma firmata legata a chi parla, il servizio locale, l'endpoint di turno e l'audit sono reali e provati (54 test), e il server interroga il servizio sul banco di prova CM5. **Nessun motore di riconoscimento o sintesi vocale fa parte di questo repository**: `/v1/turn` esegue i comandi che configuri per essi, e nessuno è stato ancora provato con un vero microfono; il pannello touch destinato a ospitare l'assistente non ha girato su una scheda.",
+  "honest": "Le regole di intento, le otto lingue, la conferma firmata legata a chi parla, il servizio locale, l'endpoint di turno e l'audit sono reali e provati (83 test), e il server interroga il servizio sul banco di prova CM5. **Nessun motore di riconoscimento o sintesi vocale fa parte di questo repository**: `/v1/turn` esegue i comandi che configuri per essi, e nessuno è stato ancora provato con un vero microfono; il pannello touch destinato a ospitare l'assistente non ha girato su una scheda.",
   "bullets": [
    "**Un elenco chiuso di quindici comandi:** `status`, `silence`, `arm`, `disarm`, e quelli che chiedono - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - più accendere e spegnere le luci, in **otto lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese), dopo aver normalizzato accenti, punteggiatura e formule di cortesia. Qualsiasi altra cosa, o qualsiasi cosa ambigua, non è compresa.",
    "**Una conferma emessa dal servizio:** `arm` e `disarm` restituiscono un token firmato al primo turno e sono accettati solo quando un turno successivo lo ripete per lo stesso intento entro 30 s, **dallo stesso utente**. Chi chiama non può falsificarla, una scaduta è rifiutata e i nonce di quelle non scadute non sono mai dimenticati per fare spazio.",
@@ -98,7 +98,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Offline-Sprachbefehle in acht Sprachen, mit einer Bestätigung, die der Aufrufer nicht fälschen kann",
-  "honest": "Die Absichtsregeln, die acht Sprachen, die signierte Bestätigung, die an ihren Sprecher gebunden ist, der lokale Dienst, der Turn-Endpunkt und das Audit sind real und getestet (54 Tests), und der Server fragt den Dienst am CM5-Testaufbau ab. **Keine Spracherkennungs- oder Synthese-Engine ist Teil dieses Repositorys**: `/v1/turn` führt die Befehle aus, die Sie dafür einstellen, und keiner wurde bisher mit einem echten Mikrofon erprobt; das Touchpanel, das den Assistenten tragen soll, lief noch nicht auf einer Platine.",
+  "honest": "Die Absichtsregeln, die acht Sprachen, die signierte Bestätigung, die an ihren Sprecher gebunden ist, der lokale Dienst, der Turn-Endpunkt und das Audit sind real und getestet (83 Tests), und der Server fragt den Dienst am CM5-Testaufbau ab. **Keine Spracherkennungs- oder Synthese-Engine ist Teil dieses Repositorys**: `/v1/turn` führt die Befehle aus, die Sie dafür einstellen, und keiner wurde bisher mit einem echten Mikrofon erprobt; das Touchpanel, das den Assistenten tragen soll, lief noch nicht auf einer Platine.",
   "bullets": [
    "**Eine geschlossene Liste von fünfzehn Befehlen:** `status`, `silence`, `arm`, `disarm` und die fragenden - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - sowie Licht an und aus, in **acht Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und Portugiesisch), nach Normalisierung von Akzenten, Zeichensetzung und Höflichkeitsfloskeln. Alles andere oder Mehrdeutige wird nicht verstanden.",
    "**Eine vom Dienst ausgestellte Bestätigung:** `arm` und `disarm` liefern im ersten Zug ein signiertes Token und werden nur akzeptiert, wenn ein späterer Zug es für dieselbe Absicht innerhalb von 30 s zurückgibt, **vom selben Benutzer**. Der Aufrufer kann sie nicht fälschen, eine abgelaufene wird abgelehnt und die Nonces der nicht abgelaufenen werden nie vergessen, um Platz zu schaffen.",
@@ -113,7 +113,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "八种语言的离线语音意图，带有调用方无法伪造的确认",
-  "honest": "意图规则、八种语言、绑定到说话人的签名确认、本地服务、轮次端点和审计都是真实的并经过测试（54 个测试），服务器在 CM5 测试台上向该服务发起请求。**本仓库不包含任何语音识别或合成引擎**：`/v1/turn` 运行你为它们配置的命令，目前都还没有用真实麦克风试过；打算承载助手的触摸面板还没有在板上运行过。",
+  "honest": "意图规则、八种语言、绑定到说话人的签名确认、本地服务、轮次端点和审计都是真实的并经过测试（83 个测试），服务器在 CM5 测试台上向该服务发起请求。**本仓库不包含任何语音识别或合成引擎**：`/v1/turn` 运行你为它们配置的命令，目前都还没有用真实麦克风试过；打算承载助手的触摸面板还没有在板上运行过。",
   "bullets": [
    "**十五个命令组成的封闭白名单：**`status`、`silence`、`arm`、`disarm`，以及用于询问的 `alarms`、`nodes`、`cameras`、`radar`、`solar`、`electrical`、`network`、`time`、`help`，还有开关灯，支持**八种语言**（英语、西班牙语、德语、法语、意大利语、日语、中文和葡萄牙语），先规范化重音、标点和客套话。其他任何内容或有歧义的内容都不会被理解。",
    "**由服务签发的确认：**`arm` 和 `disarm` 在第一轮返回签名令牌，只有在 30 秒内的后续一轮为**同一用户**的同一意图回传它时才被接受。调用方无法伪造，过期的会被拒绝，未过期令牌的随机数也绝不会为腾出空间而被忘记。",
@@ -128,7 +128,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "8 言語のオフライン音声インテント。呼び出し側が偽造できない確認付き",
-  "honest": "インテントのルール、8 言語、話者に結び付いた署名付き確認、ローカルサービス、ターンエンドポイント、監査は実在し、テストされています（54 件）。サーバーは CM5 テストベンチでこのサービスに問い合わせています。**音声認識・合成エンジンはこのリポジトリに含まれません**：`/v1/turn` は設定されたコマンドを実行するだけで、実際のマイクではまだ試されていません。アシスタントを載せる予定のタッチパネルは基板上で動いたことがありません。",
+  "honest": "インテントのルール、8 言語、話者に結び付いた署名付き確認、ローカルサービス、ターンエンドポイント、監査は実在し、テストされています（83 件）。サーバーは CM5 テストベンチでこのサービスに問い合わせています。**音声認識・合成エンジンはこのリポジトリに含まれません**：`/v1/turn` は設定されたコマンドを実行するだけで、実際のマイクではまだ試されていません。アシスタントを載せる予定のタッチパネルは基板上で動いたことがありません。",
   "bullets": [
    "**15 個のコマンドからなる閉じた許可リスト：**`status`、`silence`、`arm`、`disarm`、尋ねる系の `alarms`、`nodes`、`cameras`、`radar`、`solar`、`electrical`、`network`、`time`、`help`、さらに照明のオン・オフを、アクセント・句読点・丁寧語の除去後に **8 言語**（英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ポルトガル語）で。それ以外や曖昧なものは理解されません。",
    "**サービスが発行する確認：**`arm` と `disarm` は最初のターンで署名付きトークンを返し、30 秒以内の後続ターンで**同じユーザー**が同じインテントについてそれを返したときだけ受け付けます。呼び出し側は偽造できず、期限切れは拒否され、期限内のトークンのノンスは場所を空けるために忘れられることはありません。",
@@ -143,7 +143,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Intenções de voz offline em oito idiomas, com uma confirmação que quem chama não pode forjar",
-  "honest": "As regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, o serviço local, o ponto de turno e a auditoria são reais e estão testados (54 testes), e o servidor pergunta ao serviço na bancada de testes do CM5. **Nenhum motor de reconhecimento ou síntese de voz faz parte deste repositório**: `/v1/turn` executa os comandos que configurar para eles, e nenhum foi ainda experimentado com um microfone real; o painel tátil destinado a levar o assistente não correu numa placa.",
+  "honest": "As regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, o serviço local, o ponto de turno e a auditoria são reais e estão testados (83 testes), e o servidor pergunta ao serviço na bancada de testes do CM5. **Nenhum motor de reconhecimento ou síntese de voz faz parte deste repositório**: `/v1/turn` executa os comandos que configurar para eles, e nenhum foi ainda experimentado com um microfone real; o painel tátil destinado a levar o assistente não correu numa placa.",
   "bullets": [
    "**Uma lista fechada de quinze comandos:** `status`, `silence`, `arm`, `disarm`, e os que perguntam - `alarms`, `nodes`, `cameras`, `radar`, `solar`, `electrical`, `network`, `time`, `help` - mais ligar e desligar as luzes, em **oito idiomas** (inglês, espanhol, alemão, francês, italiano, japonês, chinês e português), depois de normalizar acentos, pontuação e fórmulas de cortesia. Qualquer outra coisa, ou qualquer coisa ambígua, não é entendida.",
    "**Uma confirmação emitida pelo serviço:** `arm` e `disarm` devolvem um token assinado no primeiro turno e só são aceites quando um turno posterior o repete para a mesma intenção em 30 s, **do mesmo utilizador**. Quem chama não a pode forjar, uma caducada é recusada e os nonces das não caducadas nunca são esquecidos para arranjar espaço.",
