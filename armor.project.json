@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "ecosystem": "A.R.M.O.R.",
   "name": "ARMOR-DOCS",
-  "version": "0.8.0.1",
+  "version": "0.8.0.2",
   "role": "System architecture and operator documentation",
   "stack": "Markdown / Mermaid",
   "technologies": [
@@ -15,7 +15,7 @@
   "maturity": "established",
   "family": "Documentation",
   "parent": null,
-  "native_version": "0.8.0.1",
+  "native_version": "0.8.0.2",
   "build": "python tools/make_readmes.py --check && python tools/make_catalog.py --check && python tools/make_brand.py --check",
   "notes": "The documentation of the family and the tools that keep it coherent: the READMEs of every repository in eight languages generated from one source, the banners and the map of the family, the version catalogue, the CI tools copied into every repository, the check for what would leak before publishing, and a nightly run that compares all the repositories side by side."
 }
