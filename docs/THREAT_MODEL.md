@@ -92,6 +92,16 @@ One identity per node and an access list that lets each write only its own topic
 * **Dependencies**: the server and Studio have a small list (`npm audit` is run on them by hand before a release); the firmware builds with a fixed version of the toolchain; no dependency is fetched at run time.
 * **The repositories**: commits are by one account; the CI of every repository checks the manifest, the version, the changelog, the READMEs in eight languages and the links, fetches ARMOR-COMMON next to it and fails when a comparison with the contracts cannot be made, and runs every host test the nodes register; the run of ARMOR-COMMON compares the firmware the five nodes share, and ARMOR-DOCS checks what it generates. Nothing signs a commit or a release.
 
+### Using the system from outside the house
+
+The system is built to be used on the home network. When the owner opens it to the Internet (a VPN into the house, or the server behind a certificate for a name), a new group of people can reach the sign-in form, and the model changes in these ways:
+
+* **Guessing passwords.** The sign-in is limited per address and per account, with the real address of the client when a proxy is named (`ARMOR_TRUST_PROXY`); a second factor (a time-based code, with one-use recovery codes and a growing wait after wrong codes) can be required for every sign-in or only for those from outside (`ARMOR_TOTP_REQUIRED`).
+* **A stolen session.** A session from outside is shorter (12 hours, 30 minutes without use), is listed and can be closed by its owner and by an administrator, and the sensitive acts (users, the PIN, a firmware update, opening the panel of a node) ask the password again for five minutes. The remote policy (`ARMOR_REMOTE_POLICY`: full, operate or view) decides what a session from outside may do at all.
+* **A new place.** The first sign-in from an address never seen before is an alert on the alarm channels.
+* **The panels of the nodes** are never exposed: the server passes them on, fixed to the certificate fingerprint learned when the node was adopted, and only from the addresses of the house.
+* **What is not covered.** A phone that is stolen unlocked, a compromised router that sends the client to a copy of the server (the apps rely on the certificate they are given), and denial of service by anyone who can reach the port. Opening only a VPN port, and not the server, is the recommended way: see the remote access guide of ARMOR-DEVOPS.
+
 ## What this model says to do first
 
 1. Keep the system on a trusted LAN until TLS on every hop, a protected store for the keys and an audited access list exist.

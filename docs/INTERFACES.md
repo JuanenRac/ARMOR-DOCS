@@ -28,6 +28,6 @@
 | Studio | Services, broker and configuration files | Administration agent of the machine | A Unix socket for the `armor` group and a closed list of actions |
 
 The contracts live in **ARMOR-COMMON**: JSON Schemas (`telemetry`, `health`, `command`, `info`, `solar_inverter`, `solar_battery`, `electrical`, `electrical_command`, `electrical_result`, `network`, `network_orders`, `alarm`, `alarm_command`, `alarm_result`, `alarm_zone_feed`, `device_state`, `server_alert`), the
-OpenAPI file for the server, 523 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server.yaml`) and generated TypeScript and Kotlin types. Any
+OpenAPI file for the server, 685 conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server.yaml`) and generated TypeScript and Kotlin types. Any
 implementation change begins with a contract change and a conformance vector; consumers must not
 infer fields from undocumented payloads. The validators of ARMOR-COMMON reject unknown fields; the server, reading what a node of a newer firmware says, ignores them and counts them. The continuous integration of every repository fetches ARMOR-COMMON next to it and fails when the vectors or the samples cannot be compared.

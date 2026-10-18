@@ -5,6 +5,7 @@ All notable changes to this project are documented here.
 ## [0.8.0.3] - The project catalogue is current again
 
 - The project catalogue lists the versions the projects have now, and the README sources carry the new test counts of the server and the network watcher.
+- The threat model describes using the system from outside the house (sign-in guessing, a stolen session, a new place, the panels of the nodes and what is not covered), and the capability matrix and the interfaces page state the number of conformance vectors of the contracts as it is.
 
 ## [0.8.0.2] - READMEs for the history of connections and the sign-in form
 
