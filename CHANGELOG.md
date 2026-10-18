@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.3] - The project catalogue is current again
+
+- The project catalogue lists the versions the projects have now, and the README sources carry the new test counts of the server and the network watcher.
+
 ## [0.8.0.2] - READMEs for the history of connections and the sign-in form
 
 - The README sources of ARMOR-COMMON, ARMOR-SERVER, ARMOR-STUDIO and ARMOR-ANDROID-CONTROL describe the connection and system events of the history, the Connections list and the sign-in form for password managers, in the eight languages, with the counts of tests, vectors and routes brought up to date.

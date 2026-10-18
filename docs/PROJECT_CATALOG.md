@@ -3,16 +3,16 @@
 <!-- catalog:begin -->
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
-| ARMOR-COMMON | 0.6.5 | Shared contracts and validation library | Established |
-| ARMOR-RADAR | 0.7.1 | ESP32-S3 PoE field-node firmware | Established |
-| ARMOR-SOLAR | 0.4.7 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
-| ARMOR-ELECTRICAL | 0.3.9 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
-| ARMOR-ALARM | 0.3.7 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
-| ARMOR-HMI | 0.3.0 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
-| ARMOR-NETWORK | 0.1.2 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
-| ARMOR-SERVER | 0.7.5 | Central event coordinator and web API | Established |
+| ARMOR-COMMON | 0.6.6 | Shared contracts and validation library | Established |
+| ARMOR-RADAR | 0.7.2 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-SOLAR | 0.4.8 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
+| ARMOR-ELECTRICAL | 0.4.0 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
+| ARMOR-ALARM | 0.3.8 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
+| ARMOR-HMI | 0.3.1 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
+| ARMOR-NETWORK | 0.1.3 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
+| ARMOR-SERVER | 0.7.7 | Central event coordinator and web API | Established |
 | ARMOR-STUDIO | 0.8.0.3 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.6.7 | Android operator client | Established |
+| ARMOR-ANDROID-CONTROL | 0.6.8 | Android operator client | Established |
 | ARMOR-SERVER-AI | 0.2.6 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Established |
@@ -20,7 +20,7 @@
 | ARMOR-DEVOPS | 0.6.3 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.2.5 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.1.4 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
-| ARMOR-DOCS | 0.8.0.2 | System architecture and operator documentation | Established |
+| ARMOR-DOCS | 0.8.0.3 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
 
 ## Dependency direction
