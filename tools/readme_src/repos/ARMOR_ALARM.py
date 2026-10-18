@@ -21,9 +21,9 @@ FACTS = {
   ]
  ],
  "diagram": "",
- "build": "```bash\ncmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # 482,535 checks: the rules, the settings, the messages, the runner and the update from GitHub\n```",
+ "build": "```bash\ncmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # 486,024 checks: the rules, the settings, the messages, the runner and the update from GitHub\n```",
  "structure": "```text\nARMOR-ALARM/\n├── core/    alarm_zone, alarm_panel (the rules), alarm_config, alarm_message, alarm_runner (the node), arm_profile (the arming profiles), plus the settings every node shares\n├── main/    the ESP-IDF firmware: alarm_manager, the web server, the Zigbee bridge, the relays\n├── panel/   the web panel (eight languages)\n├── tests/   test_alarm (the rules), test_profiles (the arming profiles), test_node (settings, messages, runner), test_mqtt_tls (the optional encrypted link to the broker), test_release (update from GitHub), emit_samples + check_samples (the messages against the contract), test_zigbee (ZNP, IAS Zone and WD, the node's own conversation with a coordinator)\n├── tools/   the stand-in node and the browser test of the panel\n├── docs/    DESIGN, FAILOVER, SAFETY, NODE_FIRMWARE, ALARM_MESSAGES, HARDWARE, BASE_BOARD, ZIGBEE, BLE_PROVISIONING\n└── images/  brand assets\n```",
- "tests": "482,535 checks in 7 programs (`ctest`)",
+ "tests": "486,024 checks in 13 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
   "the ESP-IDF 5.4 container to build the image",
@@ -34,7 +34,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the firmware of the node and the rules tested on a computer (nothing has run on a board)",
-  "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 477,665 checks in 6 test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
+  "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 486,024 checks in 13 test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
   "bullets": [
    "**Zones:** four kinds - *instant* (a door, a window), *entry* (the door you come in through: it starts the entry delay), *interior* (motion: only in \"away\") and *always* (smoke, gas, panic: armed or not). A zone may be a wired loop or a Zigbee sensor.",
    "**The wired loop:** a contact with an end-of-line resistor, read as a voltage, gives four states in one pin - normal, triggered, and tamper for a shorted or a cut wire. The limits are settings; a debouncer keeps a bouncing contact from raising the alarm.",
@@ -159,7 +159,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "报警节点与报警主机：住宅报警的防区、布防、延时、警笛和 PIN，含节点固件和在电脑上测试过的规则（没有在电路板上运行过）",
-  "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 6 个测试程序中的 477,665 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
+  "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 13 个测试程序中的 486,024 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
   "bullets": [
    "**防区：** 四种类型 - *即时*（门、窗）、*进入*（进门用的门：触发进入延时）、*内部*（移动探测：仅在“离家”时）和*全天*（烟雾、燃气、紧急按钮：无论布防与否）。防区可以是有线回路或 Zigbee 传感器。",
    "**有线回路：** 带终端电阻的触点，以电压方式读取，一个引脚给出四种状态 - 正常、触发，以及线路短路或剪断的防拆。阈值是设置项；去抖器避免抖动的触点引发报警。",
@@ -184,7 +184,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "警報ノードと警報盤：住宅の警報の警戒区域、警戒セット、遅延、サイレン、PIN を、ノードのファームウェアとコンピューターでテストしたルールを含みます（基板では動作していません）",
-  "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、6 つのテストプログラムで 477,665 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
+  "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、13 つのテストプログラムで 486,024 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
   "bullets": [
    "**警戒区域：** 4 種類 - *即時*（ドア、窓）、*進入*（入る側のドア：進入遅延を開始）、*室内*（動き：「外出」のときだけ）、*常時*（煙、ガス、非常ボタン：警戒中でなくても）。区域は配線ループでも Zigbee センサーでもかまいません。",
    "**配線ループ：** 終端抵抗付きの接点を電圧として読み、1 本のピンで 4 つの状態 - 正常、作動、そして配線のショートや断線による改ざん - を得ます。しきい値は設定で、チャタリング除去により、バウンドする接点が警報を鳴らすことはありません。",

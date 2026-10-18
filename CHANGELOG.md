@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.4] - Test counts and node pages current
+
+- The README sources of the five field nodes carry the counts of their host tests as they are now, and the catalogue the versions of the new node releases.
+- The radar node's page says that one node covers up to 270 degrees with up to three radars, in the eight languages.
+
 ## [0.8.0.3] - The project catalogue is current again
 
 - The project catalogue lists the versions the projects have now, and the README sources carry the new test counts of the server and the network watcher.
