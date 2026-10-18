@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.1] - README sources for health and arming profiles
+
+- The README sources of ARMOR-COMMON, SERVER, ALARM, RADAR, SOLAR, ELECTRICAL, HMI, STUDIO, ANDROID-CONTROL and DEVOPS describe the node health report and the arming profiles in the eight languages, and the test count of ARMOR-ALARM.
+
 ## [0.8.0.0] - The README sources describe the optional encrypted link to the broker
 
 - The sources of the READMEs of ARMOR-DEVOPS, ARMOR-COMMON, the five nodes, ARMOR-SERVER and ARMOR-STUDIO have a bullet in the eight languages about the optional encrypted link to the broker (TLS), and the file trees list the new script, tests and modules; the number of tests of the server is updated.
