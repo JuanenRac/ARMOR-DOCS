@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.9] - The self-protection of the nodes in the capability matrix and the threat model
+
+- The capability matrix and the threat model describe how a node protects itself when its internal memory runs short, and the retained last will and birth of a node.
+
 ## [0.8.0.8] - Controlling the nodes: architecture, interfaces, security baseline, threat model and capability matrix
 
 - **Controlling the nodes in the architecture and the interfaces:** a new section describes the eight operations an administrator can order (restart, pause, resume, standby, identify, diagnostics, maintenance on and off) for one node or for all, the topics, the two steps with a one-time token bound to the operation, the three states of a node (running, paused with its timer, standby kept across a restart) and the maintenance flag, what each kind of node does while paused or on standby, and what the server shows. Standby is described as the work off while the node stays connected, never as a power-off; there is no factory reset, no erase and no deep sleep. The interfaces table lists the two topics and the three server routes, and the contracts list names the two new messages.

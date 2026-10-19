@@ -21,6 +21,8 @@ A few rows say something between those: *None* (nothing runs yet, only text or a
 | A node cannot speak for another over MQTT | Local | Topic/body check tested; the broker ACL restricting each node to its own topics was exercised on the CM5 |
 | Node state, stale/offline detection, disarm clearing alerts | Local | Store tests (time is injected) |
 | Offline via the node's MQTT last will | Simulated | Store rule tested; the firmware last will is not compiled or run |
+| Retained last will and birth of a node (`armor/health/<node>`: `online` false/true) | Simulated | Server rules and shared firmware rules tested on a computer; the firmware is not compiled or run |
+| A node protects itself from running out of internal memory (tasks made before Bluetooth, Bluetooth stack in the external RAM and a set-up window that closes, a guard that restarts once and never in a loop, a gate at the panel's door, a controlled restart on a failed allocation, a dead-man switch) | Simulated | Every rule is a pure function tested on a computer (about 150 checks); nothing is compiled or run on a board yet |
 | Arm / disarm | Local | Requires the control token, or a signed-in Studio session (audited with the user's name); exercised over HTTP in tests |
 | Audit trail | Local | Tests check that credentials are scrubbed |
 | Camera watchdog (reachability, offline alarm) | Local | Unit tests with an injected probe, and a real unreachable address in a rendered check; **not run against your cameras being unplugged** |
