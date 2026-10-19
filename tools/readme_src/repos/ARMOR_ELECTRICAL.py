@@ -21,9 +21,9 @@ FACTS = {
   ]
  ],
  "diagram": "",
- "build": "```bash\ncmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # 379,581 checks: the meters (62), the loop that asks them (72), the settings (85), the readings and inputs (477), Bluetooth (68), the shared base (252), the central link (19), the release and signature checks (20), the interlock (135,736) and the switch sets (239,272)\nbuild/host/emit_samples | python tests/check_samples.py                                     # the messages, against ARMOR-COMMON\nnode tools/panel_mock.mjs --user admin:adminpass123                                         # the panel without a board\ntools/build_node.sh generic                                                                 # the firmware image for the N16R8 board in the ESP-IDF container: dist/generic-s3-wifi.bin\ntools/build_node.sh generic s3-eth                                                          # the same firmware for the Waveshare ESP32-S3-ETH (Ethernet)\n```",
+ "build": "```bash\ncmake -S tests -B build/host && cmake --build build/host && ctest --test-dir build/host   # 379,663 checks: the meters (62), the loop that asks them (72), the settings (85), the readings and inputs (477), Bluetooth (68), the shared base (252), the central link (19), the release and signature checks (20), the interlock (135,736) and the switch sets (239,272)\nbuild/host/emit_samples | python tests/check_samples.py                                     # the messages, against ARMOR-COMMON\nnode tools/panel_mock.mjs --user admin:adminpass123                                         # the panel without a board\ntools/build_node.sh generic                                                                 # the firmware image for the N16R8 board in the ESP-IDF container: dist/generic-s3-wifi.bin\ntools/build_node.sh generic s3-eth                                                          # the same firmware for the Waveshare ESP32-S3-ETH (Ethernet)\n```",
  "structure": "```text\nARMOR-ELECTRICAL/\n├── main/    the ESP-IDF component: app_main, electrical_manager (the task), uart_bus, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet\n├── core/    pzem (frames of the PZEM meters), pzem_bus (the line), meter_runner (one turn of the loop), electrical_json (the message), electrical_config (the settings),\n│            interlock (the rules for switching, NOT linked into the firmware), ble_frame + ble_dispatch (Bluetooth), auth, netplan, board_s3, json...\n├── panel/   the web panel: index.html, app.js, text.js (8 languages), style.css\n├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs\n├── tests/   test_meters, test_runner, test_config, test_mqtt_tls, test_ble, test_interlock, emit_samples + check_samples.py (the messages against ARMOR-COMMON)\n├── docs/    DESIGN, NODE_FIRMWARE, BLE_PROVISIONING, SAFETY, SWITCHING, PROTOCOLS, ELECTRICAL_MESSAGES, HARDWARE\n└── images/  brand assets\n```",
- "tests": "379,581 checks in 16 programs (`ctest`)",
+ "tests": "379,663 checks in 16 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
   "the ESP-IDF 5.4 container to build the image",
@@ -34,7 +34,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network and holds the rules for switching it (host-tested core and a firmware that builds; it has never run on a board)",
-  "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 379,581 checks in 16 test programs, 375,008 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.4 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
+  "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 379,663 checks in 16 test programs, 375,008 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.4 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
   "bullets": [
    "**Reading the meters:** the Modbus RTU frames of the Peacefair **PZEM-004T v3** (AC) and **PZEM-017** (DC): the CRC, the request that reads the registers and the decoding of the reply (voltage, current, power, energy, frequency, power factor, alarm). Only the read request is built: the ones that write to a meter (its address, its thresholds, the reset of its energy) are not built anywhere. A reply that does not fit, or holds a value no real meter could give, is refused.",
    "**The bus:** a line with several meters is asked one at a time, with a timeout; the last good reading of each is kept and a meter that goes silent stops being published after ten seconds.",
@@ -149,7 +149,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "电气节点：读取住宅交流和直流电网的电压、电流、功率和电能，并保存其开关规则（已在电脑上测试的核心和可编译的固件；尚未在电路板上运行过）",
-  "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：16 个测试程序中的 379,581 项检查，其中 375,008 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.4 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
+  "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：16 个测试程序中的 379,663 项检查，其中 375,008 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.4 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
   "bullets": [
    "**读取电表：** Peacefair **PZEM-004T v3**（交流）和 **PZEM-017**（直流）的 Modbus RTU 帧：CRC、读寄存器的请求以及应答的解码（电压、电流、功率、电能、频率、功率因数、报警）。只构造读请求：向电表写入的请求（地址、阈值、电能清零）在任何地方都不构造。不匹配的应答，或包含任何真实电表都给不出的数值的应答，会被拒绝。",
    "**总线：** 带多个电表的线路逐个轮询并带超时；保留每个电表最后一次正常读数，静默的电表在十秒后不再发布。",
@@ -172,7 +172,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "電気ノード：住宅の AC・DC ネットワークの電圧、電流、電力、エネルギーを読み取り、その開閉のルールを持ちます（PC でテスト済みのコアとビルドできるファームウェア。基板ではまだ動作していません）",
-  "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：16 のテストプログラムで 379,581 項目、うち 375,008 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.4 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
+  "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：16 のテストプログラムで 379,663 項目、うち 375,008 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.4 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
   "bullets": [
    "**電力量計の読み取り：** Peacefair の **PZEM-004T v3**（AC）と **PZEM-017**（DC）の Modbus RTU フレーム。CRC、レジスタを読む要求、応答の解読（電圧、電流、電力、エネルギー、周波数、力率、警報）。作るのは読み取り要求だけで、電力量計に書き込むもの（アドレス、しきい値、エネルギーのリセット）はどこにも作りません。合わない応答や、実際の電力量計が出せない値を含む応答は拒否します。",
    "**バス：** 複数の電力量計がつながる回線には 1 台ずつタイムアウト付きで問い合わせ、それぞれの最後の正常な読み取りを保持します。応答のない電力量計は 10 秒後に公開されなくなります。",

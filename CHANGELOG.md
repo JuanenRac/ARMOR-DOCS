@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.5] - Node test counters
+
+- The test counters in the README of the five field nodes follow the new host tests.
+
 ## [0.8.0.4] - Test counts and node pages current
 
 - The README sources of the five field nodes carry the counts of their host tests as they are now, and the catalogue the versions of the new node releases.

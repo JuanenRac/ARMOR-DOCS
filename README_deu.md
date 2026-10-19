@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0-blue.svg" alt="GPL 3.0">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.8.0.4-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.8.0.5-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -35,7 +35,7 @@
 
 | | |
 |---|---|
-| Version | `0.8.0.4` |
+| Version | `0.8.0.5` |
 | Reifegrad | Etabliert |
 | Technik | Markdown / Mermaid |
 | Auf echter Hardware | Nicht zutreffend: es ist Dokumentation; sie hält fest, was die anderen Repositorys auf echter Hardware ausgeführt haben |
