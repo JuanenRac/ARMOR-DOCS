@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.6] - Refresh the counters and the catalogue
+
+- **The test counters and the versions** of the field nodes, the server, the app and the common library are refreshed, and the catalogue lists the new versions.
+
 ## [0.8.0.5] - Node test counters
 
 - The test counters in the README of the five field nodes follow the new host tests.
