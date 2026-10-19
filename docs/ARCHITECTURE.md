@@ -4,7 +4,7 @@
 flowchart LR
   subgraph field["VLAN 10 - field (no internet)"]
     N["ESP32-S3 field nodes<br/>3x radar, lux, climate"]
-    SN["Solar nodes<br/>inverters and batteries, read only"]
+    SN["Solar nodes<br/>inverters and batteries, read; batteries written only when asked"]
     EN["Electrical nodes<br/>AC and DC meters, relays"]
     AN["Alarm nodes<br/>zones, siren, PIN"]
     NN["Network node<br/>devices, internet"]
@@ -57,10 +57,16 @@ flowchart LR
 * **Studio and Android are clients of the server**, not of the field network. They never reach
   a node's own configuration endpoint. The one exception is the set-up of a node from the Android
   app over **Bluetooth Low Energy** (below), which needs no network at all.
-* **Solar and electrical nodes only read their equipment.** They publish what their inverters,
-  batteries and meters report; no request that writes to a piece of equipment exists in their
-  firmware. What a node can move is relays (off by default in three places) and, for a
-  source-transfer switch, a channel that is off by default and needs a two-step command.
+* **Solar and electrical nodes read their equipment; the one thing they can write is a Pylontech
+  battery's memory, and only when asked in three places.** They publish what their inverters,
+  batteries and meters report; no request that writes to an inverter or a meter exists in their
+  firmware. A battery can be written to (its clock, counters, limits, outputs, serial number and
+  firmware) through typed operations that are off by default in the node, the server and the broker,
+  that an administrator orders after proving who they are again and typing the battery's serial
+  number, and that a node carries out in two steps (arm, then execute with a one-time token), reading
+  the battery before and after. What a node can move besides is relays (off by default in three
+  places) and, for a source-transfer switch, a channel that is off by default and needs a two-step
+  command. See `ARMOR-SOLAR/docs/BATTERY_MAINTENANCE.md`.
 * **A phone sets a node up over Bluetooth** (name, Wi-Fi, address, broker): the same channel on the
   radar, solar, electrical, alarm and touch-panel nodes. The link is encrypted with a PIN derived from
   the node's set-up code, every operation but `hello` needs the set-up code or a login, changing

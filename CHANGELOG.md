@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [0.8.0.7] - Writing to Pylontech batteries: architecture, security baseline, threat model and capability matrix
+
+- **Writing to Pylontech batteries in the architecture, the security baseline and the threat model:** the statement that the solar and electrical nodes only read their equipment now says that a battery can be written to through typed operations, off by default in the node, the server and the broker, with a fresh proof of identity and the battery's serial number typed; a new section of the threat model lists what is done about each threat of that capability (a stolen or replayed order, the wrong battery, writing while the battery works, a harmful value, firmware that destroys it, the service password, a change that leaves no trace) and what is left.
+- **Capability matrix:** two new rows, one for writing to a battery through its console (local, not activated, with the honest note that the form of several console lines is inferred and that nothing was tried on a real battery) and one for sending it firmware (simulated).
+- **READMEs:** the README of the node, the server, Studio and the phone app mention the capability in the eight languages, and the test counters of those four are refreshed.
+
 ## [0.8.0.6] - Refresh the counters and the catalogue
 
 - **The test counters and the versions** of the field nodes, the server, the app and the common library are refreshed, and the catalogue lists the new versions.
