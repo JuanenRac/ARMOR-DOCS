@@ -26,8 +26,8 @@
 ## Dependency direction
 
 `ARMOR-COMMON` is the source of message meaning and of the firmware base that the nodes share. `ARMOR-RADAR`, `ARMOR-SOLAR`, `ARMOR-ELECTRICAL`, `ARMOR-ALARM`, `ARMOR-HMI`,
-`ARMOR-NETWORK` and `ARMOR-SIMULATOR` produce its contracts. `ARMOR-SERVER` consumes them, and the observation service (`ARMOR-SERVER-AI`, with the rules of `ARMOR-VISION`) and the
-voice service (`ARMOR-VOICE-AI`) are asked by it and never act by themselves. Studio, Android and the touch panel (`ARMOR-HMI`) are clients of the central server, not of the field
+`ARMOR-NETWORK` and `ARMOR-SIMULATOR` produce its contracts. `ARMOR-SERVER` consumes them, and the observation service (`ARMOR-SERVER-AI`) and the
+voice service (`ARMOR-VOICE-AI`) are asked by it and never act by themselves. `ARMOR-VISION` holds the rules of camera zones, masks and detection as a library that no service imports yet. Studio, Android and the touch panel (`ARMOR-HMI`) are clients of the central server, not of the field
 network. `ARMOR-DEVOPS` installs and updates the service graph on the CM5 test bench, `ARMOR-UPDATER` does it for a developer's machine and `ARMOR-HARDWARE` holds the enclosures;
 this repository records only validated interfaces and procedures, and what is proven ([capability matrix](CAPABILITY_MATRIX.md)). The versions and maturity above are read from each
 repository's own manifest by `tools/make_catalog.py`.
