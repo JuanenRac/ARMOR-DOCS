@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [Unreleased]
+
+- The banner follows the animated style of the ecosystem banners, with the name, the kind and the technologies of the project.
+
 ## [0.8.1.0] - Live status, the alarm window and the table of routes in the READMEs, and a stricter check of the family list
 
 - **Live status, the alarm window and the designers' keys in the READMEs:** the sources of the READMEs of Studio, the phone app and the server describe the live channel of the status, the alarm window of the open app, the keys of the designers and the table of routes, in the eight languages, and the test counters of the three are refreshed.
