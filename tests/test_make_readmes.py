@@ -130,6 +130,15 @@ class RenderTests(unittest.TestCase):
         for name in ORDER:
             self.assertIn(name, text)
 
+    def test_no_image_appears_twice_in_a_readme_and_the_whole_family_is_listed_once(self):
+        for name in ORDER:
+            for code in CODES:
+                text = make_readmes.render(name, code)
+                images = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
+                self.assertEqual(len(images), len(set(images)), (name, code, "an image is drawn twice"))
+                listed = re.findall(r"(?m)^\* \*\*(?:\[)?(ARMOR-[A-Z-]+)", text)
+                self.assertEqual(sorted(listed), sorted(ORDER), (name, code, "the family is not listed once each"))
+
     def test_the_documentation_repository_links_its_own_files_the_others_link_to_github(self):
         own = make_readmes.render("ARMOR-DOCS", "en")
         other = make_readmes.render("ARMOR-VISION", "en")

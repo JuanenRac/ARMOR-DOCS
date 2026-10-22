@@ -11,8 +11,8 @@
 | ARMOR-HMI | 0.3.5 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NETWORK | 0.1.3 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
 | ARMOR-SERVER | 0.8.0.3 | Central event coordinator and web API | Established |
-| ARMOR-STUDIO | 0.8.0.6 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.7.3 | Android operator client | Established |
+| ARMOR-STUDIO | 0.8.0.7 | Web administration and calibration console | Established |
+| ARMOR-ANDROID-CONTROL | 0.7.4 | Android operator client | Established |
 | ARMOR-SERVER-AI | 0.2.6 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.0.2 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.0 | Offline speech and intent gateway | Established |
@@ -20,7 +20,7 @@
 | ARMOR-DEVOPS | 0.6.5 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.2.5 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.1.4 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
-| ARMOR-DOCS | 0.8.0.9 | System architecture and operator documentation | Established |
+| ARMOR-DOCS | 0.8.1.0 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
 
 ## Dependency direction
