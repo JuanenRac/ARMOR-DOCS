@@ -26,7 +26,7 @@ FACTS = {
  "tests": "24,440 checks in 9 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
-  "the ESP-IDF 5.5 container to build the image",
+  "the ESP-IDF 5.5.5 container to build the image",
   "a Waveshare ESP32-S3-Touch-LCD-7C-BOX"
  ]
 }
@@ -77,7 +77,7 @@ TEXT = {
   "fit": "ARMOR-HMI es el panel de pared: un cliente de [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como la app Android, con una pantalla de 7 pulgadas, micrófono y altavoz. Muestra el modo, los nodos en línea y las alarmas que necesitan a una persona, arma y desarma (con el PIN) y reconoce alarmas. Es donde vivirá el asistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) cuando exista su servicio de voz y, como todo nodo, se configura y actualiza desde [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
   "requirements": [
    "un compilador de C++17 para las pruebas en el PC",
-   "el contenedor de ESP-IDF 5.5 para compilar la imagen",
+   "el contenedor de ESP-IDF 5.5.5 para compilar la imagen",
    "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "24.440 comprobaciones en 9 programas (`ctest`)"
@@ -105,7 +105,7 @@ TEXT = {
   "fit": "ARMOR-HMI est le panneau mural : un client d'[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), comme l'application Android, avec un écran de 7 pouces, un microphone et un haut-parleur. Il montre le mode, les nœuds en ligne et les alarmes qui demandent une personne, arme et désarme (avec le PIN) et acquitte les alarmes. C'est là que vivra l'assistant vocal ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quand son service vocal existera et, comme tout nœud, il se configure et se met à jour depuis [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
   "requirements": [
    "un compilateur C++17 pour les tests sur l'ordinateur",
-   "le conteneur ESP-IDF 5.5 pour compiler l'image",
+   "le conteneur ESP-IDF 5.5.5 pour compiler l'image",
    "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "24 440 vérifications dans 9 programmes (`ctest`)"
@@ -133,7 +133,7 @@ TEXT = {
   "fit": "ARMOR-HMI è il pannello a muro: un client di [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), come l'app Android, con uno schermo da 7 pollici, un microfono e un altoparlante. Mostra la modalità, i nodi online e gli allarmi che richiedono una persona, inserisce e disinserisce (con il PIN) e riconosce gli allarmi. È dove vivrà l'assistente vocale ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando esisterà il suo servizio vocale e, come ogni nodo, si configura e si aggiorna da [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
   "requirements": [
    "un compilatore C++17 per i test sul computer",
-   "il container ESP-IDF 5.5 per compilare l'immagine",
+   "il container ESP-IDF 5.5.5 per compilare l'immagine",
    "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "24.440 controlli in 9 programmi (`ctest`)"
@@ -161,7 +161,7 @@ TEXT = {
   "fit": "ARMOR-HMI ist das Wandpanel: ein Client von [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), wie die Android-App, mit einem 7-Zoll-Bildschirm, Mikrofon und Lautsprecher. Es zeigt den Modus, die Knoten online und die Alarme, die eine Person brauchen, schaltet scharf und unscharf (mit der PIN) und quittiert Alarme. Hier wird der Sprachassistent ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) wohnen, sobald sein Sprachdienst existiert, und wie jeder Knoten wird es von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) aus eingerichtet und aktualisiert.",
   "requirements": [
    "ein C++17-Compiler für die Host-Tests",
-   "der ESP-IDF-5.5-Container zum Bauen des Images",
+   "der ESP-IDF-5.5.5-Container zum Bauen des Images",
    "ein Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "24.440 Prüfungen in 9 Programmen (`ctest`)"
@@ -189,7 +189,7 @@ TEXT = {
   "fit": "ARMOR-HMI 是壁挂面板：与 Android 应用一样是 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 的客户端，配有 7 英寸屏幕、麦克风和扬声器。它显示模式、在线节点和需要人处理的报警，可布防和撤防（需 PIN）并确认报警。语音助手（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）在其语音服务存在后将住在这里，并且和所有节点一样，从 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 进行设置和更新。",
   "requirements": [
    "用于主机测试的 C++17 编译器",
-   "用于构建镜像的 ESP-IDF 5.5 容器",
+   "用于构建镜像的 ESP-IDF 5.5.5 容器",
    "Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "9 个程序中的 24,440 项检查（`ctest`）"
@@ -217,7 +217,7 @@ TEXT = {
   "fit": "ARMOR-HMI は壁掛けパネルです。Android アプリと同じく [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) のクライアントで、7 インチ画面、マイク、スピーカーを備えます。モード、オンラインのノード、人が必要な警報を表示し、警戒・解除（PIN 付き）と警報の確認を行います。音声サービスができれば、音声アシスタント（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）はここに住み、他のノードと同じく [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) から設定・更新します。",
   "requirements": [
    "ホストテスト用の C++17 コンパイラ",
-   "イメージをビルドするための ESP-IDF 5.5 コンテナ",
+   "イメージをビルドするための ESP-IDF 5.5.5 コンテナ",
    "Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "9 個のプログラムで 24,440 件のチェック（`ctest`）"
@@ -245,7 +245,7 @@ TEXT = {
   "fit": "O ARMOR-HMI é o painel de parede: um cliente do [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como a aplicação Android, com um ecrã de 7 polegadas, microfone e altifalante. Mostra o modo, os nós ligados e os alarmes que precisam de uma pessoa, arma e desarma (com o PIN) e reconhece alarmes. É onde viverá o assistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando existir o seu serviço de voz e, como todos os nós, é configurado e atualizado a partir do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
   "requirements": [
    "um compilador de C++17 para os testes no computador",
-   "o contentor ESP-IDF 5.5 para compilar a imagem",
+   "o contentor ESP-IDF 5.5.5 para compilar a imagem",
    "um Waveshare ESP32-S3-Touch-LCD-7C-BOX"
   ],
   "tests": "24 440 verificações em 9 programas (`ctest`)"

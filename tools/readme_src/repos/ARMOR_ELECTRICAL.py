@@ -26,7 +26,7 @@ FACTS = {
  "tests": "379,655 checks in 16 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
-  "the ESP-IDF 5.4 container to build the image",
+  "the ESP-IDF 5.5.5 container to build the image",
   "an ESP32-S3-WROOM-1 N16R8 or a Waveshare ESP32-S3-ETH"
  ]
 }
@@ -34,7 +34,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network and holds the rules for switching it (host-tested core and a firmware that builds; it has never run on a board)",
-  "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 379,655 checks in 16 test programs, 375,008 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.4 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
+  "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 379,655 checks in 16 test programs, 375,008 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.5.5 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
   "bullets": [
    "**Reading the meters:** the Modbus RTU frames of the Peacefair **PZEM-004T v3** (AC) and **PZEM-017** (DC): the CRC, the request that reads the registers and the decoding of the reply (voltage, current, power, energy, frequency, power factor, alarm). Only the read request is built: the ones that write to a meter (its address, its thresholds, the reset of its energy) are not built anywhere. A reply that does not fit, or holds a value no real meter could give, is refused.",
    "**The bus:** a line with several meters is asked one at a time, with a timeout; the last good reading of each is kept and a meter that goes silent stops being published after ten seconds.",
@@ -60,7 +60,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Nodo eléctrico: lee las tensiones, corrientes, potencia y energía de la red AC y DC de la casa y guarda las reglas para maniobrarla (núcleo probado en el PC y un firmware que compila; nunca ha corrido en una placa)",
-  "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 376.195 comprobaciones en 11 programas de test, 375.008 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.4 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
+  "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 376.195 comprobaciones en 11 programas de test, 375.008 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.5.5 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
   "bullets": [
    "**Lectura de contadores:** las tramas Modbus RTU de los **PZEM-004T v3** (AC) y **PZEM-017** (DC) de Peacefair: el CRC, la petición que lee los registros y la decodificación de la respuesta (tensión, corriente, potencia, energía, frecuencia, factor de potencia, alarma). Solo se construye la petición de lectura: las que escriben en un contador (su dirección, sus umbrales, el reinicio de su energía) no se construyen en ningún sitio. Se rechaza una respuesta que no cuadra o que trae un valor que ningún contador real podría dar.",
    "**El bus:** una línea con varios contadores se pregunta de uno en uno, con un tiempo de espera; se guarda la última lectura buena de cada uno y un contador que calla deja de publicarse a los diez segundos.",
@@ -85,14 +85,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL mide la red de CA y CC de la casa con sus medidores y guarda las reglas para conmutar entre fuentes. Publica las lecturas para [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda su historial y la energía de cada día y genera las alarmas; el menú *Eléctrico* y el *Diseñador eléctrico* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la pantalla eléctrica de [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo muestran. La conmutación está diseñada (armar, un token de un solo uso, el enclavamiento, la confirmación de los dos contactores) pero no activada.",
   "requirements": [
    "un compilador de C++17 para las pruebas en el PC",
-   "el contenedor de ESP-IDF 5.4 para compilar la imagen",
+   "el contenedor de ESP-IDF 5.5.5 para compilar la imagen",
    "un ESP32-S3-WROOM-1 N16R8 o un Waveshare ESP32-S3-ETH"
   ],
   "tests": "379.655 comprobaciones en 16 programas (`ctest`)"
  },
  "fr": {
   "tagline": "Nœud électrique : lit les tensions, courants, puissance et énergie du réseau AC et DC de la maison et détient les règles pour le commander (cœur testé sur ordinateur et un firmware qui compile ; il n'a jamais tourné sur une carte)",
-  "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 376 195 vérifications dans 11 programmes de test, dont 375 008 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.4 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
+  "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 376 195 vérifications dans 11 programmes de test, dont 375 008 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
   "bullets": [
    "**Lecture des compteurs :** les trames Modbus RTU des **PZEM-004T v3** (AC) et **PZEM-017** (DC) de Peacefair : le CRC, la requête qui lit les registres et le décodage de la réponse (tension, courant, puissance, énergie, fréquence, facteur de puissance, alarme). Seule la requête de lecture est construite : celles qui écrivent dans un compteur (son adresse, ses seuils, la remise à zéro de son énergie) ne le sont nulle part. Une réponse qui ne convient pas, ou qui contient une valeur qu'aucun compteur réel ne pourrait donner, est refusée.",
    "**Le bus :** une ligne avec plusieurs compteurs est interrogée un par un, avec un délai ; la dernière bonne lecture de chacun est gardée et un compteur qui se tait n'est plus publié au bout de dix secondes.",
@@ -117,14 +117,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL mesure le réseau AC et DC de la maison avec ses compteurs et garde les règles pour commuter entre sources. Il publie les mesures pour [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), qui garde leur historique et l'énergie de chaque jour et déclenche les alarmes ; le menu *Électrique* et le *Concepteur électrique* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'écran électrique d'[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) le montrent. La commutation est conçue (armer, un jeton à usage unique, l'interverrouillage, la confirmation des deux contacteurs) mais pas activée.",
   "requirements": [
    "un compilateur C++17 pour les tests sur l'ordinateur",
-   "le conteneur ESP-IDF 5.4 pour compiler l'image",
+   "le conteneur ESP-IDF 5.5.5 pour compiler l'image",
    "un ESP32-S3-WROOM-1 N16R8 ou un Waveshare ESP32-S3-ETH"
   ],
   "tests": "379 655 vérifications dans 16 programmes (`ctest`)"
  },
  "it": {
   "tagline": "Nodo elettrico: legge tensioni, correnti, potenza ed energia della rete AC e DC della casa e custodisce le regole per manovrarla (nucleo testato sul PC e un firmware che compila; non ha mai girato su una scheda)",
-  "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 376.195 controlli in 11 programmi di test, 375.008 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.4 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
+  "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 376.195 controlli in 11 programmi di test, 375.008 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
   "bullets": [
    "**Lettura dei contatori:** i frame Modbus RTU dei **PZEM-004T v3** (AC) e **PZEM-017** (DC) di Peacefair: il CRC, la richiesta che legge i registri e la decodifica della risposta (tensione, corrente, potenza, energia, frequenza, fattore di potenza, allarme). Si costruisce solo la richiesta di lettura: quelle che scrivono in un contatore (indirizzo, soglie, azzeramento dell'energia) non si costruiscono da nessuna parte. Una risposta che non torna, o con un valore che nessun contatore reale potrebbe dare, viene rifiutata.",
    "**Il bus:** una linea con più contatori si interroga uno alla volta, con un timeout; si conserva l'ultima lettura buona di ciascuno e un contatore che tace non viene più pubblicato dopo dieci secondi.",
@@ -149,14 +149,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL misura la rete CA e CC della casa con i suoi contatori e conserva le regole per commutare fra sorgenti. Pubblica le letture per [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), che conserva lo storico e l'energia di ogni giorno e genera gli allarmi; il menu *Elettrico* e il *Progettista elettrico* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e la schermata elettrica di [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo mostrano. La commutazione è progettata (inserire, un token monouso, l'interblocco, la conferma di entrambi i contattori) ma non attivata.",
   "requirements": [
    "un compilatore C++17 per i test sul computer",
-   "il container ESP-IDF 5.4 per compilare l'immagine",
+   "il container ESP-IDF 5.5.5 per compilare l'immagine",
    "un ESP32-S3-WROOM-1 N16R8 o un Waveshare ESP32-S3-ETH"
   ],
   "tests": "379.655 controlli in 16 programmi (`ctest`)"
  },
  "de": {
   "tagline": "Elektroknoten: liest Spannungen, Ströme, Leistung und Energie des AC- und DC-Netzes des Hauses und hält die Regeln fürs Schalten (am Rechner getesteter Kern und eine Firmware, die baut; sie lief noch nie auf einer Platine)",
-  "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 376.195 Prüfungen in 11 Testprogrammen, davon 375.008 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.4-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
+  "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 376.195 Prüfungen in 11 Testprogrammen, davon 375.008 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.5.5-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
   "bullets": [
    "**Zähler lesen:** die Modbus-RTU-Rahmen der Peacefair-Zähler **PZEM-004T v3** (AC) und **PZEM-017** (DC): die CRC, die Anfrage, die die Register liest, und die Auswertung der Antwort (Spannung, Strom, Leistung, Energie, Frequenz, Leistungsfaktor, Alarm). Nur die Leseanfrage wird gebaut: die schreibenden (Adresse, Schwellen, Zurücksetzen der Energie) werden nirgends gebaut. Eine Antwort, die nicht passt oder einen Wert enthält, den kein echter Zähler liefern könnte, wird abgelehnt.",
    "**Der Bus:** eine Leitung mit mehreren Zählern wird einzeln abgefragt, mit Zeitlimit; der letzte gute Wert jedes Zählers wird behalten, und ein Zähler, der schweigt, wird nach zehn Sekunden nicht mehr veröffentlicht.",
@@ -181,14 +181,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL misst das AC- und DC-Netz des Hauses mit seinen Zählern und hält die Regeln zum Umschalten zwischen Quellen. Es veröffentlicht die Messwerte für [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), der Verlauf und Tagesenergie führt und die Alarme auslöst; das Menü *Elektro* und der *Elektro-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie der Elektro-Bildschirm von [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) zeigen es. Das Schalten ist entworfen (Scharfstellen, ein Einmal-Token, die Verriegelung, die Bestätigung beider Schütze), aber nicht aktiviert.",
   "requirements": [
    "ein C++17-Compiler für die Host-Tests",
-   "der ESP-IDF-5.4-Container zum Bauen des Images",
+   "der ESP-IDF-5.5.5-Container zum Bauen des Images",
    "ein ESP32-S3-WROOM-1 N16R8 oder ein Waveshare ESP32-S3-ETH"
   ],
   "tests": "379.655 Prüfungen in 16 Programmen (`ctest`)"
  },
  "zh": {
   "tagline": "电气节点：读取住宅交流和直流电网的电压、电流、功率和电能，并保存其开关规则（已在电脑上测试的核心和可编译的固件；尚未在电路板上运行过）",
-  "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：16 个测试程序中的 379,663 项检查，其中 375,008 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.4 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
+  "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：16 个测试程序中的 379,663 项检查，其中 375,008 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.5.5 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
   "bullets": [
    "**读取电表：** Peacefair **PZEM-004T v3**（交流）和 **PZEM-017**（直流）的 Modbus RTU 帧：CRC、读寄存器的请求以及应答的解码（电压、电流、功率、电能、频率、功率因数、报警）。只构造读请求：向电表写入的请求（地址、阈值、电能清零）在任何地方都不构造。不匹配的应答，或包含任何真实电表都给不出的数值的应答，会被拒绝。",
    "**总线：** 带多个电表的线路逐个轮询并带超时；保留每个电表最后一次正常读数，静默的电表在十秒后不再发布。",
@@ -213,14 +213,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL 通过电表测量住宅的交流和直流网络，并保存在电源之间切换的规则。它把读数发布给 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)，由后者保存历史和每日能量并触发报警；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*电气*菜单和*电气设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 的电气界面显示这些内容。切换已经设计好（预备、一次性令牌、互锁、两个接触器的确认）但未启用。",
   "requirements": [
    "用于主机测试的 C++17 编译器",
-   "用于构建镜像的 ESP-IDF 5.4 容器",
+   "用于构建镜像的 ESP-IDF 5.5.5 容器",
    "ESP32-S3-WROOM-1 N16R8 或 Waveshare ESP32-S3-ETH"
   ],
   "tests": "16 个程序中的 379,655 项检查（`ctest`）"
  },
  "ja": {
   "tagline": "電気ノード：住宅の AC・DC ネットワークの電圧、電流、電力、エネルギーを読み取り、その開閉のルールを持ちます（PC でテスト済みのコアとビルドできるファームウェア。基板ではまだ動作していません）",
-  "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：16 のテストプログラムで 379,663 項目、うち 375,008 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.4 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
+  "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：16 のテストプログラムで 379,663 項目、うち 375,008 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.5.5 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
   "bullets": [
    "**電力量計の読み取り：** Peacefair の **PZEM-004T v3**（AC）と **PZEM-017**（DC）の Modbus RTU フレーム。CRC、レジスタを読む要求、応答の解読（電圧、電流、電力、エネルギー、周波数、力率、警報）。作るのは読み取り要求だけで、電力量計に書き込むもの（アドレス、しきい値、エネルギーのリセット）はどこにも作りません。合わない応答や、実際の電力量計が出せない値を含む応答は拒否します。",
    "**バス：** 複数の電力量計がつながる回線には 1 台ずつタイムアウト付きで問い合わせ、それぞれの最後の正常な読み取りを保持します。応答のない電力量計は 10 秒後に公開されなくなります。",
@@ -245,14 +245,14 @@ TEXT = {
   "fit": "ARMOR-ELECTRICAL はメーターで家の AC・DC ネットワークを測定し、電源間の切り替えのルールを保持します。測定値を [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送ると、サーバーが履歴と日ごとのエネルギーを保持して警報を出し、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*電気*メニューと*電気デザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) の電気画面が表示します。切り替えは設計済み（待機、1 回限りのトークン、インターロック、両方の接触器の確認）ですが、有効化はされていません。",
   "requirements": [
    "ホストテスト用の C++17 コンパイラ",
-   "イメージをビルドするための ESP-IDF 5.4 コンテナ",
+   "イメージをビルドするための ESP-IDF 5.5.5 コンテナ",
    "ESP32-S3-WROOM-1 N16R8 または Waveshare ESP32-S3-ETH"
   ],
   "tests": "16 個のプログラムで 379,655 件のチェック（`ctest`）"
  },
  "pt": {
   "tagline": "Nó elétrico: lê as tensões, correntes, potência e energia da rede AC e DC da casa e guarda as regras para a comutar (núcleo testado em anfitrião e um firmware que compila; nunca correu numa placa)",
-  "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 376 195 verificações em 11 programas de teste, 375 008 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.4 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
+  "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 376 195 verificações em 11 programas de teste, 375 008 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.5.5 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
   "bullets": [
    "**Ler os contadores:** as tramas Modbus RTU dos **PZEM-004T v3** (AC) e **PZEM-017** (DC) da Peacefair: o CRC, o pedido que lê os registos e a descodificação da resposta (tensão, corrente, potência, energia, frequência, fator de potência, alarme). Só se constrói o pedido de leitura: os que escrevem num contador (o seu endereço, os seus limiares, a reposição da sua energia) não se constroem em lado nenhum. Uma resposta que não encaixa, ou que traz um valor que nenhum contador real poderia dar, recusa-se.",
    "**O barramento:** uma linha com vários contadores consulta-se um de cada vez, com um limite de tempo; guarda-se a última boa leitura de cada um e um contador que fica em silêncio deixa de se publicar após dez segundos.",
@@ -277,7 +277,7 @@ TEXT = {
   "fit": "O ARMOR-ELECTRICAL mede a rede CA e CC da casa com os seus contadores e guarda as regras para comutar entre fontes. Publica as leituras para o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda o histórico e a energia de cada dia e gera os alarmes; o menu *Elétrico* e o *Desenhador elétrico* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e o ecrã elétrico do [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) mostram-no. A comutação está desenhada (armar, um token de uso único, o intertravamento, a confirmação dos dois contactores) mas não ativada.",
   "requirements": [
    "um compilador de C++17 para os testes no computador",
-   "o contentor ESP-IDF 5.4 para compilar a imagem",
+   "o contentor ESP-IDF 5.5.5 para compilar a imagem",
    "um ESP32-S3-WROOM-1 N16R8 ou um Waveshare ESP32-S3-ETH"
   ],
   "tests": "379 655 verificações em 16 programas (`ctest`)"

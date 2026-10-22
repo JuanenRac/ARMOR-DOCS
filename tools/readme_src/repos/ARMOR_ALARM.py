@@ -26,7 +26,7 @@ FACTS = {
  "tests": "486,098 checks in 13 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
-  "the ESP-IDF 5.4 container to build the image",
+  "the ESP-IDF 5.5.5 container to build the image",
   "an ESP32-S3 board (PoE Ethernet or Wi-Fi)"
  ]
 }
@@ -87,7 +87,7 @@ TEXT = {
   "fit": "ARMOR-ALARM es la central de alarma: las zonas, el armado, los retardos, la sirena y el PIN se deciden en el propio nodo, así que la casa sigue vigilada cuando el servidor no está. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la muestra, ata sensores Zigbee a sus zonas y, cuando lo permites, la arma y desarma; el menú *Centrales de alarma* y el *Diseñador de alarma* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la manejan. Su radio Zigbee puede estar en la placa o ser un coordinador en la red.",
   "requirements": [
    "un compilador de C++17 para las pruebas en el PC",
-   "el contenedor de ESP-IDF 5.4 para compilar la imagen",
+   "el contenedor de ESP-IDF 5.5.5 para compilar la imagen",
    "una placa ESP32-S3 (Ethernet con PoE o Wi-Fi)"
   ],
   "tests": "486.098 comprobaciones en 13 programas (`ctest`)"
@@ -120,7 +120,7 @@ TEXT = {
   "fit": "ARMOR-ALARM est la centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le PIN se décident sur le nœud lui-même, si bien que la maison reste surveillée quand le serveur est absent. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la montre, lie des capteurs Zigbee à ses zones et, quand vous l'autorisez, l'arme et la désarme ; le menu *Centrales d'alarme* et le *Concepteur d'alarme* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'application [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la pilotent. Sa radio Zigbee peut être sur la carte ou un coordinateur sur le réseau.",
   "requirements": [
    "un compilateur C++17 pour les tests sur l'ordinateur",
-   "le conteneur ESP-IDF 5.4 pour compiler l'image",
+   "le conteneur ESP-IDF 5.5.5 pour compiler l'image",
    "une carte ESP32-S3 (Ethernet PoE ou Wi-Fi)"
   ],
   "tests": "486 098 vérifications dans 13 programmes (`ctest`)"
@@ -153,7 +153,7 @@ TEXT = {
   "fit": "ARMOR-ALARM è la centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN si decidono sul nodo stesso, così la casa resta sorvegliata quando il server è assente. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la mostra, lega sensori Zigbee alle sue zone e, quando lo permetti, la inserisce e disinserisce; il menu *Centrali d'allarme* e il *Progettista dell'allarme* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e l'app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la comandano. La sua radio Zigbee può essere sulla scheda o un coordinatore in rete.",
   "requirements": [
    "un compilatore C++17 per i test sul computer",
-   "il container ESP-IDF 5.4 per compilare l'immagine",
+   "il container ESP-IDF 5.5.5 per compilare l'immagine",
    "una scheda ESP32-S3 (Ethernet PoE o Wi-Fi)"
   ],
   "tests": "486.098 controlli in 13 programmi (`ctest`)"
@@ -186,7 +186,7 @@ TEXT = {
   "fit": "ARMOR-ALARM ist die Alarmzentrale: Zonen, Scharfschalten, Verzögerungen, Sirene und PIN werden auf dem Knoten selbst entschieden, sodass das Haus bewacht bleibt, wenn der Server fehlt. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) zeigt sie, ordnet Zigbee-Sensoren ihren Zonen zu und schaltet sie, wenn Sie es erlauben, scharf und unscharf; das Menü *Alarmzentralen* und der *Alarm-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie die App [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) steuern sie. Ihr Zigbee-Funkmodul kann auf der Platine sein oder ein Koordinator im Netzwerk.",
   "requirements": [
    "ein C++17-Compiler für die Host-Tests",
-   "der ESP-IDF-5.4-Container zum Bauen des Images",
+   "der ESP-IDF-5.5.5-Container zum Bauen des Images",
    "eine ESP32-S3-Platine (PoE-Ethernet oder WLAN)"
   ],
   "tests": "486.098 Prüfungen in 13 Programmen (`ctest`)"
@@ -219,7 +219,7 @@ TEXT = {
   "fit": "ARMOR-ALARM 是报警主机：防区、布防、延时、警笛和 PIN 都在节点自身上决定，因此服务器不在时住宅仍受守护。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 显示它，把 Zigbee 传感器绑定到其防区，并在你允许时对它布防和撤防；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*报警主机*菜单和*报警设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 应用可控制它。它的 Zigbee 无线电可以在板上，也可以是网络上的协调器。",
   "requirements": [
    "用于主机测试的 C++17 编译器",
-   "用于构建镜像的 ESP-IDF 5.4 容器",
+   "用于构建镜像的 ESP-IDF 5.5.5 容器",
    "ESP32-S3 开发板（PoE 以太网或 Wi-Fi）"
   ],
   "tests": "13 个程序中的 486,098 项检查（`ctest`）"
@@ -252,7 +252,7 @@ TEXT = {
   "fit": "ARMOR-ALARM は警報盤です。警戒区域、警戒、遅延、サイレン、PIN はノード自身で判断されるため、サーバーがいなくても家は守られます。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) がこれを表示し、Zigbee センサーをゾーンに結び付け、許可すれば警戒・解除も行います。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*警報盤*メニューと*警報デザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) アプリが操作します。Zigbee 無線は基板上でも、ネットワーク上のコーディネーターでも構いません。",
   "requirements": [
    "ホストテスト用の C++17 コンパイラ",
-   "イメージをビルドするための ESP-IDF 5.4 コンテナ",
+   "イメージをビルドするための ESP-IDF 5.5.5 コンテナ",
    "ESP32-S3 ボード（PoE イーサネットまたは Wi-Fi）"
   ],
   "tests": "13 個のプログラムで 486,098 件のチェック（`ctest`）"
@@ -285,7 +285,7 @@ TEXT = {
   "fit": "O ARMOR-ALARM é a central de alarme: as zonas, o armar, os atrasos, a sirene e o PIN decidem-se no próprio nó, por isso a casa continua vigiada quando o servidor não está. O [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) mostra-a, liga sensores Zigbee às suas zonas e, quando o permitir, arma-a e desarma-a; o menu *Centrais de alarme* e o *Desenhador de alarme* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e a aplicação [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) comandam-na. O seu rádio Zigbee pode estar na placa ou ser um coordenador na rede.",
   "requirements": [
    "um compilador de C++17 para os testes no computador",
-   "o contentor ESP-IDF 5.4 para compilar a imagem",
+   "o contentor ESP-IDF 5.5.5 para compilar a imagem",
    "uma placa ESP32-S3 (Ethernet com PoE ou Wi-Fi)"
   ],
   "tests": "486 098 verificações em 13 programas (`ctest`)"
