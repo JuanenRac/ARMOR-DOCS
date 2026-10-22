@@ -6,6 +6,12 @@ All notable changes to this project are documented here.
 
 - The repository has a security policy, a code of conduct, a contributing guide and a support file.
 - The banner follows the animated style of the ecosystem banners, with the name, the kind and the technologies of the project.
+## [0.8.1.1] - README sources for the new node versions, requirements and tests per language
+
+- **The README generator words the requirements and the test counts in each language** instead of copying the English line, and the family list is refreshed.
+- **README sources for the new work:** diagnostics, the perimeter engine, reading quality and held values, and ESP-IDF 5.5.5 as the one toolchain.
+- **The catalog says that ARMOR-VISION is a library no service imports yet,** and the VISION README commands are written for bash.
+- **Threat model and capability matrix** cover the node diagnostics and the read-only diagnostic token.
 
 ## [0.8.1.0] - Live status, the alarm window and the table of routes in the READMEs, and a stricter check of the family list
 

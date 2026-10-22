@@ -34,7 +34,7 @@ TEXT = {
   "tagline": "Offline telemetry simulator with repeatable faults",
   "honest": "Scenarios, faults, delivery to a server and the 57 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
   "bullets": [
-   "**Scenarios:** `patrol`, `crossing`, `two-intruders` and `empty`, on a three-sensor corner geometry, plus a day/night light cycle or a fixed night.",
+   "**Scenarios:** `patrol`, `crossing`, `two-intruders` and `empty`, on a 270 degree geometry with three sensors, plus a day/night light cycle or a fixed night.",
    "**Repeatable faults:** a silent node, out-of-order and duplicated messages, a flapping node, and deliberately invalid messages (lux over the limit, unknown field, too many tracks) for negative tests.",
    "**Deterministic:** the same seed always prints the same lines; nothing is sent unless you give `--server-url` and `--ingest-token`.",
    "**Checked against the contract:** `--validate` runs every message through ARMOR-COMMON before it is emitted.",
@@ -50,7 +50,7 @@ TEXT = {
   "tagline": "Simulador de telemetría sin conexión con fallos repetibles",
   "honest": "Los escenarios, los fallos, la entrega a un servidor y los 57 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
   "bullets": [
-   "**Escenarios:** `patrol`, `crossing`, `two-intruders` y `empty`, con una geometría de esquina de tres sensores, más un ciclo de luz día/noche o una noche fija.",
+   "**Escenarios:** `patrol`, `crossing`, `two-intruders` y `empty`, con una geometría de 270 grados de tres sensores, más un ciclo de luz día/noche o una noche fija.",
    "**Fallos repetibles:** nodo en silencio, mensajes desordenados y duplicados, nodo intermitente y mensajes inválidos a propósito (lux por encima del límite, campo desconocido, demasiadas pistas) para pruebas negativas.",
    "**Determinista:** la misma semilla imprime siempre las mismas líneas; no se envía nada salvo que indiques `--server-url` y `--ingest-token`.",
    "**Comprobado contra el contrato:** `--validate` pasa cada mensaje por ARMOR-COMMON antes de emitirlo.",
@@ -69,7 +69,7 @@ TEXT = {
   "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
   "honest": "Les scénarios, les pannes, la livraison à un serveur et les 57 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
   "bullets": [
-   "**Scénarios :** `patrol`, `crossing`, `two-intruders` et `empty`, sur une géométrie d'angle à trois capteurs, avec un cycle de lumière jour/nuit ou une nuit fixe.",
+   "**Scénarios :** `patrol`, `crossing`, `two-intruders` et `empty`, sur une géométrie de 270 degrés à trois capteurs, avec un cycle de lumière jour/nuit ou une nuit fixe.",
    "**Pannes reproductibles :** un nœud muet, des messages désordonnés ou dupliqués, un nœud instable et des messages volontairement invalides (lux hors limite, champ inconnu, trop de pistes) pour les tests négatifs.",
    "**Déterministe :** la même graine imprime toujours les mêmes lignes ; rien n'est envoyé sans `--server-url` et `--ingest-token`.",
    "**Vérifié contre le contrat :** `--validate` fait passer chaque message par ARMOR-COMMON avant de l'émettre.",
@@ -88,7 +88,7 @@ TEXT = {
   "tagline": "Simulatore di telemetria offline con guasti ripetibili",
   "honest": "Gli scenari, i guasti, la consegna a un server e i 57 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
   "bullets": [
-   "**Scenari:** `patrol`, `crossing`, `two-intruders` ed `empty`, su una geometria d'angolo a tre sensori, con un ciclo di luce giorno/notte o una notte fissa.",
+   "**Scenari:** `patrol`, `crossing`, `two-intruders` ed `empty`, su una geometria di 270 gradi a tre sensori, con un ciclo di luce giorno/notte o una notte fissa.",
    "**Guasti ripetibili:** un nodo muto, messaggi fuori ordine o duplicati, un nodo instabile e messaggi volutamente non validi (lux oltre il limite, campo sconosciuto, troppe tracce) per i test negativi.",
    "**Deterministico:** lo stesso seme stampa sempre le stesse righe; non viene inviato nulla senza `--server-url` e `--ingest-token`.",
    "**Verificato contro il contratto:** `--validate` fa passare ogni messaggio per ARMOR-COMMON prima di emetterlo.",
@@ -107,7 +107,7 @@ TEXT = {
   "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
   "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 57 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
   "bullets": [
-   "**Szenarien:** `patrol`, `crossing`, `two-intruders` und `empty` auf einer Eckgeometrie mit drei Sensoren, dazu ein Tag/Nacht-Lichtzyklus oder eine feste Nacht.",
+   "**Szenarien:** `patrol`, `crossing`, `two-intruders` und `empty` auf einer 270-Grad-Geometrie mit drei Sensoren, dazu ein Tag/Nacht-Lichtzyklus oder eine feste Nacht.",
    "**Wiederholbare Fehler:** ein stummer Knoten, vertauschte und doppelte Nachrichten, ein flatternder Knoten und absichtlich ungültige Nachrichten (Lux über dem Limit, unbekanntes Feld, zu viele Spuren) für Negativtests.",
    "**Deterministisch:** derselbe Seed druckt immer dieselben Zeilen; gesendet wird nur mit `--server-url` und `--ingest-token`.",
    "**Gegen den Vertrag geprüft:** `--validate` schickt jede Nachricht vor dem Ausgeben durch ARMOR-COMMON.",
@@ -126,7 +126,7 @@ TEXT = {
   "tagline": "带可重复故障的离线遥测模拟器",
   "honest": "场景、故障、向服务器的投递和 57 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
   "bullets": [
-   "**场景：** `patrol`、`crossing`、`two-intruders` 和 `empty`，基于三传感器的拐角几何，另有昼夜光照周期或固定夜晚。",
+   "**场景：** `patrol`、`crossing`、`two-intruders` 和 `empty`，基于三传感器的 270 度几何，另有昼夜光照周期或固定夜晚。",
    "**可重复的故障：** 静默节点、乱序和重复的消息、抖动的节点，以及为负面测试特意构造的无效消息（lux 超限、未知字段、轨迹过多）。",
    "**确定性：** 相同的种子总是打印相同的行；除非提供 `--server-url` 和 `--ingest-token`，否则不会发送任何内容。",
    "**对照契约检查：** `--validate` 在发出每条消息之前先让它通过 ARMOR-COMMON。",
@@ -145,7 +145,7 @@ TEXT = {
   "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
   "honest": "シナリオ、故障、サーバーへの送信、57 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
   "bullets": [
-   "**シナリオ：** `patrol`、`crossing`、`two-intruders`、`empty`。センサー 3 基のコーナー配置で、昼夜の光サイクルまたは固定の夜を選べます。",
+   "**シナリオ：** `patrol`、`crossing`、`two-intruders`、`empty`。センサー 3 基の 270 度配置で、昼夜の光サイクルまたは固定の夜を選べます。",
    "**再現可能な故障：** 沈黙するノード、順序が入れ替わったり重複したりするメッセージ、不安定なノード、そして否定テスト用にわざと無効にしたメッセージ（lux の上限超過、未知のフィールド、トラックが多すぎる）。",
    "**決定的：** 同じシードは常に同じ行を出力します。`--server-url` と `--ingest-token` を指定しない限り何も送信しません。",
    "**契約に照らして検査：** `--validate` は各メッセージを送り出す前に ARMOR-COMMON に通します。",
@@ -164,7 +164,7 @@ TEXT = {
   "tagline": "Simulador de telemetria offline com falhas repetíveis",
   "honest": "Os cenários, as falhas, a entrega a um servidor e os 57 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
   "bullets": [
-   "**Cenários:** `patrol`, `crossing`, `two-intruders` e `empty`, numa geometria de canto com três sensores, mais um ciclo de luz dia/noite ou uma noite fixa.",
+   "**Cenários:** `patrol`, `crossing`, `two-intruders` e `empty`, numa geometria de 270 graus com três sensores, mais um ciclo de luz dia/noite ou uma noite fixa.",
    "**Falhas repetíveis:** um nó silencioso, mensagens fora de ordem e duplicadas, um nó que oscila, e mensagens deliberadamente inválidas (lux acima do limite, campo desconhecido, demasiados rastos) para testes negativos.",
    "**Determinista:** a mesma semente imprime sempre as mesmas linhas; nada se envia a menos que indique `--server-url` e `--ingest-token`.",
    "**Verificado contra o contrato:** `--validate` passa cada mensagem pelo ARMOR-COMMON antes de a emitir.",
