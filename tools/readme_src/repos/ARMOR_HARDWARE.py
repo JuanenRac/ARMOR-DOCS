@@ -51,7 +51,11 @@ TEXT = {
   ],
   "note": "Véase el [límite de validación](docs/VALIDATION.md). La licencia de hardware prevista es CERN-OHL-S-2.0; añade su texto completo antes de publicar los diseños.",
   "fit": "ARMOR-HARDWARE es lo que contiene a los nodos. Lleva la carcasa del nodo radar, la caja paramétrica de los nodos solar, eléctrico, de alarma y de panel táctil, y la matriz de aceptación en banco que dice cómo juzgar un prototipo antes de ponerlo en una pared. Sus diseños son el punto de partida para las placas en las que corren [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR), [ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR), [ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL), [ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) y [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI).",
-  "hardware": "Ninguno todavía: nada se ha impreso ni medido; las tres cajas solo las comprueban los `assert` de su fuente"
+  "hardware": "Ninguno todavía: nada se ha impreso ni medido; las tres cajas solo las comprueban los `assert` de su fuente",
+  "requirements": [
+   "OpenSCAD 2021.01+ (para renderizar las cajas)",
+   "una impresora 3D (FDM) para probarlas"
+  ]
  },
  "fr": {
   "tagline": "Boîtiers, électronique et matrice d'acceptation sur banc",
@@ -65,7 +69,11 @@ TEXT = {
   ],
   "note": "Voir la [frontière de validation](docs/VALIDATION.md). La licence matérielle prévue est CERN-OHL-S-2.0 ; ajoutez son texte complet avant de publier les conceptions.",
   "fit": "ARMOR-HARDWARE est ce qui contient les nœuds. Il porte le boîtier du nœud radar, la boîte paramétrique des nœuds solaire, électrique, alarme et panneau tactile, et la matrice d'acceptation sur banc qui dit comment juger un prototype avant de le mettre au mur. Ses conceptions sont le point de départ des cartes sur lesquelles tournent [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR), [ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR), [ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL), [ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) et [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI).",
-  "hardware": "Aucun pour l'instant : rien n'a été imprimé ni mesuré ; les trois boîtes ne sont vérifiées que par les `assert` de leur source"
+  "hardware": "Aucun pour l'instant : rien n'a été imprimé ni mesuré ; les trois boîtes ne sont vérifiées que par les `assert` de leur source",
+  "requirements": [
+   "OpenSCAD 2021.01+ (pour générer les boîtiers)",
+   "une imprimante 3D (FDM) pour les essayer"
+  ]
  },
  "it": {
   "tagline": "Contenitori, elettronica e matrice di accettazione da banco",
@@ -79,7 +87,11 @@ TEXT = {
   ],
   "note": "Vedi il [confine di validazione](docs/VALIDATION.md). La licenza hardware prevista è CERN-OHL-S-2.0; aggiungi il suo testo completo prima di pubblicare i progetti.",
   "fit": "ARMOR-HARDWARE è ciò che contiene i nodi. Porta l'involucro del nodo radar, la scatola parametrica dei nodi solare, elettrico, allarme e pannello touch, e la matrice di accettazione al banco che dice come giudicare un prototipo prima di metterlo a una parete. I suoi progetti sono il punto di partenza per le schede su cui girano [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR), [ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR), [ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL), [ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) e [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI).",
-  "hardware": "Ancora nessuno: nulla è stato stampato né misurato; le tre scatole sono verificate solo dagli `assert` del sorgente"
+  "hardware": "Ancora nessuno: nulla è stato stampato né misurato; le tre scatole sono verificate solo dagli `assert` del sorgente",
+  "requirements": [
+   "OpenSCAD 2021.01+ (per generare gli involucri)",
+   "una stampante 3D (FDM) per provarle"
+  ]
  },
  "de": {
   "tagline": "Gehäuse, Elektronik und die Abnahmematrix am Prüfstand",
@@ -93,7 +105,11 @@ TEXT = {
   ],
   "note": "Siehe die [Validierungsgrenze](docs/VALIDATION.md). Die vorgesehene Hardware-Lizenz ist CERN-OHL-S-2.0; fügen Sie ihren vollständigen Text hinzu, bevor Sie die Entwürfe veröffentlichen.",
   "fit": "ARMOR-HARDWARE ist das, was die Knoten hält. Es enthält das Gehäuse des Radarknotens, die parametrische Box der Knoten Solar, Elektro, Alarm und Touchpanel und die Abnahmematrix, die sagt, wie ein Prototyp beurteilt wird, bevor er an die Wand kommt. Seine Entwürfe sind der Ausgangspunkt für die Platinen, auf denen [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR), [ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR), [ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL), [ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) und [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) laufen.",
-  "hardware": "Noch keiner: nichts wurde gedruckt oder vermessen; die drei Boxen werden nur durch die `assert`-Prüfungen ihres Quelltexts geprüft"
+  "hardware": "Noch keiner: nichts wurde gedruckt oder vermessen; die drei Boxen werden nur durch die `assert`-Prüfungen ihres Quelltexts geprüft",
+  "requirements": [
+   "OpenSCAD 2021.01+ (zum Rendern der Gehäuse)",
+   "ein 3D-Drucker (FDM), um sie auszuprobieren"
+  ]
  },
  "zh": {
   "tagline": "外壳、电子器件和台架验收矩阵",
@@ -107,7 +123,11 @@ TEXT = {
   ],
   "note": "参见[验证边界](docs/VALIDATION.md)。预期的硬件许可证是 CERN-OHL-S-2.0；发布设计前请加入其完整文本。",
   "fit": "ARMOR-HARDWARE 是容纳各节点的部分。它包含雷达节点的外壳、太阳能、电气、报警和触摸屏节点的参数化盒子，以及说明原型上墙前如何评判的台架验收矩阵。它的设计是 [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR)、[ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR)、[ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL)、[ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) 和 [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) 所运行的板子的起点。",
-  "hardware": "暂无：没有任何东西被打印或测量过；三个盒子只由源文件中的 `assert` 检查"
+  "hardware": "暂无：没有任何东西被打印或测量过；三个盒子只由源文件中的 `assert` 检查",
+  "requirements": [
+   "OpenSCAD 2021.01+（用于渲染外壳）",
+   "用于试打的 3D 打印机（FDM）"
+  ]
  },
  "ja": {
   "tagline": "筐体、電子部品、ベンチ受け入れマトリクス",
@@ -121,7 +141,11 @@ TEXT = {
   ],
   "note": "[検証の境界](docs/VALIDATION.md)を参照してください。想定しているハードウェアライセンスは CERN-OHL-S-2.0 で、設計を公開する前に全文を追加してください。",
   "fit": "ARMOR-HARDWARE はノードを収めるものです。レーダーノードの筐体、太陽光・電気・警報・タッチパネルノードのパラメトリックボックス、壁に付ける前に試作品をどう評価するかを示すベンチ受入マトリクスを含みます。その設計は、[ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR)、[ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR)、[ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL)、[ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM)、[ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) が動く基板の出発点です。",
-  "hardware": "まだありません：何も印刷も計測もされていません。3 つのボックスはソースの `assert` で検査されているだけです"
+  "hardware": "まだありません：何も印刷も計測もされていません。3 つのボックスはソースの `assert` で検査されているだけです",
+  "requirements": [
+   "OpenSCAD 2021.01+（ケースのレンダリング用）",
+   "試作用の 3D プリンター（FDM）"
+  ]
  },
  "pt": {
   "tagline": "Caixas, eletrónica e a matriz de aceitação de bancada",
@@ -135,6 +159,10 @@ TEXT = {
   ],
   "note": "Veja o [limite de validação](docs/VALIDATION.md). A licença de hardware prevista é CERN-OHL-S-2.0; acrescente o seu texto completo antes de publicar os desenhos.",
   "fit": "O ARMOR-HARDWARE é o que contém os nós. Leva a caixa do nó radar, a caixa paramétrica dos nós solar, elétrico, de alarme e de painel tátil, e a matriz de aceitação em bancada que diz como julgar um protótipo antes de o pôr numa parede. Os seus desenhos são o ponto de partida para as placas em que correm o [ARMOR-RADAR](https://github.com/JuanenRac/ARMOR-RADAR), o [ARMOR-SOLAR](https://github.com/JuanenRac/ARMOR-SOLAR), o [ARMOR-ELECTRICAL](https://github.com/JuanenRac/ARMOR-ELECTRICAL), o [ARMOR-ALARM](https://github.com/JuanenRac/ARMOR-ALARM) e o [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI).",
-  "hardware": "Nenhum ainda: nada foi impresso nem medido; as três caixas só são verificadas pelos `assert` do seu código"
+  "hardware": "Nenhum ainda: nada foi impresso nem medido; as três caixas só são verificadas pelos `assert` do seu código",
+  "requirements": [
+   "OpenSCAD 2021.01+ (para gerar as caixas)",
+   "uma impressora 3D (FDM) para as experimentar"
+  ]
  }
 }

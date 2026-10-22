@@ -74,7 +74,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nMira el [diseño](docs/DESIGN.md), la [placa](docs/HARDWARE.md), el [asistente de voz](docs/VOICE.md), la [guía del firmware](docs/NODE_FIRMWARE.md) y las [fuentes](docs/FONTS.md).",
   "hardware": "Ninguno todavía: el firmware compila (ESP-IDF 5.5.5, sin comprobar en CI) pero no ha corrido en la placa",
-  "fit": "ARMOR-HMI es el panel de pared: un cliente de [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como la app Android, con una pantalla de 7 pulgadas, micrófono y altavoz. Muestra el modo, los nodos en línea y las alarmas que necesitan a una persona, arma y desarma (con el PIN) y reconoce alarmas. Es donde vivirá el asistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) cuando exista su servicio de voz y, como todo nodo, se configura y actualiza desde [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)."
+  "fit": "ARMOR-HMI es el panel de pared: un cliente de [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como la app Android, con una pantalla de 7 pulgadas, micrófono y altavoz. Muestra el modo, los nodos en línea y las alarmas que necesitan a una persona, arma y desarma (con el PIN) y reconoce alarmas. Es donde vivirá el asistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) cuando exista su servicio de voz y, como todo nodo, se configura y actualiza desde [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
+  "requirements": [
+   "un compilador de C++17 para las pruebas en el PC",
+   "el contenedor de ESP-IDF 5.5 para compilar la imagen",
+   "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "24.440 comprobaciones en 9 programas (`ctest`)"
  },
  "fr": {
   "tagline": "Le panneau tactile de la maison : un écran de 7 pouces au mur qui montre l'état du système, l'arme et le désarme et acquitte les alarmes, avec un micro et un haut-parleur pour l'assistant vocal à venir (un nœud de la famille sur l'ESP32-S3-Touch-LCD-7C-BOX, avec sa propre page web de réglages)",
@@ -96,7 +102,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nVoir la [conception](docs/DESIGN.md), la [carte](docs/HARDWARE.md), l'[assistant vocal](docs/VOICE.md), le [guide du firmware](docs/NODE_FIRMWARE.md) et les [polices](docs/FONTS.md).",
   "hardware": "Aucun pour l'instant : le firmware se compile (ESP-IDF 5.5.5, non vérifié par la CI) mais n'a pas tourné sur la carte",
-  "fit": "ARMOR-HMI est le panneau mural : un client d'[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), comme l'application Android, avec un écran de 7 pouces, un microphone et un haut-parleur. Il montre le mode, les nœuds en ligne et les alarmes qui demandent une personne, arme et désarme (avec le PIN) et acquitte les alarmes. C'est là que vivra l'assistant vocal ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quand son service vocal existera et, comme tout nœud, il se configure et se met à jour depuis [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)."
+  "fit": "ARMOR-HMI est le panneau mural : un client d'[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), comme l'application Android, avec un écran de 7 pouces, un microphone et un haut-parleur. Il montre le mode, les nœuds en ligne et les alarmes qui demandent une personne, arme et désarme (avec le PIN) et acquitte les alarmes. C'est là que vivra l'assistant vocal ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quand son service vocal existera et, comme tout nœud, il se configure et se met à jour depuis [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
+  "requirements": [
+   "un compilateur C++17 pour les tests sur l'ordinateur",
+   "le conteneur ESP-IDF 5.5 pour compiler l'image",
+   "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "24 440 vérifications dans 9 programmes (`ctest`)"
  },
  "it": {
   "tagline": "Il pannello touch della casa: uno schermo da 7 pollici a parete che mostra lo stato del sistema, lo attiva e disattiva e riconosce gli allarmi, con microfono e altoparlante per l'assistente vocale che arriverà (un nodo della famiglia sull'ESP32-S3-Touch-LCD-7C-BOX, con la sua pagina web per le impostazioni)",
@@ -118,7 +130,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nVedi la [progettazione](docs/DESIGN.md), la [scheda](docs/HARDWARE.md), l'[assistente vocale](docs/VOICE.md), la [guida al firmware](docs/NODE_FIRMWARE.md) e i [font](docs/FONTS.md).",
   "hardware": "Ancora nessuno: il firmware si compila (ESP-IDF 5.5.5, non verificato dalla CI) ma non è girato sulla scheda",
-  "fit": "ARMOR-HMI è il pannello a muro: un client di [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), come l'app Android, con uno schermo da 7 pollici, un microfono e un altoparlante. Mostra la modalità, i nodi online e gli allarmi che richiedono una persona, inserisce e disinserisce (con il PIN) e riconosce gli allarmi. È dove vivrà l'assistente vocale ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando esisterà il suo servizio vocale e, come ogni nodo, si configura e si aggiorna da [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)."
+  "fit": "ARMOR-HMI è il pannello a muro: un client di [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), come l'app Android, con uno schermo da 7 pollici, un microfono e un altoparlante. Mostra la modalità, i nodi online e gli allarmi che richiedono una persona, inserisce e disinserisce (con il PIN) e riconosce gli allarmi. È dove vivrà l'assistente vocale ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando esisterà il suo servizio vocale e, come ogni nodo, si configura e si aggiorna da [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
+  "requirements": [
+   "un compilatore C++17 per i test sul computer",
+   "il container ESP-IDF 5.5 per compilare l'immagine",
+   "un Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "24.440 controlli in 9 programmi (`ctest`)"
  },
  "de": {
   "tagline": "Das Touch-Panel des Hauses: ein 7-Zoll-Bildschirm an der Wand, der den Systemzustand zeigt, es scharf und unscharf schaltet und Alarme quittiert, mit Mikrofon und Lautsprecher für den kommenden Sprachassistenten (ein Knoten der Familie auf dem ESP32-S3-Touch-LCD-7C-BOX mit eigener Webseite für die Einstellungen)",
@@ -140,7 +158,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\nSiehe den [Entwurf](docs/DESIGN.md), das [Board](docs/HARDWARE.md), den [Sprachassistenten](docs/VOICE.md), die [Firmware-Anleitung](docs/NODE_FIRMWARE.md) und die [Schriften](docs/FONTS.md).",
   "hardware": "Noch keiner: die Firmware baut (ESP-IDF 5.5.5, von der CI nicht geprüft), lief aber nicht auf der Platine",
-  "fit": "ARMOR-HMI ist das Wandpanel: ein Client von [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), wie die Android-App, mit einem 7-Zoll-Bildschirm, Mikrofon und Lautsprecher. Es zeigt den Modus, die Knoten online und die Alarme, die eine Person brauchen, schaltet scharf und unscharf (mit der PIN) und quittiert Alarme. Hier wird der Sprachassistent ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) wohnen, sobald sein Sprachdienst existiert, und wie jeder Knoten wird es von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) aus eingerichtet und aktualisiert."
+  "fit": "ARMOR-HMI ist das Wandpanel: ein Client von [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), wie die Android-App, mit einem 7-Zoll-Bildschirm, Mikrofon und Lautsprecher. Es zeigt den Modus, die Knoten online und die Alarme, die eine Person brauchen, schaltet scharf und unscharf (mit der PIN) und quittiert Alarme. Hier wird der Sprachassistent ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) wohnen, sobald sein Sprachdienst existiert, und wie jeder Knoten wird es von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) aus eingerichtet und aktualisiert.",
+  "requirements": [
+   "ein C++17-Compiler für die Host-Tests",
+   "der ESP-IDF-5.5-Container zum Bauen des Images",
+   "ein Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "24.440 Prüfungen in 9 Programmen (`ctest`)"
  },
  "zh": {
   "tagline": "家用触摸面板：挂在墙上的7英寸屏幕，显示系统状态、布防与撤防并确认警报，配有麦克风和扬声器供将来的语音助手使用（家族中基于 ESP32-S3-Touch-LCD-7C-BOX 的节点，带有自己的设置网页）",
@@ -162,7 +186,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\n参见[设计](docs/DESIGN.md)、[开发板](docs/HARDWARE.md)、[语音助手](docs/VOICE.md)、[固件指南](docs/NODE_FIRMWARE.md)和[字体](docs/FONTS.md)。",
   "hardware": "暂无：固件可以构建（ESP-IDF 5.5.5，CI 未检查），但还没有在板上运行",
-  "fit": "ARMOR-HMI 是壁挂面板：与 Android 应用一样是 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 的客户端，配有 7 英寸屏幕、麦克风和扬声器。它显示模式、在线节点和需要人处理的报警，可布防和撤防（需 PIN）并确认报警。语音助手（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）在其语音服务存在后将住在这里，并且和所有节点一样，从 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 进行设置和更新。"
+  "fit": "ARMOR-HMI 是壁挂面板：与 Android 应用一样是 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 的客户端，配有 7 英寸屏幕、麦克风和扬声器。它显示模式、在线节点和需要人处理的报警，可布防和撤防（需 PIN）并确认报警。语音助手（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）在其语音服务存在后将住在这里，并且和所有节点一样，从 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 进行设置和更新。",
+  "requirements": [
+   "用于主机测试的 C++17 编译器",
+   "用于构建镜像的 ESP-IDF 5.5 容器",
+   "Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "9 个程序中的 24,440 项检查（`ctest`）"
  },
  "ja": {
   "tagline": "家のタッチパネル：壁に掛ける7インチ画面でシステムの状態を表示し、警戒・解除とアラームの確認ができ、将来の音声アシスタント用にマイクとスピーカーを備えています（ESP32-S3-Touch-LCD-7C-BOX 上のファミリーのノードで、設定用の専用Webページ付き）",
@@ -184,7 +214,13 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) and the [Bluetooth channel](docs/BLE_PROVISIONING.md).\n\n[設計](docs/DESIGN.md)、[ボード](docs/HARDWARE.md)、[音声アシスタント](docs/VOICE.md)、[ファームウェアガイド](docs/NODE_FIRMWARE.md)、[フォント](docs/FONTS.md)を参照してください。",
   "hardware": "まだありません：ファームウェアはビルドできます（ESP-IDF 5.5.5、CI では未確認）が、ボード上では動作していません",
-  "fit": "ARMOR-HMI は壁掛けパネルです。Android アプリと同じく [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) のクライアントで、7 インチ画面、マイク、スピーカーを備えます。モード、オンラインのノード、人が必要な警報を表示し、警戒・解除（PIN 付き）と警報の確認を行います。音声サービスができれば、音声アシスタント（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）はここに住み、他のノードと同じく [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) から設定・更新します。"
+  "fit": "ARMOR-HMI は壁掛けパネルです。Android アプリと同じく [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) のクライアントで、7 インチ画面、マイク、スピーカーを備えます。モード、オンラインのノード、人が必要な警報を表示し、警戒・解除（PIN 付き）と警報の確認を行います。音声サービスができれば、音声アシスタント（[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)）はここに住み、他のノードと同じく [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) から設定・更新します。",
+  "requirements": [
+   "ホストテスト用の C++17 コンパイラ",
+   "イメージをビルドするための ESP-IDF 5.5 コンテナ",
+   "Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "9 個のプログラムで 24,440 件のチェック（`ctest`）"
  },
  "pt": {
   "tagline": "O painel tátil da casa: um ecrã de 7 polegadas na parede que mostra o estado do sistema, arma e desarma e reconhece alarmes, com um microfone e um altifalante para o assistente de voz que virá (um nó da família na ESP32-S3-Touch-LCD-7C-BOX, com a sua própria página web para as definições)",
@@ -206,6 +242,12 @@ TEXT = {
   ],
   "note": "Veja o [guia do firmware](docs/NODE_FIRMWARE.md) e o [canal Bluetooth](docs/BLE_PROVISIONING.md).\n\nVeja o [desenho](docs/DESIGN.md), a [placa](docs/HARDWARE.md), o [assistente de voz](docs/VOICE.md), o [guia do firmware](docs/NODE_FIRMWARE.md) e os [tipos de letra](docs/FONTS.md).",
   "hardware": "Nenhum ainda: o firmware compila (ESP-IDF 5.5.5, não verificado pela CI) mas não correu na placa",
-  "fit": "O ARMOR-HMI é o painel de parede: um cliente do [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como a aplicação Android, com um ecrã de 7 polegadas, microfone e altifalante. Mostra o modo, os nós ligados e os alarmes que precisam de uma pessoa, arma e desarma (com o PIN) e reconhece alarmes. É onde viverá o assistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando existir o seu serviço de voz e, como todos os nós, é configurado e atualizado a partir do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)."
+  "fit": "O ARMOR-HMI é o painel de parede: um cliente do [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), como a aplicação Android, com um ecrã de 7 polegadas, microfone e altifalante. Mostra o modo, os nós ligados e os alarmes que precisam de uma pessoa, arma e desarma (com o PIN) e reconhece alarmes. É onde viverá o assistente de voz ([ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)) quando existir o seu serviço de voz e, como todos os nós, é configurado e atualizado a partir do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO).",
+  "requirements": [
+   "um compilador de C++17 para os testes no computador",
+   "o contentor ESP-IDF 5.5 para compilar a imagem",
+   "um Waveshare ESP32-S3-Touch-LCD-7C-BOX"
+  ],
+  "tests": "24 440 verificações em 9 programas (`ctest`)"
  }
 }

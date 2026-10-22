@@ -71,7 +71,7 @@ ARMOR-DOCS/
 
 ## 🛠️ Entorno de desarrollo
 
-**Requisitos:** Python 3.11+ for the tools
+**Requisitos:** Python 3.11+ para las herramientas
 
 ```bash
 python tools/make_readmes.py --check      # the READMEs (8 languages) are current

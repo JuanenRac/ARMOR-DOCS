@@ -68,7 +68,12 @@ TEXT = {
   ],
   "note": "Véase el [límite de despliegue](docs/DEPLOYMENT_BOUNDARY.md).",
   "fit": "ARMOR-DEVOPS es cómo todo lo demás llega a una máquina y se mantiene al día. Instala el servidor, Studio, el nodo de red, los servicios de observación y de voz y el broker en el banco de pruebas de la CM5, hace los paquetes de cada versión que la pestaña *Actualizaciones* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) instala desde GitHub, y guarda los dos pequeños ayudantes que dejan a Studio actualizar la instalación y gestionar sus servicios sin ejecutarse nunca como root.",
-  "hardware": "Gobierna el banco de pruebas de la CM5 en uso diario, en una CM5 real que aloja otro software; aún no en la Jetson"
+  "hardware": "Gobierna el banco de pruebas de la CM5 en uso diario, en una CM5 real que aloja otro software; aún no en la Jetson",
+  "requirements": [
+   "Docker Engine con Compose (para la topología de contenedores)",
+   "una CM5 o cualquier máquina basada en Debian accesible por SSH (para el banco de pruebas)",
+   "Bash, `ssh` y `tar` en la máquina que despliega"
+  ]
  },
  "fr": {
   "tagline": "Déploiement, le banc de test CM5, ses mises à jour depuis GitHub et l'entretien de l'installation",
@@ -90,7 +95,12 @@ TEXT = {
   ],
   "note": "Voir la [frontière de déploiement](docs/DEPLOYMENT_BOUNDARY.md).",
   "fit": "ARMOR-DEVOPS est la façon dont tout le reste arrive sur une machine et reste à jour. Il installe le serveur, Studio, le nœud réseau, les services d'observation et de voix et le broker sur le banc de test CM5, fait les paquets de chaque version que l'onglet *Mises à jour* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) installe depuis GitHub, et garde les deux petits assistants qui permettent à Studio de mettre à jour l'installation et de gérer ses services sans jamais tourner en root.",
-  "hardware": "Fait tourner le banc de test CM5 en usage quotidien, sur un vrai CM5 qui héberge d'autres logiciels ; pas encore sur le Jetson"
+  "hardware": "Fait tourner le banc de test CM5 en usage quotidien, sur un vrai CM5 qui héberge d'autres logiciels ; pas encore sur le Jetson",
+  "requirements": [
+   "Docker Engine avec Compose (pour la topologie en conteneurs)",
+   "un CM5 ou toute machine basée sur Debian accessible en SSH (pour le banc d'essai)",
+   "Bash, `ssh` et `tar` sur la machine qui déploie"
+  ]
  },
  "it": {
   "tagline": "Distribuzione, il banco di prova CM5, i suoi aggiornamenti da GitHub e la manutenzione dell'impianto",
@@ -112,7 +122,12 @@ TEXT = {
   ],
   "note": "Vedi il [confine di distribuzione](docs/DEPLOYMENT_BOUNDARY.md).",
   "fit": "ARMOR-DEVOPS è il modo in cui tutto il resto arriva su una macchina e resta aggiornato. Installa il server, Studio, il nodo di rete, i servizi di osservazione e di voce e il broker sul banco di prova CM5, fa i pacchetti di ogni versione che la scheda *Aggiornamenti* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) installa da GitHub, e tiene i due piccoli assistenti che permettono a Studio di aggiornare l'impianto e gestire i suoi servizi senza mai girare come root.",
-  "hardware": "Governa il banco di prova CM5 in uso quotidiano, su una vera CM5 che ospita altro software; non ancora sul Jetson"
+  "hardware": "Governa il banco di prova CM5 in uso quotidiano, su una vera CM5 che ospita altro software; non ancora sul Jetson",
+  "requirements": [
+   "Docker Engine con Compose (per la topologia a container)",
+   "un CM5 o qualsiasi macchina basata su Debian raggiungibile via SSH (per il banco di prova)",
+   "Bash, `ssh` e `tar` sulla macchina che distribuisce"
+  ]
  },
  "de": {
   "tagline": "Bereitstellung, der CM5-Testaufbau, seine Updates von GitHub und die Wartung der Anlage",
@@ -134,7 +149,12 @@ TEXT = {
   ],
   "note": "Siehe die [Bereitstellungsgrenze](docs/DEPLOYMENT_BOUNDARY.md).",
   "fit": "ARMOR-DEVOPS ist der Weg, auf dem alles andere auf eine Maschine kommt und aktuell bleibt. Es installiert Server, Studio, den Netzwerkknoten, die Beobachtungs- und Sprachdienste und den Broker am CM5-Testaufbau, erstellt die Pakete jeder Version, die der Reiter *Updates* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) von GitHub installiert, und hält die zwei kleinen Helfer, mit denen Studio die Anlage aktualisieren und ihre Dienste verwalten kann, ohne je als Root zu laufen.",
-  "hardware": "Betreibt den CM5-Testaufbau im täglichen Einsatz, auf einem echten CM5, der andere Software beherbergt; noch nicht auf dem Jetson"
+  "hardware": "Betreibt den CM5-Testaufbau im täglichen Einsatz, auf einem echten CM5, der andere Software beherbergt; noch nicht auf dem Jetson",
+  "requirements": [
+   "Docker Engine mit Compose (für die Container-Topologie)",
+   "ein CM5 oder ein beliebiger Debian-basierter Rechner per SSH erreichbar (für den Prüfstand)",
+   "Bash, `ssh` und `tar` auf dem Rechner, der ausrollt"
+  ]
  },
  "zh": {
   "tagline": "部署、CM5 测试台、来自 GitHub 的更新以及安装的维护",
@@ -156,7 +176,12 @@ TEXT = {
   ],
   "note": "参见[部署边界](docs/DEPLOYMENT_BOUNDARY.md)。",
   "fit": "ARMOR-DEVOPS 是其他一切到达机器并保持最新的途径。它在 CM5 测试台上安装服务器、Studio、网络节点、观察和语音服务以及代理，制作 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*更新*标签页从 GitHub 安装的每个版本的包，并保存两个小助手，让 Studio 可以在不以 root 运行的情况下更新安装并管理其服务。",
-  "hardware": "日常运行 CM5 测试台，在托管其他软件的真实 CM5 上；尚未在 Jetson 上"
+  "hardware": "日常运行 CM5 测试台，在托管其他软件的真实 CM5 上；尚未在 Jetson 上",
+  "requirements": [
+   "带 Compose 的 Docker Engine（用于容器拓扑）",
+   "CM5 或任何可通过 SSH 访问的基于 Debian 的机器（用于测试台）",
+   "执行部署的机器上需要 Bash、`ssh` 和 `tar`"
+  ]
  },
  "ja": {
   "tagline": "デプロイ、CM5 テストベンチ、GitHub からのアップデート、設備の保守",
@@ -178,7 +203,12 @@ TEXT = {
   ],
   "note": "[デプロイの境界](docs/DEPLOYMENT_BOUNDARY.md)を参照。",
   "fit": "ARMOR-DEVOPS は、他のすべてがマシンに載り、最新に保たれる手段です。CM5 テストベンチにサーバー、Studio、ネットワークノード、観察・音声サービス、ブローカーをインストールし、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*アップデート*タブが GitHub からインストールする各リリースのパッケージを作り、Studio が root で動くことなく設備を更新しサービスを管理できるようにする 2 つの小さなヘルパーを保持します。",
-  "hardware": "他のソフトウェアも載る実際の CM5 で CM5 テストベンチを日常的に運用。Jetson ではまだ"
+  "hardware": "他のソフトウェアも載る実際の CM5 で CM5 テストベンチを日常的に運用。Jetson ではまだ",
+  "requirements": [
+   "Compose 付きの Docker Engine（コンテナ構成用）",
+   "CM5 または SSH で到達できる Debian 系のマシン（テストベンチ用）",
+   "デプロイを行うマシンの Bash、`ssh`、`tar`"
+  ]
  },
  "pt": {
   "tagline": "Implementação, a bancada de testes do CM5, as suas atualizações a partir do GitHub e a manutenção da instalação",
@@ -200,6 +230,11 @@ TEXT = {
   ],
   "note": "Veja a [fronteira de implementação](docs/DEPLOYMENT_BOUNDARY.md).",
   "fit": "O ARMOR-DEVOPS é como tudo o resto chega a uma máquina e se mantém atualizado. Instala o servidor, o Studio, o nó de rede, os serviços de observação e de voz e o broker na bancada de testes do CM5, faz os pacotes de cada versão que o separador *Atualizações* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) instala a partir do GitHub, e guarda os dois pequenos assistentes que deixam o Studio atualizar a instalação e gerir os seus serviços sem nunca correr como root.",
-  "hardware": "Faz correr a bancada de testes do CM5 em uso diário, num CM5 real que aloja outro software; ainda não no Jetson"
+  "hardware": "Faz correr a bancada de testes do CM5 em uso diário, num CM5 real que aloja outro software; ainda não no Jetson",
+  "requirements": [
+   "Docker Engine com Compose (para a topologia de contentores)",
+   "um CM5 ou qualquer máquina baseada em Debian acessível por SSH (para a bancada de testes)",
+   "Bash, `ssh` e `tar` na máquina que faz a instalação"
+  ]
  }
 }

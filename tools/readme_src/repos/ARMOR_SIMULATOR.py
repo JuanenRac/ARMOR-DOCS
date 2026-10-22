@@ -60,7 +60,10 @@ TEXT = {
   ],
   "note": "Opciones, escenarios y fallos completos: [uso](docs/USAGE.md).",
   "fit": "ARMOR-SIMULATOR es cómo se prueba el resto de la familia sin hardware: hace de nodo radar, de pasarela solar o de nodo eléctrico y envía sus mensajes a un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), con fallos que se pueden repetir, de modo que [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la app móvil se vean funcionando con una casa que no existe. Cada mensaje que hace se comprueba contra los contratos de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).",
-  "hardware": "No aplica: es el sustituto del hardware, usado en un ordenador"
+  "hardware": "No aplica: es el sustituto del hardware, usado en un ordenador",
+  "requirements": [
+   "Python 3.11+ (solo la biblioteca estándar)"
+  ]
  },
  "fr": {
   "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
@@ -76,7 +79,10 @@ TEXT = {
   ],
   "note": "Toutes les options, scénarios et pannes : [utilisation](docs/USAGE.md).",
   "fit": "ARMOR-SIMULATOR est la façon d'essayer le reste de la famille sans matériel : il joue le rôle d'un nœud radar, d'une passerelle solaire ou d'un nœud électrique et envoie leurs messages à un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), avec des pannes répétables, pour que [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'application mobile se voient fonctionner avec une maison qui n'existe pas. Chaque message qu'il fait est vérifié contre les contrats d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).",
-  "hardware": "Sans objet : c'est le substitut du matériel, utilisé sur un ordinateur"
+  "hardware": "Sans objet : c'est le substitut du matériel, utilisé sur un ordinateur",
+  "requirements": [
+   "Python 3.11+ (bibliothèque standard uniquement)"
+  ]
  },
  "it": {
   "tagline": "Simulatore di telemetria offline con guasti ripetibili",
@@ -92,7 +98,10 @@ TEXT = {
   ],
   "note": "Tutte le opzioni, gli scenari e i guasti: [uso](docs/USAGE.md).",
   "fit": "ARMOR-SIMULATOR è il modo per provare il resto della famiglia senza hardware: fa la parte di un nodo radar, di un gateway solare o di un nodo elettrico e invia i loro messaggi a un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), con guasti ripetibili, così [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e l'app mobile si vedono funzionare con una casa che non esiste. Ogni messaggio che produce è controllato contro i contratti di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).",
-  "hardware": "Non applicabile: è il sostituto dell'hardware, usato su un computer"
+  "hardware": "Non applicabile: è il sostituto dell'hardware, usato su un computer",
+  "requirements": [
+   "Python 3.11+ (solo la libreria standard)"
+  ]
  },
  "de": {
   "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
@@ -108,7 +117,10 @@ TEXT = {
   ],
   "note": "Alle Optionen, Szenarien und Fehler: [Verwendung](docs/USAGE.md).",
   "fit": "ARMOR-SIMULATOR ist die Art, den Rest der Familie ohne Hardware auszuprobieren: Er spielt die Rolle eines Radarknotens, eines Solar-Gateways oder eines Elektroknotens und sendet deren Nachrichten an einen [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), mit wiederholbaren Fehlern, sodass [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) und die Handy-App mit einem Haus, das es nicht gibt, arbeiten. Jede erzeugte Nachricht wird gegen die Verträge von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) geprüft.",
-  "hardware": "Nicht zutreffend: er ist der Hardware-Ersatz, auf einem Computer benutzt"
+  "hardware": "Nicht zutreffend: er ist der Hardware-Ersatz, auf einem Computer benutzt",
+  "requirements": [
+   "Python 3.11+ (nur die Standardbibliothek)"
+  ]
  },
  "zh": {
   "tagline": "带可重复故障的离线遥测模拟器",
@@ -124,7 +136,10 @@ TEXT = {
   ],
   "note": "完整的选项、场景和故障：[用法](docs/USAGE.md)。",
   "fit": "ARMOR-SIMULATOR 让家族的其他部分无需硬件就能试用：它扮演雷达节点、太阳能网关或电气节点，把它们的消息发给 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)，故障可重复，这样就能看到 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 和手机应用在一个并不存在的住宅上运行。它生成的每条消息都对照 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的契约检查。",
-  "hardware": "不适用：它是硬件的替身，在计算机上使用"
+  "hardware": "不适用：它是硬件的替身，在计算机上使用",
+  "requirements": [
+   "Python 3.11+（仅标准库）"
+  ]
  },
  "ja": {
   "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
@@ -140,7 +155,10 @@ TEXT = {
   ],
   "note": "全オプション、シナリオ、故障：[使い方](docs/USAGE.md)。",
   "fit": "ARMOR-SIMULATOR は、ハードウェアなしでファミリーの他の部分を試す手段です。レーダーノード、ソーラーゲートウェイ、電気ノードの役を演じてそのメッセージを [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送り、再現できる故障も起こせるため、存在しない家で [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) とスマートフォンアプリが動く様子を見られます。生成するメッセージはすべて [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) のコントラクトで検査されます。",
-  "hardware": "該当なし：ハードウェアの代役で、コンピューター上で使います"
+  "hardware": "該当なし：ハードウェアの代役で、コンピューター上で使います",
+  "requirements": [
+   "Python 3.11+（標準ライブラリのみ）"
+  ]
  },
  "pt": {
   "tagline": "Simulador de telemetria offline com falhas repetíveis",
@@ -156,6 +174,9 @@ TEXT = {
   ],
   "note": "Opções, cenários e falhas completos: [utilização](docs/USAGE.md).",
   "fit": "O ARMOR-SIMULATOR é a forma de experimentar o resto da família sem hardware: faz de nó radar, de porta de ligação solar ou de nó elétrico e envia as suas mensagens para um [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), com falhas repetíveis, para que o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e a aplicação móvel se vejam a funcionar com uma casa que não existe. Cada mensagem que faz é verificada contra os contratos do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).",
-  "hardware": "Não se aplica: é o substituto do hardware, usado num computador"
+  "hardware": "Não se aplica: é o substituto do hardware, usado num computador",
+  "requirements": [
+   "Python 3.11+ (apenas a biblioteca padrão)"
+  ]
  }
 }

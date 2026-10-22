@@ -54,7 +54,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS es la memoria de la familia: es donde viven la arquitectura, la base de seguridad y la matriz de capacidades, y el lugar que dice, de cada repositorio, qué ha corrido de verdad en hardware. También guarda la herramienta que escribe los README de los dieciocho repositorios desde una sola fuente, para que los ocho idiomas no se separen.",
-  "hardware": "No aplica: es documentación; registra lo que los demás repositorios han corrido en hardware real"
+  "hardware": "No aplica: es documentación; registra lo que los demás repositorios han corrido en hardware real",
+  "requirements": [
+   "Python 3.11+ para las herramientas"
+  ]
  },
  "fr": {
   "tagline": "Architecture canonique, base de sécurité et vérité sur ce qui est prouvé",
@@ -70,7 +73,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS est la mémoire de la famille : c'est là que vivent l'architecture, la base de sécurité et la matrice de capacités, et l'endroit qui dit, pour chaque dépôt, ce qui a vraiment tourné sur du matériel. Il garde aussi l'outil qui écrit les README des dix-huit dépôts à partir d'une seule source, pour que les huit langues ne dérivent pas.",
-  "hardware": "Sans objet : c'est de la documentation ; elle consigne ce que les autres dépôts ont fait tourner sur du matériel réel"
+  "hardware": "Sans objet : c'est de la documentation ; elle consigne ce que les autres dépôts ont fait tourner sur du matériel réel",
+  "requirements": [
+   "Python 3.11+ pour les outils"
+  ]
  },
  "it": {
   "tagline": "Architettura canonica, base di sicurezza e la verità su ciò che è provato",
@@ -86,7 +92,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS è la memoria della famiglia: è dove vivono l'architettura, la base di sicurezza e la matrice delle capacità, e il luogo che dice, per ogni repository, cosa ha davvero girato su hardware. Tiene anche lo strumento che scrive i README di tutti e diciotto i repository da un'unica fonte, perché le otto lingue non divergano.",
-  "hardware": "Non applicabile: è documentazione; registra ciò che gli altri repository hanno fatto girare su hardware reale"
+  "hardware": "Non applicabile: è documentazione; registra ciò che gli altri repository hanno fatto girare su hardware reale",
+  "requirements": [
+   "Python 3.11+ per gli strumenti"
+  ]
  },
  "de": {
   "tagline": "Kanonische Architektur, Sicherheitsgrundlage und die Wahrheit darüber, was belegt ist",
@@ -102,7 +111,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS ist das Gedächtnis der Familie: Hier leben die Architektur, die Sicherheitsgrundlage und die Fähigkeitsmatrix, und es ist der Ort, der für jedes Repository sagt, was wirklich auf Hardware gelaufen ist. Es hält auch das Werkzeug, das die READMEs aller achtzehn Repositorys aus einer Quelle schreibt, damit die acht Sprachen nicht auseinanderlaufen.",
-  "hardware": "Nicht zutreffend: es ist Dokumentation; sie hält fest, was die anderen Repositorys auf echter Hardware ausgeführt haben"
+  "hardware": "Nicht zutreffend: es ist Dokumentation; sie hält fest, was die anderen Repositorys auf echter Hardware ausgeführt haben",
+  "requirements": [
+   "Python 3.11+ für die Werkzeuge"
+  ]
  },
  "zh": {
   "tagline": "规范的架构、安全基线，以及关于哪些已被证实的真相",
@@ -118,7 +130,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里，也是说明每个仓库究竟在硬件上运行过什么的地方。它还保存着从同一个来源编写全部十八个仓库 README 的工具，使八种语言不会各行其是。",
-  "hardware": "不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容"
+  "hardware": "不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容",
+  "requirements": [
+   "用于工具的 Python 3.11+"
+  ]
  },
  "ja": {
   "tagline": "正典のアーキテクチャ、セキュリティ基準、そして何が実証されているかの真実",
@@ -134,7 +149,10 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュリティベースライン、能力マトリクスがここにあり、各リポジトリで実際に実機で動いたものを示す場所です。18 のリポジトリすべての README を 1 つのソースから書くツールもここにあり、8 言語がずれないようにしています。",
-  "hardware": "該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します"
+  "hardware": "該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します",
+  "requirements": [
+   "ツール用の Python 3.11+"
+  ]
  },
  "pt": {
   "tagline": "Arquitetura canónica, linha de base de segurança e a verdade sobre o que está provado",
@@ -150,6 +168,9 @@ TEXT = {
   ],
   "intro": "<p align=\"center\">\n  <img src=\"images/ARMOR_FAMILY.svg\" alt=\"A.R.M.O.R. family\" width=\"100%\">\n</p>",
   "fit": "O ARMOR-DOCS é a memória da família: é onde vivem a arquitetura, a base de segurança e a matriz de capacidades, e o sítio que diz, de cada repositório, o que correu mesmo em hardware. Guarda também a ferramenta que escreve os README dos dezoito repositórios a partir de uma só fonte, para que os oito idiomas não se separem.",
-  "hardware": "Não se aplica: é documentação; regista o que os outros repositórios correram em hardware real"
+  "hardware": "Não se aplica: é documentação; regista o que os outros repositórios correram em hardware real",
+  "requirements": [
+   "Python 3.11+ para as ferramentas"
+  ]
  }
 }

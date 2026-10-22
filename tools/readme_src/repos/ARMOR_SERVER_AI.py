@@ -61,7 +61,11 @@ TEXT = {
   ],
   "note": "Véanse el [límite de la inferencia](docs/INFERENCE_BOUNDARY.md) y el [servicio](docs/SERVICE.md).",
   "fit": "ARMOR-SERVER-AI es la parte que vigila el movimiento en las cámaras mientras la casa está armada. Nunca actúa: dice a [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) qué vio y por qué (movimiento y pistas de radar coincidentes es `high`), y el servidor decide qué hacer. Un modelo que reconozca a una persona, ejecutado en una Jetson, es el siguiente paso; [ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) guarda las zonas, máscaras y reglas que usará ese modelo.",
-  "hardware": "Corriendo como servicio en el banco de pruebas de la CM5 con las cámaras IP reales (solo movimiento); nada en una Jetson"
+  "hardware": "Corriendo como servicio en el banco de pruebas de la CM5 con las cámaras IP reales (solo movimiento); nada en una Jetson",
+  "requirements": [
+   "Python 3.11+",
+   "opcional: una Jetson Orin NX con motores TensorRT (sin probar)"
+  ]
  },
  "fr": {
   "tagline": "Service d'observation : le mouvement sur les caméras pesé avec les radars ; il décide et explique, n'actionne jamais",
@@ -77,7 +81,11 @@ TEXT = {
   ],
   "note": "Voir la [frontière de l'inférence](docs/INFERENCE_BOUNDARY.md) et le [service](docs/SERVICE.md).",
   "fit": "ARMOR-SERVER-AI est la partie qui surveille le mouvement sur les caméras pendant que la maison est armée. Il n'agit jamais : il dit à [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) ce qu'il a vu et pourquoi (mouvement et pistes radar concordants valent `high`), et le serveur décide quoi faire. Un modèle qui reconnaît une personne, exécuté sur un Jetson, est l'étape suivante ; [ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) garde les zones, masques et règles que ce modèle utilisera.",
-  "hardware": "Tourne comme service sur le banc de test CM5 avec les vraies caméras IP (mouvement seulement) ; rien sur un Jetson"
+  "hardware": "Tourne comme service sur le banc de test CM5 avec les vraies caméras IP (mouvement seulement) ; rien sur un Jetson",
+  "requirements": [
+   "Python 3.11+",
+   "facultatif : un Jetson Orin NX avec des moteurs TensorRT (non éprouvé)"
+  ]
  },
  "it": {
   "tagline": "Servizio di osservazione: il movimento sulle telecamere pesato con i radar; decide e spiega, non aziona mai",
@@ -93,7 +101,11 @@ TEXT = {
   ],
   "note": "Vedi il [confine dell'inferenza](docs/INFERENCE_BOUNDARY.md) e il [servizio](docs/SERVICE.md).",
   "fit": "ARMOR-SERVER-AI è la parte che sorveglia il movimento sulle telecamere mentre la casa è inserita. Non agisce mai: dice ad [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) cosa ha visto e perché (movimento e tracce radar concordi valgono `high`), e il server decide cosa fare. Un modello che riconosca una persona, eseguito su un Jetson, è il passo successivo; [ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) tiene le zone, le maschere e le regole che quel modello userà.",
-  "hardware": "Gira come servizio sul banco di prova CM5 con le vere telecamere IP (solo movimento); nulla su un Jetson"
+  "hardware": "Gira come servizio sul banco di prova CM5 con le vere telecamere IP (solo movimento); nulla su un Jetson",
+  "requirements": [
+   "Python 3.11+",
+   "facoltativo: un Jetson Orin NX con motori TensorRT (non provato)"
+  ]
  },
  "de": {
   "tagline": "Beobachtungsdienst: Bewegung auf den Kameras, gegen die Radare abgewogen; er entscheidet und erklärt, schaltet nie",
@@ -109,7 +121,11 @@ TEXT = {
   ],
   "note": "Siehe die [Inferenzgrenze](docs/INFERENCE_BOUNDARY.md) und den [Dienst](docs/SERVICE.md).",
   "fit": "ARMOR-SERVER-AI ist der Teil, der die Kameras auf Bewegung beobachtet, solange das Haus scharf ist. Er handelt nie: Er sagt [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), was er gesehen hat und warum (übereinstimmende Bewegung und Radarspuren ergeben `high`), und der Server entscheidet, was zu tun ist. Ein Modell, das eine Person erkennt, auf einem Jetson ausgeführt, ist der nächste Schritt; [ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) hält die Zonen, Masken und Regeln, die dieses Modell nutzen wird.",
-  "hardware": "Läuft als Dienst am CM5-Testaufbau mit den echten IP-Kameras (nur Bewegung); nichts auf einem Jetson"
+  "hardware": "Läuft als Dienst am CM5-Testaufbau mit den echten IP-Kameras (nur Bewegung); nichts auf einem Jetson",
+  "requirements": [
+   "Python 3.11+",
+   "optional: ein Jetson Orin NX mit TensorRT-Engines (nicht erprobt)"
+  ]
  },
  "zh": {
   "tagline": "观察服务：把摄像头上的移动与雷达对照权衡；它做出决定并给出解释，从不执行动作",
@@ -125,7 +141,11 @@ TEXT = {
   ],
   "note": "参见[推理边界](docs/INFERENCE_BOUNDARY.md)和[服务](docs/SERVICE.md)。",
   "fit": "ARMOR-SERVER-AI 是在住宅布防时观察摄像头移动的部分。它从不行动：它告诉 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 它看到了什么以及原因（移动与雷达轨迹一致即为 `high`），由服务器决定怎么做。下一步是在 Jetson 上运行能识别人的模型；[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) 保存该模型将使用的区域、遮罩和规则。",
-  "hardware": "在 CM5 测试台上用真实 IP 摄像头作为服务运行（仅移动）；Jetson 上没有任何东西"
+  "hardware": "在 CM5 测试台上用真实 IP 摄像头作为服务运行（仅移动）；Jetson 上没有任何东西",
+  "requirements": [
+   "Python 3.11+",
+   "可选：带 TensorRT 引擎的 Jetson Orin NX（未经验证）"
+  ]
  },
  "ja": {
   "tagline": "観察サービス：カメラ上の動きをレーダーと照らし合わせます。判断して説明するだけで、決して動作させません",
@@ -141,7 +161,11 @@ TEXT = {
   ],
   "note": "[推論の境界](docs/INFERENCE_BOUNDARY.md)と[サービス](docs/SERVICE.md)を参照してください。",
   "fit": "ARMOR-SERVER-AI は家が警戒中にカメラの動きを見張る部分です。決して動作せず、何を見たかとその理由（動きとレーダーの軌跡が一致すれば `high`）を [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に伝え、サーバーが何をするかを決めます。次の段階は、Jetson で動く人を認識するモデルで、[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) がそのモデルが使うゾーン、マスク、ルールを保持します。",
-  "hardware": "CM5 テストベンチで実際の IP カメラとともにサービスとして動作（動きのみ）。Jetson 上では何もありません"
+  "hardware": "CM5 テストベンチで実際の IP カメラとともにサービスとして動作（動きのみ）。Jetson 上では何もありません",
+  "requirements": [
+   "Python 3.11+",
+   "任意：TensorRT エンジンを載せた Jetson Orin NX（未検証）"
+  ]
  },
  "pt": {
   "tagline": "Serviço de observação: o movimento nas câmaras pesado com os radares; decide e explica, nunca aciona",
@@ -157,6 +181,10 @@ TEXT = {
   ],
   "note": "Veja o [limite da inferência](docs/INFERENCE_BOUNDARY.md) e o [serviço](docs/SERVICE.md).",
   "fit": "O ARMOR-SERVER-AI é a parte que vigia o movimento nas câmaras enquanto a casa está armada. Nunca age: diz ao [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) o que viu e porquê (movimento e pistas de radar coincidentes é `high`), e o servidor decide o que fazer. Um modelo que reconheça uma pessoa, executado num Jetson, é o passo seguinte; o [ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION) guarda as zonas, máscaras e regras que esse modelo usará.",
-  "hardware": "A correr como serviço na bancada de testes do CM5 com as câmaras IP reais (só movimento); nada num Jetson"
+  "hardware": "A correr como serviço na bancada de testes do CM5 com as câmaras IP reais (só movimento); nada num Jetson",
+  "requirements": [
+   "Python 3.11+",
+   "opcional: um Jetson Orin NX com motores TensorRT (não comprovado)"
+  ]
  }
 }

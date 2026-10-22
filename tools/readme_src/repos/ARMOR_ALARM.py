@@ -84,7 +84,13 @@ TEXT = {
   ],
   "note": "Véanse [el diseño](docs/DESIGN.md), [cómo la central toma el relevo del servidor](docs/FAILOVER.md) y las [notas de seguridad](docs/SAFETY.md).",
   "hardware": "Ninguno todavía: ninguna placa, zona, sirena ni coordinador Zigbee conectados (solo tests en ordenador, la compilación y el panel en un navegador)",
-  "fit": "ARMOR-ALARM es la central de alarma: las zonas, el armado, los retardos, la sirena y el PIN se deciden en el propio nodo, así que la casa sigue vigilada cuando el servidor no está. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la muestra, ata sensores Zigbee a sus zonas y, cuando lo permites, la arma y desarma; el menú *Centrales de alarma* y el *Diseñador de alarma* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la manejan. Su radio Zigbee puede estar en la placa o ser un coordinador en la red."
+  "fit": "ARMOR-ALARM es la central de alarma: las zonas, el armado, los retardos, la sirena y el PIN se deciden en el propio nodo, así que la casa sigue vigilada cuando el servidor no está. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la muestra, ata sensores Zigbee a sus zonas y, cuando lo permites, la arma y desarma; el menú *Centrales de alarma* y el *Diseñador de alarma* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la manejan. Su radio Zigbee puede estar en la placa o ser un coordinador en la red.",
+  "requirements": [
+   "un compilador de C++17 para las pruebas en el PC",
+   "el contenedor de ESP-IDF 5.4 para compilar la imagen",
+   "una placa ESP32-S3 (Ethernet con PoE o Wi-Fi)"
+  ],
+  "tests": "486.098 comprobaciones en 13 programas (`ctest`)"
  },
  "fr": {
   "tagline": "Nœud et centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le code PIN de l'alarme de la maison, avec le firmware du nœud et les règles testées sur un ordinateur (rien n'a tourné sur une carte)",
@@ -111,7 +117,13 @@ TEXT = {
   ],
   "note": "Voir [la conception](docs/DESIGN.md), [comment la centrale prend le relais du serveur](docs/FAILOVER.md) et les [notes de sécurité](docs/SAFETY.md).",
   "hardware": "Aucun pour l'instant : ni carte, ni zone, ni sirène, ni coordinateur Zigbee connectés (seulement des tests sur ordinateur, la compilation et le panneau dans un navigateur)",
-  "fit": "ARMOR-ALARM est la centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le PIN se décident sur le nœud lui-même, si bien que la maison reste surveillée quand le serveur est absent. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la montre, lie des capteurs Zigbee à ses zones et, quand vous l'autorisez, l'arme et la désarme ; le menu *Centrales d'alarme* et le *Concepteur d'alarme* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'application [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la pilotent. Sa radio Zigbee peut être sur la carte ou un coordinateur sur le réseau."
+  "fit": "ARMOR-ALARM est la centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le PIN se décident sur le nœud lui-même, si bien que la maison reste surveillée quand le serveur est absent. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la montre, lie des capteurs Zigbee à ses zones et, quand vous l'autorisez, l'arme et la désarme ; le menu *Centrales d'alarme* et le *Concepteur d'alarme* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'application [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la pilotent. Sa radio Zigbee peut être sur la carte ou un coordinateur sur le réseau.",
+  "requirements": [
+   "un compilateur C++17 pour les tests sur l'ordinateur",
+   "le conteneur ESP-IDF 5.4 pour compiler l'image",
+   "une carte ESP32-S3 (Ethernet PoE ou Wi-Fi)"
+  ],
+  "tests": "486 098 vérifications dans 13 programmes (`ctest`)"
  },
  "it": {
   "tagline": "Nodo e centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN dell'allarme di casa, con il firmware del nodo e le regole provate su un computer (nulla ha girato su una scheda)",
@@ -138,7 +150,13 @@ TEXT = {
   ],
   "note": "Vedi [il progetto](docs/DESIGN.md), [come la centrale subentra al server](docs/FAILOVER.md) e le [note di sicurezza](docs/SAFETY.md).",
   "hardware": "Ancora nessuno: nessuna scheda, zona, sirena o coordinatore Zigbee collegati (solo test su computer, la compilazione e il pannello in un browser)",
-  "fit": "ARMOR-ALARM è la centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN si decidono sul nodo stesso, così la casa resta sorvegliata quando il server è assente. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la mostra, lega sensori Zigbee alle sue zone e, quando lo permetti, la inserisce e disinserisce; il menu *Centrali d'allarme* e il *Progettista dell'allarme* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e l'app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la comandano. La sua radio Zigbee può essere sulla scheda o un coordinatore in rete."
+  "fit": "ARMOR-ALARM è la centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN si decidono sul nodo stesso, così la casa resta sorvegliata quando il server è assente. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) la mostra, lega sensori Zigbee alle sue zone e, quando lo permetti, la inserisce e disinserisce; il menu *Centrali d'allarme* e il *Progettista dell'allarme* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e l'app [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) la comandano. La sua radio Zigbee può essere sulla scheda o un coordinatore in rete.",
+  "requirements": [
+   "un compilatore C++17 per i test sul computer",
+   "il container ESP-IDF 5.4 per compilare l'immagine",
+   "una scheda ESP32-S3 (Ethernet PoE o Wi-Fi)"
+  ],
+  "tests": "486.098 controlli in 13 programmi (`ctest`)"
  },
  "de": {
   "tagline": "Alarmknoten und Alarmzentrale: die Zonen, das Scharfschalten, die Verzögerungen, die Sirene und die PIN der Hausalarmanlage, mit der Firmware des Knotens und den auf einem Rechner getesteten Regeln (nichts lief auf einer Platine)",
@@ -165,7 +183,13 @@ TEXT = {
   ],
   "note": "Siehe [den Entwurf](docs/DESIGN.md), [wie die Zentrale vom Server übernimmt](docs/FAILOVER.md) und die [Sicherheitshinweise](docs/SAFETY.md).",
   "hardware": "Noch keiner: keine Platine, Zone, Sirene oder kein Zigbee-Koordinator angeschlossen (nur Computertests, der Build und das Panel im Browser)",
-  "fit": "ARMOR-ALARM ist die Alarmzentrale: Zonen, Scharfschalten, Verzögerungen, Sirene und PIN werden auf dem Knoten selbst entschieden, sodass das Haus bewacht bleibt, wenn der Server fehlt. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) zeigt sie, ordnet Zigbee-Sensoren ihren Zonen zu und schaltet sie, wenn Sie es erlauben, scharf und unscharf; das Menü *Alarmzentralen* und der *Alarm-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie die App [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) steuern sie. Ihr Zigbee-Funkmodul kann auf der Platine sein oder ein Koordinator im Netzwerk."
+  "fit": "ARMOR-ALARM ist die Alarmzentrale: Zonen, Scharfschalten, Verzögerungen, Sirene und PIN werden auf dem Knoten selbst entschieden, sodass das Haus bewacht bleibt, wenn der Server fehlt. [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) zeigt sie, ordnet Zigbee-Sensoren ihren Zonen zu und schaltet sie, wenn Sie es erlauben, scharf und unscharf; das Menü *Alarmzentralen* und der *Alarm-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie die App [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) steuern sie. Ihr Zigbee-Funkmodul kann auf der Platine sein oder ein Koordinator im Netzwerk.",
+  "requirements": [
+   "ein C++17-Compiler für die Host-Tests",
+   "der ESP-IDF-5.4-Container zum Bauen des Images",
+   "eine ESP32-S3-Platine (PoE-Ethernet oder WLAN)"
+  ],
+  "tests": "486.098 Prüfungen in 13 Programmen (`ctest`)"
  },
  "zh": {
   "tagline": "报警节点与报警主机：住宅报警的防区、布防、延时、警笛和 PIN，含节点固件和在电脑上测试过的规则（没有在电路板上运行过）",
@@ -192,7 +216,13 @@ TEXT = {
   ],
   "note": "参见[设计](docs/DESIGN.md)、[主机如何接替服务器](docs/FAILOVER.md)和[安全说明](docs/SAFETY.md)。",
   "hardware": "暂无：没有连接板子、防区、警笛或 Zigbee 协调器（仅有计算机测试、构建和浏览器中的面板）",
-  "fit": "ARMOR-ALARM 是报警主机：防区、布防、延时、警笛和 PIN 都在节点自身上决定，因此服务器不在时住宅仍受守护。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 显示它，把 Zigbee 传感器绑定到其防区，并在你允许时对它布防和撤防；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*报警主机*菜单和*报警设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 应用可控制它。它的 Zigbee 无线电可以在板上，也可以是网络上的协调器。"
+  "fit": "ARMOR-ALARM 是报警主机：防区、布防、延时、警笛和 PIN 都在节点自身上决定，因此服务器不在时住宅仍受守护。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 显示它，把 Zigbee 传感器绑定到其防区，并在你允许时对它布防和撤防；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*报警主机*菜单和*报警设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 应用可控制它。它的 Zigbee 无线电可以在板上，也可以是网络上的协调器。",
+  "requirements": [
+   "用于主机测试的 C++17 编译器",
+   "用于构建镜像的 ESP-IDF 5.4 容器",
+   "ESP32-S3 开发板（PoE 以太网或 Wi-Fi）"
+  ],
+  "tests": "13 个程序中的 486,098 项检查（`ctest`）"
  },
  "ja": {
   "tagline": "警報ノードと警報盤：住宅の警報の警戒区域、警戒セット、遅延、サイレン、PIN を、ノードのファームウェアとコンピューターでテストしたルールを含みます（基板では動作していません）",
@@ -219,7 +249,13 @@ TEXT = {
   ],
   "note": "[設計](docs/DESIGN.md)、[警報盤がサーバーから引き継ぐ方法](docs/FAILOVER.md)、[安全に関する注意](docs/SAFETY.md)を参照してください。",
   "hardware": "まだありません：基板、警戒区域、サイレン、Zigbee コーディネーターはいずれも未接続（コンピューター上のテスト、ビルド、ブラウザーでのパネルのみ）",
-  "fit": "ARMOR-ALARM は警報盤です。警戒区域、警戒、遅延、サイレン、PIN はノード自身で判断されるため、サーバーがいなくても家は守られます。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) がこれを表示し、Zigbee センサーをゾーンに結び付け、許可すれば警戒・解除も行います。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*警報盤*メニューと*警報デザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) アプリが操作します。Zigbee 無線は基板上でも、ネットワーク上のコーディネーターでも構いません。"
+  "fit": "ARMOR-ALARM は警報盤です。警戒区域、警戒、遅延、サイレン、PIN はノード自身で判断されるため、サーバーがいなくても家は守られます。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) がこれを表示し、Zigbee センサーをゾーンに結び付け、許可すれば警戒・解除も行います。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*警報盤*メニューと*警報デザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) アプリが操作します。Zigbee 無線は基板上でも、ネットワーク上のコーディネーターでも構いません。",
+  "requirements": [
+   "ホストテスト用の C++17 コンパイラ",
+   "イメージをビルドするための ESP-IDF 5.4 コンテナ",
+   "ESP32-S3 ボード（PoE イーサネットまたは Wi-Fi）"
+  ],
+  "tests": "13 個のプログラムで 486,098 件のチェック（`ctest`）"
  },
  "pt": {
   "tagline": "Nó e central de alarme: as zonas, a armação, os atrasos, a sirene e o PIN do alarme da casa, com o firmware do nó e as regras testadas num computador (nada correu numa placa)",
@@ -246,6 +282,12 @@ TEXT = {
   ],
   "note": "Veja o [desenho](docs/DESIGN.md), [como a central toma o lugar do servidor](docs/FAILOVER.md) e as [notas de segurança](docs/SAFETY.md).",
   "hardware": "Nenhum ainda: nenhuma placa, zona, sirene ou coordenador Zigbee ligados (só testes no computador, a compilação e o painel num navegador)",
-  "fit": "O ARMOR-ALARM é a central de alarme: as zonas, o armar, os atrasos, a sirene e o PIN decidem-se no próprio nó, por isso a casa continua vigiada quando o servidor não está. O [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) mostra-a, liga sensores Zigbee às suas zonas e, quando o permitir, arma-a e desarma-a; o menu *Centrais de alarme* e o *Desenhador de alarme* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e a aplicação [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) comandam-na. O seu rádio Zigbee pode estar na placa ou ser um coordenador na rede."
+  "fit": "O ARMOR-ALARM é a central de alarme: as zonas, o armar, os atrasos, a sirene e o PIN decidem-se no próprio nó, por isso a casa continua vigiada quando o servidor não está. O [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) mostra-a, liga sensores Zigbee às suas zonas e, quando o permitir, arma-a e desarma-a; o menu *Centrais de alarme* e o *Desenhador de alarme* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e a aplicação [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) comandam-na. O seu rádio Zigbee pode estar na placa ou ser um coordenador na rede.",
+  "requirements": [
+   "um compilador de C++17 para os testes no computador",
+   "o contentor ESP-IDF 5.4 para compilar a imagem",
+   "uma placa ESP32-S3 (Ethernet com PoE ou Wi-Fi)"
+  ],
+  "tests": "486 098 verificações em 13 programas (`ctest`)"
  }
 }

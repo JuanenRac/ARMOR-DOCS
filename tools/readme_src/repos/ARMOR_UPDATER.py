@@ -69,7 +69,12 @@ TEXT = {
   ],
   "note": "Véase `docs/CLI_REFERENCE.md`.",
   "fit": "ARMOR-UPDATER es la herramienta de escritorio para quien guarda una copia de la familia en un PC: encuentra los repositorios A.R.M.O.R. de la máquina, los compara con GitHub e instala o actualiza uno a uno, verificando antes de sustituir nada. Es distinta de las actualizaciones que [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) gobierna en la CM5 (esas pasan por [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)): esta es para la máquina de un desarrollador.",
-  "hardware": "No aplica: es un programa de escritorio; su interfaz Qt Quick se ha ejecutado en Windows"
+  "hardware": "No aplica: es un programa de escritorio; su interfaz Qt Quick se ha ejecutado en Windows",
+  "requirements": [
+   "Python 3.10+",
+   "`git` y las herramientas de compilación de los repositorios que instales",
+   "opcional: PySide6 para la interfaz de escritorio"
+  ]
  },
  "fr": {
   "tagline": "Détecte, installe et met à jour chaque dépôt A.R.M.O.R. sur la machine où il tourne (un programme Python sans dépendance obligatoire)",
@@ -86,7 +91,12 @@ TEXT = {
   ],
   "note": "Voir `docs/CLI_REFERENCE.md`.",
   "fit": "ARMOR-UPDATER est l'outil de bureau pour qui garde une copie de la famille sur un PC : il trouve les dépôts A.R.M.O.R. de la machine, les compare à GitHub et installe ou met à jour un par un, en vérifiant avant de remplacer quoi que ce soit. Il est distinct des mises à jour qu'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) pilote sur le CM5 (celles-ci passent par [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)) : celui-ci est pour la machine d'un développeur.",
-  "hardware": "Sans objet : c'est un programme de bureau ; son interface Qt Quick a été exécutée sous Windows"
+  "hardware": "Sans objet : c'est un programme de bureau ; son interface Qt Quick a été exécutée sous Windows",
+  "requirements": [
+   "Python 3.10+",
+   "`git` et les outils de compilation des dépôts que vous installez",
+   "facultatif : PySide6 pour l'interface de bureau"
+  ]
  },
  "it": {
   "tagline": "Rileva, installa e aggiorna ogni repository A.R.M.O.R. sulla macchina in cui gira (un programma Python senza dipendenze obbligatorie)",
@@ -103,7 +113,12 @@ TEXT = {
   ],
   "note": "Vedi `docs/CLI_REFERENCE.md`.",
   "fit": "ARMOR-UPDATER è lo strumento da scrivania per chi tiene una copia della famiglia su un PC: trova i repository A.R.M.O.R. della macchina, li confronta con GitHub e installa o aggiorna uno alla volta, verificando prima di sostituire qualcosa. È distinto dagli aggiornamenti che [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) guida sulla CM5 (quelli passano per [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)): questo è per la macchina di uno sviluppatore.",
-  "hardware": "Non applicabile: è un programma da scrivania; la sua interfaccia Qt Quick è stata eseguita su Windows"
+  "hardware": "Non applicabile: è un programma da scrivania; la sua interfaccia Qt Quick è stata eseguita su Windows",
+  "requirements": [
+   "Python 3.10+",
+   "`git` e gli strumenti di compilazione dei repository che installi",
+   "facoltativo: PySide6 per l'interfaccia desktop"
+  ]
  },
  "de": {
   "tagline": "Erkennt, installiert und aktualisiert jedes A.R.M.O.R.-Repository auf dem Rechner, auf dem es läuft (ein Python-Programm ohne Pflichtabhängigkeiten)",
@@ -120,7 +135,12 @@ TEXT = {
   ],
   "note": "Siehe `docs/CLI_REFERENCE.md`.",
   "fit": "ARMOR-UPDATER ist das Desktop-Werkzeug für alle, die eine Kopie der Familie auf einem PC halten: Es findet die A.R.M.O.R.-Repositorys der Maschine, vergleicht sie mit GitHub und installiert oder aktualisiert eines nach dem anderen und prüft, bevor es etwas ersetzt. Es ist getrennt von den Updates, die [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) auf dem CM5 steuert (die laufen über [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)): dieses ist für die Maschine eines Entwicklers.",
-  "hardware": "Nicht zutreffend: es ist ein Desktop-Programm; seine Qt-Quick-Oberfläche wurde unter Windows ausgeführt"
+  "hardware": "Nicht zutreffend: es ist ein Desktop-Programm; seine Qt-Quick-Oberfläche wurde unter Windows ausgeführt",
+  "requirements": [
+   "Python 3.10+",
+   "`git` und die Build-Werkzeuge der Repositories, die Sie installieren",
+   "optional: PySide6 für die Desktop-Oberfläche"
+  ]
  },
  "zh": {
   "tagline": "检测、安装并更新所在机器上的每个 A.R.M.O.R. 仓库（一个没有必需依赖的 Python 程序）",
@@ -137,7 +157,12 @@ TEXT = {
   ],
   "note": "参见 `docs/CLI_REFERENCE.md`。",
   "fit": "ARMOR-UPDATER 是为在 PC 上保存家族副本的人准备的桌面工具：它找出机器上的 A.R.M.O.R. 仓库，与 GitHub 对比，并逐个安装或更新，替换任何东西之前都先验证。它与 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 在 CM5 上驱动的更新不同（那些经过 [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)）：这个是给开发者的机器用的。",
-  "hardware": "不适用：这是桌面程序；其 Qt Quick 界面已在 Windows 上运行过"
+  "hardware": "不适用：这是桌面程序；其 Qt Quick 界面已在 Windows 上运行过",
+  "requirements": [
+   "Python 3.10+",
+   "`git` 以及你所安装仓库的构建工具",
+   "可选：用于桌面界面的 PySide6"
+  ]
  },
  "ja": {
   "tagline": "実行中のマシン上のすべての A.R.M.O.R. リポジトリを検出し、インストールし、更新します（必須の依存関係がない Python プログラム）",
@@ -154,7 +179,12 @@ TEXT = {
   ],
   "note": "`docs/CLI_REFERENCE.md` を参照してください。",
   "fit": "ARMOR-UPDATER は、PC にファミリーのコピーを持つ人のためのデスクトップツールです。マシン上の A.R.M.O.R. リポジトリを見つけ、GitHub と比較し、何かを置き換える前に検証しながら 1 つずつインストール・更新します。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) が CM5 上で行う更新（[ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS) を通るもの）とは別で、これは開発者のマシン用です。",
-  "hardware": "該当なし：デスクトッププログラムで、Qt Quick シェルは Windows で動かしました"
+  "hardware": "該当なし：デスクトッププログラムで、Qt Quick シェルは Windows で動かしました",
+  "requirements": [
+   "Python 3.10+",
+   "`git` と、インストールするリポジトリのビルドツール",
+   "任意：デスクトップシェル用の PySide6"
+  ]
  },
  "pt": {
   "tagline": "Deteta, instala e atualiza cada repositório A.R.M.O.R. na máquina onde corre (um programa em Python sem dependências obrigatórias)",
@@ -171,6 +201,11 @@ TEXT = {
   ],
   "note": "Veja `docs/CLI_REFERENCE.md`.",
   "fit": "O ARMOR-UPDATER é a ferramenta de ambiente de trabalho para quem guarda uma cópia da família num PC: encontra os repositórios A.R.M.O.R. da máquina, compara-os com o GitHub e instala ou atualiza um a um, verificando antes de substituir seja o que for. É distinto das atualizações que o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) comanda no CM5 (essas passam pelo [ARMOR-DEVOPS](https://github.com/JuanenRac/ARMOR-DEVOPS)): este é para a máquina de um programador.",
-  "hardware": "Não se aplica: é um programa de ambiente de trabalho; a sua interface Qt Quick foi executada no Windows"
+  "hardware": "Não se aplica: é um programa de ambiente de trabalho; a sua interface Qt Quick foi executada no Windows",
+  "requirements": [
+   "Python 3.10+",
+   "`git` e as ferramentas de compilação dos repositórios que instalar",
+   "opcional: PySide6 para a interface de ambiente de trabalho"
+  ]
  }
 }

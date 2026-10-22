@@ -91,7 +91,12 @@ TEXT = {
   ],
   "note": "Las versiones se publican en GitHub, desde donde la propia app busca actualizaciones; el APK se firma con la clave de publicación propia del responsable, guardada fuera del repositorio, y la app compara el certificado de firma de una descarga con el suyo antes de pasar el archivo al instalador de Android. Véase el [límite del cliente](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usada en un móvil real contra el banco de pruebas de la CM5; las pantallas solar, eléctrica y de centrales de alarma esperan nodos reales",
-  "fit": "ARMOR-ANDROID-CONTROL es la ventana del móvil al mismo [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) que usa [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO): lee y ordena a través de él y de nada más. Es donde las alarmas te siguen (una central que suena despierta el móvil), donde preguntas al asistente por voz, y la herramienta para configurar un nodo nuevo por Bluetooth sobre el terreno, a su lado."
+  "fit": "ARMOR-ANDROID-CONTROL es la ventana del móvil al mismo [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) que usa [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO): lee y ordena a través de él y de nada más. Es donde las alarmas te siguen (una central que suena despierta el móvil), donde preguntas al asistente por voz, y la herramienta para configurar un nodo nuevo por Bluetooth sobre el terreno, a su lado.",
+  "requirements": [
+   "JDK 17+",
+   "el SDK de Android (compile SDK 37)",
+   "un móvil con Android 8.0+ (minSdk 26)"
+  ]
  },
  "fr": {
   "tagline": "Client mobile d'opérateur pour ARMOR-SERVER : alarmes, caméras, radar, énergie, réseau et configuration des nœuds, en huit langues",
@@ -119,7 +124,12 @@ TEXT = {
   ],
   "note": "Les versions sont publiées sur GitHub, d'où l'application cherche elle-même les mises à jour ; l'APK est signé avec la clé de publication propre du responsable, conservée hors du dépôt, et l'application compare le certificat de signature d'un téléchargement avec le sien avant de passer le fichier à l'installateur d'Android. Voir la [frontière du client](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Utilisée sur un vrai téléphone contre le banc de test CM5 ; les écrans solaire, électrique et centrales d'alarme attendent de vrais nœuds",
-  "fit": "ARMOR-ANDROID-CONTROL est la fenêtre du téléphone sur le même [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) qu'utilise [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) : il lit et ordonne par lui et rien d'autre. C'est là que les alarmes vous suivent (une centrale qui sonne réveille le téléphone), que vous interrogez l'assistant à la voix, et l'outil pour configurer un nouveau nœud en Bluetooth sur le terrain, à côté de lui."
+  "fit": "ARMOR-ANDROID-CONTROL est la fenêtre du téléphone sur le même [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) qu'utilise [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) : il lit et ordonne par lui et rien d'autre. C'est là que les alarmes vous suivent (une centrale qui sonne réveille le téléphone), que vous interrogez l'assistant à la voix, et l'outil pour configurer un nouveau nœud en Bluetooth sur le terrain, à côté de lui.",
+  "requirements": [
+   "JDK 17+",
+   "le SDK Android (compile SDK 37)",
+   "un téléphone Android 8.0+ (minSdk 26)"
+  ]
  },
  "it": {
   "tagline": "Client mobile da operatore per ARMOR-SERVER: allarmi, telecamere, radar, energia, la rete e la configurazione dei nodi, in otto lingue",
@@ -147,7 +157,12 @@ TEXT = {
   ],
   "note": "Le versioni sono pubblicate su GitHub, da dove l'app stessa cerca gli aggiornamenti; l'APK è firmato con la chiave di rilascio propria del responsabile, conservata fuori dal repository, e l'app confronta il certificato di firma di un download con il proprio prima di passare il file al programma di installazione di Android. Vedi il [confine del client](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usata su un vero telefono contro il banco di prova CM5; le schermate solare, elettrica e delle centrali d'allarme attendono nodi reali",
-  "fit": "ARMOR-ANDROID-CONTROL è la finestra del telefono sullo stesso [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) usato da [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO): legge e ordina attraverso di esso e nient'altro. È dove gli allarmi ti seguono (una centrale che suona sveglia il telefono), dove interroghi l'assistente a voce, e lo strumento per configurare un nuovo nodo via Bluetooth sul campo, accanto ad esso."
+  "fit": "ARMOR-ANDROID-CONTROL è la finestra del telefono sullo stesso [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) usato da [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO): legge e ordina attraverso di esso e nient'altro. È dove gli allarmi ti seguono (una centrale che suona sveglia il telefono), dove interroghi l'assistente a voce, e lo strumento per configurare un nuovo nodo via Bluetooth sul campo, accanto ad esso.",
+  "requirements": [
+   "JDK 17+",
+   "l'SDK Android (compile SDK 37)",
+   "un telefono Android 8.0+ (minSdk 26)"
+  ]
  },
  "de": {
   "tagline": "Mobiler Bediener-Client für ARMOR-SERVER: Alarme, Kameras, Radar, Energie, das Netzwerk und die Einrichtung der Knoten, in acht Sprachen",
@@ -175,7 +190,12 @@ TEXT = {
   ],
   "note": "Die Versionen werden auf GitHub veröffentlicht, von wo die App selbst nach Updates sucht; die APK ist mit dem eigenen Release-Schlüssel des Betreuers signiert, der außerhalb des Repositorys liegt, und die App vergleicht das Signaturzertifikat eines Downloads mit dem eigenen, bevor sie die Datei an das Installationsprogramm von Android übergibt. Siehe die [Client-Grenze](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Auf einem echten Telefon gegen den CM5-Testaufbau im Einsatz; die Solar-, Elektro- und Alarmzentralen-Bildschirme warten auf echte Knoten",
-  "fit": "ARMOR-ANDROID-CONTROL ist das Fenster des Telefons auf denselben [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), den auch [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) nutzt: Es liest und befiehlt nur über ihn. Hier folgen Ihnen die Alarme (eine läutende Alarmzentrale weckt das Telefon), hier fragen Sie den Assistenten per Sprache, und es ist das Werkzeug, um vor Ort einen neuen Knoten per Bluetooth einzurichten."
+  "fit": "ARMOR-ANDROID-CONTROL ist das Fenster des Telefons auf denselben [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), den auch [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) nutzt: Es liest und befiehlt nur über ihn. Hier folgen Ihnen die Alarme (eine läutende Alarmzentrale weckt das Telefon), hier fragen Sie den Assistenten per Sprache, und es ist das Werkzeug, um vor Ort einen neuen Knoten per Bluetooth einzurichten.",
+  "requirements": [
+   "JDK 17+",
+   "das Android-SDK (compile SDK 37)",
+   "ein Android-8.0+-Telefon (minSdk 26)"
+  ]
  },
  "zh": {
   "tagline": "ARMOR-SERVER 的移动操作端：报警、摄像头、雷达、能源、网络和节点设置，支持八种语言",
@@ -203,7 +223,12 @@ TEXT = {
   ],
   "note": "版本发布在 GitHub 上，应用自己会从那里检查更新；APK 使用维护者自己的发布密钥签名（密钥保存在仓库之外），应用在把文件交给 Android 安装程序之前，会先把下载文件的签名证书与自己的比对。参见[客户端边界](docs/CLIENT_BOUNDARY.md)。",
   "hardware": "在真实手机上对照 CM5 测试台使用；太阳能、电气和报警主机界面在等待真实节点",
-  "fit": "ARMOR-ANDROID-CONTROL 是手机上通往 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 所用的同一个 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 的窗口：它只通过服务器读取和下达命令。报警会跟着你（响起的报警主机会唤醒手机），你可以用语音询问助手，也可以在现场站在新节点旁通过蓝牙设置它。"
+  "fit": "ARMOR-ANDROID-CONTROL 是手机上通往 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 所用的同一个 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 的窗口：它只通过服务器读取和下达命令。报警会跟着你（响起的报警主机会唤醒手机），你可以用语音询问助手，也可以在现场站在新节点旁通过蓝牙设置它。",
+  "requirements": [
+   "JDK 17+",
+   "Android SDK（compile SDK 37）",
+   "Android 8.0+ 手机（minSdk 26）"
+  ]
  },
  "ja": {
   "tagline": "ARMOR-SERVER のモバイルオペレータークライアント：警報、カメラ、レーダー、エネルギー、ネットワーク、ノードの設定。8 言語対応",
@@ -231,7 +256,12 @@ TEXT = {
   ],
   "note": "リリースは GitHub で公開され、アプリ自身がそこから更新を確認します。APK は管理者自身のリリース用の鍵（リポジトリの外に保管）で署名されており、アプリはダウンロードしたファイルを Android のインストーラーに渡す前に、その署名証明書を自身のものと照合します。[クライアントの境界](docs/CLIENT_BOUNDARY.md)を参照してください。",
   "hardware": "実際のスマートフォンで CM5 テストベンチに対して使用。ソーラー・電気・警報盤の画面は実ノードを待っています",
-  "fit": "ARMOR-ANDROID-CONTROL は [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) と同じ [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) へのスマートフォンの窓口で、読み取りも指示もサーバーを通してのみ行います。警報があなたを追いかけ（鳴っている警報盤はスマートフォンを起こします）、アシスタントに声で尋ねられ、現場で新しいノードの横から Bluetooth で設定するためのツールでもあります。"
+  "fit": "ARMOR-ANDROID-CONTROL は [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) と同じ [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) へのスマートフォンの窓口で、読み取りも指示もサーバーを通してのみ行います。警報があなたを追いかけ（鳴っている警報盤はスマートフォンを起こします）、アシスタントに声で尋ねられ、現場で新しいノードの横から Bluetooth で設定するためのツールでもあります。",
+  "requirements": [
+   "JDK 17+",
+   "Android SDK（compile SDK 37）",
+   "Android 8.0+ のスマートフォン（minSdk 26）"
+  ]
  },
  "pt": {
   "tagline": "Cliente móvel de operador para o ARMOR-SERVER: alarmes, câmaras, radar, energia, a rede e a configuração dos nós, em oito idiomas",
@@ -259,6 +289,11 @@ TEXT = {
   ],
   "note": "As versões são publicadas no GitHub, de onde a própria aplicação procura atualizações; o APK é assinado com a chave de publicação própria do responsável, guardada fora do repositório, e a aplicação compara o certificado de assinatura de uma transferência com o seu antes de passar o ficheiro ao instalador do Android. Veja o [limite do cliente](docs/CLIENT_BOUNDARY.md).",
   "hardware": "Usada num telemóvel real contra a bancada de testes do CM5; os ecrãs solar, elétrico e de centrais de alarme esperam nós reais",
-  "fit": "O ARMOR-ANDROID-CONTROL é a janela do telemóvel para o mesmo [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) que o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) usa: lê e ordena através dele e de nada mais. É onde os alarmes o seguem (uma central que toca acorda o telemóvel), onde pergunta ao assistente por voz, e a ferramenta para configurar um nó novo por Bluetooth no terreno, ao lado dele."
+  "fit": "O ARMOR-ANDROID-CONTROL é a janela do telemóvel para o mesmo [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) que o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) usa: lê e ordena através dele e de nada mais. É onde os alarmes o seguem (uma central que toca acorda o telemóvel), onde pergunta ao assistente por voz, e a ferramenta para configurar um nó novo por Bluetooth no terreno, ao lado dele.",
+  "requirements": [
+   "JDK 17+",
+   "o SDK do Android (compile SDK 37)",
+   "um telemóvel com Android 8.0+ (minSdk 26)"
+  ]
  }
 }

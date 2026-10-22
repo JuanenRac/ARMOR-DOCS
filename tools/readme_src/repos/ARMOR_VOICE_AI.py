@@ -64,7 +64,11 @@ TEXT = {
   ],
   "note": "Véanse la [seguridad de la voz](docs/SAFETY.md) y el [servicio](docs/SERVICE.md).",
   "fit": "ARMOR-VOICE-AI convierte lo que se dice en uno de una lista cerrada de comandos y nunca hace nada por sí mismo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) le pregunta y luego autentica y autoriza el comando exactamente como un clic en [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Está pensado para vivir tras el micrófono del panel de pared [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) y atiende al asistente escrito y hablado de la app Android.",
-  "hardware": "Corriendo como servicio en el banco de pruebas de la CM5, consultado por el servidor; no se ha probado ningún micrófono ni motor de voz"
+  "hardware": "Corriendo como servicio en el banco de pruebas de la CM5, consultado por el servidor; no se ha probado ningún micrófono ni motor de voz",
+  "requirements": [
+   "Python 3.11+ (solo la biblioteca estándar)",
+   "opcional: un comando de voz a texto y otro de texto a voz para `/v1/turn`"
+  ]
  },
  "fr": {
   "tagline": "Intentions vocales hors ligne en huit langues, avec une confirmation que l'appelant ne peut pas falsifier",
@@ -79,7 +83,11 @@ TEXT = {
   ],
   "note": "Voir la [sécurité de la voix](docs/SAFETY.md) et le [service](docs/SERVICE.md).",
   "fit": "ARMOR-VOICE-AI transforme ce qui est dit en l'une des commandes d'une liste fermée et ne fait jamais rien de lui-même : [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) l'interroge, puis authentifie et autorise la commande exactement comme un clic dans [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Il est destiné à vivre derrière le microphone du panneau mural [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) et répond à l'assistant écrit et parlé de l'application Android.",
-  "hardware": "Tourne comme service sur le banc de test CM5, interrogé par le serveur ; aucun microphone ni moteur vocal n'a été essayé"
+  "hardware": "Tourne comme service sur le banc de test CM5, interrogé par le serveur ; aucun microphone ni moteur vocal n'a été essayé",
+  "requirements": [
+   "Python 3.11+ (bibliothèque standard uniquement)",
+   "facultatif : une commande de reconnaissance vocale et une de synthèse vocale pour `/v1/turn`"
+  ]
  },
  "it": {
   "tagline": "Intenti vocali offline in otto lingue, con una conferma che chi chiama non può falsificare",
@@ -94,7 +102,11 @@ TEXT = {
   ],
   "note": "Vedi la [sicurezza della voce](docs/SAFETY.md) e il [servizio](docs/SERVICE.md).",
   "fit": "ARMOR-VOICE-AI trasforma ciò che si dice in uno di un elenco chiuso di comandi e non fa mai nulla da solo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) lo interroga, poi autentica e autorizza il comando esattamente come un clic in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). È pensato per vivere dietro il microfono del pannello a muro [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) e serve l'assistente scritto e parlato dell'app Android.",
-  "hardware": "Gira come servizio sul banco di prova CM5, interrogato dal server; nessun microfono né motore vocale è stato provato"
+  "hardware": "Gira come servizio sul banco di prova CM5, interrogato dal server; nessun microfono né motore vocale è stato provato",
+  "requirements": [
+   "Python 3.11+ (solo la libreria standard)",
+   "facoltativo: un comando da voce a testo e uno da testo a voce per `/v1/turn`"
+  ]
  },
  "de": {
   "tagline": "Offline-Sprachbefehle in acht Sprachen, mit einer Bestätigung, die der Aufrufer nicht fälschen kann",
@@ -109,7 +121,11 @@ TEXT = {
   ],
   "note": "Siehe die [Sprachsicherheit](docs/SAFETY.md) und den [Dienst](docs/SERVICE.md).",
   "fit": "ARMOR-VOICE-AI macht aus dem Gesagten einen Befehl aus einer geschlossenen Liste und tut nie etwas von selbst: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) fragt es ab und authentifiziert und autorisiert den Befehl dann genau wie einen Klick in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Es soll hinter dem Mikrofon des Wandpanels [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) leben und bedient den geschriebenen und gesprochenen Assistenten der Android-App.",
-  "hardware": "Läuft als Dienst am CM5-Testaufbau, vom Server abgefragt; weder Mikrofon noch Sprach-Engine wurden erprobt"
+  "hardware": "Läuft als Dienst am CM5-Testaufbau, vom Server abgefragt; weder Mikrofon noch Sprach-Engine wurden erprobt",
+  "requirements": [
+   "Python 3.11+ (nur die Standardbibliothek)",
+   "optional: je ein Sprache-zu-Text- und Text-zu-Sprache-Befehl für `/v1/turn`"
+  ]
  },
  "zh": {
   "tagline": "八种语言的离线语音意图，带有调用方无法伪造的确认",
@@ -124,7 +140,11 @@ TEXT = {
   ],
   "note": "参见[语音安全](docs/SAFETY.md)和[服务](docs/SERVICE.md)。",
   "fit": "ARMOR-VOICE-AI 把所说的话变成封闭列表中的某个命令，自己从不做任何事：[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 向它询问，然后像对待 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 中的一次点击那样认证并授权该命令。它打算放在壁挂面板 [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) 的麦克风之后，并为 Android 应用的文字和语音助手服务。",
-  "hardware": "在 CM5 测试台上作为服务运行，由服务器调用；尚未试过麦克风或语音引擎"
+  "hardware": "在 CM5 测试台上作为服务运行，由服务器调用；尚未试过麦克风或语音引擎",
+  "requirements": [
+   "Python 3.11+（仅标准库）",
+   "可选：用于 `/v1/turn` 的语音转文字和文字转语音命令"
+  ]
  },
  "ja": {
   "tagline": "8 言語のオフライン音声インテント。呼び出し側が偽造できない確認付き",
@@ -139,7 +159,11 @@ TEXT = {
   ],
   "note": "[音声の安全性](docs/SAFETY.md)と[サービス](docs/SERVICE.md)を参照してください。",
   "fit": "ARMOR-VOICE-AI は、話された内容を閉じたリストのコマンドのひとつに変えるだけで、自分では何もしません。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) が問い合わせ、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) でのクリックと同じようにコマンドを認証・認可します。壁掛けパネル [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) のマイクの背後で動く想定で、Android アプリの文字・音声アシスタントにも応えます。",
-  "hardware": "CM5 テストベンチでサービスとして動作し、サーバーが問い合わせます。マイクや音声エンジンは未検証"
+  "hardware": "CM5 テストベンチでサービスとして動作し、サーバーが問い合わせます。マイクや音声エンジンは未検証",
+  "requirements": [
+   "Python 3.11+（標準ライブラリのみ）",
+   "任意：`/v1/turn` 用の音声認識コマンドと音声合成コマンド"
+  ]
  },
  "pt": {
   "tagline": "Intenções de voz offline em oito idiomas, com uma confirmação que quem chama não pode forjar",
@@ -154,6 +178,10 @@ TEXT = {
   ],
   "note": "Veja a [segurança da voz](docs/SAFETY.md) e o [serviço](docs/SERVICE.md).",
   "fit": "O ARMOR-VOICE-AI transforma o que é dito num de uma lista fechada de comandos e nunca faz nada por si: o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) pergunta-lhe e depois autentica e autoriza o comando exatamente como um clique no [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Destina-se a viver atrás do microfone do painel de parede [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) e serve o assistente escrito e falado da aplicação Android.",
-  "hardware": "A correr como serviço na bancada de testes do CM5, consultado pelo servidor; nenhum microfone ou motor de voz foi experimentado"
+  "hardware": "A correr como serviço na bancada de testes do CM5, consultado pelo servidor; nenhum microfone ou motor de voz foi experimentado",
+  "requirements": [
+   "Python 3.11+ (apenas a biblioteca padrão)",
+   "opcional: um comando de voz para texto e outro de texto para voz para `/v1/turn`"
+  ]
  }
 }

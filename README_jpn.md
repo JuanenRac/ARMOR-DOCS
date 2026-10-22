@@ -71,7 +71,7 @@ ARMOR-DOCS/
 
 ## 🛠️ 開発環境
 
-**必要なもの:** Python 3.11+ for the tools
+**必要なもの:** ツール用の Python 3.11+
 
 ```bash
 python tools/make_readmes.py --check      # the READMEs (8 languages) are current

@@ -71,7 +71,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\nVéanse el [diseño](docs/DESIGN.md), las [notas de seguridad](docs/SAFETY.md), el [uso](docs/USAGE.md) y los [mensajes](docs/MESSAGES.md).",
   "hardware": "Corre como servicio en el banco de pruebas de la CM5, vigilando su red real (un router, los móviles y los nodos de la casa)",
-  "fit": "ARMOR-NETWORK es el ojo de la familia sobre la red local. Corre en una máquina de la red (la CM5 en el banco), mira lo que hay sin tocarlo e informa a [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda los nombres, los dispositivos ocultos y vigilados y los cortes; el menú *Red* y el *Diseñador de red* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la pantalla Red de [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo muestran, y Studio puede darle órdenes. Nunca configura el router ni ningún dispositivo."
+  "fit": "ARMOR-NETWORK es el ojo de la familia sobre la red local. Corre en una máquina de la red (la CM5 en el banco), mira lo que hay sin tocarlo e informa a [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda los nombres, los dispositivos ocultos y vigilados y los cortes; el menú *Red* y el *Diseñador de red* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la pantalla Red de [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo muestran, y Studio puede darle órdenes. Nunca configura el router ni ningún dispositivo.",
+  "requirements": [
+   "Python 3.11+ (solo la biblioteca estándar)",
+   "una máquina de la red a vigilar (Linux, Windows o macOS)"
+  ]
  },
  "fr": {
   "tagline": "Surveille le réseau local : les appareils présents, si internet est là, ce qui change et ce qui est nouveau (un programme Python sans dépendances ; il tourne sur une machine du réseau et rapporte à ARMOR-SERVER)",
@@ -92,7 +96,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\nVoir la [conception](docs/DESIGN.md), les [notes de sécurité](docs/SAFETY.md), l'[usage](docs/USAGE.md) et les [messages](docs/MESSAGES.md).",
   "hardware": "Tourne comme service sur le banc de test CM5, en surveillant son vrai réseau (un routeur, les téléphones et les nœuds de la maison)",
-  "fit": "ARMOR-NETWORK est l'œil de la famille sur le réseau local. Il tourne sur une machine du réseau (la CM5 sur le banc), regarde ce qui s'y trouve sans y toucher et rapporte à [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), qui garde les noms, les appareils masqués et surveillés et les coupures ; le menu *Réseau* et le *Concepteur réseau* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'écran Réseau d'[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) le montrent, et Studio peut lui donner des ordres. Il ne configure jamais le routeur ni aucun appareil."
+  "fit": "ARMOR-NETWORK est l'œil de la famille sur le réseau local. Il tourne sur une machine du réseau (la CM5 sur le banc), regarde ce qui s'y trouve sans y toucher et rapporte à [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), qui garde les noms, les appareils masqués et surveillés et les coupures ; le menu *Réseau* et le *Concepteur réseau* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'écran Réseau d'[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) le montrent, et Studio peut lui donner des ordres. Il ne configure jamais le routeur ni aucun appareil.",
+  "requirements": [
+   "Python 3.11+ (bibliothèque standard uniquement)",
+   "une machine du réseau à surveiller (Linux, Windows ou macOS)"
+  ]
  },
  "it": {
   "tagline": "Sorveglia la rete locale: i dispositivi presenti, se internet c'è, cosa cambia e cosa è nuovo (un programma Python senza dipendenze; gira su una macchina della rete e riferisce ad ARMOR-SERVER)",
@@ -113,7 +121,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\nVedi il [progetto](docs/DESIGN.md), le [note di sicurezza](docs/SAFETY.md), l'[uso](docs/USAGE.md) e i [messaggi](docs/MESSAGES.md).",
   "hardware": "Gira come servizio sul banco di prova CM5, sorvegliando la sua rete reale (un router, i telefoni e i nodi della casa)",
-  "fit": "ARMOR-NETWORK è l'occhio della famiglia sulla rete locale. Gira su una macchina della rete (la CM5 sul banco), guarda cosa c'è senza toccarlo e riferisce ad [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), che conserva i nomi, i dispositivi nascosti e sorvegliati e le interruzioni; il menu *Rete* e il *Progettista di rete* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e la schermata Rete di [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo mostrano, e Studio può dargli ordini. Non configura mai il router né alcun dispositivo."
+  "fit": "ARMOR-NETWORK è l'occhio della famiglia sulla rete locale. Gira su una macchina della rete (la CM5 sul banco), guarda cosa c'è senza toccarlo e riferisce ad [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), che conserva i nomi, i dispositivi nascosti e sorvegliati e le interruzioni; il menu *Rete* e il *Progettista di rete* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e la schermata Rete di [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo mostrano, e Studio può dargli ordini. Non configura mai il router né alcun dispositivo.",
+  "requirements": [
+   "Python 3.11+ (solo la libreria standard)",
+   "una macchina della rete da sorvegliare (Linux, Windows o macOS)"
+  ]
  },
  "de": {
   "tagline": "Beobachtet das lokale Netz: die Geräte darin, ob das Internet da ist, was sich ändert und was neu ist (ein Python-Programm ohne Abhängigkeiten; es läuft auf einem Rechner des Netzes und meldet an ARMOR-SERVER)",
@@ -134,7 +146,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\nSiehe den [Entwurf](docs/DESIGN.md), die [Sicherheitshinweise](docs/SAFETY.md), die [Benutzung](docs/USAGE.md) und die [Nachrichten](docs/MESSAGES.md).",
   "hardware": "Läuft als Dienst am CM5-Testaufbau und beobachtet sein echtes Netz (einen Router, die Telefone und Knoten des Hauses)",
-  "fit": "ARMOR-NETWORK ist das Auge der Familie auf das lokale Netz. Es läuft auf einem Rechner des Netzes (der CM5 am Aufbau), sieht an, was da ist, ohne es zu berühren, und meldet an [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), der Namen, versteckte und beobachtete Geräte und Ausfälle führt; das Menü *Netzwerk* und der *Netzwerk-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie der Netzwerk-Bildschirm von [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) zeigen es, und Studio kann ihm Aufträge geben. Es konfiguriert nie den Router oder ein Gerät."
+  "fit": "ARMOR-NETWORK ist das Auge der Familie auf das lokale Netz. Es läuft auf einem Rechner des Netzes (der CM5 am Aufbau), sieht an, was da ist, ohne es zu berühren, und meldet an [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), der Namen, versteckte und beobachtete Geräte und Ausfälle führt; das Menü *Netzwerk* und der *Netzwerk-Designer* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) sowie der Netzwerk-Bildschirm von [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) zeigen es, und Studio kann ihm Aufträge geben. Es konfiguriert nie den Router oder ein Gerät.",
+  "requirements": [
+   "Python 3.11+ (nur die Standardbibliothek)",
+   "ein zu überwachender Rechner im Netz (Linux, Windows oder macOS)"
+  ]
  },
  "zh": {
   "tagline": "监视本地网络：上面有哪些设备、互联网是否可用、哪些发生了变化、哪些是新的（无依赖的 Python 程序；在网络中的一台机器上运行并向 ARMOR-SERVER 报告）",
@@ -155,7 +171,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\n参见[设计](docs/DESIGN.md)、[安全说明](docs/SAFETY.md)、[使用](docs/USAGE.md)和[消息](docs/MESSAGES.md)。",
   "hardware": "在 CM5 测试台上作为服务运行，监视其真实网络（路由器、住宅的手机和节点）",
-  "fit": "ARMOR-NETWORK 是家族观察本地网络的眼睛。它运行在网络中的一台机器上（测试台上的 CM5），只看不碰，并向 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 报告，由后者保存名称、隐藏和监视的设备以及中断记录；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*网络*菜单和*网络设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 的网络界面显示这些内容，Studio 还可以给它下达指令。它从不配置路由器或任何设备。"
+  "fit": "ARMOR-NETWORK 是家族观察本地网络的眼睛。它运行在网络中的一台机器上（测试台上的 CM5），只看不碰，并向 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 报告，由后者保存名称、隐藏和监视的设备以及中断记录；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*网络*菜单和*网络设计器*以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 的网络界面显示这些内容，Studio 还可以给它下达指令。它从不配置路由器或任何设备。",
+  "requirements": [
+   "Python 3.11+（仅标准库）",
+   "网络上需要监控的机器（Linux、Windows 或 macOS）"
+  ]
  },
  "ja": {
   "tagline": "ローカルネットワークを見張ります：接続されているデバイス、インターネットがあるか、何が変わり何が新しいか（依存ライブラリなしの Python プログラム。ネットワーク上のマシンで動き、ARMOR-SERVER に報告）",
@@ -176,7 +196,11 @@ TEXT = {
   ],
   "note": "See the [usage](docs/USAGE.md) and the [design](docs/DESIGN.md).\n\n[設計](docs/DESIGN.md)、[安全性のメモ](docs/SAFETY.md)、[使い方](docs/USAGE.md)、[メッセージ](docs/MESSAGES.md)を参照してください。",
   "hardware": "CM5 テストベンチ上でサービスとして動き、実際のネットワーク（ルーター、家のスマートフォンとノード）を見張っています",
-  "fit": "ARMOR-NETWORK はファミリーのローカルネットワークを見る目です。ネットワーク上のマシン（ベンチの CM5）で動き、そこにあるものに触れずに見て、[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に報告します。サーバーが名前、非表示・監視デバイス、停止を保持し、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*ネットワーク*メニューと*ネットワークデザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) のネットワーク画面が表示し、Studio から指示も出せます。ルーターやデバイスを設定することはありません。"
+  "fit": "ARMOR-NETWORK はファミリーのローカルネットワークを見る目です。ネットワーク上のマシン（ベンチの CM5）で動き、そこにあるものに触れずに見て、[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に報告します。サーバーが名前、非表示・監視デバイス、停止を保持し、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*ネットワーク*メニューと*ネットワークデザイナー*、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) のネットワーク画面が表示し、Studio から指示も出せます。ルーターやデバイスを設定することはありません。",
+  "requirements": [
+   "Python 3.11+（標準ライブラリのみ）",
+   "監視対象のネットワーク上のマシン（Linux、Windows、macOS）"
+  ]
  },
  "pt": {
   "tagline": "Vigia a rede local: os dispositivos que nela estão, se há internet, o que muda e o que é novo (um programa Python sem dependências; corre numa máquina da rede e reporta ao ARMOR-SERVER)",
@@ -197,6 +221,10 @@ TEXT = {
   ],
   "note": "Veja a [utilização](docs/USAGE.md) e o [desenho](docs/DESIGN.md).\n\nVeja o [desenho](docs/DESIGN.md), as [notas de segurança](docs/SAFETY.md), a [utilização](docs/USAGE.md) e as [mensagens](docs/MESSAGES.md).",
   "hardware": "Corre como serviço na bancada de testes do CM5, vigiando a sua rede real (um router, os telemóveis e os nós da casa)",
-  "fit": "O ARMOR-NETWORK é o olho da família sobre a rede local. Corre numa máquina da rede (o CM5 na bancada), olha o que lá está sem lhe tocar e reporta ao [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda os nomes, os dispositivos ocultos e vigiados e as falhas; o menu *Rede* e o *Desenhador de rede* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e o ecrã Rede do [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) mostram-no, e o Studio pode dar-lhe ordens. Nunca configura o router nem nenhum dispositivo."
+  "fit": "O ARMOR-NETWORK é o olho da família sobre a rede local. Corre numa máquina da rede (o CM5 na bancada), olha o que lá está sem lhe tocar e reporta ao [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda os nomes, os dispositivos ocultos e vigiados e as falhas; o menu *Rede* e o *Desenhador de rede* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e o ecrã Rede do [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) mostram-no, e o Studio pode dar-lhe ordens. Nunca configura o router nem nenhum dispositivo.",
+  "requirements": [
+   "Python 3.11+ (apenas a biblioteca padrão)",
+   "uma máquina da rede a vigiar (Linux, Windows ou macOS)"
+  ]
  }
 }

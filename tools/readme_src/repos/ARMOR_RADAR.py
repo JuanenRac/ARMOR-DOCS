@@ -88,7 +88,13 @@ TEXT = {
   ],
   "note": "Los tests en el ordenador necesitan cualquier compilador C++17 (Linux, WSL, MSYS2). Véanse la [puesta en marcha](docs/BENCH_BRINGUP.md), el [panel](docs/NODE_PANEL.md) y el [límite del hardware](docs/HARDWARE_BOUNDARY.md).",
   "hardware": "Corre en una placa real Waveshare ESP32-S3-ETH con un radar, reportando al banco de pruebas de la CM5",
-  "fit": "ARMOR-RADAR son los ojos del perímetro. Cada nodo lee hasta tres radares o sensores de presencia y publica pistas, luz y salud a [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) por MQTT; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) las dibuja en el plano del sitio y [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) las sopesa frente a las cámaras. Su firmware comparte una base con los demás nodos (el panel, la configuración por Bluetooth, las actualizaciones firmadas, el acceso y el reloj vienen de la base de firmware de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), así que lo que aprendes en un nodo vale en todos."
+  "fit": "ARMOR-RADAR son los ojos del perímetro. Cada nodo lee hasta tres radares o sensores de presencia y publica pistas, luz y salud a [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) por MQTT; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) las dibuja en el plano del sitio y [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) las sopesa frente a las cámaras. Su firmware comparte una base con los demás nodos (el panel, la configuración por Bluetooth, las actualizaciones firmadas, el acceso y el reloj vienen de la base de firmware de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), así que lo que aprendes en un nodo vale en todos.",
+  "requirements": [
+   "un compilador de C++17 para las pruebas en el PC",
+   "el contenedor de ESP-IDF 5.4 para compilar la imagen",
+   "un Waveshare ESP32-S3-ETH o un ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "2.266 comprobaciones en 9 programas (`ctest`)"
  },
  "fr": {
   "tagline": "Firmware de nœud de terrain (Waveshare ESP32-S3-ETH, trois radars ou capteurs de présence, Ethernet et Wi-Fi) avec son propre panneau web, et son cœur testé sur ordinateur",
@@ -117,7 +123,13 @@ TEXT = {
   ],
   "note": "Les tests sur ordinateur demandent un compilateur C++17 (Linux, WSL, MSYS2). Voir la [mise en service sur banc](docs/BENCH_BRINGUP.md), le [panneau](docs/NODE_PANEL.md) et la [frontière matérielle](docs/HARDWARE_BOUNDARY.md).",
   "hardware": "Tourne sur une vraie carte Waveshare ESP32-S3-ETH avec un radar, en rapportant au banc de test CM5",
-  "fit": "ARMOR-RADAR est l'œil du périmètre. Chaque nœud lit jusqu'à trois radars ou capteurs de présence et publie pistes, lumière et santé vers [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) en MQTT ; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) les dessine sur le plan du site et [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) les pèse face aux caméras. Son firmware partage une base avec les autres nœuds (le panneau, la configuration Bluetooth, les mises à jour signées, la connexion et l'horloge viennent de la base firmware d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), si bien que ce qu'on apprend sur un nœud vaut pour tous."
+  "fit": "ARMOR-RADAR est l'œil du périmètre. Chaque nœud lit jusqu'à trois radars ou capteurs de présence et publie pistes, lumière et santé vers [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) en MQTT ; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) les dessine sur le plan du site et [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) les pèse face aux caméras. Son firmware partage une base avec les autres nœuds (le panneau, la configuration Bluetooth, les mises à jour signées, la connexion et l'horloge viennent de la base firmware d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), si bien que ce qu'on apprend sur un nœud vaut pour tous.",
+  "requirements": [
+   "un compilateur C++17 pour les tests sur l'ordinateur",
+   "le conteneur ESP-IDF 5.4 pour compiler l'image",
+   "un Waveshare ESP32-S3-ETH ou un ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "2 266 vérifications dans 9 programmes (`ctest`)"
  },
  "it": {
   "tagline": "Firmware del nodo di campo (Waveshare ESP32-S3-ETH, tre radar o sensori di presenza, Ethernet e Wi-Fi) con un proprio pannello web e il nucleo testato su computer",
@@ -146,7 +158,13 @@ TEXT = {
   ],
   "note": "I test su computer richiedono un compilatore C++17 (Linux, WSL, MSYS2). Vedi la [messa in servizio da banco](docs/BENCH_BRINGUP.md), il [pannello](docs/NODE_PANEL.md) e il [confine hardware](docs/HARDWARE_BOUNDARY.md).",
   "hardware": "Gira su una vera scheda Waveshare ESP32-S3-ETH con un radar, riferendo al banco di prova CM5",
-  "fit": "ARMOR-RADAR sono gli occhi del perimetro. Ogni nodo legge fino a tre radar o sensori di presenza e pubblica tracce, luce e salute verso [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) via MQTT; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) le disegna sulla planimetria del sito e [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) le pesa rispetto alle telecamere. Il suo firmware condivide una base con gli altri nodi (il pannello, la configurazione Bluetooth, gli aggiornamenti firmati, l'accesso e l'orologio vengono dalla base firmware di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), così ciò che impari su un nodo vale per tutti."
+  "fit": "ARMOR-RADAR sono gli occhi del perimetro. Ogni nodo legge fino a tre radar o sensori di presenza e pubblica tracce, luce e salute verso [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) via MQTT; [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) le disegna sulla planimetria del sito e [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) le pesa rispetto alle telecamere. Il suo firmware condivide una base con gli altri nodi (il pannello, la configurazione Bluetooth, gli aggiornamenti firmati, l'accesso e l'orologio vengono dalla base firmware di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), così ciò che impari su un nodo vale per tutti.",
+  "requirements": [
+   "un compilatore C++17 per i test sul computer",
+   "il container ESP-IDF 5.4 per compilare l'immagine",
+   "un Waveshare ESP32-S3-ETH o un ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "2.266 controlli in 9 programmi (`ctest`)"
  },
  "de": {
   "tagline": "Feldknoten-Firmware (Waveshare ESP32-S3-ETH, drei Radare oder Präsenzsensoren, Ethernet und WLAN) mit eigenem Web-Panel und ihrem am Rechner getesteten Kern",
@@ -175,7 +193,13 @@ TEXT = {
   ],
   "note": "Die Rechnertests brauchen einen C++17-Compiler (Linux, WSL, MSYS2). Siehe die [Inbetriebnahme am Prüfstand](docs/BENCH_BRINGUP.md), das [Panel](docs/NODE_PANEL.md) und die [Hardwaregrenze](docs/HARDWARE_BOUNDARY.md).",
   "hardware": "Läuft auf einer echten Waveshare-ESP32-S3-ETH-Platine mit einem Radar und meldet an den CM5-Testaufbau",
-  "fit": "ARMOR-RADAR sind die Augen des Perimeters. Jeder Knoten liest bis zu drei Radare oder Präsenzsensoren und veröffentlicht Spuren, Licht und Zustand per MQTT an [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER); [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) zeichnet sie in den Standortplan, und [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) wägt sie gegen die Kameras ab. Seine Firmware teilt eine Basis mit den anderen Knoten (Panel, Bluetooth-Einrichtung, signierte Updates, Anmeldung und Uhr stammen aus der Firmware-Basis von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), sodass das, was man an einem Knoten lernt, für alle gilt."
+  "fit": "ARMOR-RADAR sind die Augen des Perimeters. Jeder Knoten liest bis zu drei Radare oder Präsenzsensoren und veröffentlicht Spuren, Licht und Zustand per MQTT an [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER); [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) zeichnet sie in den Standortplan, und [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) wägt sie gegen die Kameras ab. Seine Firmware teilt eine Basis mit den anderen Knoten (Panel, Bluetooth-Einrichtung, signierte Updates, Anmeldung und Uhr stammen aus der Firmware-Basis von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), sodass das, was man an einem Knoten lernt, für alle gilt.",
+  "requirements": [
+   "ein C++17-Compiler für die Host-Tests",
+   "der ESP-IDF-5.4-Container zum Bauen des Images",
+   "ein Waveshare ESP32-S3-ETH oder ein ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "2.266 Prüfungen in 9 Programmen (`ctest`)"
  },
  "zh": {
   "tagline": "现场节点固件（Waveshare ESP32-S3-ETH，三个雷达或存在传感器，以太网和 Wi-Fi），自带网页面板，并有在电脑上测试过的核心",
@@ -204,7 +228,13 @@ TEXT = {
   ],
   "note": "主机测试需要任意 C++17 编译器（Linux、WSL、MSYS2）。参见[台架调试](docs/BENCH_BRINGUP.md)、[面板](docs/NODE_PANEL.md)和[硬件边界](docs/HARDWARE_BOUNDARY.md)。",
   "hardware": "运行在带雷达的真实 Waveshare ESP32-S3-ETH 板上，向 CM5 测试台报告",
-  "fit": "ARMOR-RADAR 是周界的眼睛。每个节点读取最多三个雷达或存在传感器，并通过 MQTT 向 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 发布轨迹、光照和健康状态；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 把它们画在场地平面图上，[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) 把它们与摄像头对照权衡。它的固件与其他节点共用一个基础（面板、蓝牙设置、签名更新、登录和时钟都来自 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的固件基础），所以在一个节点上学到的对所有节点都适用。"
+  "fit": "ARMOR-RADAR 是周界的眼睛。每个节点读取最多三个雷达或存在传感器，并通过 MQTT 向 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 发布轨迹、光照和健康状态；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 把它们画在场地平面图上，[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) 把它们与摄像头对照权衡。它的固件与其他节点共用一个基础（面板、蓝牙设置、签名更新、登录和时钟都来自 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的固件基础），所以在一个节点上学到的对所有节点都适用。",
+  "requirements": [
+   "用于主机测试的 C++17 编译器",
+   "用于构建镜像的 ESP-IDF 5.4 容器",
+   "Waveshare ESP32-S3-ETH 或 ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "9 个程序中的 2,266 项检查（`ctest`）"
  },
  "ja": {
   "tagline": "フィールドノードのファームウェア（Waveshare ESP32-S3-ETH、レーダーまたは人感センサー 3 基、イーサネットと Wi-Fi）。独自の Web パネルと、コンピューターでテスト済みのコア付き",
@@ -233,7 +263,13 @@ TEXT = {
   ],
   "note": "ホストテストには C++17 コンパイラー（Linux、WSL、MSYS2）が必要です。[ベンチでの立ち上げ](docs/BENCH_BRINGUP.md)、[パネル](docs/NODE_PANEL.md)、[ハードウェアの境界](docs/HARDWARE_BOUNDARY.md)を参照。",
   "hardware": "レーダー付きの実際の Waveshare ESP32-S3-ETH 基板で動作し、CM5 テストベンチに報告",
-  "fit": "ARMOR-RADAR は境界の目です。各ノードは最大 3 台のレーダーまたは人感センサーを読み取り、軌跡・照度・状態を MQTT で [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送ります。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) はそれをサイト図に描き、[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) はカメラと照らし合わせます。ファームウェアは他のノードと土台を共有し（パネル、Bluetooth 設定、署名付きアップデート、サインイン、時計は [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) のファームウェア基盤から）、1 つのノードで覚えたことがすべてに通用します。"
+  "fit": "ARMOR-RADAR は境界の目です。各ノードは最大 3 台のレーダーまたは人感センサーを読み取り、軌跡・照度・状態を MQTT で [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送ります。[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) はそれをサイト図に描き、[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) はカメラと照らし合わせます。ファームウェアは他のノードと土台を共有し（パネル、Bluetooth 設定、署名付きアップデート、サインイン、時計は [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) のファームウェア基盤から）、1 つのノードで覚えたことがすべてに通用します。",
+  "requirements": [
+   "ホストテスト用の C++17 コンパイラ",
+   "イメージをビルドするための ESP-IDF 5.4 コンテナ",
+   "Waveshare ESP32-S3-ETH または ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "9 個のプログラムで 2,266 件のチェック（`ctest`）"
  },
  "pt": {
   "tagline": "Firmware de nó de campo (Waveshare ESP32-S3-ETH, três radares ou sensores de presença, Ethernet e Wi-Fi) com o seu próprio painel web, e o seu núcleo testado em anfitrião",
@@ -262,6 +298,12 @@ TEXT = {
   ],
   "note": "Os testes de anfitrião precisam de qualquer compilador C++17 (Linux, WSL, MSYS2). Veja o [arranque de bancada](docs/BENCH_BRINGUP.md), o [painel](docs/NODE_PANEL.md) e a [fronteira de hardware](docs/HARDWARE_BOUNDARY.md).",
   "hardware": "Corre numa placa real Waveshare ESP32-S3-ETH com um radar, reportando à bancada de testes do CM5",
-  "fit": "O ARMOR-RADAR são os olhos do perímetro. Cada nó lê até três radares ou sensores de presença e publica pistas, luz e saúde para o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) por MQTT; o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) desenha-os na planta do local e o [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) pesa-os face às câmaras. O seu firmware partilha uma base com os outros nós (o painel, a configuração por Bluetooth, as atualizações assinadas, o acesso e o relógio vêm da base de firmware do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), por isso o que se aprende num nó vale em todos."
+  "fit": "O ARMOR-RADAR são os olhos do perímetro. Cada nó lê até três radares ou sensores de presença e publica pistas, luz e saúde para o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) por MQTT; o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) desenha-os na planta do local e o [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) pesa-os face às câmaras. O seu firmware partilha uma base com os outros nós (o painel, a configuração por Bluetooth, as atualizações assinadas, o acesso e o relógio vêm da base de firmware do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON)), por isso o que se aprende num nó vale em todos.",
+  "requirements": [
+   "um compilador de C++17 para os testes no computador",
+   "o contentor ESP-IDF 5.4 para compilar a imagem",
+   "um Waveshare ESP32-S3-ETH ou um ESP32-S3-WROOM-1 N16R8"
+  ],
+  "tests": "2 266 verificações em 9 programas (`ctest`)"
  }
 }

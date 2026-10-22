@@ -54,7 +54,7 @@ def glance(name: str, language: str, info: dict, facts: dict, text: dict, ui: di
         return ""
     rows = [(ui["g_version"], f"`{info['version']}`"), (ui["g_maturity"], ui["m_" + info["maturity"]])]
     if facts.get("tests"):
-        rows.append((ui["g_tests"], facts["tests"]))
+        rows.append((ui["g_tests"], text.get("tests", facts["tests"])))   # a language may word it (text["tests"]); the number is the same
     rows.append((ui["g_stack"], info.get("stack", "")))
     rows.append((ui["g_hardware"], text["hardware"]))
     body = "\n".join(f"| {a} | {b} |" for a, b in rows)
@@ -114,7 +114,7 @@ def render(name: str, language: str) -> str:
     for section in text.get("sections", []):
         parts.append(f"## {section['icon']} {section['title']}\n\n" + "\n".join(f"* {item}" for item in section["bullets"]) + "\n")
     parts.append(f"## 📂 {ui['structure']}\n\n{structure}\n")
-    requirements = facts.get("requirements")
+    requirements = text.get("requirements", facts.get("requirements"))   # worded in each language when text["requirements"] exists
     needs = f"**{ui['requirements']}:** " + ", ".join(requirements) + "\n\n" if requirements else ""
     parts.append(f"## 🛠️ {ui['dev']}\n\n{needs}{build}\n" + (f"\n{text['note']}\n" if text.get("note") else ""))
 

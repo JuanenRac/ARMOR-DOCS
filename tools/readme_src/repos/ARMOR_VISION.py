@@ -56,7 +56,10 @@ TEXT = {
   ],
   "note": "Opciones y formato de la configuración: [uso](docs/USAGE.md).",
   "fit": "ARMOR-VISION es la parte que decide qué significa la imagen de una cámara, al margen de cualquier detector: las zonas y máscaras dibujadas sobre ella, la comprobación de movimiento que corre antes del detector costoso, el seguidor, los perfiles de armado y las reglas que convierten detecciones en eventos. [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) es el servicio que vigila hoy las cámaras; ARMOR-VISION es donde las reglas para un modelo de detección real están listas, esperándolo. Solo informa: los eventos nunca autorizan una acción.",
-  "hardware": "Ninguno todavía: ni detector real, ni cámara ni Jetson (una simulación con detecciones guionizadas)"
+  "hardware": "Ninguno todavía: ni detector real, ni cámara ni Jetson (una simulación con detecciones guionizadas)",
+  "requirements": [
+   "Python 3.11+ (solo la biblioteca estándar)"
+  ]
  },
  "fr": {
   "tagline": "Zones, masques et règles de détection pour les caméras",
@@ -70,7 +73,10 @@ TEXT = {
   ],
   "note": "Options et format de la configuration : [usage](docs/USAGE.md).",
   "fit": "ARMOR-VISION est la partie qui décide de ce que signifie l'image d'une caméra, indépendamment de tout détecteur : les zones et masques dessinés dessus, le contrôle de mouvement qui s'exécute avant le détecteur coûteux, le suiveur, les profils d'armement et les règles qui transforment des détections en événements. [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) est le service qui surveille les caméras aujourd'hui ; ARMOR-VISION est l'endroit où les règles pour un vrai modèle de détection sont prêtes, en l'attendant. Il ne fait que rapporter : les événements n'autorisent jamais une action.",
-  "hardware": "Aucun pour l'instant : ni détecteur réel, ni caméra, ni Jetson (une simulation avec des détections scriptées)"
+  "hardware": "Aucun pour l'instant : ni détecteur réel, ni caméra, ni Jetson (une simulation avec des détections scriptées)",
+  "requirements": [
+   "Python 3.11+ (bibliothèque standard uniquement)"
+  ]
  },
  "it": {
   "tagline": "Zone, maschere e regole di rilevamento per le telecamere",
@@ -84,7 +90,10 @@ TEXT = {
   ],
   "note": "Opzioni e formato della configurazione: [uso](docs/USAGE.md).",
   "fit": "ARMOR-VISION è la parte che decide cosa significa l'immagine di una telecamera, a prescindere da qualsiasi rilevatore: le zone e le maschere disegnate su di essa, il controllo di movimento che gira prima del rilevatore costoso, il tracker, i profili di inserimento e le regole che trasformano i rilevamenti in eventi. [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) è il servizio che oggi sorveglia le telecamere; ARMOR-VISION è dove le regole per un vero modello di rilevamento sono pronte, in attesa. Si limita a riferire: gli eventi non autorizzano mai un'azione.",
-  "hardware": "Ancora nessuno: né rilevatore reale, né telecamera, né Jetson (una simulazione con rilevamenti scriptati)"
+  "hardware": "Ancora nessuno: né rilevatore reale, né telecamera, né Jetson (una simulazione con rilevamenti scriptati)",
+  "requirements": [
+   "Python 3.11+ (solo la libreria standard)"
+  ]
  },
  "de": {
   "tagline": "Zonen, Masken und Erkennungsregeln für die Kameras",
@@ -98,7 +107,10 @@ TEXT = {
   ],
   "note": "Optionen und Format der Konfiguration: [Nutzung](docs/USAGE.md).",
   "fit": "ARMOR-VISION ist der Teil, der entscheidet, was das Bild einer Kamera bedeutet, unabhängig von jedem Detektor: die darauf gezeichneten Zonen und Masken, die Bewegungsprüfung, die vor dem teuren Detektor läuft, der Tracker, die Scharfschaltprofile und die Regeln, die Erkennungen zu Ereignissen machen. [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) ist der Dienst, der heute die Kameras beobachtet; ARMOR-VISION ist der Ort, an dem die Regeln für ein echtes Erkennungsmodell bereitliegen und darauf warten. Es meldet nur: Die Ereignisse autorisieren nie eine Aktion.",
-  "hardware": "Noch keiner: weder echter Detektor noch Kamera noch Jetson (eine Simulation mit geskripteten Erkennungen)"
+  "hardware": "Noch keiner: weder echter Detektor noch Kamera noch Jetson (eine Simulation mit geskripteten Erkennungen)",
+  "requirements": [
+   "Python 3.11+ (nur die Standardbibliothek)"
+  ]
  },
  "zh": {
   "tagline": "摄像头的区域、遮罩与检测规则",
@@ -112,7 +124,10 @@ TEXT = {
   ],
   "note": "选项与配置格式：[用法](docs/USAGE.md)。",
   "fit": "ARMOR-VISION 是独立于任何检测器、决定摄像头画面含义的部分：画在上面的区域和遮罩、先于昂贵检测器运行的移动检查、跟踪器、布防配置，以及把检测变成事件的规则。如今观察摄像头的是 [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) 服务；ARMOR-VISION 则为真正的检测模型准备好了规则，等待它的到来。它只报告：事件从不授权任何动作。",
-  "hardware": "暂无：没有真实的检测器、摄像头或 Jetson（使用脚本化检测的模拟）"
+  "hardware": "暂无：没有真实的检测器、摄像头或 Jetson（使用脚本化检测的模拟）",
+  "requirements": [
+   "Python 3.11+（仅标准库）"
+  ]
  },
  "ja": {
   "tagline": "カメラのゾーン、マスク、検知ルール",
@@ -126,7 +141,10 @@ TEXT = {
   ],
   "note": "オプションと設定の形式: [使い方](docs/USAGE.md)。",
   "fit": "ARMOR-VISION は、検出器とは別に、カメラの映像が何を意味するかを決める部分です。映像に描くゾーンとマスク、高価な検出器の前に走る動き検査、トラッカー、警戒プロファイル、検出をイベントに変えるルール。現在カメラを見張っているのは [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) で、ARMOR-VISION は実際の検出モデルのためのルールを用意して待っています。報告するだけで、イベントが動作を認可することはありません。",
-  "hardware": "まだありません：実際の検出器、カメラ、Jetson はなく、スクリプト化した検出によるシミュレーションのみ"
+  "hardware": "まだありません：実際の検出器、カメラ、Jetson はなく、スクリプト化した検出によるシミュレーションのみ",
+  "requirements": [
+   "Python 3.11+（標準ライブラリのみ）"
+  ]
  },
  "pt": {
   "tagline": "Zonas, máscaras e regras de deteção para as câmaras",
@@ -140,6 +158,9 @@ TEXT = {
   ],
   "note": "Opções e formato de configuração: [utilização](docs/USAGE.md).",
   "fit": "O ARMOR-VISION é a parte que decide o que significa a imagem de uma câmara, à parte de qualquer detetor: as zonas e máscaras desenhadas nela, a verificação de movimento que corre antes do detetor dispendioso, o seguidor, os perfis de armar e as regras que transformam deteções em eventos. O [ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI) é o serviço que hoje vigia as câmaras; o ARMOR-VISION é onde as regras para um modelo de deteção real estão prontas, à sua espera. Só comunica: os eventos nunca autorizam uma ação.",
-  "hardware": "Nenhum ainda: nem detetor real, nem câmara, nem Jetson (uma simulação com deteções guionizadas)"
+  "hardware": "Nenhum ainda: nem detetor real, nem câmara, nem Jetson (uma simulação com deteções guionizadas)",
+  "requirements": [
+   "Python 3.11+ (apenas a biblioteca padrão)"
+  ]
  }
 }
