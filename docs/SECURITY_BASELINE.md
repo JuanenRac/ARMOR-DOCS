@@ -41,6 +41,10 @@ broker's port only to the field network and the server's and Studio's ports only
 * Security-relevant actions are written to an audit log with credentials scrubbed.
 * Android sends a password only over HTTPS or over HTTP to a private-LAN IPv4 literal; a host *name*
   that merely starts like a private address is refused.
+* HTTPS for the phones has a path that does not depend on the internet: Caddy's own authority signs the certificate of the house (the `tls` profile of ARMOR-DEVOPS), Studio shows an
+  administrator the pin of that authority as the text `armor-pin:<name>:<pin>`, the Android app pairs with it (or remembers the key the first time) and refuses a different key, and
+  `armor_tls_check.sh` checks the chain, the name, the expiry and the pin. Plain `http` stays accepted by the app for the local network until every phone is paired and tried on the
+  machine; forbidding it (`cleartext=false`) is a later decision of the owner, taken after that test (see `HTTPS_PAIRING.md` of ARMOR-DEVOPS).
 * The Studio static host (and the nginx of its container image) sends a strict Content-Security-Policy on every file and makes no third-party request, except the Weather menu's (Open-Meteo, RainViewer, EUMETSAT, ArcGIS), which asks nothing until the account has a place saved.
 
 ## Not done yet
