@@ -10,7 +10,7 @@ import _support  # noqa: F401  (puts tools/ on the path)
 
 import sync_ci_tools as sync
 
-TARGET = "ARMOR-RADAR"
+TARGET = "ARMOR-NODE-RADAR"
 
 
 class SyncTests(unittest.TestCase):

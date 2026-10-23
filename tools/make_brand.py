@@ -25,12 +25,12 @@ BG_FROM, BG_TO = "#07090C", "#12161C"
 # repository -> (tagline, hashtags)
 REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-COMMON": ("MESSAGE CONTRACTS & VALIDATION", ["JSON-SCHEMA", "OPENAPI", "PYTHON", "TYPESCRIPT", "KOTLIN"]),
-    "ARMOR-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
-    "ARMOR-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
-    "ARMOR-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
-    "ARMOR-ALARM": ("ALARM PANEL, ZONES & SIREN", ["ESP32-S3", "ZIGBEE", "PIN", "MQTT", "C++"]),
+    "ARMOR-NODE-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
+    "ARMOR-NODE-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
+    "ARMOR-NODE-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
+    "ARMOR-NODE-ALARM": ("ALARM PANEL, ZONES & SIREN", ["ESP32-S3", "ZIGBEE", "PIN", "MQTT", "C++"]),
     "ARMOR-VISION": ("CAMERA ZONES & DETECTION RULES", ["JETSON", "ZONES", "MASKS", "RTSP", "PYTHON"]),
-    "ARMOR-HMI": ("TOUCH PANEL & VOICE ASSISTANT", ["ESP32-S3", "LVGL", "I2S", "MQTT", "C++"]),
+    "ARMOR-NODE-HMI": ("TOUCH PANEL & VOICE ASSISTANT", ["ESP32-S3", "LVGL", "I2S", "MQTT", "C++"]),
     "ARMOR-NETWORK": ("LOCAL NETWORK MONITORING", ["DEVICES", "INTERNET", "OUTAGES", "READ-ONLY", "PYTHON"]),
     "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
     "ARMOR-VOICE-AI": ("OFFLINE VOICE INTENT BOUNDARY", ["WHISPER", "PIPER", "WYOMING", "PYTHON"]),
@@ -50,15 +50,15 @@ S = 'fill="none" stroke-linecap="round" stroke-linejoin="round"'   # the common 
 def glyph(name: str) -> str:
     """The drawing inside the shield, in a box of about 84 by 84 around the origin."""
     g = {
-        "ARMOR-RADAR": f"""<circle r="46" stroke-width="2" opacity=".55"/><circle r="28" stroke-width="2" opacity=".55"/><circle r="10" stroke-width="2" opacity=".55"/>
+        "ARMOR-NODE-RADAR": f"""<circle r="46" stroke-width="2" opacity=".55"/><circle r="28" stroke-width="2" opacity=".55"/><circle r="10" stroke-width="2" opacity=".55"/>
     <path d="M0,0 L34,-32" stroke-width="4"/><path d="M0,-46 A46,46 0 0 1 32.5,-32.5" stroke="{AMBER}" stroke-width="3" opacity=".9"/>
     <circle cx="34" cy="-32" r="5" fill="{AMBER}" stroke="none"/><circle r="4" fill="{CYAN}" stroke="none"/>""",
-        "ARMOR-SOLAR": f"""<circle cy="-14" r="13" stroke="{AMBER}" stroke-width="4"/>
+        "ARMOR-NODE-SOLAR": f"""<circle cy="-14" r="13" stroke="{AMBER}" stroke-width="4"/>
     <path d="M0,-40 v-6 M0,12 v6 M-26,-14 h-6 M26,-14 h6 M-18,-32 l-4,-4 M18,-32 l4,-4 M-18,4 l-4,4 M18,4 l4,4" stroke="{AMBER}" stroke-width="3"/>
     <path d="M-40,34 q10,-18 20,0 t20,0 t20,0 t20,0" stroke-width="4"/>""",
-        "ARMOR-ELECTRICAL": f"""<path d="M10,-46 L-24,4 H-2 L-10,46 L26,-8 H4 Z" stroke="{AMBER}" stroke-width="4"/>
+        "ARMOR-NODE-ELECTRICAL": f"""<path d="M10,-46 L-24,4 H-2 L-10,46 L26,-8 H4 Z" stroke="{AMBER}" stroke-width="4"/>
     <path d="M-44,-30 q8,-14 16,0 t16,0" stroke-width="3" opacity=".7"/><path d="M-44,30 h20 M24,30 h20" stroke-width="3" opacity=".7"/>""",
-        "ARMOR-HMI": f"""<rect x="-44" y="-36" width="88" height="56" rx="7"/><path d="M-30,-20 h30 M-30,-8 h44 M-30,4 h22" stroke-width="3" opacity=".7"/>
+        "ARMOR-NODE-HMI": f"""<rect x="-44" y="-36" width="88" height="56" rx="7"/><path d="M-30,-20 h30 M-30,-8 h44 M-30,4 h22" stroke-width="3" opacity=".7"/>
     <rect x="12" y="-6" width="9" height="16" rx="4.5" stroke="{AMBER}" stroke-width="3"/><path d="M8,6 a9,9 0 0 0 17,0 M16.5,15 v6" stroke="{AMBER}" stroke-width="2.6"/>
     <path d="M-16,34 h32 M0,20 v14" stroke-width="3"/>""",
         "ARMOR-SERVER": f"""<rect x="-34" y="-40" width="68" height="24" rx="5"/><rect x="-34" y="-12" width="68" height="24" rx="5"/><rect x="-34" y="16" width="68" height="24" rx="5"/>
@@ -86,7 +86,7 @@ def glyph(name: str) -> str:
     <path d="M-24,22 h48" stroke="{AMBER}" stroke-width="3"/><circle cx="-6" cy="10" r="3" fill="{AMBER}" stroke="none"/><circle cx="8" cy="-2" r="2.4" fill="{AMBER}" stroke="none"/><circle cx="4" cy="30" r="3.4" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-COMMON": f"""<path d="M-14,-42 q-14,0 -14,14 v10 q0,10 -10,18 q10,8 10,18 v10 q0,14 14,14"/><path d="M14,-42 q14,0 14,14 v10 q0,10 10,18 q-10,8 -10,18 v10 q0,14 -14,14"/>
     <circle r="6" fill="{AMBER}" stroke="none"/><path d="M-10,0 h-2 M12,0 h-2" stroke="{AMBER}" stroke-width="3"/>""",
-        "ARMOR-ALARM": f"""<path d="M-28,24 H28 L22,8 Q20,-6 20,-18 Q20,-34 0,-34 Q-20,-34 -20,-18 Q-20,-6 -22,8 Z"/><path d="M0,-34 v-9" stroke-width="4"/>
+        "ARMOR-NODE-ALARM": f"""<path d="M-28,24 H28 L22,8 Q20,-6 20,-18 Q20,-34 0,-34 Q-20,-34 -20,-18 Q-20,-6 -22,8 Z"/><path d="M0,-34 v-9" stroke-width="4"/>
     <path d="M-8,32 a8,6 0 0 0 16,0" stroke="{AMBER}" stroke-width="3.4"/><path d="M34,-22 q9,9 0,18 M42,-30 q15,17 0,34 M-34,-22 q-9,9 0,18 M-42,-30 q-15,17 0,34" stroke="{AMBER}" stroke-width="3" opacity=".85"/>""",
         "ARMOR-VISION": f"""<path d="M-40,-18 v-18 h18 M22,-36 h18 v18 M40,18 v18 h-18 M-22,36 h-18 v-18" stroke-width="4"/>
     <path d="M-18,10 L-4,-16 L22,-8 L14,16 Z" stroke="{AMBER}" stroke-width="3" opacity=".9"/><circle cx="4" cy="-2" r="4" fill="{AMBER}" stroke="none"/>""",
@@ -145,14 +145,14 @@ def icon(name: str) -> str:
 
 # name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom
 POSITIONS = {
-    "ARMOR-RADAR": (0, 0), "ARMOR-SOLAR": (0, 0.75), "ARMOR-ELECTRICAL": (0, 1.5), "ARMOR-ALARM": (0, 2.25), "ARMOR-NETWORK": (0, 3), "ARMOR-SIMULATOR": (0, 3.75), "ARMOR-HARDWARE": (0, 4.5),
+    "ARMOR-NODE-RADAR": (0, 0), "ARMOR-NODE-SOLAR": (0, 0.75), "ARMOR-NODE-ELECTRICAL": (0, 1.5), "ARMOR-NODE-ALARM": (0, 2.25), "ARMOR-NETWORK": (0, 3), "ARMOR-SIMULATOR": (0, 3.75), "ARMOR-HARDWARE": (0, 4.5),
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-VISION": (2, 0.75), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
-    "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-HMI": (3, 3),
+    "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-NODE-HMI": (3, 3),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
 }
-ARROWS = [("ARMOR-RADAR", "ARMOR-SERVER"), ("ARMOR-SOLAR", "ARMOR-SERVER"), ("ARMOR-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-ALARM", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-VISION", "ARMOR-SERVER-AI"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
-          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
+ARROWS = [("ARMOR-NODE-RADAR", "ARMOR-SERVER"), ("ARMOR-NODE-SOLAR", "ARMOR-SERVER"), ("ARMOR-NODE-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NODE-ALARM", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-VISION", "ARMOR-SERVER-AI"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
+          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-NODE-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 
 
@@ -180,7 +180,7 @@ def family_map() -> str:
         if name in ("ARMOR-COMMON", "ARMOR-DOCS", "ARMOR-DEVOPS"):
             continue
         x, y = centre(name)
-        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-HMI"):
+        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-NODE-HMI"):
             continue
         parts.append(f'<path d="M{x + box_w / 2} {y} L{cx - box_w / 2} {cy}" fill="none" stroke="{GREEN}" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>')
     for name, (column, row) in POSITIONS.items():
@@ -194,7 +194,7 @@ def family_map() -> str:
 
 
 def outputs(root: Path) -> dict[Path, str]:
-    files: dict[Path, str] = {root / "ARMOR-DOCS" / "brand" / "ARMOR_ICON.svg": icon("ARMOR-RADAR"), root / "ARMOR-DOCS" / "images" / "ARMOR_FAMILY.svg": family_map()}
+    files: dict[Path, str] = {root / "ARMOR-DOCS" / "brand" / "ARMOR_ICON.svg": icon("ARMOR-NODE-RADAR"), root / "ARMOR-DOCS" / "images" / "ARMOR_FAMILY.svg": family_map()}
     for name, (tagline, tags) in REPOS.items():
         target = root / name / "images"
         files[target / "ARMOR_BANNER.svg"] = banner(name, tagline, tags)

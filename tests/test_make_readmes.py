@@ -88,18 +88,18 @@ class RenderTests(unittest.TestCase):
         self.addCleanup(patcher.stop)
 
     def test_the_version_and_the_maturity_come_from_the_manifest(self):
-        for name in ("ARMOR-RADAR", "ARMOR-DOCS"):
+        for name in ("ARMOR-NODE-RADAR", "ARMOR-DOCS"):
             text = make_readmes.render(name, "en")
             self.assertIn("Version-1.2.3-0f6cbd.svg", text)
             self.assertIn("Maturity-functional-00E5FF.svg", text)
-        (self.root / "ARMOR-RADAR" / "armor.project.json").write_text(json.dumps({"version": "0.8.4.1", "maturity": "production", "stack": "C++"}), encoding="utf-8")
-        text = make_readmes.render("ARMOR-RADAR", "en")
+        (self.root / "ARMOR-NODE-RADAR" / "armor.project.json").write_text(json.dumps({"version": "0.8.4.1", "maturity": "production", "stack": "C++"}), encoding="utf-8")
+        text = make_readmes.render("ARMOR-NODE-RADAR", "en")
         self.assertIn("Version-0.8.4.1-0f6cbd.svg", text)
         self.assertIn("Maturity-production-1F883D.svg", text)
         self.assertNotIn("Version-1.2.3", text)
 
     def test_a_version_written_in_the_facts_is_replaced_not_duplicated(self):
-        text = make_readmes.render("ARMOR-RADAR", "en")
+        text = make_readmes.render("ARMOR-NODE-RADAR", "en")
         self.assertEqual(text.count("badge/Version-"), 1)
         self.assertEqual(text.count("badge/Maturity-"), 1)
 
@@ -117,7 +117,7 @@ class RenderTests(unittest.TestCase):
             self.assertEqual(len(set(counts.values())), 1, (name, counts))
 
     def test_the_language_bar_marks_the_current_language_and_links_the_rest(self):
-        text = make_readmes.render("ARMOR-RADAR", "fr")
+        text = make_readmes.render("ARMOR-NODE-RADAR", "fr")
         self.assertIn("<b>Français</b>", text)
         self.assertIn('<a href="README.md">', text)
         self.assertIn('<a href="README_por.md">', text)
@@ -146,7 +146,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn("(https://github.com/JuanenRac/ARMOR-DOCS/blob/main/docs/CAPABILITY_MATRIX.md)", other)
 
     def test_the_banner_is_a_local_file_of_the_repository(self):
-        self.assertIn('<img src="images/ARMOR_BANNER.svg"', make_readmes.render("ARMOR-HMI", "en"))
+        self.assertIn('<img src="images/ARMOR_BANNER.svg"', make_readmes.render("ARMOR-NODE-HMI", "en"))
 
     def test_the_owner_is_the_only_personal_address(self):
         for code in CODES:
@@ -171,7 +171,7 @@ class RenderTests(unittest.TestCase):
     def test_outputs_are_eight_files_per_repository_in_its_folder(self):
         files = make_readmes.outputs()
         self.assertEqual(len(files), len(ORDER) * 8)
-        self.assertIn(self.root / "ARMOR-RADAR" / "README_zho.md", files)
+        self.assertIn(self.root / "ARMOR-NODE-RADAR" / "README_zho.md", files)
 
 
 class MainTests(unittest.TestCase):
@@ -192,7 +192,7 @@ class MainTests(unittest.TestCase):
         code, _out, err = self.run_main("--check")
         self.assertEqual(code, 1)
         self.assertIn("out of date", err)
-        self.assertFalse((self.root / "ARMOR-RADAR" / "README.md").exists())
+        self.assertFalse((self.root / "ARMOR-NODE-RADAR" / "README.md").exists())
 
     def test_writing_then_checking_is_stable(self):
         code, out, _err = self.run_main()
@@ -204,7 +204,7 @@ class MainTests(unittest.TestCase):
 
     def test_windows_line_endings_do_not_count_as_a_difference(self):
         self.run_main()
-        path = self.root / "ARMOR-HMI" / "README.md"
+        path = self.root / "ARMOR-NODE-HMI" / "README.md"
         path.write_bytes(path.read_bytes().replace(b"\n", b"\r\n"))
         self.assertEqual(self.run_main("--check")[0], 0)
 
@@ -220,7 +220,7 @@ class MainTests(unittest.TestCase):
 
     def test_written_files_use_unix_line_endings(self):
         self.run_main()
-        self.assertNotIn(b"\r\n", (self.root / "ARMOR-RADAR" / "README_jpn.md").read_bytes())
+        self.assertNotIn(b"\r\n", (self.root / "ARMOR-NODE-RADAR" / "README_jpn.md").read_bytes())
 
 
 if __name__ == "__main__":

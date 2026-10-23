@@ -59,10 +59,10 @@ fi
 
 if have cmake && (have g++ || have c++); then
   # every host test a node registers with CMake (ctest), the ones of the shared firmware included - not a list written here
-  for node in ARMOR-RADAR ARMOR-SOLAR ARMOR-ELECTRICAL ARMOR-ALARM ARMOR-HMI; do
+  for node in ARMOR-NODE-RADAR ARMOR-NODE-SOLAR ARMOR-NODE-ELECTRICAL ARMOR-NODE-ALARM ARMOR-NODE-HMI; do
     run "$node" bash -c 'B="$(mktemp -d)"; trap "rm -rf -- \"$B\"" EXIT; cmake -S tests -B "$B" >/dev/null && cmake --build "$B" >/dev/null && ctest --test-dir "$B" --output-on-failure'
   done
-else for node in ARMOR-RADAR ARMOR-SOLAR ARMOR-ELECTRICAL ARMOR-ALARM ARMOR-HMI; do skip "$node" "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; done; fi
+else for node in ARMOR-NODE-RADAR ARMOR-NODE-SOLAR ARMOR-NODE-ELECTRICAL ARMOR-NODE-ALARM ARMOR-NODE-HMI; do skip "$node" "no C++ compiler or cmake (the firmware itself also needs ESP-IDF)"; done; fi
 
 if have bash && have openssl; then
   run ARMOR-DEVOPS bash -c 'for f in scripts/*.sh; do bash -n "$f" || exit 1; done; bash scripts/test_backup.sh && bash scripts/test_firewall.sh && bash scripts/test_mqtt_identity.sh'

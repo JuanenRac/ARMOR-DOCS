@@ -80,13 +80,13 @@ class CatalogTests(unittest.TestCase):
         self.catalog.write_text(f"Intro\n\n{OLD_TABLE}\n\nEnd\n", encoding="utf-8")
         self.assertEqual(self.run_main()[0], 0)
         self.assertEqual(self.run_main("--check")[0], 0)
-        manifest = self.root / "ARMOR-HMI" / "armor.project.json"
+        manifest = self.root / "ARMOR-NODE-HMI" / "armor.project.json"
         data = json.loads(manifest.read_text(encoding="utf-8"))
         data["version"] = "9.9.9"
         manifest.write_text(json.dumps(data), encoding="utf-8")
         self.assertEqual(self.run_main("--check")[0], 1)
         self.assertEqual(self.run_main()[0], 0)
-        self.assertIn("| ARMOR-HMI | 9.9.9 |", self.catalog.read_text(encoding="utf-8"))
+        self.assertIn("| ARMOR-NODE-HMI | 9.9.9 |", self.catalog.read_text(encoding="utf-8"))
 
     def test_windows_line_endings_in_the_file_are_not_a_difference(self):
         self.catalog.write_text(f"Intro\n\n{OLD_TABLE}\n\nEnd\n", encoding="utf-8")
@@ -95,7 +95,7 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(self.run_main("--check")[0], 0)
 
     def test_an_unknown_maturity_is_an_error_not_a_blank(self):
-        manifest = self.root / "ARMOR-HMI" / "armor.project.json"
+        manifest = self.root / "ARMOR-NODE-HMI" / "armor.project.json"
         manifest.write_text(json.dumps({"version": "1.0.0", "role": "x", "maturity": "nonsense"}), encoding="utf-8")
         with self.assertRaises(KeyError):
             make_catalog.table()
@@ -126,16 +126,16 @@ class BrandTests(unittest.TestCase):
         ET.fromstring(make_brand.family_map())
 
     def test_text_is_escaped(self):
-        svg = make_brand.banner("ARMOR-RADAR", "A & B <C>", ["R&D", "<TAG>"])
+        svg = make_brand.banner("ARMOR-NODE-RADAR", "A & B <C>", ["R&D", "<TAG>"])
         ET.fromstring(svg)
         self.assertIn("A &amp; B &lt;C&gt;", svg)
         self.assertIn("#R&amp;D", svg)
         self.assertNotIn("<TAG>", svg)
 
     def test_the_banner_names_the_repository_and_shows_every_tag(self):
-        tagline, tags = make_brand.REPOS["ARMOR-RADAR"]
-        svg = make_brand.banner("ARMOR-RADAR", tagline, tags)
-        self.assertIn(">ARMOR-RADAR</text>", svg)
+        tagline, tags = make_brand.REPOS["ARMOR-NODE-RADAR"]
+        svg = make_brand.banner("ARMOR-NODE-RADAR", tagline, tags)
+        self.assertIn(">ARMOR-NODE-RADAR</text>", svg)
         for tag in tags:
             self.assertIn(f"#{tag}", svg)
         self.assertIn(tagline.replace("&", "&amp;"), svg)
@@ -149,7 +149,7 @@ class BrandTests(unittest.TestCase):
         root = Path("somewhere")
         files = make_brand.outputs(root)
         self.assertEqual(len(files), 2 * len(ORDER) + 2)
-        self.assertIn(root / "ARMOR-RADAR" / "images" / "ARMOR_BANNER.svg", files)
+        self.assertIn(root / "ARMOR-NODE-RADAR" / "images" / "ARMOR_BANNER.svg", files)
         self.assertIn(root / "ARMOR-DOCS" / "images" / "ARMOR_FAMILY.svg", files)
         self.assertIn(root / "ARMOR-DOCS" / "brand" / "ARMOR_ICON.svg", files)
 
@@ -171,7 +171,7 @@ class BrandTests(unittest.TestCase):
             code, _out, err = self.run_main(root, "--check")
             self.assertEqual(code, 1)   # nothing written yet
             self.assertIn("out of date", err)
-            self.assertFalse((root / "ARMOR-RADAR" / "images").exists())   # a check never writes
+            self.assertFalse((root / "ARMOR-NODE-RADAR" / "images").exists())   # a check never writes
             self.assertEqual(self.run_main(root)[0], 0)
             self.assertEqual(self.run_main(root, "--check")[0], 0)
             banner = root / "ARMOR-VISION" / "images" / "ARMOR_BANNER.svg"
@@ -188,7 +188,7 @@ class BrandTests(unittest.TestCase):
             (root / "ARMOR-DOCS").mkdir()
             self.assertEqual(self.run_main(root)[0], 0)
             self.assertTrue((root / "ARMOR-DOCS" / "images" / "ARMOR_FAMILY.svg").is_file())
-            self.assertFalse((root / "ARMOR-RADAR").exists())
+            self.assertFalse((root / "ARMOR-NODE-RADAR").exists())
 
 
 if __name__ == "__main__":

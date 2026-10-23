@@ -183,9 +183,9 @@ CAPTIONS = {
 # repository -> [(file in images/screenshots/, caption key)]
 SHOTS = {
  "ARMOR-STUDIO": [("overview", "studio_overview"), ("radar", "studio_radar"), ("inverters", "studio_inverters"), ("site-designer", "studio_site"), ("electrical-designer", "studio_electrical"), ("alarm-panels", "studio_alarm_panels")],
- "ARMOR-RADAR": [("overview", "node_overview"), ("radars", "node_radars"), ("pins", "node_pins"), ("network", "node_network")],
- "ARMOR-SOLAR": [("overview", "node_overview"), ("ports", "node_ports"), ("readings", "node_readings"), ("network", "node_network")],
- "ARMOR-ELECTRICAL": [("overview", "node_overview"), ("meters", "node_meters"), ("readings", "node_readings"), ("zigbee", "node_zigbee")],
- "ARMOR-ALARM": [("overview", "node_overview"), ("zones", "node_zones"), ("zigbee", "node_zigbee"), ("inputs-outputs", "node_io")],
- "ARMOR-HMI": [("overview", "node_overview"), ("screen", "node_screen"), ("voice", "node_voice"), ("server", "node_server")],
+ "ARMOR-NODE-RADAR": [("overview", "node_overview"), ("radars", "node_radars"), ("pins", "node_pins"), ("network", "node_network")],
+ "ARMOR-NODE-SOLAR": [("overview", "node_overview"), ("ports", "node_ports"), ("readings", "node_readings"), ("network", "node_network")],
+ "ARMOR-NODE-ELECTRICAL": [("overview", "node_overview"), ("meters", "node_meters"), ("readings", "node_readings"), ("zigbee", "node_zigbee")],
+ "ARMOR-NODE-ALARM": [("overview", "node_overview"), ("zones", "node_zones"), ("zigbee", "node_zigbee"), ("inputs-outputs", "node_io")],
+ "ARMOR-NODE-HMI": [("overview", "node_overview"), ("screen", "node_screen"), ("voice", "node_voice"), ("server", "node_server")],
 }

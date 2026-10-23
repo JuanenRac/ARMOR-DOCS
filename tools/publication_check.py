@@ -4,7 +4,7 @@
 Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
     python tools/publication_check.py            # every ARMOR-* repository next to this one, tracked files and history
-    python tools/publication_check.py ARMOR-RADAR --no-history
+    python tools/publication_check.py ARMOR-NODE-RADAR --no-history
     python tools/publication_check.py ARMOR-STUDIO --ref=publicacion      # only the history that branch reaches (see clean_history.py)
 
 It reads git only (tracked files, and with history every revision, commit authors and messages), never the ignored files, and it never
@@ -44,7 +44,7 @@ BENIGN_IPS = {
     # fabricated DNS answer decoding to a real but unrelated public address,
     # not anyone's own infrastructure).
     "172.15.0.0", "1.0.0.0", "104.16.132.229",
-    # ARMOR-SOLAR's inverter/BMS protocol fixtures: firmware version strings
+    # ARMOR-NODE-SOLAR's inverter/BMS protocol fixtures: firmware version strings
     # ("Main Soft version : B69.12.0.0") that coincidentally parse as a
     # dotted-quad shape.
     "69.12.0.0", "68.8.0.0",
