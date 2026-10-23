@@ -37,6 +37,7 @@ REPOS: dict[str, tuple[str, list[str]]] = {
     "ARMOR-SERVER": ("CENTRAL SECURITY COORDINATOR", ["NODE", "TYPESCRIPT", "MQTT", "WEBSOCKET", "FFMPEG"]),
     "ARMOR-STUDIO": ("OPERATIONS & DESIGN CONSOLE", ["REACT", "TYPESCRIPT", "VITE", "2D/3D", "I18N"]),
     "ARMOR-ANDROID-CONTROL": ("MOBILE OPERATOR CLIENT", ["KOTLIN", "COMPOSE", "MJPEG", "PTZ"]),
+    "ARMOR-IOS-CONTROL": ("IPHONE OPERATOR CLIENT", ["SWIFT", "SWIFTUI", "FACE-ID", "KEYCHAIN"]),
     "ARMOR-HARDWARE": ("ENCLOSURES & ELECTRONICS", ["OPENSCAD", "KICAD", "ASA/PETG", "24GHZ"]),
     "ARMOR-DEVOPS": ("DEPLOYMENT & OPERATIONS", ["DOCKER", "SYSTEMD", "ARM64", "BASH"]),
     "ARMOR-UPDATER": ("REPOSITORY DISCOVERY & UPDATE", ["GITHUB-API", "GIT", "PYTHON", "QT-QUICK"]),
@@ -69,6 +70,9 @@ def glyph(name: str) -> str:
         "ARMOR-ANDROID-CONTROL": f"""<rect x="-24" y="-46" width="48" height="90" rx="9"/><path d="M-6,-38 h12" stroke-width="3"/>
     <circle r="6" cy="-4" stroke-width="2" opacity=".6"/><circle r="15" cy="-4" stroke-width="2" opacity=".6"/><path d="M0,-4 L11,-15" stroke="{AMBER}" stroke-width="3"/>
     <circle cy="34" r="3" fill="{CYAN}" stroke="none"/>""",
+        "ARMOR-IOS-CONTROL": f"""<rect x="-24" y="-46" width="48" height="90" rx="12"/><rect x="-9" y="-40" width="18" height="6" rx="3" stroke-width="2"/>
+    <circle r="6" cy="-4" stroke-width="2" opacity=".6"/><circle r="15" cy="-4" stroke-width="2" opacity=".6"/><path d="M0,-4 L11,-15" stroke="{AMBER}" stroke-width="3"/>
+    <path d="M-8,36 h16" stroke="{CYAN}" stroke-width="3"/>""",
         "ARMOR-SERVER-AI": f"""<path d="M-46,0 Q0,-44 46,0 Q0,44 -46,0 Z"/><circle r="15" stroke="{AMBER}" stroke-width="3.4"/><circle r="5" fill="{AMBER}" stroke="none"/>
     <path d="M-30,-30 l-6,-8 M0,-38 v-8 M30,-30 l6,-8" stroke-width="2" opacity=".6"/>""",
         "ARMOR-VOICE-AI": f"""<rect x="-13" y="-42" width="26" height="46" rx="13"/><path d="M-26,-6 a26,26 0 0 0 52,0 M0,20 v18 M-14,38 h28"/>
@@ -148,11 +152,11 @@ POSITIONS = {
     "ARMOR-NODE-RADAR": (0, 0), "ARMOR-NODE-SOLAR": (0, 0.75), "ARMOR-NODE-ELECTRICAL": (0, 1.5), "ARMOR-NODE-ALARM": (0, 2.25), "ARMOR-NETWORK": (0, 3), "ARMOR-SIMULATOR": (0, 3.75), "ARMOR-HARDWARE": (0, 4.5),
     "ARMOR-COMMON": (1, 1.5),
     "ARMOR-SERVER-AI": (2, 0), "ARMOR-VISION": (2, 0.75), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
-    "ARMOR-STUDIO": (3, 0.75), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-NODE-HMI": (3, 3),
+    "ARMOR-STUDIO": (3, 0.75), "ARMOR-IOS-CONTROL": (3, 1.5), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-NODE-HMI": (3, 3),
     "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
 }
 ARROWS = [("ARMOR-NODE-RADAR", "ARMOR-SERVER"), ("ARMOR-NODE-SOLAR", "ARMOR-SERVER"), ("ARMOR-NODE-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NODE-ALARM", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-VISION", "ARMOR-SERVER-AI"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
-          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-NODE-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
+          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-IOS-CONTROL"), ("ARMOR-SERVER", "ARMOR-NODE-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
 COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
 
 
@@ -180,7 +184,7 @@ def family_map() -> str:
         if name in ("ARMOR-COMMON", "ARMOR-DOCS", "ARMOR-DEVOPS"):
             continue
         x, y = centre(name)
-        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-NODE-HMI"):
+        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-IOS-CONTROL", "ARMOR-NODE-HMI"):
             continue
         parts.append(f'<path d="M{x + box_w / 2} {y} L{cx - box_w / 2} {cy}" fill="none" stroke="{GREEN}" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>')
     for name, (column, row) in POSITIONS.items():
