@@ -20,9 +20,10 @@ class SyncTests(unittest.TestCase):
         self.root = Path(holder.name)
         source = self.root / "ARMOR-COMMON" / "tools"
         source.mkdir(parents=True)
-        for name in (*sync.VENDORED_FILES, "ci.yml.template"):
+        for name in (*sync.VENDORED_FILES, "ci.yml.template", "e2e.yml.template"):
             (source / name).write_text(f"# canonical {name}\nline two\n", encoding="utf-8", newline="\n")
         (self.root / TARGET).mkdir()
+        (self.root / "ARMOR-STUDIO").mkdir()
         for target, value in (("ROOT", self.root), ("SOURCE", source)):
             patcher = mock.patch.object(sync, target, value)
             patcher.start()
@@ -30,6 +31,9 @@ class SyncTests(unittest.TestCase):
         self.targets = mock.patch.object(sync, "TARGETS", (TARGET, "ARMOR-NOT-CLONED"))
         self.targets.start()
         self.addCleanup(self.targets.stop)
+        self.e2e_targets = mock.patch.object(sync, "E2E_TARGETS", ("ARMOR-STUDIO", "ARMOR-NOT-CLONED"))
+        self.e2e_targets.start()
+        self.addCleanup(self.e2e_targets.stop)
 
     def run_main(self, *argv):
         out = io.StringIO()
@@ -49,8 +53,10 @@ class SyncTests(unittest.TestCase):
     def test_sync_writes_every_file_and_the_check_then_passes(self):
         code, out = self.run_main()
         self.assertEqual(code, 0)
-        # three tools, the workflow, and the workflow of ARMOR-COMMON itself
-        self.assertIn("files_written=5", out)
+        # three tools, the workflow, the workflow of ARMOR-COMMON itself and the one that tries Studio and the server together
+        self.assertIn("files_written=6", out)
+        self.assertEqual((self.root / "ARMOR-STUDIO" / ".github" / "workflows" / "e2e.yml").read_text(encoding="utf-8"), "# canonical e2e.yml.template\nline two\n")
+        self.assertFalse((self.root / TARGET / ".github" / "workflows" / "e2e.yml").exists(), "only the two repositories that run Studio and the server together carry it")
         for name in sync.VENDORED_FILES:
             self.assertEqual((self.root / TARGET / "tools" / name).read_text(encoding="utf-8"), f"# canonical {name}\nline two\n")
         self.assertEqual((self.root / TARGET / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8"), "# canonical ci.yml.template\nline two\n")

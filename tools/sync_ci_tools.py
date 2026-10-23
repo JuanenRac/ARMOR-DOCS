@@ -30,8 +30,16 @@ TARGETS = (
 )
 
 
+# The workflow that tries Studio and the server together (nginx of the image, a real server, a real browser): the two repositories whose change can break the other carry it.
+E2E_TARGETS = ("ARMOR-STUDIO", "ARMOR-SERVER")
+
+
 def render_workflow() -> str:
     return (SOURCE / "ci.yml.template").read_text(encoding="utf-8")
+
+
+def render_e2e_workflow() -> str:
+    return (SOURCE / "e2e.yml.template").read_text(encoding="utf-8")
 
 
 def main() -> int:
@@ -93,6 +101,24 @@ def main() -> int:
                 stale.append(f"{name}/.github/workflows/ci.yml")
             else:
                 destination.write_text(workflow, encoding="utf-8")
+                written += 1
+
+    e2e_workflow = render_e2e_workflow()
+    for name in E2E_TARGETS:
+        repo = ROOT / name
+        if not repo.is_dir():
+            print(f"SKIP {name}: no local checkout")
+            continue
+        destination = repo / ".github" / "workflows" / "e2e.yml"
+        current = destination.read_text(encoding="utf-8") if destination.is_file() else None
+        if current is not None:
+            current = current.replace("\r\n", "\n")
+        if current != e2e_workflow:
+            if check:
+                stale.append(f"{name}/.github/workflows/e2e.yml")
+            else:
+                (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
+                destination.write_text(e2e_workflow, encoding="utf-8", newline="\n")
                 written += 1
 
     if check:

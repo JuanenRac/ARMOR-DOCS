@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- The sync tool also vendors the workflow that tries Studio and the server together (`e2e.yml`) into ARMOR-STUDIO and ARMOR-SERVER, and lists the iPhone client in the family of the READMEs, the family map, the brand assets and the shared tools.
+
 - **The security baseline records the way to HTTPS for the phones:** the house's own authority, the pin shown in Studio, the pairing in the app, the check and the order of the steps before plain http can be forbidden.
 - **The README source of the Android app carries what the app now does:** the lock with the phone, the access from outside the house (two addresses, the key of the certificate remembered, push as data only), the files of the lock in the structure and the test count, in the eight languages, so that rendering the READMEs does not take them out.
 - **README sources brought up to date with the repositories they describe:** the test and vector counts of ARMOR-COMMON, ARMOR-SERVER, ARMOR-STUDIO and ARMOR-NETWORK, the name check of ARMOR-NETWORK (`--dns-name`) and the room the maintenance helper of ARMOR-DEVOPS makes on a nearly full disk, in the eight languages.
