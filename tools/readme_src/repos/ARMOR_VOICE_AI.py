@@ -48,7 +48,7 @@ TEXT = {
    "**Recommendations only:** an accepted command is passed to ARMOR-SERVER, which still authenticates and authorises it; from the wall panel disarming by voice is never possible (the PIN is typed on the screen); from the app it follows the server's `ARMOR_DISARM_PIN` (set it to `required`)."
   ],
   "note": "See [voice safety](docs/SAFETY.md) and the [service](docs/SERVICE.md).",
-  "fit": "ARMOR-VOICE-AI turns what is said into one of a closed list of commands and never does anything by itself: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) asks it, then authenticates and authorises the command exactly as it would a click in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). It is meant to live behind the microphone of the [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) wall panel and answers the written and spoken assistant of the Android app.",
+  "fit": "ARMOR-VOICE-AI turns what is said into one of a closed list of commands and never does anything by itself: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) asks it, then authenticates and authorises the command exactly as it would a click in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). It is meant to live behind the microphone of the [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) wall panel and answers the written and spoken assistant of the Android app.",
   "hardware": "Running as a service on the CM5 test bench, asked by the server; no microphone or speech engine has been tried"
  },
  "es": {
@@ -63,7 +63,7 @@ TEXT = {
    "**Solo recomendaciones:** un comando aceptado se pasa a ARMOR-SERVER, que sigue autenticándolo y autorizándolo; desde el panel de pared desarmar por voz nunca es posible (el PIN se teclea en la pantalla); desde la app sigue `ARMOR_DISARM_PIN` del servidor (ponlo en `required`)."
   ],
   "note": "Véanse la [seguridad de la voz](docs/SAFETY.md) y el [servicio](docs/SERVICE.md).",
-  "fit": "ARMOR-VOICE-AI convierte lo que se dice en uno de una lista cerrada de comandos y nunca hace nada por sí mismo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) le pregunta y luego autentica y autoriza el comando exactamente como un clic en [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Está pensado para vivir tras el micrófono del panel de pared [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) y atiende al asistente escrito y hablado de la app Android.",
+  "fit": "ARMOR-VOICE-AI convierte lo que se dice en uno de una lista cerrada de comandos y nunca hace nada por sí mismo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) le pregunta y luego autentica y autoriza el comando exactamente como un clic en [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Está pensado para vivir tras el micrófono del panel de pared [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) y atiende al asistente escrito y hablado de la app Android.",
   "hardware": "Corriendo como servicio en el banco de pruebas de la CM5, consultado por el servidor; no se ha probado ningún micrófono ni motor de voz",
   "requirements": [
    "Python 3.11+ (solo la biblioteca estándar)",
@@ -82,7 +82,7 @@ TEXT = {
    "**Des recommandations seulement :** une commande acceptée est transmise à ARMOR-SERVER, qui l'authentifie et l'autorise toujours ; depuis le panneau mural, désarmer à la voix n'est jamais possible (le PIN se saisit sur l'écran) ; depuis l'appli, cela suit `ARMOR_DISARM_PIN` du serveur (mettez-le à `required`)."
   ],
   "note": "Voir la [sécurité de la voix](docs/SAFETY.md) et le [service](docs/SERVICE.md).",
-  "fit": "ARMOR-VOICE-AI transforme ce qui est dit en l'une des commandes d'une liste fermée et ne fait jamais rien de lui-même : [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) l'interroge, puis authentifie et autorise la commande exactement comme un clic dans [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Il est destiné à vivre derrière le microphone du panneau mural [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) et répond à l'assistant écrit et parlé de l'application Android.",
+  "fit": "ARMOR-VOICE-AI transforme ce qui est dit en l'une des commandes d'une liste fermée et ne fait jamais rien de lui-même : [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) l'interroge, puis authentifie et autorise la commande exactement comme un clic dans [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Il est destiné à vivre derrière le microphone du panneau mural [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) et répond à l'assistant écrit et parlé de l'application Android.",
   "hardware": "Tourne comme service sur le banc de test CM5, interrogé par le serveur ; aucun microphone ni moteur vocal n'a été essayé",
   "requirements": [
    "Python 3.11+ (bibliothèque standard uniquement)",
@@ -101,7 +101,7 @@ TEXT = {
    "**Solo raccomandazioni:** un comando accettato è passato ad ARMOR-SERVER, che lo autentica e lo autorizza comunque; dal pannello a muro disinserire a voce non è mai possibile (il PIN si digita sullo schermo); dall'app segue `ARMOR_DISARM_PIN` del server (impostalo su `required`)."
   ],
   "note": "Vedi la [sicurezza della voce](docs/SAFETY.md) e il [servizio](docs/SERVICE.md).",
-  "fit": "ARMOR-VOICE-AI trasforma ciò che si dice in uno di un elenco chiuso di comandi e non fa mai nulla da solo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) lo interroga, poi autentica e autorizza il comando esattamente come un clic in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). È pensato per vivere dietro il microfono del pannello a muro [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) e serve l'assistente scritto e parlato dell'app Android.",
+  "fit": "ARMOR-VOICE-AI trasforma ciò che si dice in uno di un elenco chiuso di comandi e non fa mai nulla da solo: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) lo interroga, poi autentica e autorizza il comando esattamente come un clic in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). È pensato per vivere dietro il microfono del pannello a muro [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) e serve l'assistente scritto e parlato dell'app Android.",
   "hardware": "Gira come servizio sul banco di prova CM5, interrogato dal server; nessun microfono né motore vocale è stato provato",
   "requirements": [
    "Python 3.11+ (solo la libreria standard)",
@@ -120,7 +120,7 @@ TEXT = {
    "**Nur Empfehlungen:** ein akzeptierter Befehl wird an ARMOR-SERVER weitergegeben, der ihn weiterhin authentifiziert und autorisiert; vom Wandpanel aus ist Unscharfschalten per Sprache nie möglich (die PIN wird auf dem Bildschirm eingegeben); in der App folgt es `ARMOR_DISARM_PIN` des Servers (auf `required` setzen)."
   ],
   "note": "Siehe die [Sprachsicherheit](docs/SAFETY.md) und den [Dienst](docs/SERVICE.md).",
-  "fit": "ARMOR-VOICE-AI macht aus dem Gesagten einen Befehl aus einer geschlossenen Liste und tut nie etwas von selbst: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) fragt es ab und authentifiziert und autorisiert den Befehl dann genau wie einen Klick in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Es soll hinter dem Mikrofon des Wandpanels [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) leben und bedient den geschriebenen und gesprochenen Assistenten der Android-App.",
+  "fit": "ARMOR-VOICE-AI macht aus dem Gesagten einen Befehl aus einer geschlossenen Liste und tut nie etwas von selbst: [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) fragt es ab und authentifiziert und autorisiert den Befehl dann genau wie einen Klick in [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Es soll hinter dem Mikrofon des Wandpanels [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) leben und bedient den geschriebenen und gesprochenen Assistenten der Android-App.",
   "hardware": "Läuft als Dienst am CM5-Testaufbau, vom Server abgefragt; weder Mikrofon noch Sprach-Engine wurden erprobt",
   "requirements": [
    "Python 3.11+ (nur die Standardbibliothek)",
@@ -139,7 +139,7 @@ TEXT = {
    "**只是建议：**被接受的命令会交给 ARMOR-SERVER，由它继续认证和授权；在墙面面板上绝不可能用语音撤防（PIN 在屏幕上输入）；在应用中则遵循服务器的 `ARMOR_DISARM_PIN`（请设为 `required`）。"
   ],
   "note": "参见[语音安全](docs/SAFETY.md)和[服务](docs/SERVICE.md)。",
-  "fit": "ARMOR-VOICE-AI 把所说的话变成封闭列表中的某个命令，自己从不做任何事：[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 向它询问，然后像对待 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 中的一次点击那样认证并授权该命令。它打算放在壁挂面板 [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) 的麦克风之后，并为 Android 应用的文字和语音助手服务。",
+  "fit": "ARMOR-VOICE-AI 把所说的话变成封闭列表中的某个命令，自己从不做任何事：[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 向它询问，然后像对待 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 中的一次点击那样认证并授权该命令。它打算放在壁挂面板 [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) 的麦克风之后，并为 Android 应用的文字和语音助手服务。",
   "hardware": "在 CM5 测试台上作为服务运行，由服务器调用；尚未试过麦克风或语音引擎",
   "requirements": [
    "Python 3.11+（仅标准库）",
@@ -158,7 +158,7 @@ TEXT = {
    "**推奨のみ：**受け付けたコマンドは ARMOR-SERVER に渡され、サーバーが引き続き認証と認可を行います。壁パネルでは音声での解除は決してできません（PIN は画面で入力します）。アプリではサーバーの `ARMOR_DISARM_PIN` に従います（`required` に設定してください）。"
   ],
   "note": "[音声の安全性](docs/SAFETY.md)と[サービス](docs/SERVICE.md)を参照してください。",
-  "fit": "ARMOR-VOICE-AI は、話された内容を閉じたリストのコマンドのひとつに変えるだけで、自分では何もしません。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) が問い合わせ、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) でのクリックと同じようにコマンドを認証・認可します。壁掛けパネル [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) のマイクの背後で動く想定で、Android アプリの文字・音声アシスタントにも応えます。",
+  "fit": "ARMOR-VOICE-AI は、話された内容を閉じたリストのコマンドのひとつに変えるだけで、自分では何もしません。[ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) が問い合わせ、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) でのクリックと同じようにコマンドを認証・認可します。壁掛けパネル [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) のマイクの背後で動く想定で、Android アプリの文字・音声アシスタントにも応えます。",
   "hardware": "CM5 テストベンチでサービスとして動作し、サーバーが問い合わせます。マイクや音声エンジンは未検証",
   "requirements": [
    "Python 3.11+（標準ライブラリのみ）",
@@ -177,7 +177,7 @@ TEXT = {
    "**Só recomendações:** um comando aceite é passado ao ARMOR-SERVER, que continua a autenticá-lo e autorizá-lo; a partir do painel de parede desarmar por voz nunca é possível (o PIN digita-se no ecrã); a partir da app segue o `ARMOR_DISARM_PIN` do servidor (ponha-o em `required`)."
   ],
   "note": "Veja a [segurança da voz](docs/SAFETY.md) e o [serviço](docs/SERVICE.md).",
-  "fit": "O ARMOR-VOICE-AI transforma o que é dito num de uma lista fechada de comandos e nunca faz nada por si: o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) pergunta-lhe e depois autentica e autoriza o comando exatamente como um clique no [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Destina-se a viver atrás do microfone do painel de parede [ARMOR-HMI](https://github.com/JuanenRac/ARMOR-HMI) e serve o assistente escrito e falado da aplicação Android.",
+  "fit": "O ARMOR-VOICE-AI transforma o que é dito num de uma lista fechada de comandos e nunca faz nada por si: o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) pergunta-lhe e depois autentica e autoriza o comando exatamente como um clique no [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO). Destina-se a viver atrás do microfone do painel de parede [ARMOR-NODE-HMI](https://github.com/JuanenRac/ARMOR-NODE-HMI) e serve o assistente escrito e falado da aplicação Android.",
   "hardware": "A correr como serviço na bancada de testes do CM5, consultado pelo servidor; nenhum microfone ou motor de voz foi experimentado",
   "requirements": [
    "Python 3.11+ (apenas a biblioteca padrão)",

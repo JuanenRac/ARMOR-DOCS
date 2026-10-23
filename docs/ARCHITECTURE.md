@@ -8,7 +8,7 @@ flowchart LR
     EN["Electrical nodes<br/>AC and DC meters, relays"]
     AN["Alarm nodes<br/>zones, siren, PIN"]
     NN["Network node<br/>devices, internet"]
-    HM["Touch panel (ARMOR-HMI)<br/>wall screen, voice"]
+    HM["Touch panel (ARMOR-NODE-HMI)<br/>wall screen, voice"]
     C["IP cameras (PTZ, RTSP)"]
   end
   subgraph core["VLAN 20 - core"]
@@ -66,7 +66,7 @@ flowchart LR
   number, and that a node carries out in two steps (arm, then execute with a one-time token), reading
   the battery before and after. What a node can move besides is relays (off by default in three
   places) and, for a source-transfer switch, a channel that is off by default and needs a two-step
-  command. See `ARMOR-SOLAR/docs/BATTERY_MAINTENANCE.md`.
+  command. See `ARMOR-NODE-SOLAR/docs/BATTERY_MAINTENANCE.md`.
 * **A phone sets a node up over Bluetooth** (name, Wi-Fi, address, broker): the same channel on the
   radar, solar, electrical, alarm and touch-panel nodes. The link is encrypted with a PIN derived from
   the node's set-up code, every operation but `hello` needs the set-up code or a login, changing
@@ -101,15 +101,15 @@ configurable silence.
 | Concern | Project |
 |---|---|
 | What a message means | ARMOR-COMMON (JSON Schemas, conformance vectors, generated types, OpenAPI) |
-| Sensing and field firmware | ARMOR-RADAR |
-| Solar gateway nodes (inverters, batteries) | ARMOR-SOLAR |
-| Electrical nodes (meters) and the rules for switching | ARMOR-ELECTRICAL |
-| The alarm's zones, arming, delays, siren and PIN, with the server or without it | ARMOR-ALARM |
+| Sensing and field firmware | ARMOR-NODE-RADAR |
+| Solar gateway nodes (inverters, batteries) | ARMOR-NODE-SOLAR |
+| Electrical nodes (meters) and the rules for switching | ARMOR-NODE-ELECTRICAL |
+| The alarm's zones, arming, delays, siren and PIN, with the server or without it | ARMOR-NODE-ALARM |
 | The local network: devices, internet, changes | ARMOR-NETWORK |
 | State, cameras, evidence, audit | ARMOR-SERVER |
 | Visual and voice decisions | ARMOR-SERVER-AI, ARMOR-VOICE-AI |
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |
-| The touch panel on the wall (state, arming, the voice assistant) | ARMOR-HMI |
+| The touch panel on the wall (state, arming, the voice assistant) | ARMOR-NODE-HMI |
 | Enclosures and electronics | ARMOR-HARDWARE |
 | Deployment | ARMOR-DEVOPS |
 | Ecosystem-wide CI baseline and cross-machine install/update | ARMOR-COMMON, ARMOR-UPDATER |

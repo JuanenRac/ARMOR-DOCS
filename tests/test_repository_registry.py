@@ -11,7 +11,7 @@ from make_readmes import ORDER
 
 ROOT = Path(__file__).resolve().parents[1]
 FAMILY = ROOT.parent
-NODES = {"ARMOR-RADAR", "ARMOR-SOLAR", "ARMOR-ELECTRICAL", "ARMOR-ALARM", "ARMOR-HMI"}
+NODES = {"ARMOR-NODE-RADAR", "ARMOR-NODE-SOLAR", "ARMOR-NODE-ELECTRICAL", "ARMOR-NODE-ALARM", "ARMOR-NODE-HMI"}
 
 
 def readme_sources() -> set[str]:

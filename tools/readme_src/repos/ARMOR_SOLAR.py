@@ -1,4 +1,4 @@
-# The facts that do not depend on the language, and the words of every language, of ARMOR-SOLAR.
+# The facts that do not depend on the language, and the words of every language, of ARMOR-NODE-SOLAR.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
 FACTS = {
@@ -22,7 +22,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```bash\ncmake -S tests -B build/host && cmake --build build/host\nbuild/host/test_solar && build/host/test_node && build/host/test_board_eth && build/host/test_ble && build/host/test_mux && build/host/test_parallel && build/host/test_console && build/host/test_release      # 10,527 checks, -Werror\nbuild/host/emit_poller_samples | python tests/check_samples.py   # what the ports make is accepted by ARMOR-COMMON\ntools/build_node.sh generic                       # the firmware image for the N16R8 board in the ESP-IDF container: dist/generic-s3-wifi.bin\ntools/build_node.sh generic s3-eth               # the same firmware for the Waveshare ESP32-S3-ETH (Ethernet): dist/generic-s3-eth.bin\nnode tools/panel_mock.mjs --user admin:adminpass123   # the panel without a board\n```",
- "structure": "```text\nARMOR-SOLAR/\n├── main/    the ESP-IDF component: app_main, solar_manager (one task per port, or per group in the mux profile), uart_ports, mux_board, port_leds_hw, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet\n├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, mux_group, port_leds, console_probe, json (no hardware in them)\n├── panel/   the web panel: index.html, app.js, text.js (8 languages), style.css\n├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs\n├── tests/   test_solar.cpp, test_node.cpp, test_mqtt_tls.cpp, test_board_eth.cpp, test_ble.cpp, test_mux.cpp, test_parallel.cpp, test_console.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ the ANT-BMS frames)\n└── docs/    NODE_FIRMWARE, NODE_HARDWARE, BLE_PROVISIONING, PROTOCOLS, SOLAR_MESSAGES, STUDIO_MENUS\n```",
+ "structure": "```text\nARMOR-NODE-SOLAR/\n├── main/    the ESP-IDF component: app_main, solar_manager (one task per port, or per group in the mux profile), uart_ports, mux_board, port_leds_hw, network, web_server, api_shared, mqtt_link, node_store, tls_cert, ble_provision, board_ethernet\n├── core/    voltronic, voltronic_pi18, pylontech, ant_bms, ant_registers, ant_settings, solar_json + solar_config, poller, soft_uart, netplan, auth, board_s3, ble_frame, ble_dispatch, mux_group, port_leds, console_probe, json (no hardware in them)\n├── panel/   the web panel: index.html, app.js, text.js (8 languages), style.css\n├── tools/   build_node.sh, pack_panel.py, panel_mock.mjs, panel_browser_test.mjs\n├── tests/   test_solar.cpp, test_node.cpp, test_mqtt_tls.cpp, test_board_eth.cpp, test_ble.cpp, test_mux.cpp, test_parallel.cpp, test_console.cpp, emit_samples.cpp, emit_poller_samples.cpp, check_samples.py (+ the ANT-BMS frames)\n└── docs/    NODE_FIRMWARE, NODE_HARDWARE, BLE_PROVISIONING, PROTOCOLS, SOLAR_MESSAGES, STUDIO_MENUS\n```",
  "tests": "10,527 checks in 14 programs (`ctest`)",
  "requirements": [
   "a C++17 compiler for the host tests",
@@ -59,7 +59,7 @@ TEXT = {
   ],
   "note": "See the [firmware guide](docs/NODE_FIRMWARE.md) (the board, the ports, the first start and the bench checklist) and the [wiring notes](docs/NODE_HARDWARE.md).",
   "hardware": "None yet: no board built and no inverter or battery connected (host tests, the build and the panel in a browser only)",
-  "fit": "ARMOR-SOLAR is the gateway between the house's solar equipment and the family. It reads inverters and batteries through up to ten serial ports and publishes what it reads for [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), which keeps the history, the sums and the alarms; the *Inverters* and *Batteries* menus of [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) and the Solar screen of [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) show it. It only reads: it never writes a setting to any equipment."
+  "fit": "ARMOR-NODE-SOLAR is the gateway between the house's solar equipment and the family. It reads inverters and batteries through up to ten serial ports and publishes what it reads for [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), which keeps the history, the sums and the alarms; the *Inverters* and *Batteries* menus of [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) and the Solar screen of [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) show it. It only reads: it never writes a setting to any equipment."
  },
  "es": {
   "tagline": "Nodo pasarela solar: lee inversores y baterías por hasta diez puertos serie (firmware para ESP32-S3, su panel web y la biblioteca de protocolos)",
@@ -88,7 +88,7 @@ TEXT = {
   ],
   "note": "Véase la [guía del firmware](docs/NODE_FIRMWARE.md) (la placa, los puertos, el primer arranque y la lista de pruebas en banco) y las [notas de cableado](docs/NODE_HARDWARE.md).",
   "hardware": "Ninguno todavía: ninguna placa montada ni inversor o batería conectado (solo tests en ordenador, la compilación y el panel en un navegador)",
-  "fit": "ARMOR-SOLAR es la pasarela entre el equipo solar de la casa y la familia. Lee inversores y baterías por hasta diez puertos serie y publica lo que lee para [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda el historial, los totales y las alarmas; los menús *Inversores* y *Baterías* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la pantalla Solar de [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo muestran. Solo lee: nunca escribe un ajuste en ningún equipo.",
+  "fit": "ARMOR-NODE-SOLAR es la pasarela entre el equipo solar de la casa y la familia. Lee inversores y baterías por hasta diez puertos serie y publica lo que lee para [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda el historial, los totales y las alarmas; los menús *Inversores* y *Baterías* de [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la pantalla Solar de [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo muestran. Solo lee: nunca escribe un ajuste en ningún equipo.",
   "requirements": [
    "un compilador de C++17 para las pruebas en el PC",
    "el contenedor de ESP-IDF 5.5.5 para compilar la imagen",
@@ -123,7 +123,7 @@ TEXT = {
   ],
   "note": "Voir le [guide du firmware](docs/NODE_FIRMWARE.md) (la carte, les ports, le premier démarrage et la liste d'essais sur banc) et les [notes de câblage](docs/NODE_HARDWARE.md).",
   "hardware": "Aucun pour l'instant : aucune carte montée ni onduleur ou batterie connecté (seulement des tests sur ordinateur, la compilation et le panneau dans un navigateur)",
-  "fit": "ARMOR-SOLAR est la passerelle entre le matériel solaire de la maison et la famille. Il lit onduleurs et batteries par jusqu'à dix ports série et publie ce qu'il lit pour [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), qui garde l'historique, les totaux et les alarmes ; les menus *Onduleurs* et *Batteries* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'écran Solaire d'[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) le montrent. Il ne fait que lire : il n'écrit jamais un réglage dans un équipement.",
+  "fit": "ARMOR-NODE-SOLAR est la passerelle entre le matériel solaire de la maison et la famille. Il lit onduleurs et batteries par jusqu'à dix ports série et publie ce qu'il lit pour [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), qui garde l'historique, les totaux et les alarmes ; les menus *Onduleurs* et *Batteries* d'[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'écran Solaire d'[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) le montrent. Il ne fait que lire : il n'écrit jamais un réglage dans un équipement.",
   "requirements": [
    "un compilateur C++17 pour les tests sur l'ordinateur",
    "le conteneur ESP-IDF 5.5.5 pour compiler l'image",
@@ -158,7 +158,7 @@ TEXT = {
   ],
   "note": "Vedi la [guida al firmware](docs/NODE_FIRMWARE.md) (la scheda, le porte, il primo avvio e l'elenco delle prove da banco) e le [note di cablaggio](docs/NODE_HARDWARE.md).",
   "hardware": "Ancora nessuno: nessuna scheda montata né inverter o batteria collegati (solo test su computer, la compilazione e il pannello in un browser)",
-  "fit": "ARMOR-SOLAR è il gateway fra gli apparecchi solari della casa e la famiglia. Legge inverter e batterie attraverso fino a dieci porte seriali e pubblica ciò che legge per [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), che conserva lo storico, i totali e gli allarmi; i menu *Inverter* e *Batterie* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e la schermata Solare di [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo mostrano. Si limita a leggere: non scrive mai un'impostazione in nessun apparecchio.",
+  "fit": "ARMOR-NODE-SOLAR è il gateway fra gli apparecchi solari della casa e la famiglia. Legge inverter e batterie attraverso fino a dieci porte seriali e pubblica ciò che legge per [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), che conserva lo storico, i totali e gli allarmi; i menu *Inverter* e *Batterie* di [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e la schermata Solare di [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) lo mostrano. Si limita a leggere: non scrive mai un'impostazione in nessun apparecchio.",
   "requirements": [
    "un compilatore C++17 per i test sul computer",
    "il container ESP-IDF 5.5.5 per compilare l'immagine",
@@ -193,7 +193,7 @@ TEXT = {
   ],
   "note": "Siehe die [Firmware-Anleitung](docs/NODE_FIRMWARE.md) (die Platine, die Ports, der erste Start und die Prüfliste am Prüfstand) und die [Verdrahtungshinweise](docs/NODE_HARDWARE.md).",
   "hardware": "Noch keiner: keine Platine aufgebaut und kein Wechselrichter oder keine Batterie angeschlossen (nur Computertests, der Build und das Panel im Browser)",
-  "fit": "ARMOR-SOLAR ist das Gateway zwischen den Solargeräten des Hauses und der Familie. Es liest Wechselrichter und Batterien über bis zu zehn serielle Ports und veröffentlicht, was es liest, für [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), der Verlauf, Summen und Alarme führt; die Menüs *Wechselrichter* und *Batterien* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) und der Solar-Bildschirm von [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) zeigen es. Es liest nur: Es schreibt nie eine Einstellung in ein Gerät.",
+  "fit": "ARMOR-NODE-SOLAR ist das Gateway zwischen den Solargeräten des Hauses und der Familie. Es liest Wechselrichter und Batterien über bis zu zehn serielle Ports und veröffentlicht, was es liest, für [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), der Verlauf, Summen und Alarme führt; die Menüs *Wechselrichter* und *Batterien* von [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) und der Solar-Bildschirm von [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) zeigen es. Es liest nur: Es schreibt nie eine Einstellung in ein Gerät.",
   "requirements": [
    "ein C++17-Compiler für die Host-Tests",
    "der ESP-IDF-5.5.5-Container zum Bauen des Images",
@@ -228,7 +228,7 @@ TEXT = {
   ],
   "note": "参见[固件指南](docs/NODE_FIRMWARE.md)（开发板、端口、首次启动和台架检查清单）以及[接线说明](docs/NODE_HARDWARE.md)。",
   "hardware": "暂无：没有制作板子，也没有连接逆变器或电池（仅有计算机测试、构建和浏览器中的面板）",
-  "fit": "ARMOR-SOLAR 是住宅太阳能设备与家族之间的网关。它通过最多十个串口读取逆变器和电池，并把读到的内容发布给 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)，由后者保存历史、合计和报警；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*逆变器*和*电池*菜单以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 的太阳能界面显示这些内容。它只读取：从不向任何设备写入设置。",
+  "fit": "ARMOR-NODE-SOLAR 是住宅太阳能设备与家族之间的网关。它通过最多十个串口读取逆变器和电池，并把读到的内容发布给 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)，由后者保存历史、合计和报警；[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 的*逆变器*和*电池*菜单以及 [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) 的太阳能界面显示这些内容。它只读取：从不向任何设备写入设置。",
   "requirements": [
    "用于主机测试的 C++17 编译器",
    "用于构建镜像的 ESP-IDF 5.5.5 容器",
@@ -263,7 +263,7 @@ TEXT = {
   ],
   "note": "[ファームウェアガイド](docs/NODE_FIRMWARE.md)（ボード、ポート、初回起動、ベンチ確認リスト）と[配線メモ](docs/NODE_HARDWARE.md)を参照。",
   "hardware": "まだありません：基板は未製作で、インバーターやバッテリーも未接続（コンピューター上のテスト、ビルド、ブラウザーでのパネルのみ）",
-  "fit": "ARMOR-SOLAR は家のソーラー機器とファミリーをつなぐゲートウェイです。最大 10 本のシリアルポートでインバーターとバッテリーを読み取り、読み取った内容を [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送ります。サーバーが履歴、合計、警報を保持し、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*インバーター*と*バッテリー*メニュー、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) のソーラー画面が表示します。読み取るだけで、どの機器にも設定を書き込みません。",
+  "fit": "ARMOR-NODE-SOLAR は家のソーラー機器とファミリーをつなぐゲートウェイです。最大 10 本のシリアルポートでインバーターとバッテリーを読み取り、読み取った内容を [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送ります。サーバーが履歴、合計、警報を保持し、[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) の*インバーター*と*バッテリー*メニュー、[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) のソーラー画面が表示します。読み取るだけで、どの機器にも設定を書き込みません。",
   "requirements": [
    "ホストテスト用の C++17 コンパイラ",
    "イメージをビルドするための ESP-IDF 5.5.5 コンテナ",
@@ -298,7 +298,7 @@ TEXT = {
   ],
   "note": "Veja o [guia do firmware](docs/NODE_FIRMWARE.md) (a placa, as portas, o primeiro arranque e a lista de verificação de bancada) e as [notas de ligação](docs/NODE_HARDWARE.md).",
   "hardware": "Nenhum ainda: nenhuma placa montada nem inversor ou bateria ligados (só testes no computador, a compilação e o painel num navegador)",
-  "fit": "O ARMOR-SOLAR é a porta de ligação entre o equipamento solar da casa e a família. Lê inversores e baterias por até dez portas série e publica o que lê para o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda o histórico, os totais e os alarmes; os menus *Inversores* e *Baterias* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e o ecrã Solar do [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) mostram-no. Só lê: nunca escreve uma definição em nenhum equipamento.",
+  "fit": "O ARMOR-NODE-SOLAR é a porta de ligação entre o equipamento solar da casa e a família. Lê inversores e baterias por até dez portas série e publica o que lê para o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), que guarda o histórico, os totais e os alarmes; os menus *Inversores* e *Baterias* do [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e o ecrã Solar do [ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL) mostram-no. Só lê: nunca escreve uma definição em nenhum equipamento.",
   "requirements": [
    "um compilador de C++17 para os testes no computador",
    "o contentor ESP-IDF 5.5.5 para compilar a imagem",

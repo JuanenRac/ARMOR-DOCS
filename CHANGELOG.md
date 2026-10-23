@@ -63,7 +63,7 @@ All notable changes to this project are documented here.
 
 ## [0.8.0.1] - README sources for health and arming profiles
 
-- The README sources of ARMOR-COMMON, SERVER, ALARM, RADAR, SOLAR, ELECTRICAL, HMI, STUDIO, ANDROID-CONTROL and DEVOPS describe the node health report and the arming profiles in the eight languages, and the test count of ARMOR-ALARM.
+- The README sources of ARMOR-COMMON, SERVER, ALARM, RADAR, SOLAR, ELECTRICAL, HMI, STUDIO, ANDROID-CONTROL and DEVOPS describe the node health report and the arming profiles in the eight languages, and the test count of ARMOR-NODE-ALARM.
 
 ## [0.8.0.0] - The README sources describe the optional encrypted link to the broker
 
@@ -101,18 +101,18 @@ All notable changes to this project are documented here.
 
 ## [0.7.3] - The alarm node's radio takeover, and the solar board's ten ports
 
-- **Capability matrix:** ARMOR-ALARM's firmware now says that it takes the Zigbee radio over itself (and what has and has not been tried: only frames on a computer), and the solar base board's row says ten ports in 4, 4 and 2, the LEDs (eight on a shift register, two on a pin each) and the warning for a pair that mixes hardware.
+- **Capability matrix:** ARMOR-NODE-ALARM's firmware now says that it takes the Zigbee radio over itself (and what has and has not been tried: only frames on a computer), and the solar base board's row says ten ports in 4, 4 and 2, the LEDs (eight on a shift register, two on a pin each) and the warning for a pair that mixes hardware.
 - **Threat model** (`docs/THREAT_MODEL.md`): what the system protects, from whom, where its pieces trust each other, what each piece does about each threat, what is left and what to do first, written from what the code does and honest that it is not an audit.
-- **Catalogue:** the versions that moved (ARMOR-COMMON 0.4.4, ARMOR-SOLAR 0.3.2, ARMOR-ALARM 0.2.0) and ARMOR-ALARM's description.
+- **Catalogue:** the versions that moved (ARMOR-COMMON 0.4.4, ARMOR-NODE-SOLAR 0.3.2, ARMOR-NODE-ALARM 0.2.0) and ARMOR-NODE-ALARM's description.
 
 ## [0.7.2] - The alarm node joins the matrix
 
-- **Capability matrix:** ARMOR-ALARM's firmware, its messages in the shared contract, the server's alarm nodes (commands off by default) and the Alarm panels of Studio and the phone, each with what has and has not been proven; nothing has run on a board.
-- **Catalogue:** the versions of the projects that moved (ARMOR-COMMON 0.4.3, ARMOR-ALARM 0.1.0, the server, Studio, the phone, the electrical, solar, radar and touch-panel nodes and DevOps), and the interface file's new name.
+- **Capability matrix:** ARMOR-NODE-ALARM's firmware, its messages in the shared contract, the server's alarm nodes (commands off by default) and the Alarm panels of Studio and the phone, each with what has and has not been proven; nothing has run on a board.
+- **Catalogue:** the versions of the projects that moved (ARMOR-COMMON 0.4.3, ARMOR-NODE-ALARM 0.1.0, the server, Studio, the phone, the electrical, solar, radar and touch-panel nodes and DevOps), and the interface file's new name.
 
 ## [0.7.1] - What has run on real hardware, said the same way everywhere
 
-- The capability matrix, the security baseline and the ARMOR-RADAR pages said, in different places, that the radar firmware had never run on a board or had run on one board without radars. Two real nodes (Waveshare ESP32-S3-ETH) run it: the firmware row and the link from Studio to a node's panel are now *Verified*, and what is still not recorded on a real node (the Wi-Fi bridge, mapped pins, joining a router's Wi-Fi, Bluetooth between a board and a phone, real targets for the track identities) is worded as "not yet recorded" instead of "never".
+- The capability matrix, the security baseline and the ARMOR-NODE-RADAR pages said, in different places, that the radar firmware had never run on a board or had run on one board without radars. Two real nodes (Waveshare ESP32-S3-ETH) run it: the firmware row and the link from Studio to a node's panel are now *Verified*, and what is still not recorded on a real node (the Wi-Fi bridge, mapped pins, joining a router's Wi-Fi, Bluetooth between a board and a phone, real targets for the track identities) is worded as "not yet recorded" instead of "never".
 
 ## [0.7.0] - The documentation follows what the system does today
 
@@ -158,7 +158,7 @@ All notable changes to this project are documented here.
 
 ## [0.6.1] - Catalog with the Android and radar versions
 
-- `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.7 and ARMOR-RADAR 0.5.4.
+- `docs/PROJECT_CATALOG.md` lists ARMOR-ANDROID-CONTROL 0.4.7 and ARMOR-NODE-RADAR 0.5.4.
 
 
 ## [0.6.0] - Catalog with the Android client version
@@ -181,28 +181,28 @@ All notable changes to this project are documented here.
 ## [0.5.6] - The version table, and what the capability matrix says about hardware
 
 - **PROJECT_CATALOG.md:** every version number brought up to date.
-- **CAPABILITY_MATRIX.md:** it said no radar or field-node board had ever been connected; one ARMOR-RADAR board with its LD2450 radars has been flashed and run on a bench, so it now says that (and that nothing else of the kind has).
+- **CAPABILITY_MATRIX.md:** it said no radar or field-node board had ever been connected; one ARMOR-NODE-RADAR board with its LD2450 radars has been flashed and run on a bench, so it now says that (and that nothing else of the kind has).
 - **Manifest:** `native_version` was behind `version`, which the CI check refuses; they are equal again.
 
 ## [0.5.5] - The version table catches up once more
 
-- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-RADAR 0.4.3, ARMOR-SOLAR 0.1.9, ARMOR-ELECTRICAL 0.1.5, ARMOR-HMI 0.0.9).
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-NODE-RADAR 0.4.3, ARMOR-NODE-SOLAR 0.1.9, ARMOR-NODE-ELECTRICAL 0.1.5, ARMOR-NODE-HMI 0.0.9).
 
 ## [0.5.4] - The version table catches up once more
 
-- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-RADAR 0.3.9, ARMOR-SOLAR 0.1.7, ARMOR-ELECTRICAL 0.1.3, ARMOR-HMI 0.0.7).
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-NODE-RADAR 0.3.9, ARMOR-NODE-SOLAR 0.1.7, ARMOR-NODE-ELECTRICAL 0.1.3, ARMOR-NODE-HMI 0.0.7).
 
 ## [0.5.3] - The version table catches up once more
 
-- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.4, ARMOR-RADAR 0.3.8, ARMOR-SOLAR 0.1.6, ARMOR-ELECTRICAL 0.1.2, ARMOR-HMI 0.0.6, ARMOR-SERVER 0.4.1, ARMOR-STUDIO 0.6.0, ARMOR-DEVOPS 0.3.6).
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.4, ARMOR-NODE-RADAR 0.3.8, ARMOR-NODE-SOLAR 0.1.6, ARMOR-NODE-ELECTRICAL 0.1.2, ARMOR-NODE-HMI 0.0.6, ARMOR-SERVER 0.4.1, ARMOR-STUDIO 0.6.0, ARMOR-DEVOPS 0.3.6).
 
 ## [0.5.2] - The version table catches up again, this time including itself
 
-- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.3, ARMOR-RADAR 0.3.6, ARMOR-HMI 0.0.4, ARMOR-STUDIO 0.5.9, ARMOR-DEVOPS 0.3.5), and its own row corrected to 0.5.2 - 0.5.1's refresh had updated every other project but forgot to update the row for ARMOR-DOCS itself.
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.3, ARMOR-NODE-RADAR 0.3.6, ARMOR-NODE-HMI 0.0.4, ARMOR-STUDIO 0.5.9, ARMOR-DEVOPS 0.3.5), and its own row corrected to 0.5.2 - 0.5.1's refresh had updated every other project but forgot to update the row for ARMOR-DOCS itself.
 
 ## [0.5.1] - The version table catches up
 
-- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.2, ARMOR-RADAR 0.3.5, ARMOR-SOLAR 0.1.4, ARMOR-ELECTRICAL 0.1.0, ARMOR-HMI 0.0.3, ARMOR-SERVER 0.4.0, ARMOR-STUDIO 0.5.8, ARMOR-ANDROID-CONTROL 0.4.0), and the Server and Studio descriptions now mention the electrical, network, services and weather menus.
+- **PROJECT_CATALOG.md:** every version number brought up to date (ARMOR-COMMON 0.3.2, ARMOR-NODE-RADAR 0.3.5, ARMOR-NODE-SOLAR 0.1.4, ARMOR-NODE-ELECTRICAL 0.1.0, ARMOR-NODE-HMI 0.0.3, ARMOR-SERVER 0.4.0, ARMOR-STUDIO 0.5.8, ARMOR-ANDROID-CONTROL 0.4.0), and the Server and Studio descriptions now mention the electrical, network, services and weather menus.
 
 ## [0.5.0] - Working notes leave the public repository
 
@@ -219,7 +219,7 @@ All notable changes to this project are documented here.
 
 - **`tools/sync_ci_tools.py`**: vendors ARMOR-COMMON's canonical `armor_ci_validate.py`, `_armor_readme_parity.py`, `armor_project_tool.py` and `.github/workflows/ci.yml` into every one of the other fourteen repositories - the same "canonical here, vendored everywhere" pattern this file's own `make_readmes.py`/`publication_check.py` rules already use.
 
-- Every repository's version bumped once for this shared addition; four real manifest/build drifts found and fixed along the way (ARMOR-RADAR, ARMOR-SOLAR, ARMOR-ELECTRICAL, ARMOR-SIMULATOR).
+- Every repository's version bumped once for this shared addition; four real manifest/build drifts found and fixed along the way (ARMOR-NODE-RADAR, ARMOR-NODE-SOLAR, ARMOR-NODE-ELECTRICAL, ARMOR-SIMULATOR).
 
 - A GitHub Actions CI baseline (`.github/workflows/ci.yml`) for this repository itself: validates the manifest, the version, CHANGELOG.md's heading, the seven README translations' structure and its own local Markdown links, then runs this project's real build/test through `tools/armor_project_tool.py build-test .`.
 
@@ -229,21 +229,21 @@ All notable changes to this project are documented here.
 
 ## [0.4.6] - The commands to a switch in the documentation and in the checks
 
-- The READMEs of ARMOR-COMMON (266 conformance vectors and 36 tests now, the new topics `command` and `result`), ARMOR-ELECTRICAL (the commands to a switch, tested and not activated) and ARMOR-DEVOPS (the ACL step that makes a switch reachable) in the seven languages; the capability matrix has a row for electrical switching, marked local and not activated, and the interfaces guide the new vector count.
+- The READMEs of ARMOR-COMMON (266 conformance vectors and 36 tests now, the new topics `command` and `result`), ARMOR-NODE-ELECTRICAL (the commands to a switch, tested and not activated) and ARMOR-DEVOPS (the ACL step that makes a switch reachable) in the seven languages; the capability matrix has a row for electrical switching, marked local and not activated, and the interfaces guide the new vector count.
 
 - `tools/check_all.sh` also runs `ARMOR-DEVOPS/scripts/test_mqtt_identity.sh`.
 
 ## [0.4.5] - The solar base board, the electrical screen and the batch of software that followed
 
-- The capability matrix, the catalogue and the READMEs (seven languages) describe the mux profile of ARMOR-SOLAR 0.0.8, the second PV input and the parallel units (contract 0.2.3, 193 vectors), the electrical alarms and the Android screen (ARMOR-ANDROID-CONTROL 0.3.3), the simulator's `--electrical` (0.2.2) and the versions of the family.
+- The capability matrix, the catalogue and the READMEs (seven languages) describe the mux profile of ARMOR-NODE-SOLAR 0.0.8, the second PV input and the parallel units (contract 0.2.3, 193 vectors), the electrical alarms and the Android screen (ARMOR-ANDROID-CONTROL 0.3.3), the simulator's `--electrical` (0.2.2) and the versions of the family.
 
 ## [0.4.4] - The documentation of the whole family checked against the code
 
-- **The counts are the real ones:** ARMOR-SERVER 168 tests, ARMOR-STUDIO 203, ARMOR-COMMON 21 (and 177 vectors), ARMOR-SOLAR 765 host checks, ARMOR-ELECTRICAL 135,990 (254 apart from the switching rules), ARMOR-RADAR 859. The Italian README of ARMOR-SERVER said 159, and the ARMOR-SOLAR build block said 600 and patched "83 checks" into "100": both were wrong and the patch is gone.
+- **The counts are the real ones:** ARMOR-SERVER 168 tests, ARMOR-STUDIO 203, ARMOR-COMMON 21 (and 177 vectors), ARMOR-NODE-SOLAR 765 host checks, ARMOR-NODE-ELECTRICAL 135,990 (254 apart from the switching rules), ARMOR-NODE-RADAR 859. The Italian README of ARMOR-SERVER said 159, and the ARMOR-NODE-SOLAR build block said 600 and patched "83 checks" into "100": both were wrong and the patch is gone.
 
-- **The structure blocks match the trees:** ARMOR-SOLAR, ARMOR-RADAR, ARMOR-ELECTRICAL, ARMOR-ANDROID-CONTROL, ARMOR-DEVOPS, ARMOR-SIMULATOR, ARMOR-SERVER, ARMOR-STUDIO and ARMOR-COMMON list the files and folders they have now (the Bluetooth files, the electrical node, the Electrical Designer, the solar and electrical schemas). The Spanish structure block of ARMOR-SOLAR was in English. A `FIXES` table in `readme_data/meta_new.py` corrects the first-generation blocks, in English and in Spanish.
+- **The structure blocks match the trees:** ARMOR-NODE-SOLAR, ARMOR-NODE-RADAR, ARMOR-NODE-ELECTRICAL, ARMOR-ANDROID-CONTROL, ARMOR-DEVOPS, ARMOR-SIMULATOR, ARMOR-SERVER, ARMOR-STUDIO and ARMOR-COMMON list the files and folders they have now (the Bluetooth files, the electrical node, the Electrical Designer, the solar and electrical schemas). The Spanish structure block of ARMOR-NODE-SOLAR was in English. A `FIXES` table in `readme_data/meta_new.py` corrects the first-generation blocks, in English and in Spanish.
 
-- **Bluetooth for the three kinds of node:** the matrix, the catalogue and the READMEs of ARMOR-SOLAR and ARMOR-ELECTRICAL (seven languages) say that a phone can set them up like the radar node.
+- **Bluetooth for the three kinds of node:** the matrix, the catalogue and the READMEs of ARMOR-NODE-SOLAR and ARMOR-NODE-ELECTRICAL (seven languages) say that a phone can set them up like the radar node.
 
 - **The core documents know the whole family:** the architecture (solar and electrical nodes, the Bluetooth set-up boundary), the interfaces, the security baseline (read-only equipment, the Bluetooth channel), the contracts guide (the electrical message) and the server's integration notes (the solar and electrical topics and routes).
 
@@ -251,7 +251,7 @@ All notable changes to this project are documented here.
 
 ## [0.4.3] - Inverter dialects and the model catalogue in the matrix
 
-- The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node reads three inverter dialects and the newer Pylontech console layout, and that the catalogue lists more inverter families and battery models; the check counts are 684.
+- The capability matrix and the ARMOR-NODE-SOLAR README (seven languages) say that the node reads three inverter dialects and the newer Pylontech console layout, and that the catalogue lists more inverter families and battery models; the check counts are 684.
 
 - The matrix and the READMEs say the battery health is in the shared contract (147 vectors) and that the console's `info` and `stat` are tested with text real batteries printed; the check counts of the solar node are 697.
 
@@ -259,11 +259,11 @@ All notable changes to this project are documented here.
 
 - The matrix and the READMEs count the 177 conformance vectors of the contract, which now has the electrical message.
 
-- A new repository, **ARMOR-ELECTRICAL** (0.0.1, scaffolding), in the family map, the catalogue, the matrix, the READMEs (seven languages) and the check script.
+- A new repository, **ARMOR-NODE-ELECTRICAL** (0.0.1, scaffolding), in the family map, the catalogue, the matrix, the READMEs (seven languages) and the check script.
 
 ## [0.4.2] - Reading an ANT-BMS's settings in the matrix
 
-- The capability matrix and the ARMOR-SOLAR README (seven languages) say that the node can read an ANT-BMS's model, version and settings (read only, never tried on a BMS) and that writing to BMSs and inverters is not implemented on purpose; the check counts are 600.
+- The capability matrix and the ARMOR-NODE-SOLAR README (seven languages) say that the node can read an ANT-BMS's model, version and settings (read only, never tried on a BMS) and that writing to BMSs and inverters is not implemented on purpose; the check counts are 600.
 
 ## [0.4.1] - Solar alarms on the phone in the matrix
 
@@ -273,7 +273,7 @@ All notable changes to this project are documented here.
 
 ## [0.4.0] - The four firmwares in the matrix
 
-- The capability matrix and the READMEs of ARMOR-RADAR and ARMOR-SOLAR (seven languages) say that each node has a version for each board (with Ethernet on the Waveshare ESP32-S3-ETH, and Wi-Fi only on the ESP32-S3-WROOM-1 N16R8) and that none has run on a board; `check_all.sh` runs the tests of both board profiles.
+- The capability matrix and the READMEs of ARMOR-NODE-RADAR and ARMOR-NODE-SOLAR (seven languages) say that each node has a version for each board (with Ethernet on the Waveshare ESP32-S3-ETH, and Wi-Fi only on the ESP32-S3-WROOM-1 N16R8) and that none has run on a board; `check_all.sh` runs the tests of both board profiles.
 
 ## [0.3.9] - The Android app's solar screen in the matrix
 
@@ -299,9 +299,9 @@ All notable changes to this project are documented here.
 
 - The capability matrix says what the solar contract, the server's ingestion and alarms and Studio's two menus are and how much was checked (all with generated readings, none with a real inverter or battery); the catalogue has the new versions; the interfaces document counts the vectors and names the current OpenAPI file.
 
-## [0.3.4] - ARMOR-SOLAR enters the family
+## [0.3.4] - ARMOR-NODE-SOLAR enters the family
 
-- **ARMOR-SOLAR** enters the catalogue, the README generator and `check_all.sh`; the matrix says what its protocols are and that nothing solar has met a real device. `check_all.sh` and the shared project tool now run every host test of ARMOR-RADAR (they only ran one of three).
+- **ARMOR-NODE-SOLAR** enters the catalogue, the README generator and `check_all.sh`; the matrix says what its protocols are and that nothing solar has met a real device. `check_all.sh` and the shared project tool now run every host test of ARMOR-NODE-RADAR (they only ran one of three).
 
 ## [0.3.3] - HTTPS, stable tracks, the new Android look and two tools for publishing
 
@@ -315,13 +315,13 @@ All notable changes to this project are documented here.
 
 ## [0.3.1] - Bluetooth configuration and the Wi-Fi station in the documentation
 
-- The capability matrix says what the Wi-Fi station with a network search and the Bluetooth configuration (firmware and app) are, and how much was checked; the catalogue has the new versions; the README of ARMOR-RADAR and of the Android client describe them.
+- The capability matrix says what the Wi-Fi station with a network search and the Bluetooth configuration (firmware and app) are, and how much was checked; the catalogue has the new versions; the README of ARMOR-NODE-RADAR and of the Android client describe them.
 
 ## [0.3.0] - The node panel, the information message and the new versions
 
 - The capability matrix says what the node's web panel, the shared Wi-Fi, the mapped pins, the update path, the radar command channel, the panel link in Studio and the public-address login are, and how much of each was checked (all of it on a computer, none on a board).
 
-- ARMOR-RADAR's README (English and Spanish) describes the panel and the new tools; the catalogue and the interfaces page carry the new versions and the 68 conformance vectors.
+- ARMOR-NODE-RADAR's README (English and Spanish) describes the panel and the new tools; the catalogue and the interfaces page carry the new versions and the 68 conformance vectors.
 
 ## [0.2.9] - Catalogue versions
 
