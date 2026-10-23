@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The tools read the repositories from the registry of ARMOR-COMMON:** the order of the READMEs, the brand pictures and the map of the family, the repositories that get the shared tools and the workflow of Studio and the server, and the catalogue no longer keep lists of their own; a test compares what is left (the script that checks everything, the firmware sync, the shared project tool) with the registry.
+- **The banners are written by the generator again:** one animated drawing for the family with the name, kind, group and technologies of each repository (the technologies of the five nodes brought up to date, a long list loses whole technologies instead of a name cut in half), so `make_brand.py --check` passes against the banners of the repositories.
 - The sync tool also vendors the workflow that tries Studio and the server together (`e2e.yml`) into ARMOR-STUDIO and ARMOR-SERVER, and lists the iPhone client in the family of the READMEs, the family map, the brand assets and the shared tools.
 
 - **The security baseline records the way to HTTPS for the phones:** the house's own authority, the pin shown in Studio, the pairing in the app, the check and the order of the steps before plain http can be forbidden.

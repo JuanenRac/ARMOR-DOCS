@@ -9,6 +9,7 @@ from unittest import mock
 
 import _support  # noqa: F401  (puts tools/ on the path)
 
+import brand_banner
 import make_brand
 import make_catalog
 from make_readmes import ORDER
@@ -119,26 +120,41 @@ class BrandTests(unittest.TestCase):
         self.assertEqual(len(places), len(set(places)))
 
     def test_every_asset_is_well_formed_xml(self):
-        for name, (tagline, tags) in make_brand.REPOS.items():
-            root = ET.fromstring(make_brand.banner(name, tagline, tags))
+        for name, entry in make_brand.REPOS.items():
+            root = ET.fromstring(make_brand.banner(name, entry["kind"], entry["group"], entry["technologies"]))
             self.assertTrue(root.tag.endswith("svg"), name)
             ET.fromstring(make_brand.icon(name))
         ET.fromstring(make_brand.family_map())
 
     def test_text_is_escaped(self):
-        svg = make_brand.banner("ARMOR-NODE-RADAR", "A & B <C>", ["R&D", "<TAG>"])
+        svg = make_brand.banner("ARMOR-NODE-RADAR", "A & B <C>", "R&D", ["<TAG>", "x & y"])
         ET.fromstring(svg)
-        self.assertIn("A &amp; B &lt;C&gt;", svg)
-        self.assertIn("#R&amp;D", svg)
+        self.assertIn("A.R.M.O.R. · A &amp; B &lt;C&gt;", svg)
+        self.assertIn(">R&amp;D</text>", svg)
+        self.assertIn("&lt;TAG&gt;", svg)
         self.assertNotIn("<TAG>", svg)
 
-    def test_the_banner_names_the_repository_and_shows_every_tag(self):
-        tagline, tags = make_brand.REPOS["ARMOR-NODE-RADAR"]
-        svg = make_brand.banner("ARMOR-NODE-RADAR", tagline, tags)
+    def test_the_banner_names_the_repository_and_shows_its_kind_group_and_first_four_technologies(self):
+        entry = make_brand.REPOS["ARMOR-NODE-RADAR"]
+        svg = make_brand.banner("ARMOR-NODE-RADAR", entry["kind"], entry["group"], entry["technologies"])
         self.assertIn(">ARMOR-NODE-RADAR</text>", svg)
-        for tag in tags:
-            self.assertIn(f"#{tag}", svg)
-        self.assertIn(tagline.replace("&", "&amp;"), svg)
+        self.assertIn(f">A.R.M.O.R. · {entry['kind']}</text>", svg)
+        self.assertIn(f">{entry['group']}</text>", svg)
+        for technology in entry["technologies"][:4]:
+            self.assertIn(f">{technology.upper()}</text>", svg)
+
+    def test_a_long_list_of_technologies_loses_whole_technologies_never_half_of_one(self):
+        line = brand_banner.technology_line(["ONE", "T" * 40, "U" * 40, "LAST"])
+        self.assertEqual(line, "ONE · " + "T" * 40)
+        self.assertNotIn("...", line)
+
+    def test_the_width_of_a_pill_and_of_the_label_follow_the_length_of_the_text(self):
+        self.assertEqual([brand_banner.pill_width(text) for text in ("MQTT", "ESP-IDF", "TYPESCRIPT")], [60, 80, 100])
+        self.assertEqual([brand_banner.label_width(f"A.R.M.O.R. · {kind}") for kind in ("APP", "FIRMWARE")], [182, 231])
+
+    def test_a_long_name_is_set_smaller_so_that_it_ends_before_the_edge(self):
+        self.assertEqual(brand_banner.name_size("ARMOR-NODE-ALARM"), 56)
+        self.assertLess(brand_banner.name_size("ARMOR-ANDROID-CONTROL"), brand_banner.name_size("ARMOR-IOS-CONTROL"))
 
     def test_the_map_has_a_box_for_every_repository(self):
         svg = make_brand.family_map()

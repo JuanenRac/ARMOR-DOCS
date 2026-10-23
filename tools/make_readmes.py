@@ -21,6 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from readme_src.shots import CAPTIONS, HEADING as SHOTS_HEADING, NOTE as SHOTS_NOTE, SHOTS  # noqa: E402
 from readme_src.ui import RELATED, UI  # noqa: E402
+from registry import NAMES  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 GITHUB_OWNER = "JuanenRac"
@@ -31,9 +32,8 @@ LANGUAGES = [
     ("it", "README_ita.md", "🇮🇹", "Italiano"), ("de", "README_deu.md", "🇩🇪", "Deutsch"), ("zh", "README_zho.md", "🇨🇳", "简体中文"),
     ("ja", "README_jpn.md", "🇯🇵", "日本語"), ("pt", "README_por.md", "🇵🇹", "Português"),
 ]
-# the order of the repositories in the family list (every repository of the family appears in it)
-ORDER = ["ARMOR-COMMON", "ARMOR-NODE-RADAR", "ARMOR-NODE-SOLAR", "ARMOR-NODE-ELECTRICAL", "ARMOR-NODE-ALARM", "ARMOR-NODE-HMI", "ARMOR-NETWORK", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-IOS-CONTROL",
-         "ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-SIMULATOR", "ARMOR-UPDATER", "ARMOR-DOCS"]
+# the order of the repositories in the family list (every repository of the family appears in it): the order of the registry of ARMOR-COMMON
+ORDER = list(NAMES)
 SECTION_ICONS = ["🔒", "🌐", "⚙️"]
 
 

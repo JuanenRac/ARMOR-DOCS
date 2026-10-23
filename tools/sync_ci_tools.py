@@ -20,18 +20,18 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from registry import names_where  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "ARMOR-COMMON" / "tools"
 VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py")
-TARGETS = (
-    "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-IOS-CONTROL", "ARMOR-NODE-RADAR", "ARMOR-NODE-SOLAR",
-    "ARMOR-NODE-ELECTRICAL", "ARMOR-NODE-ALARM", "ARMOR-NODE-HMI", "ARMOR-HARDWARE", "ARMOR-DEVOPS", "ARMOR-DOCS", "ARMOR-SIMULATOR",
-    "ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-NETWORK", "ARMOR-UPDATER", "ARMOR-VISION",
-)
+# the repositories that carry the shared tools and the workflow: the ones the registry of ARMOR-COMMON marks `shared_tools`
+TARGETS = tuple(names_where("shared_tools"))
 
 
 # The workflow that tries Studio and the server together (nginx of the image, a real server, a real browser): the two repositories whose change can break the other carry it.
-E2E_TARGETS = ("ARMOR-STUDIO", "ARMOR-SERVER")
+E2E_TARGETS = tuple(names_where("studio_e2e"))
 
 
 def render_workflow() -> str:

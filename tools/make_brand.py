@@ -17,33 +17,17 @@ import html
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand_banner import render as render_banner  # noqa: E402
+from registry import COLUMN_TITLES, REPOSITORIES  # noqa: E402
+
 CYAN = "#00E5FF"
 AMBER = "#FFB020"
 GREEN = "#5DF0C4"
 BG_FROM, BG_TO = "#07090C", "#12161C"
 
-# repository -> (tagline, hashtags)
-REPOS: dict[str, tuple[str, list[str]]] = {
-    "ARMOR-COMMON": ("MESSAGE CONTRACTS & VALIDATION", ["JSON-SCHEMA", "OPENAPI", "PYTHON", "TYPESCRIPT", "KOTLIN"]),
-    "ARMOR-NODE-RADAR": ("FIELD-NODE FIRMWARE", ["ESP32-S3", "LD2450", "MQTT", "PoE", "C++"]),
-    "ARMOR-NODE-SOLAR": ("SOLAR INVERTER & BATTERY MONITORING", ["VOLTRONIC", "PYLONTECH", "RS232", "RS485", "C++"]),
-    "ARMOR-NODE-ELECTRICAL": ("ELECTRICAL NETWORK MONITORING", ["PZEM", "MODBUS", "AC/DC", "INTERLOCK", "C++"]),
-    "ARMOR-NODE-ALARM": ("ALARM PANEL, ZONES & SIREN", ["ESP32-S3", "ZIGBEE", "PIN", "MQTT", "C++"]),
-    "ARMOR-VISION": ("CAMERA ZONES & DETECTION RULES", ["JETSON", "ZONES", "MASKS", "RTSP", "PYTHON"]),
-    "ARMOR-NODE-HMI": ("TOUCH PANEL & VOICE ASSISTANT", ["ESP32-S3", "LVGL", "I2S", "MQTT", "C++"]),
-    "ARMOR-NETWORK": ("LOCAL NETWORK MONITORING", ["DEVICES", "INTERNET", "OUTAGES", "READ-ONLY", "PYTHON"]),
-    "ARMOR-SERVER-AI": ("VISUAL INFERENCE POLICY", ["JETSON", "TENSORRT", "YOLO", "RTSP", "PYTHON"]),
-    "ARMOR-VOICE-AI": ("OFFLINE VOICE INTENT BOUNDARY", ["WHISPER", "PIPER", "WYOMING", "PYTHON"]),
-    "ARMOR-SERVER": ("CENTRAL SECURITY COORDINATOR", ["NODE", "TYPESCRIPT", "MQTT", "WEBSOCKET", "FFMPEG"]),
-    "ARMOR-STUDIO": ("OPERATIONS & DESIGN CONSOLE", ["REACT", "TYPESCRIPT", "VITE", "2D/3D", "I18N"]),
-    "ARMOR-ANDROID-CONTROL": ("MOBILE OPERATOR CLIENT", ["KOTLIN", "COMPOSE", "MJPEG", "PTZ"]),
-    "ARMOR-IOS-CONTROL": ("IPHONE OPERATOR CLIENT", ["SWIFT", "SWIFTUI", "FACE-ID", "KEYCHAIN"]),
-    "ARMOR-HARDWARE": ("ENCLOSURES & ELECTRONICS", ["OPENSCAD", "KICAD", "ASA/PETG", "24GHZ"]),
-    "ARMOR-DEVOPS": ("DEPLOYMENT & OPERATIONS", ["DOCKER", "SYSTEMD", "ARM64", "BASH"]),
-    "ARMOR-UPDATER": ("REPOSITORY DISCOVERY & UPDATE", ["GITHUB-API", "GIT", "PYTHON", "QT-QUICK"]),
-    "ARMOR-DOCS": ("TECHNICAL DOCUMENTATION", ["MARKDOWN", "MERMAID", "ARCHITECTURE"]),
-    "ARMOR-SIMULATOR": ("OFFLINE TELEMETRY SIMULATOR", ["PYTHON", "MQTT", "RTSP", "TESTING"]),
-}
+# the repositories, their kind, their group and their technologies come from the registry of ARMOR-COMMON (registry/repositories.json)
+REPOS: dict[str, dict] = {entry["name"]: entry for entry in REPOSITORIES}
 
 S = 'fill="none" stroke-linecap="round" stroke-linejoin="round"'   # the common attributes of a line drawing
 
@@ -117,23 +101,9 @@ def defs() -> str:
   </defs>"""
 
 
-def banner(name: str, tagline: str, tags: list[str]) -> str:
-    tag_x = [105 + index * 150 for index in range(len(tags))]
-    tagline = html.escape(tagline)
-    tag_text = "".join(f'<text x="{x}" y="360">#{html.escape(tag)}</text>' for x, tag in zip(tag_x, tags))
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
-  <title id="title">{name}</title><desc id="desc">{name} | A.R.M.O.R. Autonomous Radar &amp; Multimodal Observation Range</desc>
-  {defs()}
-  <rect width="1200" height="400" fill="url(#bg)"/>
-  <g fill="none" stroke="{CYAN}" stroke-width="1" opacity=".25"><path d="M0 100H200L250 150H600"/><path d="M1200 300H1000L950 250H600"/><path d="M1200 80H1040L1000 120H760"/></g>
-  <g transform="translate(205 190)">{emblem(name)}</g>
-  <text x="360" y="136" font-family="Arial,sans-serif" font-size="50" font-weight="bold" fill="#FFF" letter-spacing="8">A.R.M.O.R.</text>
-  <text x="364" y="181" font-family="Arial,sans-serif" font-size="17" fill="{CYAN}" letter-spacing="4">AUTONOMOUS RADAR &amp; MULTIMODAL OBSERVATION RANGE</text>
-  <text x="360" y="246" font-family="Arial,sans-serif" font-size="29" font-weight="bold" fill="#FFF">{name}</text>
-  <text x="362" y="280" font-family="Arial,sans-serif" font-size="16" fill="{AMBER}" letter-spacing="3">{tagline}</text>
-  <g font-family="monospace" font-size="12" fill="{CYAN}" opacity=".65">{tag_text}</g>
-</svg>
-"""
+def banner(name: str, kind: str, group: str, technologies: list[str]) -> str:
+    """The banner of a repository (see brand_banner.py)."""
+    return render_banner(name, kind, group, technologies)
 
 
 def icon(name: str) -> str:
@@ -147,17 +117,11 @@ def icon(name: str) -> str:
 
 # ---- the map of the family ------------------------------------------------------------------------------------------------------------------
 
-# name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom
-POSITIONS = {
-    "ARMOR-NODE-RADAR": (0, 0), "ARMOR-NODE-SOLAR": (0, 0.75), "ARMOR-NODE-ELECTRICAL": (0, 1.5), "ARMOR-NODE-ALARM": (0, 2.25), "ARMOR-NETWORK": (0, 3), "ARMOR-SIMULATOR": (0, 3.75), "ARMOR-HARDWARE": (0, 4.5),
-    "ARMOR-COMMON": (1, 1.5),
-    "ARMOR-SERVER-AI": (2, 0), "ARMOR-VISION": (2, 0.75), "ARMOR-SERVER": (2, 1.5), "ARMOR-VOICE-AI": (2, 3),
-    "ARMOR-STUDIO": (3, 0.75), "ARMOR-IOS-CONTROL": (3, 1.5), "ARMOR-ANDROID-CONTROL": (3, 2.25), "ARMOR-NODE-HMI": (3, 3),
-    "ARMOR-DEVOPS": (4, 0.75), "ARMOR-UPDATER": (4, 1.5), "ARMOR-DOCS": (4, 2.25),
-}
-ARROWS = [("ARMOR-NODE-RADAR", "ARMOR-SERVER"), ("ARMOR-NODE-SOLAR", "ARMOR-SERVER"), ("ARMOR-NODE-ELECTRICAL", "ARMOR-SERVER"), ("ARMOR-NODE-ALARM", "ARMOR-SERVER"), ("ARMOR-NETWORK", "ARMOR-SERVER"), ("ARMOR-VISION", "ARMOR-SERVER-AI"), ("ARMOR-SIMULATOR", "ARMOR-SERVER"), ("ARMOR-SERVER-AI", "ARMOR-SERVER"),
-          ("ARMOR-VOICE-AI", "ARMOR-SERVER"), ("ARMOR-SERVER", "ARMOR-STUDIO"), ("ARMOR-SERVER", "ARMOR-ANDROID-CONTROL"), ("ARMOR-SERVER", "ARMOR-IOS-CONTROL"), ("ARMOR-SERVER", "ARMOR-NODE-HMI"), ("ARMOR-DEVOPS", "ARMOR-STUDIO")]
-COLUMN_TITLES = ["FIELD", "CONTRACTS", "CORE", "CLIENTS", "OPERATIONS"]
+# name -> (column, row) in the map, and the arrows (from, to) that show who feeds whom: both from the registry
+POSITIONS = {entry["name"]: (entry["map"]["column"], entry["map"]["row"]) for entry in REPOSITORIES}
+ARROWS = [(entry["name"], target) for entry in REPOSITORIES for target in entry["feeds"]]
+# the repositories whose messages follow the contract of ARMOR-COMMON by a dashed line to it
+CONTRACT_LINKS = {entry["name"] for entry in REPOSITORIES if entry["contract_link"]}
 
 
 def family_map() -> str:
@@ -181,11 +145,9 @@ def family_map() -> str:
         parts.append(f'<circle cx="{tx}" cy="{y2}" r="3.4" fill="{AMBER}"/>')
     cx, cy = centre("ARMOR-COMMON")
     for name in POSITIONS:
-        if name in ("ARMOR-COMMON", "ARMOR-DOCS", "ARMOR-DEVOPS"):
+        if name not in CONTRACT_LINKS:
             continue
         x, y = centre(name)
-        if name in ("ARMOR-SERVER-AI", "ARMOR-VISION", "ARMOR-VOICE-AI", "ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-ANDROID-CONTROL", "ARMOR-IOS-CONTROL", "ARMOR-NODE-HMI"):
-            continue
         parts.append(f'<path d="M{x + box_w / 2} {y} L{cx - box_w / 2} {cy}" fill="none" stroke="{GREEN}" stroke-width="1" stroke-dasharray="4 6" opacity=".35"/>')
     for name, (column, row) in POSITIONS.items():
         x, y = 40 + column * 236, 110 + row * 110
@@ -199,9 +161,9 @@ def family_map() -> str:
 
 def outputs(root: Path) -> dict[Path, str]:
     files: dict[Path, str] = {root / "ARMOR-DOCS" / "brand" / "ARMOR_ICON.svg": icon("ARMOR-NODE-RADAR"), root / "ARMOR-DOCS" / "images" / "ARMOR_FAMILY.svg": family_map()}
-    for name, (tagline, tags) in REPOS.items():
+    for name, entry in REPOS.items():
         target = root / name / "images"
-        files[target / "ARMOR_BANNER.svg"] = banner(name, tagline, tags)
+        files[target / "ARMOR_BANNER.svg"] = banner(name, entry["kind"], entry["group"], entry["technologies"])
         files[target / "ARMOR_ICON.svg"] = icon(name)
     return files
 
