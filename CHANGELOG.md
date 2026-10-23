@@ -8,6 +8,8 @@ All notable changes to this project are documented here.
 - The banner follows the animated style of the ecosystem banners, with the name, the kind and the technologies of the project.
 ## [0.8.1.1] - README sources for the new node versions, requirements and tests per language
 
+- **README sources for the live channel and the binary voice turn:** the touch panel's README says that it listens to the server's live channel and sends the spoken turn as raw bytes, the server's README describes the channel, and the test counts follow the programs.
+- **The interfaces table** lists the live channel of the wall panel and the binary voice turn.
 - **The README generator words the requirements and the test counts in each language** instead of copying the English line, and the family list is refreshed.
 - **README sources for the new work:** diagnostics, the perimeter engine, reading quality and held values, and ESP-IDF 5.5.5 as the one toolchain.
 - **The catalog says that ARMOR-VISION is a library no service imports yet,** and the VISION README commands are written for bash.
