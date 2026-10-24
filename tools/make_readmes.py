@@ -77,7 +77,7 @@ def status_table(name: str, facts: dict, text: dict, ui: dict) -> str:
              f"| {ui['status_area']} | {ui['status_state']} | {ui['status_note']} |", "|---|---|---|"]
     for key, level in rows:
         label = names.get(key) or ui["a_" + key]
-        lines.append(f"| {label} | {LIGHTS[level]} {ui['lv_' + level]} | {notes[key]} |")
+        lines.append(f"| {label} | {LIGHTS[level]} | {notes[key]} |")
     return "\n".join(lines) + "\n\n"
 
 def render(name: str, language: str) -> str:
