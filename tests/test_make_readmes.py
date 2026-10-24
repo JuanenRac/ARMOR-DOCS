@@ -81,14 +81,17 @@ class SourceConsistencyTests(unittest.TestCase):
 
 class StatusTableTests(unittest.TestCase):
     def test_every_repository_of_the_registry_has_a_status_table(self):
-        registry = json.loads((Path(make_readmes.__file__).resolve().parents[2] / "ARMOR-COMMON" / "registry" / "repositories.json").read_text(encoding="utf-8"))
-        names = [entry["name"] for entry in registry["repositories"]]
+        import registry
+        names = [entry["name"] for entry in json.loads(registry.REGISTRY_FILE.read_text(encoding="utf-8"))["repositories"]]
         self.assertEqual(sorted(names), sorted(ORDER))
-        for name in names:
-            rows = make_readmes.load(name).FACTS.get("status")
-            self.assertTrue(rows, f"{name} has no status table")
-            for code in CODES:
-                self.assertIn("## 🚦 " + UI[code]["status"], make_readmes.render(name, code), f"{name} {code}")
+        holder, root = fake_root()
+        self.addCleanup(holder.cleanup)
+        with mock.patch.object(make_readmes, "ROOT", root):   # the manifests of the other repositories are not needed: only the table is looked at
+            for name in names:
+                rows = make_readmes.load(name).FACTS.get("status")
+                self.assertTrue(rows, f"{name} has no status table")
+                for code in CODES:
+                    self.assertIn("## 🚦 " + UI[code]["status"], make_readmes.render(name, code), f"{name} {code}")
 
     def test_the_current_tables_have_no_problem(self):
         self.assertEqual(make_readmes.status_problems(), [])
