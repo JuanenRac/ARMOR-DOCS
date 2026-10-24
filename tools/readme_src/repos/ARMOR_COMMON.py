@@ -21,9 +21,9 @@ FACTS = {
   ]
  ],
  "diagram": "```mermaid\nflowchart LR\n    S[\"JSON Schemas (source of truth)\"] --> P[\"armor_common (Python validator)\"]\n    S --> G[\"generated TS + Kotlin types\"]\n    S --> V[\"conformance vectors\"]\n    V --> P\n    V --> T[\"ARMOR-SERVER tests\"]\n    V --> X[\"ARMOR-NODE-SOLAR and ARMOR-NODE-ELECTRICAL checks\"]\n    S --> O[\"OpenAPI (HTTP contract)\"]\n```",
- "build": "```powershell\npython -m pip install -e .\npython -m unittest discover -s tests      # 167 tests, 1225 conformance vectors\npython tools/generate_types.py --check    # generated types are current\npython tools/generate_rest_types.py --check    # the types of the HTTP contract are current\npython tools/make_conformance.py          # regenerate the vectors after editing the case list (--check: they are current)\npython tools/sync_firmware_base.py check  # the firmware the node projects share has not drifted (see docs/FIRMWARE_BASE.md)\n```",
+ "build": "```powershell\npython -m pip install -e .\npython -m unittest discover -s tests      # 170 tests, 1225 conformance vectors\npython tools/generate_types.py --check    # generated types are current\npython tools/generate_rest_types.py --check    # the types of the HTTP contract are current\npython tools/make_conformance.py          # regenerate the vectors after editing the case list (--check: they are current)\npython tools/sync_firmware_base.py check  # the firmware the node projects share has not drifted (see docs/FIRMWARE_BASE.md)\n```",
  "structure": "```text\nARMOR-COMMON/\n├── src/armor_common/   contracts, schema (validator), envelope, schemas/*.json (the node messages, the alarm, electrical and network ones, the relay, zone-feed, alert and orders ones)\n├── conformance/        accepted and rejected payloads shared by every implementation\n├── firmware_base/      the firmware that the five nodes share, once (synced into each by tools/sync_firmware_base.py)\n├── generated/          TypeScript and Kotlin types (generated, do not edit)\n├── openapi/            armor-server.yaml\n├── registry/           repositories.json: the one list of the repositories of the family (kind, group, technologies, place on the map, who feeds whom) that the documentation, deployment and update tools read\n├── tools/              armor_project_tool.py, generate_types.py, generate_rest_types.py, make_conformance.py, sync_firmware_base.py, release_firmware.py, firmware_sign.mjs\n├── tests/              unit tests and conformance runner\n└── docs/               contracts guide, the shared firmware base\n```",
- "tests": "167 (`python -m unittest discover -s tests`) and 1225 conformance vectors",
+ "tests": "170 (`python -m unittest discover -s tests`) and 1225 conformance vectors",
  "requirements": [
   "Python 3.11+"
  ]
@@ -32,7 +32,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Message contracts, validation, the firmware base that the nodes share and the shared project launcher",
-  "honest": "The schemas (telemetry, health, command, node information, solar inverter and battery, electrical, alarm with its command and result, and network), the Python validator, the 1225 conformance vectors, the generated TypeScript and Kotlin types, the OpenAPI file of the server (136 paths), the firmware base shared by the five nodes and the shared project launcher are real and tested (167 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL (which keeps its own parsing), and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
+  "honest": "The schemas (telemetry, health, command, node information, solar inverter and battery, electrical, alarm with its command and result, and network), the Python validator, the 1225 conformance vectors, the generated TypeScript and Kotlin types, the OpenAPI file of the server (136 paths), the firmware base shared by the five nodes and the shared project launcher are real and tested (170 tests). The Kotlin file is generated but **not yet consumed** by ARMOR-ANDROID-CONTROL (which keeps its own parsing), and the `set_thresholds` command carries a single `sensitivity` field because the real radar parameters are not defined until firmware exists.",
   "bullets": [
    "**One source of truth:** JSON Schemas in `src/armor_common/schemas/` for telemetry, health, command, node information, the two solar messages (inverter, battery with cells and capacities), the electrical messages (readings, command, result), the alarm messages (state, command, result) and the network message. Unknown fields and impossible combinations are refused.",
    "**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.",
@@ -53,7 +53,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Contratos de mensajes, validación, la base de firmware que comparten los nodos y el lanzador de proyectos compartido",
-  "honest": "Los esquemas (telemetría, salud, comando, información del nodo, inversor y batería solares, eléctrico, alarma con su comando y resultado, y red), el validador de Python, los 1225 vectores de conformidad, los tipos generados de TypeScript y Kotlin, el fichero OpenAPI del servidor (136 rutas), la base de firmware compartida por los cinco nodos y el lanzador de proyectos compartido son reales y están probados (167 tests). El fichero de Kotlin está generado pero **todavía no lo consume** ARMOR-ANDROID-CONTROL (que conserva su propia lectura), y el comando `set_thresholds` lleva un único campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista el firmware.",
+  "honest": "Los esquemas (telemetría, salud, comando, información del nodo, inversor y batería solares, eléctrico, alarma con su comando y resultado, y red), el validador de Python, los 1225 vectores de conformidad, los tipos generados de TypeScript y Kotlin, el fichero OpenAPI del servidor (136 rutas), la base de firmware compartida por los cinco nodos y el lanzador de proyectos compartido son reales y están probados (170 tests). El fichero de Kotlin está generado pero **todavía no lo consume** ARMOR-ANDROID-CONTROL (que conserva su propia lectura), y el comando `set_thresholds` lleva un único campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista el firmware.",
   "bullets": [
    "**Una única fuente de verdad:** esquemas JSON en `src/armor_common/schemas/` para telemetría, salud, comando, información del nodo, los dos mensajes solares (inversor, batería con celdas y capacidades), los mensajes eléctricos (lecturas, comando, resultado), los mensajes de alarma (estado, comando, resultado) y el mensaje de red. Se rechazan los campos desconocidos y las combinaciones imposibles.",
    "**Un validador que no puede saltarse una regla:** interpreta el esquema directamente y rechaza un esquema que use una palabra clave que no implementa.",
@@ -74,11 +74,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) y 1225 vectores de conformidad"
+  "tests": "170 (`python -m unittest discover -s tests`) y 1225 vectores de conformidad"
  },
  "fr": {
   "tagline": "Contrats de messages, validation, la base firmware que partagent les nœuds et le lanceur de projet partagé",
-  "honest": "Les schémas (télémétrie, santé, commande, information du nœud, onduleur et batterie solaires, électrique, alarme avec sa commande et son résultat, et réseau), le validateur Python, les 1225 vecteurs de conformité, les types TypeScript et Kotlin générés, le fichier OpenAPI du serveur (136 chemins), la base firmware partagée par les cinq nœuds et le lanceur de projet partagé sont réels et testés (167 tests). Le fichier Kotlin est généré mais **pas encore consommé** par ARMOR-ANDROID-CONTROL (qui garde sa propre lecture), et la commande `set_thresholds` porte un seul champ `sensitivity` car les vrais paramètres du radar ne sont définis que lorsque le firmware existe.",
+  "honest": "Les schémas (télémétrie, santé, commande, information du nœud, onduleur et batterie solaires, électrique, alarme avec sa commande et son résultat, et réseau), le validateur Python, les 1225 vecteurs de conformité, les types TypeScript et Kotlin générés, le fichier OpenAPI du serveur (136 chemins), la base firmware partagée par les cinq nœuds et le lanceur de projet partagé sont réels et testés (170 tests). Le fichier Kotlin est généré mais **pas encore consommé** par ARMOR-ANDROID-CONTROL (qui garde sa propre lecture), et la commande `set_thresholds` porte un seul champ `sensitivity` car les vrais paramètres du radar ne sont définis que lorsque le firmware existe.",
   "bullets": [
    "**Une seule source de vérité :** schémas JSON dans `src/armor_common/schemas/` pour la télémétrie, la santé, la commande, l'information du nœud, les deux messages solaires (onduleur, batterie avec cellules et capacités), les messages électriques (mesures, commande, résultat), les messages d'alarme (état, commande, résultat) et le message réseau. Les champs inconnus et les combinaisons impossibles sont refusés.",
    "**Un validateur qui ne peut sauter aucune règle :** il interprète le schéma directement et refuse un schéma qui utilise un mot-clé qu'il n'implémente pas.",
@@ -99,11 +99,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) et 1225 vecteurs de conformité"
+  "tests": "170 (`python -m unittest discover -s tests`) et 1225 vecteurs de conformité"
  },
  "it": {
   "tagline": "Contratti dei messaggi, validazione, la base firmware condivisa dai nodi e il lanciatore di progetto condiviso",
-  "honest": "Gli schemi (telemetria, salute, comando, informazioni del nodo, inverter e batteria solari, elettrico, allarme con il suo comando e risultato, e rete), il validatore Python, i 1225 vettori di conformità, i tipi TypeScript e Kotlin generati, il file OpenAPI del server (136 percorsi), la base firmware condivisa dai cinque nodi e il lanciatore di progetto condiviso sono reali e provati (167 test). Il file Kotlin è generato ma **non ancora consumato** da ARMOR-ANDROID-CONTROL (che mantiene una propria lettura), e il comando `set_thresholds` porta un solo campo `sensitivity` perché i veri parametri del radar non sono definiti finché non esiste il firmware.",
+  "honest": "Gli schemi (telemetria, salute, comando, informazioni del nodo, inverter e batteria solari, elettrico, allarme con il suo comando e risultato, e rete), il validatore Python, i 1225 vettori di conformità, i tipi TypeScript e Kotlin generati, il file OpenAPI del server (136 percorsi), la base firmware condivisa dai cinque nodi e il lanciatore di progetto condiviso sono reali e provati (170 test). Il file Kotlin è generato ma **non ancora consumato** da ARMOR-ANDROID-CONTROL (che mantiene una propria lettura), e il comando `set_thresholds` porta un solo campo `sensitivity` perché i veri parametri del radar non sono definiti finché non esiste il firmware.",
   "bullets": [
    "**Un'unica fonte di verità:** schemi JSON in `src/armor_common/schemas/` per telemetria, salute, comando, informazioni del nodo, i due messaggi solari (inverter, batteria con celle e capacità), i messaggi elettrici (letture, comando, risultato), i messaggi di allarme (stato, comando, risultato) e il messaggio di rete. I campi sconosciuti e le combinazioni impossibili sono rifiutati.",
    "**Un validatore che non può saltare una regola:** interpreta direttamente lo schema e rifiuta uno schema che usa una parola chiave che non implementa.",
@@ -124,11 +124,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) e 1225 vettori di conformità"
+  "tests": "170 (`python -m unittest discover -s tests`) e 1225 vettori di conformità"
  },
  "de": {
   "tagline": "Nachrichtenverträge, Validierung, die von den Knoten geteilte Firmware-Basis und der gemeinsame Projektstarter",
-  "honest": "Die Schemas (Telemetrie, Zustand, Befehl, Knoteninformation, Solar-Wechselrichter und -Batterie, Elektro, Alarm mit Befehl und Ergebnis sowie Netzwerk), der Python-Validator, die 1225 Konformitätsvektoren, die erzeugten TypeScript- und Kotlin-Typen, die OpenAPI-Datei des Servers (136 Pfade), die von den fünf Knoten geteilte Firmware-Basis und der gemeinsame Projektstarter sind real und getestet (167 Tests). Die Kotlin-Datei wird erzeugt, aber **noch nicht verwendet** von ARMOR-ANDROID-CONTROL (das sein eigenes Parsen behält), und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert sind, wenn Firmware existiert.",
+  "honest": "Die Schemas (Telemetrie, Zustand, Befehl, Knoteninformation, Solar-Wechselrichter und -Batterie, Elektro, Alarm mit Befehl und Ergebnis sowie Netzwerk), der Python-Validator, die 1225 Konformitätsvektoren, die erzeugten TypeScript- und Kotlin-Typen, die OpenAPI-Datei des Servers (136 Pfade), die von den fünf Knoten geteilte Firmware-Basis und der gemeinsame Projektstarter sind real und getestet (170 Tests). Die Kotlin-Datei wird erzeugt, aber **noch nicht verwendet** von ARMOR-ANDROID-CONTROL (das sein eigenes Parsen behält), und der Befehl `set_thresholds` trägt nur ein Feld `sensitivity`, weil die echten Radarparameter erst definiert sind, wenn Firmware existiert.",
   "bullets": [
    "**Eine einzige Quelle der Wahrheit:** JSON-Schemas in `src/armor_common/schemas/` für Telemetrie, Zustand, Befehl, Knoteninformation, die beiden Solar-Nachrichten (Wechselrichter, Batterie mit Zellen und Kapazitäten), die Elektro-Nachrichten (Messwerte, Befehl, Ergebnis), die Alarmnachrichten (Zustand, Befehl, Ergebnis) und die Netzwerknachricht. Unbekannte Felder und unmögliche Kombinationen werden abgelehnt.",
    "**Ein Validator, der keine Regel überspringen kann:** er interpretiert das Schema direkt und lehnt ein Schema ab, das ein nicht implementiertes Schlüsselwort verwendet.",
@@ -149,11 +149,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) und 1225 Konformitätsvektoren"
+  "tests": "170 (`python -m unittest discover -s tests`) und 1225 Konformitätsvektoren"
  },
  "zh": {
   "tagline": "消息契约、验证、各节点共用的固件基础和共享的项目启动器",
-  "honest": "各模式（遥测、健康、命令、节点信息、太阳能逆变器和电池、电气、带命令和结果的报警、网络）、Python 验证器、1225 个一致性向量、生成的 TypeScript 和 Kotlin 类型、服务器的 OpenAPI 文件（136 个路径）、五个节点共用的固件基础以及共享的项目启动器都是真实的并经过测试（167 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**（它保留自己的解析），`set_thresholds` 命令只带一个 `sensitivity` 字段，因为真实的雷达参数要等固件存在才能确定。",
+  "honest": "各模式（遥测、健康、命令、节点信息、太阳能逆变器和电池、电气、带命令和结果的报警、网络）、Python 验证器、1225 个一致性向量、生成的 TypeScript 和 Kotlin 类型、服务器的 OpenAPI 文件（136 个路径）、五个节点共用的固件基础以及共享的项目启动器都是真实的并经过测试（170 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**（它保留自己的解析），`set_thresholds` 命令只带一个 `sensitivity` 字段，因为真实的雷达参数要等固件存在才能确定。",
   "bullets": [
    "**唯一的事实来源：**`src/armor_common/schemas/` 中的 JSON Schema，涵盖遥测、健康、命令、节点信息、两种太阳能消息（逆变器、含电芯和容量的电池）、电气消息（读数、命令、结果）、报警消息（状态、命令、结果）和网络消息。未知字段和不可能的组合会被拒绝。",
    "**无法跳过规则的验证器：**它直接解释模式，并拒绝使用了它未实现的关键字的模式。",
@@ -174,11 +174,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) 以及 1225 个一致性向量"
+  "tests": "170 (`python -m unittest discover -s tests`) 以及 1225 个一致性向量"
  },
  "ja": {
   "tagline": "メッセージのコントラクト、検証、ノードが共有するファームウェア基盤、共通のプロジェクトランチャー",
-  "honest": "スキーマ（テレメトリ、状態、コマンド、ノード情報、ソーラーのインバーターとバッテリー、電気、コマンドと結果を含む警報、ネットワーク）、Python の検証器、1225 個の適合ベクトル、生成された TypeScript と Kotlin の型、サーバーの OpenAPI ファイル（136 パス）、5 つのノードが共有するファームウェア基盤、共通のプロジェクトランチャーは実在し、テストされています（167 件）。Kotlin ファイルは生成されますが ARMOR-ANDROID-CONTROL では**まだ使われていません**（独自の解析を保持）。`set_thresholds` コマンドは `sensitivity` フィールド 1 つだけを持ちます。実際のレーダーパラメーターはファームウェアができるまで定義できないためです。",
+  "honest": "スキーマ（テレメトリ、状態、コマンド、ノード情報、ソーラーのインバーターとバッテリー、電気、コマンドと結果を含む警報、ネットワーク）、Python の検証器、1225 個の適合ベクトル、生成された TypeScript と Kotlin の型、サーバーの OpenAPI ファイル（136 パス）、5 つのノードが共有するファームウェア基盤、共通のプロジェクトランチャーは実在し、テストされています（170 件）。Kotlin ファイルは生成されますが ARMOR-ANDROID-CONTROL では**まだ使われていません**（独自の解析を保持）。`set_thresholds` コマンドは `sensitivity` フィールド 1 つだけを持ちます。実際のレーダーパラメーターはファームウェアができるまで定義できないためです。",
   "bullets": [
    "**唯一の信頼できる情報源：**`src/armor_common/schemas/` の JSON Schema。テレメトリ、状態、コマンド、ノード情報、2 つのソーラーメッセージ（インバーター、セルと容量を含むバッテリー）、電気メッセージ（測定値、コマンド、結果）、警報メッセージ（状態、コマンド、結果）、ネットワークメッセージ。未知のフィールドや不可能な組み合わせは拒否されます。",
    "**ルールを飛ばせない検証器：**スキーマを直接解釈し、実装していないキーワードを使うスキーマを拒否します。",
@@ -199,11 +199,11 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) と 1225 件の適合ベクトル"
+  "tests": "170 (`python -m unittest discover -s tests`) と 1225 件の適合ベクトル"
  },
  "pt": {
   "tagline": "Contratos de mensagens, validação, a base de firmware que os nós partilham e o lançador de projetos partilhado",
-  "honest": "Os esquemas (telemetria, saúde, comando, informação do nó, inversor e bateria solares, elétrico, alarme com o seu comando e resultado, e rede), o validador Python, os 1225 vetores de conformidade, os tipos TypeScript e Kotlin gerados, o ficheiro OpenAPI do servidor (136 caminhos), a base de firmware partilhada pelos cinco nós e o lançador de projetos partilhado são reais e testados (167 testes). O ficheiro Kotlin é gerado mas **ainda não é consumido** pelo ARMOR-ANDROID-CONTROL (que mantém a sua própria leitura), e o comando `set_thresholds` leva um único campo `sensitivity` porque os parâmetros reais do radar só ficam definidos quando existir firmware.",
+  "honest": "Os esquemas (telemetria, saúde, comando, informação do nó, inversor e bateria solares, elétrico, alarme com o seu comando e resultado, e rede), o validador Python, os 1225 vetores de conformidade, os tipos TypeScript e Kotlin gerados, o ficheiro OpenAPI do servidor (136 caminhos), a base de firmware partilhada pelos cinco nós e o lançador de projetos partilhado são reais e testados (170 testes). O ficheiro Kotlin é gerado mas **ainda não é consumido** pelo ARMOR-ANDROID-CONTROL (que mantém a sua própria leitura), e o comando `set_thresholds` leva um único campo `sensitivity` porque os parâmetros reais do radar só ficam definidos quando existir firmware.",
   "bullets": [
    "**Uma única fonte de verdade:** esquemas JSON em `src/armor_common/schemas/` para telemetria, saúde, comando, informação do nó, as duas mensagens solares (inversor, bateria com células e capacidades), as mensagens elétricas (leituras, comando, resultado), as mensagens de alarme (estado, comando, resultado) e a mensagem de rede. Campos desconhecidos e combinações impossíveis são recusados.",
    "**Um validador que não pode saltar uma regra:** interpreta o esquema diretamente e recusa um esquema que use uma palavra-chave que não implementa.",
@@ -224,6 +224,6 @@ TEXT = {
   "requirements": [
    "Python 3.11+"
   ],
-  "tests": "167 (`python -m unittest discover -s tests`) e 1225 vetores de conformidade"
+  "tests": "170 (`python -m unittest discover -s tests`) e 1225 vetores de conformidade"
  }
 }
