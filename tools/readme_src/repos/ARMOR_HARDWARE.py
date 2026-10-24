@@ -3,6 +3,7 @@
 
 FACTS = {
  "emoji": "🧱",
+ "status": [["software", "yellow"], ["tests", "yellow"], ["hardware", "red"], ["docs", "green"]],
  "badges": [
   [
    "CAD",
@@ -27,6 +28,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Enclosures, electronics and the bench acceptance matrix",
+  "status": {"software": "The radar enclosure and the parametric box of the solar, electrical and alarm nodes are OpenSCAD sources; the radar box is a printable starting point, not an IP, RF or thermal rating.", "tests": "The boxes are checked by the asserts of their source (the board fits, the cable holes fit, the lid clears the posts); none has been printed or measured.", "hardware": "Nothing has been printed or measured, the board sizes come from data sheets, and every row of the bench acceptance matrix is not tested.", "docs": "Eight languages, the design inputs and the bench acceptance matrix are written and up to date."},
   "honest": "The radar enclosure is a **printable mechanical starting point, not an IP, RF or thermal rating**, and the parametric box for the solar, electrical and alarm nodes is checked by the asserts of its source (the board fits, the cable holes fit, the lid clears the posts), but **none has been printed or measured** (the board sizes come from data sheets; the touch panel has no printed box, it keeps its factory enclosure). Every row of the [bench acceptance matrix](docs/BENCH_ACCEPTANCE.md) is *not tested*.",
   "bullets": [
    "**The radar enclosure is `scad/node_enclosure_radar.scad`** (with STL, 3MF and AMF exports and two slicer projects, the base and the sliding cover): a 90-degree corner base with a visor, roof and floor, retaining steps, a sliding 2 mm front cover and side flaps, all driven by named parameters.",
@@ -41,6 +43,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Carcasas, electrónica y la matriz de aceptación de banco",
+  "status": {"software": "La carcasa del radar y la caja paramétrica de los nodos solar, eléctrico y de alarma son fuentes de OpenSCAD; la caja del radar es un punto de partida imprimible, no una clasificación IP, RF ni térmica.", "tests": "Las cajas se comprueban con las aserciones de su fuente (la placa cabe, los orificios de cables caben, la tapa libra los postes); ninguna se ha impreso ni medido.", "hardware": "Nada se ha impreso ni medido, las medidas de las placas salen de hojas de datos, y cada fila de la matriz de aceptación en banco está sin probar.", "docs": "Ocho idiomas, los datos de diseño y la matriz de aceptación en banco están escritos y al día."},
   "honest": "La carcasa del radar es un **punto de partida mecánico imprimible, no una clasificación IP, RF ni térmica**, y la caja paramétrica para los nodos solar, eléctrico y de alarma está comprobada por los `assert` de su fuente (la placa cabe, los agujeros de cables caben, la tapa libra los postes), pero **ninguna se ha imprimido ni medido** (los tamaños de las placas salen de las hojas de datos; el panel táctil no tiene caja impresa, conserva su carcasa de fábrica). Cada fila de la [matriz de aceptación en banco](docs/BENCH_ACCEPTANCE.md) está *sin probar*.",
   "bullets": [
    "**La carcasa del radar es `scad/node_enclosure_radar.scad`** (con exportaciones STL, 3MF y AMF y dos proyectos de laminador, la base y la tapa corredera): una base de esquina de 90 grados con visera, techo y suelo, escalones de retención, una tapa frontal corredera de 2 mm y aletas laterales, todo gobernado por parámetros con nombre.",
@@ -59,6 +62,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Boîtiers, électronique et matrice d'acceptation sur banc",
+  "status": {"software": "Le boîtier du radar et la boîte paramétrique des nœuds solaire, électrique et d'alarme sont des sources OpenSCAD ; la boîte du radar est un point de départ imprimable, pas une classe IP, RF ou thermique.", "tests": "Les boîtes sont vérifiées par les assertions de leur source (la carte tient, les trous de câbles passent, le couvercle dégage les plots) ; aucune n'a été imprimée ni mesurée.", "hardware": "Rien n'a été imprimé ni mesuré, les dimensions des cartes viennent de fiches techniques, et chaque ligne de la matrice d'acceptation sur banc n'est pas testée.", "docs": "Huit langues, les données de conception et la matrice d'acceptation sur banc sont écrites et à jour."},
   "honest": "Le boîtier du radar est un **point de départ mécanique imprimable, pas un classement IP, RF ou thermique**, et la boîte paramétrique pour les nœuds solaire, électrique et alarme est vérifiée par les `assert` de sa source (la carte tient, les trous de câbles tiennent, le couvercle dégage les plots), mais **aucune n'a été imprimée ni mesurée** (les dimensions des cartes viennent des fiches techniques ; le panneau tactile n'a pas de boîte imprimée, il garde son boîtier d'origine). Chaque ligne de la [matrice d'acceptation sur banc](docs/BENCH_ACCEPTANCE.md) est *non testée*.",
   "bullets": [
    "**Le boîtier du radar est `scad/node_enclosure_radar.scad`** (avec exports STL, 3MF et AMF et deux projets de trancheur, la base et le couvercle coulissant) : une base d'angle à 90 degrés avec visière, toit et plancher, des gradins de retenue, un couvercle avant coulissant de 2 mm et des volets latéraux, le tout piloté par des paramètres nommés.",
@@ -77,6 +81,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Contenitori, elettronica e matrice di accettazione da banco",
+  "status": {"software": "L'involucro del radar e la scatola parametrica dei nodi solare, elettrico e d'allarme sono sorgenti OpenSCAD; la scatola del radar è un punto di partenza stampabile, non una classificazione IP, RF o termica.", "tests": "Le scatole sono verificate dalle asserzioni del loro sorgente (la scheda ci sta, i fori dei cavi ci stanno, il coperchio libera i montanti); nessuna è stata stampata né misurata.", "hardware": "Nulla è stato stampato né misurato, le dimensioni delle schede vengono dai datasheet e ogni riga della matrice di accettazione al banco non è testata.", "docs": "Otto lingue, i dati di progetto e la matrice di accettazione al banco sono scritti e aggiornati."},
   "honest": "L'involucro del radar è un **punto di partenza meccanico stampabile, non una classificazione IP, RF o termica**, e la scatola parametrica per i nodi solare, elettrico e allarme è verificata dagli `assert` del suo sorgente (la scheda ci sta, i fori dei cavi ci stanno, il coperchio libera le colonnine), ma **nessuna è stata stampata né misurata** (le dimensioni delle schede vengono dai datasheet; il pannello touch non ha una scatola stampata, mantiene il suo involucro di fabbrica). Ogni riga della [matrice di accettazione al banco](docs/BENCH_ACCEPTANCE.md) è *non provata*.",
   "bullets": [
    "**L'involucro del radar è `scad/node_enclosure_radar.scad`** (con esportazioni STL, 3MF e AMF e due progetti dello slicer, la base e il coperchio scorrevole): una base d'angolo a 90 gradi con visiera, tetto e pavimento, gradini di ritenuta, un coperchio frontale scorrevole da 2 mm e alette laterali, tutto governato da parametri con nome.",
@@ -95,6 +100,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Gehäuse, Elektronik und die Abnahmematrix am Prüfstand",
+  "status": {"software": "Das Radargehäuse und die parametrische Box der Solar-, Elektrik- und Alarmknoten sind OpenSCAD-Quellen; die Radarbox ist ein druckbarer Ausgangspunkt, keine IP-, HF- oder Temperatur-Einstufung.", "tests": "Die Boxen werden durch die Asserts ihrer Quelle geprüft (die Platine passt, die Kabellöcher passen, der Deckel überragt die Pfosten); keine wurde gedruckt oder vermessen.", "hardware": "Nichts wurde gedruckt oder vermessen, die Maße der Platinen stammen aus Datenblättern, und jede Zeile der Prüfstand-Abnahmematrix ist ungetestet.", "docs": "Acht Sprachen, die Entwurfsvorgaben und die Prüfstand-Abnahmematrix sind geschrieben und aktuell."},
   "honest": "Das Radargehäuse ist ein **druckbarer mechanischer Ausgangspunkt, keine IP-, HF- oder Thermikeinstufung**, und die parametrische Box für die Knoten Solar, Elektro und Alarm wird von den `assert`-Prüfungen ihres Quelltexts geprüft (die Platine passt, die Kabellöcher passen, der Deckel liegt frei von den Pfosten), aber **keine wurde gedruckt oder vermessen** (die Platinengrößen stammen aus Datenblättern; das Touchpanel hat keine gedruckte Box, es behält sein Werksgehäuse). Jede Zeile der [Prüfstand-Abnahmematrix](docs/BENCH_ACCEPTANCE.md) ist *ungetestet*.",
   "bullets": [
    "**Das Radargehäuse ist `scad/node_enclosure_radar.scad`** (mit STL-, 3MF- und AMF-Exporten und zwei Slicer-Projekten, der Basis und dem Schiebedeckel): eine 90-Grad-Eckbasis mit Blende, Dach und Boden, Haltestufen, einem 2 mm dicken Schiebedeckel vorn und Seitenklappen, alles über benannte Parameter gesteuert.",
@@ -113,6 +119,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "外壳、电子器件和台架验收矩阵",
+  "status": {"software": "雷达外壳以及光伏、电气和报警节点的参数化盒子都是 OpenSCAD 源文件；雷达盒子是可打印的起点，并非 IP、射频或温度等级。", "tests": "盒子由其源文件中的断言检查（板子能放入、线孔合适、盖子避开立柱）；都没有打印或测量过。", "hardware": "没有任何东西被打印或测量过，板子的尺寸来自数据手册，测试台验收矩阵的每一行都未测试。", "docs": "八种语言、设计输入和测试台验收矩阵均已编写并保持最新。"},
   "honest": "雷达外壳是**可打印的机械起点，不是 IP、射频或热学等级**；用于太阳能、电气和报警节点的参数化盒子由其源文件中的 `assert` 检查（板子放得下、电缆孔放得下、盖子避开立柱），但**都没有打印或测量过**（板子尺寸来自数据手册；触摸屏没有打印的盒子，沿用出厂外壳）。[台架验收矩阵](docs/BENCH_ACCEPTANCE.md)的每一行都是*未测试*。",
   "bullets": [
    "**雷达外壳是 `scad/node_enclosure_radar.scad`**（带 STL、3MF 和 AMF 导出以及两个切片项目：底座和滑动盖）：带遮阳罩、顶和底的 90 度转角底座、固定台阶、2 毫米的滑动前盖和侧翼，全部由命名参数驱动。",
@@ -131,6 +138,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "筐体、電子部品、ベンチ受け入れマトリクス",
+  "status": {"software": "レーダーの筐体と、太陽光・電気・警報ノード用のパラメトリックなボックスは OpenSCAD のソースです。レーダーのボックスは印刷できる出発点で、IP・RF・熱の等級ではありません。", "tests": "ボックスはソース内のアサートで確認しています（基板が収まる、ケーブル穴が合う、フタが支柱を避ける）。印刷も実測もしていません。", "hardware": "何も印刷も実測もしておらず、基板の寸法はデータシートに基づいています。ベンチ受け入れマトリクスの全行が未テストです。", "docs": "8 言語、設計の入力条件、ベンチ受け入れマトリクスが書かれていて最新です。"},
   "honest": "レーダーの筐体は**印刷できる機構の出発点であり、IP・RF・熱の等級ではなく**、太陽光・電気・警報ノード用のパラメトリックボックスはソースの `assert` で検査されています（基板が収まる、ケーブル穴が収まる、蓋がポストを避ける）が、**どれも印刷も計測もされていません**（基板の寸法はデータシート由来で、タッチパネルには印刷ボックスはなく、出荷時の筐体を使います）。[ベンチ受入マトリクス](docs/BENCH_ACCEPTANCE.md)のすべての行は*未テスト*です。",
   "bullets": [
    "**レーダーの筐体は `scad/node_enclosure_radar.scad`**（STL・3MF・AMF の出力と、ベースとスライドカバーの 2 つのスライサープロジェクト付き）：バイザー、屋根、床、固定用の段差、2 mm のスライド式フロントカバー、側面フラップを備えた 90 度コーナーのベースで、すべて名前付きパラメーターで動きます。",
@@ -149,6 +157,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Caixas, eletrónica e a matriz de aceitação de bancada",
+  "status": {"software": "A caixa do radar e a caixa paramétrica dos nós solar, elétrico e de alarme são fontes de OpenSCAD; a caixa do radar é um ponto de partida imprimível, não uma classificação IP, RF nem térmica.", "tests": "As caixas são verificadas pelas asserções da sua fonte (a placa cabe, os furos dos cabos cabem, a tampa liberta os pilares); nenhuma foi impressa nem medida.", "hardware": "Nada foi impresso nem medido, as medidas das placas vêm de folhas de dados, e cada linha da matriz de aceitação em bancada está por testar.", "docs": "Oito idiomas, os dados de projeto e a matriz de aceitação em bancada estão escritos e atualizados."},
   "honest": "A caixa do radar é um **ponto de partida mecânico imprimível, não uma classificação IP, RF ou térmica**, e a caixa paramétrica para os nós solar, elétrico e de alarme é verificada pelos `assert` do seu código (a placa cabe, os furos dos cabos cabem, a tampa liberta os pilares), mas **nenhuma foi impressa nem medida** (os tamanhos das placas vêm das folhas de dados; o painel tátil não tem caixa impressa, mantém a sua caixa de fábrica). Cada linha da [matriz de aceitação em bancada](docs/BENCH_ACCEPTANCE.md) está *por testar*.",
   "bullets": [
    "**A caixa do radar é `scad/node_enclosure_radar.scad`** (com exportações STL, 3MF e AMF e dois projetos de fatiador, a base e a tampa deslizante): uma base de canto de 90 graus com viseira, teto e chão, degraus de retenção, uma tampa frontal deslizante de 2 mm e abas laterais, tudo governado por parâmetros com nome.",

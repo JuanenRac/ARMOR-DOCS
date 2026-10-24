@@ -40,6 +40,19 @@
 | Tecnología | Markdown / Mermaid |
 | En hardware real | No aplica: es documentación; registra lo que los demás repositorios han corrido en hardware real |
 
+## 🚦 Estado del proyecto
+
+Cada línea es una parte de este repositorio y la luz dice hasta dónde llega hoy. Se escribe con lo que el repositorio puede demostrar (pruebas, compilaciones, ejecuciones), no con lo previsto.
+
+🟢 Hecho y verificado · 🟡 Funciona, con límites conocidos · 🟠 Hecho a medias o sin verificar · 🔴 Sin hacer o sin funcionar
+
+| Área | Estado | Qué significa aquí |
+|---|---|---|
+| Software | 🟢 | Los generadores de READMEs, banners, catálogo y matriz de capacidades, y las herramientas de CI copiadas a cada repositorio, funcionan y están probados. |
+| Comprobaciones automáticas | 🟢 | Cada push comprueba que los READMEs, los banners y el catálogo estén al día y que cada repositorio del registro tenga su tabla de estado. |
+| Integración | 🟢 | Los READMEs de todos los repositorios se escriben desde una sola fuente, con la versión y la madurez de cada uno leídas de su propio manifiesto. |
+| Documentación | 🟢 | La matriz de capacidades dice, para cada función, si solo se simuló, se probó en un ordenador o se verificó en hardware real; los ocho idiomas y el historial de cambios están al día. |
+
 ## 🎯 Descripción general
 
 <p align="center">

@@ -40,6 +40,19 @@
 | Stack | Markdown / Mermaid |
 | On real hardware | Not applicable: it is documentation; it records what the other repositories have run on real hardware |
 
+## 🚦 Project status
+
+Each line is one part of this repository and the light says how far it is today. It is written from what the repository can show (tests, builds, runs), not from what is planned.
+
+🟢 Done and verified · 🟡 Works, with known limits · 🟠 Partly done or not verified yet · 🔴 Not done or not working
+
+| Area | State | What it means here |
+|---|---|---|
+| Software | 🟢 | The generators for the READMEs, the banners, the catalogue and the capability matrix, and the CI tools copied into every repository, run and are tested. |
+| Automatic checks | 🟢 | Every push checks that the READMEs, the banners and the catalogue are up to date and that every repository of the registry has its status table. |
+| Integration | 🟢 | The READMEs of all the repositories are written from one source with the version and the maturity of each read from its own manifest. |
+| Documentation | 🟢 | The capability matrix says for each feature whether it was only simulated, tested on a computer or verified on real hardware; the eight languages and the changelog are up to date. |
+
 ## 🎯 Overview
 
 <p align="center">

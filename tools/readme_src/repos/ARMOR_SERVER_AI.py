@@ -3,6 +3,7 @@
 
 FACTS = {
  "emoji": "👁️",
+ "status": [["software", "yellow"], ["tests", "green"], ["hardware", "yellow"], ["integration", "yellow"], ["docs", "green"]],
  "badges": [
   [
    "Language",
@@ -33,6 +34,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Observation service: movement on the cameras weighed with the radars; it decides and explains, never actuates",
+  "status": {"software": "The movement detector and the decision layer run as a service on the CM5 test bench, but there is no detection model yet: it cannot tell a person from a cat or a branch.", "tests": "77 tests pass (`python -m unittest discover -s tests`).", "hardware": "While the system is armed it looks at tiny grey frames of the real IP cameras of the CM5 test bench; nothing has run on a Jetson, with TensorRT or on a decoded RTSP stream.", "integration": "It reports movement weighed with the radars to the server of the CM5 test bench.", "docs": "Eight languages and the changelog are up to date."},
   "honest": "The decision layer and the movement detector are real and tested (77 tests), and the observation service **runs on the CM5 test bench**: while the system is armed it looks at tiny grey frames of the real IP cameras and reports movement weighed with the radars. It cannot tell a person from a cat or a branch: **there is no detection model yet**, and nothing has run on the Jetson, TensorRT or an RTSP stream decoded there.",
   "bullets": [
    "**The observation service:** `python -m armor_server_ai.service` is never called by the server (it asks the server, with its own token): while the system is **armed** it takes one tiny grey frame (64 x 36, from the camera's stream, never stored) of each camera every few seconds, measures how much of the picture moved and, when radar tracks agree, reports it to ARMOR-SERVER with its token.",
@@ -49,6 +51,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Servicio de observación: el movimiento en las cámaras sopesado con los radares; decide y explica, nunca actúa",
+  "status": {"software": "El detector de movimiento y la capa de decisión funcionan como servicio en el banco de pruebas CM5, pero aún no hay modelo de detección: no distingue una persona de un gato o una rama.", "tests": "Pasan 77 pruebas (`python -m unittest discover -s tests`).", "hardware": "Mientras el sistema está armado mira fotogramas grises diminutos de las cámaras IP reales del banco de pruebas CM5; nada ha funcionado en una Jetson, con TensorRT ni sobre un flujo RTSP decodificado.", "integration": "Informa del movimiento ponderado con los radares al servidor del banco de pruebas.", "docs": "Ocho idiomas y el historial de cambios están al día."},
   "honest": "La capa de decisión y el detector de movimiento son reales y están probados (77 tests), y el servicio de observación **corre en el banco de pruebas de la CM5**: con el sistema armado mira pequeños fotogramas grises de las cámaras IP reales e informa del movimiento sopesado con los radares. No distingue a una persona de un gato o una rama: **todavía no hay modelo de detección**, y nada ha corrido en la Jetson, TensorRT ni un flujo RTSP decodificado allí.",
   "bullets": [
    "**El servicio de observación:** `python -m armor_server_ai.service` el servidor nunca lo llama (es él quien le pregunta al servidor, con su propio token): con el sistema **armado** toma un diminuto fotograma gris (64 x 36, del flujo de la cámara, nunca guardado) de cada cámara cada pocos segundos, mide cuánto de la imagen se movió y, cuando las pistas de radar coinciden, lo comunica a ARMOR-SERVER con su token.",
@@ -69,6 +72,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Service d'observation : le mouvement sur les caméras pesé avec les radars ; il décide et explique, n'actionne jamais",
+  "status": {"software": "Le détecteur de mouvement et la couche de décision tournent comme service sur le banc d'essai CM5, mais il n'y a pas encore de modèle de détection : il ne distingue pas une personne d'un chat ou d'une branche.", "tests": "77 tests réussissent (`python -m unittest discover -s tests`).", "hardware": "Tant que le système est armé, il regarde de minuscules images grises des vraies caméras IP du banc d'essai CM5 ; rien n'a tourné sur un Jetson, avec TensorRT ni sur un flux RTSP décodé.", "integration": "Il rend compte au serveur du banc d'essai du mouvement pondéré par les radars .", "docs": "Huit langues et le journal des modifications sont à jour."},
   "honest": "La couche de décision et le détecteur de mouvement sont réels et testés (77 tests), et le service d'observation **tourne sur le banc de test CM5** : système armé, il regarde de minuscules images grises des vraies caméras IP et signale le mouvement pesé avec les radars. Il ne distingue pas une personne d'un chat ou d'une branche : **il n'y a pas encore de modèle de détection**, et rien n'a tourné sur le Jetson, TensorRT ni un flux RTSP décodé là.",
   "bullets": [
    "**Le service d'observation :** `python -m armor_server_ai.service` n'est jamais appelé par le serveur (c'est lui qui interroge le serveur, avec son propre jeton) : système **armé**, il prend une minuscule image grise (64 x 36, du flux de la caméra, jamais stockée) de chaque caméra toutes les quelques secondes, mesure quelle part de l'image a bougé et, quand des pistes radar concordent, le signale à ARMOR-SERVER avec son jeton.",
@@ -89,6 +93,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Servizio di osservazione: il movimento sulle telecamere pesato con i radar; decide e spiega, non aziona mai",
+  "status": {"software": "Il rilevatore di movimento e il livello decisionale girano come servizio sul banco di prova CM5, ma non c'è ancora un modello di rilevamento: non distingue una persona da un gatto o da un ramo.", "tests": "Superano 77 test (`python -m unittest discover -s tests`).", "hardware": "Mentre il sistema è inserito guarda minuscoli fotogrammi grigi delle telecamere IP reali del banco di prova CM5; nulla ha girato su una Jetson, con TensorRT o su un flusso RTSP decodificato.", "integration": "Riferisce al server del banco di prova il movimento ponderato con i radar.", "docs": "Otto lingue e il registro delle modifiche sono aggiornati."},
   "honest": "Lo strato decisionale e il rilevatore di movimento sono reali e provati (77 test), e il servizio di osservazione **gira sul banco di prova CM5**: a sistema inserito guarda minuscoli fotogrammi grigi delle vere telecamere IP e riferisce il movimento pesato con i radar. Non distingue una persona da un gatto o da un ramo: **non c'è ancora un modello di rilevamento**, e nulla ha girato sul Jetson, TensorRT o su un flusso RTSP decodificato lì.",
   "bullets": [
    "**Il servizio di osservazione:** `python -m armor_server_ai.service` non viene mai chiamato dal server (è lui a interrogare il server, con il proprio token): a sistema **inserito** prende un minuscolo fotogramma grigio (64 x 36, dal flusso della telecamera, mai salvato) di ogni telecamera ogni pochi secondi, misura quanta parte dell'immagine si è mossa e, quando le tracce radar concordano, lo riferisce ad ARMOR-SERVER con il suo token.",
@@ -109,6 +114,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Beobachtungsdienst: Bewegung auf den Kameras, gegen die Radare abgewogen; er entscheidet und erklärt, schaltet nie",
+  "status": {"software": "Der Bewegungsmelder und die Entscheidungsschicht laufen als Dienst auf dem CM5-Prüfstand, aber es gibt noch kein Erkennungsmodell: Er unterscheidet keine Person von einer Katze oder einem Ast.", "tests": "77 Tests bestehen (`python -m unittest discover -s tests`).", "hardware": "Solange das System scharf ist, betrachtet er winzige Graubilder der echten IP-Kameras des CM5-Prüfstands; nichts lief auf einem Jetson, mit TensorRT oder auf einem dekodierten RTSP-Strom.", "integration": "Er meldet die mit den Radaren gewichtete Bewegung an den Server des Prüfstands.", "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell."},
   "honest": "Die Entscheidungsschicht und der Bewegungsdetektor sind real und getestet (77 Tests), und der Beobachtungsdienst **läuft am CM5-Testaufbau**: Bei scharfem System sieht er winzige Graubilder der echten IP-Kameras an und meldet Bewegung, gegen die Radare abgewogen. Er kann eine Person nicht von einer Katze oder einem Ast unterscheiden: **Es gibt noch kein Erkennungsmodell**, und nichts lief auf dem Jetson, mit TensorRT oder einem dort dekodierten RTSP-Strom.",
   "bullets": [
    "**Der Beobachtungsdienst:** `python -m armor_server_ai.service` wird nie vom Server aufgerufen (er fragt den Server, mit seinem eigenen Token): Bei **scharfem** System nimmt er alle paar Sekunden ein winziges Graubild (64 x 36, aus dem Kamerastrom, nie gespeichert) jeder Kamera auf, misst, wie viel vom Bild sich bewegt hat, und meldet es, wenn Radarspuren übereinstimmen, mit seinem Token an ARMOR-SERVER.",
@@ -129,6 +135,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "观察服务：把摄像头上的移动与雷达对照权衡；它做出决定并给出解释，从不执行动作",
+  "status": {"software": "移动检测器和决策层在 CM5 测试台上作为服务运行，但目前还没有检测模型：它分不清人、猫或树枝。", "tests": "77 项测试通过（`python -m unittest discover -s tests`）。", "hardware": "系统布防期间，它查看 CM5 测试台上真实 IP 摄像头的微小灰度画面；还没有在 Jetson、TensorRT 或解码后的 RTSP 流上运行过。", "integration": "它把结合雷达加权后的移动情况报告给测试台的服务器。", "docs": "八种语言和更新日志均为最新。"},
   "honest": "决策层和移动检测器是真实的并经过测试（77 个测试），观察服务**在 CM5 测试台上运行**：系统布防时，它查看真实 IP 摄像头的微小灰度帧，并报告与雷达对照权衡后的移动。它分不清人、猫或树枝：**目前还没有检测模型**，也没有任何东西在 Jetson、TensorRT 或在那里解码的 RTSP 流上运行过。",
   "bullets": [
    "**观察服务：**`python -m armor_server_ai.service` 服务器从不调用它（是它用自己的令牌向服务器询问）：系统**布防**时，它每隔几秒从每个摄像头的码流取一帧微小的灰度图（64 x 36，从不保存），测量画面移动了多少，当雷达轨迹一致时，带着自己的令牌上报给 ARMOR-SERVER。",
@@ -149,6 +156,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "観察サービス：カメラ上の動きをレーダーと照らし合わせます。判断して説明するだけで、決して動作させません",
+  "status": {"software": "動き検出と判断の層は CM5 テストベンチ上でサービスとして動いていますが、検出モデルはまだありません。人と猫や枝の区別はできません。", "tests": "77 件のテストが通ります（`python -m unittest discover -s tests`）。", "hardware": "警戒中は、CM5 テストベンチの実際の IP カメラの小さなグレー画像を見ています。Jetson、TensorRT、デコードした RTSP ストリームではまだ何も動かしていません。", "integration": "レーダーと照合した動きの結果をテストベンチのサーバーに報告します。", "docs": "8 言語と変更履歴は最新です。"},
   "honest": "判断レイヤーと動き検出器は実在し、テストされています（77 件）。観察サービスは **CM5 テストベンチで動作**しており、システムの警戒中に実際の IP カメラの小さなグレーフレームを見て、レーダーと照らし合わせた動きを報告します。人と猫や枝の区別はできません。**検出モデルはまだなく**、Jetson、TensorRT、そこでデコードした RTSP ストリームでは何も動いていません。",
   "bullets": [
    "**観察サービス：**`python -m armor_server_ai.service` はサーバーから呼び出されることはなく（自分のトークンでサーバーに問い合わせます）、システムが**警戒中**のあいだ、数秒ごとに各カメラのストリームから小さなグレーフレーム（64 x 36、保存しない）を 1 枚取り、画面のどれだけが動いたかを測り、レーダーの軌跡と一致すれば、自分のトークンで ARMOR-SERVER に報告します。",
@@ -169,6 +177,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Serviço de observação: o movimento nas câmaras pesado com os radares; decide e explica, nunca aciona",
+  "status": {"software": "O detetor de movimento e a camada de decisão funcionam como serviço na bancada de testes CM5, mas ainda não há modelo de deteção: não distingue uma pessoa de um gato ou de um ramo.", "tests": "Passam 77 testes (`python -m unittest discover -s tests`).", "hardware": "Enquanto o sistema está armado, olha para pequenas imagens cinzentas das câmaras IP reais da bancada de testes CM5; nada funcionou num Jetson, com TensorRT ou sobre um fluxo RTSP descodificado.", "integration": "Reporta ao servidor da bancada de testes o movimento ponderado com os radares.", "docs": "Oito idiomas e o registo de alterações estão atualizados."},
   "honest": "A camada de decisão e o detetor de movimento são reais e estão testados (77 testes), e o serviço de observação **corre na bancada de testes do CM5**: com o sistema armado olha para pequenas imagens cinzentas das câmaras IP reais e comunica o movimento pesado com os radares. Não distingue uma pessoa de um gato ou de um ramo: **ainda não há modelo de deteção**, e nada correu no Jetson, no TensorRT nem num fluxo RTSP descodificado aí.",
   "bullets": [
    "**O serviço de observação:** `python -m armor_server_ai.service` nunca é chamado pelo servidor (é ele que pergunta ao servidor, com o seu próprio token): com o sistema **armado** tira uma pequena imagem cinzenta (64 x 36, do fluxo da câmara, nunca guardada) de cada câmara de poucos em poucos segundos, mede quanto da imagem se moveu e, quando as pistas de radar coincidem, comunica-o ao ARMOR-SERVER com o seu token.",

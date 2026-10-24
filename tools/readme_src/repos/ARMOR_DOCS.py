@@ -3,6 +3,7 @@
 
 FACTS = {
  "emoji": "📚",
+ "status": [["software", "green"], ["ci", "green"], ["integration", "green"], ["docs", "green"]],
  "badges": [
   [
    "Format",
@@ -26,6 +27,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Canonical architecture, security baseline and the truth about what is proven",
+  "status": {"software": "The generators for the READMEs, the banners, the catalogue and the capability matrix, and the CI tools copied into every repository, run and are tested.", "ci": "Every push checks that the READMEs, the banners and the catalogue are up to date and that every repository of the registry has its status table.", "integration": "The READMEs of all the repositories are written from one source with the version and the maturity of each read from its own manifest.", "docs": "The capability matrix says for each feature whether it was only simulated, tested on a computer or verified on real hardware; the eight languages and the changelog are up to date."},
   "honest": "This repository documents interfaces and procedures that have been validated, and it says plainly what has not. Read the [capability matrix](docs/CAPABILITY_MATRIX.md) before believing any feature is \"done\": it says for each one whether it was only simulated, tested on a computer or verified on real hardware. The READMEs of the eighteen repositories are written from one source (`tools/readme_src/`) in eight languages, with the version and the maturity of each read from its own manifest, so they cannot say something different from the project.",
   "bullets": [
    "[Capability matrix](docs/CAPABILITY_MATRIX.md): for each capability, is it simulated, tested on a computer or verified on hardware?",
@@ -42,6 +44,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Arquitectura canónica, base de seguridad y la verdad sobre lo que está probado",
+  "status": {"software": "Los generadores de READMEs, banners, catálogo y matriz de capacidades, y las herramientas de CI copiadas a cada repositorio, funcionan y están probados.", "ci": "Cada push comprueba que los READMEs, los banners y el catálogo estén al día y que cada repositorio del registro tenga su tabla de estado.", "integration": "Los READMEs de todos los repositorios se escriben desde una sola fuente, con la versión y la madurez de cada uno leídas de su propio manifiesto.", "docs": "La matriz de capacidades dice, para cada función, si solo se simuló, se probó en un ordenador o se verificó en hardware real; los ocho idiomas y el historial de cambios están al día."},
   "honest": "Este repositorio documenta interfaces y procedimientos que se han validado, y dice claramente lo que no. Lee la [matriz de capacidades](docs/CAPABILITY_MATRIX.md) antes de creer que una función está \"hecha\": dice de cada una si solo se simuló, se probó en un ordenador o se verificó en hardware real. Los README de los dieciocho repositorios se escriben desde una sola fuente (`tools/readme_src/`) en ocho idiomas, con la versión y la madurez de cada uno leídas de su propio manifiesto, de modo que no pueden decir algo distinto del proyecto.",
   "bullets": [
    "[Matriz de capacidades](docs/CAPABILITY_MATRIX.md): de cada capacidad, ¿está simulada, probada en un ordenador o verificada en hardware?",
@@ -61,6 +64,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Architecture canonique, base de sécurité et vérité sur ce qui est prouvé",
+  "status": {"software": "Les générateurs de README, de bannières, de catalogue et de matrice de capacités, et les outils de CI copiés dans chaque dépôt, fonctionnent et sont testés.", "ci": "Chaque push vérifie que les README, les bannières et le catalogue sont à jour et que chaque dépôt du registre a son tableau d'état.", "integration": "Les README de tous les dépôts sont écrits à partir d'une seule source, avec la version et la maturité de chacun lues dans son propre manifeste.", "docs": "La matrice de capacités dit, pour chaque fonction, si elle n'a été que simulée, testée sur un ordinateur ou vérifiée sur du matériel réel ; les huit langues et le journal des modifications sont à jour."},
   "honest": "Ce dépôt documente des interfaces et des procédures qui ont été validées, et dit clairement ce qui ne l'a pas été. Lisez la [matrice de capacités](docs/CAPABILITY_MATRIX.md) avant de croire qu'une fonction est « faite » : elle dit pour chacune si elle a seulement été simulée, testée sur un ordinateur ou vérifiée sur du matériel réel. Les README des dix-huit dépôts sont écrits à partir d'une seule source (`tools/readme_src/`) en huit langues, la version et la maturité de chacun étant lues dans son propre manifeste, si bien qu'ils ne peuvent pas dire autre chose que le projet.",
   "bullets": [
    "[Matrice de capacités](docs/CAPABILITY_MATRIX.md) : pour chaque capacité, est-elle simulée, testée sur un ordinateur ou vérifiée sur du matériel ?",
@@ -80,6 +84,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Architettura canonica, base di sicurezza e la verità su ciò che è provato",
+  "status": {"software": "I generatori di README, banner, catalogo e matrice delle capacità, e gli strumenti di CI copiati in ogni repository, funzionano e sono testati.", "ci": "Ogni push verifica che i README, i banner e il catalogo siano aggiornati e che ogni repository del registro abbia la sua tabella di stato.", "integration": "I README di tutti i repository sono scritti da un'unica fonte, con la versione e la maturità di ciascuno lette dal proprio manifesto.", "docs": "La matrice delle capacità dice, per ogni funzione, se è stata solo simulata, testata su un computer o verificata su hardware reale; le otto lingue e il registro delle modifiche sono aggiornati."},
   "honest": "Questo repository documenta interfacce e procedure che sono state validate, e dice chiaramente ciò che non lo è. Leggi la [matrice delle capacità](docs/CAPABILITY_MATRIX.md) prima di credere che una funzione sia \"fatta\": dice per ciascuna se è stata solo simulata, provata su un computer o verificata su hardware reale. I README dei diciotto repository sono scritti da un'unica fonte (`tools/readme_src/`) in otto lingue, con la versione e la maturità di ciascuno lette dal suo manifesto, così non possono dire qualcosa di diverso dal progetto.",
   "bullets": [
    "[Matrice delle capacità](docs/CAPABILITY_MATRIX.md): per ogni capacità, è simulata, provata su un computer o verificata su hardware?",
@@ -99,6 +104,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Kanonische Architektur, Sicherheitsgrundlage und die Wahrheit darüber, was belegt ist",
+  "status": {"software": "Die Generatoren für READMEs, Banner, Katalog und Fähigkeitenmatrix sowie die in jedes Repository kopierten CI-Werkzeuge laufen und sind getestet.", "ci": "Jeder Push prüft, dass die READMEs, die Banner und der Katalog aktuell sind und dass jedes Repository des Registers seine Statustabelle hat.", "integration": "Die READMEs aller Repositorys entstehen aus einer Quelle, wobei Version und Reifegrad jedes Repositorys aus dessen eigenem Manifest gelesen werden.", "docs": "Die Fähigkeitenmatrix sagt für jede Funktion, ob sie nur simuliert, auf einem Rechner getestet oder an echter Hardware überprüft wurde; die acht Sprachen und das Änderungsprotokoll sind aktuell."},
   "honest": "Dieses Repository dokumentiert Schnittstellen und Verfahren, die validiert wurden, und sagt klar, was nicht. Lesen Sie die [Fähigkeitsmatrix](docs/CAPABILITY_MATRIX.md), bevor Sie glauben, eine Funktion sei \"fertig\": Sie sagt für jede, ob sie nur simuliert, auf einem Computer getestet oder auf echter Hardware verifiziert wurde. Die READMEs der achtzehn Repositorys werden aus einer einzigen Quelle (`tools/readme_src/`) in acht Sprachen geschrieben, wobei Version und Reifegrad jedes Projekts aus seinem eigenen Manifest gelesen werden, sodass sie nichts anderes sagen können als das Projekt.",
   "bullets": [
    "[Fähigkeitsmatrix](docs/CAPABILITY_MATRIX.md): ist jede Fähigkeit simuliert, auf einem Computer getestet oder auf Hardware verifiziert?",
@@ -118,6 +124,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "规范的架构、安全基线，以及关于哪些已被证实的真相",
+  "status": {"software": "README、横幅、目录和能力矩阵的生成器，以及复制到每个仓库中的 CI 工具都能运行并经过测试。", "ci": "每次推送都会检查 README、横幅和目录是否为最新，以及注册表中的每个仓库是否都有状态表。", "integration": "所有仓库的 README 都由同一份源文件生成，每个仓库的版本和成熟度均读取自其自身的清单。", "docs": "能力矩阵为每项功能说明它只是被模拟、在电脑上测试过，还是在真实硬件上验证过；八种语言和更新日志均为最新。"},
   "honest": "本仓库记录已验证的接口和流程，并明确说明哪些尚未验证。在相信某项功能“已完成”之前，请先阅读[能力矩阵](docs/CAPABILITY_MATRIX.md)：它对每一项说明它只是模拟过、在计算机上测试过，还是在真实硬件上验证过。十八个仓库的 README 来自同一个来源（`tools/readme_src/`），以八种语言编写，每个项目的版本和成熟度都读自它自己的清单，因此不会与项目说的不一样。",
   "bullets": [
    "[能力矩阵](docs/CAPABILITY_MATRIX.md)：每项能力是模拟的、在计算机上测试的，还是在硬件上验证的？",
@@ -137,6 +144,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "正典のアーキテクチャ、セキュリティ基準、そして何が実証されているかの真実",
+  "status": {"software": "README、バナー、カタログ、機能マトリクスのジェネレーターと、各リポジトリにコピーする CI ツールは動作し、テスト済みです。", "ci": "プッシュのたびに、README、バナー、カタログが最新であること、そしてレジストリのすべてのリポジトリに状況の表があることを確認します。", "integration": "すべてのリポジトリの README は 1 つのソースから作られ、各リポジトリのバージョンと成熟度はそれぞれのマニフェストから読み取ります。", "docs": "機能マトリクスは、各機能がシミュレーションのみか、コンピューターでテスト済みか、実機で検証済みかを示します。8 言語と変更履歴は最新です。"},
   "honest": "このリポジトリは検証済みのインターフェースと手順を文書化し、検証されていないものは率直に述べます。ある機能が「完成」と信じる前に[能力マトリクス](docs/CAPABILITY_MATRIX.md)を読んでください。各機能が、シミュレーションのみ、コンピューター上でのテスト、実機での検証のどれかを示しています。18 のリポジトリの README は 1 つのソース（`tools/readme_src/`）から 8 言語で作られ、各プロジェクトのバージョンと成熟度は自身のマニフェストから読み取るため、プロジェクトと違うことは書けません。",
   "bullets": [
    "[能力マトリクス](docs/CAPABILITY_MATRIX.md)：各能力はシミュレーションのみか、コンピューター上でテスト済みか、実機で検証済みか。",
@@ -156,6 +164,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Arquitetura canónica, linha de base de segurança e a verdade sobre o que está provado",
+  "status": {"software": "Os geradores de READMEs, faixas, catálogo e matriz de capacidades, e as ferramentas de CI copiadas para cada repositório, funcionam e estão testados.", "ci": "Cada push verifica que os READMEs, as faixas e o catálogo estão atualizados e que cada repositório do registo tem a sua tabela de estado.", "integration": "Os READMEs de todos os repositórios são escritos a partir de uma só fonte, com a versão e a maturidade de cada um lidas do seu próprio manifesto.", "docs": "A matriz de capacidades diz, para cada função, se foi apenas simulada, testada num computador ou verificada em hardware real; os oito idiomas e o registo de alterações estão atualizados."},
   "honest": "Este repositório documenta interfaces e procedimentos que foram validados, e diz claramente o que não foi. Leia a [matriz de capacidades](docs/CAPABILITY_MATRIX.md) antes de acreditar que uma funcionalidade está \"feita\": diz de cada uma se foi apenas simulada, testada num computador ou verificada em hardware real. Os README dos dezoito repositórios são escritos a partir de uma única fonte (`tools/readme_src/`) em oito idiomas, com a versão e a maturidade de cada um lidas do seu próprio manifesto, pelo que não podem dizer algo diferente do projeto.",
   "bullets": [
    "[Matriz de capacidades](docs/CAPABILITY_MATRIX.md): de cada capacidade, está simulada, testada num computador ou verificada em hardware?",

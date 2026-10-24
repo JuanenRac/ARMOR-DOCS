@@ -3,6 +3,7 @@
 
 FACTS = {
  "emoji": "🛠️",
+ "status": [["software", "yellow"], ["tests", "green"], ["ui", "yellow"], ["security", "yellow"], ["updates", "yellow"], ["docs", "green"]],
  "badges": [
   [
    "Language",
@@ -39,6 +40,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Detects, installs and updates every A.R.M.O.R. repository on the machine it runs on (a Python program with no required dependencies)",
+  "status": {"software": "The manifest discovery, the version comparison and the staged install and update work; they have not been run end to end against every repository of the family.", "tests": "288 tests pass (`python -m pytest tests -q`): the discovery, the version comparison, the signature check, the staged install with its lock, journal, backups and rollback, the evidence log and the eight-language tables.", "ui": "The Qt Quick shell has been run on Windows only.", "security": "The signature check and the evidence log are tested on the host; there has been no independent review.", "updates": "The installs it makes need `git` and each repository's own build tools on the machine.", "docs": "Eight languages and the changelog are up to date."},
   "honest": "The manifest discovery, the version comparison, the signature check, the staged install and update with its lock, journal, backups and rollback, the evidence log and the eight-language interface tables are tested (288 tests), and the Qt Quick shell has been run on Windows. It has not been run against every repository of the family end to end, and the installs it makes need `git` and each repository's own build tools on the machine.",
   "bullets": [
    "**Discovery, no fixed list:** a local folder joins the moment it carries a valid `armor.project.json` declaring `ecosystem: \"A.R.M.O.R.\"`; remotely, every public repository of the account is checked the same way. A `GITHUB_TOKEN` is optional: it only raises GitHub's limit of 60 requests an hour.",
@@ -56,6 +58,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Detecta, instala y actualiza cada repositorio de A.R.M.O.R. en la máquina donde se ejecuta (un programa en Python sin dependencias obligatorias)",
+  "status": {"software": "El descubrimiento de manifiestos, la comparación de versiones y la instalación y actualización por etapas funcionan; no se han ejecutado de principio a fin contra todos los repositorios de la familia.", "tests": "Pasan 288 pruebas (`python -m pytest tests -q`): el descubrimiento, la comparación de versiones, la comprobación de la firma, la instalación por etapas con su bloqueo, diario, copias y vuelta atrás, el registro de evidencias y las tablas de los ocho idiomas.", "ui": "La interfaz Qt Quick solo se ha ejecutado en Windows.", "security": "La comprobación de la firma y el registro de evidencias están probados en el host; no ha habido una revisión independiente.", "updates": "Las instalaciones que hace necesitan `git` y las herramientas de compilación propias de cada repositorio en la máquina.", "docs": "Ocho idiomas y el historial de cambios están al día."},
   "honest": "El descubrimiento por manifiesto, la comparación de versiones, la comprobación de firma, la instalación y actualización por etapas con su bloqueo, su diario, sus copias y su vuelta atrás, el registro de evidencias y las tablas de la interfaz en ocho idiomas están probados (288 tests), y la interfaz Qt Quick se ha ejecutado en Windows. No se ha ejecutado contra todos los repositorios de la familia de principio a fin, y las instalaciones que hace necesitan `git` y las herramientas de compilación de cada repositorio en la máquina.",
   "bullets": [
    "**Descubrimiento, sin lista fija:** una carpeta local se une en cuanto lleva un `armor.project.json` válido que declara `ecosystem: \"A.R.M.O.R.\"`; en remoto, se revisa igual cada repositorio público de la cuenta. Un `GITHUB_TOKEN` es opcional: solo sube el límite de 60 peticiones a la hora de GitHub.",
@@ -78,6 +81,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Détecte, installe et met à jour chaque dépôt A.R.M.O.R. sur la machine où il tourne (un programme Python sans dépendance obligatoire)",
+  "status": {"software": "La découverte des manifestes, la comparaison des versions et l'installation et mise à jour par étapes fonctionnent ; elles n'ont pas été exécutées de bout en bout contre tous les dépôts de la famille.", "tests": "288 tests réussissent (`python -m pytest tests -q`) : la découverte, la comparaison des versions, la vérification de la signature, l'installation par étapes avec son verrou, son journal, ses sauvegardes et son retour arrière, le journal de preuves et les tables des huit langues.", "ui": "L'interface Qt Quick n'a été exécutée que sous Windows.", "security": "La vérification de la signature et le journal de preuves sont testés sur l'hôte ; il n'y a pas eu de revue indépendante.", "updates": "Les installations qu'il fait demandent `git` et les outils de compilation propres à chaque dépôt sur la machine.", "docs": "Huit langues et le journal des modifications sont à jour."},
   "honest": "La découverte par manifeste, la comparaison des versions, la vérification de signature, l'installation et la mise à jour par étapes avec leur verrou, leur journal, leurs sauvegardes et leur retour arrière, le journal de preuves et les tables de l'interface en huit langues sont testés (288 tests), et l'interface Qt Quick a tourné sous Windows. Elle n'a pas été exécutée de bout en bout sur chaque dépôt de la famille, et les installations qu'elle fait exigent `git` et les outils de compilation de chaque dépôt sur la machine.",
   "bullets": [
    "**Découverte, sans liste fixe :** un dossier local rejoint l'écosystème dès qu'il porte un `armor.project.json` valide déclarant `ecosystem: \"A.R.M.O.R.\"` ; à distance, chaque dépôt public du compte est examiné de la même façon. Un `GITHUB_TOKEN` est facultatif : il relève seulement la limite de 60 requêtes par heure de GitHub.",
@@ -100,6 +104,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Rileva, installa e aggiorna ogni repository A.R.M.O.R. sulla macchina in cui gira (un programma Python senza dipendenze obbligatorie)",
+  "status": {"software": "La scoperta dei manifesti, il confronto delle versioni e l'installazione e aggiornamento a fasi funzionano; non sono stati eseguiti end to end contro tutti i repository della famiglia.", "tests": "Superano 288 test (`python -m pytest tests -q`): la scoperta, il confronto delle versioni, il controllo della firma, l'installazione a fasi con blocco, diario, copie e ripristino, il registro delle prove e le tabelle delle otto lingue.", "ui": "L'interfaccia Qt Quick è stata eseguita solo su Windows.", "security": "Il controllo della firma e il registro delle prove sono testati sull'host; non c'è stata una revisione indipendente.", "updates": "Le installazioni che esegue richiedono `git` e gli strumenti di compilazione propri di ciascun repository sulla macchina.", "docs": "Otto lingue e il registro delle modifiche sono aggiornati."},
   "honest": "La scoperta per manifesto, il confronto delle versioni, il controllo della firma, l'installazione e l'aggiornamento a tappe con il loro blocco, il loro diario, le copie e il ritorno indietro, il registro delle prove e le tabelle dell'interfaccia in otto lingue sono testati (288 test), e l'interfaccia Qt Quick è stata eseguita su Windows. Non è stata eseguita su ogni repository della famiglia da cima a fondo, e le installazioni che fa richiedono `git` e gli strumenti di compilazione di ciascun repository sulla macchina.",
   "bullets": [
    "**Scoperta, senza elenco fisso:** una cartella locale entra appena porta un `armor.project.json` valido che dichiara `ecosystem: \"A.R.M.O.R.\"`; da remoto, ogni repository pubblico dell'account è controllato allo stesso modo. Un `GITHUB_TOKEN` è facoltativo: alza solo il limite di 60 richieste l'ora di GitHub.",
@@ -122,6 +127,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Erkennt, installiert und aktualisiert jedes A.R.M.O.R.-Repository auf dem Rechner, auf dem es läuft (ein Python-Programm ohne Pflichtabhängigkeiten)",
+  "status": {"software": "Die Manifest-Erkennung, der Versionsvergleich und die gestufte Installation und Aktualisierung funktionieren; sie wurden nicht durchgängig gegen jedes Repository der Familie ausgeführt.", "tests": "288 Tests bestehen (`python -m pytest tests -q`): die Erkennung, der Versionsvergleich, die Signaturprüfung, die gestufte Installation mit Sperre, Journal, Sicherungen und Rückfall, das Beweisprotokoll und die Tabellen der acht Sprachen.", "ui": "Die Qt-Quick-Oberfläche lief nur unter Windows.", "security": "Die Signaturprüfung und das Beweisprotokoll sind auf dem Host getestet; es gab keine unabhängige Prüfung.", "updates": "Die Installationen, die er vornimmt, brauchen `git` und die eigenen Build-Werkzeuge jedes Repositorys auf dem Rechner.", "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell."},
   "honest": "Die Manifest-Erkennung, der Versionsvergleich, die Signaturprüfung, die gestufte Installation und Aktualisierung mit Sperre, Journal, Sicherungen und Rückkehr, das Nachweisprotokoll und die Oberflächentabellen in acht Sprachen sind getestet (288 Tests), und die Qt-Quick-Oberfläche lief unter Windows. Sie wurde nicht gegen jedes Repository der Familie von Anfang bis Ende ausgeführt, und die Installationen brauchen `git` und die Build-Werkzeuge jedes Repositorys auf dem Rechner.",
   "bullets": [
    "**Erkennung ohne feste Liste:** Ein lokaler Ordner gehört dazu, sobald er ein gültiges `armor.project.json` mit `ecosystem: \"A.R.M.O.R.\"` trägt; entfernt wird jedes öffentliche Repository des Kontos genauso geprüft. Ein `GITHUB_TOKEN` ist optional: Er hebt nur GitHubs Grenze von 60 Anfragen pro Stunde an.",
@@ -144,6 +150,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "检测、安装并更新所在机器上的每个 A.R.M.O.R. 仓库（一个没有必需依赖的 Python 程序）",
+  "status": {"software": "清单发现、版本比较以及分阶段安装与更新都能工作；尚未对家族中的每个仓库完整运行过。", "tests": "288 项测试通过（`python -m pytest tests -q`）：发现、版本比较、签名检查、带锁、日志、备份和回滚的分阶段安装、证据日志以及八种语言的表。", "ui": "Qt Quick 界面只在 Windows 上运行过。", "security": "签名检查和证据日志已在主机上测试；没有经过独立审查。", "updates": "它所做的安装需要机器上有 `git` 以及每个仓库自己的构建工具。", "docs": "八种语言和更新日志均为最新。"},
   "honest": "清单发现、版本比较、签名检查、带锁、日志、备份和回退的分阶段安装与更新、证据日志以及八种语言的界面表格都已测试（288 个测试），Qt Quick 界面已在 Windows 上运行过。它没有对家族中的每个仓库从头到尾运行过，它所做的安装需要机器上有 `git` 和各仓库自己的构建工具。",
   "bullets": [
    "**无固定列表的发现：**本地文件夹只要带有声明 `ecosystem: \"A.R.M.O.R.\"` 的有效 `armor.project.json` 就会加入；远程则以同样方式检查账户的每个公开仓库。`GITHUB_TOKEN` 是可选的：它只是提高 GitHub 每小时 60 次请求的限制。",
@@ -166,6 +173,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "実行中のマシン上のすべての A.R.M.O.R. リポジトリを検出し、インストールし、更新します（必須の依存関係がない Python プログラム）",
+  "status": {"software": "マニフェストの検出、バージョン比較、段階的なインストールと更新は動作します。ファミリーのすべてのリポジトリに対して端から端まで実行したわけではありません。", "tests": "288 件のテストが通ります（`python -m pytest tests -q`）：検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバック付きの段階的インストール、証拠ログ、8 言語の表。", "ui": "Qt Quick のシェルは Windows でのみ実行しています。", "security": "署名の確認と証拠ログはホストでテスト済みです。独立したレビューはありません。", "updates": "実行するインストールには、マシンに `git` と各リポジトリ固有のビルドツールが必要です。", "docs": "8 言語と変更履歴は最新です。"},
   "honest": "マニフェストによる検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバックを備えた段階的なインストールと更新、証跡ログ、8 言語のインターフェース表はテスト済みです（288 件のテスト）。Qt Quick のシェルは Windows で実行されました。ファミリーのすべてのリポジトリに対して端から端まで実行したわけではなく、行うインストールにはマシンに `git` と各リポジトリ自身のビルドツールが必要です。",
   "bullets": [
    "**固定リストのない検出：**ローカルのフォルダーは、`ecosystem: \"A.R.M.O.R.\"` を宣言する有効な `armor.project.json` を持った時点で加わります。リモートでは、アカウントのすべての公開リポジトリが同じ方法で調べられます。`GITHUB_TOKEN` は任意で、GitHub の 1 時間 60 リクエストの上限を上げるだけです。",
@@ -188,6 +196,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Deteta, instala e atualiza cada repositório A.R.M.O.R. na máquina onde corre (um programa em Python sem dependências obrigatórias)",
+  "status": {"software": "A descoberta de manifestos, a comparação de versões e a instalação e atualização por fases funcionam; não foram executadas de ponta a ponta contra todos os repositórios da família.", "tests": "Passam 288 testes (`python -m pytest tests -q`): a descoberta, a comparação de versões, a verificação da assinatura, a instalação por fases com o seu bloqueio, diário, cópias e retrocesso, o registo de provas e as tabelas dos oito idiomas.", "ui": "A interface Qt Quick só foi executada em Windows.", "security": "A verificação da assinatura e o registo de provas estão testados no anfitrião; não houve revisão independente.", "updates": "As instalações que faz precisam de `git` e das ferramentas de compilação próprias de cada repositório na máquina.", "docs": "Oito idiomas e o registo de alterações estão atualizados."},
   "honest": "A descoberta por manifesto, a comparação de versões, a verificação de assinatura, a instalação e a atualização por etapas com o seu bloqueio, diário, cópias e volta atrás, o registo de evidências e as tabelas da interface em oito idiomas estão testados (288 testes), e a interface Qt Quick correu no Windows. Não foi executada contra todos os repositórios da família de ponta a ponta, e as instalações que faz precisam de `git` e das ferramentas de compilação de cada repositório na máquina.",
   "bullets": [
    "**Descoberta, sem lista fixa:** uma pasta local junta-se assim que tem um `armor.project.json` válido que declara `ecosystem: \"A.R.M.O.R.\"`; em remoto, cada repositório público da conta é verificado da mesma forma. Um `GITHUB_TOKEN` é opcional: só sobe o limite de 60 pedidos por hora do GitHub.",

@@ -3,6 +3,7 @@
 
 FACTS = {
  "emoji": "👁️",
+ "status": [["software", "yellow"], ["tests", "green"], ["hardware", "red"], ["docs", "green"]],
  "badges": [
   [
    "Language",
@@ -32,6 +33,7 @@ FACTS = {
 TEXT = {
  "en": {
   "tagline": "Zones, masks and detection rules for the cameras",
+  "status": {"software": "The zones, the motion check, the tracker and the rules work, but there is no real detector model yet: the simulation uses scripted detections.", "tests": "61 tests pass (`python -m unittest discover -s tests`).", "hardware": "Nothing has run on a camera or on the Jetson Orin NX.", "docs": "Eight languages and the changelog are up to date."},
   "honest": "The zones, the motion check, the tracker, the rules and the 61 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
   "bullets": [
    "**Zones and masks:** polygons drawn on normalised coordinates (0 to 1), so one drawing works at any resolution; a zone counts detections, a mask ignores movement. Each zone has a label filter, a kind (`alert` or `detection`) and an inertia in pictures and seconds.",
@@ -46,6 +48,7 @@ TEXT = {
  },
  "es": {
   "tagline": "Zonas, máscaras y reglas de detección para las cámaras",
+  "status": {"software": "Las zonas, la comprobación de movimiento, el seguimiento y las reglas funcionan, pero aún no hay un modelo detector real: la simulación usa detecciones guionizadas.", "tests": "Pasan 61 pruebas (`python -m unittest discover -s tests`).", "hardware": "Nada ha funcionado en una cámara ni en la Jetson Orin NX.", "docs": "Ocho idiomas y el historial de cambios están al día."},
   "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 61 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
   "bullets": [
    "**Zonas y máscaras:** polígonos dibujados en coordenadas normalizadas (de 0 a 1), así un mismo dibujo vale a cualquier resolución; una zona cuenta detecciones, una máscara ignora el movimiento. Cada zona tiene un filtro de etiquetas, un tipo (`alert` o `detection`) y una inercia en fotogramas y segundos.",
@@ -63,6 +66,7 @@ TEXT = {
  },
  "fr": {
   "tagline": "Zones, masques et règles de détection pour les caméras",
+  "status": {"software": "Les zones, le contrôle du mouvement, le suivi et les règles fonctionnent, mais il n'y a pas encore de vrai modèle détecteur : la simulation utilise des détections scénarisées.", "tests": "61 tests réussissent (`python -m unittest discover -s tests`).", "hardware": "Rien n'a tourné sur une caméra ni sur le Jetson Orin NX.", "docs": "Huit langues et le journal des modifications sont à jour."},
   "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 61 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
   "bullets": [
    "**Zones et masques :** des polygones dessinés en coordonnées normalisées (de 0 à 1), un même dessin sert donc à toute résolution ; une zone compte les détections, un masque ignore le mouvement. Chaque zone a un filtre d'étiquettes, un type (`alert` ou `detection`) et une inertie en images et en secondes.",
@@ -80,6 +84,7 @@ TEXT = {
  },
  "it": {
   "tagline": "Zone, maschere e regole di rilevamento per le telecamere",
+  "status": {"software": "Le zone, il controllo del movimento, il tracciamento e le regole funzionano, ma non c'è ancora un vero modello di rilevamento: la simulazione usa rilevamenti da script.", "tests": "Superano 61 test (`python -m unittest discover -s tests`).", "hardware": "Nulla ha girato su una telecamera né sulla Jetson Orin NX.", "docs": "Otto lingue e il registro delle modifiche sono aggiornati."},
   "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 61 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
   "bullets": [
    "**Zone e maschere:** poligoni disegnati in coordinate normalizzate (da 0 a 1), così lo stesso disegno vale a qualsiasi risoluzione; una zona conta i rilevamenti, una maschera ignora il movimento. Ogni zona ha un filtro di etichette, un tipo (`alert` o `detection`) e un'inerzia in immagini e secondi.",
@@ -97,6 +102,7 @@ TEXT = {
  },
  "de": {
   "tagline": "Zonen, Masken und Erkennungsregeln für die Kameras",
+  "status": {"software": "Die Zonen, die Bewegungsprüfung, die Verfolgung und die Regeln funktionieren, aber es gibt noch kein echtes Erkennungsmodell: Die Simulation nutzt geskriptete Erkennungen.", "tests": "61 Tests bestehen (`python -m unittest discover -s tests`).", "hardware": "Nichts lief an einer Kamera oder auf dem Jetson Orin NX.", "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell."},
   "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 61 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
   "bullets": [
    "**Zonen und Masken:** Polygone in normalisierten Koordinaten (0 bis 1), eine Zeichnung gilt also bei jeder Auflösung; eine Zone zählt Erkennungen, eine Maske ignoriert Bewegung. Jede Zone hat einen Label-Filter, eine Art (`alert` oder `detection`) und eine Trägheit in Bildern und Sekunden.",
@@ -114,6 +120,7 @@ TEXT = {
  },
  "zh": {
   "tagline": "摄像头的区域、遮罩与检测规则",
+  "status": {"software": "防区、移动检查、跟踪器和规则都能工作，但目前还没有真实的检测模型：模拟使用的是脚本化的检测结果。", "tests": "61 项测试通过（`python -m unittest discover -s tests`）。", "hardware": "还没有在摄像头或 Jetson Orin NX 上运行过。", "docs": "八种语言和更新日志均为最新。"},
   "honest": "区域、运动检查、跟踪、规则和 61 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
   "bullets": [
    "**区域与遮罩：** 用归一化坐标（0 到 1）绘制的多边形，因此同一张图在任何分辨率下都适用；区域统计检测结果，遮罩忽略运动。每个区域有标签过滤、类型（`alert` 或 `detection`）以及以帧数和秒数表示的惰性。",
@@ -131,6 +138,7 @@ TEXT = {
  },
  "ja": {
   "tagline": "カメラのゾーン、マスク、検知ルール",
+  "status": {"software": "ゾーン、動きの確認、トラッカー、規則は動作しますが、実際の検出モデルはまだありません。シミュレーションはスクリプト化した検出結果を使います。", "tests": "61 件のテストが通ります（`python -m unittest discover -s tests`）。", "hardware": "カメラや Jetson Orin NX ではまだ何も動かしていません。", "docs": "8 言語と変更履歴は最新です。"},
   "honest": "ゾーン、動きの確認、追跡、ルール、61 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
   "bullets": [
    "**ゾーンとマスク:** 正規化座標（0 から 1）で描いた多角形なので、同じ図がどの解像度でも使えます。ゾーンは検知を数え、マスクは動きを無視します。各ゾーンにはラベルのフィルター、種類（`alert` または `detection`）、画像数と秒数の慣性があります。",
@@ -148,6 +156,7 @@ TEXT = {
  },
  "pt": {
   "tagline": "Zonas, máscaras e regras de deteção para as câmaras",
+  "status": {"software": "As zonas, a verificação de movimento, o seguimento e as regras funcionam, mas ainda não há um modelo detetor real: a simulação usa deteções com guião.", "tests": "Passam 61 testes (`python -m unittest discover -s tests`).", "hardware": "Nada funcionou numa câmara nem no Jetson Orin NX.", "docs": "Oito idiomas e o registo de alterações estão atualizados."},
   "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 61 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
   "bullets": [
    "**Zonas e máscaras:** polígonos desenhados em coordenadas normalizadas (0 a 1), para que um só desenho funcione em qualquer resolução; uma zona conta deteções, uma máscara ignora o movimento. Cada zona tem um filtro de etiquetas, um tipo (`alert` ou `detection`) e uma inércia em imagens e segundos.",

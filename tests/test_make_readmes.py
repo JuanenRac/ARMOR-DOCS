@@ -79,6 +79,38 @@ class SourceConsistencyTests(unittest.TestCase):
                 self.assertEqual(bool(text.get("hardware")), bool(reference.get("hardware")), f"{name}.{code} hardware")
 
 
+class StatusTableTests(unittest.TestCase):
+    def test_every_repository_of_the_registry_has_a_status_table(self):
+        registry = json.loads((Path(make_readmes.__file__).resolve().parents[2] / "ARMOR-COMMON" / "registry" / "repositories.json").read_text(encoding="utf-8"))
+        names = [entry["name"] for entry in registry["repositories"]]
+        self.assertEqual(sorted(names), sorted(ORDER))
+        for name in names:
+            rows = make_readmes.load(name).FACTS.get("status")
+            self.assertTrue(rows, f"{name} has no status table")
+            for code in CODES:
+                self.assertIn("## 🚦 " + UI[code]["status"], make_readmes.render(name, code), f"{name} {code}")
+
+    def test_the_current_tables_have_no_problem(self):
+        self.assertEqual(make_readmes.status_problems(), [])
+
+    def test_a_missing_table_a_missing_note_or_a_wrong_light_is_reported(self):
+        data = make_readmes.load("ARMOR-NODE-SOLAR")
+        original_facts, original_text = data.FACTS["status"], data.TEXT["de"]["status"]
+        self.addCleanup(lambda: (data.FACTS.__setitem__("status", original_facts), data.TEXT["de"].__setitem__("status", original_text)))
+        del data.FACTS["status"]
+        self.assertTrue(any("no status table" in problem for problem in make_readmes.status_problems(["ARMOR-NODE-SOLAR"])))
+        data.FACTS["status"] = [["software", "blue"]] + [list(row) for row in original_facts[1:]]
+        self.assertTrue(any("unknown light" in problem for problem in make_readmes.status_problems(["ARMOR-NODE-SOLAR"])))
+        data.FACTS["status"] = original_facts
+        data.TEXT["de"]["status"] = {key: value for key, value in original_text.items() if key != "docs"}
+        self.assertTrue(any("no de note" in problem for problem in make_readmes.status_problems(["ARMOR-NODE-SOLAR"])))
+
+    def test_check_fails_when_a_repository_has_no_table(self):
+        with mock.patch.object(make_readmes, "status_problems", return_value=["ARMOR-X: no status table (FACTS['status'])"]),                 mock.patch("sys.argv", ["make_readmes.py", "--check"]), contextlib.redirect_stderr(io.StringIO()) as errors:
+            self.assertEqual(make_readmes.main(), 1)
+        self.assertIn("no status table", errors.getvalue())
+
+
 class RenderTests(unittest.TestCase):
     def setUp(self):
         self.holder, self.root = fake_root()

@@ -80,6 +80,35 @@ def status_table(name: str, facts: dict, text: dict, ui: dict) -> str:
         lines.append(f"| {label} | {LIGHTS[level]} | {notes[key]} |")
     return "\n".join(lines) + "\n\n"
 
+def status_problems(names=None) -> list[str]:
+    """What is wrong with the status tables: every repository of the registry must have one, with a known light and a note in each language for every row."""
+    problems: list[str] = []
+    for name in (names if names is not None else ORDER):
+        data = load(name)
+        rows = data.FACTS.get("status")
+        if not rows:
+            problems.append(f"{name}: no status table (FACTS['status'])")
+            continue
+        areas = [area for area, _ in rows]
+        if len(set(areas)) != len(areas):
+            problems.append(f"{name}: an area is listed twice in the status table")
+        for area, level in rows:
+            if level not in LIGHTS:
+                problems.append(f"{name}: unknown light {level!r} for {area}")
+        for code, *_ in LANGUAGES:
+            text, ui = data.TEXT[code], UI[code]
+            notes, own = text.get("status", {}), text.get("status_names", {})
+            for area in areas:
+                if not str(notes.get(area, "")).strip():
+                    problems.append(f"{name}: no {code} note for the status area {area}")
+                if not own.get(area) and "a_" + area not in ui:
+                    problems.append(f"{name}: no {code} name for the status area {area}")
+            for area in notes:
+                if area not in areas:
+                    problems.append(f"{name}: a {code} note for {area}, which is not a row of the table")
+    return problems
+
+
 def render(name: str, language: str) -> str:
     data = load(name)
     facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
@@ -166,6 +195,10 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     stale = []
+    problems = status_problems()
+    if problems:
+        print("Status tables incomplete:", *problems, sep="\n  ", file=sys.stderr)
+        return 1
     files = outputs()
     for path, content in files.items():
         current = path.read_text(encoding="utf-8").replace("\r\n", "\n") if path.exists() else None
