@@ -23,7 +23,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_vision simulate --mode away\npython -m armor_vision check-config my_cameras.json\npython -m unittest discover -s tests   # 61 tests\n```\n\n```bash\nPYTHONPATH=src python -m armor_vision simulate --mode away\nPYTHONPATH=src python -m armor_vision check-config my_cameras.json\nPYTHONPATH=src python -m unittest discover -s tests   # 61 tests\n```",
- "structure": "```text\nARMOR-VISION/\n├── src/armor_vision/   geometry, config (zones, masks, profiles), motion, tracker, rules, detector, pipeline, cli\n├── tests/              61 tests\n└── docs/USAGE.md\n```",
+ "structure": "```text\nARMOR-VISION/\n├── src/armor_vision/   geometry, config (zones, masks, profiles), motion, tracker, rules, detector, pipeline, cli\n├── tests/              61 tests\n├── tools/              the shared CI checks (armor_ci_validate.py, armor_project_tool.py, _armor_readme_parity.py)\n└── docs/USAGE.md\n```",
  "tests": "61 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)"

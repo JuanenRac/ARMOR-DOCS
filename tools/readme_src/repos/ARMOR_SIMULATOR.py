@@ -23,7 +23,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m armor_simulator --count 20 --scenario crossing --seed 1 --validate\npython -m unittest discover -s tests   # 63 tests\n```",
- "structure": "```text\nARMOR-SIMULATOR/\n├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), electrical (an electrical node), publisher, cli\n├── tests/                 63 tests, including a local HTTP server\n└── docs/USAGE.md\n```",
+ "structure": "```text\nARMOR-SIMULATOR/\n├── src/armor_simulator/   scenarios, faults, solar (inverter and battery messages), electrical (an electrical node), publisher, cli\n├── tests/                 63 tests, including a local HTTP server\n├── tools/                 the shared CI checks (armor_ci_validate.py, armor_project_tool.py, _armor_readme_parity.py)\n└── docs/USAGE.md\n```",
  "tests": "63 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)"

@@ -242,5 +242,43 @@ class ReadmeParityTests(unittest.TestCase):
             self.assertIn("https://two.org", problem)
 
 
+class ReadmeTreeTests(unittest.TestCase):
+    TREE = "## Structure\n\n```text\nARMOR-TEST/\n├── src/       the code\n├── CMakeLists.txt, partitions.csv, sdkconfig.board.*   the project\n└── docs/\n```\n"
+
+    def project(self, folder, text=None):
+        root = Path(folder)
+        (root / "README.md").write_text(self.TREE if text is None else text, encoding="utf-8")
+        return root
+
+    def test_a_complete_tree_has_no_problem(self):
+        with tempfile.TemporaryDirectory() as folder:
+            tracked = {"src": True, "docs": True, "CMakeLists.txt": False, "partitions.csv": False, "sdkconfig.board.s3-eth": False,
+                       "README.md": False, ".github": True, "images": True, "build.sh": False, "pyproject.toml": False, "armor.project.json": False}
+            self.assertEqual(parity.check_readme_tree(self.project(folder), tracked=tracked), [])
+
+    def test_a_versioned_entry_missing_from_the_tree_is_named(self):
+        with tempfile.TemporaryDirectory() as folder:
+            tracked = {"src": True, "docs": True, "tools": True, "sdkconfig.defaults": False}
+            (problem,) = parity.check_readme_tree(self.project(folder), tracked=tracked)
+            self.assertIn("README.md", problem)
+            self.assertIn("sdkconfig.defaults, tools", problem)
+
+    def test_every_language_file_is_checked(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = self.project(folder)
+            (root / "README_por.md").write_text(self.TREE.replace("├── src/       the code\n", ""), encoding="utf-8")
+            (problem,) = parity.check_readme_tree(root, tracked={"src": True, "docs": True})
+            self.assertIn("README_por.md", problem)
+
+    def test_a_readme_without_a_tree_is_left_alone(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = self.project(folder, "## Structure\n\nNo tree here.\n")
+            self.assertEqual(parity.check_readme_tree(root, tracked={"src": True}), [])
+
+    def test_the_folder_of_a_repository_that_git_cannot_read_is_skipped(self):
+        with tempfile.TemporaryDirectory() as folder:
+            self.assertEqual(parity.check_readme_tree(self.project(folder)), [])
+
+
 if __name__ == "__main__":
     unittest.main()

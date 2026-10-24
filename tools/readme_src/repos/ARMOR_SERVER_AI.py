@@ -23,7 +23,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 80 tests\necho '{\"label\":\"person\",\"confidence\":0.9,\"lux\":4,\"radar_tracks\":1}' | python -m armor_server_ai.cli\npython -m armor_server_ai.service --once   # one pass of the observation service\n```",
- "structure": "```text\nARMOR-SERVER-AI/\n├── src/armor_server_ai/   profile (day/night), policy (fusion), motion (movement and ignore zones), engine_registry, service (the observation service), cli\n├── tests/                 80 tests\n└── docs/                  INFERENCE_BOUNDARY.md, SERVICE.md\n```",
+ "structure": "```text\nARMOR-SERVER-AI/\n├── src/armor_server_ai/   profile (day/night), policy (fusion), motion (movement and ignore zones), engine_registry, service (the observation service), cli\n├── tests/                 80 tests\n├── tools/                 the shared CI checks (armor_ci_validate.py, armor_project_tool.py, _armor_readme_parity.py)\n└── docs/                  INFERENCE_BOUNDARY.md, SERVICE.md\n```",
  "tests": "80 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+",

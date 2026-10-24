@@ -28,7 +28,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```powershell\n$env:PYTHONPATH=\"src\"\npython -m unittest discover -s tests   # 114 tests\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\npython -m armor_voice_ai.service        # the local HTTP service the server asks (loopback only)\n```",
- "structure": "```text\nARMOR-VOICE-AI/\n├── src/armor_voice_ai/   phrases, intent, confirmation, session, gateway (stdin), service (HTTP), turn (speech to text, order, text to speech)\n├── tests/                gateway, languages, service and turn tests\n└── docs/                 SAFETY.md, SERVICE.md\n```",
+ "structure": "```text\nARMOR-VOICE-AI/\n├── src/armor_voice_ai/   phrases, intent, confirmation, session, gateway (stdin), service (HTTP), turn (speech to text, order, text to speech)\n├── tests/                gateway, languages, service and turn tests\n├── tools/                the shared CI checks (armor_ci_validate.py, armor_project_tool.py, _armor_readme_parity.py)\n└── docs/                 SAFETY.md, SERVICE.md, SILENCE_POLICY.md\n```",
  "tests": "114 (`python -m unittest discover -s tests`)",
  "requirements": [
   "Python 3.11+ (standard library only)",

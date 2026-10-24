@@ -18,7 +18,7 @@ FACTS = {
  ],
  "diagram": "",
  "build": "```powershell\nopenscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad\nopenscad -D 'part=\"both\"' -D 'preset=\"alarm\"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm\npython -m unittest discover -s tests   # the checks that need no OpenSCAD\n```",
- "structure": "```text\nARMOR-HARDWARE/\n├── scad/   node_enclosure_radar.scad (+ stl, amf, 3mf and two slicer projects: the base and the sliding cover), node_box.scad (the box of the solar, electrical and alarm nodes)\n├── docs/   DESIGN_INPUTS, VALIDATION, BENCH_ACCEPTANCE\n├── tests/  checks that need no OpenSCAD: the sources, the presets of the box, the model files and the numbers the documents quote\n└── images/ brand assets\n```",
+ "structure": "```text\nARMOR-HARDWARE/\n├── scad/   node_enclosure_radar.scad (+ stl, amf, 3mf and two slicer projects: the base and the sliding cover), node_box.scad (the box of the solar, electrical and alarm nodes)\n├── docs/   DESIGN_INPUTS, VALIDATION, BENCH_ACCEPTANCE\n├── tests/  checks that need no OpenSCAD: the sources, the presets of the box, the model files and the numbers the documents quote\n├── tools/  the shared CI checks (armor_ci_validate.py, armor_project_tool.py, _armor_readme_parity.py)\n└── images/ brand assets\n```",
  "requirements": [
   "OpenSCAD 2021.01+ (to render the enclosures)",
   "a 3D printer (FDM) to try them"
