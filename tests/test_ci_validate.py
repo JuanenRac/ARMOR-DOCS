@@ -270,6 +270,14 @@ class ReadmeTreeTests(unittest.TestCase):
             (problem,) = parity.check_readme_tree(root, tracked={"src": True, "docs": True})
             self.assertIn("README_por.md", problem)
 
+    def test_the_tree_is_the_code_block_with_the_most_tree_rows(self):
+        text = "## Example\n\n```text\n├── sample/   one row of an example\n```\n\n" + self.TREE
+        with tempfile.TemporaryDirectory() as folder:
+            root = self.project(folder, text)
+            names = parity.readme_tree_entries(root / "README.md")
+        self.assertIn("docs", names)
+        self.assertNotIn("sample", names)
+
     def test_a_readme_without_a_tree_is_left_alone(self):
         with tempfile.TemporaryDirectory() as folder:
             root = self.project(folder, "## Structure\n\nNo tree here.\n")
