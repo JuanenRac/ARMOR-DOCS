@@ -61,6 +61,25 @@ def glance(name: str, language: str, info: dict, facts: dict, text: dict, ui: di
     return f"## 📋 {ui['glance']}\n\n| | |\n|---|---|\n{body}\n\n"
 
 
+LIGHTS = {"green": "🟢", "yellow": "🟡", "orange": "🟠", "red": "🔴"}
+
+
+def status_table(name: str, facts: dict, text: dict, ui: dict) -> str:
+    """The traffic-light table of a repository: one line per part (software, tests, documentation, hardware...), the light and what it means here.
+    The areas and their lights are the same in every language (facts["status"]); the notes are the words of each language (text["status"]); an area that
+    is not one of the common ones brings its own name in text["status_names"]."""
+    rows = facts.get("status")
+    if not rows:
+        return ""
+    notes, names = text["status"], text.get("status_names", {})
+    lines = [f"## 🚦 {ui['status']}", "", ui["status_intro"], "",
+             " · ".join(f"{LIGHTS[level]} {ui['lv_' + level]}" for level in LIGHTS), "",
+             f"| {ui['status_area']} | {ui['status_state']} | {ui['status_note']} |", "|---|---|---|"]
+    for key, level in rows:
+        label = names.get(key) or ui["a_" + key]
+        lines.append(f"| {label} | {LIGHTS[level]} {ui['lv_' + level]} | {notes[key]} |")
+    return "\n".join(lines) + "\n\n"
+
 def render(name: str, language: str) -> str:
     data = load(name)
     facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
@@ -98,7 +117,7 @@ def render(name: str, language: str) -> str:
 
 ---
 
-{glance(name, language, info, facts, text, ui)}## 🎯 {ui['overview']}
+{glance(name, language, info, facts, text, ui)}{status_table(name, facts, text, ui)}## 🎯 {ui['overview']}
 ''']
     if text.get("intro"):
         parts.append(text["intro"] + "\n")
