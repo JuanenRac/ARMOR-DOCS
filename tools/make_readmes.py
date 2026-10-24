@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import importlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -133,18 +134,19 @@ def verbatim_render(name: str, language: str) -> str | None:
 
 def verbatim_problems(name: str) -> list[str]:
     """A hand-written README must exist in the eight languages, have the status table and the same level-two headings (emoji) in the same order in every language."""
-    import re
     problems: list[str] = []
     headings: dict[str, list[str]] = {}
     for code, file, *_ in LANGUAGES:
-        text = verbatim_render(name, code)
-        if text is None:
+        path = verbatim_file(name, code)
+        if path is None:
             problems.append(f"{name}: {file} is missing from readme_src/verbatim/{name}")
             continue
+        text = path.read_text(encoding="utf-8").replace("\r\n", "\n")  # the template itself: the check needs no manifest, so it runs in a checkout of this repository alone
         if "## 🚦" not in text:
             problems.append(f"{name}: {file} has no project status table")
-        if "{{" in text:
-            problems.append(f"{name}: {file} has a placeholder that is not filled in")
+        unknown = set(re.findall(r"\{\{[A-Z_]+\}\}", text)) - {"{{VERSION}}", "{{MATURITY_COLOR}}"}
+        if unknown:
+            problems.append(f"{name}: {file} has a placeholder that is not known: {', '.join(sorted(unknown))}")
         headings[code] = [m.group(1) for m in re.finditer(r"(?m)^## (\S+)", text)]
     reference = headings.get("en")
     for code, found in headings.items():
