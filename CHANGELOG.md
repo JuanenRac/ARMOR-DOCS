@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here.
 
-## [Unreleased]
+## [0.8.1.2] - The tools read the repositories from the registry of ARMOR-COMMON and the banners are written by the generator again
 
 - **The tools read the repositories from the registry of ARMOR-COMMON:** the order of the READMEs, the brand pictures and the map of the family, the repositories that get the shared tools and the workflow of Studio and the server, and the catalogue no longer keep lists of their own; a test compares what is left (the script that checks everything, the firmware sync, the shared project tool) with the registry.
 - **The banners are written by the generator again:** one animated drawing for the family with the name, kind, group and technologies of each repository (the technologies of the five nodes brought up to date, a long list loses whole technologies instead of a name cut in half), so `make_brand.py --check` passes against the banners of the repositories.
