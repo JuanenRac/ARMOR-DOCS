@@ -25,6 +25,9 @@ from registry import NAMES  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 GITHUB_OWNER = "JuanenRac"
+# a repository whose README is written by hand in the universal layout keeps its eight files in readme_src/verbatim/<REPOSITORY>/ (README.md, README_spa.md ...);
+# only {{VERSION}} and {{MATURITY_COLOR}} are filled in (the files end in .tpl so the link checks do not read them as the README of this repository), so the version still comes from the manifest and never from a hand
+VERBATIM = Path(__file__).resolve().parent / "readme_src" / "verbatim"
 
 # code, README file name, flag and name of each language, in the order of the language bar
 LANGUAGES = [
@@ -84,6 +87,9 @@ def status_problems(names=None) -> list[str]:
     """What is wrong with the status tables: every repository of the registry must have one, with a known light and a note in each language for every row."""
     problems: list[str] = []
     for name in (names if names is not None else ORDER):
+        if (VERBATIM / name).is_dir():
+            problems += verbatim_problems(name)
+            continue
         data = load(name)
         rows = data.FACTS.get("status")
         if not rows:
@@ -109,7 +115,48 @@ def status_problems(names=None) -> list[str]:
     return problems
 
 
+def verbatim_file(name: str, language: str) -> Path | None:
+    """The hand-written README of a repository in one language, or None when the repository is rendered from its FACTS and TEXT."""
+    file = next(file for code, file, *_ in LANGUAGES if code == language)
+    path = VERBATIM / name / (file + ".tpl")
+    return path if path.is_file() else None
+
+
+def verbatim_render(name: str, language: str) -> str | None:
+    path = verbatim_file(name, language)
+    if path is None:
+        return None
+    info = manifest(name)
+    text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+    return text.replace("{{VERSION}}", info["version"]).replace("{{MATURITY_COLOR}}", MATURITY_COLOR[info["maturity"]])
+
+
+def verbatim_problems(name: str) -> list[str]:
+    """A hand-written README must exist in the eight languages, have the status table and the same level-two headings (emoji) in the same order in every language."""
+    import re
+    problems: list[str] = []
+    headings: dict[str, list[str]] = {}
+    for code, file, *_ in LANGUAGES:
+        text = verbatim_render(name, code)
+        if text is None:
+            problems.append(f"{name}: {file} is missing from readme_src/verbatim/{name}")
+            continue
+        if "## 🚦" not in text:
+            problems.append(f"{name}: {file} has no project status table")
+        if "{{" in text:
+            problems.append(f"{name}: {file} has a placeholder that is not filled in")
+        headings[code] = [m.group(1) for m in re.finditer(r"(?m)^## (\S+)", text)]
+    reference = headings.get("en")
+    for code, found in headings.items():
+        if reference is not None and found != reference:
+            problems.append(f"{name}: the level-two headings of the {code} README do not match the English one")
+    return problems
+
+
 def render(name: str, language: str) -> str:
+    fixed = verbatim_render(name, language)
+    if fixed is not None:
+        return fixed
     data = load(name)
     facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
     emoji = text.get("emoji_own", facts["emoji"])
