@@ -28,7 +28,7 @@ jobs:
       - name: Fetch the other repositories next to it
         run: |
           for repository in ARMOR-COMMON ARMOR-NODE-RADAR ARMOR-NODE-SOLAR ARMOR-NODE-ELECTRICAL ARMOR-NODE-ALARM ARMOR-NODE-HMI ARMOR-NETWORK ARMOR-SERVER ARMOR-STUDIO ARMOR-ANDROID-CONTROL \
-                            ARMOR-SERVER-AI ARMOR-VISION ARMOR-VOICE-AI ARMOR-HARDWARE ARMOR-DEVOPS ARMOR-SIMULATOR ARMOR-UPDATER; do
+                            ARMOR-SERVER-AI ARMOR-VISION ARMOR-VOICE-AI ARMOR-HARDWARE ARMOR-DEVOPS ARMOR-SIMULATOR ARMOR-UPDATER ARMOR-IOS-CONTROL; do
             git clone --depth 1 "https://github.com/JuanenRac/${repository}.git" "${repository}"
           done
 
