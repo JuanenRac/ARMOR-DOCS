@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE_PATH = re.compile(r"(^|/)(tests?|conformance)/|(^|/)test_[^/]*$")
 ALLOWED_AUTHOR = "JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>"   # the one clean_history.py gives the single commit it makes
-ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
+ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>", "JuanenRac <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
 
 PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
@@ -48,6 +48,9 @@ BENIGN_IPS = {
     # ("Main Soft version : B69.12.0.0") that coincidentally parse as a
     # dotted-quad shape.
     "69.12.0.0", "68.8.0.0",
+    # the inverter/BMS software version "B68.2.0.0" in ARMOR-COMMON, ARMOR-STUDIO and ARMOR-ANDROID-CONTROL fixtures, a browser version ("Chrome/120.0.0.0")
+    # in the fixtures of ARMOR-SERVER, and a private-range boundary value of ARMOR-NETWORK's tests
+    "68.2.0.0", "120.0.0.0", "131.0.0.0", "172.32.0.9",
 }
 # words that make a "literal" obviously not a secret
 HARMLESS = re.compile(r"(?i)(example|placeholder|changeme|change-me|your[-_ ]|xxxx|\*{4}|test|fake|dummy|sample|correct-horse|adminpass|secret-for|0000|1111|aaaa|cccc|iiii|kkkk|oooo|\.\.\.)")
@@ -73,7 +76,7 @@ def scan_text(name: str, where: str, text: str, findings: list[tuple[str, str, s
         if len(line) > 2000:
             continue
         ref = f"{where}:{number}"
-        if PRIVATE_KEY.search(line):
+        if PRIVATE_KEY.search(line) and "abcdefghijklmnopqrstuvwxyz" not in line:   # a fake key body written in a test is not a key
             findings.append(("BLOCK", name, ref, "private key"))
         for match in EMAIL.finditer(line):
             if match.group(0).lower() in PUBLIC_EMAILS:
