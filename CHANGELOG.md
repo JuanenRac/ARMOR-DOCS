@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here.
 
+## [Unreleased]
+
+- **The pictures of the README come from shared tools:** `tools/make_architecture.py` draws `images/architecture.svg` from `docs/architecture.json` and `tools/make_structure.py` draws the Repository Structure (the text tree and the animated picture) from `docs/structure.json`; both measure every text, and `--check` fails when a picture, its description or the code it points to disagree. They are vendored from ARMOR-COMMON like the shared CI checks.
+
 ## [0.8.1.2] - The tools read the repositories from the registry of ARMOR-COMMON and the banners are written by the generator again
 
 - **The tools read the repositories from the registry of ARMOR-COMMON:** the order of the READMEs, the brand pictures and the map of the family, the repositories that get the shared tools and the workflow of Studio and the server, and the catalogue no longer keep lists of their own; a test compares what is left (the script that checks everything, the firmware sync, the shared project tool) with the registry.

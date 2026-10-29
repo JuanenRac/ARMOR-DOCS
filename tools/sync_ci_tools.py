@@ -6,7 +6,8 @@
 # =============================================================================
 """Vendors ARMOR-COMMON's canonical CI tooling into every other A.R.M.O.R.
 repository: `tools/armor_project_tool.py`, `tools/armor_ci_validate.py`,
-`tools/_armor_readme_parity.py` and `.github/workflows/ci.yml` (rendered
+`tools/_armor_readme_parity.py`, the pictures kit (`tools/_readme_svg.py`,
+`tools/make_architecture.py`, `tools/make_structure.py`) and `.github/workflows/ci.yml` (rendered
 from `tools/ci.yml.template`). Run this after changing any of those
 canonical files in ARMOR-COMMON; it is the same "canonical here, vendored
 everywhere" pattern this ecosystem already uses for `make_readmes.py` and
@@ -25,7 +26,9 @@ from registry import names_where  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "ARMOR-COMMON" / "tools"
-VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py")
+VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py")
+# the pictures of the READMEs (the Architecture and the Repository Structure): the kit and the two generators, canonical in ARMOR-COMMON like the files above
+PICTURE_TOOLS = ("_readme_svg.py", "make_architecture.py", "make_structure.py")
 # the repositories that carry the shared tools and the workflow: the ones the registry of ARMOR-COMMON marks `shared_tools`
 TARGETS = tuple(names_where("shared_tools"))
 
@@ -82,7 +85,7 @@ def main() -> int:
             (repo / "tools").mkdir(exist_ok=True)
             (repo / ".github" / "workflows").mkdir(parents=True, exist_ok=True)
 
-        for filename in VENDORED_FILES:
+        for filename in VENDORED_FILES + PICTURE_TOOLS:
             source_text = (SOURCE / filename).read_text(encoding="utf-8")
             destination = repo / "tools" / filename
             current = destination.read_text(encoding="utf-8") if destination.is_file() else None
