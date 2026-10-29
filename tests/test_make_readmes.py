@@ -38,7 +38,10 @@ class SourceConsistencyTests(unittest.TestCase):
         for code in CODES:
             self.assertEqual(set(UI[code]), expected, code)
             for key, value in UI[code].items():
-                self.assertTrue(value.strip(), f"{code}.{key} is empty")
+                if isinstance(value, (dict, list)):   # the words of the universal layout that come in a group (alt texts, the one-line descriptions of the family)
+                    self.assertTrue(value and all(str(item).strip() for item in (value.values() if isinstance(value, dict) else value)), f"{code}.{key} is empty")
+                else:
+                    self.assertTrue(value.strip(), f"{code}.{key} is empty")
 
     def test_every_language_describes_every_repository_once(self):
         for code in CODES:
@@ -57,18 +60,30 @@ class SourceConsistencyTests(unittest.TestCase):
         for name in ORDER:
             data = make_readmes.load(name)
             self.assertEqual(set(data.TEXT), set(CODES), name)
+            universal = data.FACTS.get("layout") == "universal"
             for code in CODES:
                 text = data.TEXT[code]
-                for key in ("tagline", "honest", "bullets"):
+                for key in (("tagline", "honest", "glance", "body") if universal else ("tagline", "honest", "bullets")):
                     self.assertTrue(text.get(key), f"{name}.{code}.{key}")
-                self.assertTrue(all(isinstance(item, str) and item.strip() for item in text["bullets"]), f"{name}.{code}")
-            for key in ("emoji", "badges", "structure", "build"):
+                if not universal:
+                    self.assertTrue(all(isinstance(item, str) and item.strip() for item in text["bullets"]), f"{name}.{code}")
+            for key in (("emoji", "badges", "license_badge") if universal else ("emoji", "badges", "structure", "build")):
                 self.assertIn(key, data.FACTS, name)
 
     def test_the_languages_of_a_repository_have_the_same_shape(self):
         for name in ORDER:
             data = make_readmes.load(name)
             reference = data.TEXT["en"]
+            if data.FACTS.get("layout") == "universal":
+                for code in CODES:
+                    text = data.TEXT[code]
+                    self.assertEqual(list(text["body"]), list(reference["body"]), f"{name}.{code} sections")
+                    self.assertEqual(len(text["glance"]), len(reference["glance"]), f"{name}.{code} glance")
+                    self.assertEqual(len(text.get("docs", [])), len(reference.get("docs", [])), f"{name}.{code} docs")
+                    for section, body in text["body"].items():
+                        self.assertEqual(body.count("\n### "), reference["body"][section].count("\n### "), f"{name}.{code} {section} sub-sections")
+                        self.assertEqual(body.count("\n|"), reference["body"][section].count("\n|"), f"{name}.{code} {section} table rows")
+                continue
             for code in CODES:
                 text = data.TEXT[code]
                 self.assertEqual(len(text["bullets"]), len(reference["bullets"]), f"{name}.{code} bullets")
@@ -77,6 +92,38 @@ class SourceConsistencyTests(unittest.TestCase):
                     self.assertEqual(len(mine["bullets"]), len(theirs["bullets"]), f"{name}.{code} {mine['title']}")
                 self.assertEqual(bool(text.get("fit")), bool(reference.get("fit")), f"{name}.{code} fit")
                 self.assertEqual(bool(text.get("hardware")), bool(reference.get("hardware")), f"{name}.{code} hardware")
+
+
+class UniversalLayoutTests(unittest.TestCase):
+    """A repository written in the universal layout (the sample is ARMOR-VOICE-AI): the 22 sections in their order, in the eight languages."""
+
+    def setUp(self):
+        holder, self.root = fake_root(version="0.3.1", maturity="established")
+        self.addCleanup(holder.cleanup)
+
+    def test_the_universal_readme_has_the_sections_in_order_and_passes_the_universal_check(self):
+        import universal_readme_check as check
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(make_readmes, "ROOT", self.root):
+            for code, file, *_ in LANGUAGES:
+                (Path(folder) / file).write_text(make_readmes.render("ARMOR-VOICE-AI", code), encoding="utf-8")
+            self.assertEqual(check.check_repository(Path(folder)), [])
+
+    def test_the_version_and_the_maturity_come_from_the_manifest(self):
+        with mock.patch.object(make_readmes, "ROOT", self.root):
+            text = make_readmes.render("ARMOR-VOICE-AI", "en")
+        self.assertIn("badge/Version-0.3.1-", text)
+        self.assertIn("| Version | `0.3.1` |", text)
+        self.assertIn("| Maturity | Established |", text)
+
+    def test_the_sections_follow_the_fixed_order_and_the_icons_do_not_change_with_the_language(self):
+        with mock.patch.object(make_readmes, "ROOT", self.root):
+            sequences = {code: re.findall(r"(?m)^## (\S+)", make_readmes.render("ARMOR-VOICE-AI", code)) for code in CODES}
+        self.assertEqual(len({tuple(value) for value in sequences.values()}), 1)
+        order = [icon for _section, icon in make_readmes.SECTIONS]
+        positions = [order.index(icon) for icon in sequences["en"]]
+        self.assertEqual(positions, sorted(positions))
+        self.assertEqual(sequences["en"][:2], ["📋", "🚦"])
+        self.assertEqual(sequences["en"][-2:], ["👤", "📜"])
 
 
 class StatusTableTests(unittest.TestCase):
@@ -193,7 +240,7 @@ class RenderTests(unittest.TestCase):
         for name in ORDER:
             data = make_readmes.load(name)
             with_table = "## 📋" in make_readmes.render(name, "en")
-            self.assertEqual(with_table, "hardware" in data.TEXT["en"], name)
+            self.assertEqual(with_table, "hardware" in data.TEXT["en"] or data.FACTS.get("layout") == "universal", name)
 
     def test_screenshots_are_a_table_of_two_columns(self):
         name = next(iter(SHOTS))

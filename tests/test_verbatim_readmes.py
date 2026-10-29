@@ -59,8 +59,10 @@ class VerbatimReadmes(unittest.TestCase):
             _text, problems = self.render(root, verbatim)
             self.assertTrue(any("headings of the fr README" in p for p in problems))
 
-    def test_the_voice_readmes_are_complete_in_the_eight_languages(self):
-        self.assertEqual(make_readmes.verbatim_problems("ARMOR-VOICE-AI"), [])
+    def test_no_repository_keeps_a_hand_written_readme_once_it_has_a_source(self):
+        """ARMOR-VOICE-AI was the first README in the universal layout and is now written from its source (readme_src/repos/ARMOR_VOICE_AI.py)."""
+        self.assertFalse((make_readmes.VERBATIM / "ARMOR-VOICE-AI").exists())
+        self.assertEqual(make_readmes.load("ARMOR-VOICE-AI").FACTS["layout"], "universal")
 
 
 if __name__ == "__main__":

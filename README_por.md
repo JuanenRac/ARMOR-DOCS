@@ -27,7 +27,7 @@
 
 ---
 
-**Verificação de honestidade - o que funciona hoje:** Este repositório documenta interfaces e procedimentos que foram validados, e diz claramente o que não foi. Leia a [matriz de capacidades](docs/CAPABILITY_MATRIX.md) antes de acreditar que uma funcionalidade está "feita": diz de cada uma se foi apenas simulada, testada num computador ou verificada em hardware real. Os README dos dezoito repositórios são escritos a partir de uma única fonte (`tools/readme_src/`) em oito idiomas, com a versão e a maturidade de cada um lidas do seu próprio manifesto, pelo que não podem dizer algo diferente do projeto.
+**Verificação de honestidade - o que funciona hoje:** Este repositório documenta interfaces e procedimentos que foram validados, e diz claramente o que não foi. Leia a [matriz de capacidades](docs/CAPABILITY_MATRIX.md) antes de acreditar que uma funcionalidade está "feita": diz de cada uma se foi apenas simulada, testada num computador ou verificada em hardware real. Os README dos dezanove repositórios são escritos a partir de uma única fonte (`tools/readme_src/`) em oito idiomas, com a versão e a maturidade de cada um lidas do seu próprio manifesto, pelo que não podem dizer algo diferente do projeto.
 
 ---
 
@@ -62,14 +62,14 @@ Cada linha é uma parte deste repositório e a luz diz até onde chega hoje. É 
 * [Matriz de capacidades](docs/CAPABILITY_MATRIX.md): de cada capacidade, está simulada, testada num computador ou verificada em hardware?
 * [Arquitetura](docs/ARCHITECTURE.md): redes, limites de confiança, tempo e ordem.
 * [Base de segurança](docs/SECURITY_BASELINE.md): o desenho de VLAN, o que o código impõe e o que ainda falta; e o [modelo de ameaças](docs/THREAT_MODEL.md).
-* [Catálogo de projetos](docs/PROJECT_CATALOG.md): os dezoito repositórios, as suas versões e como dependem uns dos outros.
+* [Catálogo de projetos](docs/PROJECT_CATALOG.md): os dezanove repositórios, as suas versões e como dependem uns dos outros.
 * [Interfaces](docs/INTERFACES.md): quem produz e consome cada interface e onde se confia nela.
 * [Primeira fatia vertical](docs/FIRST_VERTICAL_SLICE.md): o que o teste do simulador à consola prova e o que não prova.
 * **Ferramentas:** `make_readmes.py` escreve o README de cada repositório nos oito idiomas a partir de `readme_src/`, `make_catalog.py` escreve as versões do catálogo, `make_brand.py` o seu banner e ícone, `publication_check.py` procura qualquer coisa privada antes de uma publicação, `clean_history.py` faz uma cópia publicável de um repositório e `sync_ci_tools.py` mantém iguais as verificações de CI da família.
 
 ## 🧩 Papel no A.R.M.O.R.
 
-O ARMOR-DOCS é a memória da família: é onde vivem a arquitetura, a base de segurança e a matriz de capacidades, e o sítio que diz, de cada repositório, o que correu mesmo em hardware. Guarda também a ferramenta que escreve os README dos dezoito repositórios a partir de uma só fonte, para que os oito idiomas não se separem.
+O ARMOR-DOCS é a memória da família: é onde vivem a arquitetura, a base de segurança e a matriz de capacidades, e o sítio que diz, de cada repositório, o que correu mesmo em hardware. Guarda também a ferramenta que escreve os README dos dezanove repositórios a partir de uma só fonte, para que os oito idiomas não se separem.
 
 ## 📂 Estrutura do repositório
 

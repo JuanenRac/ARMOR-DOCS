@@ -155,11 +155,124 @@ def verbatim_problems(name: str) -> list[str]:
     return problems
 
 
+# The universal layout: the 22 sections of every README of the four families, in this order and with these icons. A section that does not apply to a repository is left
+# out and the order of the others does not change. The names come from UI (s_<id>) in each language; the icon is the same in all of them.
+SECTIONS = [
+    ("glance", "📋"), ("status", "🚦"), ("overview", "🎯"), ("role", "🧩"), ("architecture", "🏛️"), ("screenshots", "🖼️"), ("features", "✨"),
+    ("security", "🔒"), ("interfaces", "🔌"), ("configuration", "⚙️"), ("quickstart", "🚀"), ("testing", "🧪"), ("build", "🏗️"),
+    ("troubleshooting", "🩺"), ("structure", "📂"), ("roadmap", "🗺️"), ("languages", "🌍"), ("related", "🔗"), ("documentation", "📚"),
+    ("contributing", "🤝"), ("author", "👤"), ("license", "📜"),
+]
+ICON = dict(SECTIONS)
+# the sections whose text the author writes, in the order of the layout (the others are generated from the manifest, the tables and the words of UI)
+BODY_SECTIONS = ["overview", "role", "architecture", "features", "security", "interfaces", "configuration", "quickstart", "testing", "build",
+                 "troubleshooting", "structure", "roadmap"]
+# the sections that the 'Jump to' line links to when the README has them
+JUMP_SECTIONS = ["overview", "architecture", "features", "security", "interfaces", "configuration", "quickstart", "testing", "troubleshooting", "structure", "related"]
+
+
+def github_anchor(heading: str) -> str:
+    """The anchor GitHub gives to a heading: lower case, only letters, digits, underscores, hyphens and spaces, spaces turned into hyphens."""
+    return re.sub(r"[^\w\- ]", "", heading.lower()).replace(" ", "-")
+
+
+def section_title(code: str, section: str) -> str:
+    ui = UI[code]
+    word = ui.get("s_" + section) or (SHOTS_HEADING[code] if section == "screenshots" else "")
+    return f"{ICON[section]} {word}"
+
+
+def render_universal(name: str, language: str, data) -> str:
+    """The README of a repository written in the universal layout (FACTS["layout"] == "universal"): header, At a glance, Project status, then the sections of SECTIONS."""
+    facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
+    info = manifest(name)
+    badges = [badge for badge in facts["badges"] if badge[0] not in ("Maturity", "Version")]
+    badges.append(["Version", info["version"], "0f6cbd"])
+    badges.append(["Maturity", info["maturity"], MATURITY_COLOR[info["maturity"]]])
+    alts = ui["u_alts"]
+    badge_html = f'  <img src="https://img.shields.io/badge/{facts["license_badge"]}.svg" alt="{alts["License"]}">\n' + "\n".join(
+        f'  <img src="https://img.shields.io/badge/{label}-{value}-{color}.svg" alt="{alts.get(label, label)}">' for label, value, color in badges)
+    bar = " |\n  ".join(f"{flag} <b>{title}</b>" if code == language else f'<a href="{file}">{flag} {title}</a>' for code, file, flag, title in LANGUAGES)
+    emoji = facts["emoji"]
+    bodies = text["body"]
+    present = [section for section, _ in SECTIONS]
+    present = [section for section in present if section in ("glance", "status", "related", "documentation", "contributing", "author", "license", "languages")
+               or section in bodies or (section == "screenshots" and SHOTS.get(name))]
+    headings = {section: section_title(language, section) for section in present}
+    links = " · ".join(f"[{ui['j_' + section]}](#{github_anchor(headings[section])})" for section in JUMP_SECTIONS if section in present)
+    rows = [(ui["g_version"], f"`{info['version']}`"), (ui["g_maturity"], ui["m_" + info["maturity"]])] + [tuple(row) for row in text["glance"]]
+    glance_text = "\n".join(f"| {a} | {b} |" for a, b in rows)
+    out = [f'''<p align="center">
+  <img src="images/ARMOR_BANNER.svg" alt="{ui['u_banner_alt'].format(name=name)}" width="100%">
+</p>
+
+# {emoji} {name}
+
+<p align="center">
+  {bar}
+</p>
+
+### {text['tagline']}
+
+<p align="center">
+{badge_html}
+</p>
+
+---
+
+{ui['u_honesty_prefix']}{text['honest']}
+
+---
+''']
+    out.append(f"## {headings['glance']}\n\n| | |\n|---|---|\n{glance_text}\n\n{ui['j_prefix']} {links}\n")
+    notes = text["status"]
+    cols = ui["u_status_cols"]
+    status = [f"## {headings['status']}", "", ui["u_status_intro"], "", " · ".join(f"{LIGHTS[level]} {ui['u_lv'][level]}" for level in LIGHTS), "",
+              f"| {cols[0]} | {cols[1]} | {cols[2]} |", "|---|---|---|"]
+    status += [f"| {text.get('status_names', {}).get(key) or ui['a_' + key]} | {LIGHTS[level]} | {notes[key]} |" for key, level in facts["status"]]
+    out.append("\n".join(status) + "\n")
+
+    def repo_url(repo: str) -> str:
+        return f"https://github.com/{GITHUB_OWNER}/{repo}"
+
+    for section in present[2:]:
+        if section in BODY_SECTIONS:
+            out.append(f"## {headings[section]}\n\n{bodies[section].strip()}\n")
+        elif section == "screenshots":
+            cells = [f'<td width="50%" valign="top"><img src="images/screenshots/{file}.png" alt="{CAPTIONS[key][language]}" width="100%"><br><sub>{CAPTIONS[key][language]}</sub></td>' for file, key in SHOTS[name]]
+            table = "\n".join("<tr>" + "".join(cells[i:i + 2]) + "</tr>" for i in range(0, len(cells), 2))
+            out.append(f"## {headings[section]}\n\n{SHOTS_NOTE[language]}\n\n<table>\n{table}\n</table>\n")
+        elif section == "languages":
+            glue = "" if ui["l_text"].endswith("。") else " "
+            extra = text.get("languages_extra", "")
+            out.append(f"## {headings[section]}\n\n{ui['l_text']}{glue + extra if extra else ''}\n")
+        elif section == "related":
+            related = "\n".join(
+                f"* **[{other}]({repo_url(other)})** - {ui['u_related'][other]}" if other != name else f"* **{other}**{ui['u_here']} - {ui['u_related'][other]}"
+                for other in ORDER)
+            out.append(f"## {headings[section]}\n\n{ui['u_family']}\n\n{related}\n")
+        elif section == "documentation":
+            matrix = "docs/CAPABILITY_MATRIX.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/CAPABILITY_MATRIX.md"
+            catalog = "docs/PROJECT_CATALOG.md" if name == "ARMOR-DOCS" else f"{repo_url('ARMOR-DOCS')}/blob/main/docs/PROJECT_CATALOG.md"
+            items = list(text.get("docs", [])) + [f"[{ui['u_doc_matrix']}]({matrix})", f"[{ui['u_doc_catalog']}]({catalog})", f"[{ui['u_doc_changelog']}](CHANGELOG.md)"]
+            out.append(f"## {headings[section]}\n\n" + "\n".join(f"* {item}" for item in items) + "\n")
+        elif section == "contributing":
+            items = text.get("contributing") or [text["contributing_first"], ui["c_readme"], ui["c_contract"], ui["c_honest"], ui["c_report"]]
+            out.append(f"## {headings[section]}\n\n" + "\n".join(f"* {item}" for item in items) + "\n")
+        elif section == "author":
+            out.append(f"## {headings[section]}\n\n**JuanenRac (Electro Hobby 3D)** · electrohobby3d@gmail.com\n")
+        elif section == "license":
+            out.append(f"## {headings[section]}\n\n{ui['u_license_text']}\n")
+    return "\n".join(out)
+
+
 def render(name: str, language: str) -> str:
     fixed = verbatim_render(name, language)
     if fixed is not None:
         return fixed
     data = load(name)
+    if data.FACTS.get("layout") == "universal":
+        return render_universal(name, language, data)
     facts, text, ui = data.FACTS, data.TEXT[language], UI[language]
     emoji = text.get("emoji_own", facts["emoji"])
     info = manifest(name)

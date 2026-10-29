@@ -6,6 +6,10 @@ All notable changes to this project are documented here.
 
 - **The pictures of the README come from shared tools:** `tools/make_architecture.py` draws `images/architecture.svg` from `docs/architecture.json` and `tools/make_structure.py` draws the Repository Structure (the text tree and the animated picture) from `docs/structure.json`; both measure every text, and `--check` fails when a picture, its description or the code it points to disagree. They are vendored from ARMOR-COMMON like the shared CI checks.
 
+- **The generator writes the README in the universal layout:** a repository whose source says `"layout": "universal"` (ARMOR-VOICE-AI is the first) is rendered with the 22 sections in their fixed order, the header, At a glance with its "Jump to" line and Project status, from `tools/readme_src/repos/<REPOSITORY>.py`; the names, icons and shared sentences of the sections are in `ui.py` in the eight languages. The hand-written README folder is no longer used for ARMOR-VOICE-AI.
+- **The README of seven repositories no longer runs two bullets together in the Overview** (ARMOR-ANDROID-CONTROL, ARMOR-DEVOPS, ARMOR-NODE-ALARM, ARMOR-NODE-ELECTRICAL, ARMOR-NODE-HMI, ARMOR-NODE-SOLAR, ARMOR-STUDIO), and the README of this repository counts nineteen repositories.
+- **The universal README check** (`tools/universal_readme_check.py`, canonical in ARMOR-COMMON) is vendored with the other shared tools and runs from the validator as a warning.
+
 ## [0.8.1.2] - The tools read the repositories from the registry of ARMOR-COMMON and the banners are written by the generator again
 
 - **The tools read the repositories from the registry of ARMOR-COMMON:** the order of the READMEs, the brand pictures and the map of the family, the repositories that get the shared tools and the workflow of Studio and the server, and the catalogue no longer keep lists of their own; a test compares what is left (the script that checks everything, the firmware sync, the shared project tool) with the registry.

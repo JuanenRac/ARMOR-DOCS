@@ -27,7 +27,7 @@
 
 ---
 
-**Ehrlichkeitsprüfung - was heute läuft:** Dieses Repository dokumentiert Schnittstellen und Verfahren, die validiert wurden, und sagt klar, was nicht. Lesen Sie die [Fähigkeitsmatrix](docs/CAPABILITY_MATRIX.md), bevor Sie glauben, eine Funktion sei "fertig": Sie sagt für jede, ob sie nur simuliert, auf einem Computer getestet oder auf echter Hardware verifiziert wurde. Die READMEs der achtzehn Repositorys werden aus einer einzigen Quelle (`tools/readme_src/`) in acht Sprachen geschrieben, wobei Version und Reifegrad jedes Projekts aus seinem eigenen Manifest gelesen werden, sodass sie nichts anderes sagen können als das Projekt.
+**Ehrlichkeitsprüfung - was heute läuft:** Dieses Repository dokumentiert Schnittstellen und Verfahren, die validiert wurden, und sagt klar, was nicht. Lesen Sie die [Fähigkeitsmatrix](docs/CAPABILITY_MATRIX.md), bevor Sie glauben, eine Funktion sei "fertig": Sie sagt für jede, ob sie nur simuliert, auf einem Computer getestet oder auf echter Hardware verifiziert wurde. Die READMEs der neunzehn Repositorys werden aus einer einzigen Quelle (`tools/readme_src/`) in acht Sprachen geschrieben, wobei Version und Reifegrad jedes Projekts aus seinem eigenen Manifest gelesen werden, sodass sie nichts anderes sagen können als das Projekt.
 
 ---
 
@@ -62,14 +62,14 @@ Jede Zeile ist ein Teil dieses Repositorys, und die Ampel sagt, wie weit er heut
 * [Fähigkeitsmatrix](docs/CAPABILITY_MATRIX.md): ist jede Fähigkeit simuliert, auf einem Computer getestet oder auf Hardware verifiziert?
 * [Architektur](docs/ARCHITECTURE.md): Netze, Vertrauensgrenzen, Zeit und Reihenfolge.
 * [Sicherheitsgrundlage](docs/SECURITY_BASELINE.md): der VLAN-Entwurf, was der Code durchsetzt und was noch fehlt; und das [Bedrohungsmodell](docs/THREAT_MODEL.md).
-* [Projektkatalog](docs/PROJECT_CATALOG.md): die achtzehn Repositorys, ihre Versionen und wie sie voneinander abhängen.
+* [Projektkatalog](docs/PROJECT_CATALOG.md): die neunzehn Repositorys, ihre Versionen und wie sie voneinander abhängen.
 * [Schnittstellen](docs/INTERFACES.md): wer jede Schnittstelle erzeugt und nutzt und wo ihr vertraut wird.
 * [Erster vertikaler Schnitt](docs/FIRST_VERTICAL_SLICE.md): was der Test vom Simulator zur Konsole beweist und was nicht.
 * **Werkzeuge:** `make_readmes.py` schreibt das README jedes Repositorys in den acht Sprachen aus `readme_src/`, `make_catalog.py` schreibt die Versionen des Katalogs, `make_brand.py` sein Banner und Symbol, `publication_check.py` sucht vor einer Veröffentlichung nach allem Privaten, `clean_history.py` macht eine veröffentlichbare Kopie eines Repositorys und `sync_ci_tools.py` hält die CI-Prüfungen der Familie gleich.
 
 ## 🧩 Rolle in A.R.M.O.R.
 
-ARMOR-DOCS ist das Gedächtnis der Familie: Hier leben die Architektur, die Sicherheitsgrundlage und die Fähigkeitsmatrix, und es ist der Ort, der für jedes Repository sagt, was wirklich auf Hardware gelaufen ist. Es hält auch das Werkzeug, das die READMEs aller achtzehn Repositorys aus einer Quelle schreibt, damit die acht Sprachen nicht auseinanderlaufen.
+ARMOR-DOCS ist das Gedächtnis der Familie: Hier leben die Architektur, die Sicherheitsgrundlage und die Fähigkeitsmatrix, und es ist der Ort, der für jedes Repository sagt, was wirklich auf Hardware gelaufen ist. Es hält auch das Werkzeug, das die READMEs aller neunzehn Repositorys aus einer Quelle schreibt, damit die acht Sprachen nicht auseinanderlaufen.
 
 ## 📂 Struktur des Repositorys
 

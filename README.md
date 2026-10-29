@@ -27,7 +27,7 @@
 
 ---
 
-**Honesty check - what runs today:** This repository documents interfaces and procedures that have been validated, and it says plainly what has not. Read the [capability matrix](docs/CAPABILITY_MATRIX.md) before believing any feature is "done": it says for each one whether it was only simulated, tested on a computer or verified on real hardware. The READMEs of the eighteen repositories are written from one source (`tools/readme_src/`) in eight languages, with the version and the maturity of each read from its own manifest, so they cannot say something different from the project.
+**Honesty check - what runs today:** This repository documents interfaces and procedures that have been validated, and it says plainly what has not. Read the [capability matrix](docs/CAPABILITY_MATRIX.md) before believing any feature is "done": it says for each one whether it was only simulated, tested on a computer or verified on real hardware. The READMEs of the nineteen repositories are written from one source (`tools/readme_src/`) in eight languages, with the version and the maturity of each read from its own manifest, so they cannot say something different from the project.
 
 ---
 
@@ -62,14 +62,14 @@ Each line is one part of this repository and the light says how far it is today.
 * [Capability matrix](docs/CAPABILITY_MATRIX.md): for each capability, is it simulated, tested on a computer or verified on hardware?
 * [Architecture](docs/ARCHITECTURE.md): networks, trust boundaries, time and ordering.
 * [Security baseline](docs/SECURITY_BASELINE.md): the VLAN design, what the code enforces and what is still missing; and the [threat model](docs/THREAT_MODEL.md).
-* [Project catalogue](docs/PROJECT_CATALOG.md): the eighteen repositories, their versions and how they depend on each other.
+* [Project catalogue](docs/PROJECT_CATALOG.md): the nineteen repositories, their versions and how they depend on each other.
 * [Interfaces](docs/INTERFACES.md): who produces and consumes each interface and where it is trusted.
 * [First vertical slice](docs/FIRST_VERTICAL_SLICE.md): what the simulator-to-console test proves and what it does not.
 * **Tools:** `make_readmes.py` writes the README of every repository in the eight languages from `readme_src/`, `make_catalog.py` writes the versions of the catalogue, `make_brand.py` its banner and icon, `publication_check.py` looks for anything private before a publication, `clean_history.py` makes a publishable copy of a repository and `sync_ci_tools.py` keeps the CI checks of the family equal.
 
 ## 🧩 Role in A.R.M.O.R.
 
-ARMOR-DOCS is the family's memory: it is where the architecture, the security baseline and the capability matrix live, and the place that says, for every repository, what has really run on hardware. It also holds the tool that writes the READMEs of all eighteen repositories from one source, so that the eight languages cannot drift apart.
+ARMOR-DOCS is the family's memory: it is where the architecture, the security baseline and the capability matrix live, and the place that says, for every repository, what has really run on hardware. It also holds the tool that writes the READMEs of all nineteen repositories from one source, so that the eight languages cannot drift apart.
 
 ## 📂 Repository Structure
 
