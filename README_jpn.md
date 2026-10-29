@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.2-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.8.1.3-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| バージョン | `0.8.1.2` |
+| バージョン | `0.8.1.3` |
 | 成熟度 | 確立 |
 | 役割 | ドキュメントの拠点：アーキテクチャ、セキュリティ基盤、機能マトリクス、README・カタログ・バナーを書くツール |
 | 技術 | Python 3.11+（ツール、標準ライブラリ）、Markdown |
