@@ -1,0 +1,212 @@
+{
+  "repo": "ARMOR-DOCS",
+  "ecosystem": "armor",
+  "tagline": "The family's memory: what each repository has really run, and the tools that keep the documents true.",
+  "description": "ARMOR-DOCS holds the architecture, the security baseline, the threat model and the capability matrix, and the tools that write from one source the README of every repository in eight languages, the catalogue of versions, the banners and icons, the copies of the CI checks, and that look for anything private before a publication. Versions and maturity are read from each repository's own manifest, so a README cannot say something else.",
+  "columns": [
+    "WHAT IT READS",
+    "THE TOOLS",
+    "WHAT IT WRITES"
+  ],
+  "nodes": [
+    {
+      "id": "src",
+      "column": 0,
+      "level": "contract",
+      "title": "readme_src/",
+      "lines": [
+        "the facts and the words of every",
+        "repository in eight languages,",
+        "ui.py and the pictures' texts"
+      ],
+      "code": [
+        "tools/readme_src/ui.py",
+        "tools/readme_src/repos"
+      ]
+    },
+    {
+      "id": "manifests",
+      "column": 0,
+      "level": "external",
+      "title": "armor.project.json",
+      "lines": [
+        "of every repository: its",
+        "version, maturity and role,",
+        "read and never copied by hand"
+      ]
+    },
+    {
+      "id": "registry",
+      "column": 0,
+      "level": "external",
+      "title": "COMMON registry",
+      "lines": [
+        "registry/repositories.json,",
+        "the one list of repositories",
+        "of the family"
+      ]
+    },
+    {
+      "id": "readmes",
+      "column": 1,
+      "level": "tested",
+      "title": "make_readmes.py",
+      "lines": [
+        "the README of every repository",
+        "in eight languages from one",
+        "source; --check fails on drift"
+      ],
+      "code": [
+        "tools/make_readmes.py"
+      ]
+    },
+    {
+      "id": "catalog",
+      "column": 1,
+      "level": "tested",
+      "title": "make_catalog.py",
+      "lines": [
+        "the versions and maturity of",
+        "docs/PROJECT_CATALOG.md",
+        "from the manifests"
+      ],
+      "code": [
+        "tools/make_catalog.py"
+      ]
+    },
+    {
+      "id": "brand",
+      "column": 1,
+      "level": "tested",
+      "title": "make_brand.py",
+      "lines": [
+        "the banner and the icon of",
+        "every repository",
+        "(brand_banner.py)"
+      ],
+      "code": [
+        "tools/make_brand.py",
+        "tools/brand_banner.py"
+      ]
+    },
+    {
+      "id": "sync",
+      "column": 1,
+      "level": "contract",
+      "title": "sync_ci_tools.py",
+      "lines": [
+        "copies the shared CI checks into",
+        "every repository; --check fails",
+        "when a copy has drifted"
+      ],
+      "code": [
+        "tools/sync_ci_tools.py"
+      ]
+    },
+    {
+      "id": "publication",
+      "column": 1,
+      "level": "contract",
+      "title": "publication_check.py",
+      "lines": [
+        "looks in the versioned files and",
+        "the history for anything private;",
+        "clean_history.py makes a copy"
+      ],
+      "code": [
+        "tools/publication_check.py",
+        "tools/clean_history.py"
+      ],
+      "title_size": 13
+    },
+    {
+      "id": "checkall",
+      "column": 1,
+      "level": "tested",
+      "title": "check_all.sh",
+      "lines": [
+        "every repository's own tests in",
+        "one run; a check without its",
+        "tool is SKIP, never PASS"
+      ],
+      "code": [
+        "tools/check_all.sh"
+      ]
+    },
+    {
+      "id": "out_readme",
+      "column": 2,
+      "level": "external",
+      "title": "README x 8 x 19",
+      "lines": [
+        "README.md and the seven",
+        "in each repository of the family"
+      ]
+    },
+    {
+      "id": "out_docs",
+      "column": 2,
+      "level": "tested",
+      "title": "docs/",
+      "lines": [
+        "the capability matrix: simulated,",
+        "tested on a computer or verified",
+        "on real hardware"
+      ],
+      "code": [
+        "docs/CAPABILITY_MATRIX.md"
+      ]
+    },
+    {
+      "id": "out_ci",
+      "column": 2,
+      "level": "external",
+      "title": "CI checks in each repo",
+      "lines": [
+        "tools/armor_ci_validate.py and its",
+        "companions, equal everywhere"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "src",
+      "to": "readmes",
+      "level": "tested"
+    },
+    {
+      "from": "manifests",
+      "to": "catalog",
+      "level": "contract"
+    },
+    {
+      "from": "registry",
+      "to": "readmes",
+      "level": "contract"
+    },
+    {
+      "from": "readmes",
+      "to": "out_readme",
+      "level": "tested",
+      "label": "writes"
+    },
+    {
+      "from": "catalog",
+      "to": "out_docs",
+      "level": "tested",
+      "label": "writes"
+    },
+    {
+      "from": "sync",
+      "to": "out_ci",
+      "level": "tested",
+      "label": "copies"
+    },
+    {
+      "from": "publication",
+      "to": "out_docs",
+      "level": "contract"
+    }
+  ],
+  "footer": "Read the capability matrix before believing that a feature is done."
+}

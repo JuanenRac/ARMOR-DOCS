@@ -1,0 +1,420 @@
+{
+ "repo": "ARMOR-DOCS",
+ "ecosystem": "armor",
+ "svg": "en",
+ "cards": [
+  {
+   "name": "tools/",
+   "span": 3,
+   "accent": "a",
+   "sub": {
+    "en": "the generators and checks",
+    "es": "los generadores y comprobaciones",
+    "de": "die Generatoren und Prüfungen",
+    "fr": "les générateurs et vérifications",
+    "it": "i generatori e i controlli",
+    "ja": "ジェネレーターと検査",
+    "zh": "生成器与检查",
+    "pt": "os geradores e verificações"
+   },
+   "rows": [
+    {
+     "name": "make_readmes.py",
+     "desc": {
+      "en": "the READMEs, from one source, in eight languages",
+      "es": "los README, desde una fuente, en ocho idiomas",
+      "de": "die READMEs aus einer Quelle, in acht Sprachen",
+      "fr": "les README depuis une source, en huit langues",
+      "it": "i README da una fonte, in otto lingue",
+      "ja": "1 つのソースから 8 言語の README",
+      "zh": "由单一来源生成八种语言 README",
+      "pt": "os README a partir de uma fonte, em oito idiomas"
+     }
+    },
+    {
+     "name": "readme_src/",
+     "desc": {
+      "en": "the facts and the words of each repository",
+      "es": "los datos y las palabras de cada repositorio",
+      "de": "die Fakten und Worte jedes Repositorys",
+      "fr": "les faits et les mots de chaque dépôt",
+      "it": "i fatti e le parole di ogni repository",
+      "ja": "各リポジトリの事実と文言",
+      "zh": "每个仓库的事实与文字",
+      "pt": "os factos e as palavras de cada repositório"
+     }
+    },
+    {
+     "name": "make_catalog.py  make_brand.py",
+     "desc": {
+      "en": "the catalogue; the banners and icons",
+      "es": "el catálogo; los banners e iconos",
+      "de": "der Katalog; Banner und Symbole",
+      "fr": "le catalogue ; bannières et icônes",
+      "it": "il catalogo; banner e icone",
+      "ja": "カタログ、バナーとアイコン",
+      "zh": "目录；横幅图与图标",
+      "pt": "o catálogo; as faixas e os ícones"
+     },
+     "tree_name": "make_catalog.py make_brand.py"
+    },
+    {
+     "name": "brand_banner.py  registry.py",
+     "desc": {
+      "en": "the banner drawing; the list of ARMOR-COMMON",
+      "es": "el dibujo del banner; la lista de ARMOR-COMMON",
+      "de": "die Banner-Zeichnung; die Liste von ARMOR-COMMON",
+      "fr": "le dessin de la bannière ; la liste d'ARMOR-COMMON",
+      "it": "il disegno del banner; l'elenco di ARMOR-COMMON",
+      "ja": "バナーの描画、ARMOR-COMMON の一覧",
+      "zh": "横幅图绘制；ARMOR-COMMON 的清单",
+      "pt": "o desenho da faixa; a lista do ARMOR-COMMON"
+     },
+     "tree_name": "brand_banner.py registry.py"
+    },
+    {
+     "name": "publication_check.py",
+     "desc": {
+      "en": "nothing private leaves with a publication",
+      "es": "nada privado sale con una publicación",
+      "de": "nichts Privates verlässt das Haus",
+      "fr": "rien de privé ne sort avec une publication",
+      "it": "niente di privato esce con una pubblicazione",
+      "ja": "公開物に非公開情報を含めない",
+      "zh": "发布时不泄露私有内容",
+      "pt": "nada privado sai com uma publicação"
+     }
+    },
+    {
+     "name": "clean_history.py  sync_ci_tools.py",
+     "desc": {
+      "en": "a publishable copy; equal CI checks",
+      "es": "una copia publicable; comprobaciones de CI iguales",
+      "de": "eine veröffentlichbare Kopie; gleiche CI-Prüfungen",
+      "fr": "une copie publiable ; vérifications CI égales",
+      "it": "una copia pubblicabile; controlli CI uguali",
+      "ja": "公開用コピー、同一の CI 検査",
+      "zh": "可发布的副本；统一的 CI 检查",
+      "pt": "uma cópia publicável; verificações de CI iguais"
+     },
+     "tree_name": "clean_history.py sync_ci_tools.py"
+    },
+    {
+     "name": "check_all.sh",
+     "desc": {
+      "en": "every repository's tests in one run",
+      "es": "las pruebas de cada repositorio de una vez",
+      "de": "die Tests jedes Repositorys in einem Lauf",
+      "fr": "les tests de chaque dépôt en un lancement",
+      "it": "i test di ogni repository in un'esecuzione",
+      "ja": "各リポジトリのテストを一度に",
+      "zh": "一次运行每个仓库的测试",
+      "pt": "os testes de cada repositório numa execução"
+     }
+    },
+    {
+     "name": "armor_ci_validate.py",
+     "desc": {
+      "en": "the CI check every repository carries",
+      "es": "la comprobación de CI que lleva cada repositorio",
+      "de": "die CI-Prüfung jedes Repositorys",
+      "fr": "la vérification CI de chaque dépôt",
+      "it": "il controllo CI di ogni repository",
+      "ja": "各リポジトリが持つ CI 検査",
+      "zh": "每个仓库自带的 CI 检查",
+      "pt": "a verificação de CI de cada repositório"
+     }
+    },
+    {
+     "name": "armor_project_tool.py  pretty_run.py",
+     "desc": {
+      "en": "the launcher and its live panel",
+      "es": "el lanzador y su panel en vivo",
+      "de": "der Starter und sein Live-Panel",
+      "fr": "le lanceur et son panneau en direct",
+      "it": "l'avviatore e il suo pannello dal vivo",
+      "ja": "ランチャーとライブパネル",
+      "zh": "启动器及其实时面板",
+      "pt": "o lançador e o seu painel em direto"
+     },
+     "tree_name": "armor_project_tool.py pretty_run.py"
+    },
+    {
+     "name": "make_architecture.py  make_structure.py",
+     "desc": {
+      "en": "the two pictures of the READMEs",
+      "es": "las dos imágenes de los README",
+      "de": "die zwei Bilder der READMEs",
+      "fr": "les deux images des README",
+      "it": "le due immagini dei README",
+      "ja": "README の 2 つの図",
+      "zh": "README 的两张图",
+      "pt": "as duas imagens dos README"
+     },
+     "tree_name": "make_architecture.py make_structure.py"
+    },
+    {
+     "name": "universal_readme_check.py",
+     "desc": {
+      "en": "the layout check of the READMEs",
+      "es": "la comprobación del formato de los README",
+      "de": "die Layout-Prüfung der READMEs",
+      "fr": "la vérification de mise en page des README",
+      "it": "il controllo del formato dei README",
+      "ja": "README のレイアウト検査",
+      "zh": "README 版式检查",
+      "pt": "a verificação do formato dos README"
+     }
+    }
+   ]
+  },
+  {
+   "name": {
+    "en": "documents, tests and assets",
+    "es": "documentos, pruebas y recursos",
+    "de": "Dokumente, Tests und Ressourcen",
+    "fr": "documents, tests et ressources",
+    "it": "documenti, test e risorse",
+    "ja": "文書・テスト・素材",
+    "zh": "文档、测试与资源",
+    "pt": "documentos, testes e recursos"
+   },
+   "kind": "group",
+   "span": 3,
+   "accent": "b",
+   "columns": 2,
+   "sub": {
+    "en": "what the family says about itself",
+    "es": "lo que la familia dice de sí misma",
+    "de": "was die Familie über sich sagt",
+    "fr": "ce que la famille dit d'elle-même",
+    "it": "ciò che la famiglia dice di sé",
+    "ja": "ファミリー自身についての記述",
+    "zh": "家族对自身的说明",
+    "pt": "o que a família diz de si própria"
+   },
+   "rows": [
+    {
+     "name": "docs/",
+     "desc": {
+      "en": "8 documents: matrix, architecture, security, threats",
+      "es": "8 documentos: matriz, arquitectura, seguridad, amenazas",
+      "de": "8 Dokumente: Matrix, Architektur, Sicherheit, Bedrohungen",
+      "fr": "8 documents : matrice, architecture, sécurité, menaces",
+      "it": "8 documenti: matrice, architettura, sicurezza, minacce",
+      "ja": "8 文書：マトリクス、構成、セキュリティ、脅威",
+      "zh": "8 份文档：矩阵、架构、安全、威胁",
+      "pt": "8 documentos: matriz, arquitetura, segurança, ameaças"
+     },
+     "tree_desc": {
+      "en": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE",
+      "es": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE",
+      "de": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE",
+      "fr": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE",
+      "it": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE",
+      "ja": "CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE",
+      "zh": "CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE",
+      "pt": "CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE"
+     }
+    },
+    {
+     "name": "tests/",
+     "desc": {
+      "en": "the tests of these tools",
+      "es": "las pruebas de estas herramientas",
+      "de": "die Tests dieser Werkzeuge",
+      "fr": "les tests de ces outils",
+      "it": "i test di questi strumenti",
+      "ja": "これらのツールのテスト",
+      "zh": "这些工具的测试",
+      "pt": "os testes destas ferramentas"
+     }
+    },
+    {
+     "name": "brand/",
+     "desc": {
+      "en": "the emblem",
+      "es": "el emblema",
+      "de": "das Emblem",
+      "fr": "l'emblème",
+      "it": "l'emblema",
+      "ja": "エンブレム",
+      "zh": "徽标",
+      "pt": "o emblema"
+     }
+    },
+    {
+     "name": "images/",
+     "desc": {
+      "en": "banner, icon and the family picture",
+      "es": "banner, icono y la imagen de la familia",
+      "de": "Banner, Symbol und das Familienbild",
+      "fr": "bannière, icône et image de la famille",
+      "it": "banner, icona e immagine della famiglia",
+      "ja": "バナー、アイコン、ファミリーの図",
+      "zh": "横幅图、图标与家族图",
+      "pt": "faixa, ícone e a imagem da família"
+     },
+     "tree_desc": {
+      "en": "banner, icon, the family picture and the pictures of this README",
+      "es": "banner, icono, la imagen de la familia y las imágenes de este README",
+      "de": "Banner, Symbol, das Familienbild und die Bilder dieses READMEs",
+      "fr": "bannière, icône, l'image de la famille et les images de ce README",
+      "it": "banner, icona, l'immagine della famiglia e le immagini di questo README",
+      "ja": "バナー、アイコン、ファミリーの図、この README の図",
+      "zh": "横幅图、图标、家族图和本 README 的图片",
+      "pt": "faixa, ícone, a imagem da família e as imagens deste README"
+     }
+    },
+    {
+     "name": ".github/",
+     "desc": {
+      "en": "CI, dashboard notice, templates",
+      "es": "CI, aviso al panel, plantillas",
+      "de": "CI, Dashboard-Hinweis, Vorlagen",
+      "fr": "CI, avis au tableau de bord, modèles",
+      "it": "CI, avviso alla dashboard, modelli",
+      "ja": "CI、ダッシュボード通知、テンプレート",
+      "zh": "CI、仪表板通知、模板",
+      "pt": "CI, aviso ao painel, modelos"
+     },
+     "tree_desc": {
+      "en": "CI workflow, dashboard notice, issue and pull-request templates",
+      "es": "flujo de CI, aviso al panel, plantillas de incidencias y pull requests",
+      "de": "CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests",
+      "fr": "workflow CI, avis au tableau de bord, modèles d'issues et de pull requests",
+      "it": "workflow CI, avviso alla dashboard, modelli per issue e pull request",
+      "ja": "CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート",
+      "zh": "CI 工作流、仪表板通知、议题和 pull request 模板",
+      "pt": "fluxo de CI, aviso ao painel, modelos de issues e pull requests"
+     }
+    }
+   ]
+  },
+  {
+   "name": {
+    "en": "project files",
+    "es": "ficheros del proyecto",
+    "de": "Projektdateien",
+    "fr": "fichiers du projet",
+    "it": "file del progetto",
+    "ja": "プロジェクトのファイル",
+    "zh": "项目文件",
+    "pt": "ficheiros do projeto"
+   },
+   "kind": "group",
+   "span": 3,
+   "accent": "c",
+   "columns": 2,
+   "sub": {
+    "en": "at the root",
+    "es": "en la raíz",
+    "de": "im Stammordner",
+    "fr": "à la racine",
+    "it": "alla radice",
+    "ja": "ルート",
+    "zh": "根目录",
+    "pt": "na raiz"
+   },
+   "rows": [
+    {
+     "name": "armor.project.json",
+     "desc": {
+      "en": "manifest: version, role, maturity",
+      "es": "manifiesto: versión, función, madurez",
+      "de": "Manifest: Version, Rolle, Reife",
+      "fr": "manifeste : version, rôle, maturité",
+      "it": "manifesto: versione, ruolo, maturità",
+      "ja": "マニフェスト：版・役割・成熟度",
+      "zh": "清单：版本、角色、成熟度",
+      "pt": "manifesto: versão, função, maturidade"
+     }
+    },
+    {
+     "name": "CHANGELOG.md",
+     "desc": {
+      "en": "what changed in each version",
+      "es": "qué cambió en cada versión",
+      "de": "was sich in jeder Version geändert hat",
+      "fr": "ce qui a changé à chaque version",
+      "it": "cosa è cambiato in ogni versione",
+      "ja": "各バージョンの変更点",
+      "zh": "每个版本的变化",
+      "pt": "o que mudou em cada versão"
+     }
+    },
+    {
+     "name": "run.sh  run.bat",
+     "tree_name": "run.sh run.bat",
+     "desc": {
+      "en": "start, shared workflow",
+      "es": "arrancar, flujo compartido",
+      "de": "Start, gemeinsamer Ablauf",
+      "fr": "démarrer, flux partagé",
+      "it": "avvio, flusso condiviso",
+      "ja": "起動（共通フロー）",
+      "zh": "启动（共用流程）",
+      "pt": "arrancar, fluxo partilhado"
+     }
+    },
+    {
+     "name": "build.sh  build.bat",
+     "tree_name": "build.sh build.bat",
+     "desc": {
+      "en": "build and test, shared workflow",
+      "es": "construir y probar, flujo compartido",
+      "de": "Bauen und Testen, gemeinsamer Ablauf",
+      "fr": "construire et tester, flux partagé",
+      "it": "compila e prova, flusso condiviso",
+      "ja": "ビルドとテスト（共通フロー）",
+      "zh": "构建并测试（共用流程）",
+      "pt": "compilar e testar, fluxo partilhado"
+     }
+    },
+    {
+     "name": "build-test.sh  build-test.bat",
+     "tree_name": "build-test.sh build-test.bat",
+     "desc": {
+      "en": "build, test and package",
+      "es": "construir, probar y empaquetar",
+      "de": "Bauen, Testen und Verpacken",
+      "fr": "construire, tester, empaqueter",
+      "it": "compila, prova e impacchetta",
+      "ja": "ビルド、テスト、パッケージ化",
+      "zh": "构建、测试并打包",
+      "pt": "compilar, testar e empacotar"
+     }
+    },
+    {
+     "name": "test.sh  test.bat",
+     "tree_name": "test.sh test.bat",
+     "desc": {
+      "en": "only the tests, never the version",
+      "es": "solo las pruebas, nunca la versión",
+      "de": "nur die Tests, nie die Version",
+      "fr": "seulement les tests, jamais la version",
+      "it": "solo i test, mai la versione",
+      "ja": "テストのみ（版は変えません）",
+      "zh": "只运行测试，不改版本",
+      "pt": "só os testes, nunca a versão"
+     }
+    },
+    {
+     "name": "SECURITY  SUPPORT  CONTRIBUTING  LICENSE",
+     "tree_name": "SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE",
+     "desc": {
+      "en": "community and licence files",
+      "es": "comunidad y licencia",
+      "de": "Community und Lizenz",
+      "fr": "communauté et licence",
+      "it": "comunità e licenza",
+      "ja": "コミュニティとライセンス",
+      "zh": "社区与许可证",
+      "pt": "comunidade e licença"
+     },
+     "tree_desc": ""
+    }
+   ]
+  }
+ ]
+}
