@@ -96,31 +96,29 @@ def _structure_tool():
     return module
 
 
-def structure(lg: str, repo: str, before: str = "", after: str = "") -> str:
-    """The Repository Structure section: the picture and the text tree, both drawn from docs/structure.json of the repository."""
-    tool = _structure_tool()
-    spec = json.loads((ROOT / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
-    tree = tool.render_tree(spec, lg)
-    image = "repository-structure.svg" if spec.get("svg", "en") == "en" else None
-    if image is None:
-        suffix = {"en": "", "es": "_spa", "de": "_deu", "fr": "_fra", "it": "_ita", "ja": "_jpn", "zh": "_zho", "pt": "_por"}[lg]
-        image = f"repository-structure{suffix}.svg"
+def structure(lg: str, repo: str, tree: str | None = None, before: str = "", after: str = "") -> str:
+    """The Repository Structure section: the picture and the text tree. The tree is the one of docs/structure.json of the repository, carried by the source of its README
+    (a source must not read a sibling repository: in CI there is none); `make_structure.py --check --readmes` of the repository fails when the two disagree."""
+    if tree is None:
+        tool = _structure_tool()
+        spec = json.loads((ROOT / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
+        tree = tool.render_tree(spec, lg)
     parts = []
     if before.strip():
         parts.append(before.strip())
-    parts.append(f'<p align="center">\n  <img src="images/{image}" alt="Repository structure of {repo}" width="100%">\n</p>')
-    parts.append(f"<details>\n<summary>{SUMMARY_TREE[lg]}</summary>\n\n```text\n{tree}\n```\n\n</details>")
+    parts.append(f'<p align="center">'+chr(10)+f'  <img src="images/repository-structure.svg" alt="Repository structure of {repo}" width="100%">'+chr(10)+'</p>')
+    parts.append('<details>'+chr(10)+f'<summary>{SUMMARY_TREE[lg]}</summary>'+chr(10)*2+'```text'+chr(10)+tree+chr(10)+'```'+chr(10)*2+'</details>')
     if after.strip():
         parts.append(after.strip())
-    return "\n\n".join(parts)
+    return (chr(10)*2).join(parts)
 
 
 def code(lg: str, lines, shell: str = "powershell") -> str:
     """A code block. Each line is a command, or (command, comment) where the comment is a string or one per language; the comments line up."""
     items = [(line, "") if isinstance(line, str) else (line[0], pick(line[1], lg)) for line in lines]
     width = max([len(cmd) for cmd, note in items if note] or [0]) + 2
-    body = "\n".join((cmd.ljust(width) + "# " + note) if note else cmd for cmd, note in items)
-    return f"```{shell}\n{body}\n```"
+    body = (chr(10)).join((cmd.ljust(width) + "# " + note) if note else cmd for cmd, note in items)
+    return "```" + shell + chr(10) + body + chr(10) + "```"
 
 
 # the labels of the rows of At a glance, and the sentences that every ARMOR repository repeats
