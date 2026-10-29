@@ -7,6 +7,14 @@ Every repository is described once, in tools/readme_src/repos/<REPOSITORY>.py: t
 TEXT of each language. The words around every README and the one-line description of each repository are in tools/readme_src/ui.py. The eight files of a repository are rendered
 from the same data, so they can never drift apart in structure: README.md (English) and README_spa / _fra / _ita / _deu / _zho / _jpn / _por.
 
+A repository written in the universal layout (the 22 sections of SECTIONS, in a fixed order, the same in all four families) says so in its source with
+FACTS["layout"] == "universal" (ARMOR_VOICE_AI.py is the model). FACTS then holds the emoji, the badges, the license badge and the traffic lights; every language of TEXT
+holds the tagline, the honesty paragraph, the rows of At a glance after Version and Maturity ("glance"), the notes of Project status ("status"), the text of each section that
+the author writes ("body": overview, role, architecture, features, security, interfaces, configuration, quickstart, testing, build, troubleshooting, structure, roadmap; a
+section that does not apply is left out), the repository's own documents ("docs"), the first rule of Contributing ("contributing_first") and what follows the shared sentence of
+Languages ("languages_extra"). Related Projects, Documentation (matrix, catalogue, changelog), AUTHOR, LICENSE, the "Jump to" line and the words of every section come from ui.py.
+tools/universal_readme_check.py (canonical in ARMOR-COMMON) says what is still missing from the layout.
+
     python tools/make_readmes.py          # write the READMEs
     python tools/make_readmes.py --check  # fail when one is out of date
 """
