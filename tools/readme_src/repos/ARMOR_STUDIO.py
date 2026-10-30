@@ -1128,7 +1128,7 @@ TREE = {'en': 'ARMOR-STUDIO/\n'
 
 DIAGRAM = 'flowchart LR\n    B["Browser"] -->|"static files"| H["tools/serve.mjs (static host)"]\n    B -->|"HttpOnly session, JSON, MJPEG"| S["ARMOR-SERVER"]\n    H -->|"/armor-config.json"| B'
 
-NT = "1004"
+NT = "1011"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 # the claims of the previous README that the code no longer supports, corrected in every language

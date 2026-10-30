@@ -1314,7 +1314,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
 
 DIAGRAM = 'flowchart LR\n    N["Field nodes (ESP32-S3)"] -->|MQTT / HTTP + ingest token| S["ARMOR-SERVER"]\n    G["Solar gateway nodes"] -->|MQTT / HTTP + ingest token| S\n    E["Electrical nodes"] -->|MQTT / HTTP + ingest token| S\n    C["IP cameras"] -->|RTSP / ONVIF| S\n    S -->|"MJPEG, JSON, WebSocket"| U["ARMOR-STUDIO"]\n    S -->|"MJPEG, JSON"| A["ARMOR-ANDROID-CONTROL"]\n    S --> D[("data/: cameras.json (AES-GCM), media/, audit.log")]'
 
-NT = "708"
+NT = "724"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 

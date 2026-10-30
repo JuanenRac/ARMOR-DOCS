@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The shared workflow installs Mosquitto in the node repositories:** `sync_ci_tools.py` writes the updated workflow and project tool everywhere; the test counts of the Studio, Server and Android READMEs follow the code.
+
 ## [0.8.1.3] - The README generator writes the universal layout for every repository
 
 - **The README of ARMOR-COMMON, ARMOR-SERVER, ARMOR-STUDIO, ARMOR-SERVER-AI, ARMOR-NETWORK, ARMOR-UPDATER, ARMOR-DEVOPS and of this repository follow the universal layout:** their sources in `tools/readme_src/repos/` hold the 14 required sections and the optional ones in eight languages, built with the new shared helpers of `tools/readme_src/_kit.py` (tables, code blocks, the Architecture and Repository Structure pictures read from `docs/architecture.json` and `docs/structure.json`). The capability matrix and the interfaces guide now say 1225 conformance vectors, and the catalogue shows the versions of the manifests.
