@@ -13,6 +13,8 @@
   ],
   "deployment_target": "All users and maintainers",
   "maturity": "established",
+  "evidence": "host-test",
+  "hardware_bound": false,
   "family": "Documentation",
   "parent": null,
   "native_version": "0.8.1.3",

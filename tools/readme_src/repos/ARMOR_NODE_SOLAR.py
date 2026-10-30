@@ -40,7 +40,7 @@ FACTS = {
     ],
     [
       "integration",
-      "green",
+      "orange",
     ],
     [
       "docs",
@@ -109,7 +109,7 @@ TEXT = {
       "security": "The set-up code, the login with a limit on wrong passwords, the Bluetooth PIN and the signed updates are tested on the host; there has been no independent review.",
       "updates": "The hash and Ed25519 signature checks and the rollback logic pass on the host; an update over the air has never been run on a board.",
       "writing": "Writing to Pylontech batteries is off by default and has only been tested against a simulator.",
-      "integration": "The messages of the node are validated against the shared schemas and conformance vectors of ARMOR-COMMON.",
+      "integration": "The messages of the node are validated against the shared schemas and conformance vectors of ARMOR-COMMON. Its MQTT client is played against a real Mosquitto in the tests; no board has sent them to a server yet.",
       "docs": "Eight languages, the firmware guide, the wiring notes and the changelog are up to date.",
     },
     "docs": [
@@ -304,7 +304,7 @@ ARMOR-NODE-SOLAR/
       "security": "El código de configuración, el acceso con límite de contraseñas erróneas, el PIN Bluetooth y las actualizaciones firmadas están probados en el host; no ha habido una revisión independiente.",
       "updates": "Las comprobaciones de hash y de firma Ed25519 y la lógica de vuelta atrás pasan en el host; una actualización por aire nunca se ha ejecutado en una placa.",
       "writing": "La escritura en baterías Pylontech está desactivada por defecto y solo se ha probado contra un simulador.",
-      "integration": "Los mensajes del nodo se validan contra los esquemas compartidos y los vectores de conformidad de ARMOR-COMMON.",
+      "integration": "Los mensajes del nodo se validan contra los esquemas compartidos y los vectores de conformidad de ARMOR-COMMON. Su cliente MQTT se prueba contra un Mosquitto real en los tests; ninguna placa los ha enviado aún a un servidor.",
       "docs": "Ocho idiomas, la guía del firmware, las notas de cableado y el historial de cambios están al día.",
     },
     "docs": [
@@ -499,7 +499,7 @@ ARMOR-NODE-SOLAR/
       "security": "Der Einrichtungscode, die Anmeldung mit Begrenzung falscher Passwörter, die Bluetooth-PIN und die signierten Aktualisierungen sind auf dem Host getestet; es gab keine unabhängige Prüfung.",
       "updates": "Die Hash- und Ed25519-Signaturprüfungen und die Rückfalllogik bestehen auf dem Host; eine Aktualisierung über die Luft wurde nie auf einer Platine ausgeführt.",
       "writing": "Das Schreiben auf Pylontech-Batterien ist standardmäßig aus und wurde nur gegen einen Simulator getestet.",
-      "integration": "Die Nachrichten des Knotens werden gegen die gemeinsamen Schemas und Konformitätsvektoren von ARMOR-COMMON geprüft.",
+      "integration": "Die Nachrichten des Knotens werden gegen die gemeinsamen Schemas und Konformitätsvektoren von ARMOR-COMMON geprüft. Sein MQTT-Client wird in den Tests gegen einen echten Mosquitto gespielt; noch keine Platine hat sie an einen Server geschickt.",
       "docs": "Acht Sprachen, die Firmware-Anleitung, die Verdrahtungshinweise und das Änderungsprotokoll sind aktuell.",
     },
     "docs": [
@@ -694,7 +694,7 @@ ARMOR-NODE-SOLAR/
       "security": "Le code de configuration, la connexion avec une limite de mots de passe erronés, le PIN Bluetooth et les mises à jour signées sont testés sur l'hôte ; il n'y a pas eu de revue indépendante.",
       "updates": "Les contrôles de hash et de signature Ed25519 et la logique de retour arrière réussissent sur l'hôte ; une mise à jour par voie hertzienne n'a jamais été exécutée sur une carte.",
       "writing": "L'écriture sur les batteries Pylontech est désactivée par défaut et n'a été testée que contre un simulateur.",
-      "integration": "Les messages du nœud sont validés par rapport aux schémas partagés et aux vecteurs de conformité d'ARMOR-COMMON.",
+      "integration": "Les messages du nœud sont validés par rapport aux schémas partagés et aux vecteurs de conformité d'ARMOR-COMMON. Son client MQTT est joué contre un vrai Mosquitto dans les tests ; aucune carte ne les a encore envoyés à un serveur.",
       "docs": "Huit langues, le guide du firmware, les notes de câblage et le journal des modifications sont à jour.",
     },
     "docs": [
@@ -889,7 +889,7 @@ ARMOR-NODE-SOLAR/
       "security": "Il codice di configurazione, l'accesso con limite di password errate, il PIN Bluetooth e gli aggiornamenti firmati sono testati sull'host; non c'è stata una revisione indipendente.",
       "updates": "I controlli di hash e firma Ed25519 e la logica di ripristino passano sull'host; un aggiornamento via etere non è mai stato eseguito su una scheda.",
       "writing": "La scrittura sulle batterie Pylontech è disattivata per impostazione predefinita ed è stata provata solo contro un simulatore.",
-      "integration": "I messaggi del nodo sono validati contro gli schemi condivisi e i vettori di conformità di ARMOR-COMMON.",
+      "integration": "I messaggi del nodo sono validati contro gli schemi condivisi e i vettori di conformità di ARMOR-COMMON. Il suo client MQTT viene provato contro un vero Mosquitto nei test; nessuna scheda li ha ancora inviati a un server.",
       "docs": "Otto lingue, la guida del firmware, le note di cablaggio e il registro delle modifiche sono aggiornati.",
     },
     "docs": [
@@ -1084,7 +1084,7 @@ ARMOR-NODE-SOLAR/
       "security": "設定コード、誤ったパスワードの回数制限付きログイン、Bluetooth の PIN、署名付きアップデートはホストでテスト済みです。独立したレビューはまだありません。",
       "updates": "ハッシュと Ed25519 署名の確認、ロールバックの処理はホストで通ります。無線アップデートはボード上で一度も実行していません。",
       "writing": "Pylontech バッテリーへの書き込みは既定でオフで、シミュレーターに対してのみテストしています。",
-      "integration": "ノードのメッセージは ARMOR-COMMON の共有スキーマと適合ベクターに対して検証されています。",
+      "integration": "ノードのメッセージは ARMOR-COMMON の共有スキーマと適合ベクターに対して検証されています。MQTT クライアントはテストで本物の Mosquitto を相手に動かしていますが、ボードからサーバーへ送ったことはまだありません。",
       "docs": "8 言語、ファームウェアガイド、配線メモ、変更履歴は最新です。",
     },
     "docs": [
@@ -1279,7 +1279,7 @@ ARMOR-NODE-SOLAR/
       "security": "设置码、限制错误密码次数的登录、蓝牙 PIN 和签名更新已在主机上测试；没有经过独立审查。",
       "updates": "哈希和 Ed25519 签名检查以及回滚逻辑在主机上通过；空中更新从未在板子上运行过。",
       "writing": "对 Pylontech 电池的写入默认关闭，只对照模拟器测试过。",
-      "integration": "节点的消息已对照 ARMOR-COMMON 的共享模式和一致性向量验证。",
+      "integration": "节点的消息已对照 ARMOR-COMMON 的共享模式和一致性向量验证。其 MQTT 客户端在测试中与真实的 Mosquitto 对接；还没有任何板子把这些消息发到服务器。",
       "docs": "八种语言、固件指南、接线说明和更新日志均为最新。",
     },
     "docs": [
@@ -1474,7 +1474,7 @@ ARMOR-NODE-SOLAR/
       "security": "O código de configuração, o acesso com limite de palavras-passe erradas, o PIN Bluetooth e as atualizações assinadas estão testados no anfitrião; não houve revisão independente.",
       "updates": "As verificações de hash e de assinatura Ed25519 e a lógica de retrocesso passam no anfitrião; uma atualização pelo ar nunca foi executada numa placa.",
       "writing": "A escrita nas baterias Pylontech está desativada por predefinição e só foi testada contra um simulador.",
-      "integration": "As mensagens do nó são validadas contra os esquemas partilhados e os vetores de conformidade do ARMOR-COMMON.",
+      "integration": "As mensagens do nó são validadas contra os esquemas partilhados e os vetores de conformidade do ARMOR-COMMON. O seu cliente MQTT é exercitado contra um Mosquitto real nos testes; nenhuma placa os enviou ainda a um servidor.",
       "docs": "Oito idiomas, o guia do firmware, as notas de cablagem e o registo de alterações estão atualizados.",
     },
     "docs": [

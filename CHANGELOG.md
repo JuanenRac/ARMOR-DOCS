@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **`status_lights.py` is part of the shared CI tools:** `sync_ci_tools.py` copies it to every repository and the nightly `check_all.sh` runs it through each validator; every manifest now carries `evidence`.
 - **The shared workflow installs Mosquitto in the node repositories:** `sync_ci_tools.py` writes the updated workflow and project tool everywhere; the test counts of the Studio, Server and Android READMEs follow the code.
 
 ## [0.8.1.3] - The README generator writes the universal layout for every repository

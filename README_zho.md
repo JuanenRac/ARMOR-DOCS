@@ -112,6 +112,7 @@ ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | 如果公开这些仓库会泄露什么；出现 BLOCK 时退出码为 1 |
 | `python tools/clean_history.py` | - | 只有一个提交的可发布仓库副本 |
 | `python tools/sync_ci_tools.py [--check]` | - | 把共用的 CI 检查和启动器复制到每个仓库；副本偏离时 `--check` 失败 |
+| `python tools/status_lights.py --check|--suggest|--apply` | - | 让项目状态表的信号灯不超过清单允许的范围（成熟度与实证）；只移动信号灯，不改句子；每个仓库的 CI 都运行 `--check` |
 | `bash tools/check_all.sh [--android] [--compose]` | - | 一次运行每个仓库的测试；缺少工具的检查记为 SKIP，绝不是 PASS |
 
 每个 README 的源文件是 `tools/readme_src/repos/<仓库>.py`（与语言无关的事实和八种语言的文字），README 周围的文字在 `ui.py`，截图在 `shots.py`。`tools/registry.py` 读取 ARMOR-COMMON 的仓库清单。另见 [docs/INTERFACES.md](docs/INTERFACES.md) 和 [docs/SETUP_CODE.md](docs/SETUP_CODE.md)。

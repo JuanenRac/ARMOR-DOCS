@@ -112,6 +112,7 @@ I documenti di sicurezza della famiglia sono [docs/SECURITY_BASELINE.md](docs/SE
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | ciò che trapelerebbe se i repository fossero pubblicati; esce con 1 a ogni BLOCK |
 | `python tools/clean_history.py` | - | una copia pubblicabile di un repository con un solo commit |
 | `python tools/sync_ci_tools.py [--check]` | - | copia i controlli CI e l'avviatore in ogni repository; `--check` fallisce se una copia è divergente |
+| `python tools/status_lights.py --check|--suggest|--apply` | - | mantiene le luci della tabella di stato del progetto entro ciò che il manifesto consente (maturità ed evidenza); sposta luci, mai frasi; la CI di ogni repository esegue `--check` |
 | `bash tools/check_all.sh [--android] [--compose]` | - | i test di ogni repository in un'esecuzione; un controllo senza il suo strumento è SKIP, mai PASS |
 
 La fonte di ogni README è `tools/readme_src/repos/<REPOSITORY>.py` (i fatti indipendenti dalla lingua e le parole delle otto lingue), con `ui.py` per le parole attorno a ogni README e `shots.py` per le schermate. `tools/registry.py` legge l'elenco dei repository di ARMOR-COMMON. Vedi anche [docs/INTERFACES.md](docs/INTERFACES.md) e [docs/SETUP_CODE.md](docs/SETUP_CODE.md).

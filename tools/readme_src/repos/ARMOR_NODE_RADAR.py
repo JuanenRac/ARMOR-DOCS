@@ -36,7 +36,7 @@ FACTS = {
     ],
     [
       "integration",
-      "green",
+      "yellow",
     ],
     [
       "docs",
@@ -108,7 +108,7 @@ TEXT = {
       "hardware": "It is the one node that exists as hardware: a real Waveshare ESP32-S3-ETH board with a radar reports to the CM5 test bench; no other sensor module is connected.",
       "security": "The Bluetooth PIN pairing and the update signature check are proven on a computer with real signatures but not yet on the board; there has been no independent review.",
       "updates": "Over-the-air updates are in use on the board; the signed-update check has not run there yet.",
-      "integration": "The messages of the board reach the CM5 test bench server, and the same messages are accepted by the shared schemas and conformance vectors of ARMOR-COMMON.",
+      "integration": "The messages of the board reach the CM5 test bench server, and the same messages are accepted by the shared schemas and conformance vectors of ARMOR-COMMON. It has been seen on the bench only, not in an installation.",
       "docs": "Eight languages and the changelog are up to date.",
     },
     "docs": [
@@ -326,7 +326,7 @@ ARMOR-NODE-RADAR/
       "hardware": "Es el único nodo que existe como hardware: una placa Waveshare ESP32-S3-ETH real con un radar informa al banco de pruebas CM5; no hay ningún otro módulo de sensor conectado.",
       "security": "El emparejamiento con PIN Bluetooth y la comprobación de la firma de las actualizaciones están probados en un ordenador con firmas reales, pero aún no en la placa; no ha habido una revisión independiente.",
       "updates": "Las actualizaciones por aire se usan en la placa; la comprobación de actualizaciones firmadas aún no se ha ejecutado allí.",
-      "integration": "Los mensajes de la placa llegan al servidor del banco de pruebas CM5, y esos mismos mensajes los aceptan los esquemas compartidos y los vectores de conformidad de ARMOR-COMMON.",
+      "integration": "Los mensajes de la placa llegan al servidor del banco de pruebas CM5, y esos mismos mensajes los aceptan los esquemas compartidos y los vectores de conformidad de ARMOR-COMMON. Solo se ha visto en el banco, no en una instalación.",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
     },
     "docs": [
@@ -544,7 +544,7 @@ ARMOR-NODE-RADAR/
       "hardware": "Es ist der einzige Knoten, den es als Hardware gibt: eine echte Waveshare-ESP32-S3-ETH-Platine mit einem Radar meldet an den CM5-Prüfstand; kein anderes Sensormodul ist angeschlossen.",
       "security": "Die Kopplung per Bluetooth-PIN und die Prüfung der Update-Signatur sind auf einem Rechner mit echten Signaturen belegt, aber noch nicht auf der Platine; es gab keine unabhängige Prüfung.",
       "updates": "Aktualisierungen über die Luft werden auf der Platine genutzt; die Prüfung signierter Aktualisierungen lief dort noch nicht.",
-      "integration": "Die Nachrichten der Platine erreichen den Server des CM5-Prüfstands, und dieselben Nachrichten werden von den gemeinsamen Schemas und Konformitätsvektoren von ARMOR-COMMON akzeptiert.",
+      "integration": "Die Nachrichten der Platine erreichen den Server des CM5-Prüfstands, und dieselben Nachrichten werden von den gemeinsamen Schemas und Konformitätsvektoren von ARMOR-COMMON akzeptiert. Nur auf dem Prüfstand gesehen, nicht in einer Installation.",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
     },
     "docs": [
@@ -762,7 +762,7 @@ ARMOR-NODE-RADAR/
       "hardware": "C'est le seul nœud qui existe en matériel : une vraie carte Waveshare ESP32-S3-ETH avec un radar rend compte au banc d'essai CM5 ; aucun autre module de capteur n'est branché.",
       "security": "L'appairage par PIN Bluetooth et la vérification de la signature des mises à jour sont prouvés sur un ordinateur avec de vraies signatures mais pas encore sur la carte ; il n'y a pas eu de revue indépendante.",
       "updates": "Les mises à jour par voie hertzienne sont utilisées sur la carte ; la vérification des mises à jour signées n'y a pas encore tourné.",
-      "integration": "Les messages de la carte arrivent au serveur du banc d'essai CM5, et ces mêmes messages sont acceptés par les schémas partagés et les vecteurs de conformité d'ARMOR-COMMON.",
+      "integration": "Les messages de la carte arrivent au serveur du banc d'essai CM5, et ces mêmes messages sont acceptés par les schémas partagés et les vecteurs de conformité d'ARMOR-COMMON. Vu uniquement sur le banc d'essai, pas dans une installation.",
       "docs": "Huit langues et le journal des modifications sont à jour.",
     },
     "docs": [
@@ -980,7 +980,7 @@ ARMOR-NODE-RADAR/
       "hardware": "È l'unico nodo che esiste come hardware: una scheda Waveshare ESP32-S3-ETH reale con un radar riferisce al banco di prova CM5; nessun altro modulo sensore è collegato.",
       "security": "L'abbinamento con PIN Bluetooth e il controllo della firma degli aggiornamenti sono provati su un computer con firme reali ma non ancora sulla scheda; non c'è stata una revisione indipendente.",
       "updates": "Gli aggiornamenti via etere sono in uso sulla scheda; il controllo degli aggiornamenti firmati non vi è ancora stato eseguito.",
-      "integration": "I messaggi della scheda arrivano al server del banco di prova CM5 e gli stessi messaggi sono accettati dagli schemi condivisi e dai vettori di conformità di ARMOR-COMMON.",
+      "integration": "I messaggi della scheda arrivano al server del banco di prova CM5 e gli stessi messaggi sono accettati dagli schemi condivisi e dai vettori di conformità di ARMOR-COMMON. Visto solo sul banco di prova, non in un'installazione.",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
     },
     "docs": [
@@ -1198,7 +1198,7 @@ ARMOR-NODE-RADAR/
       "hardware": "ハードウェアとして存在する唯一のノードです。実機の Waveshare ESP32-S3-ETH ボードとレーダーが CM5 テストベンチに報告しています。他のセンサーモジュールは接続していません。",
       "security": "Bluetooth の PIN ペアリングとアップデート署名の確認は、本物の署名を使ってコンピューター上で確認済みですが、ボード上ではまだです。独立したレビューもありません。",
       "updates": "無線アップデートはボード上で使われています。署名付きアップデートの確認はまだ実機では実行していません。",
-      "integration": "ボードのメッセージは CM5 テストベンチのサーバーに届き、同じメッセージは ARMOR-COMMON の共有スキーマと適合ベクターにも受理されます。",
+      "integration": "ボードのメッセージは CM5 テストベンチのサーバーに届き、同じメッセージは ARMOR-COMMON の共有スキーマと適合ベクターにも受理されます。実際の設置ではなく、テストベンチでのみ確認しています。",
       "docs": "8 言語と変更履歴は最新です。",
     },
     "docs": [
@@ -1416,7 +1416,7 @@ ARMOR-NODE-RADAR/
       "hardware": "这是唯一实际存在的硬件节点：一块真实的 Waveshare ESP32-S3-ETH 板带着雷达向 CM5 测试台上报；没有连接其他传感器模块。",
       "security": "蓝牙 PIN 配对和更新签名检查已在电脑上用真实签名证明，但尚未在板子上验证；没有经过独立审查。",
       "updates": "空中更新已在板子上使用；签名更新的检查尚未在板子上运行过。",
-      "integration": "板子的消息送达 CM5 测试台上的服务器，同样的消息也被 ARMOR-COMMON 的共享模式和一致性向量接受。",
+      "integration": "板子的消息送达 CM5 测试台上的服务器，同样的消息也被 ARMOR-COMMON 的共享模式和一致性向量接受。仅在测试台上见过，尚未在实际安装中使用。",
       "docs": "八种语言和更新日志均为最新。",
     },
     "docs": [
@@ -1634,7 +1634,7 @@ ARMOR-NODE-RADAR/
       "hardware": "É o único nó que existe como hardware: uma placa Waveshare ESP32-S3-ETH real com um radar reporta à bancada de testes CM5; não há mais nenhum módulo de sensor ligado.",
       "security": "O emparelhamento por PIN Bluetooth e a verificação da assinatura das atualizações estão provados num computador com assinaturas reais, mas ainda não na placa; não houve revisão independente.",
       "updates": "As atualizações pelo ar estão em uso na placa; a verificação das atualizações assinadas ainda não foi executada lá.",
-      "integration": "As mensagens da placa chegam ao servidor da bancada de testes CM5, e essas mesmas mensagens são aceites pelos esquemas partilhados e pelos vetores de conformidade do ARMOR-COMMON.",
+      "integration": "As mensagens da placa chegam ao servidor da bancada de testes CM5, e essas mesmas mensagens são aceites pelos esquemas partilhados e pelos vetores de conformidade do ARMOR-COMMON. Só foi visto na bancada, não numa instalação.",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
     },
     "docs": [

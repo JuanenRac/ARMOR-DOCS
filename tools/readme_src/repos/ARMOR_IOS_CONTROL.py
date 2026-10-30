@@ -32,7 +32,7 @@ FACTS = {
     ],
     [
       "docs",
-      "green",
+      "yellow",
     ],
   ],
   "badges": [

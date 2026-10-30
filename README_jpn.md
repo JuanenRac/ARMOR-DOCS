@@ -112,6 +112,7 @@ ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュ
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | リポジトリを公開した場合に漏れるもの。BLOCK で終了コード 1 |
 | `python tools/clean_history.py` | - | 1 コミットだけの公開用コピー |
 | `python tools/sync_ci_tools.py [--check]` | - | 共通の CI 検査とランチャーを各リポジトリにコピー。コピーがずれると `--check` が失敗 |
+| `python tools/status_lights.py --check|--suggest|--apply` | - | プロジェクト状況表の信号をマニフェスト(成熟度と実証)が許す範囲に保つ。動かすのは信号だけで文は変えない。各リポジトリの CI が `--check` を実行 |
 | `bash tools/check_all.sh [--android] [--compose]` | - | 全リポジトリのテストを一度に実行。ツールがない検査は PASS ではなく SKIP |
 
 各 README のソースは `tools/readme_src/repos/<リポジトリ>.py`（言語に依存しない事実と 8 言語の文言）で、README の周囲の文言は `ui.py`、スクリーンショットは `shots.py` にあります。`tools/registry.py` は ARMOR-COMMON のリポジトリ一覧を読みます。[docs/INTERFACES.md](docs/INTERFACES.md) と [docs/SETUP_CODE.md](docs/SETUP_CODE.md) も参照。

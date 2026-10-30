@@ -26,7 +26,7 @@ from registry import names_where  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "ARMOR-COMMON" / "tools"
-VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py", "pretty_run.py")
+VENDORED_FILES = ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py", "pretty_run.py", "status_lights.py")
 # the pictures of the READMEs (the Architecture and the Repository Structure): the kit and the two generators, canonical in ARMOR-COMMON like the files above
 PICTURE_TOOLS = ("_readme_svg.py", "make_architecture.py", "make_structure.py")
 # the repositories that carry the shared tools and the workflow: the ones the registry of ARMOR-COMMON marks `shared_tools`

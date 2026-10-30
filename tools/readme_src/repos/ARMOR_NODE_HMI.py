@@ -36,7 +36,7 @@ FACTS = {
     ],
     [
       "integration",
-      "yellow",
+      "orange",
     ],
     [
       "docs",
@@ -109,7 +109,7 @@ TEXT = {
       "hardware": "The firmware has not run on the board: nothing has run on real equipment yet.",
       "security": "The set-up code, the login limit, the Bluetooth PIN, the duress handling and the signed updates are tested on the host; there has been no independent review.",
       "updates": "The hash and signature checks pass on the host; an update over the air has never been run on a board.",
-      "integration": "The messages are validated against the shared schemas of ARMOR-COMMON; the link to the server and to the speech service has not been tried from a board.",
+      "integration": "The messages are validated against the shared schemas of ARMOR-COMMON; the link to the server and to the speech service has not been tried from a board. Its MQTT client is played against a real Mosquitto in the tests.",
       "docs": "Eight languages, the firmware guide, the wiring notes and the changelog are up to date.",
     },
     "docs": [
@@ -304,7 +304,7 @@ ARMOR-NODE-HMI/
       "hardware": "El firmware no ha funcionado en la placa: nada ha funcionado todavía con equipos reales.",
       "security": "El código de configuración, el límite de accesos, el PIN Bluetooth, el manejo de la coacción y las actualizaciones firmadas están probados en el host; no ha habido una revisión independiente.",
       "updates": "Las comprobaciones de hash y de firma pasan en el host; una actualización por aire nunca se ha ejecutado en una placa.",
-      "integration": "Los mensajes se validan contra los esquemas compartidos de ARMOR-COMMON; el enlace con el servidor y con el servicio de voz no se ha probado desde una placa.",
+      "integration": "Los mensajes se validan contra los esquemas compartidos de ARMOR-COMMON; el enlace con el servidor y con el servicio de voz no se ha probado desde una placa. Su cliente MQTT se prueba contra un Mosquitto real en los tests.",
       "docs": "Ocho idiomas, la guía del firmware, las notas de cableado y el historial de cambios están al día.",
     },
     "docs": [
@@ -499,7 +499,7 @@ ARMOR-NODE-HMI/
       "hardware": "Die Firmware lief nicht auf der Platine: Bisher lief nichts auf echten Geräten.",
       "security": "Der Einrichtungscode, die Anmeldebegrenzung, die Bluetooth-PIN, der Umgang mit Zwang und die signierten Aktualisierungen sind auf dem Host getestet; es gab keine unabhängige Prüfung.",
       "updates": "Die Hash- und Signaturprüfungen bestehen auf dem Host; eine Aktualisierung über die Luft wurde nie auf einer Platine ausgeführt.",
-      "integration": "Die Nachrichten werden gegen die gemeinsamen Schemas von ARMOR-COMMON geprüft; die Verbindung zum Server und zum Sprachdienst wurde nicht von einer Platine aus erprobt.",
+      "integration": "Die Nachrichten werden gegen die gemeinsamen Schemas von ARMOR-COMMON geprüft; die Verbindung zum Server und zum Sprachdienst wurde nicht von einer Platine aus erprobt. Sein MQTT-Client wird in den Tests gegen einen echten Mosquitto gespielt.",
       "docs": "Acht Sprachen, die Firmware-Anleitung, die Verdrahtungshinweise und das Änderungsprotokoll sind aktuell.",
     },
     "docs": [
@@ -694,7 +694,7 @@ ARMOR-NODE-HMI/
       "hardware": "Le firmware n'a pas tourné sur la carte : rien n'a encore tourné sur de vrais équipements.",
       "security": "Le code de configuration, la limite de connexions, le PIN Bluetooth, la gestion de la contrainte et les mises à jour signées sont testés sur l'hôte ; il n'y a pas eu de revue indépendante.",
       "updates": "Les contrôles de hash et de signature réussissent sur l'hôte ; une mise à jour par voie hertzienne n'a jamais été exécutée sur une carte.",
-      "integration": "Les messages sont validés par rapport aux schémas partagés d'ARMOR-COMMON ; la liaison avec le serveur et avec le service vocal n'a pas été essayée depuis une carte.",
+      "integration": "Les messages sont validés par rapport aux schémas partagés d'ARMOR-COMMON ; la liaison avec le serveur et avec le service vocal n'a pas été essayée depuis une carte. Son client MQTT est joué contre un vrai Mosquitto dans les tests.",
       "docs": "Huit langues, le guide du firmware, les notes de câblage et le journal des modifications sont à jour.",
     },
     "docs": [
@@ -889,7 +889,7 @@ ARMOR-NODE-HMI/
       "hardware": "Il firmware non ha mai girato sulla scheda: nulla ha ancora funzionato su apparecchiature reali.",
       "security": "Il codice di configurazione, il limite di accessi, il PIN Bluetooth, la gestione della minaccia e gli aggiornamenti firmati sono testati sull'host; non c'è stata una revisione indipendente.",
       "updates": "I controlli di hash e firma passano sull'host; un aggiornamento via etere non è mai stato eseguito su una scheda.",
-      "integration": "I messaggi sono validati contro gli schemi condivisi di ARMOR-COMMON; il collegamento con il server e con il servizio vocale non è stato provato da una scheda.",
+      "integration": "I messaggi sono validati contro gli schemi condivisi di ARMOR-COMMON; il collegamento con il server e con il servizio vocale non è stato provato da una scheda. Il suo client MQTT viene provato contro un vero Mosquitto nei test.",
       "docs": "Otto lingue, la guida del firmware, le note di cablaggio e il registro delle modifiche sono aggiornati.",
     },
     "docs": [
@@ -1084,7 +1084,7 @@ ARMOR-NODE-HMI/
       "hardware": "ファームウェアはボード上で動かしていません。実機ではまだ何も動かしていません。",
       "security": "設定コード、ログイン制限、Bluetooth の PIN、脅迫時の扱い、署名付きアップデートはホストでテスト済みです。独立したレビューはまだありません。",
       "updates": "ハッシュと署名の確認はホストで通ります。無線アップデートはボード上で一度も実行していません。",
-      "integration": "メッセージは ARMOR-COMMON の共有スキーマに対して検証されています。サーバーおよび音声サービスとの接続は、ボードからはまだ試していません。",
+      "integration": "メッセージは ARMOR-COMMON の共有スキーマに対して検証されています。サーバーおよび音声サービスとの接続は、ボードからはまだ試していません。MQTT クライアントはテストで本物の Mosquitto を相手に動かしています。",
       "docs": "8 言語、ファームウェアガイド、配線メモ、変更履歴は最新です。",
     },
     "docs": [
@@ -1279,7 +1279,7 @@ ARMOR-NODE-HMI/
       "hardware": "固件尚未在板子上运行过：还没有在真实设备上运行过。",
       "security": "设置码、登录限制、蓝牙 PIN、胁迫处理和签名更新已在主机上测试；没有经过独立审查。",
       "updates": "哈希和签名检查在主机上通过；空中更新从未在板子上运行过。",
-      "integration": "消息已对照 ARMOR-COMMON 的共享模式验证；与服务器和语音服务的连接尚未从板子上试过。",
+      "integration": "消息已对照 ARMOR-COMMON 的共享模式验证；与服务器和语音服务的连接尚未从板子上试过。其 MQTT 客户端在测试中与真实的 Mosquitto 对接。",
       "docs": "八种语言、固件指南、接线说明和更新日志均为最新。",
     },
     "docs": [
@@ -1474,7 +1474,7 @@ ARMOR-NODE-HMI/
       "hardware": "O firmware não funcionou na placa: nada funcionou ainda em equipamentos reais.",
       "security": "O código de configuração, o limite de acessos, o PIN Bluetooth, o tratamento da coação e as atualizações assinadas estão testados no anfitrião; não houve revisão independente.",
       "updates": "As verificações de hash e de assinatura passam no anfitrião; uma atualização pelo ar nunca foi executada numa placa.",
-      "integration": "As mensagens são validadas contra os esquemas partilhados do ARMOR-COMMON; a ligação ao servidor e ao serviço de voz não foi experimentada a partir de uma placa.",
+      "integration": "As mensagens são validadas contra os esquemas partilhados do ARMOR-COMMON; a ligação ao servidor e ao serviço de voz não foi experimentada a partir de uma placa. O seu cliente MQTT é exercitado contra um Mosquitto real nos testes.",
       "docs": "Oito idiomas, o guia do firmware, as notas de cablagem e o registo de alterações estão atualizados.",
     },
     "docs": [
