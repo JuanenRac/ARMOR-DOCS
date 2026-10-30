@@ -106,7 +106,7 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(len(real.TARGETS), len(set(real.TARGETS)))
         self.assertNotIn("ARMOR-COMMON", real.TARGETS)   # the source never receives a copy of itself
         self.assertIn("ARMOR-DOCS", real.TARGETS)
-        self.assertEqual(real.VENDORED_FILES, ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py", "pretty_run.py"))
+        self.assertEqual(real.VENDORED_FILES, ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py", "pretty_run.py", "status_lights.py"))
 
 
 if __name__ == "__main__":
