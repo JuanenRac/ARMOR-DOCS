@@ -4,7 +4,7 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.7.8 | Shared contracts and validation library | Established |
-| ARMOR-NODE-RADAR | 0.8.0.5 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-NODE-RADAR | 0.8.0.6 | ESP32-S3 PoE field-node firmware | Established |
 | ARMOR-NODE-SOLAR | 0.6.0 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-NODE-ELECTRICAL | 0.5.1 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
 | ARMOR-NODE-ALARM | 0.4.9 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
