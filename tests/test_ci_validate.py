@@ -44,6 +44,7 @@ class Project:
         err = io.StringIO()
         out = io.StringIO()
         with mock.patch.object(validate, "ROOT", self.root), mock.patch.object(validate, "MANIFEST_PATH", self.root / "armor.project.json"), \
+                mock.patch.object(validate, "universal_readme_check", None), \
                 mock.patch.dict("os.environ", {"GITHUB_ACTIONS": "", "GITHUB_REPOSITORY": ""}), contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
             try:
                 code = validate.main()
