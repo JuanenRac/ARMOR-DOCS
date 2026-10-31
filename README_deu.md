@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Sprachen">
   <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.3-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Reifegrad">
 </p>
 
@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| Version | `0.8.1.3` |
+| Version | `0.8.1.4` |
 | Reifegrad | Etabliert |
 | Rolle | Dokumentationszentrale: Architektur, Sicherheitsbasis, Fähigkeitsmatrix und die Werkzeuge, die READMEs, Katalog und Banner schreiben |
 | Technik | Python 3.11+ (Werkzeuge, Standardbibliothek), Markdown |

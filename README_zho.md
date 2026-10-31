@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.3-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| 版本 | `0.8.1.3` |
+| 版本 | `0.8.1.4` |
 | 成熟度 | 成熟 |
 | 角色 | 文档中心：架构、安全基线、能力矩阵，以及生成 README、目录和横幅图的工具 |
 | 技术栈 | Python 3.11+（工具，标准库）、Markdown |

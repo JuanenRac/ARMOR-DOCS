@@ -22,7 +22,7 @@
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Idiomas">
   <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Pruebas">
-  <img src="https://img.shields.io/badge/Version-0.8.1.3-0f6cbd.svg" alt="Versión">
+  <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Versión">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Madurez">
 </p>
 
@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| Versión | `0.8.1.3` |
+| Versión | `0.8.1.4` |
 | Madurez | Establecido |
 | Función | Centro de documentación: arquitectura, base de seguridad, matriz de capacidades y las herramientas que escriben los README, el catálogo y los banners |
 | Tecnología | Python 3.11+ (herramientas, biblioteca estándar), Markdown |
