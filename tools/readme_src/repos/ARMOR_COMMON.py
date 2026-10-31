@@ -493,7 +493,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer targets\n'
        '├── scripts/                       armor-project launcher\n'
        '├── tools/                         generators, firmware sync and release, launcher, CI checks\n'
-       '├── tests/                         237 tests\n'
+       '├── tests/                         238 tests\n'
        '├── docs/                          contracts, firmware, fuzzing\n'
        '├── images/                        banner, icon and the pictures of the README\n'
        '├── .github/                       CI workflow, dashboard notice, issue and pull-request templates\n'
@@ -522,7 +522,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          objetivos libFuzzer\n'
        '├── scripts/                       lanzador armor-project\n'
        '├── tools/                         generadores, sincronía y publicación del firmware, lanzador, comprobaciones de CI\n'
-       '├── tests/                         237 pruebas\n'
+       '├── tests/                         238 pruebas\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        banner, icono y las imágenes del README\n'
        '├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests\n'
@@ -551,7 +551,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer-Ziele\n'
        '├── scripts/                       armor-project-Starter\n'
        '├── tools/                         Generatoren, Firmware-Abgleich und -Release, Starter, CI-Prüfungen\n'
-       '├── tests/                         237 Tests\n'
+       '├── tests/                         238 Tests\n'
        '├── docs/                          Verträge, Firmware, Fuzzing\n'
        '├── images/                        Banner, Symbol und die Bilder des READMEs\n'
        '├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
@@ -580,7 +580,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          cibles libFuzzer\n'
        '├── scripts/                       lanceur armor-project\n'
        '├── tools/                         générateurs, synchronisation et publication du firmware, lanceur, vérifications CI\n'
-       '├── tests/                         237 tests\n'
+       '├── tests/                         238 tests\n'
        '├── docs/                          contrats, firmware, fuzzing\n'
        '├── images/                        bannière, icône et images du README\n'
        "├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\n"
@@ -609,7 +609,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          target libFuzzer\n'
        '├── scripts/                       avviatore armor-project\n'
        '├── tools/                         generatori, sincronia e rilascio del firmware, avviatore, controlli CI\n'
-       '├── tests/                         237 test\n'
+       '├── tests/                         238 test\n'
        '├── docs/                          contratti, firmware, fuzzing\n'
        '├── images/                        banner, icona e immagini del README\n'
        '├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request\n'
@@ -638,7 +638,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer ターゲット\n'
        '├── scripts/                       armor-project 起動\n'
        '├── tools/                         ジェネレーター、ファームウェアの同期とリリース、ランチャー、CI 検査\n'
-       '├── tests/                         237 件のテスト\n'
+       '├── tests/                         238 件のテスト\n'
        '├── docs/                          契約・FW・ファジング\n'
        '├── images/                        バナー、アイコン、README の画像\n'
        '├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\n'
@@ -667,7 +667,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer 目标\n'
        '├── scripts/                       armor-project 启动器\n'
        '├── tools/                         生成器、固件同步与发布、启动器、CI 检查\n'
-       '├── tests/                         237 项测试\n'
+       '├── tests/                         238 项测试\n'
        '├── docs/                          契约、固件、模糊测试\n'
        '├── images/                        横幅图、图标和 README 的图片\n'
        '├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板\n'
@@ -696,7 +696,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          alvos libFuzzer\n'
        '├── scripts/                       lançador armor-project\n'
        '├── tools/                         geradores, sincronia e publicação do firmware, lançador, verificações de CI\n'
-       '├── tests/                         237 testes\n'
+       '├── tests/                         238 testes\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        faixa, ícone e as imagens do README\n'
        '├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests\n'
@@ -711,13 +711,13 @@ TREE = {'en': 'ARMOR-COMMON/\n'
 
 DIAGRAM = 'flowchart LR\n    S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]\n    S --> G["generated TS + Kotlin types"]\n    S --> V["conformance vectors"]\n    V --> P\n    V --> T["ARMOR-SERVER tests"]\n    V --> X["ARMOR-NODE-SOLAR and ARMOR-NODE-ELECTRICAL checks"]\n    S --> O["OpenAPI (HTTP contract)"]'
 
-FACTS["badges"].append(["Tests", "237%20passing", "2ea44f"])
+FACTS["badges"].append(["Tests", "238%20passing", "2ea44f"])
 FACTS["badges"][2][1] = "1270"
 
 
 def fix(s):
-    """The figures of the previous layout that moved: tests 170 -> 237, paths 190 -> 195, operations 245 -> 253."""
-    return s.replace("170", "237").replace("190", "195").replace("245", "253")
+    """The figures of the previous layout that moved: tests 170 -> 238, paths 190 -> 195, operations 245 -> 253."""
+    return s.replace("170", "238").replace("190", "195").replace("245", "253")
 
 
 def L(lg, key):
@@ -732,9 +732,9 @@ GLANCE = [
     (GL["stack"], P("Python 3.11+, JSON Schema, OpenAPI; C++ firmware base (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base de firmware en C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; Firmware-Basis in C++ (ESP-IDF)",
                     "Python 3.11+, JSON Schema, OpenAPI ; base de firmware C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base firmware in C++ (ESP-IDF)", "Python 3.11+、JSON Schema、OpenAPI、C++ のファームウェア基盤（ESP-IDF）",
                     "Python 3.11+、JSON Schema、OpenAPI；C++ 固件基础（ESP-IDF）", "Python 3.11+, JSON Schema, OpenAPI; base de firmware em C++ (ESP-IDF)")),
-    (GL["tests"], P("237 (`python -m unittest discover -s tests`), 1270 conformance vectors", "237 (`python -m unittest discover -s tests`), 1270 vectores de conformidad", "237 (`python -m unittest discover -s tests`), 1270 Konformitätsvektoren",
-                    "237 (`python -m unittest discover -s tests`), 1270 vecteurs de conformité", "237 (`python -m unittest discover -s tests`), 1270 vettori di conformità", "237 件（`python -m unittest discover -s tests`）、適合ベクター 1270 件",
-                    "237 项（`python -m unittest discover -s tests`），1270 个一致性向量", "237 (`python -m unittest discover -s tests`), 1270 vetores de conformidade")),
+    (GL["tests"], P("238 (`python -m unittest discover -s tests`), 1270 conformance vectors", "238 (`python -m unittest discover -s tests`), 1270 vectores de conformidad", "238 (`python -m unittest discover -s tests`), 1270 Konformitätsvektoren",
+                    "238 (`python -m unittest discover -s tests`), 1270 vecteurs de conformité", "238 (`python -m unittest discover -s tests`), 1270 vettori di conformità", "238 件（`python -m unittest discover -s tests`）、適合ベクター 1270 件",
+                    "238 项（`python -m unittest discover -s tests`），1270 个一致性向量", "238 (`python -m unittest discover -s tests`), 1270 vetores de conformidade")),
     (GL["contract"], P("35 JSON Schemas, 196 HTTP paths (255 operations)", "35 JSON Schema, 196 rutas HTTP (255 operaciones)", "35 JSON-Schemas, 196 HTTP-Pfade (255 Operationen)",
                        "35 JSON Schema, 196 chemins HTTP (255 opérations)", "35 JSON Schema, 196 percorsi HTTP (255 operazioni)", "JSON Schema 35 個、HTTP パス 196 本（255 操作）",
                        "35 个 JSON Schema，196 条 HTTP 路径（255 个操作）", "35 JSON Schema, 196 caminhos HTTP (255 operações)")),
@@ -860,7 +860,7 @@ def config_body(lg):
 
 QUICK_CODE = [
     ("python -m pip install -e .", T("install the library | instala la biblioteca | die Bibliothek installieren | installe la bibliothèque | installa la libreria | ライブラリをインストール | 安装库 | instala a biblioteca")),
-    ("python -m unittest discover -s tests", T("237 tests, 1270 conformance vectors | 237 pruebas, 1270 vectores | 237 Tests, 1270 Vektoren | 237 tests, 1270 vecteurs | 237 test, 1270 vettori | 237 件のテスト、1270 ベクター | 237 项测试、1270 个向量 | 237 testes, 1270 vetores")),
+    ("python -m unittest discover -s tests", T("238 tests, 1270 conformance vectors | 238 pruebas, 1270 vectores | 238 Tests, 1270 Vektoren | 238 tests, 1270 vecteurs | 238 test, 1270 vettori | 238 件のテスト、1270 ベクター | 238 项测试、1270 个向量 | 238 testes, 1270 vetores")),
     ("python tools/generate_types.py --check", T("the generated types are current | los tipos generados están al día | die erzeugten Typen sind aktuell | les types générés sont à jour | i tipi generati sono aggiornati | 生成された型は最新 | 生成的类型是最新的 | os tipos gerados estão atualizados")),
     ("python tools/generate_rest_types.py --check", T("the types of the HTTP contract are current | los tipos del contrato HTTP están al día | die Typen des HTTP-Vertrags sind aktuell | les types du contrat HTTP sont à jour | i tipi del contratto HTTP sono aggiornati | HTTP 契約の型は最新 | HTTP 契约的类型是最新的 | os tipos do contrato HTTP estão atualizados")),
     ("python tools/make_conformance.py", T("regenerate the vectors after editing the case list (--check: they are current) | regenera los vectores tras editar la lista de casos (--check: están al día) | Vektoren nach Änderung der Fallliste neu erzeugen (--check: aktuell) | régénère les vecteurs après modification de la liste de cas (--check : à jour) | rigenera i vettori dopo aver modificato l'elenco dei casi (--check: aggiornati) | ケース一覧の編集後にベクターを再生成（--check：最新か確認） | 修改用例列表后重新生成向量（--check：检查是否最新） | regenera os vetores depois de editar a lista de casos (--check: estão atualizados)")),
@@ -975,7 +975,7 @@ def build_lg(lg):
         "interfaces": TOPICS_INTRO[lg] + "\n\n" + table(lg, "topic", TOPICS) + "\n\n" + INTERFACES_SCHEMAS[lg] + "\n\n" + TOOLS_INTRO[lg] + "\n\n" + table(lg, "tool", TOOLS),
         "configuration": config_body(lg),
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n",
-        "testing": code(lg, [("python -m unittest discover -s tests", T("237 tests | 237 pruebas | 237 Tests | 237 tests | 237 test | 237 件 | 237 项 | 237 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m unittest discover -s tests", T("238 tests | 238 pruebas | 238 Tests | 238 tests | 238 test | 238 件 | 238 项 | 238 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-COMMON", tree=TREE[lg]),
