@@ -59,6 +59,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     '**Energy:** inverters and battery stacks (with each cell and the capacities) and electrical nodes arrive by HTTP or MQTT, are validated by the '
                     'shared contract, kept with a history and a per-day energy, marked stale when silent, and raise alarms (inverter fault, battery low, grid lost, '
                     'voltage, switch fault…). The electrical design and the rules for switching a circuit are kept on the server.',
+                    "**Arming modes** (off until an administrator turns `alarm.arming_modes` on): away (everything defended, the armed of always), home and night (only the zones and sensors marked for each, none at the start), an exit and an entry delay per mode, an optional timetable, `GET` and `PUT /api/v1/alarm/modes` and the modes of `POST /api/v1/mode`. A mode with no zones assigned is refused unless confirmed; going to a mode that defends less asks for the PIN like a disarm; disarming always works. It changes no firmware and no node display.",
                     '**Alarm panels:** the state of the ARMOR-NODE-ALARM nodes, the **design of the alarm** kept with its versions, the **Zigbee devices tied to the '
                     'zones** (the server tells a panel how a zone is while it holds the radio) and arm / disarm commands to a panel (off unless '
                     '`ARMOR_ALARM_COMMANDS=1`).',
@@ -199,6 +200,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     '**Energía:** inversores y pilas de baterías (con cada celda y las capacidades) y nodos eléctricos llegan por HTTP o MQTT, se validan con el '
                     'contrato compartido, se guardan con historial y energía por día, se marcan obsoletos si callan y generan alarmas (avería de inversor, batería baja, '
                     'red perdida, tensión, fallo de conmutación…). El diseño eléctrico y las reglas para conmutar un circuito se guardan en el servidor.',
+                    "**Modos de armado** (apagados hasta que un administrador active `alarm.arming_modes`): fuera (todo defendido, el armado de siempre), en casa y noche (solo las zonas y sensores marcados para cada uno, ninguno al empezar), un retardo de salida y otro de entrada por modo, un calendario opcional, `GET` y `PUT /api/v1/alarm/modes` y los modos de `POST /api/v1/mode`. Un modo sin zonas asignadas se rechaza salvo que se confirme; pasar a un modo que defiende menos pide el PIN como un desarmado; desarmar siempre funciona. No cambia ningún firmware ni pantalla de nodo.",
                     '**Centrales de alarma:** el estado de los nodos ARMOR-NODE-ALARM, el **diseño de la alarma** con sus versiones, los **dispositivos Zigbee atados a '
                     'las zonas** (el servidor le dice a una central cómo está una zona mientras él tiene la radio) y comandos de armar / desarmar a una central (apagado '
                     'salvo `ARMOR_ALARM_COMMANDS=1`).',
@@ -347,6 +349,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     "par le contrat partagé, conservés avec un historique et l'énergie par jour, marqués périmés s'ils se taisent, et déclenchent des alarmes (panne "
                     "d'onduleur, batterie faible, réseau perdu, tension, défaut de commutation…). Le schéma électrique et les règles pour commuter un circuit sont "
                     'conservés sur le serveur.',
+                    "**Modes d'armement** (désactivés tant qu'un administrateur n'active pas `alarm.arming_modes`) : absent (tout est défendu, l'armement de toujours), à la maison et nuit (seulement les zones et capteurs marqués pour chacun, aucun au départ), une temporisation de sortie et une d'entrée par mode, un calendrier facultatif, `GET` et `PUT /api/v1/alarm/modes` et les modes de `POST /api/v1/mode`. Un mode sans zone assignée est refusé sauf confirmation ; passer à un mode qui défend moins demande le PIN comme un désarmement ; désarmer fonctionne toujours. Aucun firmware ni écran de nœud n'est modifié.",
                     "**Centrales d'alarme :** l'état des nœuds ARMOR-NODE-ALARM, la **conception de l'alarme** avec ses versions, les **appareils Zigbee liés aux "
                     "zones** (le serveur dit à une centrale l'état d'une zone tant qu'il tient la radio) et des commandes d'armement / désarmement vers une centrale "
                     '(désactivé sauf `ARMOR_ALARM_COMMANDS=1`).',
@@ -497,6 +500,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     '**Energia:** inverter e pacchi batteria (con ogni cella e le capacità) e nodi elettrici arrivano via HTTP o MQTT, sono validati dal contratto '
                     'condiviso, conservati con storico ed energia per giorno, segnati obsoleti se tacciono, e generano allarmi (guasto inverter, batteria scarica, rete '
                     'persa, tensione, guasto di commutazione…). Lo schema elettrico e le regole per commutare un circuito sono conservati sul server.',
+                    "**Modi di inserimento** (spenti finché un amministratore non attiva `alarm.arming_modes`): fuori (tutto difeso, l'inserimento di sempre), in casa e notte (solo le zone e i sensori marcati per ciascuno, nessuno all'inizio), un ritardo di uscita e uno di ingresso per modo, un calendario facoltativo, `GET` e `PUT /api/v1/alarm/modes` e i modi di `POST /api/v1/mode`. Un modo senza zone assegnate viene rifiutato salvo conferma; passare a un modo che difende meno chiede il PIN come un disinserimento; disinserire funziona sempre. Non cambia alcun firmware né display di nodo.",
                     "**Centrali d'allarme:** lo stato dei nodi ARMOR-NODE-ALARM, il **progetto dell'allarme** con le sue versioni, i **dispositivi Zigbee legati alle "
                     "zone** (il server dice a una centrale com'è una zona mentre tiene la radio) e comandi di inserimento / disinserimento a una centrale (spenti salvo "
                     '`ARMOR_ALARM_COMMANDS=1`).',
@@ -646,6 +650,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     'gemeinsamen Vertrag geprüft, mit Verlauf und Energie pro Tag gespeichert, bei Schweigen als veraltet markiert und lösen Alarme aus '
                     '(Wechselrichterfehler, Batterie schwach, Netz verloren, Spannung, Schaltfehler…). Der Elektroplan und die Regeln zum Schalten eines Stromkreises '
                     'liegen auf dem Server.',
+                    "**Scharfschaltmodi** (aus, bis ein Administrator `alarm.arming_modes` einschaltet): abwesend (alles verteidigt, das Scharfschalten von jeher), zu Hause und Nacht (nur die für jeden markierten Zonen und Sensoren, anfangs keine), je Modus eine Austritts- und eine Eintrittsverzögerung, ein optionaler Zeitplan, `GET` und `PUT /api/v1/alarm/modes` und die Modi von `POST /api/v1/mode`. Ein Modus ohne zugewiesene Zonen wird abgelehnt, außer er wird bestätigt; der Wechsel zu einem Modus, der weniger verteidigt, verlangt die PIN wie ein Unscharfschalten; Unscharfschalten funktioniert immer. Es ändert keine Firmware und keine Knotenanzeige.",
                     '**Alarmzentralen:** der Zustand der ARMOR-NODE-ALARM-Knoten, der **Alarmplan** mit seinen Versionen, die **den Zonen zugeordneten Zigbee-Geräte** '
                     '(der Server sagt einer Zentrale, wie eine Zone ist, solange er das Funkmodul hält) und Scharf-/Unscharf-Befehle an eine Zentrale (aus, außer mit '
                     '`ARMOR_ALARM_COMMANDS=1`).',
@@ -772,6 +777,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     '**用户与角色：**用户名和密码（scrypt 哈希）、管理用户的 `admin` 角色、负责操作的 `operator` 角色，以及只看不改的 `viewer` 角色；更改密码或角色会终止该用户的其他会话。',
                     '**设备与自动化：**烟雾、燃气、漏水、门、窗、移动、气候、插座、灯、警笛、门锁、卷帘、大门或车库门和热水器设备，通过 MQTT 或经认证的推送接入，状态规范化，带可用性和命令；在发生事件时（包括阈值触发）切换设备的规则。',
                     '**能源：**逆变器和电池组（含每个电芯和容量）以及电气节点通过 HTTP 或 MQTT 到达，由共享契约验证，保存历史和每日能量，沉默时标记为过期，并触发报警（逆变器故障、电池电量低、电网丢失、电压、开关故障……）。电气设计和切换回路的规则保存在服务器上。',
+                    "**布防模式**（管理员打开 `alarm.arming_modes` 之前保持关闭）：离家（全部守护，一直以来的布防）、在家和夜间（只守护为各模式标记的防区和传感器，初始为空）、每个模式各有离开与进入延迟、可选的时间表、`GET` 和 `PUT /api/v1/alarm/modes` 以及 `POST /api/v1/mode` 的各个模式。没有分配防区的模式会被拒绝，除非确认；切换到守护更少的模式需要像撤防一样输入 PIN；撤防始终可用。它不改变任何固件或节点显示。",
                     '**报警主机：**ARMOR-NODE-ALARM 节点的状态、带版本的**报警设计**、**绑定到防区的 Zigbee 设备**（服务器持有无线电时，由它告诉主机某防区的状态），以及发给主机的布防 / 撤防命令（除非设置 `ARMOR_ALARM_COMMANDS=1`，否则关闭）。',
                     '**本地网络：**ARMOR-NETWORK 节点报告的内容（设备、互联网、公网地址及其来源）、给节点的指令（扫描、ping、端口、用你提供的登录信息检查设备）、名称、隐藏和监视的设备，以及**仅为该节点加密封装**后传输的登录信息。',
                     '**语音、观察与维护：**文字和语音命令（封闭列表，八种语言，确认与人绑定）、观察服务的上下文（哪些雷达覆盖哪个摄像头）、从 Studio 逐个更新并显示进度的节点固件，以及通过维护助手完成的、来自 GitHub 的系统自身更新、操作系统更新和可选的 root 控制台。',
@@ -854,6 +860,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     'または認証付きプッシュで扱い、正規化した状態、可用性、コマンドを持ちます。何かが起きたときにデバイスを切り替えるルール（しきい値トリガーも）。',
                     '**エネルギー：**インバーターとバッテリースタック（各セルと容量を含む）、電気ノードが HTTP または MQTT '
                     'で届き、共通コントラクトで検証され、履歴と日ごとのエネルギーとともに保存され、無応答なら古い扱いになり、警報（インバーター故障、バッテリー残量低下、系統喪失、電圧、スイッチ故障など）を出します。電気設計と回路を切り替えるルールはサーバーに保存されます。',
+                    "**警戒モード**（管理者が `alarm.arming_modes` を有効にするまでオフ）：外出（すべてを守る従来の警戒）、在宅と夜間（それぞれに印を付けたゾーンとセンサーだけ、初期は空）、モードごとの退出遅延と入室遅延、任意のスケジュール、`GET` と `PUT /api/v1/alarm/modes`、`POST /api/v1/mode` のモード。ゾーンが割り当てられていないモードは確認しない限り拒否され、守る範囲が狭いモードへの切り替えは解除と同じ PIN を求め、解除は常に可能です。ファームウェアもノードの表示も変更しません。",
                     '**警報盤：**ARMOR-NODE-ALARM ノードの状態、バージョン付きの**警報設計**、**ゾーンに結び付けた Zigbee デバイス**（サーバーが無線を持つ間、ゾーンの状態を警報盤に伝える）、警報盤への警戒・解除コマンド（`ARMOR_ALARM_COMMANDS=1` '
                     'でなければオフ）。',
                     '**ローカルネットワーク：**ARMOR-NETWORK '
@@ -964,6 +971,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes
                     '**Energia:** inversores e pilhas de baterias (com cada célula e as capacidades) e nós elétricos chegam por HTTP ou MQTT, são validados pelo '
                     'contrato partilhado, guardados com histórico e energia por dia, marcados como desatualizados se calarem, e geram alarmes (avaria do inversor, '
                     'bateria baixa, rede perdida, tensão, falha de comutação…). O desenho elétrico e as regras para comutar um circuito ficam no servidor.',
+                    "**Modos de armar** (desligados até um administrador ativar `alarm.arming_modes`): fora (tudo defendido, o armar de sempre), em casa e noite (só as zonas e sensores marcados para cada um, nenhum ao início), um atraso de saída e outro de entrada por modo, um calendário opcional, `GET` e `PUT /api/v1/alarm/modes` e os modos de `POST /api/v1/mode`. Um modo sem zonas atribuídas é recusado, a menos que seja confirmado; passar para um modo que defende menos pede o PIN como um desarmar; desarmar funciona sempre. Não altera nenhum firmware nem ecrã de nó.",
                     '**Centrais de alarme:** o estado dos nós ARMOR-NODE-ALARM, o **desenho do alarme** com as suas versões, os **dispositivos Zigbee ligados às zonas** '
                     '(o servidor diz a uma central como está uma zona enquanto tem o rádio) e comandos de armar / desarmar a uma central (desligados salvo '
                     '`ARMOR_ALARM_COMMANDS=1`).',
@@ -1073,7 +1081,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       Knotenzustand und was einen Neustart übersteht\n'
        '│   ├── alarms.ts escalation.ts       Alarmzentrale und Eskalation\n'
        '│   ├── users.ts totp.ts              Benutzer, Rollen, PIN und zweiter Faktor\n'
-       '│   ├── security_settings.ts          die 17 Schalter aus Studio\n'
+       '│   ├── security_settings.ts          die 21 Schalter aus Studio\n'
        '│   ├── voice.ts voice_turn.ts        geschriebene und gesprochene Befehle\n'
        '│   ├── firmware.ts installation.ts   Knoten-Firmware und eigene Updates\n'
        '│   ├── http/                         Sitzungen, Knoten-Tokens, versiegelte Logins\n'
@@ -1081,8 +1089,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      Tresor, PTZ, RTSP, Suche, Zustand\n'
        '│   ├── media/                        FFmpeg-Relais und Beweisbibliothek\n'
        '│   └── devices/                      Gerätemodell und MQTT-Brücke\n'
-       '├── tests/                            755 Tests, Unit und HTTP-Integration\n'
-       '├── docs/                             7 Leitfäden, Routentabelle, Umgebung\n'
+       '├── tests/                            779 Tests, Unit und HTTP-Integration\n'
+       '├── docs/                             8 Leitfäden, Routentabelle, Umgebung\n'
        '├── tools/                            Generatoren für docs/ROUTES.md und docs/ENVIRONMENT.md, gemeinsame CI-Prüfungen, Starter\n'
        '├── images/                           Banner, Symbol und die Bilder des READMEs\n'
        '├── .github/                          CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
@@ -1104,7 +1112,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       node state and what survives a restart\n'
        '│   ├── alarms.ts escalation.ts       alarm centre and escalation\n'
        '│   ├── users.ts totp.ts              users, roles, PIN and second factor\n'
-       '│   ├── security_settings.ts          the 17 switches Studio changes\n'
+       '│   ├── security_settings.ts          the 21 switches Studio changes\n'
        '│   ├── voice.ts voice_turn.ts        written and spoken commands\n'
        '│   ├── firmware.ts installation.ts   node firmware and own updates\n'
        '│   ├── http/                         sessions, per-node tokens, sealed logins\n'
@@ -1112,8 +1120,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      vault, PTZ, RTSP, discovery, health\n'
        '│   ├── media/                        FFmpeg relay and evidence library\n'
        '│   └── devices/                      device model and its MQTT bridge\n'
-       '├── tests/                            755 tests, unit and HTTP integration\n'
-       '├── docs/                             7 guides, route table, environment\n'
+       '├── tests/                            779 tests, unit and HTTP integration\n'
+       '├── docs/                             8 guides, route table, environment\n'
        '├── tools/                            generators of docs/ROUTES.md and docs/ENVIRONMENT.md, shared CI checks, launcher\n'
        '├── images/                           banner, icon and the pictures of the README\n'
        '├── .github/                          CI workflow, dashboard notice, issue and pull-request templates\n'
@@ -1135,7 +1143,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       estado de nodos y lo que sobrevive a un reinicio\n'
        '│   ├── alarms.ts escalation.ts       centro de alarmas y escalado\n'
        '│   ├── users.ts totp.ts              usuarios, roles, PIN y segundo factor\n'
-       '│   ├── security_settings.ts          los 17 interruptores de Studio\n'
+       '│   ├── security_settings.ts          los 21 interruptores de Studio\n'
        '│   ├── voice.ts voice_turn.ts        órdenes escritas y habladas\n'
        '│   ├── firmware.ts installation.ts   firmware de nodos y actualizaciones propias\n'
        '│   ├── http/                         sesiones, tokens por nodo, accesos sellados\n'
@@ -1143,8 +1151,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      caja fuerte, PTZ, RTSP, descubrimiento, salud\n'
        '│   ├── media/                        relé FFmpeg y biblioteca de evidencias\n'
        '│   └── devices/                      modelo de dispositivos y su puente MQTT\n'
-       '├── tests/                            755 pruebas, unitarias e integración HTTP\n'
-       '├── docs/                             7 guías, tabla de rutas, entorno\n'
+       '├── tests/                            779 pruebas, unitarias e integración HTTP\n'
+       '├── docs/                             8 guías, tabla de rutas, entorno\n'
        '├── tools/                            generadores de docs/ROUTES.md y docs/ENVIRONMENT.md, comprobaciones de CI, lanzador\n'
        '├── images/                           banner, icono y las imágenes del README\n'
        '├── .github/                          flujo de CI, aviso al panel, plantillas de incidencias y pull requests\n'
@@ -1166,7 +1174,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       état des nœuds et ce qui survit à un redémarrage\n'
        "│   ├── alarms.ts escalation.ts       centrale d'alarme et escalade\n"
        '│   ├── users.ts totp.ts              utilisateurs, rôles, PIN et second facteur\n'
-       '│   ├── security_settings.ts          les 17 interrupteurs de Studio\n'
+       '│   ├── security_settings.ts          les 21 interrupteurs de Studio\n'
        '│   ├── voice.ts voice_turn.ts        commandes écrites et vocales\n'
        '│   ├── firmware.ts installation.ts   firmware des nœuds et mises à jour propres\n'
        '│   ├── http/                         sessions, jetons par nœud, identifiants scellés\n'
@@ -1174,8 +1182,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      coffre, PTZ, RTSP, découverte, santé\n'
        '│   ├── media/                        relais FFmpeg et bibliothèque de preuves\n'
        "│   └── devices/                      modèle d'appareils et son pont MQTT\n"
-       '├── tests/                            755 tests, unitaires et intégration HTTP\n'
-       '├── docs/                             7 guides, table des routes, environnement\n'
+       '├── tests/                            779 tests, unitaires et intégration HTTP\n'
+       '├── docs/                             8 guides, table des routes, environnement\n'
        '├── tools/                            générateurs de docs/ROUTES.md et docs/ENVIRONMENT.md, vérifications CI, lanceur\n'
        '├── images/                           bannière, icône et images du README\n'
        "├── .github/                          workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\n"
@@ -1197,7 +1205,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       stato dei nodi e ciò che sopravvive a un riavvio\n'
        '│   ├── alarms.ts escalation.ts       centrale allarmi ed escalation\n'
        '│   ├── users.ts totp.ts              utenti, ruoli, PIN e secondo fattore\n'
-       '│   ├── security_settings.ts          i 17 interruttori di Studio\n'
+       '│   ├── security_settings.ts          i 21 interruttori di Studio\n'
        '│   ├── voice.ts voice_turn.ts        comandi scritti e vocali\n'
        '│   ├── firmware.ts installation.ts   firmware dei nodi e aggiornamenti propri\n'
        '│   ├── http/                         sessioni, token per nodo, accessi sigillati\n'
@@ -1205,8 +1213,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cassaforte, PTZ, RTSP, scoperta, salute\n'
        '│   ├── media/                        relè FFmpeg e libreria di prove\n'
        '│   └── devices/                      modello dei dispositivi e ponte MQTT\n'
-       '├── tests/                            755 test, unitari e integrazione HTTP\n'
-       '├── docs/                             7 guide, tabella delle rotte, ambiente\n'
+       '├── tests/                            779 test, unitari e integrazione HTTP\n'
+       '├── docs/                             8 guide, tabella delle rotte, ambiente\n'
        '├── tools/                            generatori di docs/ROUTES.md e docs/ENVIRONMENT.md, controlli CI, avviatore\n'
        '├── images/                           banner, icona e immagini del README\n'
        '├── .github/                          workflow CI, avviso alla dashboard, modelli per issue e pull request\n'
@@ -1228,7 +1236,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       ノード状態と再起動後も残るもの\n'
        '│   ├── alarms.ts escalation.ts       アラームセンターとエスカレーション\n'
        '│   ├── users.ts totp.ts              ユーザー、ロール、PIN、2 要素\n'
-       '│   ├── security_settings.ts          Studio で変える 17 のスイッチ\n'
+       '│   ├── security_settings.ts          Studio で変える 21 のスイッチ\n'
        '│   ├── voice.ts voice_turn.ts        文字と音声のコマンド\n'
        '│   ├── firmware.ts installation.ts   ノードのファームウェアと自己更新\n'
        '│   ├── http/                         セッション、ノード別トークン、封印した認証情報\n'
@@ -1236,8 +1244,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      金庫、PTZ、RTSP、探索、健全性\n'
        '│   ├── media/                        FFmpeg 中継と証拠ライブラリ\n'
        '│   └── devices/                      デバイスモデルと MQTT ブリッジ\n'
-       '├── tests/                            755 件（単体と HTTP 結合）\n'
-       '├── docs/                             7 つのガイド、ルート表、環境変数\n'
+       '├── tests/                            779 件（単体と HTTP 結合）\n'
+       '├── docs/                             8 つのガイド、ルート表、環境変数\n'
        '├── tools/                            docs/ROUTES.md と docs/ENVIRONMENT.md の生成、CI 検査、ランチャー\n'
        '├── images/                           バナー、アイコン、README の画像\n'
        '├── .github/                          CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\n'
@@ -1259,7 +1267,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       estado dos nós e o que sobrevive a um reinício\n'
        '│   ├── alarms.ts escalation.ts       central de alarmes e escalada\n'
        '│   ├── users.ts totp.ts              utilizadores, funções, PIN e segundo fator\n'
-       '│   ├── security_settings.ts          os 17 interruptores do Studio\n'
+       '│   ├── security_settings.ts          os 21 interruptores do Studio\n'
        '│   ├── voice.ts voice_turn.ts        ordens escritas e faladas\n'
        '│   ├── firmware.ts installation.ts   firmware dos nós e atualizações próprias\n'
        '│   ├── http/                         sessões, tokens por nó, credenciais seladas\n'
@@ -1267,8 +1275,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cofre, PTZ, RTSP, descoberta, saúde\n'
        '│   ├── media/                        relé FFmpeg e biblioteca de provas\n'
        '│   └── devices/                      modelo de dispositivos e a sua ponte MQTT\n'
-       '├── tests/                            755 testes, unitários e integração HTTP\n'
-       '├── docs/                             7 guias, tabela de rotas, ambiente\n'
+       '├── tests/                            779 testes, unitários e integração HTTP\n'
+       '├── docs/                             8 guias, tabela de rotas, ambiente\n'
        '├── tools/                            geradores de docs/ROUTES.md e docs/ENVIRONMENT.md, verificações de CI, lançador\n'
        '├── images/                           faixa, ícone e as imagens do README\n'
        '├── .github/                          fluxo de CI, aviso ao painel, modelos de issues e pull requests\n'
@@ -1290,7 +1298,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       节点状态与重启后保留的内容\n'
        '│   ├── alarms.ts escalation.ts       报警中心与升级\n'
        '│   ├── users.ts totp.ts              用户、角色、PIN 与第二因素\n'
-       '│   ├── security_settings.ts          Studio 修改的 17 个开关\n'
+       '│   ├── security_settings.ts          Studio 修改的 21 个开关\n'
        '│   ├── voice.ts voice_turn.ts        文字和语音命令\n'
        '│   ├── firmware.ts installation.ts   节点固件与自身更新\n'
        '│   ├── http/                         会话、节点令牌、密封凭据\n'
@@ -1298,8 +1306,8 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      保险库、PTZ、RTSP、发现、健康\n'
        '│   ├── media/                        FFmpeg 中继与证据库\n'
        '│   └── devices/                      设备模型及其 MQTT 桥\n'
-       '├── tests/                            755 项测试（单元与 HTTP 集成）\n'
-       '├── docs/                             7 份指南、路由表、环境变量\n'
+       '├── tests/                            779 项测试（单元与 HTTP 集成）\n'
+       '├── docs/                             8 份指南、路由表、环境变量\n'
        '├── tools/                            docs/ROUTES.md 和 docs/ENVIRONMENT.md 的生成器、CI 检查、启动器\n'
        '├── images/                           横幅图、图标和 README 的图片\n'
        '├── .github/                          CI 工作流、仪表板通知、议题和 pull request 模板\n'
@@ -1329,7 +1337,7 @@ NEW_BULLETS: dict[str, Any] = {
 for _lg in NEW_BULLETS:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + NEW_BULLETS[_lg]
 
-NT = "755"
+NT = "779"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
@@ -1350,7 +1358,7 @@ GLANCE = [
     (GL["role"], T("Central security coordinator of the family: nodes, alarms, devices, energy, cameras, network | Coordinador central de seguridad de la familia: nodos, alarmas, dispositivos, energía, cámaras, red | Zentraler Sicherheitskoordinator der Familie: Knoten, Alarme, Geräte, Energie, Kameras, Netzwerk | Coordinateur central de sécurité de la famille : nœuds, alarmes, appareils, énergie, caméras, réseau | Coordinatore centrale di sicurezza della famiglia: nodi, allarmi, dispositivi, energia, telecamere, rete | ファミリーの中央セキュリティコーディネーター：ノード、アラーム、デバイス、エネルギー、カメラ、ネットワーク | 家族的中央安全协调器：节点、报警、设备、能源、摄像头、网络 | Coordenador central de segurança da família: nós, alarmes, dispositivos, energia, câmaras, rede")),
     (GL["stack"], "Node.js 22+, TypeScript, Express 5, MQTT, WebSocket, FFmpeg"),
     (GL["tests"], T("NTESTS (`npm test`: unit and full HTTP integration) | NTESTS (`npm test`: unitarias e integración HTTP completa) | NTESTS (`npm test`: Unit und volle HTTP-Integration) | NTESTS (`npm test` : unitaires et intégration HTTP complète) | NTESTS (`npm test`: unitari e integrazione HTTP completa) | NTESTS 件（`npm test`：単体と完全な HTTP 結合） | NTESTS 项（`npm test`：单元与完整 HTTP 集成） | NTESTS (`npm test`: unitários e integração HTTP completa)".replace("NTESTS", NT))),
-    (GL["contract"], T("195 HTTP paths, 253 operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | 195 rutas HTTP, 253 operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | 195 HTTP-Pfade, 253 Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | 195 chemins HTTP, 253 opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | 195 percorsi HTTP, 253 operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス 195 本、253 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | 195 条 HTTP 路径、253 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | 195 caminhos HTTP, 253 operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
+    (GL["contract"], T("196 HTTP paths, 255 operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | 196 rutas HTTP, 255 operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | 196 HTTP-Pfade, 255 Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | 196 chemins HTTP, 255 opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | 196 percorsi HTTP, 255 operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス 196 本、255 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | 196 条 HTTP 路径、255 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | 196 caminhos HTTP, 255 operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
     (GL["listens"], T("`127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:8080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`)")),
     (GL["runs"], T("The CM5 test bench (as a service, see ARMOR-DEVOPS) or any computer with Node.js | El banco de la CM5 (como servicio, ver ARMOR-DEVOPS) o cualquier ordenador con Node.js | Der CM5-Prüfstand (als Dienst, siehe ARMOR-DEVOPS) oder jeder Computer mit Node.js | Le banc d'essai CM5 (en service, voir ARMOR-DEVOPS) ou tout ordinateur avec Node.js | Il banco di prova CM5 (come servizio, vedi ARMOR-DEVOPS) o qualsiasi computer con Node.js | CM5 テストベンチ（サービスとして。ARMOR-DEVOPS 参照）または Node.js のある任意のコンピューター | CM5 测试台（作为服务，见 ARMOR-DEVOPS）或任何装有 Node.js 的计算机 | A bancada do CM5 (como serviço, ver ARMOR-DEVOPS) ou qualquer computador com Node.js")),
     (GL["hardware"], LEGACY["en"]["hardware"] and {lg: LEGACY[lg]["hardware"] for lg in LGS}),
@@ -1400,14 +1408,14 @@ SECURITY_ROWS = [
 ]
 
 SECURITY_TAIL = P(
-    "**Switches in Studio.** The protections that can be tuned are 17 settings kept in `security-settings.json` (mode 0600, atomic writes), each with a conservative default, and lowering one is written in the audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` and `voice.reply_audio_max_bytes`.\n\n**What it never does:** return a camera password, keep the words that were spoken (only the command and its result), or write a PIN, a token or a cookie in a log. There has been no independent security review.",
-    "**Interruptores en Studio.** Las protecciones que se pueden ajustar son 17 valores guardados en `security-settings.json` (modo 0600, escritura atómica), cada uno con un valor por defecto conservador, y bajar uno queda en la auditoría: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` y `voice.reply_audio_max_bytes`.\n\n**Lo que nunca hace:** devolver una contraseña de cámara, guardar las palabras que se dijeron (solo el comando y su resultado) ni escribir un PIN, un token o una cookie en un registro. No ha habido revisión de seguridad independiente.",
-    "**Schalter in Studio.** Die einstellbaren Schutzmaßnahmen sind 17 Werte in `security-settings.json` (Modus 0600, atomares Schreiben), jeweils mit konservativem Standard; das Absenken eines Werts landet im Audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` und `voice.reply_audio_max_bytes`.\n\n**Was es nie tut:** ein Kamerakennwort zurückgeben, das Gesprochene speichern (nur Befehl und Ergebnis) oder eine PIN, ein Token oder ein Cookie in ein Protokoll schreiben. Eine unabhängige Sicherheitsprüfung gab es nicht.",
-    "**Interrupteurs dans Studio.** Les protections réglables sont 17 valeurs conservées dans `security-settings.json` (mode 0600, écriture atomique), chacune avec un défaut prudent ; en abaisser une est inscrit dans l'audit : `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` et `voice.reply_audio_max_bytes`.\n\n**Ce qu'il ne fait jamais :** renvoyer un mot de passe de caméra, garder les paroles prononcées (seulement la commande et son résultat), ni écrire un PIN, un jeton ou un cookie dans un journal. Il n'y a pas eu de revue de sécurité indépendante.",
-    "**Interruttori in Studio.** Le protezioni regolabili sono 17 valori in `security-settings.json` (modo 0600, scrittura atomica), ciascuno con un default prudente; abbassarne uno viene registrato nell'audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**Cosa non fa mai:** restituire una password di telecamera, conservare le parole dette (solo il comando e il suo risultato) né scrivere un PIN, un token o un cookie in un registro. Non c'è stata una revisione di sicurezza indipendente.",
-    "**Studio のスイッチ。** 調整できる保護は `security-settings.json`（モード 0600、アトミック書き込み）にある 17 項目で、どれも保守的な既定値です。下げた場合は監査に記録されます：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes`、`voice.reply_audio_max_bytes`。\n\n**決してしないこと：** カメラのパスワードを返す、話した内容を保存する（コマンドと結果のみ）、PIN・トークン・Cookie をログに書く。第三者によるセキュリティレビューはありません。",
-    "**Studio 中的开关。** 可调的保护措施是保存在 `security-settings.json`（权限 0600，原子写入）中的 17 项设置，每项都有保守的默认值，调低任何一项都会写入审计：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes` 和 `voice.reply_audio_max_bytes`。\n\n**它绝不会：** 返回摄像头密码、保存所说的话（只保留命令及其结果），或把 PIN、令牌或 Cookie 写进日志。没有独立的安全审查。",
-    "**Interruptores no Studio.** As proteções ajustáveis são 17 valores guardados em `security-settings.json` (modo 0600, escrita atómica), cada um com um valor predefinido conservador; baixar um fica registado na auditoria: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**O que nunca faz:** devolver uma palavra-passe de câmara, guardar as palavras ditas (só o comando e o seu resultado) nem escrever um PIN, um token ou um cookie num registo. Não houve revisão de segurança independente.")
+    "**Switches in Studio.** The protections that can be tuned are 21 settings kept in `security-settings.json` (mode 0600, atomic writes), each with a conservative default, and lowering one is written in the audit: `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` and `voice.reply_audio_max_bytes`.\n\n**What it never does:** return a camera password, keep the words that were spoken (only the command and its result), or write a PIN, a token or a cookie in a log. There has been no independent security review.",
+    "**Interruptores en Studio.** Las protecciones que se pueden ajustar son 21 valores guardados en `security-settings.json` (modo 0600, escritura atómica), cada uno con un valor por defecto conservador, y bajar uno queda en la auditoría: `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` y `voice.reply_audio_max_bytes`.\n\n**Lo que nunca hace:** devolver una contraseña de cámara, guardar las palabras que se dijeron (solo el comando y su resultado) ni escribir un PIN, un token o una cookie en un registro. No ha habido revisión de seguridad independiente.",
+    "**Schalter in Studio.** Die einstellbaren Schutzmaßnahmen sind 21 Werte in `security-settings.json` (Modus 0600, atomares Schreiben), jeweils mit konservativem Standard; das Absenken eines Werts landet im Audit: `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` und `voice.reply_audio_max_bytes`.\n\n**Was es nie tut:** ein Kamerakennwort zurückgeben, das Gesprochene speichern (nur Befehl und Ergebnis) oder eine PIN, ein Token oder ein Cookie in ein Protokoll schreiben. Eine unabhängige Sicherheitsprüfung gab es nicht.",
+    "**Interrupteurs dans Studio.** Les protections réglables sont 21 valeurs conservées dans `security-settings.json` (mode 0600, écriture atomique), chacune avec un défaut prudent ; en abaisser une est inscrit dans l'audit : `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` et `voice.reply_audio_max_bytes`.\n\n**Ce qu'il ne fait jamais :** renvoyer un mot de passe de caméra, garder les paroles prononcées (seulement la commande et son résultat), ni écrire un PIN, un jeton ou un cookie dans un journal. Il n'y a pas eu de revue de sécurité indépendante.",
+    "**Interruttori in Studio.** Le protezioni regolabili sono 21 valori in `security-settings.json` (modo 0600, scrittura atomica), ciascuno con un default prudente; abbassarne uno viene registrato nell'audit: `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**Cosa non fa mai:** restituire una password di telecamera, conservare le parole dette (solo il comando e il suo risultato) né scrivere un PIN, un token o un cookie in un registro. Non c'è stata una revisione di sicurezza indipendente.",
+    "**Studio のスイッチ。** 調整できる保護は `security-settings.json`（モード 0600、アトミック書き込み）にある 21 項目で、どれも保守的な既定値です。下げた場合は監査に記録されます：`alarm.disarm_pin`、`alarm.arming_modes`、`alarm.mode_downgrade_pin`、`alarm.mode_schedule`、`alarm.mode_schedule_lowers`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes`、`voice.reply_audio_max_bytes`。\n\n**決してしないこと：** カメラのパスワードを返す、話した内容を保存する（コマンドと結果のみ）、PIN・トークン・Cookie をログに書く。第三者によるセキュリティレビューはありません。",
+    "**Studio 中的开关。** 可调的保护措施是保存在 `security-settings.json`（权限 0600，原子写入）中的 21 项设置，每项都有保守的默认值，调低任何一项都会写入审计：`alarm.disarm_pin`、`alarm.arming_modes`、`alarm.mode_downgrade_pin`、`alarm.mode_schedule`、`alarm.mode_schedule_lowers`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes` 和 `voice.reply_audio_max_bytes`。\n\n**它绝不会：** 返回摄像头密码、保存所说的话（只保留命令及其结果），或把 PIN、令牌或 Cookie 写进日志。没有独立的安全审查。",
+    "**Interruptores no Studio.** As proteções ajustáveis são 21 valores guardados em `security-settings.json` (modo 0600, escrita atómica), cada um com um valor predefinido conservador; baixar um fica registado na auditoria: `alarm.disarm_pin`, `alarm.arming_modes`, `alarm.mode_downgrade_pin`, `alarm.mode_schedule`, `alarm.mode_schedule_lowers`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**O que nunca faz:** devolver uma palavra-passe de câmara, guardar as palavras ditas (só o comando e o seu resultado) nem escrever um PIN, um token ou um cookie num registo. Não houve revisão de segurança independente.")
 
 ROUTES = [
     ("`GET /healthz`", T("none | ninguna | keine | aucune | nessuna | なし | 无 | nenhuma"), T("alive and ready | vivo y listo | lebt und ist bereit | vivant et prêt | vivo e pronto | 稼働中 | 存活就绪 | vivo e pronto")),
@@ -1426,14 +1434,14 @@ ROUTES = [
 ]
 
 INTERFACES_LEAD = P(
-    "The route table (`docs/ROUTES.md`, generated from the code) lists every route with who may call it; the OpenAPI file of ARMOR-COMMON describes 195 paths and 253 operations, and a test fails if a route is missing from it. The ones that matter most:",
-    "La tabla de rutas (`docs/ROUTES.md`, generada del código) lista cada ruta con quién puede llamarla; el fichero OpenAPI de ARMOR-COMMON describe 195 rutas y 253 operaciones, y una prueba falla si falta alguna. Las que más importan:",
-    "Die Routentabelle (`docs/ROUTES.md`, aus dem Code erzeugt) listet jede Route mit den Berechtigten; die OpenAPI-Datei von ARMOR-COMMON beschreibt 195 Pfade und 253 Operationen, und ein Test schlägt fehl, wenn eine Route fehlt. Die wichtigsten:",
-    "La table des routes (`docs/ROUTES.md`, générée depuis le code) liste chaque route avec qui peut l'appeler ; le fichier OpenAPI d'ARMOR-COMMON décrit 195 chemins et 253 opérations, et un test échoue s'il en manque une. Les plus importantes :",
-    "La tabella delle rotte (`docs/ROUTES.md`, generata dal codice) elenca ogni rotta con chi può chiamarla; il file OpenAPI di ARMOR-COMMON descrive 195 percorsi e 253 operazioni, e un test fallisce se ne manca una. Le più importanti:",
-    "ルート表（`docs/ROUTES.md`、コードから生成）は各ルートと呼び出せる主体を一覧にします。ARMOR-COMMON の OpenAPI は 195 パス・253 操作を記述し、欠けているルートがあるとテストが失敗します。主なもの：",
-    "路由表（`docs/ROUTES.md`，由代码生成）列出每条路由及可调用者；ARMOR-COMMON 的 OpenAPI 文件描述了 195 条路径和 253 个操作，缺少任何路由时测试会失败。最重要的几条：",
-    "A tabela de rotas (`docs/ROUTES.md`, gerada do código) lista cada rota com quem a pode chamar; o ficheiro OpenAPI do ARMOR-COMMON descreve 195 caminhos e 253 operações, e um teste falha se faltar alguma. As mais importantes:")
+    "The route table (`docs/ROUTES.md`, generated from the code) lists every route with who may call it; the OpenAPI file of ARMOR-COMMON describes 196 paths and 255 operations, and a test fails if a route is missing from it. The ones that matter most:",
+    "La tabla de rutas (`docs/ROUTES.md`, generada del código) lista cada ruta con quién puede llamarla; el fichero OpenAPI de ARMOR-COMMON describe 196 rutas y 255 operaciones, y una prueba falla si falta alguna. Las que más importan:",
+    "Die Routentabelle (`docs/ROUTES.md`, aus dem Code erzeugt) listet jede Route mit den Berechtigten; die OpenAPI-Datei von ARMOR-COMMON beschreibt 196 Pfade und 255 Operationen, und ein Test schlägt fehl, wenn eine Route fehlt. Die wichtigsten:",
+    "La table des routes (`docs/ROUTES.md`, générée depuis le code) liste chaque route avec qui peut l'appeler ; le fichier OpenAPI d'ARMOR-COMMON décrit 196 chemins et 255 opérations, et un test échoue s'il en manque une. Les plus importantes :",
+    "La tabella delle rotte (`docs/ROUTES.md`, generata dal codice) elenca ogni rotta con chi può chiamarla; il file OpenAPI di ARMOR-COMMON descrive 196 percorsi e 255 operazioni, e un test fallisce se ne manca una. Le più importanti:",
+    "ルート表（`docs/ROUTES.md`、コードから生成）は各ルートと呼び出せる主体を一覧にします。ARMOR-COMMON の OpenAPI は 196 パス・255 操作を記述し、欠けているルートがあるとテストが失敗します。主なもの：",
+    "路由表（`docs/ROUTES.md`，由代码生成）列出每条路由及可调用者；ARMOR-COMMON 的 OpenAPI 文件描述了 196 条路径和 255 个操作，缺少任何路由时测试会失败。最重要的几条：",
+    "A tabela de rotas (`docs/ROUTES.md`, gerada do código) lista cada rota com quem a pode chamar; o ficheiro OpenAPI do ARMOR-COMMON descreve 196 caminhos e 255 operações, e um teste falha se faltar alguma. As mais importantes:")
 
 CFG = [
     ("`ARMOR_INGEST_TOKEN`  `ARMOR_CONTROL_TOKEN`", T("yes (24+ characters, all different) | sí (24+ caracteres, todos distintos) | ja (24+ Zeichen, alle verschieden) | oui (24+ caractères, tous différents) | sì (24+ caratteri, tutti diversi) | 必須（24 文字以上、すべて別） | 是（24 个以上字符，互不相同） | sim (24+ caracteres, todos diferentes)"), T("what the nodes post with; what arms, disarms and reads events | con qué publican los nodos; qué arma, desarma y lee eventos | womit die Knoten senden; was schärft, entschärft und Ereignisse liest | avec quoi les nœuds publient ; ce qui arme, désarme et lit les événements | con cosa pubblicano i nodi; ciò che arma, disarma e legge gli eventi | ノードの送信用と、警戒・解除・イベント読み取り用 | 节点上报所用；布防、撤防和读取事件所用 | com o que os nós publicam; o que arma, desarma e lê eventos")),
@@ -1519,6 +1527,7 @@ DOCS = [
     P("[Remote access](docs/REMOTE_ACCESS.md): second factor, policy and the house from outside", "[Acceso remoto](docs/REMOTE_ACCESS.md): segundo factor, política y la casa desde fuera", "[Fernzugriff](docs/REMOTE_ACCESS.md): zweiter Faktor, Richtlinie und das Haus von außen", "[Accès à distance](docs/REMOTE_ACCESS.md) : second facteur, politique et la maison vue de l'extérieur", "[Accesso remoto](docs/REMOTE_ACCESS.md): secondo fattore, politica e la casa da fuori", "[リモートアクセス](docs/REMOTE_ACCESS.md)：2 要素、方針、外部からの利用", "[远程访问](docs/REMOTE_ACCESS.md)：第二因素、策略与从屋外访问", "[Acesso remoto](docs/REMOTE_ACCESS.md): segundo fator, política e a casa vista de fora"),
     P("[Camera and media gateway](docs/CAMERA_MEDIA_GATEWAY.md): the vault, PTZ, relay and evidence", "[Pasarela de cámaras y medios](docs/CAMERA_MEDIA_GATEWAY.md): la caja fuerte, PTZ, relé y evidencias", "[Kamera- und Medien-Gateway](docs/CAMERA_MEDIA_GATEWAY.md): Tresor, PTZ, Relais und Beweise", "[Passerelle caméras et médias](docs/CAMERA_MEDIA_GATEWAY.md) : coffre, PTZ, relais et preuves", "[Gateway telecamere e media](docs/CAMERA_MEDIA_GATEWAY.md): cassaforte, PTZ, relè e prove", "[カメラ・メディアゲートウェイ](docs/CAMERA_MEDIA_GATEWAY.md)：金庫、PTZ、中継、証拠", "[摄像头与媒体网关](docs/CAMERA_MEDIA_GATEWAY.md)：保险库、PTZ、中继与证据", "[Gateway de câmaras e media](docs/CAMERA_MEDIA_GATEWAY.md): cofre, PTZ, relé e provas"),
     P("[Node firmware](docs/NODE_FIRMWARE.md): updating the nodes from Studio", "[Firmware de nodos](docs/NODE_FIRMWARE.md): actualizar los nodos desde Studio", "[Knoten-Firmware](docs/NODE_FIRMWARE.md): die Knoten aus Studio aktualisieren", "[Firmware des nœuds](docs/NODE_FIRMWARE.md) : mettre à jour les nœuds depuis Studio", "[Firmware dei nodi](docs/NODE_FIRMWARE.md): aggiornare i nodi da Studio", "[ノードのファームウェア](docs/NODE_FIRMWARE.md)：Studio からのノード更新", "[节点固件](docs/NODE_FIRMWARE.md)：从 Studio 更新节点", "[Firmware dos nós](docs/NODE_FIRMWARE.md): atualizar os nós a partir do Studio"),
+    P("[Arming modes](docs/ARMING_MODES.md): away, home and night, their zones, delays and what they never do", "[Modos de armado](docs/ARMING_MODES.md): fuera, en casa y noche, sus zonas, retardos y lo que nunca hacen", "[Scharfschaltmodi](docs/ARMING_MODES.md): abwesend, zu Hause und Nacht, ihre Zonen, Verzögerungen und was sie nie tun", "[Modes d'armement](docs/ARMING_MODES.md) : absent, à la maison et nuit, leurs zones, temporisations et ce qu'ils ne font jamais", "[Modi di inserimento](docs/ARMING_MODES.md): fuori, in casa e notte, le loro zone, i ritardi e ciò che non fanno mai", "[警戒モード](docs/ARMING_MODES.md)：外出・在宅・夜間、ゾーン、遅延、決してしないこと", "[布防模式](docs/ARMING_MODES.md)：离家、在家和夜间，它们的防区、延迟以及绝不会做的事", "[Modos de armar](docs/ARMING_MODES.md): fora, em casa e noite, as suas zonas, atrasos e o que nunca fazem"),
     P("[State machine](docs/STATE_MACHINE.md): the life of a node and of an alarm", "[Máquina de estados](docs/STATE_MACHINE.md): la vida de un nodo y de una alarma", "[Zustandsautomat](docs/STATE_MACHINE.md): das Leben eines Knotens und eines Alarms", "[Machine à états](docs/STATE_MACHINE.md) : la vie d'un nœud et d'une alarme", "[Macchina a stati](docs/STATE_MACHINE.md): la vita di un nodo e di un allarme", "[状態機械](docs/STATE_MACHINE.md)：ノードとアラームのライフサイクル", "[状态机](docs/STATE_MACHINE.md)：节点与报警的生命周期", "[Máquina de estados](docs/STATE_MACHINE.md): a vida de um nó e de um alarme"),
 ]
 TEST_TABLE: list[Any] = []
