@@ -1,8 +1,10 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-COMMON, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '🧾',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '🧾',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'green'],
@@ -15,7 +17,7 @@ FACTS = {'emoji': '🧾',
  'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Vectors', '1228', '00E5FF']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Message contracts, validation, the firmware base that the nodes share and the shared project launcher',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the firmware base that the nodes share and the shared project launcher',
         'status': {'software': 'The schemas, the Python validator, the generated TypeScript and Kotlin types, the OpenAPI file of the server and the firmware base '
                                'shared by the five nodes are in place.',
                    'tests': '170 tests and 1228 conformance vectors pass; the JSON, Bluetooth and Improv parsers of the firmware are also fuzzed with libFuzzer.',
@@ -737,7 +739,7 @@ GLANCE = [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     ("ARMOR-SERVER", T("runs the vectors; implements every OpenAPI route | ejecuta los vectores; implementa cada ruta de OpenAPI | führt die Vektoren aus; setzt jede OpenAPI-Route um | exécute les vecteurs ; implémente chaque route OpenAPI | esegue i vettori; implementa ogni rotta OpenAPI | ベクターを実行し、OpenAPI の全ルートを実装 | 运行向量；实现每条 OpenAPI 路由 | executa os vetores; implementa cada rota OpenAPI"),
      T("vectors, OpenAPI | vectores, OpenAPI | Vektoren, OpenAPI | vecteurs, OpenAPI | vettori, OpenAPI | ベクター、OpenAPI | 向量、OpenAPI | vetores, OpenAPI")),
     ("ARMOR-STUDIO", T("keeps a copy of the generated types; a test fails on drift | guarda una copia de los tipos generados; una prueba falla si se desvía | hält eine Kopie der erzeugten Typen; ein Test schlägt bei Abweichung fehl | garde une copie des types générés ; un test échoue en cas de dérive | tiene una copia dei tipi generati; un test fallisce se divergono | 生成された型のコピーを保持し、ずれるとテストが失敗 | 保留生成类型的副本；偏离时测试失败 | guarda uma cópia dos tipos gerados; um teste falha se divergirem"),

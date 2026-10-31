@@ -74,7 +74,7 @@ Each line is one part of this repository and the light says how far it is today.
 * [Project catalogue](docs/PROJECT_CATALOG.md): the nineteen repositories, their versions and how they depend on each other.
 * [Interfaces](docs/INTERFACES.md): who produces and consumes each interface and where it is trusted.
 * [First vertical slice](docs/FIRST_VERTICAL_SLICE.md): what the simulator-to-console test proves and what it does not.
-* **Tools:** `make_readmes.py` writes the README of every repository in the eight languages from `readme_src/`, `make_catalog.py` writes the versions of the catalogue, `make_brand.py` its banner and icon, `publication_check.py` looks for anything private before a publication, `clean_history.py` makes a publishable copy of a repository and `sync_ci_tools.py` keeps the CI checks of the family equal, ruff and mypy included (pinned versions, only where a repository has a mypy configuration; `ci_lint = false` in its pyproject.toml skips them).
+* **Tools:** `make_readmes.py` writes the README of every repository in the eight languages from `readme_src/`, `make_catalog.py` writes the versions of the catalogue, `make_brand.py` its banner and icon, `publication_check.py` looks for anything private before a publication, `clean_history.py` makes a publishable copy of a repository and `sync_ci_tools.py` keeps the CI checks of the family equal, ruff and mypy included (pinned versions: ruff over the whole checkout, mypy over `src/` where a repository has a mypy configuration and over `tools/` and `scripts/`; `ci_lint = false` in its pyproject.toml skips them).
 
 ## 🧩 Role in A.R.M.O.R.
 

@@ -1,7 +1,8 @@
 # The words around every README, and the one-line description of each repository, in the eight languages.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
+from typing import Any
 
-UI = {
+UI: dict[str, dict[str, Any]] = {
  "en": {
   "overview": "Overview",
   "architecture": "Architecture",

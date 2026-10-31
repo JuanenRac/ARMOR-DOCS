@@ -1,15 +1,17 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-STUDIO, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '🎛️',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '🎛️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'green'], ['tests', 'green'], ['ui', 'yellow'], ['hardware', 'yellow'], ['security', 'yellow'], ['integration', 'yellow'], ['docs', 'green']],
  'badges': [['Language', 'TypeScript', '3178c6'], ['UI', 'React%2019', '61dafb'], ['Languages', '8', '00E5FF'], ['Tests', '990%20passing', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Operations and design console: cameras, radar, alarms, energy, the local network, evidence, the site plan and the upkeep of the installation',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: cameras, radar, alarms, energy, the local network, evidence, the site plan and the upkeep of the installation',
         'status': {'software': 'The console runs in daily use against the real server of the CM5 test bench.',
                    'tests': '990 unit tests pass (`npm test`) and the browser tests run: settings, camera merging, the solar charts, the geometry and checks of the '
                             "designers, the alarm announcer, the assistant's dictionary and every menu in the eight languages.",
@@ -1128,7 +1130,7 @@ TREE = {'en': 'ARMOR-STUDIO/\n'
 
 DIAGRAM = 'flowchart LR\n    B["Browser"] -->|"static files"| H["tools/serve.mjs (static host)"]\n    B -->|"HttpOnly session, JSON, MJPEG"| S["ARMOR-SERVER"]\n    H -->|"/armor-config.json"| B'
 
-NEW_BULLETS = {
+NEW_BULLETS: dict[str, Any] = {
     'en': ["**The sign-in limit of a node:** every node of the lists (radar, inverters, batteries, electrical and wall screens) has a button that opens a dialog to read and change `system.login_limit_per_minute` (wrong passwords per minute before the node locks sign-in: 30 by default, 0 for no global limit, at most 120). The login of the node's panel is used once and never kept; the dialog and its help are in the eight languages.", '**A meter that stopped answering, and a firmware image for another board:** an electrical channel with an old reading is greyed out and marked "no data", and the card counts them (Configuration > Security, `electrical.set_aside_old_readings`, on by default); a firmware update whose file name says another board than the node\'s, or a node of another kind, is refused with a clear reason instead of a code.'],
     'es': ['**El límite de acceso de un nodo:** cada nodo de las listas (radar, inversores, baterías, eléctrico y pantallas de pared) tiene un botón que abre un diálogo para leer y cambiar `system.login_limit_per_minute` (contraseñas erróneas por minuto antes de que el nodo bloquee el acceso: 30 por defecto, 0 para ningún límite global, 120 como máximo). El acceso al panel del nodo se usa una vez y nunca se guarda; el diálogo y su ayuda están en los ocho idiomas.', '**Un contador que dejó de responder y una imagen de firmware para otra placa:** un canal eléctrico con una lectura vieja se muestra atenuado y marcado «sin datos», y la tarjeta los cuenta (Configuración > Seguridad, `electrical.set_aside_old_readings`, activado por defecto); una actualización de firmware cuyo nombre de fichero dice otra placa distinta de la del nodo, o un nodo de otro tipo, se rechaza con una razón clara en lugar de un código.'],
     'de': ['**Das Anmeldelimit eines Knotens:** Jeder Knoten der Listen (Radar, Wechselrichter, Batterien, Elektro und Wandbildschirme) hat eine Schaltfläche, die einen Dialog zum Lesen und Ändern von `system.login_limit_per_minute` öffnet (falsche Passwörter pro Minute, bevor der Knoten die Anmeldung sperrt: standardmäßig 30, 0 für kein globales Limit, höchstens 120). Die Anmeldung am Panel des Knotens wird einmal benutzt und nie gespeichert; Dialog und Hilfe gibt es in den acht Sprachen.', '**Ein Zähler, der nicht mehr antwortet, und ein Firmware-Image für eine andere Platine:** Ein Elektrokanal mit altem Messwert wird ausgegraut und mit „keine Daten“ markiert, und die Karte zählt sie (Konfiguration > Sicherheit, `electrical.set_aside_old_readings`, standardmäßig an); ein Firmware-Update, dessen Dateiname eine andere Platine als die des Knotens nennt, oder ein Knoten einer anderen Art wird mit einer klaren Begründung statt eines Codes abgelehnt.'],
@@ -1200,7 +1202,7 @@ GLANCE = [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     ("ARMOR-SERVER", T("HTTP, WebSocket and MJPEG with the HttpOnly session | HTTP, WebSocket y MJPEG con la sesión HttpOnly | HTTP, WebSocket und MJPEG mit der HttpOnly-Sitzung | HTTP, WebSocket et MJPEG avec la session HttpOnly | HTTP, WebSocket e MJPEG con la sessione HttpOnly | HttpOnly セッションでの HTTP、WebSocket、MJPEG | 带 HttpOnly 会话的 HTTP、WebSocket 和 MJPEG | HTTP, WebSocket e MJPEG com a sessão HttpOnly"),
      T("everything: state, orders, designs, cameras | todo: estado, órdenes, diseños, cámaras | alles: Zustand, Befehle, Entwürfe, Kameras | tout : état, ordres, conceptions, caméras | tutto: stato, ordini, progetti, telecamere | すべて：状態、オーダー、設計、カメラ | 一切：状态、指令、设计、摄像头 | tudo: estado, ordens, desenhos, câmaras")),
     (T("Each node's own panel | El panel propio de cada nodo | Das eigene Panel jedes Knotens | Le panneau propre de chaque nœud | Il pannello proprio di ogni nodo | 各ノード自身のパネル | 各节点自己的面板 | O painel próprio de cada nó"), T("a link, through the server's proxy | un enlace, a través del proxy del servidor | ein Link über den Proxy des Servers | un lien, via le proxy du serveur | un collegamento, tramite il proxy del server | サーバーのプロキシ経由のリンク | 经服务器代理的链接 | uma ligação, através do proxy do servidor"),
@@ -1291,7 +1293,7 @@ QUICK_CODE = [
     ('$env:ARMOR_SERVER_ORIGIN = "http://192.168.0.180:18080"; node tools/serve.mjs', T("serve the build | sirve la build | den Build ausliefern | sert le build | serve la build | ビルドを配信 | 提供构建 | serve a compilação")),
 ]
 
-TEST_TABLE = [
+TEST_TABLE: list[Any] = [
     (T("Settings, cameras and the radar map | Ajustes, cámaras y el mapa del radar | Einstellungen, Kameras und die Radarkarte | Réglages, caméras et la carte radar | Impostazioni, telecamere e la mappa radar | 設定、カメラ、レーダーマップ | 设置、摄像头与雷达地图 | Definições, câmaras e o mapa do radar"), T("parsing of stored settings, camera merging, radar targets and ignore zones | análisis de ajustes guardados, fusión de cámaras, objetivos del radar y zonas a ignorar | Auswertung gespeicherter Einstellungen, Kamera-Zusammenführung, Radarziele und Ignorierzonen | analyse des réglages enregistrés, fusion des caméras, cibles radar et zones à ignorer | analisi delle impostazioni salvate, fusione delle telecamere, bersagli radar e zone da ignorare | 保存設定の解析、カメラの統合、レーダー目標、無視ゾーン | 已存设置的解析、摄像头合并、雷达目标与忽略区 | análise das definições guardadas, fusão das câmaras, alvos do radar e zonas a ignorar")),
     (T("Energy | Energía | Energie | Énergie | Energia | エネルギー | 能源 | Energia"), T("the arithmetic of the solar charts, the batteries and the electrical menus | la aritmética de las gráficas solares y los menús de baterías y eléctrico | die Arithmetik der Solardiagramme und der Batterie- und Elektro-Menüs | l'arithmétique des graphiques solaires et des menus batteries et électrique | l'aritmetica dei grafici solari e dei menu batterie ed elettrico | 太陽光グラフの計算、バッテリーと電気のメニュー | 光伏图表的计算以及电池和电气菜单 | a aritmética dos gráficos solares e dos menus de baterias e elétrico")),
     (T("Designers | Diseñadores | Designer | Concepteurs | Progettisti | デザイナー | 设计器 | Desenhadores"), T("geometry, operations and checks of the Site, Electrical, Alarm and Network Designers | geometría, operaciones y comprobaciones de los Diseñadores de emplazamiento, eléctrico, de alarma y de red | Geometrie, Operationen und Prüfungen der Standort-, Elektro-, Alarm- und Netzwerk-Designer | géométrie, opérations et contrôles des concepteurs de site, électrique, alarme et réseau | geometria, operazioni e controlli dei progettisti di sito, elettrico, allarme e rete | サイト・電気・アラーム・ネットワークデザイナーの図形、操作、検査 | 场地、电气、报警和网络设计器的几何、操作与检查 | geometria, operações e verificações dos desenhadores do local, elétrico, de alarme e de rede")),

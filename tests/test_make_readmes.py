@@ -88,7 +88,7 @@ class SourceConsistencyTests(unittest.TestCase):
                 text = data.TEXT[code]
                 self.assertEqual(len(text["bullets"]), len(reference["bullets"]), f"{name}.{code} bullets")
                 self.assertEqual(len(text.get("sections", [])), len(reference.get("sections", [])), f"{name}.{code} sections")
-                for mine, theirs in zip(text.get("sections", []), reference.get("sections", [])):
+                for mine, theirs in zip(text.get("sections", []), reference.get("sections", []), strict=True):
                     self.assertEqual(len(mine["bullets"]), len(theirs["bullets"]), f"{name}.{code} {mine['title']}")
                 self.assertEqual(bool(text.get("fit")), bool(reference.get("fit")), f"{name}.{code} fit")
                 self.assertEqual(bool(text.get("hardware")), bool(reference.get("hardware")), f"{name}.{code} hardware")

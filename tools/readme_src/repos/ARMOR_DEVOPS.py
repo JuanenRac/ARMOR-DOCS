@@ -1,6 +1,6 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-DEVOPS, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
 
 FACTS = {'emoji': '🚀',
  'layout': 'universal',
@@ -839,7 +839,7 @@ ROADMAP = P(
 
 
 def _doc(name, desc):
-    return P(*[f"[{name}](docs/{name}.md)" + sep + d for sep, d in zip([": ", ": ", ": ", " : ", ": ", "：", "：", ": "], desc)])
+    return P(*[f"[{name}](docs/{name}.md)" + sep + d for sep, d in zip([": ", ": ", ": ", " : ", ": ", "：", "：", ": "], desc, strict=True)])
 
 
 DOCS = [

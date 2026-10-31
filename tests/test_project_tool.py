@@ -3,7 +3,6 @@ import contextlib
 import io
 import json
 import os
-import re
 import sys
 import types
 import tempfile
@@ -205,7 +204,7 @@ class LinkCheckTests(unittest.TestCase):
 
 
 class LintTests(unittest.TestCase):
-    """The lint and type-check step: ruff and mypy at pinned versions, only where a repository has Python source and a mypy configuration."""
+    """The lint and type-check step: ruff and mypy at pinned versions, over src/ where a repository has a mypy configuration and over tools/ and scripts/ wherever they hold Python."""
 
     def project(self, files: dict[str, str]) -> Path:
         folder = tempfile.TemporaryDirectory()
@@ -255,11 +254,49 @@ class LintTests(unittest.TestCase):
         self.assertIn("ARMOR_LINT=SKIP no mypy configuration", out)
 
     def test_without_python_source_the_step_is_skipped(self):
-        for files in ({"pyproject.toml": "[tool.mypy]\n"}, {"pyproject.toml": "[tool.mypy]\n", "src/readme.txt": "no code"}, {"tools/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\n"}):
+        for files in ({"pyproject.toml": "[tool.mypy]\n"}, {"pyproject.toml": "[tool.mypy]\n", "src/readme.txt": "no code"}, {"tools/readme.txt": "no code"}):
             root = self.project(files)
             calls, out = self.run_lint(root, {})
             self.assertEqual(calls, [])
-            self.assertIn("ARMOR_LINT=SKIP no Python source under src/", out)
+            self.assertIn("ARMOR_LINT=SKIP no mypy configuration and no Python under tools/ or scripts/", out)
+
+    def test_tools_and_scripts_are_type_checked_on_their_own_wherever_they_hold_python(self):
+        for folder in ("tools", "scripts"):
+            root = self.project({f"{folder}/a.py": "x = 1\n"})
+            calls, out = self.run_lint(root, {})
+            self.assertEqual([call[1:4] for call in calls], [["-m", "pip", "install"], ["-m", "ruff", "check"], ["-m", "mypy", "--config-file="]], folder)
+            self.assertEqual(calls[2][-1], folder)
+            self.assertIn("--platform", calls[2])   # the platform of CI, so a Windows checkout sees what CI sees
+            self.assertIn("ARMOR_LINT=PASS", out)
+
+    def test_a_repository_with_source_and_tools_checks_both_and_the_tools_ignore_its_mypy_settings(self):
+        root = self.project({"src/pkg/a.py": "x = 1\n", "tools/b.py": "y = 2\n", "scripts/c.py": "z = 3\n", "pyproject.toml": "[tool.mypy]\nfiles = ['src']\n"})
+        calls, _out = self.run_lint(root, {})
+        self.assertEqual(calls[2][1:], ["-m", "mypy"])
+        self.assertEqual(calls[3][1:3], ["-m", "mypy"])
+        self.assertIn("--config-file=", calls[3])
+        self.assertEqual(calls[3][-2:], ["tools", "scripts"])
+
+    def test_lint_tools_false_leaves_out_only_the_tools(self):
+        text = "[tool.mypy]\nfiles = ['src']\n\n[tool.armor]\nlint_tools = false\n"
+        both = self.project({"src/pkg/a.py": "x = 1\n", "tools/b.py": "y = 2\n", "pyproject.toml": text})
+        calls, _out = self.run_lint(both, {})
+        self.assertEqual([call[1:3] for call in calls], [["-m", "pip"], ["-m", "ruff"], ["-m", "mypy"]])
+        self.assertNotIn("--config-file=", calls[2])
+        alone = self.project({"tools/b.py": "y = 2\n", "pyproject.toml": "[tool.armor]\nlint_tools = false\n"})
+        calls, out = self.run_lint(alone, {})
+        self.assertEqual(calls, [])
+        self.assertIn("lint_tools", out)
+
+    def test_two_findings_of_the_shared_host_tests_are_the_only_ones_tolerated(self):
+        root = self.project({"tools/a.py": "x = 1\n"})
+        calls, _out = self.run_lint(root, {})
+        self.assertEqual(calls[1][calls[1].index("--per-file-ignores") + 1], "**/check_mosquitto.py:B904,**/check_task_safety.py:B007")
+
+    def test_qt_stubs_are_also_installed_where_a_tool_imports_qt(self):
+        root = self.project({"tools/icon.py": "from PySide6 import QtGui\n"})
+        calls, _out = self.run_lint(root, {})
+        self.assertIn("PySide6-Essentials", calls[0])
 
     def test_the_switch_in_pyproject_skips_a_repository_that_would_run(self):
         off = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\nfiles = ['src']\n\n[tool.armor]\nci_lint = false\n"})

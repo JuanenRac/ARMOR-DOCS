@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+from typing import Any
 
 # the order of the arguments of P(): the eight languages of the family
 LGS = ["en", "es", "de", "fr", "it", "ja", "zh", "pt"]
@@ -13,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def P(en, es, de, fr, it, ja, zh, pt):
     """One text in the eight languages."""
-    return dict(zip(LGS, (en, es, de, fr, it, ja, zh, pt)))
+    return dict(zip(LGS, (en, es, de, fr, it, ja, zh, pt), strict=True))
 
 
 def pick(value, lg):
@@ -106,7 +107,7 @@ def structure(lg: str, repo: str, tree: str | None = None, before: str = "", aft
     parts = []
     if before.strip():
         parts.append(before.strip())
-    parts.append(f'<p align="center">'+chr(10)+f'  <img src="images/repository-structure.svg" alt="Repository structure of {repo}" width="100%">'+chr(10)+'</p>')
+    parts.append('<p align="center">'+chr(10)+f'  <img src="images/repository-structure.svg" alt="Repository structure of {repo}" width="100%">'+chr(10)+'</p>')
     parts.append('<details>'+chr(10)+f'<summary>{SUMMARY_TREE[lg]}</summary>'+chr(10)*2+'```text'+chr(10)+tree+chr(10)+'```'+chr(10)*2+'</details>')
     if after.strip():
         parts.append(after.strip())
@@ -151,7 +152,7 @@ CONTRIB = P("Before a pull request run `python -I tools/armor_ci_validate.py` an
 
 def text_for(lg: str, **parts) -> dict:
     """Builds the TEXT of one language from texts written as mappings of the eight languages (or plain strings), leaving out the parts that are None."""
-    out = {}
+    out: dict[str, Any] = {}
     for key, value in parts.items():
         if value is None:
             continue

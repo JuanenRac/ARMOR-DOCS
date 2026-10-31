@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The lint and type-check step covers the tools of every repository:** `sync_ci_tools.py` distributes a project tool whose `lint` also type-checks `tools/` and `scripts/` (with the same settings everywhere) next to `src/`, so this repository's own tools and README sources are now checked in CI; the README sources import the names they use instead of `import *`, and the generated READMEs are byte-for-byte what they were.
 - **`sync_ci_tools.py` distributes the lint and type-check step:** the vendored workflow and project tool run ruff and mypy at pinned versions in the repositories that carry a mypy configuration; the tests of the project tool cover when the step runs, is skipped or is switched off.
 - **`status_lights.py` is part of the shared CI tools:** `sync_ci_tools.py` copies it to every repository and the nightly `check_all.sh` runs it through each validator; every manifest now carries `evidence`.
 - **The shared workflow installs Mosquitto in the node repositories:** `sync_ci_tools.py` writes the updated workflow and project tool everywhere; the test counts of the Studio, Server and Android READMEs follow the code.

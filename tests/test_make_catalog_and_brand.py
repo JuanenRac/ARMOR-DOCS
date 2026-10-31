@@ -45,7 +45,7 @@ class CatalogTests(unittest.TestCase):
     def test_table_has_one_row_per_repository_in_order(self):
         rows = make_catalog.table().splitlines()
         self.assertEqual(len(rows), 2 + len(ORDER))
-        for name, row in zip(ORDER, rows[2:]):
+        for name, row in zip(ORDER, rows[2:], strict=True):
             self.assertTrue(row.startswith(f"| {name} |"), row)
         self.assertIn("| ARMOR-COMMON | 0.0.1 | Role of ARMOR-COMMON | Scaffolding |", rows)
 

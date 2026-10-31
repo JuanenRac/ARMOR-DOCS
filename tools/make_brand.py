@@ -13,7 +13,6 @@ Usage:  python tools/make_brand.py            # writes brand/ and images/ in eve
 from __future__ import annotations
 
 import argparse
-import html
 import sys
 from pathlib import Path
 

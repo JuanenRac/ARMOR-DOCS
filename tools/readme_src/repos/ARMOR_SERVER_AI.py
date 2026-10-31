@@ -1,15 +1,17 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-SERVER-AI, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '👁️',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '👁️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'yellow'], ['tests', 'green'], ['hardware', 'yellow'], ['integration', 'yellow'], ['docs', 'green']],
  'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Target', 'Jetson%20Orin%20NX', '76b900'], ['Tests', '80%20passing', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighed with the radars; it decides and explains, never actuates',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Observation service: movement on the cameras weighed with the radars; it decides and explains, never actuates',
         'status': {'software': 'The movement detector and the decision layer run as a service on the CM5 test bench, but there is no detection model yet: it cannot tell '
                                'a person from a cat or a branch.',
                    'tests': '130 tests pass (`python -m unittest discover -s tests`).',
@@ -291,7 +293,7 @@ GLANCE = [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     ("ARMOR-SERVER", T("it asks the server (`/api/v1/ai/*`, token `ARMOR_AI_TOKEN`) | pregunta al servidor (`/api/v1/ai/*`, token `ARMOR_AI_TOKEN`) | er fragt den Server (`/api/v1/ai/*`, Token `ARMOR_AI_TOKEN`) | il interroge le serveur (`/api/v1/ai/*`, jeton `ARMOR_AI_TOKEN`) | interroga il server (`/api/v1/ai/*`, token `ARMOR_AI_TOKEN`) | サーバーに問い合わせる（`/api/v1/ai/*`、トークン `ARMOR_AI_TOKEN`） | 向服务器查询（`/api/v1/ai/*`，令牌 `ARMOR_AI_TOKEN`） | pergunta ao servidor (`/api/v1/ai/*`, token `ARMOR_AI_TOKEN`)"),
      T("the cameras, their grey frames and the zones to ignore in; the observation out | las cámaras, sus fotogramas grises y las zonas a ignorar entran; la observación sale | die Kameras, ihre Graubilder und die Ignorierzonen hinein; die Beobachtung hinaus | les caméras, leurs images grises et les zones à ignorer entrent ; l'observation sort | le telecamere, i loro fotogrammi grigi e le zone da ignorare entrano; l'osservazione esce | カメラ、グレーフレーム、無視ゾーンを受け取り、観察結果を送る | 摄像头、其灰度帧和忽略区进来，观察结果出去 | as câmaras, as suas imagens cinzentas e as zonas a ignorar entram; a observação sai")),
     ("ARMOR-NODE-RADAR", T("through the server | a través del servidor | über den Server | via le serveur | tramite il server | サーバー経由 | 经服务器 | através do servidor"), T("the radar tracks and the light of the nodes that cover each camera | las pistas de radar y la luz de los nodos que cubren cada cámara | die Radarspuren und das Licht der Knoten, die jede Kamera abdecken | les pistes radar et la lumière des nœuds qui couvrent chaque caméra | le tracce radar e la luce dei nodi che coprono ogni telecamera | 各カメラをカバーするノードのレーダートラックと明るさ | 覆盖每台摄像头的节点的雷达轨迹和光照 | as pistas de radar e a luz dos nós que cobrem cada câmara")),
@@ -368,7 +370,7 @@ QUICK_CODE = [
 QUICK_AFTER = P("See the [inference boundary](docs/INFERENCE_BOUNDARY.md) and the [service](docs/SERVICE.md).", "Mira el [límite de la inferencia](docs/INFERENCE_BOUNDARY.md) y el [servicio](docs/SERVICE.md).", "Siehe die [Grenze der Inferenz](docs/INFERENCE_BOUNDARY.md) und den [Dienst](docs/SERVICE.md).", "Voir la [frontière de l'inférence](docs/INFERENCE_BOUNDARY.md) et le [service](docs/SERVICE.md).",
                 "Vedi il [confine dell'inferenza](docs/INFERENCE_BOUNDARY.md) e il [servizio](docs/SERVICE.md).", "[推論の境界](docs/INFERENCE_BOUNDARY.md)と[サービス](docs/SERVICE.md)を参照してください。", "请参阅[推理边界](docs/INFERENCE_BOUNDARY.md)和[服务](docs/SERVICE.md)。", "Consulte o [limite da inferência](docs/INFERENCE_BOUNDARY.md) e o [serviço](docs/SERVICE.md).")
 
-TEST_TABLE = [
+TEST_TABLE: list[Any] = [
     ("`test_service.py`", "16", T("movement, the watcher, cooldown and which radars count | movimiento, el vigilante, el enfriamiento y qué radares cuentan | Bewegung, der Beobachter, Abkühlzeit und welche Radare zählen | mouvement, le surveillant, le délai et quels radars comptent | movimento, il sorvegliante, il raffreddamento e quali radar contano | 動き、監視ループ、クールダウン、どのレーダーを数えるか | 运动、监视器、冷却时间以及哪些雷达计入 | movimento, o vigilante, o arrefecimento e que radares contam")),
     ("`test_service_http.py`", "21", T("the link to the server, the address rules, the passes and the settings | el enlace con el servidor, las reglas de dirección, las pasadas y los ajustes | die Verbindung zum Server, Adressregeln, Durchgänge und Einstellungen | la liaison avec le serveur, les règles d'adresse, les passes et les réglages | il collegamento col server, le regole sull'indirizzo, i passaggi e le impostazioni | サーバーとの接続、アドレス規則、巡回、設定 | 与服务器的连接、地址规则、轮次与设置 | a ligação ao servidor, as regras de endereço, as passagens e as definições")),
     ("`test_vision_profile.py`", "20", T("day and night with hysteresis, the fusion policy and the worker | día y noche con histéresis, la política de fusión y el trabajador | Tag und Nacht mit Hysterese, die Fusionsrichtlinie und der Arbeiter | jour et nuit avec hystérésis, la politique de fusion et le travailleur | giorno e notte con isteresi, la politica di fusione e il worker | ヒステリシス付き昼夜、融合ポリシー、ワーカー | 带迟滞的昼夜、融合策略与工作进程 | dia e noite com histerese, a política de fusão e o trabalhador")),

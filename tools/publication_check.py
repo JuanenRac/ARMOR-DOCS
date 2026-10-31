@@ -129,7 +129,7 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
         diff = git(repo, "log", ref or "--all", "-p", "--no-color", "-M", "--diff-filter=MDR", "--unified=0", "--format=commit %h", check=False)
         current = ""
         current_path = ""
-        for number, line in enumerate(diff.splitlines(), 1):
+        for line in diff.splitlines():
             if line.startswith("commit "):
                 current = line[7:]
             elif line.startswith("--- "):

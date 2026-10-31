@@ -1,15 +1,17 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-DOCS, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '📚',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '📚',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'green'], ['ci', 'green'], ['integration', 'green'], ['docs', 'green']],
  'badges': [['Format', 'Markdown', '083fa1'], ['Languages', '8', '00E5FF']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the truth about what is proven',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Canonical architecture, security baseline and the truth about what is proven',
         'status': {'software': 'The generators for the READMEs, the banners, the catalogue and the capability matrix, and the CI tools copied into every repository, run '
                                'and are tested.',
                    'ci': 'Every push checks that the READMEs, the banners and the catalogue are up to date and that every repository of the registry has its status '
@@ -30,7 +32,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[First vertical slice](docs/FIRST_VERTICAL_SLICE.md): what the simulator-to-console test proves and what it does not.',
                     '**Tools:** `make_readmes.py` writes the README of every repository in the eight languages from `readme_src/`, `make_catalog.py` writes the versions '
                     'of the catalogue, `make_brand.py` its banner and icon, `publication_check.py` looks for anything private before a publication, `clean_history.py` '
-                    'makes a publishable copy of a repository and `sync_ci_tools.py` keeps the CI checks of the family equal, ruff and mypy included (pinned versions, only where a repository has a mypy configuration; `ci_lint = false` in its pyproject.toml skips them).'],
+                    'makes a publishable copy of a repository and `sync_ci_tools.py` keeps the CI checks of the family equal, ruff and mypy included (pinned versions: ruff over the whole checkout, mypy over `src/` where a repository has a mypy configuration and over `tools/` and `scripts/`; `ci_lint = false` in its pyproject.toml skips them).'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': "ARMOR-DOCS is the family's memory: it is where the architecture, the security baseline and the capability matrix live, and the place that says, for "
                'every repository, what has really run on hardware. It also holds the tool that writes the READMEs of all nineteen repositories from one source, so that '
@@ -57,7 +59,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[Primera rebanada vertical](docs/FIRST_VERTICAL_SLICE.md): qué demuestra la prueba del simulador a la consola y qué no.',
                     '**Herramientas:** `make_readmes.py` escribe el README de cada repositorio en los ocho idiomas desde `readme_src/`, `make_catalog.py` escribe las '
                     'versiones del catálogo, `make_brand.py` su banner e icono, `publication_check.py` busca cualquier cosa privada antes de una publicación, '
-                    '`clean_history.py` hace una copia publicable de un repositorio y `sync_ci_tools.py` mantiene iguales las comprobaciones de CI de la familia, ruff y mypy incluidos (versiones fijadas, solo donde un repositorio tiene configuración de mypy; `ci_lint = false` en su pyproject.toml los omite).'],
+                    '`clean_history.py` hace una copia publicable de un repositorio y `sync_ci_tools.py` mantiene iguales las comprobaciones de CI de la familia, ruff y mypy incluidos (versiones fijadas: ruff sobre todo el repositorio, mypy sobre `src/` donde hay configuración de mypy y sobre `tools/` y `scripts/`; `ci_lint = false` en su pyproject.toml los omite).'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': 'ARMOR-DOCS es la memoria de la familia: es donde viven la arquitectura, la base de seguridad y la matriz de capacidades, y el lugar que dice, de cada '
                'repositorio, qué ha corrido de verdad en hardware. También guarda la herramienta que escribe los README de los diecinueve repositorios desde una sola '
@@ -85,7 +87,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     "[Première tranche verticale](docs/FIRST_VERTICAL_SLICE.md) : ce que prouve le test du simulateur à la console et ce qu'il ne prouve pas.",
                     '**Outils :** `make_readmes.py` écrit le README de chaque dépôt dans les huit langues à partir de `readme_src/`, `make_catalog.py` écrit les '
                     'versions du catalogue, `make_brand.py` sa bannière et son icône, `publication_check.py` cherche tout ce qui est privé avant une publication, '
-                    "`clean_history.py` fait une copie publiable d'un dépôt et `sync_ci_tools.py` garde égaux les contrôles de CI de la famille, ruff et mypy compris (versions fixées, seulement là où un dépôt a une configuration mypy ; `ci_lint = false` dans son pyproject.toml les saute)."],
+                    "`clean_history.py` fait une copie publiable d'un dépôt et `sync_ci_tools.py` garde égaux les contrôles de CI de la famille, ruff et mypy compris (versions fixées : ruff sur tout le dépôt, mypy sur `src/` là où il y a une configuration mypy et sur `tools/` et `scripts/` ; `ci_lint = false` dans son pyproject.toml les saute)."],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': "ARMOR-DOCS est la mémoire de la famille : c'est là que vivent l'architecture, la base de sécurité et la matrice de capacités, et l'endroit qui dit, pour "
                "chaque dépôt, ce qui a vraiment tourné sur du matériel. Il garde aussi l'outil qui écrit les README des dix-neuf dépôts à partir d'une seule source, "
@@ -112,7 +114,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[Prima fetta verticale](docs/FIRST_VERTICAL_SLICE.md): cosa dimostra il test dal simulatore alla console e cosa no.',
                     '**Strumenti:** `make_readmes.py` scrive il README di ogni repository nelle otto lingue da `readme_src/`, `make_catalog.py` scrive le versioni del '
                     "catalogo, `make_brand.py` il suo banner e l'icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione, "
-                    '`clean_history.py` fa una copia pubblicabile di un repository e `sync_ci_tools.py` mantiene uguali i controlli di CI della famiglia, ruff e mypy compresi (versioni fissate, solo dove un repository ha una configurazione di mypy; `ci_lint = false` nel suo pyproject.toml li salta).'],
+                    '`clean_history.py` fa una copia pubblicabile di un repository e `sync_ci_tools.py` mantiene uguali i controlli di CI della famiglia, ruff e mypy compresi (versioni fissate: ruff su tutto il repository, mypy su `src/` dove esiste una configurazione di mypy e su `tools/` e `scripts/`; `ci_lint = false` nel suo pyproject.toml li salta).'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': "ARMOR-DOCS è la memoria della famiglia: è dove vivono l'architettura, la base di sicurezza e la matrice delle capacità, e il luogo che dice, per ogni "
                "repository, cosa ha davvero girato su hardware. Tiene anche lo strumento che scrive i README di tutti e diciannove i repository da un'unica fonte, "
@@ -141,7 +143,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[Erster vertikaler Schnitt](docs/FIRST_VERTICAL_SLICE.md): was der Test vom Simulator zur Konsole beweist und was nicht.',
                     '**Werkzeuge:** `make_readmes.py` schreibt das README jedes Repositorys in den acht Sprachen aus `readme_src/`, `make_catalog.py` schreibt die '
                     'Versionen des Katalogs, `make_brand.py` sein Banner und Symbol, `publication_check.py` sucht vor einer Veröffentlichung nach allem Privaten, '
-                    '`clean_history.py` macht eine veröffentlichbare Kopie eines Repositorys und `sync_ci_tools.py` hält die CI-Prüfungen der Familie gleich, auch ruff und mypy (feste Versionen, nur wo ein Repository eine mypy-Konfiguration hat; `ci_lint = false` in der pyproject.toml überspringt sie).'],
+                    '`clean_history.py` macht eine veröffentlichbare Kopie eines Repositorys und `sync_ci_tools.py` hält die CI-Prüfungen der Familie gleich, auch ruff und mypy (feste Versionen: ruff über das ganze Repository, mypy über `src/`, wo es eine mypy-Konfiguration gibt, und über `tools/` und `scripts/`; `ci_lint = false` in der pyproject.toml überspringt sie).'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': 'ARMOR-DOCS ist das Gedächtnis der Familie: Hier leben die Architektur, die Sicherheitsgrundlage und die Fähigkeitsmatrix, und es ist der Ort, der für '
                'jedes Repository sagt, was wirklich auf Hardware gelaufen ist. Es hält auch das Werkzeug, das die READMEs aller neunzehn Repositorys aus einer Quelle '
@@ -162,7 +164,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[接口](docs/INTERFACES.md)：谁产生和使用每个接口，以及在哪里被信任。',
                     '[第一个垂直切片](docs/FIRST_VERTICAL_SLICE.md)：从模拟器到控制台的测试证明了什么、没有证明什么。',
                     '**工具：**`make_readmes.py` 从 `readme_src/` 以八种语言写出每个仓库的 README，`make_catalog.py` 写出目录中的版本，`make_brand.py` 写出其横幅和图标，`publication_check.py` '
-                    '在发布前查找任何私有内容，`clean_history.py` 制作仓库的可发布副本，`sync_ci_tools.py` 让家族的 CI 检查保持一致，其中包括 ruff 和 mypy（版本固定，仅在仓库有 mypy 配置时运行；pyproject.toml 中的 `ci_lint = false` 会跳过它们）。'],
+                    '在发布前查找任何私有内容，`clean_history.py` 制作仓库的可发布副本，`sync_ci_tools.py` 让家族的 CI 检查保持一致，其中包括 ruff 和 mypy（版本固定：ruff 检查整个仓库，mypy 检查有 mypy 配置的 `src/` 以及 `tools/` 和 `scripts/`；pyproject.toml 中的 `ci_lint = false` 会跳过它们）。'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': 'ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里，也是说明每个仓库究竟在硬件上运行过什么的地方。它还保存着从同一个来源编写全部十九个仓库 README 的工具，使八种语言不会各行其是。',
         'hardware': '不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容',
@@ -181,7 +183,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[インターフェース](docs/INTERFACES.md)：各インターフェースを誰が生成・利用し、どこで信頼されるか。',
                     '[最初の垂直スライス](docs/FIRST_VERTICAL_SLICE.md)：シミュレーターからコンソールまでのテストが証明するものとしないもの。',
                     '**ツール：**`make_readmes.py` は `readme_src/` から全リポジトリの README を 8 言語で作り、`make_catalog.py` はカタログのバージョンを書き、`make_brand.py` '
-                    'はバナーとアイコン、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` は公開用のコピーを作り、`sync_ci_tools.py` はファミリーの CI 検査を揃え、ruff と mypy も含みます（バージョン固定、mypy の設定があるリポジトリのみ。pyproject.toml の `ci_lint = false` で省略できます）。'],
+                    'はバナーとアイコン、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` は公開用のコピーを作り、`sync_ci_tools.py` はファミリーの CI 検査を揃え、ruff と mypy も含みます（バージョン固定。ruff はリポジトリ全体、mypy は mypy の設定がある `src/` と `tools/`、`scripts/` が対象。pyproject.toml の `ci_lint = false` で省略できます）。'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': 'ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュリティベースライン、能力マトリクスがここにあり、各リポジトリで実際に実機で動いたものを示す場所です。19 のリポジトリすべての README を 1 つのソースから書くツールもここにあり、8 言語がずれないようにしています。',
         'hardware': '該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します',
@@ -207,7 +209,7 @@ LEGACY = {'en': {'tagline': 'Canonical architecture, security baseline and the t
                     '[Primeira fatia vertical](docs/FIRST_VERTICAL_SLICE.md): o que o teste do simulador à consola prova e o que não prova.',
                     '**Ferramentas:** `make_readmes.py` escreve o README de cada repositório nos oito idiomas a partir de `readme_src/`, `make_catalog.py` escreve as '
                     'versões do catálogo, `make_brand.py` o seu banner e ícone, `publication_check.py` procura qualquer coisa privada antes de uma publicação, '
-                    '`clean_history.py` faz uma cópia publicável de um repositório e `sync_ci_tools.py` mantém iguais as verificações de CI da família, incluindo ruff e mypy (versões fixas, apenas onde um repositório tem configuração do mypy; `ci_lint = false` no pyproject.toml ignora-as).'],
+                    '`clean_history.py` faz uma cópia publicável de um repositório e `sync_ci_tools.py` mantém iguais as verificações de CI da família, incluindo ruff e mypy (versões fixas: ruff sobre todo o repositório, mypy sobre `src/` onde há configuração do mypy e sobre `tools/` e `scripts/`; `ci_lint = false` no pyproject.toml ignora-as).'],
         'intro': '<p align="center">\n  <img src="images/ARMOR_FAMILY.svg" alt="A.R.M.O.R. family" width="100%">\n</p>',
         'fit': 'O ARMOR-DOCS é a memória da família: é onde vivem a arquitetura, a base de segurança e a matriz de capacidades, e o sítio que diz, de cada repositório, '
                'o que correu mesmo em hardware. Guarda também a ferramenta que escreve os README dos dezanove repositórios a partir de uma só fonte, para que os oito '
@@ -457,7 +459,7 @@ GLANCE = [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     (T("Every repository of the family | Cada repositorio de la familia | Jedes Repository der Familie | Chaque dépôt de la famille | Ogni repository della famiglia | ファミリーの全リポジトリ | 家族的每个仓库 | Cada repositório da família"), T("their `armor.project.json` and their README files | su `armor.project.json` y sus ficheros README | ihre `armor.project.json` und ihre README-Dateien | leur `armor.project.json` et leurs fichiers README | il loro `armor.project.json` e i file README | 各 `armor.project.json` と README ファイル | 其 `armor.project.json` 和 README 文件 | o seu `armor.project.json` e os seus ficheiros README"), T("the tools read the version and the maturity and write the README, the banner and the CI copies | las herramientas leen la versión y la madurez y escriben el README, el banner y las copias de CI | die Werkzeuge lesen Version und Reife und schreiben README, Banner und CI-Kopien | les outils lisent la version et la maturité et écrivent le README, la bannière et les copies CI | gli strumenti leggono versione e maturità e scrivono README, banner e copie CI | ツールがバージョンと成熟度を読み、README、バナー、CI コピーを書く | 工具读取版本和成熟度，写出 README、横幅图和 CI 副本 | as ferramentas leem a versão e a maturidade e escrevem o README, a faixa e as cópias de CI")),
     ("ARMOR-COMMON", T("`registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json` | `registry/repositories.json`"), T("the one list of the repositories of the family, read by `registry.py` | la lista única de repositorios de la familia, leída por `registry.py` | die eine Liste der Repositorys der Familie, gelesen von `registry.py` | la liste unique des dépôts de la famille, lue par `registry.py` | l'unico elenco dei repository della famiglia, letto da `registry.py` | ファミリーのリポジトリの唯一の一覧（`registry.py` が読む） | 家族仓库的唯一清单，由 `registry.py` 读取 | a lista única dos repositórios da família, lida por `registry.py`")),
     (T("The person who publishes | Quien publica | Wer veröffentlicht | Qui publie | Chi pubblica | 公開する人 | 发布者 | Quem publica"), "`publication_check.py`  `clean_history.py`", T("what would leak, and a copy of one commit that can be published | lo que se filtraría y una copia de un solo commit que se puede publicar | was durchsickern würde und eine veröffentlichbare Kopie mit einem Commit | ce qui fuirait et une copie en un seul commit publiable | ciò che trapelerebbe e una copia a un solo commit pubblicabile | 漏れるものと、公開できる 1 コミットのコピー | 会泄露什么，以及可发布的单提交副本 | o que vazaria e uma cópia de um só commit que se pode publicar")),
@@ -517,7 +519,7 @@ QUICK_CODE = [
     ("python -m unittest discover -s tests", T("199 tests of these tools; they need no other repository | 199 pruebas de estas herramientas; no necesitan otro repositorio | 199 Tests dieser Werkzeuge; sie brauchen kein anderes Repository | 199 tests de ces outils ; ils n'ont besoin d'aucun autre dépôt | 199 test di questi strumenti; non servono altri repository | これらのツールの 199 件のテスト（他のリポジトリは不要） | 这些工具的 199 项测试；无需其他仓库 | 199 testes destas ferramentas; não precisam de outro repositório")),
 ]
 
-TEST_TABLE = [
+TEST_TABLE: list[Any] = [
     (T("The README generator | El generador de README | Der README-Generator | Le générateur de README | Il generatore di README | README ジェネレーター | README 生成器 | O gerador de README"), T("`test_make_readmes.py`, `test_verbatim_readmes.py`: the eight languages and the sections of every repository | los ocho idiomas y los apartados de cada repositorio | die acht Sprachen und die Abschnitte jedes Repositorys | les huit langues et les sections de chaque dépôt | le otto lingue e le sezioni di ogni repository | 各リポジトリの 8 言語とセクション | 每个仓库的八种语言和各章节 | os oito idiomas e as secções de cada repositório")),
     (T("Catalogue and brand | Catálogo y marca | Katalog und Marke | Catalogue et marque | Catalogo e marchio | カタログとブランド | 目录与品牌 | Catálogo e marca"), T("`test_make_catalog_and_brand.py`, `test_repository_registry.py` | `test_make_catalog_and_brand.py`, `test_repository_registry.py` | `test_make_catalog_and_brand.py`, `test_repository_registry.py` | `test_make_catalog_and_brand.py`, `test_repository_registry.py` | `test_make_catalog_and_brand.py`, `test_repository_registry.py` | `test_make_catalog_and_brand.py`、`test_repository_registry.py` | `test_make_catalog_and_brand.py`、`test_repository_registry.py` | `test_make_catalog_and_brand.py`, `test_repository_registry.py`")),
     (T("Publication | Publicación | Veröffentlichung | Publication | Pubblicazione | 公開 | 发布 | Publicação"), T("`test_publication_check.py`, `test_clean_history.py`: what is BLOCK and REVIEW, and the one-commit copy | qué es BLOCK y REVIEW, y la copia de un commit | was BLOCK und REVIEW ist, und die Ein-Commit-Kopie | ce qui est BLOCK et REVIEW, et la copie à un commit | cosa è BLOCK e REVIEW, e la copia a un commit | BLOCK と REVIEW の基準、1 コミットのコピー | 什么算 BLOCK 和 REVIEW，以及单提交副本 | o que é BLOCK e REVIEW, e a cópia de um commit")),
@@ -561,7 +563,7 @@ ROADMAP = P(
 
 def doc(name, desc):
     seps = [": ", ": ", ": ", " : ", ": ", "：", "：", ": "]
-    return P(*[f"[{name}](docs/{name}.md)" + s + d for s, d in zip(seps, desc)])
+    return P(*[f"[{name}](docs/{name}.md)" + s + d for s, d in zip(seps, desc, strict=True)])
 
 
 DOCS = [

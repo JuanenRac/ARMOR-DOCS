@@ -1,15 +1,17 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-UPDATER, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '🛠️',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '🛠️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'yellow'], ['tests', 'green'], ['ui', 'yellow'], ['security', 'yellow'], ['updates', 'yellow'], ['docs', 'green']],
  'badges': [['Language', 'Python%203.10%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Languages', '8', '00E5FF'], ['Tests', '321', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repository on the machine it runs on (a Python program with no required dependencies)',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repository on the machine it runs on (a Python program with no required dependencies)',
         'status': {'software': 'The manifest discovery, the version comparison and the staged install and update work; they have not been run end to end against every '
                                'repository of the family.',
                    'tests': '321 tests pass (`python -m pytest tests -q`): the discovery, the version comparison, the signature check, the staged install with its lock, '
@@ -520,7 +522,7 @@ def L(lg, key):
     return LEGACY[lg][key]
 
 
-GLANCE = [
+GLANCE: list[Any] = [
     (GL["role"], T("Desktop tool that installs and updates the family on a PC, one project at a time | Herramienta de escritorio que instala y actualiza la familia en un PC, un proyecto cada vez | Desktop-Werkzeug, das die Familie auf einem PC installiert und aktualisiert, ein Projekt nach dem anderen | Outil de bureau qui installe et met à jour la famille sur un PC, un projet à la fois | Strumento desktop che installa e aggiorna la famiglia su un PC, un progetto alla volta | 1 つずつ、PC 上のファミリーをインストール・更新するデスクトップツール | 在 PC 上逐个安装和更新整个家族的桌面工具 | Ferramenta de secretária que instala e atualiza a família num PC, um projeto de cada vez")),
     (GL["stack"], T("Python 3.10+, git; optional PySide6 (Qt Quick) | Python 3.10+, git; PySide6 (Qt Quick) opcional | Python 3.10+, git; optional PySide6 (Qt Quick) | Python 3.10+, git ; PySide6 (Qt Quick) facultatif | Python 3.10+, git; PySide6 (Qt Quick) facoltativo | Python 3.10+、git。任意で PySide6（Qt Quick） | Python 3.10+、git；可选 PySide6（Qt Quick） | Python 3.10+, git; PySide6 (Qt Quick) opcional")),
     (GL["tests"], T("321 (`python -m pytest tests -q`, about six minutes) | 321 (`python -m pytest tests -q`, unos seis minutos) | 321 (`python -m pytest tests -q`, etwa sechs Minuten) | 321 (`python -m pytest tests -q`, environ six minutes) | 321 (`python -m pytest tests -q`, circa sei minuti) | 321 件（`python -m pytest tests -q`、約 6 分） | 321 项（`python -m pytest tests -q`，约六分钟） | 321 (`python -m pytest tests -q`, cerca de seis minutos)")),
@@ -534,7 +536,7 @@ GLANCE += [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     (T("Local workspace | Carpeta de trabajo local | Lokaler Arbeitsordner | Dossier de travail local | Cartella di lavoro locale | ローカルのワークスペース | 本地工作区 | Pasta de trabalho local"), T("folders with a valid `armor.project.json` | carpetas con un `armor.project.json` válido | Ordner mit gültiger `armor.project.json` | dossiers avec un `armor.project.json` valide | cartelle con un `armor.project.json` valido | 有効な `armor.project.json` を持つフォルダー | 带有效 `armor.project.json` 的文件夹 | pastas com um `armor.project.json` válido"), T("what is installed and in which version | qué está instalado y en qué versión | was installiert ist und in welcher Version | ce qui est installé et en quelle version | cosa è installato e in quale versione | インストール済みの内容とバージョン | 已安装什么、什么版本 | o que está instalado e em que versão")),
     ("GitHub", T("`api.github.com`, `raw.githubusercontent.com` and git; `GITHUB_TOKEN` optional | `api.github.com`, `raw.githubusercontent.com` y git; `GITHUB_TOKEN` opcional | `api.github.com`, `raw.githubusercontent.com` und git; `GITHUB_TOKEN` optional | `api.github.com`, `raw.githubusercontent.com` et git ; `GITHUB_TOKEN` facultatif | `api.github.com`, `raw.githubusercontent.com` e git; `GITHUB_TOKEN` facoltativo | `api.github.com`、`raw.githubusercontent.com`、git。`GITHUB_TOKEN` は任意 | `api.github.com`、`raw.githubusercontent.com` 和 git；`GITHUB_TOKEN` 可选 | `api.github.com`, `raw.githubusercontent.com` e git; `GITHUB_TOKEN` opcional"), T("the latest version of every repository of the account | la última versión de cada repositorio de la cuenta | die neueste Version jedes Repositorys des Kontos | la dernière version de chaque dépôt du compte | l'ultima versione di ogni repository dell'account | アカウントの各リポジトリの最新バージョン | 账户中每个仓库的最新版本 | a última versão de cada repositório da conta")),
     ("ARMOR-COMMON", T("a project may list it in `requires` | un proyecto puede listarlo en `requires` | ein Projekt kann es in `requires` aufführen | un projet peut le lister dans `requires` | un progetto può elencarlo in `requires` | プロジェクトは `requires` に挙げられる | 项目可在 `requires` 中列出它 | um projeto pode listá-lo em `requires`"), T("it goes first in every batch: every build needs it | va primero en cada lote: toda compilación lo necesita | es kommt in jedem Stapel zuerst: jeder Build braucht es | il passe en premier dans chaque lot : chaque build en a besoin | va per primo in ogni lotto: ogni compilazione ne ha bisogno | どのバッチでも最初：すべてのビルドが必要とする | 每批都排在最前：每次构建都需要它 | vai primeiro em cada lote: toda a compilação precisa dele")),
@@ -617,7 +619,7 @@ QUICK_CODE = [
 ]
 QUICK_AFTER = P("See [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).", "Mira [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).", "Siehe [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).", "Voir [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).", "Vedi [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).", "[docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md) を参照してください。", "请参阅 [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md)。", "Consulte [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md).")
 
-TEST_TABLE = [
+TEST_TABLE: list[Any] = [
     (T("Discovery and versions | Descubrimiento y versiones | Entdeckung und Versionen | Découverte et versions | Scoperta e versioni | 検出とバージョン | 发现与版本 | Descoberta e versões"), T("the manifest, the registry, local and remote detection, version parsing and the GitHub client | el manifiesto, el registro, la detección local y remota, el análisis de versiones y el cliente de GitHub | das Manifest, das Register, lokale und entfernte Erkennung, Versionsauswertung und der GitHub-Client | le manifeste, le registre, la détection locale et distante, l'analyse des versions et le client GitHub | il manifesto, il registro, il rilevamento locale e remoto, l'analisi delle versioni e il client GitHub | マニフェスト、レジストリ、ローカルとリモートの検出、バージョン解析、GitHub クライアント | 清单、注册表、本地与远程检测、版本解析和 GitHub 客户端 | o manifesto, o registo, a deteção local e remota, a análise de versões e o cliente do GitHub")),
     (T("Install and update | Instalación y actualización | Installation und Aktualisierung | Installation et mise à jour | Installazione e aggiornamento | インストールと更新 | 安装与更新 | Instalação e atualização"), T("staging, the lock, the journal, the backups and the rollback, requirements and the evidence log | la preparación, el bloqueo, el diario, las copias y la vuelta atrás, los requisitos y el registro de evidencias | Staging, Sperre, Journal, Sicherungen und Rückgängigmachen, Voraussetzungen und das Nachweisprotokoll | la préparation, le verrou, le journal, les copies et le retour arrière, les prérequis et le journal de preuves | la preparazione, il blocco, il diario, le copie e il ripristino, i requisiti e il registro delle prove | ステージング、ロック、ジャーナル、バックアップ、ロールバック、要件、証跡ログ | 暂存、锁、日志、备份与回滚、前置要求和证据日志 | a preparação, o bloqueio, o diário, as cópias e a reversão, os requisitos e o registo de provas")),
     (T("Signatures | Firmas | Signaturen | Signatures | Firme | 署名 | 签名 | Assinaturas"), T("the pinned keys, the closed failure and the two policies | las claves fijadas, el fallo cerrado y las dos políticas | die fixierten Schlüssel, das geschlossene Scheitern und die beiden Richtlinien | les clés épinglées, l'échec fermé et les deux politiques | le chiavi fissate, il fallimento chiuso e le due politiche | 固定された鍵、閉じる側の失敗、2 つのポリシー | 固定密钥、失败时关闭以及两种策略 | as chaves fixadas, a falha fechada e as duas políticas")),

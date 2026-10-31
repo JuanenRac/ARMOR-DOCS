@@ -22,7 +22,7 @@ _ORDER = ("en", "es", "fr", "it", "de", "zh", "ja", "pt")
 
 
 def _c(*texts: str) -> dict[str, str]:
-    return dict(zip(_ORDER, texts))
+    return dict(zip(_ORDER, texts, strict=True))
 
 
 CAPTIONS = {

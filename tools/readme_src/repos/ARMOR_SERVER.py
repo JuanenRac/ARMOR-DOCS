@@ -1,8 +1,10 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-SERVER, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
-from readme_src._kit import *  # noqa: F401,F403
+from typing import Any
 
-FACTS = {'emoji': '🛡️',
+from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, structure, table, text_for
+
+FACTS: dict[str, Any] = {'emoji': '🛡️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'green'],
@@ -15,7 +17,7 @@ FACTS = {'emoji': '🛡️',
  'badges': [['Language', 'TypeScript', '3178c6'], ['Runtime', 'Node%2022%2B', '43853d'], ['Tests', '696%20passing', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
-LEGACY = {'en': {'tagline': 'Central security coordinator: nodes, alarms, devices, energy, cameras, the local network and the upkeep of the installation',
+LEGACY: dict[str, Any] = {'en': {'tagline': 'Central security coordinator: nodes, alarms, devices, energy, cameras, the local network and the upkeep of the installation',
         'status': {'software': 'The routes, sessions, encryption and evidence rules run in daily use on the CM5 test bench.',
                    'tests': '696 tests pass (`npm test`), including a full HTTP integration suite against an isolated server and a check that every route is documented '
                             'in the OpenAPI file.',
@@ -1314,7 +1316,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
 
 DIAGRAM = 'flowchart LR\n    N["Field nodes (ESP32-S3)"] -->|MQTT / HTTP + ingest token| S["ARMOR-SERVER"]\n    G["Solar gateway nodes"] -->|MQTT / HTTP + ingest token| S\n    E["Electrical nodes"] -->|MQTT / HTTP + ingest token| S\n    C["IP cameras"] -->|RTSP / ONVIF| S\n    S -->|"MJPEG, JSON, WebSocket"| U["ARMOR-STUDIO"]\n    S -->|"MJPEG, JSON"| A["ARMOR-ANDROID-CONTROL"]\n    S --> D[("data/: cameras.json (AES-GCM), media/, audit.log")]'
 
-NEW_BULLETS = {
+NEW_BULLETS: dict[str, Any] = {
     'en': ['**Old readings set aside:** a channel of an electrical node whose own reading is over a minute old (its meter stopped answering and the node repeats the last good numbers) is left out of the grid figure and the graphs, listed in `stale_channels` of the node and counted in `totals.stale_readings`; the option `electrical.set_aside_old_readings` (on by default) turns it off.', "**The sign-in limit of a node and the right image for the right board:** an administrator reads and changes the wrong passwords per minute a node lets through (`POST /api/v1/admin/nodes/settings`, the panel login used once and never kept), and a firmware image whose file name says another board than the node's is refused with `wrong_board` before anything is sent."],
     'es': ['**Lecturas viejas apartadas:** un canal de un nodo eléctrico cuya propia lectura tiene más de un minuto (su contador dejó de responder y el nodo repite los últimos números buenos) queda fuera de la cifra de la red y de las gráficas, se lista en `stale_channels` del nodo y se cuenta en `totals.stale_readings`; la opción `electrical.set_aside_old_readings` (activada por defecto) lo desactiva.', '**El límite de acceso de un nodo y la imagen correcta para cada placa:** un administrador lee y cambia las contraseñas erróneas por minuto que deja pasar un nodo (`POST /api/v1/admin/nodes/settings`, con el acceso al panel usado una vez y nunca guardado), y una imagen de firmware cuyo nombre de fichero dice otra placa distinta de la del nodo se rechaza con `wrong_board` antes de enviar nada.'],
     'de': ['**Alte Messwerte beiseitegelegt:** Ein Kanal eines Elektro-Knotens, dessen eigener Messwert über eine Minute alt ist (sein Zähler antwortet nicht mehr und der Knoten wiederholt die letzten guten Zahlen), bleibt aus der Netzzahl und den Diagrammen heraus, wird in `stale_channels` des Knotens aufgeführt und in `totals.stale_readings` gezählt; die Option `electrical.set_aside_old_readings` (standardmäßig an) schaltet das ab.', '**Das Anmeldelimit eines Knotens und das richtige Image für die richtige Platine:** Ein Administrator liest und ändert die falschen Passwörter pro Minute, die ein Knoten durchlässt (`POST /api/v1/admin/nodes/settings`, die Panel-Anmeldung einmal benutzt und nie gespeichert), und ein Firmware-Image, dessen Dateiname eine andere Platine als die des Knotens nennt, wird mit `wrong_board` abgelehnt, bevor etwas gesendet wird.'],
@@ -1355,7 +1357,7 @@ GLANCE = [
     (GL["license"], LICENSE_VALUE),
 ]
 
-ROLE_TABLE = [
+ROLE_TABLE: list[Any] = [
     ("ARMOR-NODE-RADAR, SOLAR, ELECTRICAL, ALARM, HMI", T("MQTT `armor/*/#` or HTTP `POST` with the ingest token | MQTT `armor/*/#` o HTTP `POST` con el token de ingesta | MQTT `armor/*/#` oder HTTP `POST` mit dem Ingest-Token | MQTT `armor/*/#` ou HTTP `POST` avec le jeton d'ingestion | MQTT `armor/*/#` o HTTP `POST` con il token di ingestione | MQTT `armor/*/#` または取り込みトークン付きの HTTP `POST` | MQTT `armor/*/#` 或带采集令牌的 HTTP `POST` | MQTT `armor/*/#` ou HTTP `POST` com o token de ingestão"), T("their messages in, orders out | sus mensajes entran, las órdenes salen | ihre Nachrichten hinein, Befehle hinaus | leurs messages entrent, les ordres sortent | i loro messaggi entrano, gli ordini escono | メッセージの受信とオーダーの送信 | 接收其消息并下发指令 | as suas mensagens entram, as ordens saem")),
     ("ARMOR-NETWORK", T("state in, orders and sealed logins out | estado entra, órdenes y accesos sellados salen | Zustand hinein, Aufträge und versiegelte Logins hinaus | l'état entre, ordres et identifiants scellés sortent | lo stato entra, ordini e accessi sigillati escono | 状態の受信、オーダーと封印した認証情報の送信 | 接收状态，下发指令和密封凭据 | o estado entra, ordens e credenciais seladas saem"), T("the local network | la red local | das lokale Netz | le réseau local | la rete locale | ローカルネットワーク | 本地网络 | a rede local")),
     ("ARMOR-STUDIO, ARMOR-ANDROID-CONTROL", T("HTTP, MJPEG and the WebSocket `/api/v1/events` | HTTP, MJPEG y el WebSocket `/api/v1/events` | HTTP, MJPEG und der WebSocket `/api/v1/events` | HTTP, MJPEG et le WebSocket `/api/v1/events` | HTTP, MJPEG e il WebSocket `/api/v1/events` | HTTP、MJPEG、WebSocket `/api/v1/events` | HTTP、MJPEG 和 WebSocket `/api/v1/events` | HTTP, MJPEG e o WebSocket `/api/v1/events`"), T("the consoles | las consolas | die Konsolen | les consoles | le console | コンソール | 控制台 | as consolas")),
@@ -1519,7 +1521,7 @@ DOCS = [
     P("[Node firmware](docs/NODE_FIRMWARE.md): updating the nodes from Studio", "[Firmware de nodos](docs/NODE_FIRMWARE.md): actualizar los nodos desde Studio", "[Knoten-Firmware](docs/NODE_FIRMWARE.md): die Knoten aus Studio aktualisieren", "[Firmware des nœuds](docs/NODE_FIRMWARE.md) : mettre à jour les nœuds depuis Studio", "[Firmware dei nodi](docs/NODE_FIRMWARE.md): aggiornare i nodi da Studio", "[ノードのファームウェア](docs/NODE_FIRMWARE.md)：Studio からのノード更新", "[节点固件](docs/NODE_FIRMWARE.md)：从 Studio 更新节点", "[Firmware dos nós](docs/NODE_FIRMWARE.md): atualizar os nós a partir do Studio"),
     P("[State machine](docs/STATE_MACHINE.md): the life of a node and of an alarm", "[Máquina de estados](docs/STATE_MACHINE.md): la vida de un nodo y de una alarma", "[Zustandsautomat](docs/STATE_MACHINE.md): das Leben eines Knotens und eines Alarms", "[Machine à états](docs/STATE_MACHINE.md) : la vie d'un nœud et d'une alarme", "[Macchina a stati](docs/STATE_MACHINE.md): la vita di un nodo e di un allarme", "[状態機械](docs/STATE_MACHINE.md)：ノードとアラームのライフサイクル", "[状态机](docs/STATE_MACHINE.md)：节点与报警的生命周期", "[Máquina de estados](docs/STATE_MACHINE.md): a vida de um nó e de um alarme"),
 ]
-TEST_TABLE = []
+TEST_TABLE: list[Any] = []
 
 
 def build_lg(lg):
