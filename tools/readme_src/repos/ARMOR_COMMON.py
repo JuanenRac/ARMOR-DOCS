@@ -484,6 +484,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   the voice turn contract\n'
        '│   ├── schemas/                   35 JSON Schemas\n'
        '│   ├── alarm_codes.json           words of each alarm code\n'
+       '│   ├── alarm_facts.json           labels of the facts of an alarm\n'
        '│   └── battery_ops.json           battery operations\n'
        '├── firmware_base/                 the firmware that the five nodes share, once\n'
        '├── conformance/                   1270 accepted and rejected payloads\n'
@@ -493,7 +494,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer targets\n'
        '├── scripts/                       armor-project launcher\n'
        '├── tools/                         generators, firmware sync and release, launcher, CI checks\n'
-       '├── tests/                         238 tests\n'
+       '├── tests/                         242 tests\n'
        '├── docs/                          contracts, firmware, fuzzing\n'
        '├── images/                        banner, icon and the pictures of the README\n'
        '├── .github/                       CI workflow, dashboard notice, issue and pull-request templates\n'
@@ -513,6 +514,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   el contrato de voz\n'
        '│   ├── schemas/                   35 JSON Schema\n'
        '│   ├── alarm_codes.json           palabras de cada alarma\n'
+       '│   ├── alarm_facts.json           etiquetas de los hechos de una alarma\n'
        '│   └── battery_ops.json           operaciones de batería\n'
        '├── firmware_base/                 el firmware que comparten los cinco nodos, una sola vez\n'
        '├── conformance/                   1270 mensajes válidos e inválidos\n'
@@ -522,7 +524,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          objetivos libFuzzer\n'
        '├── scripts/                       lanzador armor-project\n'
        '├── tools/                         generadores, sincronía y publicación del firmware, lanzador, comprobaciones de CI\n'
-       '├── tests/                         238 pruebas\n'
+       '├── tests/                         242 pruebas\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        banner, icono y las imágenes del README\n'
        '├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests\n'
@@ -542,6 +544,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   der Sprachvertrag\n'
        '│   ├── schemas/                   35 JSON-Schemas\n'
        '│   ├── alarm_codes.json           Wörter je Alarmcode\n'
+       '│   ├── alarm_facts.json           Bezeichnungen der Fakten eines Alarms\n'
        '│   └── battery_ops.json           Batterieoperationen\n'
        '├── firmware_base/                 die Firmware, die die fünf Knoten teilen, nur einmal\n'
        '├── conformance/                   1270 gültige und ungültige Nachrichten\n'
@@ -551,7 +554,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer-Ziele\n'
        '├── scripts/                       armor-project-Starter\n'
        '├── tools/                         Generatoren, Firmware-Abgleich und -Release, Starter, CI-Prüfungen\n'
-       '├── tests/                         238 Tests\n'
+       '├── tests/                         242 Tests\n'
        '├── docs/                          Verträge, Firmware, Fuzzing\n'
        '├── images/                        Banner, Symbol und die Bilder des READMEs\n'
        '├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
@@ -571,6 +574,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   le contrat vocal\n'
        '│   ├── schemas/                   35 JSON Schema\n'
        '│   ├── alarm_codes.json           mots de chaque alarme\n'
+       '│   ├── alarm_facts.json           libellés des faits d\'une alarme\n'
        '│   └── battery_ops.json           opérations de batterie\n'
        '├── firmware_base/                 le firmware que les cinq nœuds partagent, une seule fois\n'
        '├── conformance/                   1270 messages valides et refusés\n'
@@ -580,7 +584,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          cibles libFuzzer\n'
        '├── scripts/                       lanceur armor-project\n'
        '├── tools/                         générateurs, synchronisation et publication du firmware, lanceur, vérifications CI\n'
-       '├── tests/                         238 tests\n'
+       '├── tests/                         242 tests\n'
        '├── docs/                          contrats, firmware, fuzzing\n'
        '├── images/                        bannière, icône et images du README\n'
        "├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\n"
@@ -600,6 +604,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   il contratto vocale\n'
        '│   ├── schemas/                   35 JSON Schema\n'
        '│   ├── alarm_codes.json           parole di ogni allarme\n'
+       '│   ├── alarm_facts.json           etichette dei fatti di un allarme\n'
        '│   └── battery_ops.json           operazioni batteria\n'
        '├── firmware_base/                 il firmware che i cinque nodi condividono, una volta sola\n'
        '├── conformance/                   1270 messaggi validi e rifiutati\n'
@@ -609,7 +614,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          target libFuzzer\n'
        '├── scripts/                       avviatore armor-project\n'
        '├── tools/                         generatori, sincronia e rilascio del firmware, avviatore, controlli CI\n'
-       '├── tests/                         238 test\n'
+       '├── tests/                         242 test\n'
        '├── docs/                          contratti, firmware, fuzzing\n'
        '├── images/                        banner, icona e immagini del README\n'
        '├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request\n'
@@ -629,6 +634,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   音声の契約\n'
        '│   ├── schemas/                   34 個の JSON Schema\n'
        '│   ├── alarm_codes.json           アラームコードの文言\n'
+       '│   ├── alarm_facts.json           アラームの事実の表示名\n'
        '│   └── battery_ops.json           バッテリー操作\n'
        '├── firmware_base/                 5 つのノードが共有するファームウェア（1 か所）\n'
        '├── conformance/                   受理・拒否 1270 件\n'
@@ -638,7 +644,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer ターゲット\n'
        '├── scripts/                       armor-project 起動\n'
        '├── tools/                         ジェネレーター、ファームウェアの同期とリリース、ランチャー、CI 検査\n'
-       '├── tests/                         238 件のテスト\n'
+       '├── tests/                         242 件のテスト\n'
        '├── docs/                          契約・FW・ファジング\n'
        '├── images/                        バナー、アイコン、README の画像\n'
        '├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\n'
@@ -658,6 +664,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   语音契约\n'
        '│   ├── schemas/                   35 个 JSON Schema\n'
        '│   ├── alarm_codes.json           报警码的文字\n'
+       '│   ├── alarm_facts.json           报警事实的标签\n'
        '│   └── battery_ops.json           电池操作\n'
        '├── firmware_base/                 五个节点共用的固件（只此一份）\n'
        '├── conformance/                   1270 条有效与无效消息\n'
@@ -667,7 +674,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          libFuzzer 目标\n'
        '├── scripts/                       armor-project 启动器\n'
        '├── tools/                         生成器、固件同步与发布、启动器、CI 检查\n'
-       '├── tests/                         238 项测试\n'
+       '├── tests/                         242 项测试\n'
        '├── docs/                          契约、固件、模糊测试\n'
        '├── images/                        横幅图、图标和 README 的图片\n'
        '├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板\n'
@@ -687,6 +694,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── voice.py                   o contrato de voz\n'
        '│   ├── schemas/                   35 JSON Schema\n'
        '│   ├── alarm_codes.json           palavras de cada alarme\n'
+       '│   ├── alarm_facts.json           etiquetas dos factos de um alarme\n'
        '│   └── battery_ops.json           operações de bateria\n'
        '├── firmware_base/                 o firmware que os cinco nós partilham, uma só vez\n'
        '├── conformance/                   1270 mensagens válidas e recusadas\n'
@@ -696,7 +704,7 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '├── fuzz/                          alvos libFuzzer\n'
        '├── scripts/                       lançador armor-project\n'
        '├── tools/                         geradores, sincronia e publicação do firmware, lançador, verificações de CI\n'
-       '├── tests/                         238 testes\n'
+       '├── tests/                         242 testes\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        faixa, ícone e as imagens do README\n'
        '├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests\n'
@@ -711,13 +719,13 @@ TREE = {'en': 'ARMOR-COMMON/\n'
 
 DIAGRAM = 'flowchart LR\n    S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]\n    S --> G["generated TS + Kotlin types"]\n    S --> V["conformance vectors"]\n    V --> P\n    V --> T["ARMOR-SERVER tests"]\n    V --> X["ARMOR-NODE-SOLAR and ARMOR-NODE-ELECTRICAL checks"]\n    S --> O["OpenAPI (HTTP contract)"]'
 
-FACTS["badges"].append(["Tests", "238%20passing", "2ea44f"])
+FACTS["badges"].append(["Tests", "242%20passing", "2ea44f"])
 FACTS["badges"][2][1] = "1270"
 
 
 def fix(s):
-    """The figures of the previous layout that moved: tests 170 -> 238, paths 190 -> 195, operations 245 -> 253."""
-    return s.replace("170", "238").replace("190", "195").replace("245", "253")
+    """The figures of the previous layout that moved: tests 170 -> 242, paths 190 -> 195, operations 245 -> 253."""
+    return s.replace("170", "242").replace("190", "195").replace("245", "253")
 
 
 def L(lg, key):
@@ -732,9 +740,9 @@ GLANCE = [
     (GL["stack"], P("Python 3.11+, JSON Schema, OpenAPI; C++ firmware base (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base de firmware en C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; Firmware-Basis in C++ (ESP-IDF)",
                     "Python 3.11+, JSON Schema, OpenAPI ; base de firmware C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base firmware in C++ (ESP-IDF)", "Python 3.11+、JSON Schema、OpenAPI、C++ のファームウェア基盤（ESP-IDF）",
                     "Python 3.11+、JSON Schema、OpenAPI；C++ 固件基础（ESP-IDF）", "Python 3.11+, JSON Schema, OpenAPI; base de firmware em C++ (ESP-IDF)")),
-    (GL["tests"], P("238 (`python -m unittest discover -s tests`), 1270 conformance vectors", "238 (`python -m unittest discover -s tests`), 1270 vectores de conformidad", "238 (`python -m unittest discover -s tests`), 1270 Konformitätsvektoren",
-                    "238 (`python -m unittest discover -s tests`), 1270 vecteurs de conformité", "238 (`python -m unittest discover -s tests`), 1270 vettori di conformità", "238 件（`python -m unittest discover -s tests`）、適合ベクター 1270 件",
-                    "238 项（`python -m unittest discover -s tests`），1270 个一致性向量", "238 (`python -m unittest discover -s tests`), 1270 vetores de conformidade")),
+    (GL["tests"], P("242 (`python -m unittest discover -s tests`), 1270 conformance vectors", "242 (`python -m unittest discover -s tests`), 1270 vectores de conformidad", "242 (`python -m unittest discover -s tests`), 1270 Konformitätsvektoren",
+                    "242 (`python -m unittest discover -s tests`), 1270 vecteurs de conformité", "242 (`python -m unittest discover -s tests`), 1270 vettori di conformità", "242 件（`python -m unittest discover -s tests`）、適合ベクター 1270 件",
+                    "242 项（`python -m unittest discover -s tests`），1270 个一致性向量", "242 (`python -m unittest discover -s tests`), 1270 vetores de conformidade")),
     (GL["contract"], P("35 JSON Schemas, 196 HTTP paths (255 operations)", "35 JSON Schema, 196 rutas HTTP (255 operaciones)", "35 JSON-Schemas, 196 HTTP-Pfade (255 Operationen)",
                        "35 JSON Schema, 196 chemins HTTP (255 opérations)", "35 JSON Schema, 196 percorsi HTTP (255 operazioni)", "JSON Schema 35 個、HTTP パス 196 本（255 操作）",
                        "35 个 JSON Schema，196 条 HTTP 路径（255 个操作）", "35 JSON Schema, 196 caminhos HTTP (255 operações)")),
@@ -860,7 +868,7 @@ def config_body(lg):
 
 QUICK_CODE = [
     ("python -m pip install -e .", T("install the library | instala la biblioteca | die Bibliothek installieren | installe la bibliothèque | installa la libreria | ライブラリをインストール | 安装库 | instala a biblioteca")),
-    ("python -m unittest discover -s tests", T("238 tests, 1270 conformance vectors | 238 pruebas, 1270 vectores | 238 Tests, 1270 Vektoren | 238 tests, 1270 vecteurs | 238 test, 1270 vettori | 238 件のテスト、1270 ベクター | 238 项测试、1270 个向量 | 238 testes, 1270 vetores")),
+    ("python -m unittest discover -s tests", T("242 tests, 1270 conformance vectors | 242 pruebas, 1270 vectores | 242 Tests, 1270 Vektoren | 242 tests, 1270 vecteurs | 242 test, 1270 vettori | 242 件のテスト、1270 ベクター | 242 项测试、1270 个向量 | 242 testes, 1270 vetores")),
     ("python tools/generate_types.py --check", T("the generated types are current | los tipos generados están al día | die erzeugten Typen sind aktuell | les types générés sont à jour | i tipi generati sono aggiornati | 生成された型は最新 | 生成的类型是最新的 | os tipos gerados estão atualizados")),
     ("python tools/generate_rest_types.py --check", T("the types of the HTTP contract are current | los tipos del contrato HTTP están al día | die Typen des HTTP-Vertrags sind aktuell | les types du contrat HTTP sont à jour | i tipi del contratto HTTP sono aggiornati | HTTP 契約の型は最新 | HTTP 契约的类型是最新的 | os tipos do contrato HTTP estão atualizados")),
     ("python tools/make_conformance.py", T("regenerate the vectors after editing the case list (--check: they are current) | regenera los vectores tras editar la lista de casos (--check: están al día) | Vektoren nach Änderung der Fallliste neu erzeugen (--check: aktuell) | régénère les vecteurs après modification de la liste de cas (--check : à jour) | rigenera i vettori dopo aver modificato l'elenco dei casi (--check: aggiornati) | ケース一覧の編集後にベクターを再生成（--check：最新か確認） | 修改用例列表后重新生成向量（--check：检查是否最新） | regenera os vetores depois de editar a lista de casos (--check: estão atualizados)")),
@@ -895,7 +903,7 @@ TEST_FILES = [
     ("`test_release_firmware.py`", "12", T("the signing and publication of firmware | la firma y publicación del firmware | Signatur und Veröffentlichung der Firmware | la signature et la publication du firmware | la firma e la pubblicazione del firmware | ファームウェアの署名と公開 | 固件的签名与发布 | a assinatura e publicação do firmware")),
     ("`test_pretty_run.py`, `test_build_scripts.py`", "11", T("the live panel of the scripts | el panel en vivo de los scripts | das Live-Panel der Skripte | le panneau en direct des scripts | il pannello dal vivo degli script | スクリプトのライブパネル | 脚本的实时面板 | o painel em direto dos scripts")),
     ("`test_generated_types.py`, `test_repository_registry.py`, `test_voice_turn.py`", "21", T("the generated types, the repository list and the voice turn | los tipos generados, la lista de repositorios y el turno de voz | die erzeugten Typen, die Repository-Liste und der Sprachturn | les types générés, la liste des dépôts et le tour de parole | i tipi generati, l'elenco dei repository e il turno vocale | 生成型、リポジトリ一覧、音声ターン | 生成类型、仓库清单和语音轮次 | os tipos gerados, a lista de repositórios e o turno de voz")),
-    ("`test_alarm_codes.py`, `test_collect_errors.py`, `test_project_manifest_doc.py`, `test_firmware_fuzz.py`, `test_fuzz_validator.py`", "17", T("alarm code words, error collection, the manifest guide and the fuzz harness | palabras de los códigos de alarma, recogida de errores, guía del manifiesto y banco de fuzzing | Alarmcode-Wörter, Fehlersammlung, Manifest-Leitfaden und Fuzz-Gerüst | mots des codes d'alarme, collecte d'erreurs, guide du manifeste et banc de fuzzing | parole dei codici di allarme, raccolta errori, guida al manifesto e banco di fuzzing | アラームコードの文言、エラー収集、マニフェスト解説、ファズ環境 | 报警码文字、错误收集、清单指南和模糊测试环境 | palavras dos códigos de alarme, recolha de erros, guia do manifesto e banco de fuzzing")),
+    ("`test_alarm_codes.py`, `test_alarm_facts.py`, `test_collect_errors.py`, `test_project_manifest_doc.py`, `test_firmware_fuzz.py`, `test_fuzz_validator.py`", "21", T("alarm code words, error collection, the manifest guide and the fuzz harness | palabras de los códigos de alarma, recogida de errores, guía del manifiesto y banco de fuzzing | Alarmcode-Wörter, Fehlersammlung, Manifest-Leitfaden und Fuzz-Gerüst | mots des codes d'alarme, collecte d'erreurs, guide du manifeste et banc de fuzzing | parole dei codici di allarme, raccolta errori, guida al manifesto e banco di fuzzing | アラームコードの文言、エラー収集、マニフェスト解説、ファズ環境 | 报警码文字、错误收集、清单指南和模糊测试环境 | palavras dos códigos de alarme, recolha de erros, guia do manifesto e banco de fuzzing")),
 ]
 TEST_NOTE = P(
     "The host tests of the shared firmware are in `firmware_base/tests/` (C++, no ESP-IDF needed) and run from the node repositories' own checks. `python tools/sync_firmware_base.py check` needs the five node repositories next to this one. GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests.",
@@ -975,7 +983,7 @@ def build_lg(lg):
         "interfaces": TOPICS_INTRO[lg] + "\n\n" + table(lg, "topic", TOPICS) + "\n\n" + INTERFACES_SCHEMAS[lg] + "\n\n" + TOOLS_INTRO[lg] + "\n\n" + table(lg, "tool", TOOLS),
         "configuration": config_body(lg),
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n",
-        "testing": code(lg, [("python -m unittest discover -s tests", T("238 tests | 238 pruebas | 238 Tests | 238 tests | 238 test | 238 件 | 238 项 | 238 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m unittest discover -s tests", T("242 tests | 242 pruebas | 242 Tests | 242 tests | 242 test | 242 件 | 242 项 | 242 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-COMMON", tree=TREE[lg]),
