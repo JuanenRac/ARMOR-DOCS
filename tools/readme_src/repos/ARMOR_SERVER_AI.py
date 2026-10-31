@@ -12,12 +12,12 @@ FACTS = {'emoji': '👁️',
 LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighed with the radars; it decides and explains, never actuates',
         'status': {'software': 'The movement detector and the decision layer run as a service on the CM5 test bench, but there is no detection model yet: it cannot tell '
                                'a person from a cat or a branch.',
-                   'tests': '80 tests pass (`python -m unittest discover -s tests`).',
+                   'tests': '130 tests pass (`python -m unittest discover -s tests`).',
                    'hardware': 'While the system is armed it looks at tiny grey frames of the real IP cameras of the CM5 test bench; nothing has run on a Jetson, with '
                                'TensorRT or on a decoded RTSP stream.',
                    'integration': 'It reports movement weighed with the radars to the server of the CM5 test bench.',
                    'docs': 'Eight languages and the changelog are up to date.'},
-        'honest': 'The decision layer and the movement detector are real and tested (80 tests), and the observation service **runs on the CM5 test bench**: while the '
+        'honest': 'The decision layer and the movement detector are real and tested (130 tests), and the observation service **runs on the CM5 test bench**: while the '
                   'system is armed it looks at tiny grey frames of the real IP cameras and reports movement weighed with the radars. It cannot tell a person from a cat '
                   'or a branch: **there is no detection model yet**, and nothing has run on the Jetson, TensorRT or an RTSP stream decoded there.',
         'bullets': ['**The observation service:** `python -m armor_server_ai.service` is never called by the server (it asks the server, with its own token): while the '
@@ -43,12 +43,12 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
  'es': {'tagline': 'Servicio de observación: el movimiento en las cámaras sopesado con los radares; decide y explica, nunca actúa',
         'status': {'software': 'El detector de movimiento y la capa de decisión funcionan como servicio en el banco de pruebas CM5, pero aún no hay modelo de detección: '
                                'no distingue una persona de un gato o una rama.',
-                   'tests': 'Pasan 80 pruebas (`python -m unittest discover -s tests`).',
+                   'tests': 'Pasan 130 pruebas (`python -m unittest discover -s tests`).',
                    'hardware': 'Mientras el sistema está armado mira fotogramas grises diminutos de las cámaras IP reales del banco de pruebas CM5; nada ha funcionado '
                                'en una Jetson, con TensorRT ni sobre un flujo RTSP decodificado.',
                    'integration': 'Informa del movimiento ponderado con los radares al servidor del banco de pruebas.',
                    'docs': 'Ocho idiomas y el historial de cambios están al día.'},
-        'honest': 'La capa de decisión y el detector de movimiento son reales y están probados (80 tests), y el servicio de observación **corre en el banco de pruebas '
+        'honest': 'La capa de decisión y el detector de movimiento son reales y están probados (130 tests), y el servicio de observación **corre en el banco de pruebas '
                   'de la CM5**: con el sistema armado mira pequeños fotogramas grises de las cámaras IP reales e informa del movimiento sopesado con los radares. No '
                   'distingue a una persona de un gato o una rama: **todavía no hay modelo de detección**, y nada ha corrido en la Jetson, TensorRT ni un flujo RTSP '
                   'decodificado allí.',
@@ -76,12 +76,12 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
  'fr': {'tagline': "Service d'observation : le mouvement sur les caméras pesé avec les radars ; il décide et explique, n'actionne jamais",
         'status': {'software': "Le détecteur de mouvement et la couche de décision tournent comme service sur le banc d'essai CM5, mais il n'y a pas encore de modèle de "
                                "détection : il ne distingue pas une personne d'un chat ou d'une branche.",
-                   'tests': '80 tests réussissent (`python -m unittest discover -s tests`).',
+                   'tests': '130 tests réussissent (`python -m unittest discover -s tests`).',
                    'hardware': "Tant que le système est armé, il regarde de minuscules images grises des vraies caméras IP du banc d'essai CM5 ; rien n'a tourné sur un "
                                'Jetson, avec TensorRT ni sur un flux RTSP décodé.',
                    'integration': "Il rend compte au serveur du banc d'essai du mouvement pondéré par les radars .",
                    'docs': 'Huit langues et le journal des modifications sont à jour.'},
-        'honest': "La couche de décision et le détecteur de mouvement sont réels et testés (80 tests), et le service d'observation **tourne sur le banc de test CM5** : "
+        'honest': "La couche de décision et le détecteur de mouvement sont réels et testés (130 tests), et le service d'observation **tourne sur le banc de test CM5** : "
                   'système armé, il regarde de minuscules images grises des vraies caméras IP et signale le mouvement pesé avec les radars. Il ne distingue pas une '
                   "personne d'un chat ou d'une branche : **il n'y a pas encore de modèle de détection**, et rien n'a tourné sur le Jetson, TensorRT ni un flux RTSP "
                   'décodé là.',
@@ -110,12 +110,12 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
  'it': {'tagline': 'Servizio di osservazione: il movimento sulle telecamere pesato con i radar; decide e spiega, non aziona mai',
         'status': {'software': "Il rilevatore di movimento e il livello decisionale girano come servizio sul banco di prova CM5, ma non c'è ancora un modello di "
                                'rilevamento: non distingue una persona da un gatto o da un ramo.',
-                   'tests': 'Superano 80 test (`python -m unittest discover -s tests`).',
+                   'tests': 'Superano 130 test (`python -m unittest discover -s tests`).',
                    'hardware': 'Mentre il sistema è inserito guarda minuscoli fotogrammi grigi delle telecamere IP reali del banco di prova CM5; nulla ha girato su una '
                                'Jetson, con TensorRT o su un flusso RTSP decodificato.',
                    'integration': 'Riferisce al server del banco di prova il movimento ponderato con i radar.',
                    'docs': 'Otto lingue e il registro delle modifiche sono aggiornati.'},
-        'honest': 'Lo strato decisionale e il rilevatore di movimento sono reali e provati (80 test), e il servizio di osservazione **gira sul banco di prova CM5**: a '
+        'honest': 'Lo strato decisionale e il rilevatore di movimento sono reali e provati (130 test), e il servizio di osservazione **gira sul banco di prova CM5**: a '
                   'sistema inserito guarda minuscoli fotogrammi grigi delle vere telecamere IP e riferisce il movimento pesato con i radar. Non distingue una persona da '
                   "un gatto o da un ramo: **non c'è ancora un modello di rilevamento**, e nulla ha girato sul Jetson, TensorRT o su un flusso RTSP decodificato lì.",
         'bullets': ['**Il servizio di osservazione:** `python -m armor_server_ai.service` non viene mai chiamato dal server (è lui a interrogare il server, con il '
@@ -143,12 +143,12 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
  'de': {'tagline': 'Beobachtungsdienst: Bewegung auf den Kameras, gegen die Radare abgewogen; er entscheidet und erklärt, schaltet nie',
         'status': {'software': 'Der Bewegungsmelder und die Entscheidungsschicht laufen als Dienst auf dem CM5-Prüfstand, aber es gibt noch kein Erkennungsmodell: Er '
                                'unterscheidet keine Person von einer Katze oder einem Ast.',
-                   'tests': '80 Tests bestehen (`python -m unittest discover -s tests`).',
+                   'tests': '130 Tests bestehen (`python -m unittest discover -s tests`).',
                    'hardware': 'Solange das System scharf ist, betrachtet er winzige Graubilder der echten IP-Kameras des CM5-Prüfstands; nichts lief auf einem Jetson, '
                                'mit TensorRT oder auf einem dekodierten RTSP-Strom.',
                    'integration': 'Er meldet die mit den Radaren gewichtete Bewegung an den Server des Prüfstands.',
                    'docs': 'Acht Sprachen und das Änderungsprotokoll sind aktuell.'},
-        'honest': 'Die Entscheidungsschicht und der Bewegungsdetektor sind real und getestet (80 Tests), und der Beobachtungsdienst **läuft am CM5-Testaufbau**: Bei '
+        'honest': 'Die Entscheidungsschicht und der Bewegungsdetektor sind real und getestet (130 Tests), und der Beobachtungsdienst **läuft am CM5-Testaufbau**: Bei '
                   'scharfem System sieht er winzige Graubilder der echten IP-Kameras an und meldet Bewegung, gegen die Radare abgewogen. Er kann eine Person nicht von '
                   'einer Katze oder einem Ast unterscheiden: **Es gibt noch kein Erkennungsmodell**, und nichts lief auf dem Jetson, mit TensorRT oder einem dort '
                   'dekodierten RTSP-Strom.',
@@ -175,11 +175,11 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
         'requirements': ['Python 3.11+', 'optional: ein Jetson Orin NX mit TensorRT-Engines (nicht erprobt)']},
  'zh': {'tagline': '观察服务：把摄像头上的移动与雷达对照权衡；它做出决定并给出解释，从不执行动作',
         'status': {'software': '移动检测器和决策层在 CM5 测试台上作为服务运行，但目前还没有检测模型：它分不清人、猫或树枝。',
-                   'tests': '80 项测试通过（`python -m unittest discover -s tests`）。',
+                   'tests': '130 项测试通过（`python -m unittest discover -s tests`）。',
                    'hardware': '系统布防期间，它查看 CM5 测试台上真实 IP 摄像头的微小灰度画面；还没有在 Jetson、TensorRT 或解码后的 RTSP 流上运行过。',
                    'integration': '它把结合雷达加权后的移动情况报告给测试台的服务器。',
                    'docs': '八种语言和更新日志均为最新。'},
-        'honest': '决策层和移动检测器是真实的并经过测试（80 个测试），观察服务**在 CM5 测试台上运行**：系统布防时，它查看真实 IP 摄像头的微小灰度帧，并报告与雷达对照权衡后的移动。它分不清人、猫或树枝：**目前还没有检测模型**，也没有任何东西在 Jetson、TensorRT 或在那里解码的 '
+        'honest': '决策层和移动检测器是真实的并经过测试（130 个测试），观察服务**在 CM5 测试台上运行**：系统布防时，它查看真实 IP 摄像头的微小灰度帧，并报告与雷达对照权衡后的移动。它分不清人、猫或树枝：**目前还没有检测模型**，也没有任何东西在 Jetson、TensorRT 或在那里解码的 '
                   'RTSP 流上运行过。',
         'bullets': ['**观察服务：**`python -m armor_server_ai.service` 服务器从不调用它（是它用自己的令牌向服务器询问）：系统**布防**时，它每隔几秒从每个摄像头的码流取一帧微小的灰度图（64 x 36，从不保存），测量画面移动了多少，当雷达轨迹一致时，带着自己的令牌上报给 '
                     'ARMOR-SERVER。',
@@ -196,11 +196,11 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
         'requirements': ['Python 3.11+', '可选：带 TensorRT 引擎的 Jetson Orin NX（未经验证）']},
  'ja': {'tagline': '観察サービス：カメラ上の動きをレーダーと照らし合わせます。判断して説明するだけで、決して動作させません',
         'status': {'software': '動き検出と判断の層は CM5 テストベンチ上でサービスとして動いていますが、検出モデルはまだありません。人と猫や枝の区別はできません。',
-                   'tests': '80 件のテストが通ります（`python -m unittest discover -s tests`）。',
+                   'tests': '130 件のテストが通ります（`python -m unittest discover -s tests`）。',
                    'hardware': '警戒中は、CM5 テストベンチの実際の IP カメラの小さなグレー画像を見ています。Jetson、TensorRT、デコードした RTSP ストリームではまだ何も動かしていません。',
                    'integration': 'レーダーと照合した動きの結果をテストベンチのサーバーに報告します。',
                    'docs': '8 言語と変更履歴は最新です。'},
-        'honest': '判断レイヤーと動き検出器は実在し、テストされています（80 件）。観察サービスは **CM5 テストベンチで動作**しており、システムの警戒中に実際の IP '
+        'honest': '判断レイヤーと動き検出器は実在し、テストされています（130 件）。観察サービスは **CM5 テストベンチで動作**しており、システムの警戒中に実際の IP '
                   'カメラの小さなグレーフレームを見て、レーダーと照らし合わせた動きを報告します。人と猫や枝の区別はできません。**検出モデルはまだなく**、Jetson、TensorRT、そこでデコードした RTSP ストリームでは何も動いていません。',
         'bullets': ['**観察サービス：**`python -m armor_server_ai.service` はサーバーから呼び出されることはなく（自分のトークンでサーバーに問い合わせます）、システムが**警戒中**のあいだ、数秒ごとに各カメラのストリームから小さなグレーフレーム（64 x '
                     '36、保存しない）を 1 枚取り、画面のどれだけが動いたかを測り、レーダーの軌跡と一致すれば、自分のトークンで ARMOR-SERVER に報告します。',
@@ -218,12 +218,12 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
  'pt': {'tagline': 'Serviço de observação: o movimento nas câmaras pesado com os radares; decide e explica, nunca aciona',
         'status': {'software': 'O detetor de movimento e a camada de decisão funcionam como serviço na bancada de testes CM5, mas ainda não há modelo de deteção: não '
                                'distingue uma pessoa de um gato ou de um ramo.',
-                   'tests': 'Passam 80 testes (`python -m unittest discover -s tests`).',
+                   'tests': 'Passam 130 testes (`python -m unittest discover -s tests`).',
                    'hardware': 'Enquanto o sistema está armado, olha para pequenas imagens cinzentas das câmaras IP reais da bancada de testes CM5; nada funcionou num '
                                'Jetson, com TensorRT ou sobre um fluxo RTSP descodificado.',
                    'integration': 'Reporta ao servidor da bancada de testes o movimento ponderado com os radares.',
                    'docs': 'Oito idiomas e o registo de alterações estão atualizados.'},
-        'honest': 'A camada de decisão e o detetor de movimento são reais e estão testados (80 testes), e o serviço de observação **corre na bancada de testes do CM5**: '
+        'honest': 'A camada de decisão e o detetor de movimento são reais e estão testados (130 testes), e o serviço de observação **corre na bancada de testes do CM5**: '
                   'com o sistema armado olha para pequenas imagens cinzentas das câmaras IP reais e comunica o movimento pesado com os radares. Não distingue uma pessoa '
                   'de um gato ou de um ramo: **ainda não há modelo de deteção**, e nada correu no Jetson, no TensorRT nem num fluxo RTSP descodificado aí.',
         'bullets': ['**O serviço de observação:** `python -m armor_server_ai.service` nunca é chamado pelo servidor (é ele que pergunta ao servidor, com o seu próprio '
@@ -249,178 +249,20 @@ LEGACY = {'en': {'tagline': 'Observation service: movement on the cameras weighe
         'requirements': ['Python 3.11+', 'opcional: um Jetson Orin NX com motores TensorRT (não comprovado)']}}
 
 # the text tree of docs/structure.json (make_structure.py --tree <language>); the repository's own check fails when it and the file disagree
-TREE = {'en': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 the observation service: one pass per interval\n'
-       '│   ├── motion.py                  grey frame, zones to ignore, movement share\n'
-       '│   ├── profile.py                 day or low light, with hysteresis\n'
-       '│   ├── policy.py                  fusion: ignore, review, high\n'
-       '│   ├── engine_registry.py         TensorRT engines checked by SHA-256\n'
-       '│   └── cli.py                     the JSON-lines worker\n'
-       '├── tests/                         80 tests: motion, policy, service, worker\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         the shared CI checks and project tooling\n'
-       '├── images/                        banner, icon and the pictures of the README\n'
-       '├── .github/                       CI workflow, dashboard notice, issue and pull-request templates\n'
-       '├── armor.project.json             manifest: version, role, maturity\n'
-       '├── pyproject.toml                 package metadata, entry points\n'
-       '├── CHANGELOG.md                   what changed in each version\n'
-       '├── run.sh run.bat                 start, shared workflow\n'
-       '├── build.sh build.bat             build and test, shared workflow\n'
-       '├── build-test.sh build-test.bat   build, test and package\n'
-       '├── test.sh test.bat               only the tests, never the version\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'es': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 el servicio de observación: una pasada por intervalo\n'
-       '│   ├── motion.py                  fotograma gris, zonas a ignorar, movimiento\n'
-       '│   ├── profile.py                 día o poca luz, con histéresis\n'
-       '│   ├── policy.py                  fusión: ignore, review, high\n'
-       '│   ├── engine_registry.py         motores TensorRT comprobados por SHA-256\n'
-       '│   └── cli.py                     el trabajador de líneas JSON\n'
-       '├── tests/                         80 pruebas: movimiento, política, servicio, trabajador\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         las comprobaciones de CI y las herramientas compartidas\n'
-       '├── images/                        banner, icono y las imágenes del README\n'
-       '├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests\n'
-       '├── armor.project.json             manifiesto: versión, función, madurez\n'
-       '├── pyproject.toml                 metadatos del paquete, entradas\n'
-       '├── CHANGELOG.md                   qué cambió en cada versión\n'
-       '├── run.sh run.bat                 arrancar, flujo compartido\n'
-       '├── build.sh build.bat             construir y probar, flujo compartido\n'
-       '├── build-test.sh build-test.bat   construir, probar y empaquetar\n'
-       '├── test.sh test.bat               solo las pruebas, nunca la versión\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'de': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 der Beobachtungsdienst: ein Durchgang je Intervall\n'
-       '│   ├── motion.py                  Graubild, Ignorierzonen, Bewegungsanteil\n'
-       '│   ├── profile.py                 Tag oder wenig Licht, mit Hysterese\n'
-       '│   ├── policy.py                  Fusion: ignore, review, high\n'
-       '│   ├── engine_registry.py         TensorRT-Engines per SHA-256 geprüft\n'
-       '│   └── cli.py                     der JSON-Lines-Arbeiter\n'
-       '├── tests/                         80 Tests: Bewegung, Richtlinie, Dienst, Arbeiter\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         die gemeinsamen CI-Prüfungen und Werkzeuge\n'
-       '├── images/                        Banner, Symbol und die Bilder des READMEs\n'
-       '├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
-       '├── armor.project.json             Manifest: Version, Rolle, Reife\n'
-       '├── pyproject.toml                 Paket-Metadaten, Einstiege\n'
-       '├── CHANGELOG.md                   was sich in jeder Version geändert hat\n'
-       '├── run.sh run.bat                 Start, gemeinsamer Ablauf\n'
-       '├── build.sh build.bat             Bauen und Testen, gemeinsamer Ablauf\n'
-       '├── build-test.sh build-test.bat   Bauen, Testen und Verpacken\n'
-       '├── test.sh test.bat               nur die Tests, nie die Version\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'fr': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       "│   ├── service.py                 le service d'observation : une passe par intervalle\n"
-       '│   ├── motion.py                  image grise, zones à ignorer, mouvement\n'
-       '│   ├── profile.py                 jour ou faible lumière, avec hystérésis\n'
-       '│   ├── policy.py                  fusion : ignore, review, high\n'
-       '│   ├── engine_registry.py         moteurs TensorRT vérifiés par SHA-256\n'
-       '│   └── cli.py                     le travailleur JSON lignes\n'
-       '├── tests/                         80 tests : mouvement, politique, service, travailleur\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         les vérifications CI et les outils partagés\n'
-       '├── images/                        bannière, icône et images du README\n'
-       "├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\n"
-       '├── armor.project.json             manifeste : version, rôle, maturité\n'
-       '├── pyproject.toml                 métadonnées du paquet, entrées\n'
-       '├── CHANGELOG.md                   ce qui a changé à chaque version\n'
-       '├── run.sh run.bat                 démarrer, flux partagé\n'
-       '├── build.sh build.bat             construire et tester, flux partagé\n'
-       '├── build-test.sh build-test.bat   construire, tester, empaqueter\n'
-       '├── test.sh test.bat               seulement les tests, jamais la version\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'it': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 il servizio di osservazione: un passaggio per intervallo\n'
-       '│   ├── motion.py                  fotogramma grigio, zone da ignorare, movimento\n'
-       '│   ├── profile.py                 giorno o poca luce, con isteresi\n'
-       '│   ├── policy.py                  fusione: ignore, review, high\n'
-       '│   ├── engine_registry.py         motori TensorRT verificati con SHA-256\n'
-       '│   └── cli.py                     il worker di righe JSON\n'
-       '├── tests/                         80 test: movimento, politica, servizio, worker\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         i controlli CI e gli strumenti condivisi\n'
-       '├── images/                        banner, icona e immagini del README\n'
-       '├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request\n'
-       '├── armor.project.json             manifesto: versione, ruolo, maturità\n'
-       '├── pyproject.toml                 metadati del pacchetto, ingressi\n'
-       '├── CHANGELOG.md                   cosa è cambiato in ogni versione\n'
-       '├── run.sh run.bat                 avvio, flusso condiviso\n'
-       '├── build.sh build.bat             compila e prova, flusso condiviso\n'
-       '├── build-test.sh build-test.bat   compila, prova e impacchetta\n'
-       '├── test.sh test.bat               solo i test, mai la versione\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'ja': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 観察サービス：間隔ごとに 1 巡\n'
-       '│   ├── motion.py                  グレーフレーム、無視ゾーン、動き\n'
-       '│   ├── profile.py                 昼間か低照度（ヒステリシス付き）\n'
-       '│   ├── policy.py                  融合：ignore、review、high\n'
-       '│   ├── engine_registry.py         SHA-256 で検証する TensorRT エンジン\n'
-       '│   └── cli.py                     JSON Lines ワーカー\n'
-       '├── tests/                         80 件：動き、ポリシー、サービス、ワーカー\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md\n'
-       '├── tools/                         共通の CI 検査とツール\n'
-       '├── images/                        バナー、アイコン、README の画像\n'
-       '├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\n'
-       '├── armor.project.json             マニフェスト：版・役割・成熟度\n'
-       '├── pyproject.toml                 パッケージ情報とエントリー\n'
-       '├── CHANGELOG.md                   各バージョンの変更点\n'
-       '├── run.sh run.bat                 起動（共通フロー）\n'
-       '├── build.sh build.bat             ビルドとテスト（共通フロー）\n'
-       '├── build-test.sh build-test.bat   ビルド、テスト、パッケージ化\n'
-       '├── test.sh test.bat               テストのみ（版は変えません）\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'zh': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 观察服务：每个间隔一轮\n'
-       '│   ├── motion.py                  灰度帧、忽略区、运动量\n'
-       '│   ├── profile.py                 白天或弱光，带迟滞\n'
-       '│   ├── policy.py                  融合：ignore、review、high\n'
-       '│   ├── engine_registry.py         以 SHA-256 校验的 TensorRT 引擎\n'
-       '│   └── cli.py                     JSON 行工作进程\n'
-       '├── tests/                         80 项：运动、策略、服务、工作进程\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md\n'
-       '├── tools/                         共用的 CI 检查和工具\n'
-       '├── images/                        横幅图、图标和 README 的图片\n'
-       '├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板\n'
-       '├── armor.project.json             清单：版本、角色、成熟度\n'
-       '├── pyproject.toml                 包元数据、入口\n'
-       '├── CHANGELOG.md                   每个版本的变化\n'
-       '├── run.sh run.bat                 启动（共用流程）\n'
-       '├── build.sh build.bat             构建并测试（共用流程）\n'
-       '├── build-test.sh build-test.bat   构建、测试并打包\n'
-       '├── test.sh test.bat               只运行测试，不改版本\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'pt': 'ARMOR-SERVER-AI/\n'
-       '├── src/armor_server_ai/\n'
-       '│   ├── service.py                 o serviço de observação: uma passagem por intervalo\n'
-       '│   ├── motion.py                  imagem cinzenta, zonas a ignorar, movimento\n'
-       '│   ├── profile.py                 dia ou pouca luz, com histerese\n'
-       '│   ├── policy.py                  fusão: ignore, review, high\n'
-       '│   ├── engine_registry.py         motores TensorRT verificados por SHA-256\n'
-       '│   └── cli.py                     o trabalhador de linhas JSON\n'
-       '├── tests/                         80 testes: movimento, política, serviço, trabalhador\n'
-       '├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md\n'
-       '├── tools/                         as verificações de CI e as ferramentas partilhadas\n'
-       '├── images/                        faixa, ícone e as imagens do README\n'
-       '├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests\n'
-       '├── armor.project.json             manifesto: versão, função, maturidade\n'
-       '├── pyproject.toml                 metadados do pacote, entradas\n'
-       '├── CHANGELOG.md                   o que mudou em cada versão\n'
-       '├── run.sh run.bat                 arrancar, fluxo partilhado\n'
-       '├── build.sh build.bat             compilar e testar, fluxo partilhado\n'
-       '├── build-test.sh build-test.bat   compilar, testar e empacotar\n'
-       '├── test.sh test.bat               só os testes, nunca a versão\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE'}
+TREE = {'en': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 the observation service: one pass per interval\r\n│   ├── motion.py                  grey frame, zones to ignore, movement share\r\n│   ├── profile.py                 day or low light, with hysteresis\r\n│   ├── policy.py                  fusion: ignore, review, high\r\n│   ├── engine_registry.py         TensorRT engines checked by SHA-256\r\n│   ├── cli.py                     the JSON-lines worker\r\n│   ├── daily.py                   the daily summary command and report\r\n│   ├── daily_events.py            strict reading of the events of a day\r\n│   ├── daily_summary.py           counts, serious alarms and explainable patterns\r\n│   ├── daily_text.py              the text in eight languages, from templates\r\n│   ├── daily_ai.py                the optional note of a provider, off by default\r\n│   ├── daily_config.py            the settings file, strict\r\n│   └── redact.py                  names, addresses and credentials removed\r\n├── tests/                         130 tests: motion, policy, service, worker, daily summary\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         the shared CI checks and project tooling\r\n├── images/                        banner, icon and the pictures of the README\r\n├── .github/                       CI workflow, dashboard notice, issue and pull-request templates\r\n├── armor.project.json             manifest: version, role, maturity\r\n├── pyproject.toml                 package metadata, entry points\r\n├── CHANGELOG.md                   what changed in each version\r\n├── run.sh run.bat                 start, shared workflow\r\n├── build.sh build.bat             build and test, shared workflow\r\n├── build-test.sh build-test.bat   build, test and package\r\n├── test.sh test.bat               only the tests, never the version\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'es': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 el servicio de observación: una pasada por intervalo\r\n│   ├── motion.py                  fotograma gris, zonas a ignorar, movimiento\r\n│   ├── profile.py                 día o poca luz, con histéresis\r\n│   ├── policy.py                  fusión: ignore, review, high\r\n│   ├── engine_registry.py         motores TensorRT comprobados por SHA-256\r\n│   ├── cli.py                     el trabajador de líneas JSON\r\n│   ├── daily.py                   el comando y el informe del resumen diario\r\n│   ├── daily_events.py            lectura estricta de los eventos de un día\r\n│   ├── daily_summary.py           recuentos, alarmas graves y patrones explicables\r\n│   ├── daily_text.py              el texto en ocho idiomas, con plantillas\r\n│   ├── daily_ai.py                la nota opcional de un proveedor, apagada\r\n│   ├── daily_config.py            el fichero de ajustes, estricto\r\n│   └── redact.py                  nombres, direcciones y credenciales eliminados\r\n├── tests/                         130 pruebas: movimiento, política, servicio, trabajador, resumen diario\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         las comprobaciones de CI y las herramientas compartidas\r\n├── images/                        banner, icono y las imágenes del README\r\n├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests\r\n├── armor.project.json             manifiesto: versión, función, madurez\r\n├── pyproject.toml                 metadatos del paquete, entradas\r\n├── CHANGELOG.md                   qué cambió en cada versión\r\n├── run.sh run.bat                 arrancar, flujo compartido\r\n├── build.sh build.bat             construir y probar, flujo compartido\r\n├── build-test.sh build-test.bat   construir, probar y empaquetar\r\n├── test.sh test.bat               solo las pruebas, nunca la versión\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'de': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 der Beobachtungsdienst: ein Durchgang je Intervall\r\n│   ├── motion.py                  Graubild, Ignorierzonen, Bewegungsanteil\r\n│   ├── profile.py                 Tag oder wenig Licht, mit Hysterese\r\n│   ├── policy.py                  Fusion: ignore, review, high\r\n│   ├── engine_registry.py         TensorRT-Engines per SHA-256 geprüft\r\n│   ├── cli.py                     der JSON-Lines-Arbeiter\r\n│   ├── daily.py                   der Befehl und Bericht der Tagesübersicht\r\n│   ├── daily_events.py            strenges Einlesen der Ereignisse eines Tages\r\n│   ├── daily_summary.py           Zählungen, schwere Alarme und erklärbare Muster\r\n│   ├── daily_text.py              der Text in acht Sprachen aus Vorlagen\r\n│   ├── daily_ai.py                die optionale Notiz eines Anbieters, standardmäßig aus\r\n│   ├── daily_config.py            die Einstellungsdatei, streng geprüft\r\n│   └── redact.py                  Namen, Adressen und Zugangsdaten entfernt\r\n├── tests/                         130 Tests: Bewegung, Richtlinie, Dienst, Arbeiter, Tagesübersicht\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         die gemeinsamen CI-Prüfungen und Werkzeuge\r\n├── images/                        Banner, Symbol und die Bilder des READMEs\r\n├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\r\n├── armor.project.json             Manifest: Version, Rolle, Reife\r\n├── pyproject.toml                 Paket-Metadaten, Einstiege\r\n├── CHANGELOG.md                   was sich in jeder Version geändert hat\r\n├── run.sh run.bat                 Start, gemeinsamer Ablauf\r\n├── build.sh build.bat             Bauen und Testen, gemeinsamer Ablauf\r\n├── build-test.sh build-test.bat   Bauen, Testen und Verpacken\r\n├── test.sh test.bat               nur die Tests, nie die Version\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'fr': "ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 le service d'observation : une passe par intervalle\r\n│   ├── motion.py                  image grise, zones à ignorer, mouvement\r\n│   ├── profile.py                 jour ou faible lumière, avec hystérésis\r\n│   ├── policy.py                  fusion : ignore, review, high\r\n│   ├── engine_registry.py         moteurs TensorRT vérifiés par SHA-256\r\n│   ├── cli.py                     le travailleur JSON lignes\r\n│   ├── daily.py                   la commande et le rapport du résumé quotidien\r\n│   ├── daily_events.py            lecture stricte des événements d'un jour\r\n│   ├── daily_summary.py           comptages, alarmes graves et motifs explicables\r\n│   ├── daily_text.py              le texte en huit langues, par modèles\r\n│   ├── daily_ai.py                la note facultative d'un fournisseur, désactivée\r\n│   ├── daily_config.py            le fichier de réglages, strict\r\n│   └── redact.py                  noms, adresses et identifiants retirés\r\n├── tests/                         130 tests : mouvement, politique, service, travailleur, résumé quotidien\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         les vérifications CI et les outils partagés\r\n├── images/                        bannière, icône et images du README\r\n├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\r\n├── armor.project.json             manifeste : version, rôle, maturité\r\n├── pyproject.toml                 métadonnées du paquet, entrées\r\n├── CHANGELOG.md                   ce qui a changé à chaque version\r\n├── run.sh run.bat                 démarrer, flux partagé\r\n├── build.sh build.bat             construire et tester, flux partagé\r\n├── build-test.sh build-test.bat   construire, tester, empaqueter\r\n├── test.sh test.bat               seulement les tests, jamais la version\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r", 'it': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 il servizio di osservazione: un passaggio per intervallo\r\n│   ├── motion.py                  fotogramma grigio, zone da ignorare, movimento\r\n│   ├── profile.py                 giorno o poca luce, con isteresi\r\n│   ├── policy.py                  fusione: ignore, review, high\r\n│   ├── engine_registry.py         motori TensorRT verificati con SHA-256\r\n│   ├── cli.py                     il worker di righe JSON\r\n│   ├── daily.py                   il comando e il rapporto del riepilogo giornaliero\r\n│   ├── daily_events.py            lettura rigorosa degli eventi di un giorno\r\n│   ├── daily_summary.py           conteggi, allarmi gravi e schemi spiegabili\r\n│   ├── daily_text.py              il testo in otto lingue, da modelli\r\n│   ├── daily_ai.py                la nota facoltativa di un fornitore, spenta\r\n│   ├── daily_config.py            il file di impostazioni, rigoroso\r\n│   └── redact.py                  nomi, indirizzi e credenziali rimossi\r\n├── tests/                         130 test: movimento, politica, servizio, worker, riepilogo giornaliero\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         i controlli CI e gli strumenti condivisi\r\n├── images/                        banner, icona e immagini del README\r\n├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request\r\n├── armor.project.json             manifesto: versione, ruolo, maturità\r\n├── pyproject.toml                 metadati del pacchetto, ingressi\r\n├── CHANGELOG.md                   cosa è cambiato in ogni versione\r\n├── run.sh run.bat                 avvio, flusso condiviso\r\n├── build.sh build.bat             compila e prova, flusso condiviso\r\n├── build-test.sh build-test.bat   compila, prova e impacchetta\r\n├── test.sh test.bat               solo i test, mai la versione\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'ja': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 観察サービス：間隔ごとに 1 巡\r\n│   ├── motion.py                  グレーフレーム、無視ゾーン、動き\r\n│   ├── profile.py                 昼間か低照度（ヒステリシス付き）\r\n│   ├── policy.py                  融合：ignore、review、high\r\n│   ├── engine_registry.py         SHA-256 で検証する TensorRT エンジン\r\n│   ├── cli.py                     JSON Lines ワーカー\r\n│   ├── daily.py                   日次サマリーのコマンドとレポート\r\n│   ├── daily_events.py            1 日のイベントの厳密な読み込み\r\n│   ├── daily_summary.py           集計、重大アラーム、説明可能なパターン\r\n│   ├── daily_text.py              8 言語のテキスト（テンプレート）\r\n│   ├── daily_ai.py                プロバイダーの任意メモ（既定でオフ）\r\n│   ├── daily_config.py            設定ファイル（厳密）\r\n│   └── redact.py                  名前・アドレス・認証情報の除去\r\n├── tests/                         130 件：動き、ポリシー、サービス、ワーカー、日次サマリー\r\n├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         共通の CI 検査とツール\r\n├── images/                        バナー、アイコン、README の画像\r\n├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\r\n├── armor.project.json             マニフェスト：版・役割・成熟度\r\n├── pyproject.toml                 パッケージ情報とエントリー\r\n├── CHANGELOG.md                   各バージョンの変更点\r\n├── run.sh run.bat                 起動（共通フロー）\r\n├── build.sh build.bat             ビルドとテスト（共通フロー）\r\n├── build-test.sh build-test.bat   ビルド、テスト、パッケージ化\r\n├── test.sh test.bat               テストのみ（版は変えません）\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'zh': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 观察服务：每个间隔一轮\r\n│   ├── motion.py                  灰度帧、忽略区、运动量\r\n│   ├── profile.py                 白天或弱光，带迟滞\r\n│   ├── policy.py                  融合：ignore、review、high\r\n│   ├── engine_registry.py         以 SHA-256 校验的 TensorRT 引擎\r\n│   ├── cli.py                     JSON 行工作进程\r\n│   ├── daily.py                   每日摘要的命令和报告\r\n│   ├── daily_events.py            严格读取一天的事件\r\n│   ├── daily_summary.py           计数、严重报警和可解释的规律\r\n│   ├── daily_text.py              八种语言的文本（模板）\r\n│   ├── daily_ai.py                提供方的可选备注（默认关闭）\r\n│   ├── daily_config.py            设置文件（严格）\r\n│   └── redact.py                  去除姓名、地址和凭据\r\n├── tests/                         130 项：运动、策略、服务、工作进程、每日摘要\r\n├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         共用的 CI 检查和工具\r\n├── images/                        横幅图、图标和 README 的图片\r\n├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板\r\n├── armor.project.json             清单：版本、角色、成熟度\r\n├── pyproject.toml                 包元数据、入口\r\n├── CHANGELOG.md                   每个版本的变化\r\n├── run.sh run.bat                 启动（共用流程）\r\n├── build.sh build.bat             构建并测试（共用流程）\r\n├── build-test.sh build-test.bat   构建、测试并打包\r\n├── test.sh test.bat               只运行测试，不改版本\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r',
+        'pt': 'ARMOR-SERVER-AI/\r\n├── src/armor_server_ai/\r\n│   ├── service.py                 o serviço de observação: uma passagem por intervalo\r\n│   ├── motion.py                  imagem cinzenta, zonas a ignorar, movimento\r\n│   ├── profile.py                 dia ou pouca luz, com histerese\r\n│   ├── policy.py                  fusão: ignore, review, high\r\n│   ├── engine_registry.py         motores TensorRT verificados por SHA-256\r\n│   ├── cli.py                     o trabalhador de linhas JSON\r\n│   ├── daily.py                   o comando e o relatório do resumo diário\r\n│   ├── daily_events.py            leitura estrita dos eventos de um dia\r\n│   ├── daily_summary.py           contagens, alarmes graves e padrões explicáveis\r\n│   ├── daily_text.py              o texto em oito idiomas, por modelos\r\n│   ├── daily_ai.py                a nota opcional de um fornecedor, desligada\r\n│   ├── daily_config.py            o ficheiro de definições, estrito\r\n│   └── redact.py                  nomes, endereços e credenciais removidos\r\n├── tests/                         130 testes: movimento, política, serviço, trabalhador, resumo diário\r\n├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md\r\n├── tools/                         as verificações de CI e as ferramentas partilhadas\r\n├── images/                        faixa, ícone e as imagens do README\r\n├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests\r\n├── armor.project.json             manifesto: versão, função, maturidade\r\n├── pyproject.toml                 metadados do pacote, entradas\r\n├── CHANGELOG.md                   o que mudou em cada versão\r\n├── run.sh run.bat                 arrancar, fluxo partilhado\r\n├── build.sh build.bat             compilar e testar, fluxo partilhado\r\n├── build-test.sh build-test.bat   compilar, testar e empacotar\r\n├── test.sh test.bat               só os testes, nunca a versão\r\n└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE\r'}
 
 DIAGRAM = ''
 
-NT = "80"
+for _lg, _b in {'en': '**A daily summary of the events (optional, off by default):** `--daily-summary FILE --summary-config CONFIG` turns the events of a day (alarms, link losses, readings, power) into counts by type, zone and hour, the serious alarms, the nodes that lost their link, the outlying readings and the consumption peaks, a text from templates in the eight languages, and five explainable patterns (the same alarm at the same time of the hour, a sensor that fails on and off, a node that keeps losing its link, recurring false alarms, consumption far above its moving average), each with its evidence and every threshold in the settings file. An optional note from an AI provider is also off by default: only a simulated provider ships, nothing is sent away without an explicit switch, and names, addresses and credentials are redacted first.', 'es': '**Un resumen diario de los eventos (opcional, apagado por defecto):** `--daily-summary FICHERO --summary-config AJUSTES` convierte los eventos de un día (alarmas, pérdidas de enlace, lecturas, consumo) en recuentos por tipo, zona y hora, las alarmas graves, los nodos que perdieron el enlace, las lecturas apartadas y los picos de consumo, un texto con plantillas en los ocho idiomas y cinco patrones explicables (la misma alarma a la misma hora, un sensor que falla de forma intermitente, un nodo que pierde el enlace una y otra vez, falsas alarmas recurrentes, consumo muy por encima de su media móvil), cada uno con su evidencia y todos los umbrales en el fichero de ajustes. Una nota opcional de un proveedor de IA también está apagada por defecto: solo se incluye un proveedor simulado, nada sale sin un interruptor explícito y antes se eliminan nombres, direcciones y credenciales.', 'de': '**Eine Tagesübersicht der Ereignisse (optional, standardmäßig aus):** `--daily-summary DATEI --summary-config EINSTELLUNGEN` macht aus den Ereignissen eines Tages (Alarme, Verbindungsverluste, Messwerte, Verbrauch) Zählungen nach Art, Zone und Stunde, die schweren Alarme, die Knoten mit Verbindungsverlust, die Ausreißer und die Verbrauchsspitzen, einen Text aus Vorlagen in acht Sprachen und fünf erklärbare Muster (derselbe Alarm zur gleichen Zeit der Stunde, ein Sensor, der immer wieder ausfällt, ein Knoten, der immer wieder die Verbindung verliert, wiederkehrende Fehlalarme, Verbrauch weit über dem gleitenden Mittel), jeweils mit Belegen und allen Schwellen in der Einstellungsdatei. Eine optionale Notiz eines KI-Anbieters ist ebenfalls standardmäßig aus: Es gibt nur einen simulierten Anbieter, ohne ausdrücklichen Schalter geht nichts hinaus, und Namen, Adressen und Zugangsdaten werden vorher entfernt.', 'fr': "**Un résumé quotidien des événements (facultatif, désactivé par défaut) :** `--daily-summary FICHIER --summary-config RÉGLAGES` transforme les événements d'un jour (alarmes, pertes de liaison, mesures, consommation) en comptages par type, zone et heure, les alarmes graves, les nœuds ayant perdu leur liaison, les mesures aberrantes et les pics de consommation, un texte par modèles en huit langues et cinq motifs explicables (la même alarme au même moment de l'heure, un capteur qui tombe en panne par intermittence, un nœud qui perd sa liaison à répétition, des fausses alarmes récurrentes, une consommation très au-dessus de sa moyenne mobile), chacun avec ses preuves et tous les seuils dans le fichier de réglages. Une note facultative d'un fournisseur d'IA est aussi désactivée par défaut : seul un fournisseur simulé est fourni, rien ne sort sans interrupteur explicite, et noms, adresses et identifiants sont d'abord retirés.", 'it': "**Un riepilogo giornaliero degli eventi (facoltativo, spento per impostazione predefinita):** `--daily-summary FILE --summary-config IMPOSTAZIONI` trasforma gli eventi di un giorno (allarmi, perdite di collegamento, letture, consumo) in conteggi per tipo, zona e ora, gli allarmi gravi, i nodi che hanno perso il collegamento, le letture anomale e i picchi di consumo, un testo da modelli in otto lingue e cinque schemi spiegabili (lo stesso allarme nello stesso momento dell'ora, un sensore che si guasta a intermittenza, un nodo che perde il collegamento ripetutamente, falsi allarmi ricorrenti, consumo molto sopra la media mobile), ciascuno con le sue prove e tutte le soglie nel file di impostazioni. Anche una nota facoltativa di un fornitore di IA è spenta per impostazione predefinita: c'è solo un fornitore simulato, nulla esce senza un interruttore esplicito e nomi, indirizzi e credenziali vengono prima rimossi.", 'ja': '**イベントの日次サマリー（任意、既定ではオフ）：** `--daily-summary FILE --summary-config 設定` は 1 日のイベント（アラーム、通信断、測定値、消費電力）を、種類・ゾーン・時間帯別の集計、重大なアラーム、通信が途切れたノード、外れた測定値、消費のピークにまとめ、8 言語のテンプレートによるテキストと、根拠付きの説明可能な 5 つのパターン（毎時同じ時刻に繰り返すアラーム、断続的に故障するセンサー、通信断を繰り返すノード、繰り返す誤報、移動平均を大きく上回る消費）を出します。しきい値はすべて設定ファイルにあります。AI プロバイダーの任意メモも既定でオフです。同梱されるのは模擬プロバイダーだけで、明示的なスイッチなしには何も外へ出ず、名前・アドレス・認証情報は先に除去されます。', 'zh': '**事件的每日摘要（可选，默认关闭）：** `--daily-summary 文件 --summary-config 设置` 把一天的事件（报警、连接中断、读数、用电）整理成按类型、区域和小时的计数、严重报警、失去连接的节点、偏离的读数和用电峰值，用八种语言的模板生成文本，并给出五种可解释的规律（每小时同一时刻重复的同一报警、时好时坏的传感器、反复失去连接的节点、反复出现的误报、远高于移动平均的用电），每种都附依据，所有阈值都在设置文件中。AI 提供方的可选备注同样默认关闭：只附带模拟提供方，没有明确的开关就不会发送任何数据，并且会先去除姓名、地址和凭据。', 'pt': '**Um resumo diário dos eventos (opcional, desligado por predefinição):** `--daily-summary FICHEIRO --summary-config DEFINIÇÕES` transforma os eventos de um dia (alarmes, perdas de ligação, leituras, consumo) em contagens por tipo, zona e hora, os alarmes graves, os nós que perderam a ligação, as leituras afastadas e os picos de consumo, um texto por modelos nos oito idiomas e cinco padrões explicáveis (o mesmo alarme à mesma hora, um sensor que avaria de forma intermitente, um nó que perde a ligação repetidamente, falsos alarmes recorrentes, consumo muito acima da média móvel), cada um com as suas evidências e todos os limiares no ficheiro de definições. Uma nota opcional de um fornecedor de IA também está desligada por predefinição: só vem um fornecedor simulado, nada sai sem um interruptor explícito e nomes, endereços e credenciais são primeiro removidos.'}.items():
+    LEGACY[_lg]['bullets'].append(_b)
+
+NT = "130"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 FACTS["status"] = [x for x in FACTS["status"] if x[0] != "security"]
 FACTS["status"].insert(len(FACTS["status"]) - 1, ["security", "yellow"])
@@ -442,7 +284,7 @@ def L(lg, key):
 GLANCE = [
     (GL["role"], T("Observation service: movement weighed with the radars, recommendations only | Servicio de observación: movimiento ponderado con los radares, solo recomienda | Beobachtungsdienst: Bewegung, mit den Radaren gewichtet, nur Empfehlungen | Service d'observation : mouvement pondéré avec les radars, recommandations seulement | Servizio di osservazione: movimento pesato con i radar, solo raccomandazioni | 観察サービス：レーダーと合わせて動きを評価し、推奨のみ | 观察服务：结合雷达评估运动，只给出建议 | Serviço de observação: movimento ponderado com os radares, só recomenda")),
     (GL["stack"], T("Python 3.11+, standard library only | Python 3.11+, solo biblioteca estándar | Python 3.11+, nur Standardbibliothek | Python 3.11+, bibliothèque standard seule | Python 3.11+, solo libreria standard | Python 3.11+（標準ライブラリのみ） | Python 3.11+，仅用标准库 | Python 3.11+, só biblioteca padrão")),
-    (GL["tests"], T("80 (`python -m unittest discover -s tests`) | 80 (`python -m unittest discover -s tests`) | 80 (`python -m unittest discover -s tests`) | 80 (`python -m unittest discover -s tests`) | 80 (`python -m unittest discover -s tests`) | 80 件（`python -m unittest discover -s tests`） | 80 项（`python -m unittest discover -s tests`） | 80 (`python -m unittest discover -s tests`)")),
+    (GL["tests"], T("130 (`python -m unittest discover -s tests`) | 130 (`python -m unittest discover -s tests`) | 130 (`python -m unittest discover -s tests`) | 130 (`python -m unittest discover -s tests`) | 130 (`python -m unittest discover -s tests`) | 130 件（`python -m unittest discover -s tests`） | 130 项（`python -m unittest discover -s tests`） | 130 (`python -m unittest discover -s tests`)")),
     (GL["contract"], T("Client of ARMOR-SERVER: 3 routes under `/api/v1/ai/`; it is never called | Cliente de ARMOR-SERVER: 3 rutas bajo `/api/v1/ai/`; nadie lo llama | Client von ARMOR-SERVER: 3 Routen unter `/api/v1/ai/`; er wird nie aufgerufen | Client d'ARMOR-SERVER : 3 routes sous `/api/v1/ai/` ; personne ne l'appelle | Client di ARMOR-SERVER: 3 rotte sotto `/api/v1/ai/`; nessuno lo chiama | ARMOR-SERVER のクライアント：`/api/v1/ai/` の 3 ルート。呼び出されることはありません | ARMOR-SERVER 的客户端：`/api/v1/ai/` 下的 3 条路由；从不被调用 | Cliente do ARMOR-SERVER: 3 rotas sob `/api/v1/ai/`; ninguém o chama")),
     (GL["runs"], T("The CM5 test bench (as a service, see ARMOR-DEVOPS) or any computer | El banco de la CM5 (como servicio, ver ARMOR-DEVOPS) o cualquier ordenador | Der CM5-Prüfstand (als Dienst, siehe ARMOR-DEVOPS) oder jeder Computer | Le banc d'essai CM5 (en service, voir ARMOR-DEVOPS) ou tout ordinateur | Il banco di prova CM5 (come servizio, vedi ARMOR-DEVOPS) o qualsiasi computer | CM5 テストベンチ（サービスとして。ARMOR-DEVOPS 参照）または任意のコンピューター | CM5 测试台（作为服务，见 ARMOR-DEVOPS）或任何计算机 | A bancada do CM5 (como serviço, ver ARMOR-DEVOPS) ou qualquer computador")),
     (GL["hardware"], {lg: LEGACY[lg]["hardware"] for lg in LGS}),
@@ -489,13 +331,13 @@ IFACE = [
     ("`python -m armor_server_ai.cli [--radar-tracks N]`", "-", T("JSON lines on standard input (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), one numbered and explained decision per line | líneas JSON por la entrada estándar (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), una decisión numerada y explicada por línea | JSON-Zeilen auf der Standardeingabe (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), je Zeile eine nummerierte, erklärte Entscheidung | lignes JSON sur l'entrée standard (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), une décision numérotée et expliquée par ligne | righe JSON sullo standard input (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), una decisione numerata e spiegata per riga | 標準入力の JSON 行（`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`）に対し、行ごとに番号付きで説明付きの判定 | 标准输入的 JSON 行（`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`），每行一个带编号并有说明的判定 | linhas JSON na entrada padrão (`{\"label\", \"confidence\", \"lux\", \"radar_tracks\"}`), uma decisão numerada e explicada por linha")),
 ]
 IFACE_NOTE = P("A decision is `{severity: ignore | review | high, reasons, authorizes_action: false}`. Labels: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusion:** `high` is a person with confidence of 0.80 or more and at least one radar track, or strong movement and a radar track that agree; `review` is a confident detection (0.55 in daylight, 0.45 in low light) or a radar track with nothing seen; simple movement counts a radar track only with 30 % of certainty (about 3 % of the picture).",
-               "Una decisión es `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etiquetas: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusión:** `high` es una persona con confianza de 0,80 o más y al menos una pista de radar, o un movimiento fuerte y una pista de radar que coinciden; `review` es una detección confiada (0,55 de día, 0,45 con poca luz) o una pista de radar sin nada visto; el movimiento simple cuenta una pista de radar solo con un 30 % de certeza (cerca del 3 % de la imagen).",
-               "Eine Entscheidung ist `{severity: ignore | review | high, reasons, authorizes_action: false}`. Labels: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusion:** `high` ist eine Person mit Konfidenz ab 0,80 und mindestens einer Radarspur oder starke Bewegung und eine übereinstimmende Radarspur; `review` ist eine sichere Erkennung (0,55 bei Tag, 0,45 bei wenig Licht) oder eine Radarspur ohne Sichtung; einfache Bewegung zählt eine Radarspur nur ab 30 % Sicherheit (etwa 3 % des Bildes).",
-               "Une décision est `{severity: ignore | review | high, reasons, authorizes_action: false}`. Étiquettes : `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusion :** `high` est une personne avec une confiance d'au moins 0,80 et au moins une piste radar, ou un fort mouvement et une piste radar qui concordent ; `review` est une détection confiante (0,55 de jour, 0,45 en faible lumière) ou une piste radar sans rien de vu ; le simple mouvement ne compte une piste radar qu'à 30 % de certitude (environ 3 % de l'image).",
-               "Una decisione è `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etichette: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusione:** `high` è una persona con confidenza di almeno 0,80 e almeno una traccia radar, oppure un forte movimento e una traccia radar concordi; `review` è un rilevamento sicuro (0,55 di giorno, 0,45 con poca luce) o una traccia radar senza nulla di visto; il semplice movimento conta una traccia radar solo con il 30 % di certezza (circa il 3 % dell'immagine).",
+               "Una decisión es `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etiquetas: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusión:** `high` es una persona con confianza de 0,130 o más y al menos una pista de radar, o un movimiento fuerte y una pista de radar que coinciden; `review` es una detección confiada (0,55 de día, 0,45 con poca luz) o una pista de radar sin nada visto; el movimiento simple cuenta una pista de radar solo con un 30 % de certeza (cerca del 3 % de la imagen).",
+               "Eine Entscheidung ist `{severity: ignore | review | high, reasons, authorizes_action: false}`. Labels: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusion:** `high` ist eine Person mit Konfidenz ab 0,130 und mindestens einer Radarspur oder starke Bewegung und eine übereinstimmende Radarspur; `review` ist eine sichere Erkennung (0,55 bei Tag, 0,45 bei wenig Licht) oder eine Radarspur ohne Sichtung; einfache Bewegung zählt eine Radarspur nur ab 30 % Sicherheit (etwa 3 % des Bildes).",
+               "Une décision est `{severity: ignore | review | high, reasons, authorizes_action: false}`. Étiquettes : `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusion :** `high` est une personne avec une confiance d'au moins 0,130 et au moins une piste radar, ou un fort mouvement et une piste radar qui concordent ; `review` est une détection confiante (0,55 de jour, 0,45 en faible lumière) ou une piste radar sans rien de vu ; le simple mouvement ne compte une piste radar qu'à 30 % de certitude (environ 3 % de l'image).",
+               "Una decisione è `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etichette: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusione:** `high` è una persona con confidenza di almeno 0,130 e almeno una traccia radar, oppure un forte movimento e una traccia radar concordi; `review` è un rilevamento sicuro (0,55 di giorno, 0,45 con poca luce) o una traccia radar senza nulla di visto; il semplice movimento conta una traccia radar solo con il 30 % di certezza (circa il 3 % dell'immagine).",
                "判定は `{severity: ignore | review | high, reasons, authorizes_action: false}` です。ラベル：`person`、`vehicle`、`animal`、`unknown`、`motion`。**融合：** `high` は信頼度 0.80 以上の人物かつレーダートラック 1 本以上、または強い動きとレーダートラックの一致。`review` は確かな検出（昼 0.55、低照度 0.45）、または何も見えないレーダートラック。単なる動きは確信度 30 %（画像の約 3 %）以上のときだけレーダートラックを数えます。",
                "判定为 `{severity: ignore | review | high, reasons, authorizes_action: false}`。标签：`person`、`vehicle`、`animal`、`unknown`、`motion`。**融合：** `high` 是置信度不低于 0.80 且至少有一条雷达轨迹的人，或强运动与雷达轨迹一致；`review` 是有把握的检测（白天 0.55、弱光 0.45）或看不到任何东西的雷达轨迹；单纯的运动只有在 30 % 把握（约占画面 3 %）时才计入雷达轨迹。",
-               "Uma decisão é `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etiquetas: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusão:** `high` é uma pessoa com confiança de 0,80 ou mais e pelo menos uma pista de radar, ou movimento forte e uma pista de radar que coincidam; `review` é uma deteção confiante (0,55 de dia, 0,45 com pouca luz) ou uma pista de radar sem nada visto; o movimento simples só conta uma pista de radar com 30 % de certeza (cerca de 3 % da imagem).")
+               "Uma decisão é `{severity: ignore | review | high, reasons, authorizes_action: false}`. Etiquetas: `person`, `vehicle`, `animal`, `unknown`, `motion`. **Fusão:** `high` é uma pessoa com confiança de 0,130 ou mais e pelo menos uma pista de radar, ou movimento forte e uma pista de radar que coincidam; `review` é uma deteção confiante (0,55 de dia, 0,45 com pouca luz) ou uma pista de radar sem nada visto; o movimento simples só conta uma pista de radar com 30 % de certeza (cerca de 3 % da imagem).")
 
 CFG = [
     ("`ARMOR_AI_TOKEN`", T("yes (24+ characters) | sí (24+ caracteres) | ja (24+ Zeichen) | oui (24+ caractères) | sì (24+ caratteri) | 必須（24 文字以上） | 是（24 个以上字符） | sim (24+ caracteres)"), T("the token the server gave the service | el token que el servidor dio al servicio | das Token, das der Server dem Dienst gab | le jeton que le serveur a donné au service | il token che il server ha dato al servizio | サーバーがサービスに渡したトークン | 服务器给服务的令牌 | o token que o servidor deu ao serviço")),
@@ -505,21 +347,22 @@ CFG = [
     ("`ARMOR_AI_COOLDOWN_S`", "60 (0-3600)", T("seconds before the same camera is told again | segundos antes de avisar otra vez de la misma cámara | Sekunden, bevor dieselbe Kamera erneut gemeldet wird | secondes avant de signaler à nouveau la même caméra | secondi prima di segnalare di nuovo la stessa telecamera | 同じカメラを再報告するまでの秒数 | 同一摄像头再次报告前的秒数 | segundos antes de avisar outra vez da mesma câmara")),
 ]
 CFG_NOTE = P("A value out of range stops the service with `<NAME> must be between a and b`. The thresholds of the decision (0.80, 0.55, 0.45, the radar bar of 30 %) and of the movement (18, 1 %, 60 %) are constants of the code described in [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); the settings of the service are in [docs/SERVICE.md](docs/SERVICE.md).",
-             "Un valor fuera de rango detiene el servicio con `<NOMBRE> must be between a and b`. Los umbrales de la decisión (0,80, 0,55, 0,45, la barra del radar del 30 %) y del movimiento (18, 1 %, 60 %) son constantes del código descritas en [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); los ajustes del servicio están en [docs/SERVICE.md](docs/SERVICE.md).",
-             "Ein Wert außerhalb des Bereichs stoppt den Dienst mit `<NAME> must be between a and b`. Die Schwellen der Entscheidung (0,80, 0,55, 0,45, die Radarschwelle von 30 %) und der Bewegung (18, 1 %, 60 %) sind Konstanten im Code, beschrieben in [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); die Einstellungen des Dienstes stehen in [docs/SERVICE.md](docs/SERVICE.md).",
-             "Une valeur hors plage arrête le service avec `<NOM> must be between a and b`. Les seuils de la décision (0,80, 0,55, 0,45, la barre radar de 30 %) et du mouvement (18, 1 %, 60 %) sont des constantes du code décrites dans [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md) ; les réglages du service sont dans [docs/SERVICE.md](docs/SERVICE.md).",
-             "Un valore fuori intervallo ferma il servizio con `<NOME> must be between a and b`. Le soglie della decisione (0,80, 0,55, 0,45, la barra radar del 30 %) e del movimento (18, 1 %, 60 %) sono costanti del codice descritte in [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); le impostazioni del servizio sono in [docs/SERVICE.md](docs/SERVICE.md).",
+             "Un valor fuera de rango detiene el servicio con `<NOMBRE> must be between a and b`. Los umbrales de la decisión (0,130, 0,55, 0,45, la barra del radar del 30 %) y del movimiento (18, 1 %, 60 %) son constantes del código descritas en [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); los ajustes del servicio están en [docs/SERVICE.md](docs/SERVICE.md).",
+             "Ein Wert außerhalb des Bereichs stoppt den Dienst mit `<NAME> must be between a and b`. Die Schwellen der Entscheidung (0,130, 0,55, 0,45, die Radarschwelle von 30 %) und der Bewegung (18, 1 %, 60 %) sind Konstanten im Code, beschrieben in [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); die Einstellungen des Dienstes stehen in [docs/SERVICE.md](docs/SERVICE.md).",
+             "Une valeur hors plage arrête le service avec `<NOM> must be between a and b`. Les seuils de la décision (0,130, 0,55, 0,45, la barre radar de 30 %) et du mouvement (18, 1 %, 60 %) sont des constantes du code décrites dans [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md) ; les réglages du service sont dans [docs/SERVICE.md](docs/SERVICE.md).",
+             "Un valore fuori intervallo ferma il servizio con `<NOME> must be between a and b`. Le soglie della decisione (0,130, 0,55, 0,45, la barra radar del 30 %) e del movimento (18, 1 %, 60 %) sono costanti del codice descritte in [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); le impostazioni del servizio sono in [docs/SERVICE.md](docs/SERVICE.md).",
              "範囲外の値があると、サービスは `<名前> must be between a and b` で停止します。判定のしきい値（0.80、0.55、0.45、レーダーの 30 %）と動きのしきい値（18、1 %、60 %）はコード内の定数で、[docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md) に記載されています。サービスの設定は [docs/SERVICE.md](docs/SERVICE.md) にあります。",
              "取值超出范围时，服务会以 `<名称> must be between a and b` 停止。判定阈值（0.80、0.55、0.45，雷达门槛 30 %）和运动阈值（18、1 %、60 %）是代码中的常量，见 [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md)；服务的设置见 [docs/SERVICE.md](docs/SERVICE.md)。",
-             "Um valor fora do intervalo pára o serviço com `<NOME> must be between a and b`. Os limiares da decisão (0,80, 0,55, 0,45, a barra do radar de 30 %) e do movimento (18, 1 %, 60 %) são constantes do código descritas em [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); as definições do serviço estão em [docs/SERVICE.md](docs/SERVICE.md).")
+             "Um valor fora do intervalo pára o serviço com `<NOME> must be between a and b`. Os limiares da decisão (0,130, 0,55, 0,45, a barra do radar de 30 %) e do movimento (18, 1 %, 60 %) são constantes do código descritas em [docs/INFERENCE_BOUNDARY.md](docs/INFERENCE_BOUNDARY.md); as definições do serviço estão em [docs/SERVICE.md](docs/SERVICE.md).")
 
 QUICK_LEAD = P("**Requirements:** Python 3.11+ (standard library only). Optional: a Jetson Orin NX with TensorRT engines (not proven).", "**Requisitos:** Python 3.11+ (solo biblioteca estándar). Opcional: una Jetson Orin NX con motores TensorRT (no probado).", "**Voraussetzungen:** Python 3.11+ (nur Standardbibliothek). Optional: ein Jetson Orin NX mit TensorRT-Engines (nicht erprobt).",
                "**Prérequis :** Python 3.11+ (bibliothèque standard seule). Facultatif : un Jetson Orin NX avec des moteurs TensorRT (non éprouvé).", "**Requisiti:** Python 3.11+ (solo libreria standard). Facoltativo: un Jetson Orin NX con motori TensorRT (non provato).", "**要件：** Python 3.11+（標準ライブラリのみ）。任意：TensorRT エンジンを載せた Jetson Orin NX（未検証）。",
                "**要求：** Python 3.11+（仅标准库）。可选：带 TensorRT 引擎的 Jetson Orin NX（未验证）。", "**Requisitos:** Python 3.11+ (só biblioteca padrão). Opcional: um Jetson Orin NX com motores TensorRT (não provado).")
 QUICK_CODE = [
     ('$env:PYTHONPATH = "src"', ""),
-    ("python -m unittest discover -s tests", T("80 tests | 80 pruebas | 80 Tests | 80 tests | 80 test | 80 件 | 80 项 | 80 testes")),
+    ("python -m unittest discover -s tests", T("130 tests | 130 pruebas | 130 Tests | 130 tests | 130 test | 130 件 | 130 项 | 130 testes")),
     ("""echo '{"label":"person","confidence":0.9,"lux":4,"radar_tracks":1}' | python -m armor_server_ai.cli""", T("one decision from a line | una decisión desde una línea | eine Entscheidung aus einer Zeile | une décision depuis une ligne | una decisione da una riga | 1 行から判定を得る | 从一行得到一个判定 | uma decisão a partir de uma linha")),
+    ("python -m armor_server_ai.cli --daily-summary day.jsonl --summary-config docs/daily_summary.example.json", T("refuses until the settings say enabled; then the summary of a day | se niega hasta que los ajustes digan enabled; después, el resumen de un día | verweigert, bis die Einstellungen enabled sagen; danach die Übersicht eines Tages | refuse tant que les réglages ne disent pas enabled ; ensuite le résumé d'un jour | rifiuta finché le impostazioni non dicono enabled; poi il riepilogo di un giorno | 設定で enabled にするまで拒否し、その後は 1 日のサマリー | 设置里启用之前会拒绝，之后给出一天的摘要 | recusa até as definições dizerem enabled; depois, o resumo de um dia")),
     ("python -m armor_server_ai.service --once", T("one pass of the observation service | una pasada del servicio de observación | ein Durchgang des Beobachtungsdienstes | une passe du service d'observation | un passaggio del servizio di osservazione | 観察サービスを 1 巡 | 观察服务运行一轮 | uma passagem do serviço de observação")),
 ]
 QUICK_AFTER = P("See the [inference boundary](docs/INFERENCE_BOUNDARY.md) and the [service](docs/SERVICE.md).", "Mira el [límite de la inferencia](docs/INFERENCE_BOUNDARY.md) y el [servicio](docs/SERVICE.md).", "Siehe die [Grenze der Inferenz](docs/INFERENCE_BOUNDARY.md) und den [Dienst](docs/SERVICE.md).", "Voir la [frontière de l'inférence](docs/INFERENCE_BOUNDARY.md) et le [service](docs/SERVICE.md).",
@@ -530,6 +373,8 @@ TEST_TABLE = [
     ("`test_service_http.py`", "21", T("the link to the server, the address rules, the passes and the settings | el enlace con el servidor, las reglas de dirección, las pasadas y los ajustes | die Verbindung zum Server, Adressregeln, Durchgänge und Einstellungen | la liaison avec le serveur, les règles d'adresse, les passes et les réglages | il collegamento col server, le regole sull'indirizzo, i passaggi e le impostazioni | サーバーとの接続、アドレス規則、巡回、設定 | 与服务器的连接、地址规则、轮次与设置 | a ligação ao servidor, as regras de endereço, as passagens e as definições")),
     ("`test_vision_profile.py`", "20", T("day and night with hysteresis, the fusion policy and the worker | día y noche con histéresis, la política de fusión y el trabajador | Tag und Nacht mit Hysterese, die Fusionsrichtlinie und der Arbeiter | jour et nuit avec hystérésis, la politique de fusion et le travailleur | giorno e notte con isteresi, la politica di fusione e il worker | ヒステリシス付き昼夜、融合ポリシー、ワーカー | 带迟滞的昼夜、融合策略与工作进程 | dia e noite com histerese, a política de fusão e o trabalhador")),
     ("`test_cli_worker.py`", "10", T("the JSON-lines worker and its bad lines | el trabajador de líneas JSON y sus líneas malas | der JSON-Lines-Arbeiter und seine fehlerhaften Zeilen | le travailleur JSON lignes et ses lignes erronées | il worker di righe JSON e le sue righe errate | JSON Lines ワーカーと不正な行 | JSON 行工作进程及其坏行 | o trabalhador de linhas JSON e as suas linhas más")),
+    ("`test_characterization_cli.py`", "9", T("the worker and the service as they were before the daily summary | el trabajador y el servicio tal como eran antes del resumen diario | der Arbeiter und der Dienst wie vor der Tagesübersicht | le travailleur et le service tels qu'avant le résumé quotidien | il worker e il servizio com'erano prima del riepilogo giornaliero | 日次サマリー以前のワーカーとサービスの挙動 | 每日摘要之前的工作进程和服务行为 | o trabalhador e o serviço como eram antes do resumo diário")),
+    ("`test_daily_summary.py`", "41", T("the daily summary: strict input, counts that add up, determinism, patterns with evidence, the eight languages, redaction and the AI switch | el resumen diario: entrada estricta, recuentos que suman, determinismo, patrones con evidencia, los ocho idiomas, redacción y el interruptor de IA | die Tagesübersicht: strenge Eingabe, stimmige Zählungen, Determinismus, Muster mit Belegen, acht Sprachen, Schwärzung und der KI-Schalter | le résumé quotidien : entrée stricte, comptages cohérents, déterminisme, motifs avec preuves, les huit langues, masquage et l'interrupteur d'IA | il riepilogo giornaliero: input rigoroso, conteggi che tornano, determinismo, schemi con prove, otto lingue, oscuramento e interruttore IA | 日次サマリー：厳密な入力、合計が合う集計、決定性、根拠付きパターン、8 言語、秘匿化、AI スイッチ | 每日摘要：严格输入、计数相加一致、确定性、带依据的规律、八种语言、脱敏和 AI 开关 | o resumo diário: entrada estrita, contagens que somam, determinismo, padrões com evidências, os oito idiomas, ocultação e o interruptor de IA")),
     ("`test_ignore_zones.py`, `test_registry.py`", "13", T("zones to ignore, and the checked TensorRT engines | zonas a ignorar y motores TensorRT comprobados | Ignorierzonen und geprüfte TensorRT-Engines | zones à ignorer et moteurs TensorRT vérifiés | zone da ignorare e motori TensorRT verificati | 無視ゾーンと検証済み TensorRT エンジン | 忽略区与经校验的 TensorRT 引擎 | zonas a ignorar e motores TensorRT verificados")),
 ]
 TEST_NOTE = P("GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests. The sources pass the type checker: `python -m mypy src` reports nothing.",
@@ -570,6 +415,7 @@ ROADMAP = P(
 
 DOCS = [
     P("[Inference boundary](docs/INFERENCE_BOUNDARY.md): what is decided here and what is left to a model", "[Límite de la inferencia](docs/INFERENCE_BOUNDARY.md): qué se decide aquí y qué se deja a un modelo", "[Grenze der Inferenz](docs/INFERENCE_BOUNDARY.md): was hier entschieden wird und was einem Modell bleibt", "[Frontière de l'inférence](docs/INFERENCE_BOUNDARY.md) : ce qui se décide ici et ce qui est laissé à un modèle", "[Confine dell'inferenza](docs/INFERENCE_BOUNDARY.md): cosa si decide qui e cosa resta a un modello", "[推論の境界](docs/INFERENCE_BOUNDARY.md)：ここで決めること、モデルに任せること", "[推理边界](docs/INFERENCE_BOUNDARY.md)：这里决定什么，留给模型什么", "[Limite da inferência](docs/INFERENCE_BOUNDARY.md): o que se decide aqui e o que fica para um modelo"),
+    P("[The daily summary](docs/DAILY_SUMMARY.md): the events of a day, the patterns and the optional AI note, off by default", "[El resumen diario](docs/DAILY_SUMMARY.md): los eventos de un día, los patrones y la nota opcional de IA, apagada por defecto", "[Die Tagesübersicht](docs/DAILY_SUMMARY.md): die Ereignisse eines Tages, die Muster und die optionale KI-Notiz, standardmäßig aus", "[Le résumé quotidien](docs/DAILY_SUMMARY.md) : les événements d'un jour, les motifs et la note d'IA facultative, désactivée par défaut", "[Il riepilogo giornaliero](docs/DAILY_SUMMARY.md): gli eventi di un giorno, gli schemi e la nota IA facoltativa, spenta per impostazione predefinita", "[日次サマリー](docs/DAILY_SUMMARY.md)：1 日のイベント、パターン、任意の AI メモ（既定でオフ）", "[每日摘要](docs/DAILY_SUMMARY.md)：一天的事件、规律和可选的 AI 备注（默认关闭）", "[O resumo diário](docs/DAILY_SUMMARY.md): os eventos de um dia, os padrões e a nota opcional de IA, desligada por predefinição"),
     P("[The service](docs/SERVICE.md): the observation service and its settings", "[El servicio](docs/SERVICE.md): el servicio de observación y sus ajustes", "[Der Dienst](docs/SERVICE.md): der Beobachtungsdienst und seine Einstellungen", "[Le service](docs/SERVICE.md) : le service d'observation et ses réglages", "[Il servizio](docs/SERVICE.md): il servizio di osservazione e le sue impostazioni", "[サービス](docs/SERVICE.md)：観察サービスとその設定", "[服务](docs/SERVICE.md)：观察服务及其设置", "[O serviço](docs/SERVICE.md): o serviço de observação e as suas definições"),
 ]
 
@@ -586,7 +432,7 @@ def build_lg(lg):
         "interfaces": table(lg, "route", IFACE) + "\n\n" + IFACE_NOTE[lg],
         "configuration": table(lg, "setting", CFG) + "\n\n" + CFG_NOTE[lg],
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n" + QUICK_AFTER[lg],
-        "testing": code(lg, [("python -m unittest discover -s tests", T("80 tests | 80 pruebas | 80 Tests | 80 tests | 80 test | 80 件 | 80 项 | 80 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m unittest discover -s tests", T("130 tests | 130 pruebas | 130 Tests | 130 tests | 130 test | 130 件 | 130 项 | 130 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-SERVER-AI", tree=TREE[lg]),
