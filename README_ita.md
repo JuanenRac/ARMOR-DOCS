@@ -74,7 +74,7 @@ Ogni riga è una parte di questo repository e il semaforo dice a che punto è og
 * [Catalogo dei progetti](docs/PROJECT_CATALOG.md): i diciannove repository, le loro versioni e come dipendono l'uno dall'altro.
 * [Interfacce](docs/INTERFACES.md): chi produce e consuma ogni interfaccia e dove ci si fida.
 * [Prima fetta verticale](docs/FIRST_VERTICAL_SLICE.md): cosa dimostra il test dal simulatore alla console e cosa no.
-* **Strumenti:** `make_readmes.py` scrive il README di ogni repository nelle otto lingue da `readme_src/`, `make_catalog.py` scrive le versioni del catalogo, `make_brand.py` il suo banner e l'icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione, `clean_history.py` fa una copia pubblicabile di un repository e `sync_ci_tools.py` mantiene uguali i controlli di CI della famiglia.
+* **Strumenti:** `make_readmes.py` scrive il README di ogni repository nelle otto lingue da `readme_src/`, `make_catalog.py` scrive le versioni del catalogo, `make_brand.py` il suo banner e l'icona, `publication_check.py` cerca qualsiasi cosa privata prima di una pubblicazione, `clean_history.py` fa una copia pubblicabile di un repository e `sync_ci_tools.py` mantiene uguali i controlli di CI della famiglia, ruff e mypy compresi (versioni fissate, solo dove un repository ha una configurazione di mypy; `"ci_lint": false` nel manifesto li salta).
 
 ## 🧩 Ruolo in A.R.M.O.R.
 

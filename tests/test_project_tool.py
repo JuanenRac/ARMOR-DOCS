@@ -204,6 +204,78 @@ class LinkCheckTests(unittest.TestCase):
         self.assertIn("two.md", str(caught.exception))
 
 
+class LintTests(unittest.TestCase):
+    """The lint and type-check step: ruff and mypy at pinned versions, only where a repository has Python source and a mypy configuration."""
+
+    def project(self, files: dict[str, str]) -> Path:
+        folder = tempfile.TemporaryDirectory()
+        self.addCleanup(folder.cleanup)
+        root = Path(folder.name)
+        for relative, text in files.items():
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(text, encoding="utf-8")
+        return root
+
+    def run_lint(self, root: Path, manifest: dict[str, object]):
+        calls: list[list[str]] = []
+        out = io.StringIO()
+        with mock.patch.object(tool, "command", side_effect=lambda cwd, args, env=None: calls.append(list(args))), contextlib.redirect_stdout(out):
+            tool.lint(root, manifest)
+        return calls, out.getvalue()
+
+    def test_the_versions_are_pinned_and_the_rules_are_the_agreed_ones(self):
+        self.assertEqual(tool.LINT_PINS, ("ruff==0.17.1", "mypy==2.4.0"))
+        self.assertEqual(tool.LINT_RULES, "F,E9,B")
+
+    def test_a_repository_with_source_and_a_mypy_configuration_runs_both_tools(self):
+        root = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\nfiles = ['src']\n"})
+        calls, out = self.run_lint(root, {})
+        self.assertEqual([call[1:4] for call in calls], [["-m", "pip", "install"], ["-m", "ruff", "check"], ["-m", "mypy"]])
+        self.assertIn("ruff==0.17.1", calls[0])
+        self.assertIn("mypy==2.4.0", calls[0])
+        self.assertEqual(calls[1][calls[1].index("--select") + 1], "F,E9,B")
+        self.assertNotIn("PySide6-Essentials", calls[0])
+        self.assertIn("ARMOR_LINT=PASS", out)
+
+    def test_mypy_ini_and_setup_cfg_count_as_a_configuration(self):
+        for name, text in (("mypy.ini", "[mypy]\n"), ("setup.cfg", "[mypy]\nfiles = src\n")):
+            root = self.project({"src/pkg/a.py": "x = 1\n", name: text})
+            self.assertEqual(tool.lint_plan(root, {}), (True, ""), name)
+
+    def test_qt_stubs_are_installed_only_where_the_code_imports_qt(self):
+        root = self.project({"src/pkg/gui.py": "from PySide6 import QtCore\n", "pyproject.toml": "[tool.mypy]\n"})
+        calls, _out = self.run_lint(root, {})
+        self.assertIn("PySide6-Essentials", calls[0])
+
+    def test_without_a_mypy_configuration_the_step_is_skipped(self):
+        root = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[project]\nname = 'x'\n"})
+        calls, out = self.run_lint(root, {})
+        self.assertEqual(calls, [])
+        self.assertIn("ARMOR_LINT=SKIP no mypy configuration", out)
+
+    def test_without_python_source_the_step_is_skipped(self):
+        for files in ({"pyproject.toml": "[tool.mypy]\n"}, {"pyproject.toml": "[tool.mypy]\n", "src/readme.txt": "no code"}, {"tools/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\n"}):
+            root = self.project(files)
+            calls, out = self.run_lint(root, {})
+            self.assertEqual(calls, [])
+            self.assertIn("ARMOR_LINT=SKIP no Python source under src/", out)
+
+    def test_the_switch_in_the_manifest_skips_a_repository_that_would_run(self):
+        root = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\n"})
+        calls, out = self.run_lint(root, {"ci_lint": False})
+        self.assertEqual(calls, [])
+        self.assertIn("ci_lint", out)
+        self.assertEqual(self.run_lint(root, {"ci_lint": True})[0][1][1:3], ["-m", "ruff"])
+
+    def test_the_action_reaches_the_step_and_a_skip_is_not_an_error(self):
+        root = self.project({"armor.project.json": json.dumps({"ecosystem": "A.R.M.O.R.", "name": "ARMOR-X", "version": "0.0.1"})})
+        out = io.StringIO()
+        with mock.patch.object(sys, "argv", ["armor_project_tool.py", "lint", str(root)]), contextlib.redirect_stdout(out):
+            self.assertEqual(tool.main(), 0)
+        self.assertIn("ARMOR_LINT=SKIP", out.getvalue())
+
+
 class SmallHelpersTests(unittest.TestCase):
     def test_siblings_required_follows_the_environment(self):
         for value, expected in (("", False), ("0", False), ("1", True), ("yes", True)):

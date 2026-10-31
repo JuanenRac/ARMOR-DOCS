@@ -74,7 +74,7 @@
 * [项目目录](docs/PROJECT_CATALOG.md)：十九个仓库、它们的版本以及相互依赖关系。
 * [接口](docs/INTERFACES.md)：谁产生和使用每个接口，以及在哪里被信任。
 * [第一个垂直切片](docs/FIRST_VERTICAL_SLICE.md)：从模拟器到控制台的测试证明了什么、没有证明什么。
-* **工具：**`make_readmes.py` 从 `readme_src/` 以八种语言写出每个仓库的 README，`make_catalog.py` 写出目录中的版本，`make_brand.py` 写出其横幅和图标，`publication_check.py` 在发布前查找任何私有内容，`clean_history.py` 制作仓库的可发布副本，`sync_ci_tools.py` 让家族的 CI 检查保持一致。
+* **工具：**`make_readmes.py` 从 `readme_src/` 以八种语言写出每个仓库的 README，`make_catalog.py` 写出目录中的版本，`make_brand.py` 写出其横幅和图标，`publication_check.py` 在发布前查找任何私有内容，`clean_history.py` 制作仓库的可发布副本，`sync_ci_tools.py` 让家族的 CI 检查保持一致，其中包括 ruff 和 mypy（版本固定，仅在仓库有 mypy 配置时运行；清单中的 `"ci_lint": false` 会跳过它们）。
 
 ## 🧩 在 A.R.M.O.R. 中的角色
 
