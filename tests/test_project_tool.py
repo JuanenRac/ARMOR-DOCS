@@ -261,12 +261,15 @@ class LintTests(unittest.TestCase):
             self.assertEqual(calls, [])
             self.assertIn("ARMOR_LINT=SKIP no Python source under src/", out)
 
-    def test_the_switch_in_the_manifest_skips_a_repository_that_would_run(self):
-        root = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\n"})
-        calls, out = self.run_lint(root, {"ci_lint": False})
+    def test_the_switch_in_pyproject_skips_a_repository_that_would_run(self):
+        off = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\nfiles = ['src']\n\n[tool.armor]\nci_lint = false\n"})
+        calls, out = self.run_lint(off, {})
         self.assertEqual(calls, [])
         self.assertIn("ci_lint", out)
-        self.assertEqual(self.run_lint(root, {"ci_lint": True})[0][1][1:3], ["-m", "ruff"])
+        on = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.armor]\nci_lint = true\n\n[tool.mypy]\n"})
+        self.assertEqual(self.run_lint(on, {})[0][1][1:3], ["-m", "ruff"])
+        other_table = self.project({"src/pkg/a.py": "x = 1\n", "pyproject.toml": "[tool.mypy]\n\n[tool.other]\nci_lint = false\n"})
+        self.assertTrue(tool.lint_plan(other_table, {})[0])
 
     def test_the_action_reaches_the_step_and_a_skip_is_not_an_error(self):
         root = self.project({"armor.project.json": json.dumps({"ecosystem": "A.R.M.O.R.", "name": "ARMOR-X", "version": "0.0.1"})})

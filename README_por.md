@@ -74,7 +74,7 @@ Cada linha é uma parte deste repositório e a luz diz até onde chega hoje. É 
 * [Catálogo de projetos](docs/PROJECT_CATALOG.md): os dezanove repositórios, as suas versões e como dependem uns dos outros.
 * [Interfaces](docs/INTERFACES.md): quem produz e consome cada interface e onde se confia nela.
 * [Primeira fatia vertical](docs/FIRST_VERTICAL_SLICE.md): o que o teste do simulador à consola prova e o que não prova.
-* **Ferramentas:** `make_readmes.py` escreve o README de cada repositório nos oito idiomas a partir de `readme_src/`, `make_catalog.py` escreve as versões do catálogo, `make_brand.py` o seu banner e ícone, `publication_check.py` procura qualquer coisa privada antes de uma publicação, `clean_history.py` faz uma cópia publicável de um repositório e `sync_ci_tools.py` mantém iguais as verificações de CI da família, incluindo ruff e mypy (versões fixas, apenas onde um repositório tem configuração do mypy; `"ci_lint": false` no manifesto ignora-as).
+* **Ferramentas:** `make_readmes.py` escreve o README de cada repositório nos oito idiomas a partir de `readme_src/`, `make_catalog.py` escreve as versões do catálogo, `make_brand.py` o seu banner e ícone, `publication_check.py` procura qualquer coisa privada antes de uma publicação, `clean_history.py` faz uma cópia publicável de um repositório e `sync_ci_tools.py` mantém iguais as verificações de CI da família, incluindo ruff e mypy (versões fixas, apenas onde um repositório tem configuração do mypy; `ci_lint = false` no pyproject.toml ignora-as).
 
 ## 🧩 Papel no A.R.M.O.R.
 

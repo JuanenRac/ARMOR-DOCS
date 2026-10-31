@@ -74,7 +74,7 @@
 * [プロジェクトカタログ](docs/PROJECT_CATALOG.md)：19 のリポジトリ、そのバージョン、互いの依存関係。
 * [インターフェース](docs/INTERFACES.md)：各インターフェースを誰が生成・利用し、どこで信頼されるか。
 * [最初の垂直スライス](docs/FIRST_VERTICAL_SLICE.md)：シミュレーターからコンソールまでのテストが証明するものとしないもの。
-* **ツール：**`make_readmes.py` は `readme_src/` から全リポジトリの README を 8 言語で作り、`make_catalog.py` はカタログのバージョンを書き、`make_brand.py` はバナーとアイコン、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` は公開用のコピーを作り、`sync_ci_tools.py` はファミリーの CI 検査を揃え、ruff と mypy も含みます（バージョン固定、mypy の設定があるリポジトリのみ。マニフェストの `"ci_lint": false` で省略できます）。
+* **ツール：**`make_readmes.py` は `readme_src/` から全リポジトリの README を 8 言語で作り、`make_catalog.py` はカタログのバージョンを書き、`make_brand.py` はバナーとアイコン、`publication_check.py` は公開前に非公開のものを探し、`clean_history.py` は公開用のコピーを作り、`sync_ci_tools.py` はファミリーの CI 検査を揃え、ruff と mypy も含みます（バージョン固定、mypy の設定があるリポジトリのみ。pyproject.toml の `ci_lint = false` で省略できます）。
 
 ## 🧩 A.R.M.O.R. での役割
 
