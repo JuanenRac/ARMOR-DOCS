@@ -53,7 +53,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "146%20passing",
+      "159%20passing",
       "2ea44f",
     ],
   ],
@@ -62,7 +62,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "iPhone operator client for ARMOR-SERVER: status, arming, alarms, alarm panels, cameras and the assistant, in eight languages",
-    "honest": "the rules of the app (server link, parsing, choice of address, lock of the phone, vault of the session, trust in the certificate, alarm policy, use cases, MJPEG cutting) are the Swift package `ArmorCore`, covered by 146 unit tests that run with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac. What is **not** proven yet: the SwiftUI screens and the parts that need an iPhone (Face ID, Keychain, certificate rules, live camera, push through Firebase) have not been built in Xcode or run on a device.",
+    "honest": "the rules of the app (server link, parsing, choice of address, lock of the phone, vault of the session, trust in the certificate, alarm policy, use cases, MJPEG cutting) are the Swift package `ArmorCore`, covered by 159 unit tests that run with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac. What is **not** proven yet: the SwiftUI screens and the parts that need an iPhone (Face ID, Keychain, certificate rules, live camera, push through Firebase) have not been built in Xcode or run on a device.",
     "glance": [
       [
         "Role",
@@ -74,7 +74,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Languages",
@@ -95,7 +95,7 @@ TEXT = {
     ],
     "status": {
       "software": "The rules of the app are a Swift package (`ArmorCore`); the SwiftUI screens have not been built in Xcode.",
-      "tests": "146 unit tests pass with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac; no test runs on a device.",
+      "tests": "159 unit tests pass with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac; no test runs on a device.",
       "ui": "The SwiftUI screens are written but have not been built in Xcode or run on an iPhone.",
       "hardware": "It has not run on an iPhone: the rules are tested on Linux only.",
       "security": "The lock of the phone, the session vault and the trust in the certificate are rules tested on Linux; Face ID, the Keychain and the certificate rules have not run on a device.",
@@ -156,7 +156,7 @@ In the app: the two addresses, *Remember me*, the lock of the phone and the lang
       "quickstart": r"""**Requirements:** a Mac with Xcode 15+ and iOS 16+ to build the app; Swift 5.9+ (macOS or Linux) for the tests; Python 3.11 for the checks.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -179,7 +179,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | The address parsing, the MJPEG cutting and the translator |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | The alarm policy and the alarm codes |
 
-The 146 tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 31 Swift files, 241 phrases in 8 languages, 26 server paths. No test runs on a device.""",
+The 159 tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 31 Swift files, 241 phrases in 8 languages, 26 server paths. No test runs on a device.""",
       "build": "The Xcode project is generated from `project.yml` with XcodeGen: choose a signing team, add the app icon to `App/Resources/Assets.xcassets/AppIcon.appiconset` and, for push, the installation's `GoogleService-Info.plist`. It has never been built in Xcode.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -197,7 +197,7 @@ The 146 tests run with fixtures of a real server. `tools/ios_lint.py` passes wit
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   the rules of the app: a Swift package
 ├── App/                                 the SwiftUI screens and the parts that need an iPhone
-├── Tests/                               146 tests and fixtures of a real server
+├── Tests/                               159 tests and fixtures of a real server
 ├── docs/                                the guides of this repository
 ├── tools/                               the shared CI checks and project tooling
 ├── .github/                             CI workflow, issue and pull-request templates
@@ -226,7 +226,7 @@ ARMOR-IOS-CONTROL/
   },
   "es": {
     "tagline": "Cliente de operador para iPhone de ARMOR-SERVER: estado, armado, alarmas, centrales de alarma, cámaras y el asistente, en ocho idiomas",
-    "honest": "las reglas de la app (enlace con el servidor, lectura de las respuestas, elección de dirección, bloqueo del teléfono, caja de la sesión, confianza en el certificado, política de alarmas, casos de uso, corte del MJPEG) son el paquete Swift `ArmorCore`, cubierto por 146 pruebas unitarias que se ejecutan con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las ocho tablas de idiomas y el contrato sin Mac. Lo que **no** está demostrado todavía: las pantallas SwiftUI y las partes que necesitan un iPhone (Face ID, llavero, reglas de certificado, cámara en vivo, push con Firebase) no se han compilado en Xcode ni ejecutado en un dispositivo.",
+    "honest": "las reglas de la app (enlace con el servidor, lectura de las respuestas, elección de dirección, bloqueo del teléfono, caja de la sesión, confianza en el certificado, política de alarmas, casos de uso, corte del MJPEG) son el paquete Swift `ArmorCore`, cubierto por 159 pruebas unitarias que se ejecutan con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las ocho tablas de idiomas y el contrato sin Mac. Lo que **no** está demostrado todavía: las pantallas SwiftUI y las partes que necesitan un iPhone (Face ID, llavero, reglas de certificado, cámara en vivo, push con Firebase) no se han compilado en Xcode ni ejecutado en un dispositivo.",
     "glance": [
       [
         "Función",
@@ -238,7 +238,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Pruebas",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Idiomas",
@@ -259,7 +259,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Las reglas de la app son un paquete Swift (`ArmorCore`); las pantallas SwiftUI no se han compilado en Xcode.",
-      "tests": "Pasan 146 pruebas unitarias con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las tablas de los ocho idiomas y el contrato sin un Mac; ninguna prueba se ejecuta en un dispositivo.",
+      "tests": "Pasan 159 pruebas unitarias con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las tablas de los ocho idiomas y el contrato sin un Mac; ninguna prueba se ejecuta en un dispositivo.",
       "ui": "Las pantallas SwiftUI están escritas pero no se han compilado en Xcode ni ejecutado en un iPhone.",
       "hardware": "No ha funcionado en un iPhone: las reglas solo se prueban en Linux.",
       "security": "El bloqueo del teléfono, la caja de la sesión y la confianza en el certificado son reglas probadas en Linux; Face ID, el llavero y las reglas del certificado no se han ejecutado en un dispositivo.",
@@ -320,7 +320,7 @@ En la app: las dos direcciones, *Recordarme*, el bloqueo del teléfono y el idio
       "quickstart": r"""**Requisitos:** un Mac con Xcode 15+ e iOS 16+ para compilar la app; Swift 5.9+ (macOS o Linux) para las pruebas; Python 3.11 para las comprobaciones.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -343,7 +343,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | La lectura de direcciones, el corte MJPEG y el traductor |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | La política de alarmas y los códigos de alarma |
 
-Las 146 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 31 ficheros Swift, 241 frases en 8 idiomas, 26 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
+Las 159 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 31 ficheros Swift, 241 frases en 8 idiomas, 26 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
       "build": "El proyecto de Xcode se genera desde `project.yml` con XcodeGen: elige un equipo de firma, añade el icono de la app a `App/Resources/Assets.xcassets/AppIcon.appiconset` y, para push, el `GoogleService-Info.plist` de la instalación. Nunca se ha compilado en Xcode.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -361,7 +361,7 @@ Las 146 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   las reglas de la app: un paquete Swift
 ├── App/                                 las pantallas SwiftUI y las partes que necesitan un iPhone
-├── Tests/                               146 pruebas y datos de un servidor real
+├── Tests/                               159 pruebas y datos de un servidor real
 ├── docs/                                las guías de este repositorio
 ├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
 ├── .github/                             flujo de CI y plantillas de issues y pull requests
@@ -390,7 +390,7 @@ ARMOR-IOS-CONTROL/
   },
   "de": {
     "tagline": "iPhone-Bedienclient für ARMOR-SERVER: Status, Scharfschaltung, Alarme, Alarmzentralen, Kameras und der Assistent, in acht Sprachen",
-    "honest": "Die Regeln der App (Serververbindung, Auswertung der Antworten, Adressauswahl, Telefonsperre, Tresor der Sitzung, Vertrauen in das Zertifikat, Alarmrichtlinie, Anwendungsfälle, MJPEG-Zerlegung) sind das Swift-Paket `ArmorCore`, abgedeckt durch 146 Unit-Tests, die mit `swift test` unter macOS oder Linux laufen; `tools/ios_lint.py` prüft Struktur, die acht Sprachtabellen und den Vertrag ohne Mac. **Noch nicht** belegt: Die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen (Face ID, Schlüsselbund, Zertifikatsregeln, Live-Kamera, Push über Firebase), wurden weder in Xcode gebaut noch auf einem Gerät ausgeführt.",
+    "honest": "Die Regeln der App (Serververbindung, Auswertung der Antworten, Adressauswahl, Telefonsperre, Tresor der Sitzung, Vertrauen in das Zertifikat, Alarmrichtlinie, Anwendungsfälle, MJPEG-Zerlegung) sind das Swift-Paket `ArmorCore`, abgedeckt durch 159 Unit-Tests, die mit `swift test` unter macOS oder Linux laufen; `tools/ios_lint.py` prüft Struktur, die acht Sprachtabellen und den Vertrag ohne Mac. **Noch nicht** belegt: Die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen (Face ID, Schlüsselbund, Zertifikatsregeln, Live-Kamera, Push über Firebase), wurden weder in Xcode gebaut noch auf einem Gerät ausgeführt.",
     "glance": [
       [
         "Rolle",
@@ -402,7 +402,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Tests",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Sprachen",
@@ -423,7 +423,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Die Regeln der App sind ein Swift-Paket (`ArmorCore`); die SwiftUI-Bildschirme wurden nicht in Xcode gebaut.",
-      "tests": "146 Unit-Tests bestehen mit `swift test` unter macOS oder Linux, und `tools/ios_lint.py` prüft Struktur, die Tabellen der acht Sprachen und den Vertrag ohne Mac; auf einem Gerät läuft kein Test.",
+      "tests": "159 Unit-Tests bestehen mit `swift test` unter macOS oder Linux, und `tools/ios_lint.py` prüft Struktur, die Tabellen der acht Sprachen und den Vertrag ohne Mac; auf einem Gerät läuft kein Test.",
       "ui": "Die SwiftUI-Bildschirme sind geschrieben, wurden aber weder in Xcode gebaut noch auf einem iPhone ausgeführt.",
       "hardware": "Sie lief nicht auf einem iPhone: Die Regeln sind nur unter Linux getestet.",
       "security": "Die Sperre des Telefons, der Tresor der Sitzung und das Vertrauen ins Zertifikat sind unter Linux getestete Regeln; Face ID, der Schlüsselbund und die Zertifikatsregeln liefen nicht auf einem Gerät.",
@@ -484,7 +484,7 @@ In der App: die zwei Adressen, *Angemeldet bleiben*, die Telefonsperre und die S
       "quickstart": r"""**Voraussetzungen:** ein Mac mit Xcode 15+ und iOS 16+ zum Bauen der App; Swift 5.9+ (macOS oder Linux) für die Tests; Python 3.11 für die Prüfungen.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -507,7 +507,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | Die Adressauswertung, das MJPEG-Zerlegen und der Übersetzer |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | Die Alarmrichtlinie und die Alarmcodes |
 
-Die 146 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 31 Swift-Dateien, 241 Sätze in 8 Sprachen, 26 Serverpfade. Kein Test läuft auf einem Gerät.""",
+Die 159 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 31 Swift-Dateien, 241 Sätze in 8 Sprachen, 26 Serverpfade. Kein Test läuft auf einem Gerät.""",
       "build": "Das Xcode-Projekt wird aus `project.yml` mit XcodeGen erzeugt: Wähle ein Signing-Team, füge das App-Symbol zu `App/Resources/Assets.xcassets/AppIcon.appiconset` hinzu und für Push die `GoogleService-Info.plist` der Installation. Es wurde nie in Xcode gebaut.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -525,7 +525,7 @@ Die 146 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   die Regeln der App: ein Swift-Paket
 ├── App/                                 die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen
-├── Tests/                               146 Tests und Daten eines echten Servers
+├── Tests/                               159 Tests und Daten eines echten Servers
 ├── docs/                                die Anleitungen dieses Repositorys
 ├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
 ├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
@@ -554,7 +554,7 @@ ARMOR-IOS-CONTROL/
   },
   "fr": {
     "tagline": "Client opérateur iPhone d'ARMOR-SERVER : état, armement, alarmes, centrales d'alarme, caméras et assistant, en huit langues",
-    "honest": "les règles de l'app (liaison au serveur, lecture des réponses, choix de l'adresse, verrou du téléphone, coffre de la session, confiance dans le certificat, politique d'alarmes, cas d'usage, découpage du MJPEG) forment le paquet Swift `ArmorCore`, couvert par 146 tests unitaires qui s'exécutent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les huit tables de langues et le contrat sans Mac. Ce qui n'est **pas** encore prouvé : les écrans SwiftUI et les parties qui exigent un iPhone (Face ID, trousseau, règles de certificat, caméra en direct, push via Firebase) n'ont pas été compilés dans Xcode ni exécutés sur un appareil.",
+    "honest": "les règles de l'app (liaison au serveur, lecture des réponses, choix de l'adresse, verrou du téléphone, coffre de la session, confiance dans le certificat, politique d'alarmes, cas d'usage, découpage du MJPEG) forment le paquet Swift `ArmorCore`, couvert par 159 tests unitaires qui s'exécutent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les huit tables de langues et le contrat sans Mac. Ce qui n'est **pas** encore prouvé : les écrans SwiftUI et les parties qui exigent un iPhone (Face ID, trousseau, règles de certificat, caméra en direct, push via Firebase) n'ont pas été compilés dans Xcode ni exécutés sur un appareil.",
     "glance": [
       [
         "Rôle",
@@ -566,7 +566,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Tests",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Langues",
@@ -587,7 +587,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Les règles de l'application forment un paquet Swift (`ArmorCore`) ; les écrans SwiftUI n'ont pas été compilés dans Xcode.",
-      "tests": "146 tests unitaires réussissent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les tables des huit langues et le contrat sans Mac ; aucun test ne tourne sur un appareil.",
+      "tests": "159 tests unitaires réussissent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les tables des huit langues et le contrat sans Mac ; aucun test ne tourne sur un appareil.",
       "ui": "Les écrans SwiftUI sont écrits mais n'ont été ni compilés dans Xcode ni exécutés sur un iPhone.",
       "hardware": "Elle n'a pas tourné sur un iPhone : les règles ne sont testées que sous Linux.",
       "security": "Le verrouillage du téléphone, le coffre de la session et la confiance dans le certificat sont des règles testées sous Linux ; Face ID, le trousseau et les règles du certificat n'ont pas tourné sur un appareil.",
@@ -648,7 +648,7 @@ Dans l'app : les deux adresses, *Se souvenir de moi*, le verrouillage du télép
       "quickstart": r"""**Prérequis:** un Mac avec Xcode 15+ et iOS 16+ pour compiler l'app ; Swift 5.9+ (macOS ou Linux) pour les tests ; Python 3.11 pour les contrôles.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -671,7 +671,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | L'analyse d'adresses, le découpage MJPEG et le traducteur |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | La politique d'alarme et les codes d'alarme |
 
-Les 146 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 31 fichiers Swift, 241 phrases en 8 langues, 26 chemins du serveur. Aucun test ne tourne sur un appareil.""",
+Les 159 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 31 fichiers Swift, 241 phrases en 8 langues, 26 chemins du serveur. Aucun test ne tourne sur un appareil.""",
       "build": "Le projet Xcode est généré depuis `project.yml` avec XcodeGen : choisissez une équipe de signature, ajoutez l'icône de l'app à `App/Resources/Assets.xcassets/AppIcon.appiconset` et, pour le push, le `GoogleService-Info.plist` de l'installation. Il n'a jamais été compilé dans Xcode.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -689,7 +689,7 @@ Les 146 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réu
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   les règles de l'app : un paquet Swift
 ├── App/                                 les écrans SwiftUI et les parties qui exigent un iPhone
-├── Tests/                               146 tests et données d'un vrai serveur
+├── Tests/                               159 tests et données d'un vrai serveur
 ├── docs/                                les guides de ce dépôt
 ├── tools/                               les contrôles CI partagés et les outils du projet
 ├── .github/                             workflow CI et modèles d'issues et de pull requests
@@ -718,7 +718,7 @@ ARMOR-IOS-CONTROL/
   },
   "it": {
     "tagline": "Client operatore per iPhone di ARMOR-SERVER: stato, armamento, allarmi, centrali di allarme, telecamere e assistente, in otto lingue",
-    "honest": "le regole dell'app (collegamento al server, lettura delle risposte, scelta dell'indirizzo, blocco del telefono, cassaforte della sessione, fiducia nel certificato, politica degli allarmi, casi d'uso, taglio dell'MJPEG) sono il pacchetto Swift `ArmorCore`, coperto da 146 test unitari che girano con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le otto tabelle delle lingue e il contratto senza Mac. Ciò che **non** è ancora provato: le schermate SwiftUI e le parti che richiedono un iPhone (Face ID, portachiavi, regole del certificato, telecamera dal vivo, push con Firebase) non sono state compilate in Xcode né eseguite su un dispositivo.",
+    "honest": "le regole dell'app (collegamento al server, lettura delle risposte, scelta dell'indirizzo, blocco del telefono, cassaforte della sessione, fiducia nel certificato, politica degli allarmi, casi d'uso, taglio dell'MJPEG) sono il pacchetto Swift `ArmorCore`, coperto da 159 test unitari che girano con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le otto tabelle delle lingue e il contratto senza Mac. Ciò che **non** è ancora provato: le schermate SwiftUI e le parti che richiedono un iPhone (Face ID, portachiavi, regole del certificato, telecamera dal vivo, push con Firebase) non sono state compilate in Xcode né eseguite su un dispositivo.",
     "glance": [
       [
         "Ruolo",
@@ -730,7 +730,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Test",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Lingue",
@@ -751,7 +751,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Le regole dell'app sono un pacchetto Swift (`ArmorCore`); le schermate SwiftUI non sono state compilate in Xcode.",
-      "tests": "Superano 146 test unitari con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le tabelle delle otto lingue e il contratto senza un Mac; nessun test gira su un dispositivo.",
+      "tests": "Superano 159 test unitari con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le tabelle delle otto lingue e il contratto senza un Mac; nessun test gira su un dispositivo.",
       "ui": "Le schermate SwiftUI sono scritte ma non sono state compilate in Xcode né eseguite su un iPhone.",
       "hardware": "Non ha girato su un iPhone: le regole sono provate solo su Linux.",
       "security": "Il blocco del telefono, il deposito della sessione e la fiducia nel certificato sono regole provate su Linux; Face ID, il portachiavi e le regole del certificato non sono stati eseguiti su un dispositivo.",
@@ -812,7 +812,7 @@ Nell'app: i due indirizzi, *Ricordami*, il blocco del telefono e la lingua (le o
       "quickstart": r"""**Requisiti:** un Mac con Xcode 15+ e iOS 16+ per compilare l'app; Swift 5.9+ (macOS o Linux) per i test; Python 3.11 per le verifiche.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -835,7 +835,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | La lettura degli indirizzi, il taglio MJPEG e il traduttore |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | La politica degli allarmi e i codici di allarme |
 
-I 146 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 31 file Swift, 241 frasi in 8 lingue, 26 percorsi del server. Nessun test gira su un dispositivo.""",
+I 159 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 31 file Swift, 241 frasi in 8 lingue, 26 percorsi del server. Nessun test gira su un dispositivo.""",
       "build": "Il progetto Xcode si genera da `project.yml` con XcodeGen: scegli un team di firma, aggiungi l'icona dell'app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, per il push, il `GoogleService-Info.plist` dell'installazione. Non è mai stato compilato in Xcode.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -853,7 +853,7 @@ I 146 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 3
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   le regole dell'app: un pacchetto Swift
 ├── App/                                 le schermate SwiftUI e le parti che richiedono un iPhone
-├── Tests/                               146 test e dati di un server reale
+├── Tests/                               159 test e dati di un server reale
 ├── docs/                                le guide di questo repository
 ├── tools/                               i controlli CI condivisi e gli strumenti del progetto
 ├── .github/                             workflow CI e modelli per issue e pull request
@@ -882,7 +882,7 @@ ARMOR-IOS-CONTROL/
   },
   "ja": {
     "tagline": "ARMOR-SERVER の iPhone オペレータークライアント：状態、警戒、警報、警報盤、カメラ、アシスタント。8 言語対応",
-    "honest": "アプリのルール（サーバー接続、応答の解析、アドレスの選択、端末ロック、セッションの保管庫、証明書の信頼、警報ポリシー、ユースケース、MJPEG の切り出し）は Swift パッケージ `ArmorCore` にあり、macOS または Linux で `swift test` により実行される 146 件の単体テストでカバーされています。`tools/ios_lint.py` は Mac なしで構造、8 言語の表、契約を検査します。**まだ**証明されていないもの：SwiftUI の画面と iPhone が必要な部分（Face ID、キーチェーン、証明書ルール、ライブカメラ、Firebase 経由のプッシュ）は、Xcode でのビルドも実機での実行もしていません。",
+    "honest": "アプリのルール（サーバー接続、応答の解析、アドレスの選択、端末ロック、セッションの保管庫、証明書の信頼、警報ポリシー、ユースケース、MJPEG の切り出し）は Swift パッケージ `ArmorCore` にあり、macOS または Linux で `swift test` により実行される 159 件の単体テストでカバーされています。`tools/ios_lint.py` は Mac なしで構造、8 言語の表、契約を検査します。**まだ**証明されていないもの：SwiftUI の画面と iPhone が必要な部分（Face ID、キーチェーン、証明書ルール、ライブカメラ、Firebase 経由のプッシュ）は、Xcode でのビルドも実機での実行もしていません。",
     "glance": [
       [
         "役割",
@@ -894,7 +894,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "テスト",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "言語",
@@ -915,7 +915,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "アプリの規則は Swift パッケージ（`ArmorCore`）です。SwiftUI の画面は Xcode ではまだビルドしていません。",
-      "tests": "146 件のユニットテストが macOS または Linux の `swift test` で通り、`tools/ios_lint.py` が Mac なしで構造、8 言語の表、契約を確認します。実機で動くテストはありません。",
+      "tests": "159 件のユニットテストが macOS または Linux の `swift test` で通り、`tools/ios_lint.py` が Mac なしで構造、8 言語の表、契約を確認します。実機で動くテストはありません。",
       "ui": "SwiftUI の画面は書いてありますが、Xcode でのビルドも iPhone での実行もしていません。",
       "hardware": "iPhone 上ではまだ動かしていません。規則は Linux でのみテストしています。",
       "security": "端末のロック、セッションの保管庫、証明書の信頼は Linux でテストした規則です。Face ID、キーチェーン、証明書の規則は実機では動かしていません。",
@@ -976,7 +976,7 @@ ARMOR-IOS-CONTROL/
       "quickstart": r"""**必要なもの:** アプリのビルドには Xcode 15+ と iOS 16+ の Mac、テストには Swift 5.9+（macOS または Linux）、検査には Python 3.11。
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -999,7 +999,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | アドレス解析、MJPEG の切り出し、翻訳 |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | アラームポリシーとアラームコード |
 
-146 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 31、8 言語の 241 フレーズ、サーバーパス 26。実機で動くテストはありません。""",
+159 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 31、8 言語の 241 フレーズ、サーバーパス 26。実機で動くテストはありません。""",
       "build": "Xcode プロジェクトは XcodeGen で `project.yml` から生成します。署名チームを選び、アプリのアイコンを `App/Resources/Assets.xcassets/AppIcon.appiconset` に、プッシュ用に設置環境の `GoogleService-Info.plist` を追加してください。Xcode でビルドしたことはありません。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1017,7 +1017,7 @@ python -I tools/armor_ci_validate.py
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   アプリのルール：Swift パッケージ
 ├── App/                                 SwiftUI 画面と iPhone が必要な部分
-├── Tests/                               146 件のテストと実サーバーのデータ
+├── Tests/                               159 件のテストと実サーバーのデータ
 ├── docs/                                このリポジトリのガイド
 ├── tools/                               共通の CI チェックとプロジェクトツール
 ├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
@@ -1046,7 +1046,7 @@ ARMOR-IOS-CONTROL/
   },
   "zh": {
     "tagline": "ARMOR-SERVER 的 iPhone 操作员客户端：状态、布防、警报、报警主机、摄像头和助手，支持八种语言",
-    "honest": "应用的规则（服务器连接、响应解析、地址选择、手机锁、会话保险库、证书信任、警报策略、用例、MJPEG 切分）是 Swift 包 `ArmorCore`，由 146 个单元测试覆盖，可在 macOS 或 Linux 上用 `swift test` 运行；`tools/ios_lint.py` 无需 Mac 即可检查结构、八张语言表和接口契约。**尚未**证明的部分：SwiftUI 界面以及需要 iPhone 的部分（Face ID、钥匙串、证书规则、实时摄像头、通过 Firebase 的推送）尚未在 Xcode 中构建，也未在设备上运行。",
+    "honest": "应用的规则（服务器连接、响应解析、地址选择、手机锁、会话保险库、证书信任、警报策略、用例、MJPEG 切分）是 Swift 包 `ArmorCore`，由 159 个单元测试覆盖，可在 macOS 或 Linux 上用 `swift test` 运行；`tools/ios_lint.py` 无需 Mac 即可检查结构、八张语言表和接口契约。**尚未**证明的部分：SwiftUI 界面以及需要 iPhone 的部分（Face ID、钥匙串、证书规则、实时摄像头、通过 Firebase 的推送）尚未在 Xcode 中构建，也未在设备上运行。",
     "glance": [
       [
         "角色",
@@ -1058,7 +1058,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "测试",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "语言",
@@ -1079,7 +1079,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "应用的规则是一个 Swift 包（`ArmorCore`）；SwiftUI 界面尚未在 Xcode 中构建。",
-      "tests": "146 项单元测试在 macOS 或 Linux 上通过 `swift test` 运行，`tools/ios_lint.py` 无需 Mac 即可检查结构、八种语言表和契约；没有任何测试在设备上运行。",
+      "tests": "159 项单元测试在 macOS 或 Linux 上通过 `swift test` 运行，`tools/ios_lint.py` 无需 Mac 即可检查结构、八种语言表和契约；没有任何测试在设备上运行。",
       "ui": "SwiftUI 界面已编写，但尚未在 Xcode 中构建，也没有在 iPhone 上运行。",
       "hardware": "尚未在 iPhone 上运行过：规则只在 Linux 上测试。",
       "security": "手机锁定、会话保险库和对证书的信任是在 Linux 上测试的规则；Face ID、钥匙串和证书规则尚未在设备上运行过。",
@@ -1140,7 +1140,7 @@ ARMOR-IOS-CONTROL/
       "quickstart": r"""**要求:** 构建应用需要装有 Xcode 15+ 和 iOS 16+ 的 Mac；测试需要 Swift 5.9+（macOS 或 Linux）；检查需要 Python 3.11。
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -1163,7 +1163,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | 地址解析、MJPEG 切分和翻译器 |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | 报警策略和报警代码 |
 
-这 146 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：31 个 Swift 文件、8 种语言的 241 条短语、26 条服务器路径。没有任何测试在真机上运行。""",
+这 159 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：31 个 Swift 文件、8 种语言的 241 条短语、26 条服务器路径。没有任何测试在真机上运行。""",
       "build": "Xcode 项目由 XcodeGen 根据 `project.yml` 生成：选择签名团队，把应用图标加入 `App/Resources/Assets.xcassets/AppIcon.appiconset`，推送还需加入安装环境的 `GoogleService-Info.plist`。从未在 Xcode 中构建过。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1181,7 +1181,7 @@ python -I tools/armor_ci_validate.py
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   应用的规则：一个 Swift 包
 ├── App/                                 SwiftUI 界面和需要 iPhone 的部分
-├── Tests/                               146 个测试和真实服务器的数据
+├── Tests/                               159 个测试和真实服务器的数据
 ├── docs/                                本仓库的指南
 ├── tools/                               共享的 CI 检查和项目工具
 ├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
@@ -1210,7 +1210,7 @@ ARMOR-IOS-CONTROL/
   },
   "pt": {
     "tagline": "Cliente de operador para iPhone do ARMOR-SERVER: estado, armar, alarmes, centrais de alarme, câmaras e o assistente, em oito idiomas",
-    "honest": "as regras da app (ligação ao servidor, leitura das respostas, escolha do endereço, bloqueio do telemóvel, cofre da sessão, confiança no certificado, política de alarmes, casos de uso, corte do MJPEG) são o pacote Swift `ArmorCore`, coberto por 146 testes unitários que correm com `swift test` em macOS ou Linux, e `tools/ios_lint.py` verifica a estrutura, as oito tabelas de idiomas e o contrato sem Mac. O que **ainda não** está provado: os ecrãs SwiftUI e as partes que precisam de um iPhone (Face ID, porta-chaves, regras de certificado, câmara em direto, push com Firebase) não foram compilados no Xcode nem executados num dispositivo.",
+    "honest": "as regras da app (ligação ao servidor, leitura das respostas, escolha do endereço, bloqueio do telemóvel, cofre da sessão, confiança no certificado, política de alarmes, casos de uso, corte do MJPEG) são o pacote Swift `ArmorCore`, coberto por 159 testes unitários que correm com `swift test` em macOS ou Linux, e `tools/ios_lint.py` verifica a estrutura, as oito tabelas de idiomas e o contrato sem Mac. O que **ainda não** está provado: os ecrãs SwiftUI e as partes que precisam de um iPhone (Face ID, porta-chaves, regras de certificado, câmara em direto, push com Firebase) não foram compilados no Xcode nem executados num dispositivo.",
     "glance": [
       [
         "Função",
@@ -1222,7 +1222,7 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Testes",
-        "146 (`swift test`)",
+        "159 (`swift test`)",
       ],
       [
         "Línguas",
@@ -1243,7 +1243,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "As regras da app são um pacote Swift (`ArmorCore`); os ecrãs SwiftUI não foram compilados no Xcode.",
-      "tests": "Passam 146 testes unitários com `swift test` em macOS ou Linux, e o `tools/ios_lint.py` verifica a estrutura, as tabelas dos oito idiomas e o contrato sem um Mac; nenhum teste corre num dispositivo.",
+      "tests": "Passam 159 testes unitários com `swift test` em macOS ou Linux, e o `tools/ios_lint.py` verifica a estrutura, as tabelas dos oito idiomas e o contrato sem um Mac; nenhum teste corre num dispositivo.",
       "ui": "Os ecrãs SwiftUI estão escritos, mas não foram compilados no Xcode nem executados num iPhone.",
       "hardware": "Não correu num iPhone: as regras só são testadas em Linux.",
       "security": "O bloqueio do telefone, o cofre da sessão e a confiança no certificado são regras testadas em Linux; o Face ID, o porta-chaves e as regras do certificado não correram num dispositivo.",
@@ -1304,7 +1304,7 @@ Na app: os dois endereços, *Lembrar-me*, o bloqueio do telemóvel e a língua (
       "quickstart": r"""**Requisitos:** um Mac com Xcode 15+ e iOS 16+ para compilar a app; Swift 5.9+ (macOS ou Linux) para os testes; Python 3.11 para as verificações.
 
 ```sh
-swift test                  # 146 tests of ArmorCore (macOS or Linux)
+swift test                  # 159 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -1327,7 +1327,7 @@ python -I tools/armor_ci_validate.py
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 7 + 7 | A leitura de endereços, o corte MJPEG e o tradutor |
 | `PolicyTests.swift`, `AlarmCodesTests.swift` | 6 + 4 | A política de alarmes e os códigos de alarme |
 
-Os 146 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 31 ficheiros Swift, 241 frases em 8 línguas, 26 caminhos do servidor. Nenhum teste corre num dispositivo.""",
+Os 159 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 31 ficheiros Swift, 241 frases em 8 línguas, 26 caminhos do servidor. Nenhum teste corre num dispositivo.""",
       "build": "O projeto Xcode gera-se a partir de `project.yml` com o XcodeGen: escolha uma equipa de assinatura, junte o ícone da app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, para push, o `GoogleService-Info.plist` da instalação. Nunca foi compilado no Xcode.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
@@ -1345,7 +1345,7 @@ Os 146 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Ma
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   as regras da app: um pacote Swift
 ├── App/                                 os ecrãs SwiftUI e as partes que precisam de um iPhone
-├── Tests/                               146 testes e dados de um servidor real
+├── Tests/                               159 testes e dados de um servidor real
 ├── docs/                                os guias deste repositório
 ├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
 ├── .github/                             fluxo de CI e modelos de issues e pull requests
@@ -1373,3 +1373,8 @@ ARMOR-IOS-CONTROL/
     },
   },
 }
+
+# the arming modes of the server, in the eight languages
+ARMING_BULLET = {'en': '**Arming modes of the server (Away, Home, Night):** while the server has the arming modes on (Studio, Configuration > Security), the arm button of the status screen opens a picker to arm in a mode, switch between them or disarm; a mode with nothing assigned asks to be confirmed, a change to a mode that defends less asks for the PIN like a disarm, and the status shows the mode in force. With the modes off the app arms and disarms as before. It follows the Android app; the code and its tests are written and were not compiled or tried on an iPhone.', 'es': '**Modos de armado del servidor (Fuera, En casa, Noche):** mientras el servidor tiene los modos de armado activados (Studio, Configuración > Seguridad), el botón de armar de la pantalla de estado abre un selector para armar en un modo, cambiar de uno a otro o desarmar; un modo sin nada asignado pide confirmación, un cambio a un modo que defiende menos pide el PIN como desarmar, y el estado muestra el modo en vigor. Con los modos apagados la app arma y desarma como antes. Sigue a la app de Android; el código y sus pruebas están escritos y no se compilaron ni se probaron en un iPhone.', 'de': '**Scharfschaltmodi des Servers (Abwesend, Zuhause, Nacht):** Hat der Server die Scharfschaltmodi eingeschaltet (Studio, Konfiguration > Sicherheit), öffnet die Schaltfläche zum Scharfschalten auf dem Statusbildschirm eine Auswahl, um in einem Modus scharf zu schalten, zu wechseln oder unscharf zu schalten; ein Modus ohne Zuweisung verlangt eine Bestätigung, ein Wechsel zu einem Modus mit weniger Schutz verlangt die PIN wie das Unscharfschalten, und der Status zeigt den aktiven Modus. Bei ausgeschalteten Modi schaltet die App wie bisher scharf und unscharf. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden weder kompiliert noch auf einem iPhone ausprobiert.', 'fr': "**Modes d'armement du serveur (Absent, À la maison, Nuit) :** quand le serveur a les modes d'armement activés (Studio, Configuration > Sécurité), le bouton d'armement de l'écran d'état ouvre un sélecteur pour armer dans un mode, passer de l'un à l'autre ou désarmer ; un mode sans rien d'attribué demande une confirmation, un passage à un mode qui protège moins demande le PIN comme un désarmement, et l'état montre le mode en vigueur. Modes éteints, l'application arme et désarme comme avant. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont été ni compilés ni essayés sur un iPhone.", 'it': "**Modalità di inserimento del server (Fuori casa, In casa, Notte):** quando il server ha attive le modalità di inserimento (Studio, Configurazione > Sicurezza), il pulsante di inserimento della schermata di stato apre un selettore per inserire in una modalità, passare dall'una all'altra o disinserire; una modalità senza nulla di assegnato chiede conferma, un passaggio a una modalità che protegge meno chiede il PIN come disinserire, e lo stato mostra la modalità in vigore. Con le modalità spente l'app inserisce e disinserisce come prima. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati compilati né provati su un iPhone.", 'ja': '**サーバーの警戒モード（外出・在宅・夜間）:** サーバーで警戒モードが有効（Studio の 設定 > セキュリティ）のとき、状態画面の警戒ボタンがモードの選択画面を開き、モードを選んで警戒したり、切り替えたり、解除したりできます。何も割り当てられていないモードは確認を求め、守る範囲が狭いモードへの切り替えは解除と同じようにPINを求め、状態画面には適用中のモードが表示されます。モードがオフならアプリはこれまでどおり警戒と解除だけを行います。 Android アプリに準拠しており、コードとテストは書かれていますが、コンパイルも iPhone での動作確認も行っていません。', 'zh': '**服务器的布防模式（离家、在家、夜间）：** 当服务器启用了布防模式（Studio 的 配置 > 安全）时，状态页的布防按钮会打开选择器，可按模式布防、切换或撤防；未分配任何内容的模式需要确认，切换到保护范围更小的模式需要像撤防一样输入 PIN，状态页会显示当前生效的模式。模式关闭时，应用的布防和撤防与以往相同。 它与 Android 应用保持一致；代码及其测试已编写，但尚未编译，也未在 iPhone 上试用。', 'pt': '**Modos de armar do servidor (Ausente, Em casa, Noite):** quando o servidor tem os modos de armar ativados (Studio, Configuração > Segurança), o botão de armar do ecrã de estado abre um seletor para armar num modo, mudar de um para outro ou desarmar; um modo sem nada atribuído pede confirmação, uma mudança para um modo que defende menos pede o PIN como desarmar, e o estado mostra o modo em vigor. Com os modos desligados a app arma e desarma como antes. Segue a app Android; o código e os seus testes estão escritos e não foram compilados nem experimentados num iPhone.'}
+for _lg, _bullet in ARMING_BULLET.items():
+    TEXT[_lg]["body"]["overview"] = TEXT[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet
