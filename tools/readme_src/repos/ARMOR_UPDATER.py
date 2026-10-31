@@ -6,20 +6,20 @@ FACTS = {'emoji': '🛠️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
  'status': [['software', 'yellow'], ['tests', 'green'], ['ui', 'yellow'], ['security', 'yellow'], ['updates', 'yellow'], ['docs', 'green']],
- 'badges': [['Language', 'Python%203.10%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Languages', '8', '00E5FF'], ['Tests', '288', '2ea44f']]}
+ 'badges': [['Language', 'Python%203.10%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Languages', '8', '00E5FF'], ['Tests', '321', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
 LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repository on the machine it runs on (a Python program with no required dependencies)',
         'status': {'software': 'The manifest discovery, the version comparison and the staged install and update work; they have not been run end to end against every '
                                'repository of the family.',
-                   'tests': '288 tests pass (`python -m pytest tests -q`): the discovery, the version comparison, the signature check, the staged install with its lock, '
+                   'tests': '321 tests pass (`python -m pytest tests -q`): the discovery, the version comparison, the signature check, the staged install with its lock, '
                             'journal, backups and rollback, the evidence log and the eight-language tables.',
                    'ui': 'The Qt Quick shell has been run on Windows only.',
                    'security': 'The signature check and the evidence log are tested on the host; there has been no independent review.',
                    'updates': "The installs it makes need `git` and each repository's own build tools on the machine.",
                    'docs': 'Eight languages and the changelog are up to date.'},
         'honest': 'The manifest discovery, the version comparison, the signature check, the staged install and update with its lock, journal, backups and rollback, the '
-                  'evidence log and the eight-language interface tables are tested (288 tests), and the Qt Quick shell has been run on Windows. It has not been run '
+                  'evidence log and the eight-language interface tables are tested (321 tests), and the Qt Quick shell has been run on Windows. It has not been run '
                   "against every repository of the family end to end, and the installs it makes need `git` and each repository's own build tools on the machine.",
         'bullets': ['**Discovery, no fixed list:** a local folder joins the moment it carries a valid `armor.project.json` declaring `ecosystem: "A.R.M.O.R."`; '
                     "remotely, every public repository of the account is checked the same way. A `GITHUB_TOKEN` is optional: it only raises GitHub's limit of 60 "
@@ -49,14 +49,14 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
  'es': {'tagline': 'Detecta, instala y actualiza cada repositorio de A.R.M.O.R. en la máquina donde se ejecuta (un programa en Python sin dependencias obligatorias)',
         'status': {'software': 'El descubrimiento de manifiestos, la comparación de versiones y la instalación y actualización por etapas funcionan; no se han ejecutado '
                                'de principio a fin contra todos los repositorios de la familia.',
-                   'tests': 'Pasan 288 pruebas (`python -m pytest tests -q`): el descubrimiento, la comparación de versiones, la comprobación de la firma, la '
+                   'tests': 'Pasan 321 pruebas (`python -m pytest tests -q`): el descubrimiento, la comparación de versiones, la comprobación de la firma, la '
                             'instalación por etapas con su bloqueo, diario, copias y vuelta atrás, el registro de evidencias y las tablas de los ocho idiomas.',
                    'ui': 'La interfaz Qt Quick solo se ha ejecutado en Windows.',
                    'security': 'La comprobación de la firma y el registro de evidencias están probados en el host; no ha habido una revisión independiente.',
                    'updates': 'Las instalaciones que hace necesitan `git` y las herramientas de compilación propias de cada repositorio en la máquina.',
                    'docs': 'Ocho idiomas y el historial de cambios están al día.'},
         'honest': 'El descubrimiento por manifiesto, la comparación de versiones, la comprobación de firma, la instalación y actualización por etapas con su bloqueo, su '
-                  'diario, sus copias y su vuelta atrás, el registro de evidencias y las tablas de la interfaz en ocho idiomas están probados (288 tests), y la interfaz '
+                  'diario, sus copias y su vuelta atrás, el registro de evidencias y las tablas de la interfaz en ocho idiomas están probados (321 tests), y la interfaz '
                   'Qt Quick se ha ejecutado en Windows. No se ha ejecutado contra todos los repositorios de la familia de principio a fin, y las instalaciones que hace '
                   'necesitan `git` y las herramientas de compilación de cada repositorio en la máquina.',
         'bullets': ['**Descubrimiento, sin lista fija:** una carpeta local se une en cuanto lleva un `armor.project.json` válido que declara `ecosystem: "A.R.M.O.R."`; '
@@ -89,7 +89,7 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
  'fr': {'tagline': 'Détecte, installe et met à jour chaque dépôt A.R.M.O.R. sur la machine où il tourne (un programme Python sans dépendance obligatoire)',
         'status': {'software': "La découverte des manifestes, la comparaison des versions et l'installation et mise à jour par étapes fonctionnent ; elles n'ont pas été "
                                'exécutées de bout en bout contre tous les dépôts de la famille.',
-                   'tests': '288 tests réussissent (`python -m pytest tests -q`) : la découverte, la comparaison des versions, la vérification de la signature, '
+                   'tests': '321 tests réussissent (`python -m pytest tests -q`) : la découverte, la comparaison des versions, la vérification de la signature, '
                             "l'installation par étapes avec son verrou, son journal, ses sauvegardes et son retour arrière, le journal de preuves et les tables des huit "
                             'langues.',
                    'ui': "L'interface Qt Quick n'a été exécutée que sous Windows.",
@@ -97,7 +97,7 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
                    'updates': "Les installations qu'il fait demandent `git` et les outils de compilation propres à chaque dépôt sur la machine.",
                    'docs': 'Huit langues et le journal des modifications sont à jour.'},
         'honest': "La découverte par manifeste, la comparaison des versions, la vérification de signature, l'installation et la mise à jour par étapes avec leur verrou, "
-                  "leur journal, leurs sauvegardes et leur retour arrière, le journal de preuves et les tables de l'interface en huit langues sont testés (288 tests), "
+                  "leur journal, leurs sauvegardes et leur retour arrière, le journal de preuves et les tables de l'interface en huit langues sont testés (321 tests), "
                   "et l'interface Qt Quick a tourné sous Windows. Elle n'a pas été exécutée de bout en bout sur chaque dépôt de la famille, et les installations qu'elle "
                   'fait exigent `git` et les outils de compilation de chaque dépôt sur la machine.',
         'bullets': ["**Découverte, sans liste fixe :** un dossier local rejoint l'écosystème dès qu'il porte un `armor.project.json` valide déclarant `ecosystem: "
@@ -130,14 +130,14 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
  'it': {'tagline': 'Rileva, installa e aggiorna ogni repository A.R.M.O.R. sulla macchina in cui gira (un programma Python senza dipendenze obbligatorie)',
         'status': {'software': "La scoperta dei manifesti, il confronto delle versioni e l'installazione e aggiornamento a fasi funzionano; non sono stati eseguiti end "
                                'to end contro tutti i repository della famiglia.',
-                   'tests': "Superano 288 test (`python -m pytest tests -q`): la scoperta, il confronto delle versioni, il controllo della firma, l'installazione a fasi "
+                   'tests': "Superano 321 test (`python -m pytest tests -q`): la scoperta, il confronto delle versioni, il controllo della firma, l'installazione a fasi "
                             'con blocco, diario, copie e ripristino, il registro delle prove e le tabelle delle otto lingue.',
                    'ui': "L'interfaccia Qt Quick è stata eseguita solo su Windows.",
                    'security': "Il controllo della firma e il registro delle prove sono testati sull'host; non c'è stata una revisione indipendente.",
                    'updates': 'Le installazioni che esegue richiedono `git` e gli strumenti di compilazione propri di ciascun repository sulla macchina.',
                    'docs': 'Otto lingue e il registro delle modifiche sono aggiornati.'},
         'honest': "La scoperta per manifesto, il confronto delle versioni, il controllo della firma, l'installazione e l'aggiornamento a tappe con il loro blocco, il "
-                  "loro diario, le copie e il ritorno indietro, il registro delle prove e le tabelle dell'interfaccia in otto lingue sono testati (288 test), e "
+                  "loro diario, le copie e il ritorno indietro, il registro delle prove e le tabelle dell'interfaccia in otto lingue sono testati (321 test), e "
                   "l'interfaccia Qt Quick è stata eseguita su Windows. Non è stata eseguita su ogni repository della famiglia da cima a fondo, e le installazioni che fa "
                   'richiedono `git` e gli strumenti di compilazione di ciascun repository sulla macchina.',
         'bullets': ['**Scoperta, senza elenco fisso:** una cartella locale entra appena porta un `armor.project.json` valido che dichiara `ecosystem: "A.R.M.O.R."`; da '
@@ -170,14 +170,14 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
  'de': {'tagline': 'Erkennt, installiert und aktualisiert jedes A.R.M.O.R.-Repository auf dem Rechner, auf dem es läuft (ein Python-Programm ohne Pflichtabhängigkeiten)',
         'status': {'software': 'Die Manifest-Erkennung, der Versionsvergleich und die gestufte Installation und Aktualisierung funktionieren; sie wurden nicht '
                                'durchgängig gegen jedes Repository der Familie ausgeführt.',
-                   'tests': '288 Tests bestehen (`python -m pytest tests -q`): die Erkennung, der Versionsvergleich, die Signaturprüfung, die gestufte Installation mit '
+                   'tests': '321 Tests bestehen (`python -m pytest tests -q`): die Erkennung, der Versionsvergleich, die Signaturprüfung, die gestufte Installation mit '
                             'Sperre, Journal, Sicherungen und Rückfall, das Beweisprotokoll und die Tabellen der acht Sprachen.',
                    'ui': 'Die Qt-Quick-Oberfläche lief nur unter Windows.',
                    'security': 'Die Signaturprüfung und das Beweisprotokoll sind auf dem Host getestet; es gab keine unabhängige Prüfung.',
                    'updates': 'Die Installationen, die er vornimmt, brauchen `git` und die eigenen Build-Werkzeuge jedes Repositorys auf dem Rechner.',
                    'docs': 'Acht Sprachen und das Änderungsprotokoll sind aktuell.'},
         'honest': 'Die Manifest-Erkennung, der Versionsvergleich, die Signaturprüfung, die gestufte Installation und Aktualisierung mit Sperre, Journal, Sicherungen und '
-                  'Rückkehr, das Nachweisprotokoll und die Oberflächentabellen in acht Sprachen sind getestet (288 Tests), und die Qt-Quick-Oberfläche lief unter '
+                  'Rückkehr, das Nachweisprotokoll und die Oberflächentabellen in acht Sprachen sind getestet (321 Tests), und die Qt-Quick-Oberfläche lief unter '
                   'Windows. Sie wurde nicht gegen jedes Repository der Familie von Anfang bis Ende ausgeführt, und die Installationen brauchen `git` und die '
                   'Build-Werkzeuge jedes Repositorys auf dem Rechner.',
         'bullets': ['**Erkennung ohne feste Liste:** Ein lokaler Ordner gehört dazu, sobald er ein gültiges `armor.project.json` mit `ecosystem: "A.R.M.O.R."` trägt; '
@@ -211,12 +211,12 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
         'requirements': ['Python 3.10+', '`git` und die Build-Werkzeuge der Repositories, die Sie installieren', 'optional: PySide6 für die Desktop-Oberfläche']},
  'zh': {'tagline': '检测、安装并更新所在机器上的每个 A.R.M.O.R. 仓库（一个没有必需依赖的 Python 程序）',
         'status': {'software': '清单发现、版本比较以及分阶段安装与更新都能工作；尚未对家族中的每个仓库完整运行过。',
-                   'tests': '288 项测试通过（`python -m pytest tests -q`）：发现、版本比较、签名检查、带锁、日志、备份和回滚的分阶段安装、证据日志以及八种语言的表。',
+                   'tests': '321 项测试通过（`python -m pytest tests -q`）：发现、版本比较、签名检查、带锁、日志、备份和回滚的分阶段安装、证据日志以及八种语言的表。',
                    'ui': 'Qt Quick 界面只在 Windows 上运行过。',
                    'security': '签名检查和证据日志已在主机上测试；没有经过独立审查。',
                    'updates': '它所做的安装需要机器上有 `git` 以及每个仓库自己的构建工具。',
                    'docs': '八种语言和更新日志均为最新。'},
-        'honest': '清单发现、版本比较、签名检查、带锁、日志、备份和回退的分阶段安装与更新、证据日志以及八种语言的界面表格都已测试（288 个测试），Qt Quick 界面已在 Windows 上运行过。它没有对家族中的每个仓库从头到尾运行过，它所做的安装需要机器上有 `git` 和各仓库自己的构建工具。',
+        'honest': '清单发现、版本比较、签名检查、带锁、日志、备份和回退的分阶段安装与更新、证据日志以及八种语言的界面表格都已测试（321 个测试），Qt Quick 界面已在 Windows 上运行过。它没有对家族中的每个仓库从头到尾运行过，它所做的安装需要机器上有 `git` 和各仓库自己的构建工具。',
         'bullets': ['**无固定列表的发现：**本地文件夹只要带有声明 `ecosystem: "A.R.M.O.R."` 的有效 `armor.project.json` 就会加入；远程则以同样方式检查账户的每个公开仓库。`GITHUB_TOKEN` 是可选的：它只是提高 GitHub 每小时 60 '
                     '次请求的限制。',
                     '**安装和更新，从不原地进行：**新项目和更新都先在独立的暂存克隆中构建并验证，构建成功后才升级——两次有日志的重命名，被替换的检出保存在 '
@@ -234,12 +234,12 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
         'requirements': ['Python 3.10+', '`git` 以及你所安装仓库的构建工具', '可选：用于桌面界面的 PySide6']},
  'ja': {'tagline': '実行中のマシン上のすべての A.R.M.O.R. リポジトリを検出し、インストールし、更新します（必須の依存関係がない Python プログラム）',
         'status': {'software': 'マニフェストの検出、バージョン比較、段階的なインストールと更新は動作します。ファミリーのすべてのリポジトリに対して端から端まで実行したわけではありません。',
-                   'tests': '288 件のテストが通ります（`python -m pytest tests -q`）：検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバック付きの段階的インストール、証拠ログ、8 言語の表。',
+                   'tests': '321 件のテストが通ります（`python -m pytest tests -q`）：検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバック付きの段階的インストール、証拠ログ、8 言語の表。',
                    'ui': 'Qt Quick のシェルは Windows でのみ実行しています。',
                    'security': '署名の確認と証拠ログはホストでテスト済みです。独立したレビューはありません。',
                    'updates': '実行するインストールには、マシンに `git` と各リポジトリ固有のビルドツールが必要です。',
                    'docs': '8 言語と変更履歴は最新です。'},
-        'honest': 'マニフェストによる検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバックを備えた段階的なインストールと更新、証跡ログ、8 言語のインターフェース表はテスト済みです（288 件のテスト）。Qt Quick のシェルは Windows '
+        'honest': 'マニフェストによる検出、バージョン比較、署名の確認、ロック・ジャーナル・バックアップ・ロールバックを備えた段階的なインストールと更新、証跡ログ、8 言語のインターフェース表はテスト済みです（321 件のテスト）。Qt Quick のシェルは Windows '
                   'で実行されました。ファミリーのすべてのリポジトリに対して端から端まで実行したわけではなく、行うインストールにはマシンに `git` と各リポジトリ自身のビルドツールが必要です。',
         'bullets': ['**固定リストのない検出：**ローカルのフォルダーは、`ecosystem: "A.R.M.O.R."` を宣言する有効な `armor.project.json` を持った時点で加わります。リモートでは、アカウントのすべての公開リポジトリが同じ方法で調べられます。`GITHUB_TOKEN` '
                     'は任意で、GitHub の 1 時間 60 リクエストの上限を上げるだけです。',
@@ -260,14 +260,14 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
  'pt': {'tagline': 'Deteta, instala e atualiza cada repositório A.R.M.O.R. na máquina onde corre (um programa em Python sem dependências obrigatórias)',
         'status': {'software': 'A descoberta de manifestos, a comparação de versões e a instalação e atualização por fases funcionam; não foram executadas de ponta a '
                                'ponta contra todos os repositórios da família.',
-                   'tests': 'Passam 288 testes (`python -m pytest tests -q`): a descoberta, a comparação de versões, a verificação da assinatura, a instalação por fases '
+                   'tests': 'Passam 321 testes (`python -m pytest tests -q`): a descoberta, a comparação de versões, a verificação da assinatura, a instalação por fases '
                             'com o seu bloqueio, diário, cópias e retrocesso, o registo de provas e as tabelas dos oito idiomas.',
                    'ui': 'A interface Qt Quick só foi executada em Windows.',
                    'security': 'A verificação da assinatura e o registo de provas estão testados no anfitrião; não houve revisão independente.',
                    'updates': 'As instalações que faz precisam de `git` e das ferramentas de compilação próprias de cada repositório na máquina.',
                    'docs': 'Oito idiomas e o registo de alterações estão atualizados.'},
         'honest': 'A descoberta por manifesto, a comparação de versões, a verificação de assinatura, a instalação e a atualização por etapas com o seu bloqueio, diário, '
-                  'cópias e volta atrás, o registo de evidências e as tabelas da interface em oito idiomas estão testados (288 testes), e a interface Qt Quick correu no '
+                  'cópias e volta atrás, o registo de evidências e as tabelas da interface em oito idiomas estão testados (321 testes), e a interface Qt Quick correu no '
                   'Windows. Não foi executada contra todos os repositórios da família de ponta a ponta, e as instalações que faz precisam de `git` e das ferramentas de '
                   'compilação de cada repositório na máquina.',
         'bullets': ['**Descoberta, sem lista fixa:** uma pasta local junta-se assim que tem um `armor.project.json` válido que declara `ecosystem: "A.R.M.O.R."`; em '
@@ -301,7 +301,33 @@ LEGACY = {'en': {'tagline': 'Detects, installs and updates every A.R.M.O.R. repo
                          'opcional: PySide6 para a interface de ambiente de trabalho']}}
 
 # the text tree of docs/structure.json (make_structure.py --tree <language>); the repository's own check fails when it and the file disagree
-TREE = {'en': 'ARMOR-UPDATER/\n'
+TREE = {'de': 'ARMOR-UPDATER/\n'
+       '├── src/armor_updater/\n'
+       '│   ├── project_manifest.py registry.py ecosystem_catalog.py   das Manifest, die Liste, der Katalog\n'
+       '│   ├── detect.py github_client.py version_parse.py            lokale und entfernte Suche, Versionen\n'
+       '│   ├── install.py git_ops.py staging.py                       gestufte Installation und Aktualisierung\n'
+       '│   ├── promotion.py releases.py deploy_category.py            Sperre, Journal, Sicherungen, Layouts\n'
+       '│   ├── signature.py                                           signierte Updates, fixierte Schlüssel\n'
+       '│   ├── evidence.py settings.py console_flags.py               das Protokoll, die Einstellungen, die Optionen\n'
+       '│   ├── main.py                                                die Kommandozeile\n'
+       '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     die acht Sprachen\n'
+       '│   ├── gui.py qt_gui.py qml/                                  das optionale Qt-Quick-Fenster\n'
+       '│   └── data/ assets/                                          allowed_signers; das Symbol\n'
+       '├── tests/                                                     321 Tests in 28 Modulen\n'
+       '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
+       '├── tools/                                                     die gemeinsamen CI-Prüfungen, der Starter und generate_app_icon.py\n'
+       '├── images/                                                    Banner, Symbol und die Bilder des READMEs\n'
+       '├── .github/                                                   CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
+       '├── armor.project.json                                         Manifest: Version, Rolle, Reife\n'
+       '├── pyproject.toml                                             Paket-Metadaten, Einstiege\n'
+       '├── CHANGELOG.md                                               was sich in jeder Version geändert hat\n'
+       '├── run-gui.vbs                                                öffnet das Fenster unter Windows ohne Konsole\n'
+       '├── run.sh run.bat                                             Start, gemeinsamer Ablauf\n'
+       '├── build.sh build.bat                                         Bauen und Testen, gemeinsamer Ablauf\n'
+       '├── build-test.sh build-test.bat                               Bauen, Testen und Verpacken\n'
+       '├── test.sh test.bat                                           nur die Tests, nie die Version\n'
+       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
+ 'en': 'ARMOR-UPDATER/\n'
        '├── src/armor_updater/\n'
        '│   ├── project_manifest.py registry.py ecosystem_catalog.py   the manifest, the list, the catalogue\n'
        '│   ├── detect.py github_client.py version_parse.py            local and remote discovery, versions\n'
@@ -313,7 +339,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     the eight languages\n'
        '│   ├── gui.py qt_gui.py qml/                                  the optional Qt Quick window\n'
        '│   └── data/ assets/                                          allowed_signers; the icon\n'
-       '├── tests/                                                     288 tests in 25 modules\n'
+       '├── tests/                                                     321 tests in 28 modules\n'
        '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
        '├── tools/                                                     the shared CI checks, the launcher and generate_app_icon.py\n'
        '├── images/                                                    banner, icon and the pictures of the README\n'
@@ -339,7 +365,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     los ocho idiomas\n'
        '│   ├── gui.py qt_gui.py qml/                                  la ventana Qt Quick opcional\n'
        '│   └── data/ assets/                                          allowed_signers; el icono\n'
-       '├── tests/                                                     288 pruebas en 25 módulos\n'
+       '├── tests/                                                     321 pruebas en 28 módulos\n'
        '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
        '├── tools/                                                     las comprobaciones de CI, el lanzador y generate_app_icon.py\n'
        '├── images/                                                    banner, icono y las imágenes del README\n'
@@ -353,32 +379,6 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '├── build-test.sh build-test.bat                               construir, probar y empaquetar\n'
        '├── test.sh test.bat                                           solo las pruebas, nunca la versión\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'de': 'ARMOR-UPDATER/\n'
-       '├── src/armor_updater/\n'
-       '│   ├── project_manifest.py registry.py ecosystem_catalog.py   das Manifest, die Liste, der Katalog\n'
-       '│   ├── detect.py github_client.py version_parse.py            lokale und entfernte Suche, Versionen\n'
-       '│   ├── install.py git_ops.py staging.py                       gestufte Installation und Aktualisierung\n'
-       '│   ├── promotion.py releases.py deploy_category.py            Sperre, Journal, Sicherungen, Layouts\n'
-       '│   ├── signature.py                                           signierte Updates, fixierte Schlüssel\n'
-       '│   ├── evidence.py settings.py console_flags.py               das Protokoll, die Einstellungen, die Optionen\n'
-       '│   ├── main.py                                                die Kommandozeile\n'
-       '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     die acht Sprachen\n'
-       '│   ├── gui.py qt_gui.py qml/                                  das optionale Qt-Quick-Fenster\n'
-       '│   └── data/ assets/                                          allowed_signers; das Symbol\n'
-       '├── tests/                                                     288 Tests in 25 Modulen\n'
-       '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
-       '├── tools/                                                     die gemeinsamen CI-Prüfungen, der Starter und generate_app_icon.py\n'
-       '├── images/                                                    Banner, Symbol und die Bilder des READMEs\n'
-       '├── .github/                                                   CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
-       '├── armor.project.json                                         Manifest: Version, Rolle, Reife\n'
-       '├── pyproject.toml                                             Paket-Metadaten, Einstiege\n'
-       '├── CHANGELOG.md                                               was sich in jeder Version geändert hat\n'
-       '├── run-gui.vbs                                                öffnet das Fenster unter Windows ohne Konsole\n'
-       '├── run.sh run.bat                                             Start, gemeinsamer Ablauf\n'
-       '├── build.sh build.bat                                         Bauen und Testen, gemeinsamer Ablauf\n'
-       '├── build-test.sh build-test.bat                               Bauen, Testen und Verpacken\n'
-       '├── test.sh test.bat                                           nur die Tests, nie die Version\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
  'fr': 'ARMOR-UPDATER/\n'
        '├── src/armor_updater/\n'
        '│   ├── project_manifest.py registry.py ecosystem_catalog.py   le manifeste, la liste, le catalogue\n'
@@ -391,7 +391,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     les huit langues\n'
        '│   ├── gui.py qt_gui.py qml/                                  la fenêtre Qt Quick facultative\n'
        "│   └── data/ assets/                                          allowed_signers ; l'icône\n"
-       '├── tests/                                                     288 tests en 25 modules\n'
+       '├── tests/                                                     321 tests en 28 modules\n'
        '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
        '├── tools/                                                     les vérifications CI, le lanceur et generate_app_icon.py\n'
        '├── images/                                                    bannière, icône et images du README\n'
@@ -417,7 +417,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     le otto lingue\n'
        '│   ├── gui.py qt_gui.py qml/                                  la finestra Qt Quick opzionale\n'
        "│   └── data/ assets/                                          allowed_signers; l'icona\n"
-       '├── tests/                                                     288 test in 25 moduli\n'
+       '├── tests/                                                     321 test in 28 moduli\n'
        '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
        "├── tools/                                                     i controlli CI, l'avviatore e generate_app_icon.py\n"
        '├── images/                                                    banner, icona e immagini del README\n'
@@ -443,7 +443,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     8 言語\n'
        '│   ├── gui.py qt_gui.py qml/                                  任意の Qt Quick ウィンドウ\n'
        '│   └── data/ assets/                                          allowed_signers とアイコン\n'
-       '├── tests/                                                     25 モジュール 288 件\n'
+       '├── tests/                                                     28 モジュール 321 件\n'
        '├── docs/                                                      CLI_REFERENCE.md、QML_DESKTOP_GUI.md\n'
        '├── tools/                                                     共通の CI 検査、ランチャー、generate_app_icon.py\n'
        '├── images/                                                    バナー、アイコン、README の画像\n'
@@ -457,32 +457,6 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '├── build-test.sh build-test.bat                               ビルド、テスト、パッケージ化\n'
        '├── test.sh test.bat                                           テストのみ（版は変えません）\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'zh': 'ARMOR-UPDATER/\n'
-       '├── src/armor_updater/\n'
-       '│   ├── project_manifest.py registry.py ecosystem_catalog.py   清单、列表、目录\n'
-       '│   ├── detect.py github_client.py version_parse.py            本地与远程发现、版本\n'
-       '│   ├── install.py git_ops.py staging.py                       分阶段安装与更新\n'
-       '│   ├── promotion.py releases.py deploy_category.py            锁、日志、备份、布局\n'
-       '│   ├── signature.py                                           签名更新与固定密钥\n'
-       '│   ├── evidence.py settings.py console_flags.py               日志、设置、选项\n'
-       '│   ├── main.py                                                命令行\n'
-       '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     八种语言\n'
-       '│   ├── gui.py qt_gui.py qml/                                  可选的 Qt Quick 窗口\n'
-       '│   └── data/ assets/                                          allowed_signers 与图标\n'
-       '├── tests/                                                     25 个模块 288 项测试\n'
-       '├── docs/                                                      CLI_REFERENCE.md、QML_DESKTOP_GUI.md\n'
-       '├── tools/                                                     共用的 CI 检查、启动器和 generate_app_icon.py\n'
-       '├── images/                                                    横幅图、图标和 README 的图片\n'
-       '├── .github/                                                   CI 工作流、仪表板通知、议题和 pull request 模板\n'
-       '├── armor.project.json                                         清单：版本、角色、成熟度\n'
-       '├── pyproject.toml                                             包元数据、入口\n'
-       '├── CHANGELOG.md                                               每个版本的变化\n'
-       '├── run-gui.vbs                                                在 Windows 上无控制台地打开窗口\n'
-       '├── run.sh run.bat                                             启动（共用流程）\n'
-       '├── build.sh build.bat                                         构建并测试（共用流程）\n'
-       '├── build-test.sh build-test.bat                               构建、测试并打包\n'
-       '├── test.sh test.bat                                           只运行测试，不改版本\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
  'pt': 'ARMOR-UPDATER/\n'
        '├── src/armor_updater/\n'
        '│   ├── project_manifest.py registry.py ecosystem_catalog.py   o manifesto, a lista, o catálogo\n'
@@ -495,7 +469,7 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     os oito idiomas\n'
        '│   ├── gui.py qt_gui.py qml/                                  a janela Qt Quick opcional\n'
        '│   └── data/ assets/                                          allowed_signers; o ícone\n'
-       '├── tests/                                                     288 testes em 25 módulos\n'
+       '├── tests/                                                     321 testes em 28 módulos\n'
        '├── docs/                                                      CLI_REFERENCE.md, QML_DESKTOP_GUI.md\n'
        '├── tools/                                                     as verificações de CI, o lançador e generate_app_icon.py\n'
        '├── images/                                                    faixa, ícone e as imagens do README\n'
@@ -508,11 +482,37 @@ TREE = {'en': 'ARMOR-UPDATER/\n'
        '├── build.sh build.bat                                         compilar e testar, fluxo partilhado\n'
        '├── build-test.sh build-test.bat                               compilar, testar e empacotar\n'
        '├── test.sh test.bat                                           só os testes, nunca a versão\n'
+       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
+ 'zh': 'ARMOR-UPDATER/\n'
+       '├── src/armor_updater/\n'
+       '│   ├── project_manifest.py registry.py ecosystem_catalog.py   清单、列表、目录\n'
+       '│   ├── detect.py github_client.py version_parse.py            本地与远程发现、版本\n'
+       '│   ├── install.py git_ops.py staging.py                       分阶段安装与更新\n'
+       '│   ├── promotion.py releases.py deploy_category.py            锁、日志、备份、布局\n'
+       '│   ├── signature.py                                           签名更新与固定密钥\n'
+       '│   ├── evidence.py settings.py console_flags.py               日志、设置、选项\n'
+       '│   ├── main.py                                                命令行\n'
+       '│   ├── i18n.py i18n_pt.py i18n_recovery.py result_text.py     八种语言\n'
+       '│   ├── gui.py qt_gui.py qml/                                  可选的 Qt Quick 窗口\n'
+       '│   └── data/ assets/                                          allowed_signers 与图标\n'
+       '├── tests/                                                     28 个模块 321 项测试\n'
+       '├── docs/                                                      CLI_REFERENCE.md、QML_DESKTOP_GUI.md\n'
+       '├── tools/                                                     共用的 CI 检查、启动器和 generate_app_icon.py\n'
+       '├── images/                                                    横幅图、图标和 README 的图片\n'
+       '├── .github/                                                   CI 工作流、仪表板通知、议题和 pull request 模板\n'
+       '├── armor.project.json                                         清单：版本、角色、成熟度\n'
+       '├── pyproject.toml                                             包元数据、入口\n'
+       '├── CHANGELOG.md                                               每个版本的变化\n'
+       '├── run-gui.vbs                                                在 Windows 上无控制台地打开窗口\n'
+       '├── run.sh run.bat                                             启动（共用流程）\n'
+       '├── build.sh build.bat                                         构建并测试（共用流程）\n'
+       '├── build-test.sh build-test.bat                               构建、测试并打包\n'
+       '├── test.sh test.bat                                           只运行测试，不改版本\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE'}
 
 DIAGRAM = ''
 
-NT = "288"
+NT = "321"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
@@ -523,7 +523,7 @@ def L(lg, key):
 GLANCE = [
     (GL["role"], T("Desktop tool that installs and updates the family on a PC, one project at a time | Herramienta de escritorio que instala y actualiza la familia en un PC, un proyecto cada vez | Desktop-Werkzeug, das die Familie auf einem PC installiert und aktualisiert, ein Projekt nach dem anderen | Outil de bureau qui installe et met à jour la famille sur un PC, un projet à la fois | Strumento desktop che installa e aggiorna la famiglia su un PC, un progetto alla volta | 1 つずつ、PC 上のファミリーをインストール・更新するデスクトップツール | 在 PC 上逐个安装和更新整个家族的桌面工具 | Ferramenta de secretária que instala e atualiza a família num PC, um projeto de cada vez")),
     (GL["stack"], T("Python 3.10+, git; optional PySide6 (Qt Quick) | Python 3.10+, git; PySide6 (Qt Quick) opcional | Python 3.10+, git; optional PySide6 (Qt Quick) | Python 3.10+, git ; PySide6 (Qt Quick) facultatif | Python 3.10+, git; PySide6 (Qt Quick) facoltativo | Python 3.10+、git。任意で PySide6（Qt Quick） | Python 3.10+、git；可选 PySide6（Qt Quick） | Python 3.10+, git; PySide6 (Qt Quick) opcional")),
-    (GL["tests"], T("288 (`python -m pytest tests -q`, about six minutes) | 288 (`python -m pytest tests -q`, unos seis minutos) | 288 (`python -m pytest tests -q`, etwa sechs Minuten) | 288 (`python -m pytest tests -q`, environ six minutes) | 288 (`python -m pytest tests -q`, circa sei minuti) | 288 件（`python -m pytest tests -q`、約 6 分） | 288 项（`python -m pytest tests -q`，约六分钟） | 288 (`python -m pytest tests -q`, cerca de seis minutos)")),
+    (GL["tests"], T("321 (`python -m pytest tests -q`, about six minutes) | 321 (`python -m pytest tests -q`, unos seis minutos) | 321 (`python -m pytest tests -q`, etwa sechs Minuten) | 321 (`python -m pytest tests -q`, environ six minutes) | 321 (`python -m pytest tests -q`, circa sei minuti) | 321 件（`python -m pytest tests -q`、約 6 分） | 321 项（`python -m pytest tests -q`，约六分钟） | 321 (`python -m pytest tests -q`, cerca de seis minutos)")),
 ]
 GLANCE += [
     (GL["interfaces"], P("`armor-updater --cli` with `status`, `install`, `update`, `rollback` and `backups`, and a Qt Quick window in eight languages", "`armor-updater --cli` con `status`, `install`, `update`, `rollback` y `backups`, y una ventana Qt Quick en ocho idiomas", "`armor-updater --cli` mit `status`, `install`, `update`, `rollback` und `backups` sowie ein Qt-Quick-Fenster in acht Sprachen",
@@ -609,7 +609,7 @@ QUICK_LEAD = P("**Requirements:** Python 3.10+, `git` and the build tools of the
                "**要求：** Python 3.10+、`git` 以及所装仓库的构建工具；可选：桌面窗口用的 PySide6。", "**Requisitos:** Python 3.10+, `git` e as ferramentas de compilação dos repositórios que instalar; opcional: PySide6 para a janela de secretária.")
 QUICK_CODE = [
     ('pip install -e ".[dev]"', T("or \".[dev,gui]\" for the optional Qt Quick window | o \".[dev,gui]\" para la ventana Qt Quick opcional | oder \".[dev,gui]\" für das optionale Qt-Quick-Fenster | ou \".[dev,gui]\" pour la fenêtre Qt Quick facultative | oppure \".[dev,gui]\" per la finestra Qt Quick opzionale | または \".[dev,gui]\"（任意の Qt Quick ウィンドウ用） | 或 \".[dev,gui]\"（可选的 Qt Quick 窗口） | ou \".[dev,gui]\" para a janela Qt Quick opcional")),
-    ("python -m pytest tests -q", T("288 tests, about six minutes | 288 pruebas, unos seis minutos | 288 Tests, etwa sechs Minuten | 288 tests, environ six minutes | 288 test, circa sei minuti | 288 件、約 6 分 | 288 项，约六分钟 | 288 testes, cerca de seis minutos")),
+    ("python -m pytest tests -q", T("321 tests, about six minutes | 321 pruebas, unos seis minutos | 321 Tests, etwa sechs Minuten | 321 tests, environ six minutes | 321 test, circa sei minuti | 321 件、約 6 分 | 321 项，约六分钟 | 321 testes, cerca de seis minutos")),
     ("armor-updater --cli status", T("local and GitHub state of every repository | estado local y de GitHub de cada repositorio | lokaler und GitHub-Zustand jedes Repositorys | état local et GitHub de chaque dépôt | stato locale e GitHub di ogni repository | 各リポジトリのローカルと GitHub の状態 | 每个仓库的本地和 GitHub 状态 | estado local e do GitHub de cada repositório")),
     ("armor-updater --cli install ARMOR-NETWORK", T("clone, build and install one repository that is not installed yet | clona, construye e instala un repositorio que aún no está instalado | ein noch nicht installiertes Repository klonen, bauen und installieren | clone, construit et installe un dépôt pas encore installé | clona, compila e installa un repository non ancora installato | まだ入っていないリポジトリを 1 つクローン・ビルド・インストール | 克隆、构建并安装一个尚未安装的仓库 | clona, constrói e instala um repositório ainda não instalado")),
     ("armor-updater --cli update ARMOR-NETWORK", T("update an installed one (built and verified before it is put in place) | actualiza uno instalado (construido y verificado antes de ponerlo) | ein installiertes aktualisieren (vor dem Einsetzen gebaut und geprüft) | met à jour un projet installé (construit et vérifié avant mise en place) | aggiorna uno installato (compilato e verificato prima di metterlo) | インストール済みを更新（置き換え前にビルドと検証） | 更新已安装的仓库（先构建并验证再就位） | atualiza um instalado (construído e verificado antes de o pôr)")),
@@ -624,14 +624,14 @@ TEST_TABLE = [
     (T("Command line | Línea de órdenes | Kommandozeile | Ligne de commande | Riga di comando | コマンドライン | 命令行 | Linha de comandos"), T("`status`, `install`, `update`, `rollback` and `backups` with their options | `status`, `install`, `update`, `rollback` y `backups` con sus opciones | `status`, `install`, `update`, `rollback` und `backups` mit ihren Optionen | `status`, `install`, `update`, `rollback` et `backups` avec leurs options | `status`, `install`, `update`, `rollback` e `backups` con le loro opzioni | `status`、`install`、`update`、`rollback`、`backups` とそのオプション | `status`、`install`、`update`、`rollback`、`backups` 及其选项 | `status`, `install`, `update`, `rollback` e `backups` com as suas opções")),
     (T("Languages and window | Idiomas y ventana | Sprachen und Fenster | Langues et fenêtre | Lingue e finestra | 言語とウィンドウ | 语言与窗口 | Idiomas e janela"), T("the eight languages (`test_i18n.py`) and the texts of every result | los ocho idiomas (`test_i18n.py`) y los textos de cada resultado | die acht Sprachen (`test_i18n.py`) und die Texte jedes Ergebnisses | les huit langues (`test_i18n.py`) et les textes de chaque résultat | le otto lingue (`test_i18n.py`) e i testi di ogni risultato | 8 言語（`test_i18n.py`）と各結果の文言 | 八种语言（`test_i18n.py`）与每个结果的文本 | os oito idiomas (`test_i18n.py`) e os textos de cada resultado")),
 ]
-TEST_NOTE = P("`python -m unittest` finds only three of them: the suite is written for pytest (`conftest.py` is in `tests/`) and takes close to six minutes. GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests.",
-              "`python -m unittest` solo encuentra tres: la batería está escrita para pytest (`conftest.py` está en `tests/`) y tarda casi seis minutos. GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la validación del manifiesto, la versión, el registro de cambios y la paridad de los README, y luego la compilación y las pruebas del propio proyecto.",
-              "`python -m unittest` findet nur drei davon: Die Suite ist für pytest geschrieben (`conftest.py` liegt in `tests/`) und braucht fast sechs Minuten. GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: die Prüfung von Manifest, Version, Änderungsprotokoll und README-Parität, dann den eigenen Build und die eigenen Tests des Projekts.",
-              "`python -m unittest` n'en trouve que trois : la suite est écrite pour pytest (`conftest.py` est dans `tests/`) et dure près de six minutes. GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la validation du manifeste, de la version, du journal des modifications et de la parité des README, puis le build et les tests propres au projet.",
-              "`python -m unittest` ne trova che tre test: la suite è scritta per pytest (`conftest.py` è in `tests/`) e dura quasi sei minuti. GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazione di manifesto, versione, registro delle modifiche e parità dei README, poi la compilazione e i test del progetto.",
-              "`python -m unittest` では 3 件しか見つかりません。テストは pytest 向けに書かれ（`conftest.py` は `tests/` にあります）、約 6 分かかります。GitHub Actions は push と pull request のたびに A.R.M.O.R. の基本検査（マニフェスト、バージョン、変更履歴、README の一致）と、プロジェクト自身のビルドとテストを実行します。",
-              "`python -m unittest` 只能找到其中三项：测试套件是为 pytest 写的（`conftest.py` 在 `tests/` 中），耗时接近六分钟。GitHub Actions 在每次推送和拉取请求时运行 A.R.M.O.R. 基线：清单、版本、更新日志和 README 一致性的校验，然后是项目自身的构建和测试。",
-              "`python -m unittest` só encontra três: a bateria está escrita para pytest (`conftest.py` está em `tests/`) e demora quase seis minutos. O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a validação do manifesto, da versão, do registo de alterações e da paridade dos README, e depois a compilação e os testes do próprio projeto.")
+TEST_NOTE = P("`python -m unittest` finds only three of them: the suite is written for pytest (`conftest.py` is in `tests/`) and takes close to six minutes. GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests. The test scripts (`test.sh`, `test.bat` and the `build-test` pair) run the linter and then `python -m mypy` (with PySide6 installed) before the tests; the sources of both windows and the install and git helpers pass it, and tests fix the state the windows keep.",
+              "`python -m unittest` solo encuentra tres: la batería está escrita para pytest (`conftest.py` está en `tests/`) y tarda casi seis minutos. GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la validación del manifiesto, la versión, el registro de cambios y la paridad de los README, y luego la compilación y las pruebas del propio proyecto. Los scripts de prueba (`test.sh`, `test.bat` y el par `build-test`) ejecutan el linter y luego `python -m mypy` (con PySide6 instalado) antes de las pruebas; los fuentes de ambas ventanas y de los ayudantes de instalación y git lo pasan, y las pruebas fijan el estado que guardan las ventanas.",
+              "`python -m unittest` findet nur drei davon: Die Suite ist für pytest geschrieben (`conftest.py` liegt in `tests/`) und braucht fast sechs Minuten. GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: die Prüfung von Manifest, Version, Änderungsprotokoll und README-Parität, dann den eigenen Build und die eigenen Tests des Projekts. Die Test-Skripte (`test.sh`, `test.bat` und das Paar `build-test`) führen vor den Tests den Linter und dann `python -m mypy` (mit installiertem PySide6) aus; die Quellen beider Fenster sowie der Installations- und Git-Helfer bestehen die Prüfung, und Tests halten den Zustand fest, den die Fenster behalten.",
+              "`python -m unittest` n'en trouve que trois : la suite est écrite pour pytest (`conftest.py` est dans `tests/`) et dure près de six minutes. GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la validation du manifeste, de la version, du journal des modifications et de la parité des README, puis le build et les tests propres au projet. Les scripts de test (`test.sh`, `test.bat` et la paire `build-test`) lancent le linter puis `python -m mypy` (avec PySide6 installé) avant les tests ; les sources des deux fenêtres et des aides d'installation et de git le passent, et des tests fixent l'état que gardent les fenêtres.",
+              "`python -m unittest` ne trova che tre test: la suite è scritta per pytest (`conftest.py` è in `tests/`) e dura quasi sei minuti. GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazione di manifesto, versione, registro delle modifiche e parità dei README, poi la compilazione e i test del progetto. Gli script di test (`test.sh`, `test.bat` e la coppia `build-test`) eseguono il linter e poi `python -m mypy` (con PySide6 installato) prima dei test; i sorgenti delle due finestre e degli helper di installazione e git lo superano, e i test fissano lo stato che le finestre conservano.",
+              "`python -m unittest` では 3 件しか見つかりません。テストは pytest 向けに書かれ（`conftest.py` は `tests/` にあります）、約 6 分かかります。GitHub Actions は push と pull request のたびに A.R.M.O.R. の基本検査（マニフェスト、バージョン、変更履歴、README の一致）と、プロジェクト自身のビルドとテストを実行します。 テスト用スクリプト（`test.sh`、`test.bat`、`build-test` の 2 つ）は、テストの前にリンターと `python -m mypy`（PySide6 が必要）を実行します。2 つのウィンドウとインストール・git ヘルパーのソースはこれを通り、テストがウィンドウの保持する状態を固定します。",
+              "`python -m unittest` 只能找到其中三项：测试套件是为 pytest 写的（`conftest.py` 在 `tests/` 中），耗时接近六分钟。GitHub Actions 在每次推送和拉取请求时运行 A.R.M.O.R. 基线：清单、版本、更新日志和 README 一致性的校验，然后是项目自身的构建和测试。 测试脚本（`test.sh`、`test.bat` 和一对 `build-test`）在测试前先运行代码检查器,再运行 `python -m mypy`（需安装 PySide6）；两个窗口以及安装和 git 辅助模块的源代码都能通过,测试则固定窗口所保持的状态。",
+              "`python -m unittest` só encontra três: a bateria está escrita para pytest (`conftest.py` está em `tests/`) e demora quase seis minutos. O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a validação do manifesto, da versão, do registo de alterações e da paridade dos README, e depois a compilação e os testes do próprio projeto. Os scripts de teste (`test.sh`, `test.bat` e o par `build-test`) executam o linter e depois `python -m mypy` (com o PySide6 instalado) antes dos testes; as fontes de ambas as janelas e dos auxiliares de instalação e git passam-no, e os testes fixam o estado que as janelas guardam.")
 
 BUILD = P("It is plain Python: nothing to compile (`pip install -e .`). The version lives in `pyproject.toml`, in `armor.project.json` and in the README badge (read from the manifest); each version has its entry in [CHANGELOG.md](CHANGELOG.md). Releases are published on GitHub.",
           "Es Python puro: no hay nada que compilar (`pip install -e .`). La versión vive en `pyproject.toml`, en `armor.project.json` y en la insignia del README (leída del manifiesto); cada versión tiene su entrada en [CHANGELOG.md](CHANGELOG.md). Las versiones se publican en GitHub.",
@@ -676,7 +676,7 @@ def build_lg(lg):
         "interfaces": table(lg, "route", CLI) + "\n\n" + IFACE_NOTE[lg],
         "configuration": table(lg, "setting", CFG) + "\n\n" + CFG_NOTE[lg],
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE, "bash") + "\n\n" + QUICK_AFTER[lg],
-        "testing": code(lg, [("python -m pytest tests -q", T("288 tests, about six minutes | 288 pruebas, unos seis minutos | 288 Tests, etwa sechs Minuten | 288 tests, environ six minutes | 288 test, circa sei minuti | 288 件、約 6 分 | 288 项，约六分钟 | 288 testes, cerca de seis minutos")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "area", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m pytest tests -q", T("321 tests, about six minutes | 321 pruebas, unos seis minutos | 321 Tests, etwa sechs Minuten | 321 tests, environ six minutes | 321 test, circa sei minuti | 321 件、約 6 分 | 321 项，约六分钟 | 321 testes, cerca de seis minutos")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "area", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-UPDATER", tree=TREE[lg]),

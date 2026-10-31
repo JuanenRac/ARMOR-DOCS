@@ -1063,7 +1063,38 @@ LEGACY = {'en': {'tagline': 'Central security coordinator: nodes, alarms, device
         'requirements': ['Node.js 22+', 'FFmpeg (vídeo em direto e captura)', 'um broker MQTT (Mosquitto)']}}
 
 # the text tree of docs/structure.json (make_structure.py --tree <language>); the repository's own check fails when it and the file disagree
-TREE = {'en': 'ARMOR-SERVER/\n'
+TREE = {'de': 'ARMOR-SERVER/\n'
+       '├── src/\n'
+       '│   ├── server.ts app.ts              Start, Express-App, Ratenbegrenzung\n'
+       '│   ├── config.ts                     jede Einstellung, beim Start geprüft\n'
+       '│   ├── contracts.ts mqtt_router.ts   Prüfung an der Grenze\n'
+       '│   ├── store.ts persistence.ts       Knotenzustand und was einen Neustart übersteht\n'
+       '│   ├── alarms.ts escalation.ts       Alarmzentrale und Eskalation\n'
+       '│   ├── users.ts totp.ts              Benutzer, Rollen, PIN und zweiter Faktor\n'
+       '│   ├── security_settings.ts          die 17 Schalter aus Studio\n'
+       '│   ├── voice.ts voice_turn.ts        geschriebene und gesprochene Befehle\n'
+       '│   ├── firmware.ts installation.ts   Knoten-Firmware und eigene Updates\n'
+       '│   ├── http/                         Sitzungen, Knoten-Tokens, versiegelte Logins\n'
+       '│   ├── routes/                       eine Datei je Routengruppe\n'
+       '│   ├── cameras/                      Tresor, PTZ, RTSP, Suche, Zustand\n'
+       '│   ├── media/                        FFmpeg-Relais und Beweisbibliothek\n'
+       '│   └── devices/                      Gerätemodell und MQTT-Brücke\n'
+       '├── tests/                            755 Tests, Unit und HTTP-Integration\n'
+       '├── docs/                             7 Leitfäden, Routentabelle, Umgebung\n'
+       '├── tools/                            Generatoren für docs/ROUTES.md und docs/ENVIRONMENT.md, gemeinsame CI-Prüfungen, Starter\n'
+       '├── images/                           Banner, Symbol und die Bilder des READMEs\n'
+       '├── .github/                          CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
+       '├── Dockerfile                        Container-Image des Servers\n'
+       '├── armor.project.json                Manifest: Version, Rolle, Reife\n'
+       '├── CHANGELOG.md                      was sich in jeder Version geändert hat\n'
+       '├── package.json package-lock.json    Abhängigkeiten und Skripte\n'
+       '├── tsconfig.json                     TypeScript-Einstellungen\n'
+       '├── run.sh run.bat                    Start, gemeinsamer Ablauf\n'
+       '├── build.sh build.bat                Bauen und Testen, gemeinsamer Ablauf\n'
+       '├── build-test.sh build-test.bat      Bauen, Testen und Verpacken\n'
+       '├── test.sh test.bat                  nur die Tests, nie die Version\n'
+       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
+ 'en': 'ARMOR-SERVER/\n'
        '├── src/\n'
        '│   ├── server.ts app.ts              start-up, Express app, rate limits\n'
        '│   ├── config.ts                     every setting, checked at start-up\n'
@@ -1071,7 +1102,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       node state and what survives a restart\n'
        '│   ├── alarms.ts escalation.ts       alarm centre and escalation\n'
        '│   ├── users.ts totp.ts              users, roles, PIN and second factor\n'
-       '│   ├── security_settings.ts          the 15 switches Studio changes\n'
+       '│   ├── security_settings.ts          the 17 switches Studio changes\n'
        '│   ├── voice.ts voice_turn.ts        written and spoken commands\n'
        '│   ├── firmware.ts installation.ts   node firmware and own updates\n'
        '│   ├── http/                         sessions, per-node tokens, sealed logins\n'
@@ -1079,7 +1110,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      vault, PTZ, RTSP, discovery, health\n'
        '│   ├── media/                        FFmpeg relay and evidence library\n'
        '│   └── devices/                      device model and its MQTT bridge\n'
-       '├── tests/                            700 tests, unit and HTTP integration\n'
+       '├── tests/                            755 tests, unit and HTTP integration\n'
        '├── docs/                             7 guides, route table, environment\n'
        '├── tools/                            generators of docs/ROUTES.md and docs/ENVIRONMENT.md, shared CI checks, launcher\n'
        '├── images/                           banner, icon and the pictures of the README\n'
@@ -1102,7 +1133,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       estado de nodos y lo que sobrevive a un reinicio\n'
        '│   ├── alarms.ts escalation.ts       centro de alarmas y escalado\n'
        '│   ├── users.ts totp.ts              usuarios, roles, PIN y segundo factor\n'
-       '│   ├── security_settings.ts          los 15 interruptores de Studio\n'
+       '│   ├── security_settings.ts          los 17 interruptores de Studio\n'
        '│   ├── voice.ts voice_turn.ts        órdenes escritas y habladas\n'
        '│   ├── firmware.ts installation.ts   firmware de nodos y actualizaciones propias\n'
        '│   ├── http/                         sesiones, tokens por nodo, accesos sellados\n'
@@ -1110,7 +1141,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      caja fuerte, PTZ, RTSP, descubrimiento, salud\n'
        '│   ├── media/                        relé FFmpeg y biblioteca de evidencias\n'
        '│   └── devices/                      modelo de dispositivos y su puente MQTT\n'
-       '├── tests/                            700 pruebas, unitarias e integración HTTP\n'
+       '├── tests/                            755 pruebas, unitarias e integración HTTP\n'
        '├── docs/                             7 guías, tabla de rutas, entorno\n'
        '├── tools/                            generadores de docs/ROUTES.md y docs/ENVIRONMENT.md, comprobaciones de CI, lanzador\n'
        '├── images/                           banner, icono y las imágenes del README\n'
@@ -1125,37 +1156,6 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '├── build-test.sh build-test.bat      construir, probar y empaquetar\n'
        '├── test.sh test.bat                  solo las pruebas, nunca la versión\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'de': 'ARMOR-SERVER/\n'
-       '├── src/\n'
-       '│   ├── server.ts app.ts              Start, Express-App, Ratenbegrenzung\n'
-       '│   ├── config.ts                     jede Einstellung, beim Start geprüft\n'
-       '│   ├── contracts.ts mqtt_router.ts   Prüfung an der Grenze\n'
-       '│   ├── store.ts persistence.ts       Knotenzustand und was einen Neustart übersteht\n'
-       '│   ├── alarms.ts escalation.ts       Alarmzentrale und Eskalation\n'
-       '│   ├── users.ts totp.ts              Benutzer, Rollen, PIN und zweiter Faktor\n'
-       '│   ├── security_settings.ts          die 15 Schalter aus Studio\n'
-       '│   ├── voice.ts voice_turn.ts        geschriebene und gesprochene Befehle\n'
-       '│   ├── firmware.ts installation.ts   Knoten-Firmware und eigene Updates\n'
-       '│   ├── http/                         Sitzungen, Knoten-Tokens, versiegelte Logins\n'
-       '│   ├── routes/                       eine Datei je Routengruppe\n'
-       '│   ├── cameras/                      Tresor, PTZ, RTSP, Suche, Zustand\n'
-       '│   ├── media/                        FFmpeg-Relais und Beweisbibliothek\n'
-       '│   └── devices/                      Gerätemodell und MQTT-Brücke\n'
-       '├── tests/                            700 Tests, Unit und HTTP-Integration\n'
-       '├── docs/                             7 Leitfäden, Routentabelle, Umgebung\n'
-       '├── tools/                            Generatoren für docs/ROUTES.md und docs/ENVIRONMENT.md, gemeinsame CI-Prüfungen, Starter\n'
-       '├── images/                           Banner, Symbol und die Bilder des READMEs\n'
-       '├── .github/                          CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
-       '├── Dockerfile                        Container-Image des Servers\n'
-       '├── armor.project.json                Manifest: Version, Rolle, Reife\n'
-       '├── CHANGELOG.md                      was sich in jeder Version geändert hat\n'
-       '├── package.json package-lock.json    Abhängigkeiten und Skripte\n'
-       '├── tsconfig.json                     TypeScript-Einstellungen\n'
-       '├── run.sh run.bat                    Start, gemeinsamer Ablauf\n'
-       '├── build.sh build.bat                Bauen und Testen, gemeinsamer Ablauf\n'
-       '├── build-test.sh build-test.bat      Bauen, Testen und Verpacken\n'
-       '├── test.sh test.bat                  nur die Tests, nie die Version\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
  'fr': 'ARMOR-SERVER/\n'
        '├── src/\n'
        '│   ├── server.ts app.ts              démarrage, application Express, limites\n'
@@ -1164,7 +1164,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       état des nœuds et ce qui survit à un redémarrage\n'
        "│   ├── alarms.ts escalation.ts       centrale d'alarme et escalade\n"
        '│   ├── users.ts totp.ts              utilisateurs, rôles, PIN et second facteur\n'
-       '│   ├── security_settings.ts          les 15 interrupteurs de Studio\n'
+       '│   ├── security_settings.ts          les 17 interrupteurs de Studio\n'
        '│   ├── voice.ts voice_turn.ts        commandes écrites et vocales\n'
        '│   ├── firmware.ts installation.ts   firmware des nœuds et mises à jour propres\n'
        '│   ├── http/                         sessions, jetons par nœud, identifiants scellés\n'
@@ -1172,7 +1172,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      coffre, PTZ, RTSP, découverte, santé\n'
        '│   ├── media/                        relais FFmpeg et bibliothèque de preuves\n'
        "│   └── devices/                      modèle d'appareils et son pont MQTT\n"
-       '├── tests/                            700 tests, unitaires et intégration HTTP\n'
+       '├── tests/                            755 tests, unitaires et intégration HTTP\n'
        '├── docs/                             7 guides, table des routes, environnement\n'
        '├── tools/                            générateurs de docs/ROUTES.md et docs/ENVIRONMENT.md, vérifications CI, lanceur\n'
        '├── images/                           bannière, icône et images du README\n'
@@ -1195,7 +1195,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       stato dei nodi e ciò che sopravvive a un riavvio\n'
        '│   ├── alarms.ts escalation.ts       centrale allarmi ed escalation\n'
        '│   ├── users.ts totp.ts              utenti, ruoli, PIN e secondo fattore\n'
-       '│   ├── security_settings.ts          i 15 interruttori di Studio\n'
+       '│   ├── security_settings.ts          i 17 interruttori di Studio\n'
        '│   ├── voice.ts voice_turn.ts        comandi scritti e vocali\n'
        '│   ├── firmware.ts installation.ts   firmware dei nodi e aggiornamenti propri\n'
        '│   ├── http/                         sessioni, token per nodo, accessi sigillati\n'
@@ -1203,7 +1203,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cassaforte, PTZ, RTSP, scoperta, salute\n'
        '│   ├── media/                        relè FFmpeg e libreria di prove\n'
        '│   └── devices/                      modello dei dispositivi e ponte MQTT\n'
-       '├── tests/                            700 test, unitari e integrazione HTTP\n'
+       '├── tests/                            755 test, unitari e integrazione HTTP\n'
        '├── docs/                             7 guide, tabella delle rotte, ambiente\n'
        '├── tools/                            generatori di docs/ROUTES.md e docs/ENVIRONMENT.md, controlli CI, avviatore\n'
        '├── images/                           banner, icona e immagini del README\n'
@@ -1226,7 +1226,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       ノード状態と再起動後も残るもの\n'
        '│   ├── alarms.ts escalation.ts       アラームセンターとエスカレーション\n'
        '│   ├── users.ts totp.ts              ユーザー、ロール、PIN、2 要素\n'
-       '│   ├── security_settings.ts          Studio で変える 15 のスイッチ\n'
+       '│   ├── security_settings.ts          Studio で変える 17 のスイッチ\n'
        '│   ├── voice.ts voice_turn.ts        文字と音声のコマンド\n'
        '│   ├── firmware.ts installation.ts   ノードのファームウェアと自己更新\n'
        '│   ├── http/                         セッション、ノード別トークン、封印した認証情報\n'
@@ -1234,7 +1234,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      金庫、PTZ、RTSP、探索、健全性\n'
        '│   ├── media/                        FFmpeg 中継と証拠ライブラリ\n'
        '│   └── devices/                      デバイスモデルと MQTT ブリッジ\n'
-       '├── tests/                            700 件（単体と HTTP 結合）\n'
+       '├── tests/                            755 件（単体と HTTP 結合）\n'
        '├── docs/                             7 つのガイド、ルート表、環境変数\n'
        '├── tools/                            docs/ROUTES.md と docs/ENVIRONMENT.md の生成、CI 検査、ランチャー\n'
        '├── images/                           バナー、アイコン、README の画像\n'
@@ -1249,37 +1249,6 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '├── build-test.sh build-test.bat      ビルド、テスト、パッケージ化\n'
        '├── test.sh test.bat                  テストのみ（版は変えません）\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
- 'zh': 'ARMOR-SERVER/\n'
-       '├── src/\n'
-       '│   ├── server.ts app.ts              启动、Express 应用、限流\n'
-       '│   ├── config.ts                     启动时校验每项设置\n'
-       '│   ├── contracts.ts mqtt_router.ts   边界处的校验\n'
-       '│   ├── store.ts persistence.ts       节点状态与重启后保留的内容\n'
-       '│   ├── alarms.ts escalation.ts       报警中心与升级\n'
-       '│   ├── users.ts totp.ts              用户、角色、PIN 与第二因素\n'
-       '│   ├── security_settings.ts          Studio 修改的 15 个开关\n'
-       '│   ├── voice.ts voice_turn.ts        文字和语音命令\n'
-       '│   ├── firmware.ts installation.ts   节点固件与自身更新\n'
-       '│   ├── http/                         会话、节点令牌、密封凭据\n'
-       '│   ├── routes/                       每组路由一个文件\n'
-       '│   ├── cameras/                      保险库、PTZ、RTSP、发现、健康\n'
-       '│   ├── media/                        FFmpeg 中继与证据库\n'
-       '│   └── devices/                      设备模型及其 MQTT 桥\n'
-       '├── tests/                            700 项测试（单元与 HTTP 集成）\n'
-       '├── docs/                             7 份指南、路由表、环境变量\n'
-       '├── tools/                            docs/ROUTES.md 和 docs/ENVIRONMENT.md 的生成器、CI 检查、启动器\n'
-       '├── images/                           横幅图、图标和 README 的图片\n'
-       '├── .github/                          CI 工作流、仪表板通知、议题和 pull request 模板\n'
-       '├── Dockerfile                        服务器容器镜像\n'
-       '├── armor.project.json                清单：版本、角色、成熟度\n'
-       '├── CHANGELOG.md                      每个版本的变化\n'
-       '├── package.json package-lock.json    依赖与脚本\n'
-       '├── tsconfig.json                     TypeScript 设置\n'
-       '├── run.sh run.bat                    启动（共用流程）\n'
-       '├── build.sh build.bat                构建并测试（共用流程）\n'
-       '├── build-test.sh build-test.bat      构建、测试并打包\n'
-       '├── test.sh test.bat                  只运行测试，不改版本\n'
-       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
  'pt': 'ARMOR-SERVER/\n'
        '├── src/\n'
        '│   ├── server.ts app.ts              arranque, aplicação Express, limites\n'
@@ -1288,7 +1257,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── store.ts persistence.ts       estado dos nós e o que sobrevive a um reinício\n'
        '│   ├── alarms.ts escalation.ts       central de alarmes e escalada\n'
        '│   ├── users.ts totp.ts              utilizadores, funções, PIN e segundo fator\n'
-       '│   ├── security_settings.ts          os 15 interruptores do Studio\n'
+       '│   ├── security_settings.ts          os 17 interruptores do Studio\n'
        '│   ├── voice.ts voice_turn.ts        ordens escritas e faladas\n'
        '│   ├── firmware.ts installation.ts   firmware dos nós e atualizações próprias\n'
        '│   ├── http/                         sessões, tokens por nó, credenciais seladas\n'
@@ -1296,7 +1265,7 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cofre, PTZ, RTSP, descoberta, saúde\n'
        '│   ├── media/                        relé FFmpeg e biblioteca de provas\n'
        '│   └── devices/                      modelo de dispositivos e a sua ponte MQTT\n'
-       '├── tests/                            700 testes, unitários e integração HTTP\n'
+       '├── tests/                            755 testes, unitários e integração HTTP\n'
        '├── docs/                             7 guias, tabela de rotas, ambiente\n'
        '├── tools/                            geradores de docs/ROUTES.md e docs/ENVIRONMENT.md, verificações de CI, lançador\n'
        '├── images/                           faixa, ícone e as imagens do README\n'
@@ -1310,16 +1279,60 @@ TREE = {'en': 'ARMOR-SERVER/\n'
        '├── build.sh build.bat                compilar e testar, fluxo partilhado\n'
        '├── build-test.sh build-test.bat      compilar, testar e empacotar\n'
        '├── test.sh test.bat                  só os testes, nunca a versão\n'
+       '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE',
+ 'zh': 'ARMOR-SERVER/\n'
+       '├── src/\n'
+       '│   ├── server.ts app.ts              启动、Express 应用、限流\n'
+       '│   ├── config.ts                     启动时校验每项设置\n'
+       '│   ├── contracts.ts mqtt_router.ts   边界处的校验\n'
+       '│   ├── store.ts persistence.ts       节点状态与重启后保留的内容\n'
+       '│   ├── alarms.ts escalation.ts       报警中心与升级\n'
+       '│   ├── users.ts totp.ts              用户、角色、PIN 与第二因素\n'
+       '│   ├── security_settings.ts          Studio 修改的 17 个开关\n'
+       '│   ├── voice.ts voice_turn.ts        文字和语音命令\n'
+       '│   ├── firmware.ts installation.ts   节点固件与自身更新\n'
+       '│   ├── http/                         会话、节点令牌、密封凭据\n'
+       '│   ├── routes/                       每组路由一个文件\n'
+       '│   ├── cameras/                      保险库、PTZ、RTSP、发现、健康\n'
+       '│   ├── media/                        FFmpeg 中继与证据库\n'
+       '│   └── devices/                      设备模型及其 MQTT 桥\n'
+       '├── tests/                            755 项测试（单元与 HTTP 集成）\n'
+       '├── docs/                             7 份指南、路由表、环境变量\n'
+       '├── tools/                            docs/ROUTES.md 和 docs/ENVIRONMENT.md 的生成器、CI 检查、启动器\n'
+       '├── images/                           横幅图、图标和 README 的图片\n'
+       '├── .github/                          CI 工作流、仪表板通知、议题和 pull request 模板\n'
+       '├── Dockerfile                        服务器容器镜像\n'
+       '├── armor.project.json                清单：版本、角色、成熟度\n'
+       '├── CHANGELOG.md                      每个版本的变化\n'
+       '├── package.json package-lock.json    依赖与脚本\n'
+       '├── tsconfig.json                     TypeScript 设置\n'
+       '├── run.sh run.bat                    启动（共用流程）\n'
+       '├── build.sh build.bat                构建并测试（共用流程）\n'
+       '├── build-test.sh build-test.bat      构建、测试并打包\n'
+       '├── test.sh test.bat                  只运行测试，不改版本\n'
        '└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE'}
 
 DIAGRAM = 'flowchart LR\n    N["Field nodes (ESP32-S3)"] -->|MQTT / HTTP + ingest token| S["ARMOR-SERVER"]\n    G["Solar gateway nodes"] -->|MQTT / HTTP + ingest token| S\n    E["Electrical nodes"] -->|MQTT / HTTP + ingest token| S\n    C["IP cameras"] -->|RTSP / ONVIF| S\n    S -->|"MJPEG, JSON, WebSocket"| U["ARMOR-STUDIO"]\n    S -->|"MJPEG, JSON"| A["ARMOR-ANDROID-CONTROL"]\n    S --> D[("data/: cameras.json (AES-GCM), media/, audit.log")]'
 
-NT = "724"
+NEW_BULLETS = {
+    'en': ['**Old readings set aside:** a channel of an electrical node whose own reading is over a minute old (its meter stopped answering and the node repeats the last good numbers) is left out of the grid figure and the graphs, listed in `stale_channels` of the node and counted in `totals.stale_readings`; the option `electrical.set_aside_old_readings` (on by default) turns it off.', "**The sign-in limit of a node and the right image for the right board:** an administrator reads and changes the wrong passwords per minute a node lets through (`POST /api/v1/admin/nodes/settings`, the panel login used once and never kept), and a firmware image whose file name says another board than the node's is refused with `wrong_board` before anything is sent."],
+    'es': ['**Lecturas viejas apartadas:** un canal de un nodo eléctrico cuya propia lectura tiene más de un minuto (su contador dejó de responder y el nodo repite los últimos números buenos) queda fuera de la cifra de la red y de las gráficas, se lista en `stale_channels` del nodo y se cuenta en `totals.stale_readings`; la opción `electrical.set_aside_old_readings` (activada por defecto) lo desactiva.', '**El límite de acceso de un nodo y la imagen correcta para cada placa:** un administrador lee y cambia las contraseñas erróneas por minuto que deja pasar un nodo (`POST /api/v1/admin/nodes/settings`, con el acceso al panel usado una vez y nunca guardado), y una imagen de firmware cuyo nombre de fichero dice otra placa distinta de la del nodo se rechaza con `wrong_board` antes de enviar nada.'],
+    'de': ['**Alte Messwerte beiseitegelegt:** Ein Kanal eines Elektro-Knotens, dessen eigener Messwert über eine Minute alt ist (sein Zähler antwortet nicht mehr und der Knoten wiederholt die letzten guten Zahlen), bleibt aus der Netzzahl und den Diagrammen heraus, wird in `stale_channels` des Knotens aufgeführt und in `totals.stale_readings` gezählt; die Option `electrical.set_aside_old_readings` (standardmäßig an) schaltet das ab.', '**Das Anmeldelimit eines Knotens und das richtige Image für die richtige Platine:** Ein Administrator liest und ändert die falschen Passwörter pro Minute, die ein Knoten durchlässt (`POST /api/v1/admin/nodes/settings`, die Panel-Anmeldung einmal benutzt und nie gespeichert), und ein Firmware-Image, dessen Dateiname eine andere Platine als die des Knotens nennt, wird mit `wrong_board` abgelehnt, bevor etwas gesendet wird.'],
+    'fr': ["**Lectures anciennes mises de côté :** un canal d'un nœud électrique dont la propre lecture a plus d'une minute (son compteur ne répond plus et le nœud répète les derniers bons chiffres) reste hors du chiffre du réseau et des graphiques, est listé dans `stale_channels` du nœud et compté dans `totals.stale_readings` ; l'option `electrical.set_aside_old_readings` (activée par défaut) le désactive.", "**La limite de connexion d'un nœud et la bonne image pour la bonne carte :** un administrateur lit et change les mots de passe erronés par minute qu'un nœud laisse passer (`POST /api/v1/admin/nodes/settings`, l'identifiant du panneau utilisé une fois et jamais conservé), et une image de firmware dont le nom de fichier indique une autre carte que celle du nœud est refusée avec `wrong_board` avant que rien ne soit envoyé."],
+    'it': ["**Letture vecchie messe da parte:** un canale di un nodo elettrico la cui lettura ha più di un minuto (il suo contatore ha smesso di rispondere e il nodo ripete gli ultimi numeri buoni) resta fuori dalla cifra della rete e dai grafici, è elencato in `stale_channels` del nodo e contato in `totals.stale_readings`; l'opzione `electrical.set_aside_old_readings` (attiva per default) lo disattiva.", "**Il limite di accesso di un nodo e l'immagine giusta per la scheda giusta:** un amministratore legge e cambia le password errate al minuto che un nodo lascia passare (`POST /api/v1/admin/nodes/settings`, con l'accesso al pannello usato una volta e mai conservato), e un'immagine firmware il cui nome di file indica una scheda diversa da quella del nodo viene rifiutata con `wrong_board` prima di inviare qualsiasi cosa."],
+    'ja': ['**古い読み取り値は除外:** 電気ノードのチャンネルで、自身の読み取りが 1 分以上古いもの（メーターが応答しなくなり、ノードが最後の正常な値を繰り返している状態）は、系統の数値とグラフから外され、ノードの `stale_channels` に並び、`totals.stale_readings` に数えられます。オプション `electrical.set_aside_old_readings`（既定でオン）でオフにできます。', '**ノードのログイン上限と、ボードに合ったイメージ:** 管理者は、ノードが許す 1 分あたりの誤パスワード数を読み取り・変更できます（`POST /api/v1/admin/nodes/settings`。パネルのログイン情報は 1 回だけ使われ保存されません）。ファイル名がノードのボードと異なるボードを示すファームウェアイメージは、何も送る前に `wrong_board` で拒否されます。'],
+    'zh': ['**搁置过旧的读数:** 电气节点中自身读数已超过一分钟的通道(其电表不再应答,节点只是重复最后一次正常的数值)不再计入电网数字和图表,列在节点的 `stale_channels` 中,并计入 `totals.stale_readings`;选项 `electrical.set_aside_old_readings`(默认开启)可将其关闭。', '**节点的登录限制与对应开发板的镜像:** 管理员可以读取和修改节点每分钟放行的错误密码次数(`POST /api/v1/admin/nodes/settings`,面板登录信息只使用一次、绝不保存);文件名所示开发板与节点开发板不同的固件镜像会在发送任何内容之前被 `wrong_board` 拒绝。'],
+    'pt': ['**Leituras antigas postas de parte:** um canal de um nó elétrico cuja própria leitura tem mais de um minuto (o seu contador deixou de responder e o nó repete os últimos números bons) fica fora do valor da rede e dos gráficos, é listado em `stale_channels` do nó e contado em `totals.stale_readings`; a opção `electrical.set_aside_old_readings` (ativa por predefinição) desativa-o.', '**O limite de início de sessão de um nó e a imagem certa para a placa certa:** um administrador lê e altera as palavras-passe erradas por minuto que um nó deixa passar (`POST /api/v1/admin/nodes/settings`, com o acesso ao painel usado uma vez e nunca guardado), e uma imagem de firmware cujo nome de ficheiro indica outra placa que não a do nó é recusada com `wrong_board` antes de ser enviado o que quer que seja.'],
+}
+for _lg in NEW_BULLETS:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + NEW_BULLETS[_lg]
+
+NT = "755"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
 def fix(s):
-    return s.replace("696", NT).replace("135", "191")
+    return s.replace("696", NT).replace("135", "195")
 
 
 def L(lg, key):
@@ -1335,7 +1348,7 @@ GLANCE = [
     (GL["role"], T("Central security coordinator of the family: nodes, alarms, devices, energy, cameras, network | Coordinador central de seguridad de la familia: nodos, alarmas, dispositivos, energía, cámaras, red | Zentraler Sicherheitskoordinator der Familie: Knoten, Alarme, Geräte, Energie, Kameras, Netzwerk | Coordinateur central de sécurité de la famille : nœuds, alarmes, appareils, énergie, caméras, réseau | Coordinatore centrale di sicurezza della famiglia: nodi, allarmi, dispositivi, energia, telecamere, rete | ファミリーの中央セキュリティコーディネーター：ノード、アラーム、デバイス、エネルギー、カメラ、ネットワーク | 家族的中央安全协调器：节点、报警、设备、能源、摄像头、网络 | Coordenador central de segurança da família: nós, alarmes, dispositivos, energia, câmaras, rede")),
     (GL["stack"], "Node.js 22+, TypeScript, Express 5, MQTT, WebSocket, FFmpeg"),
     (GL["tests"], T("NTESTS (`npm test`: unit and full HTTP integration) | NTESTS (`npm test`: unitarias e integración HTTP completa) | NTESTS (`npm test`: Unit und volle HTTP-Integration) | NTESTS (`npm test` : unitaires et intégration HTTP complète) | NTESTS (`npm test`: unitari e integrazione HTTP completa) | NTESTS 件（`npm test`：単体と完全な HTTP 結合） | NTESTS 项（`npm test`：单元与完整 HTTP 集成） | NTESTS (`npm test`: unitários e integração HTTP completa)".replace("NTESTS", NT))),
-    (GL["contract"], T("191 HTTP paths, 247 operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | 191 rutas HTTP, 247 operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | 191 HTTP-Pfade, 247 Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | 191 chemins HTTP, 247 opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | 191 percorsi HTTP, 247 operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス 191 本、247 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | 191 条 HTTP 路径、247 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | 191 caminhos HTTP, 247 operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
+    (GL["contract"], T("195 HTTP paths, 253 operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | 195 rutas HTTP, 253 operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | 195 HTTP-Pfade, 253 Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | 195 chemins HTTP, 253 opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | 195 percorsi HTTP, 253 operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス 195 本、253 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | 195 条 HTTP 路径、253 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | 195 caminhos HTTP, 253 operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
     (GL["listens"], T("`127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:8080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:8080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:8080` (`ARMOR_HOST`, `ARMOR_PORT`)")),
     (GL["runs"], T("The CM5 test bench (as a service, see ARMOR-DEVOPS) or any computer with Node.js | El banco de la CM5 (como servicio, ver ARMOR-DEVOPS) o cualquier ordenador con Node.js | Der CM5-Prüfstand (als Dienst, siehe ARMOR-DEVOPS) oder jeder Computer mit Node.js | Le banc d'essai CM5 (en service, voir ARMOR-DEVOPS) ou tout ordinateur avec Node.js | Il banco di prova CM5 (come servizio, vedi ARMOR-DEVOPS) o qualsiasi computer con Node.js | CM5 テストベンチ（サービスとして。ARMOR-DEVOPS 参照）または Node.js のある任意のコンピューター | CM5 测试台（作为服务，见 ARMOR-DEVOPS）或任何装有 Node.js 的计算机 | A bancada do CM5 (como serviço, ver ARMOR-DEVOPS) ou qualquer computador com Node.js")),
     (GL["hardware"], LEGACY["en"]["hardware"] and {lg: LEGACY[lg]["hardware"] for lg in LGS}),
@@ -1385,14 +1398,14 @@ SECURITY_ROWS = [
 ]
 
 SECURITY_TAIL = P(
-    "**Switches in Studio.** The protections that can be tuned are 15 settings kept in `security-settings.json` (mode 0600, atomic writes), each with a conservative default, and lowering one is written in the audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` and `voice.reply_audio_max_bytes`.\n\n**What it never does:** return a camera password, keep the words that were spoken (only the command and its result), or write a PIN, a token or a cookie in a log. There has been no independent security review.",
-    "**Interruptores en Studio.** Las protecciones que se pueden ajustar son 15 valores guardados en `security-settings.json` (modo 0600, escritura atómica), cada uno con un valor por defecto conservador, y bajar uno queda en la auditoría: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` y `voice.reply_audio_max_bytes`.\n\n**Lo que nunca hace:** devolver una contraseña de cámara, guardar las palabras que se dijeron (solo el comando y su resultado) ni escribir un PIN, un token o una cookie en un registro. No ha habido revisión de seguridad independiente.",
-    "**Schalter in Studio.** Die einstellbaren Schutzmaßnahmen sind 15 Werte in `security-settings.json` (Modus 0600, atomares Schreiben), jeweils mit konservativem Standard; das Absenken eines Werts landet im Audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` und `voice.reply_audio_max_bytes`.\n\n**Was es nie tut:** ein Kamerakennwort zurückgeben, das Gesprochene speichern (nur Befehl und Ergebnis) oder eine PIN, ein Token oder ein Cookie in ein Protokoll schreiben. Eine unabhängige Sicherheitsprüfung gab es nicht.",
-    "**Interrupteurs dans Studio.** Les protections réglables sont 15 valeurs conservées dans `security-settings.json` (mode 0600, écriture atomique), chacune avec un défaut prudent ; en abaisser une est inscrit dans l'audit : `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` et `voice.reply_audio_max_bytes`.\n\n**Ce qu'il ne fait jamais :** renvoyer un mot de passe de caméra, garder les paroles prononcées (seulement la commande et son résultat), ni écrire un PIN, un jeton ou un cookie dans un journal. Il n'y a pas eu de revue de sécurité indépendante.",
-    "**Interruttori in Studio.** Le protezioni regolabili sono 15 valori in `security-settings.json` (modo 0600, scrittura atomica), ciascuno con un default prudente; abbassarne uno viene registrato nell'audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**Cosa non fa mai:** restituire una password di telecamera, conservare le parole dette (solo il comando e il suo risultato) né scrivere un PIN, un token o un cookie in un registro. Non c'è stata una revisione di sicurezza indipendente.",
-    "**Studio のスイッチ。** 調整できる保護は `security-settings.json`（モード 0600、アトミック書き込み）にある 15 項目で、どれも保守的な既定値です。下げた場合は監査に記録されます：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes`、`voice.reply_audio_max_bytes`。\n\n**決してしないこと：** カメラのパスワードを返す、話した内容を保存する（コマンドと結果のみ）、PIN・トークン・Cookie をログに書く。第三者によるセキュリティレビューはありません。",
-    "**Studio 中的开关。** 可调的保护措施是保存在 `security-settings.json`（权限 0600，原子写入）中的 15 项设置，每项都有保守的默认值，调低任何一项都会写入审计：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes` 和 `voice.reply_audio_max_bytes`。\n\n**它绝不会：** 返回摄像头密码、保存所说的话（只保留命令及其结果），或把 PIN、令牌或 Cookie 写进日志。没有独立的安全审查。",
-    "**Interruptores no Studio.** As proteções ajustáveis são 15 valores guardados em `security-settings.json` (modo 0600, escrita atómica), cada um com um valor predefinido conservador; baixar um fica registado na auditoria: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**O que nunca faz:** devolver uma palavra-passe de câmara, guardar as palavras ditas (só o comando e o seu resultado) nem escrever um PIN, um token ou um cookie num registo. Não houve revisão de segurança independente.")
+    "**Switches in Studio.** The protections that can be tuned are 17 settings kept in `security-settings.json` (mode 0600, atomic writes), each with a conservative default, and lowering one is written in the audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` and `voice.reply_audio_max_bytes`.\n\n**What it never does:** return a camera password, keep the words that were spoken (only the command and its result), or write a PIN, a token or a cookie in a log. There has been no independent security review.",
+    "**Interruptores en Studio.** Las protecciones que se pueden ajustar son 17 valores guardados en `security-settings.json` (modo 0600, escritura atómica), cada uno con un valor por defecto conservador, y bajar uno queda en la auditoría: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` y `voice.reply_audio_max_bytes`.\n\n**Lo que nunca hace:** devolver una contraseña de cámara, guardar las palabras que se dijeron (solo el comando y su resultado) ni escribir un PIN, un token o una cookie en un registro. No ha habido revisión de seguridad independiente.",
+    "**Schalter in Studio.** Die einstellbaren Schutzmaßnahmen sind 17 Werte in `security-settings.json` (Modus 0600, atomares Schreiben), jeweils mit konservativem Standard; das Absenken eines Werts landet im Audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` und `voice.reply_audio_max_bytes`.\n\n**Was es nie tut:** ein Kamerakennwort zurückgeben, das Gesprochene speichern (nur Befehl und Ergebnis) oder eine PIN, ein Token oder ein Cookie in ein Protokoll schreiben. Eine unabhängige Sicherheitsprüfung gab es nicht.",
+    "**Interrupteurs dans Studio.** Les protections réglables sont 17 valeurs conservées dans `security-settings.json` (mode 0600, écriture atomique), chacune avec un défaut prudent ; en abaisser une est inscrit dans l'audit : `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` et `voice.reply_audio_max_bytes`.\n\n**Ce qu'il ne fait jamais :** renvoyer un mot de passe de caméra, garder les paroles prononcées (seulement la commande et son résultat), ni écrire un PIN, un jeton ou un cookie dans un journal. Il n'y a pas eu de revue de sécurité indépendante.",
+    "**Interruttori in Studio.** Le protezioni regolabili sono 17 valori in `security-settings.json` (modo 0600, scrittura atomica), ciascuno con un default prudente; abbassarne uno viene registrato nell'audit: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**Cosa non fa mai:** restituire una password di telecamera, conservare le parole dette (solo il comando e il suo risultato) né scrivere un PIN, un token o un cookie in un registro. Non c'è stata una revisione di sicurezza indipendente.",
+    "**Studio のスイッチ。** 調整できる保護は `security-settings.json`（モード 0600、アトミック書き込み）にある 17 項目で、どれも保守的な既定値です。下げた場合は監査に記録されます：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes`、`voice.reply_audio_max_bytes`。\n\n**決してしないこと：** カメラのパスワードを返す、話した内容を保存する（コマンドと結果のみ）、PIN・トークン・Cookie をログに書く。第三者によるセキュリティレビューはありません。",
+    "**Studio 中的开关。** 可调的保护措施是保存在 `security-settings.json`（权限 0600，原子写入）中的 17 项设置，每项都有保守的默认值，调低任何一项都会写入审计：`alarm.disarm_pin`、`voice.silence_confirmation`、`alarm.config_hash`、`server.zone_feed`、`server.zone_feed_signature`、`media.rtsp_proxy`、`network.login_secure_only`、`login.country_alert`、`electrical.set_aside_old_readings`、`voice.multipart_turn`、`panel.live_events`、`client.device_lock`、`nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`、`voice.turn_max_bytes` 和 `voice.reply_audio_max_bytes`。\n\n**它绝不会：** 返回摄像头密码、保存所说的话（只保留命令及其结果），或把 PIN、令牌或 Cookie 写进日志。没有独立的安全审查。",
+    "**Interruptores no Studio.** As proteções ajustáveis são 17 valores guardados em `security-settings.json` (modo 0600, escrita atómica), cada um com um valor predefinido conservador; baixar um fica registado na auditoria: `alarm.disarm_pin`, `voice.silence_confirmation`, `alarm.config_hash`, `server.zone_feed`, `server.zone_feed_signature`, `media.rtsp_proxy`, `network.login_secure_only`, `login.country_alert`, `electrical.set_aside_old_readings`, `voice.multipart_turn`, `panel.live_events`, `client.device_lock`, `nodes.nvs_encryption`, `alarm_audio.spoken`, `alarm_audio.custom_sounds`, `voice.turn_max_bytes` e `voice.reply_audio_max_bytes`.\n\n**O que nunca faz:** devolver uma palavra-passe de câmara, guardar as palavras ditas (só o comando e o seu resultado) nem escrever um PIN, um token ou um cookie num registo. Não houve revisão de segurança independente.")
 
 ROUTES = [
     ("`GET /healthz`", T("none | ninguna | keine | aucune | nessuna | なし | 无 | nenhuma"), T("alive and ready | vivo y listo | lebt und ist bereit | vivant et prêt | vivo e pronto | 稼働中 | 存活就绪 | vivo e pronto")),
@@ -1405,18 +1418,20 @@ ROUTES = [
     ("`GET /api/v1/alarm-audio/spoken`", T("operator or the account of a wall panel | operador o la cuenta de un panel de pared | Operator oder das Konto eines Wandpanels | opérateur ou le compte d'un panneau mural | operatore o l'account di un pannello a parete | オペレーターまたは壁面パネルのアカウント | 操作员或壁挂面板的账户 | operador ou a conta de um painel de parede"), T("an alarm said out loud (origin, severity, alarm code; raw 16 kHz 16-bit mono PCM with its SHA-256), made by the voice gateway and kept in a cache; 404 `spoken_alarms_disabled` while the option is off | una alarma dicha en voz alta (origen, gravedad, código de alarma; PCM mono de 16 bits a 16 kHz con su SHA-256), hecha por la pasarela de voz y guardada en una caché; 404 `spoken_alarms_disabled` con la opción desactivada | ein laut gesprochener Alarm (Herkunft, Schweregrad, Alarmcode; rohes 16-kHz-16-Bit-Mono-PCM mit SHA-256), vom Sprach-Gateway erzeugt und in einem Cache gehalten; 404 `spoken_alarms_disabled`, solange die Option aus ist | une alarme dite à voix haute (origine, gravité, code d'alarme ; PCM mono 16 bits à 16 kHz avec son SHA-256), produite par la passerelle vocale et gardée dans un cache ; 404 `spoken_alarms_disabled` tant que l'option est désactivée | un allarme pronunciato ad alta voce (origine, gravità, codice di allarme; PCM mono a 16 bit e 16 kHz con il suo SHA-256), prodotto dal gateway vocale e tenuto in una cache; 404 `spoken_alarms_disabled` con l'opzione disattivata | 音声で読み上げたアラーム（発生元、重大度、アラームコード。SHA-256 付きの 16 kHz 16 ビットモノラル PCM）。音声ゲートウェイが作成しキャッシュに保持。オプションがオフの間は 404 `spoken_alarms_disabled` | 大声播报的报警（来源、严重程度、报警代码；带 SHA-256 的 16 kHz 16 位单声道 PCM），由语音网关生成并缓存；选项关闭时返回 404 `spoken_alarms_disabled` | um alarme dito em voz alta (origem, gravidade, código de alarme; PCM mono de 16 bits a 16 kHz com o seu SHA-256), feito pela porta de ligação de voz e guardado numa cache; 404 `spoken_alarms_disabled` com a opção desligada")),
     ("`GET` `PUT` `DELETE /api/v1/alarm-audio/sounds/{source}`", T("GET: operator or the account of a wall panel; PUT and DELETE: administrator (the proof of identity again from outside the house) | GET: operador o la cuenta de un panel de pared; PUT y DELETE: administrador (con nueva prueba de identidad desde fuera de casa) | GET: Operator oder das Konto eines Wandpanels; PUT und DELETE: Administrator (von außerhalb des Hauses mit erneutem Identitätsnachweis) | GET : opérateur ou le compte d'un panneau mural ; PUT et DELETE : administrateur (nouvelle preuve d'identité depuis l'extérieur) | GET: operatore o l'account di un pannello a parete; PUT e DELETE: amministratore (nuova prova di identità da fuori casa) | GET：オペレーターまたは壁面パネルのアカウント。PUT と DELETE：管理者（家の外からは再認証） | GET：操作员或壁挂面板的账户；PUT 和 DELETE：管理员（从屋外访问时需再次验证身份） | GET: operador ou a conta de um painel de parede; PUT e DELETE: administrador (nova prova de identidade a partir de fora de casa)"), T("the sound of an origin of alarm: a WAVE file of 16 kHz 16-bit mono PCM, read byte by byte (a tenth of a second up to `ARMOR_ALARM_SOUND_MAX_BYTES`, not silence), only its samples kept, served with its SHA-256; 409 `custom_sounds_disabled` while the option is off | el sonido de un origen de alarma: un archivo WAVE de PCM mono de 16 bits a 16 kHz, leído byte a byte (de una décima de segundo hasta `ARMOR_ALARM_SOUND_MAX_BYTES`, no silencio), solo se guardan sus muestras y se sirve con su SHA-256; 409 `custom_sounds_disabled` con la opción desactivada | der Ton einer Alarmherkunft: eine WAVE-Datei mit 16-kHz-16-Bit-Mono-PCM, Byte für Byte gelesen (eine Zehntelsekunde bis `ARMOR_ALARM_SOUND_MAX_BYTES`, keine Stille), nur die Samples werden gespeichert, ausgeliefert mit SHA-256; 409 `custom_sounds_disabled`, solange die Option aus ist | le son d'une origine d'alarme : un fichier WAVE en PCM mono 16 bits à 16 kHz, lu octet par octet (d'un dixième de seconde jusqu'à `ARMOR_ALARM_SOUND_MAX_BYTES`, pas de silence), seuls ses échantillons sont conservés, servi avec son SHA-256 ; 409 `custom_sounds_disabled` tant que l'option est désactivée | il suono di un'origine di allarme: un file WAVE in PCM mono a 16 bit e 16 kHz, letto byte per byte (da un decimo di secondo fino a `ARMOR_ALARM_SOUND_MAX_BYTES`, non silenzio), se ne conservano solo i campioni, servito con il suo SHA-256; 409 `custom_sounds_disabled` con l'opzione disattivata | アラームの発生元ごとの音：16 kHz 16 ビットモノラル PCM の WAVE ファイルを 1 バイトずつ検査（0.1 秒から `ARMOR_ALARM_SOUND_MAX_BYTES` まで、無音は不可）し、サンプルだけを保存して SHA-256 付きで配信。オプションがオフの間は 409 `custom_sounds_disabled` | 某个报警来源的声音：16 kHz 16 位单声道 PCM 的 WAVE 文件，逐字节检查（十分之一秒至 `ARMOR_ALARM_SOUND_MAX_BYTES`，不得为静音），只保存其采样，并附 SHA-256 提供；选项关闭时返回 409 `custom_sounds_disabled` | o som de uma origem de alarme: um ficheiro WAVE de PCM mono de 16 bits a 16 kHz, lido byte a byte (de um décimo de segundo até `ARMOR_ALARM_SOUND_MAX_BYTES`, não silêncio), só se guardam as suas amostras e é servido com o seu SHA-256; 409 `custom_sounds_disabled` com a opção desligada")),
     ("`POST /api/v1/nodes/{id}/control`  `POST /api/v1/nodes/control`", T("administrator who proved themselves a moment ago | administrador que se acaba de identificar de nuevo | Administrator, der sich eben erneut ausgewiesen hat | administrateur qui vient de se ré-identifier | amministratore che si è appena identificato di nuovo | 直前に再認証した管理者 | 刚刚重新验证身份的管理员 | administrador que acabou de provar quem é"), T("one order (restart, pause, resume, standby, identify, diagnostics, maintenance) to one node or to all | una orden (reiniciar, pausar, reanudar, espera, identificar, diagnóstico, mantenimiento) a un nodo o a todos | ein Befehl (Neustart, Pause, Fortsetzen, Standby, Identifizieren, Diagnose, Wartung) an einen Knoten oder alle | un ordre (redémarrer, pause, reprise, veille, identifier, diagnostic, maintenance) à un nœud ou à tous | un ordine (riavvio, pausa, ripresa, standby, identificazione, diagnostica, manutenzione) a un nodo o a tutti | 1 ノードまたは全ノードへのオーダー（再起動、一時停止、再開、スタンバイ、識別、診断、メンテナンス） | 向一个或所有节点下发一条指令（重启、暂停、恢复、待机、识别、诊断、维护） | uma ordem (reiniciar, pausar, retomar, espera, identificar, diagnóstico, manutenção) a um nó ou a todos")),
+    ("`POST /api/v1/admin/nodes/settings`", T("administrator | administrador | Administrator | administrateur | amministratore | 管理者 | 管理员 | administrador"), T("reads, and changes if `login_limit_per_minute` is given (0 to 120 wrong passwords a minute), the sign-in limit of a node through the node's own panel; the panel login is used once and never kept, and the audit line does not carry it | lee y, si se da `login_limit_per_minute` (de 0 a 120 contraseñas erróneas por minuto), cambia el límite de acceso de un nodo a través del propio panel del nodo; el acceso al panel se usa una vez y no se guarda, y la línea de auditoría no lo lleva | liest und ändert, wenn `login_limit_per_minute` angegeben ist (0 bis 120 falsche Passwörter pro Minute), das Anmeldelimit eines Knotens über dessen eigenes Panel; die Panel-Anmeldung wird einmal benutzt und nie gespeichert, und die Audit-Zeile enthält sie nicht | lit et, si `login_limit_per_minute` est donné (0 à 120 mots de passe erronés par minute), change la limite de connexion d'un nœud par le panneau du nœud lui-même ; l'identifiant du panneau est utilisé une fois et jamais conservé, et la ligne d'audit ne le contient pas | legge e, se è dato `login_limit_per_minute` (da 0 a 120 password errate al minuto), cambia il limite di accesso di un nodo tramite il pannello del nodo stesso; l'accesso al pannello è usato una volta e mai conservato, e la riga di audit non lo contiene | ノード自身のパネルを通して、ノードのログイン上限を読み取り、`login_limit_per_minute`（1 分あたりの誤パスワード 0〜120 回）が渡されれば変更します。パネルのログイン情報は 1 回だけ使われ保存されず、監査行にも含まれません | 通过节点自己的面板读取节点的登录限制,若给出 `login_limit_per_minute`(每分钟 0 到 120 次错误密码)则修改它;面板登录信息只使用一次、绝不保存,审计行中也不含登录信息 | lê e, se `login_limit_per_minute` for dado (0 a 120 palavras-passe erradas por minuto), altera o limite de início de sessão de um nó através do painel do próprio nó; o acesso ao painel é usado uma vez e nunca guardado, e a linha de auditoria não o contém")),
+    ("`POST /api/v1/admin/firmware/jobs`", T("administrator, fresh proof of identity | administrador, con prueba de identidad reciente | Administrator, frischer Identitätsnachweis | administrateur, preuve d'identité récente | amministratore, prova di identità recente | 管理者、直前の本人確認 | 管理员，刚刚完成身份确认 | administrador, prova de identidade recente"), T("installs a firmware image on the nodes one by one; an image whose file name says another board than the node's (`armor_<kind>-<board>.bin`) fails that node with `wrong_board` before anything is sent to it | instala una imagen de firmware en los nodos uno a uno; una imagen cuyo nombre de fichero dice otra placa distinta de la del nodo (`armor_<tipo>-<placa>.bin`) hace fallar ese nodo con `wrong_board` antes de enviarle nada | installiert ein Firmware-Image nacheinander auf den Knoten; ein Image, dessen Dateiname eine andere Platine als die des Knotens nennt (`armor_<Art>-<Platine>.bin`), lässt diesen Knoten mit `wrong_board` scheitern, bevor ihm etwas gesendet wird | installe une image de firmware sur les nœuds un par un ; une image dont le nom de fichier indique une autre carte que celle du nœud (`armor_<type>-<carte>.bin`) fait échouer ce nœud avec `wrong_board` avant de lui envoyer quoi que ce soit | installa un'immagine firmware sui nodi uno alla volta; un'immagine il cui nome di file indica una scheda diversa da quella del nodo (`armor_<tipo>-<scheda>.bin`) fa fallire quel nodo con `wrong_board` prima di inviargli qualsiasi cosa | ファームウェアイメージをノードへ 1 台ずつ書き込みます。ファイル名がノードのボードと異なるボードを示すイメージ（`armor_<種類>-<ボード>.bin`）は、何も送る前にそのノードを `wrong_board` で失敗させます | 逐个节点安装固件镜像;文件名所示开发板与节点开发板不同的镜像(`armor_<类型>-<开发板>.bin`)会在发送任何内容之前让该节点以 `wrong_board` 失败 | instala uma imagem de firmware nos nós um a um; uma imagem cujo nome de ficheiro indica outra placa que não a do nó (`armor_<tipo>-<placa>.bin`) faz esse nó falhar com `wrong_board` antes de lhe ser enviado o que quer que seja")),
     ("`POST /api/v1/cameras/{id}/stream-ticket`", T("operator | operador | Bediener | opérateur | operatore | オペレーター | 操作员 | operador"), T("a short-lived ticket for the live video of one camera | un ticket de vida corta para el vídeo en vivo de una cámara | ein kurzlebiges Ticket für das Live-Video einer Kamera | un ticket de courte durée pour la vidéo en direct d'une caméra | un ticket di breve durata per il video dal vivo di una telecamera | 1 台のカメラのライブ映像用の短命チケット | 单台摄像头实时视频的短期票据 | um bilhete de curta duração para o vídeo em direto de uma câmara")),
 ]
 
 INTERFACES_LEAD = P(
-    "The route table (`docs/ROUTES.md`, generated from the code) lists every route with who may call it; the OpenAPI file of ARMOR-COMMON describes 191 paths and 247 operations, and a test fails if a route is missing from it. The ones that matter most:",
-    "La tabla de rutas (`docs/ROUTES.md`, generada del código) lista cada ruta con quién puede llamarla; el fichero OpenAPI de ARMOR-COMMON describe 191 rutas y 247 operaciones, y una prueba falla si falta alguna. Las que más importan:",
-    "Die Routentabelle (`docs/ROUTES.md`, aus dem Code erzeugt) listet jede Route mit den Berechtigten; die OpenAPI-Datei von ARMOR-COMMON beschreibt 191 Pfade und 247 Operationen, und ein Test schlägt fehl, wenn eine Route fehlt. Die wichtigsten:",
-    "La table des routes (`docs/ROUTES.md`, générée depuis le code) liste chaque route avec qui peut l'appeler ; le fichier OpenAPI d'ARMOR-COMMON décrit 191 chemins et 247 opérations, et un test échoue s'il en manque une. Les plus importantes :",
-    "La tabella delle rotte (`docs/ROUTES.md`, generata dal codice) elenca ogni rotta con chi può chiamarla; il file OpenAPI di ARMOR-COMMON descrive 191 percorsi e 247 operazioni, e un test fallisce se ne manca una. Le più importanti:",
-    "ルート表（`docs/ROUTES.md`、コードから生成）は各ルートと呼び出せる主体を一覧にします。ARMOR-COMMON の OpenAPI は 191 パス・247 操作を記述し、欠けているルートがあるとテストが失敗します。主なもの：",
-    "路由表（`docs/ROUTES.md`，由代码生成）列出每条路由及可调用者；ARMOR-COMMON 的 OpenAPI 文件描述了 191 条路径和 247 个操作，缺少任何路由时测试会失败。最重要的几条：",
-    "A tabela de rotas (`docs/ROUTES.md`, gerada do código) lista cada rota com quem a pode chamar; o ficheiro OpenAPI do ARMOR-COMMON descreve 191 caminhos e 247 operações, e um teste falha se faltar alguma. As mais importantes:")
+    "The route table (`docs/ROUTES.md`, generated from the code) lists every route with who may call it; the OpenAPI file of ARMOR-COMMON describes 195 paths and 253 operations, and a test fails if a route is missing from it. The ones that matter most:",
+    "La tabla de rutas (`docs/ROUTES.md`, generada del código) lista cada ruta con quién puede llamarla; el fichero OpenAPI de ARMOR-COMMON describe 195 rutas y 253 operaciones, y una prueba falla si falta alguna. Las que más importan:",
+    "Die Routentabelle (`docs/ROUTES.md`, aus dem Code erzeugt) listet jede Route mit den Berechtigten; die OpenAPI-Datei von ARMOR-COMMON beschreibt 195 Pfade und 253 Operationen, und ein Test schlägt fehl, wenn eine Route fehlt. Die wichtigsten:",
+    "La table des routes (`docs/ROUTES.md`, générée depuis le code) liste chaque route avec qui peut l'appeler ; le fichier OpenAPI d'ARMOR-COMMON décrit 195 chemins et 253 opérations, et un test échoue s'il en manque une. Les plus importantes :",
+    "La tabella delle rotte (`docs/ROUTES.md`, generata dal codice) elenca ogni rotta con chi può chiamarla; il file OpenAPI di ARMOR-COMMON descrive 195 percorsi e 253 operazioni, e un test fallisce se ne manca una. Le più importanti:",
+    "ルート表（`docs/ROUTES.md`、コードから生成）は各ルートと呼び出せる主体を一覧にします。ARMOR-COMMON の OpenAPI は 195 パス・253 操作を記述し、欠けているルートがあるとテストが失敗します。主なもの：",
+    "路由表（`docs/ROUTES.md`，由代码生成）列出每条路由及可调用者；ARMOR-COMMON 的 OpenAPI 文件描述了 195 条路径和 253 个操作，缺少任何路由时测试会失败。最重要的几条：",
+    "A tabela de rotas (`docs/ROUTES.md`, gerada do código) lista cada rota com quem a pode chamar; o ficheiro OpenAPI do ARMOR-COMMON descreve 195 caminhos e 253 operações, e um teste falha se faltar alguma. As mais importantes:")
 
 CFG = [
     ("`ARMOR_INGEST_TOKEN`  `ARMOR_CONTROL_TOKEN`", T("yes (24+ characters, all different) | sí (24+ caracteres, todos distintos) | ja (24+ Zeichen, alle verschieden) | oui (24+ caractères, tous différents) | sì (24+ caratteri, tutti diversi) | 必須（24 文字以上、すべて別） | 是（24 个以上字符，互不相同） | sim (24+ caracteres, todos diferentes)"), T("what the nodes post with; what arms, disarms and reads events | con qué publican los nodos; qué arma, desarma y lee eventos | womit die Knoten senden; was schärft, entschärft und Ereignisse liest | avec quoi les nœuds publient ; ce qui arme, désarme et lit les événements | con cosa pubblicano i nodi; ciò che arma, disarma e legge gli eventi | ノードの送信用と、警戒・解除・イベント読み取り用 | 节点上报所用；布防、撤防和读取事件所用 | com o que os nós publicam; o que arma, desarma e lê eventos")),
@@ -1529,13 +1544,13 @@ def build_lg(lg):
 
 
 TEST_TABLE_TEXT = P(
-    "`npm test` runs every file of `tests/` (95 files): unit tests of each module and a full HTTP integration suite against an isolated server (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` runs the shared vectors of ARMOR-COMMON and checks that **the routes the server registers are exactly the operations the OpenAPI file describes**, by method and path, and that every answer says which body it has; it is skipped when ARMOR-COMMON is not next to this repository. The TLS tests need `openssl` installed. GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests.",
-    "`npm test` ejecuta cada fichero de `tests/` (95 ficheros): pruebas unitarias de cada módulo y una batería de integración HTTP completa contra un servidor aislado (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` ejecuta los vectores compartidos de ARMOR-COMMON y comprueba que **las rutas que registra el servidor son exactamente las operaciones que describe el fichero OpenAPI**, por método y ruta, y que cada respuesta dice qué cuerpo lleva; se salta si ARMOR-COMMON no está junto a este repositorio. Las pruebas de TLS necesitan `openssl` instalado. GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la validación del manifiesto, la versión, el registro de cambios y la paridad de los README, y luego la compilación y las pruebas del propio proyecto.",
-    "`npm test` führt jede Datei in `tests/` aus (95 Dateien): Unit-Tests jedes Moduls und eine volle HTTP-Integrationssuite gegen einen isolierten Server (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` führt die gemeinsamen Vektoren von ARMOR-COMMON aus und prüft, dass **die vom Server registrierten Routen genau die Operationen sind, die die OpenAPI-Datei beschreibt**, nach Methode und Pfad, und dass jede Antwort sagt, welchen Inhalt sie hat; er wird übersprungen, wenn ARMOR-COMMON nicht neben diesem Repository liegt. Die TLS-Tests brauchen installiertes `openssl`. GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: die Prüfung von Manifest, Version, Änderungsprotokoll und README-Parität, dann den eigenen Build und die eigenen Tests des Projekts.",
-    "`npm test` exécute chaque fichier de `tests/` (95 fichiers) : tests unitaires de chaque module et une suite d'intégration HTTP complète contre un serveur isolé (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` exécute les vecteurs partagés d'ARMOR-COMMON et vérifie que **les routes enregistrées par le serveur sont exactement les opérations décrites par le fichier OpenAPI**, par méthode et chemin, et que chaque réponse dit quel corps elle porte ; il est ignoré si ARMOR-COMMON n'est pas à côté de ce dépôt. Les tests TLS demandent `openssl` installé. GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la validation du manifeste, de la version, du journal des modifications et de la parité des README, puis le build et les tests propres au projet.",
-    "`npm test` esegue ogni file di `tests/` (95 file): test unitari di ogni modulo e una suite di integrazione HTTP completa contro un server isolato (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` esegue i vettori condivisi di ARMOR-COMMON e verifica che **le rotte registrate dal server siano esattamente le operazioni descritte dal file OpenAPI**, per metodo e percorso, e che ogni risposta dica quale corpo ha; viene saltato se ARMOR-COMMON non è accanto a questo repository. I test TLS richiedono `openssl` installato. GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazione di manifesto, versione, registro delle modifiche e parità dei README, poi la compilazione e i test del progetto.",
-    "`npm test` は `tests/` の全ファイル（95 個）を実行します：各モジュールの単体テストと、隔離したサーバーに対する完全な HTTP 結合テスト（`tests/vertical-slice.test.ts`）。`tests/conformance.test.ts` は ARMOR-COMMON の共有ベクターを実行し、**サーバーが登録するルートが OpenAPI の記述する操作と（メソッドとパスで）完全に一致すること**、各応答が本文の種類を示していることを確認します。ARMOR-COMMON がこのリポジトリの隣にないとスキップされます。TLS のテストには `openssl` が必要です。GitHub Actions は push と pull request のたびに A.R.M.O.R. の基本検査（マニフェスト、バージョン、変更履歴、README の一致）と、プロジェクト自身のビルドとテストを実行します。",
-    "`npm test` 运行 `tests/` 的每个文件（95 个）：各模块的单元测试，以及针对隔离服务器的完整 HTTP 集成套件（`tests/vertical-slice.test.ts`）。`tests/conformance.test.ts` 运行 ARMOR-COMMON 的共享向量，并检查**服务器注册的路由与 OpenAPI 文件描述的操作（按方法和路径）完全一致**，以及每个响应都说明其请求体类型；ARMOR-COMMON 不在本仓库旁边时会跳过。TLS 测试需要安装 `openssl`。GitHub Actions 在每次推送和拉取请求时运行 A.R.M.O.R. 基线：清单、版本、更新日志和 README 一致性的校验，然后是项目自身的构建和测试。",
-    "`npm test` executa cada ficheiro de `tests/` (95 ficheiros): testes unitários de cada módulo e uma bateria de integração HTTP completa contra um servidor isolado (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` executa os vetores partilhados do ARMOR-COMMON e verifica que **as rotas que o servidor regista são exatamente as operações que o ficheiro OpenAPI descreve**, por método e caminho, e que cada resposta diz que corpo tem; é saltado se o ARMOR-COMMON não estiver ao lado deste repositório. Os testes de TLS precisam de `openssl` instalado. O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a validação do manifesto, da versão, do registo de alterações e da paridade dos README, e depois a compilação e os testes do próprio projeto.")
+    "`npm test` runs every file of `tests/` (99 files): unit tests of each module and a full HTTP integration suite against an isolated server (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` runs the shared vectors of ARMOR-COMMON and checks that **the routes the server registers are exactly the operations the OpenAPI file describes**, by method and path, and that every answer says which body it has; it is skipped when ARMOR-COMMON is not next to this repository. The TLS tests need `openssl` installed. GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the validation of the manifest, version, changelog and README parity, then the project's own build and tests.",
+    "`npm test` ejecuta cada fichero de `tests/` (99 ficheros): pruebas unitarias de cada módulo y una batería de integración HTTP completa contra un servidor aislado (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` ejecuta los vectores compartidos de ARMOR-COMMON y comprueba que **las rutas que registra el servidor son exactamente las operaciones que describe el fichero OpenAPI**, por método y ruta, y que cada respuesta dice qué cuerpo lleva; se salta si ARMOR-COMMON no está junto a este repositorio. Las pruebas de TLS necesitan `openssl` instalado. GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la validación del manifiesto, la versión, el registro de cambios y la paridad de los README, y luego la compilación y las pruebas del propio proyecto.",
+    "`npm test` führt jede Datei in `tests/` aus (99 Dateien): Unit-Tests jedes Moduls und eine volle HTTP-Integrationssuite gegen einen isolierten Server (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` führt die gemeinsamen Vektoren von ARMOR-COMMON aus und prüft, dass **die vom Server registrierten Routen genau die Operationen sind, die die OpenAPI-Datei beschreibt**, nach Methode und Pfad, und dass jede Antwort sagt, welchen Inhalt sie hat; er wird übersprungen, wenn ARMOR-COMMON nicht neben diesem Repository liegt. Die TLS-Tests brauchen installiertes `openssl`. GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: die Prüfung von Manifest, Version, Änderungsprotokoll und README-Parität, dann den eigenen Build und die eigenen Tests des Projekts.",
+    "`npm test` exécute chaque fichier de `tests/` (99 fichiers) : tests unitaires de chaque module et une suite d'intégration HTTP complète contre un serveur isolé (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` exécute les vecteurs partagés d'ARMOR-COMMON et vérifie que **les routes enregistrées par le serveur sont exactement les opérations décrites par le fichier OpenAPI**, par méthode et chemin, et que chaque réponse dit quel corps elle porte ; il est ignoré si ARMOR-COMMON n'est pas à côté de ce dépôt. Les tests TLS demandent `openssl` installé. GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la validation du manifeste, de la version, du journal des modifications et de la parité des README, puis le build et les tests propres au projet.",
+    "`npm test` esegue ogni file di `tests/` (99 file): test unitari di ogni modulo e una suite di integrazione HTTP completa contro un server isolato (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` esegue i vettori condivisi di ARMOR-COMMON e verifica che **le rotte registrate dal server siano esattamente le operazioni descritte dal file OpenAPI**, per metodo e percorso, e che ogni risposta dica quale corpo ha; viene saltato se ARMOR-COMMON non è accanto a questo repository. I test TLS richiedono `openssl` installato. GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazione di manifesto, versione, registro delle modifiche e parità dei README, poi la compilazione e i test del progetto.",
+    "`npm test` は `tests/` の全ファイル（99 個）を実行します：各モジュールの単体テストと、隔離したサーバーに対する完全な HTTP 結合テスト（`tests/vertical-slice.test.ts`）。`tests/conformance.test.ts` は ARMOR-COMMON の共有ベクターを実行し、**サーバーが登録するルートが OpenAPI の記述する操作と（メソッドとパスで）完全に一致すること**、各応答が本文の種類を示していることを確認します。ARMOR-COMMON がこのリポジトリの隣にないとスキップされます。TLS のテストには `openssl` が必要です。GitHub Actions は push と pull request のたびに A.R.M.O.R. の基本検査（マニフェスト、バージョン、変更履歴、README の一致）と、プロジェクト自身のビルドとテストを実行します。",
+    "`npm test` 运行 `tests/` 的每个文件（99 个）：各模块的单元测试，以及针对隔离服务器的完整 HTTP 集成套件（`tests/vertical-slice.test.ts`）。`tests/conformance.test.ts` 运行 ARMOR-COMMON 的共享向量，并检查**服务器注册的路由与 OpenAPI 文件描述的操作（按方法和路径）完全一致**，以及每个响应都说明其请求体类型；ARMOR-COMMON 不在本仓库旁边时会跳过。TLS 测试需要安装 `openssl`。GitHub Actions 在每次推送和拉取请求时运行 A.R.M.O.R. 基线：清单、版本、更新日志和 README 一致性的校验，然后是项目自身的构建和测试。",
+    "`npm test` executa cada ficheiro de `tests/` (99 ficheiros): testes unitários de cada módulo e uma bateria de integração HTTP completa contra um servidor isolado (`tests/vertical-slice.test.ts`). `tests/conformance.test.ts` executa os vetores partilhados do ARMOR-COMMON e verifica que **as rotas que o servidor regista são exatamente as operações que o ficheiro OpenAPI descreve**, por método e caminho, e que cada resposta diz que corpo tem; é saltado se o ARMOR-COMMON não estiver ao lado deste repositório. Os testes de TLS precisam de `openssl` instalado. O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a validação do manifesto, da versão, do registo de alterações e da paridade dos README, e depois a compilação e os testes do próprio projeto.")
 
 TEXT = {lg: build_lg(lg) for lg in LGS}
