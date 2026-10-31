@@ -36,7 +36,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "90%20passing",
+      "97%20passing",
       "2ea44f",
     ],
   ],
@@ -45,7 +45,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Zones, masks and detection rules for the cameras",
-    "honest": "The zones, the motion check, the tracker, the rules and the 90 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
+    "honest": "The zones, the motion check, the tracker, the rules and the 97 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
     "glance": [
       [
         "Role",
@@ -57,7 +57,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Runs on",
@@ -74,7 +74,7 @@ TEXT = {
     ],
     "status": {
       "software": "The zones, the motion check, the tracker and the rules work, but there is no real detector model yet: the simulation uses scripted detections.",
-      "tests": "90 tests pass (`python -m unittest discover -s tests`).",
+      "tests": "97 tests pass (`python -m unittest discover -s tests`).",
       "hardware": "Nothing has run on a camera or on the Jetson Orin NX.",
       "docs": "Eight languages and the changelog are up to date.",
     },
@@ -115,7 +115,8 @@ Nothing here is a safety function: there is no real detector model yet.""",
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Activity pipeline, OFF unless the file says `"enabled": true` (exit 3 when off): a synthetic scene with a fixed seed, or recorded detections, gives one JSON line per event (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Writes the heat map of activity (counts per cell, `OUT` ends in `.json`, `.png` or `.svg`); only aggregated positions, never pictures |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Prints an activity configuration to start from / validates one (exit 0 good, 1 invalid, 2 unreadable) |
-| `ActivityEngine`, `heatmap_route` | As a library: the engine and the handler of `GET /heatmap?camera=ID&format=json` (`png` and `svg` too), for the service that will mount it; this repository has no server of its own and the route answers 404 while the pipeline is off |
+| `ActivityEngine`, `heatmap_route` | As a library: the engine and the handler of `GET /heatmap?camera=ID&format=json` (`png` and `svg` too), for the service that mounts it; the route answers 404 while the pipeline is off |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Answers one `GET /heatmap` query from recorded detections and prints the answer as one JSON line (`status`, `content_type`, `body_base64`); this is what a server that mounts the route runs. Exit 0 for every answer of the route (also 404 when the pipeline is off and 400 for a bad query), 1 for a wrong configuration, 2 for a file that cannot be read |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -147,13 +148,13 @@ These values are constants of `tracker.py` and `motion.py` today; the configurat
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -166,7 +167,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Geometry, configuration, motion, tracker, rules, profiles, the pipeline and the command line |
 | `test_vision_edges.py` | 19 | The edges: bad configurations, stationary objects, masked detections and the unavailable detector |
 | `test_characterization.py` | 2 | Fixes the output of the built-in simulation byte for byte, so that it cannot change while the activity pipeline is off |
-| `test_activity.py` | 27 | Activity configuration, synthetic and recorded sources, events, heat map (determinism, sum equals detections, nothing outside the grid, window, decay, memory), the `/heatmap` handler and the command line |""",
+| `test_activity.py` | 27 | Activity configuration, synthetic and recorded sources, events, heat map (determinism, sum equals detections, nothing outside the grid, window, decay, memory), the `/heatmap` handler and the command line |
+| `test_heatmap_service.py` | 7 | The heat map route as a command: off is 404 whatever the data, on with no data is an empty map, counts in the three formats, bad queries, and a wrong configuration or file is an error and never an empty map |""",
       "build": "It is plain Python: nothing to compile. The version lives in `pyproject.toml` and `armor.project.json`.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -193,6 +195,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               activity pipeline settings, off by default
 │   ├── sources.py heatmap.py            synthetic and recorded sources; heat map
 │   ├── activity.py                      events and the /heatmap handler
+│   ├── heatmap_service.py               the /heatmap route as a command
 │   └── pipeline.py cli.py __main__.py   the whole chain and the command line
 ├── tests/                               the tests
 ├── docs/                                the guides of this repository
@@ -227,7 +230,7 @@ ARMOR-VISION/
   },
   "es": {
     "tagline": "Zonas, máscaras y reglas de detección para las cámaras",
-    "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 90 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
+    "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 97 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
     "glance": [
       [
         "Función",
@@ -239,7 +242,7 @@ ARMOR-VISION/
       ],
       [
         "Pruebas",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Funciona en",
@@ -256,7 +259,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Las zonas, la comprobación de movimiento, el seguimiento y las reglas funcionan, pero aún no hay un modelo detector real: la simulación usa detecciones guionizadas.",
-      "tests": "Pasan 90 pruebas (`python -m unittest discover -s tests`).",
+      "tests": "Pasan 97 pruebas (`python -m unittest discover -s tests`).",
       "hardware": "Nada ha funcionado en una cámara ni en la Jetson Orin NX.",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
     },
@@ -297,7 +300,8 @@ Nada de esto es una función de seguridad: aún no hay un modelo de detección r
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Canal de actividad, APAGADO salvo que el fichero diga `"enabled": true` (código 3 si está apagado): una escena sintética con semilla fija, o detecciones grabadas, da una línea JSON por evento (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Escribe el mapa de calor de actividad (cuentas por celda, `OUT` termina en `.json`, `.png` o `.svg`); solo posiciones agregadas, nunca imágenes |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Imprime una configuración de actividad de partida / valida una (código 0 bien, 1 no válida, 2 ilegible) |
-| `ActivityEngine`, `heatmap_route` | Como biblioteca: el motor y el manejador de `GET /heatmap?camera=ID&format=json` (también `png` y `svg`), para el servicio que lo monte; este repositorio no tiene servidor propio y la ruta responde 404 mientras el canal esté apagado |
+| `ActivityEngine`, `heatmap_route` | Como biblioteca: el motor y el manejador de `GET /heatmap?camera=ID&format=json` (también `png` y `svg`), para el servicio que lo monte; la ruta responde 404 mientras el canal esté apagado |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Responde una consulta `GET /heatmap` desde detecciones grabadas e imprime la respuesta como una línea JSON (`status`, `content_type`, `body_base64`); es lo que ejecuta un servidor que monta la ruta. Código 0 para cualquier respuesta de la ruta (también 404 con el canal apagado y 400 con una consulta mala), 1 si la configuración es errónea, 2 si no se puede leer un fichero |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -329,13 +333,13 @@ Hoy estos valores son constantes de `tracker.py` y `motion.py`; el fichero de co
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -348,7 +352,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Geometría, configuración, movimiento, seguimiento, reglas, perfiles, la cadena y la línea de órdenes |
 | `test_vision_edges.py` | 19 | Los bordes: configuraciones erróneas, objetos quietos, detecciones enmascaradas y el detector no disponible |
 | `test_characterization.py` | 2 | Fija byte a byte la salida de la simulación incorporada, para que no cambie mientras el canal de actividad esté apagado |
-| `test_activity.py` | 27 | Configuración de actividad, fuentes sintética y grabada, eventos, mapa de calor (determinismo, suma igual a las detecciones, nada fuera de la rejilla, ventana, decaimiento, memoria), el manejador de `/heatmap` y la línea de comandos |""",
+| `test_activity.py` | 27 | Configuración de actividad, fuentes sintética y grabada, eventos, mapa de calor (determinismo, suma igual a las detecciones, nada fuera de la rejilla, ventana, decaimiento, memoria), el manejador de `/heatmap` y la línea de comandos |
+| `test_heatmap_service.py` | 7 | La ruta del mapa de calor como comando: apagado es 404 sea cual sea el dato, encendido sin datos es un mapa vacío, cuentas en los tres formatos, consultas malas, y una configuración o un fichero erróneos son un error y nunca un mapa vacío |""",
       "build": "Es Python puro: no hay nada que compilar. La versión vive en `pyproject.toml` y `armor.project.json`.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -375,6 +380,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               ajustes del canal de actividad, apagado por defecto
 │   ├── sources.py heatmap.py            fuentes sintética y grabada; mapa de calor
 │   ├── activity.py                      eventos y manejador de /heatmap
+│   ├── heatmap_service.py               la ruta /heatmap como comando
 │   └── pipeline.py cli.py __main__.py   toda la cadena y la línea de órdenes
 ├── tests/                               las pruebas
 ├── docs/                                las guías de este repositorio
@@ -409,7 +415,7 @@ ARMOR-VISION/
   },
   "de": {
     "tagline": "Zonen, Masken und Erkennungsregeln für die Kameras",
-    "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 90 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
+    "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 97 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
     "glance": [
       [
         "Rolle",
@@ -421,7 +427,7 @@ ARMOR-VISION/
       ],
       [
         "Tests",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Läuft auf",
@@ -438,7 +444,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Die Zonen, die Bewegungsprüfung, die Verfolgung und die Regeln funktionieren, aber es gibt noch kein echtes Erkennungsmodell: Die Simulation nutzt geskriptete Erkennungen.",
-      "tests": "90 Tests bestehen (`python -m unittest discover -s tests`).",
+      "tests": "97 Tests bestehen (`python -m unittest discover -s tests`).",
       "hardware": "Nichts lief an einer Kamera oder auf dem Jetson Orin NX.",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
     },
@@ -479,7 +485,8 @@ Nichts davon ist eine Sicherheitsfunktion: Es gibt noch kein echtes Erkennungsmo
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Aktivitätspipeline, AUS, solange die Datei nicht `"enabled": true` sagt (Exit 3 wenn aus): eine synthetische Szene mit festem Seed oder aufgezeichnete Erkennungen ergibt eine JSON-Zeile je Ereignis (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Schreibt die Heatmap der Aktivität (Zählungen je Zelle, `OUT` endet auf `.json`, `.png` oder `.svg`); nur aggregierte Positionen, niemals Bilder |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Gibt eine Aktivitätskonfiguration als Ausgangspunkt aus / prüft eine (Exit 0 gut, 1 ungültig, 2 nicht lesbar) |
-| `ActivityEngine`, `heatmap_route` | Als Bibliothek: die Engine und der Handler für `GET /heatmap?camera=ID&format=json` (auch `png` und `svg`) für den Dienst, der ihn einbindet; dieses Repository hat keinen eigenen Server und die Route antwortet 404, solange die Pipeline aus ist |
+| `ActivityEngine`, `heatmap_route` | Als Bibliothek: die Engine und der Handler für `GET /heatmap?camera=ID&format=json` (auch `png` und `svg`) für den Dienst, der ihn einbindet; die Route antwortet 404, solange die Pipeline aus ist |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Beantwortet eine `GET /heatmap`-Anfrage aus aufgezeichneten Erkennungen und gibt die Antwort als eine JSON-Zeile aus (`status`, `content_type`, `body_base64`); das führt ein Server aus, der die Route einbindet. Exit 0 für jede Antwort der Route (auch 404 bei ausgeschalteter Pipeline und 400 bei einer fehlerhaften Anfrage), 1 bei falscher Konfiguration, 2 bei einer nicht lesbaren Datei |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -511,13 +518,13 @@ Diese Werte sind heute Konstanten in `tracker.py` und `motion.py`; die Konfigura
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -530,7 +537,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Geometrie, Konfiguration, Bewegung, Tracker, Regeln, Profile, die Kette und die Kommandozeile |
 | `test_vision_edges.py` | 19 | Die Grenzfälle: falsche Konfigurationen, ruhende Objekte, maskierte Erkennungen und der nicht verfügbare Detektor |
 | `test_characterization.py` | 2 | Legt die Ausgabe der eingebauten Simulation Byte für Byte fest, damit sie sich bei ausgeschalteter Aktivitätspipeline nicht ändert |
-| `test_activity.py` | 27 | Aktivitätskonfiguration, synthetische und aufgezeichnete Quellen, Ereignisse, Heatmap (Determinismus, Summe gleich Erkennungen, nichts außerhalb des Gitters, Fenster, Abklingen, Speicher), der `/heatmap`-Handler und die Befehlszeile |""",
+| `test_activity.py` | 27 | Aktivitätskonfiguration, synthetische und aufgezeichnete Quellen, Ereignisse, Heatmap (Determinismus, Summe gleich Erkennungen, nichts außerhalb des Gitters, Fenster, Abklingen, Speicher), der `/heatmap`-Handler und die Befehlszeile |
+| `test_heatmap_service.py` | 7 | Die Heatmap-Route als Befehl: aus ist 404, egal welche Daten, an ohne Daten ist eine leere Karte, Zählungen in den drei Formaten, fehlerhafte Anfragen, und eine falsche Konfiguration oder Datei ist ein Fehler und nie eine leere Karte |""",
       "build": "Es ist reines Python: nichts zu kompilieren. Die Version steht in `pyproject.toml` und `armor.project.json`.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -557,6 +565,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               Einstellungen der Aktivitätspipeline, standardmäßig aus
 │   ├── sources.py heatmap.py            synthetische und aufgezeichnete Quellen; Heatmap
 │   ├── activity.py                      Ereignisse und der /heatmap-Handler
+│   ├── heatmap_service.py               die /heatmap-Route als Befehl
 │   └── pipeline.py cli.py __main__.py   die ganze Kette und die Kommandozeile
 ├── tests/                               die Tests
 ├── docs/                                die Anleitungen dieses Repositorys
@@ -591,7 +600,7 @@ ARMOR-VISION/
   },
   "fr": {
     "tagline": "Zones, masques et règles de détection pour les caméras",
-    "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 90 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
+    "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 97 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
     "glance": [
       [
         "Rôle",
@@ -603,7 +612,7 @@ ARMOR-VISION/
       ],
       [
         "Tests",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Fonctionne sur",
@@ -620,7 +629,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Les zones, le contrôle du mouvement, le suivi et les règles fonctionnent, mais il n'y a pas encore de vrai modèle détecteur : la simulation utilise des détections scénarisées.",
-      "tests": "90 tests réussissent (`python -m unittest discover -s tests`).",
+      "tests": "97 tests réussissent (`python -m unittest discover -s tests`).",
       "hardware": "Rien n'a tourné sur une caméra ni sur le Jetson Orin NX.",
       "docs": "Huit langues et le journal des modifications sont à jour.",
     },
@@ -661,7 +670,8 @@ Rien ici n'est une fonction de sécurité : il n'y a pas encore de vrai modèle 
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Chaîne d'activité, ÉTEINTE sauf si le fichier dit `"enabled": true` (code 3 si éteinte) : une scène synthétique à graine fixe, ou des détections enregistrées, donne une ligne JSON par événement (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Écrit la carte de chaleur de l'activité (comptes par cellule, `OUT` finit par `.json`, `.png` ou `.svg`) ; seulement des positions agrégées, jamais d'images |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Affiche une configuration d'activité de départ / en valide une (code 0 bon, 1 invalide, 2 illisible) |
-| `ActivityEngine`, `heatmap_route` | En bibliothèque : le moteur et le gestionnaire de `GET /heatmap?camera=ID&format=json` (aussi `png` et `svg`), pour le service qui le montera ; ce dépôt n'a pas de serveur propre et la route répond 404 tant que la chaîne est éteinte |
+| `ActivityEngine`, `heatmap_route` | En bibliothèque : le moteur et le gestionnaire de `GET /heatmap?camera=ID&format=json` (aussi `png` et `svg`), pour le service qui le monte ; la route répond 404 tant que la chaîne est éteinte |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Répond à une requête `GET /heatmap` à partir de détections enregistrées et affiche la réponse en une ligne JSON (`status`, `content_type`, `body_base64`) ; c'est ce que lance un serveur qui monte la route. Code 0 pour toute réponse de la route (aussi 404 chaîne éteinte et 400 pour une requête fausse), 1 pour une configuration erronée, 2 pour un fichier illisible |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -693,13 +703,13 @@ Ces valeurs sont aujourd'hui des constantes de `tracker.py` et `motion.py` ; le 
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -712,7 +722,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Géométrie, configuration, mouvement, suivi, règles, profils, la chaîne et la ligne de commande |
 | `test_vision_edges.py` | 19 | Les cas limites : mauvaises configurations, objets immobiles, détections masquées et détecteur indisponible |
 | `test_characterization.py` | 2 | Fixe octet par octet la sortie de la simulation intégrée, pour qu'elle ne change pas tant que la chaîne d'activité est éteinte |
-| `test_activity.py` | 27 | Configuration d'activité, sources synthétique et enregistrée, événements, carte de chaleur (déterminisme, somme égale aux détections, rien hors de la grille, fenêtre, décroissance, mémoire), le gestionnaire `/heatmap` et la ligne de commande |""",
+| `test_activity.py` | 27 | Configuration d'activité, sources synthétique et enregistrée, événements, carte de chaleur (déterminisme, somme égale aux détections, rien hors de la grille, fenêtre, décroissance, mémoire), le gestionnaire `/heatmap` et la ligne de commande |
+| `test_heatmap_service.py` | 7 | La route de la carte de chaleur en commande : éteinte donne 404 quelles que soient les données, allumée sans données donne une carte vide, comptes dans les trois formats, requêtes fausses, et une configuration ou un fichier faux est une erreur et jamais une carte vide |""",
       "build": "C'est du Python pur : rien à compiler. La version est dans `pyproject.toml` et `armor.project.json`.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -739,6 +750,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               réglages de la chaîne d'activité, éteinte par défaut
 │   ├── sources.py heatmap.py            sources synthétique et enregistrée ; carte de chaleur
 │   ├── activity.py                      événements et gestionnaire /heatmap
+│   ├── heatmap_service.py               la route /heatmap en commande
 │   └── pipeline.py cli.py __main__.py   toute la chaîne et la ligne de commande
 ├── tests/                               les tests
 ├── docs/                                les guides de ce dépôt
@@ -773,7 +785,7 @@ ARMOR-VISION/
   },
   "it": {
     "tagline": "Zone, maschere e regole di rilevamento per le telecamere",
-    "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 90 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
+    "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 97 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
     "glance": [
       [
         "Ruolo",
@@ -785,7 +797,7 @@ ARMOR-VISION/
       ],
       [
         "Test",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Gira su",
@@ -802,7 +814,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Le zone, il controllo del movimento, il tracciamento e le regole funzionano, ma non c'è ancora un vero modello di rilevamento: la simulazione usa rilevamenti da script.",
-      "tests": "Superano 90 test (`python -m unittest discover -s tests`).",
+      "tests": "Superano 97 test (`python -m unittest discover -s tests`).",
       "hardware": "Nulla ha girato su una telecamera né sulla Jetson Orin NX.",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
     },
@@ -843,7 +855,8 @@ Nulla qui è una funzione di sicurezza: non esiste ancora un vero modello di ril
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Pipeline di attività, SPENTA salvo che il file dica `"enabled": true` (codice 3 se spenta): una scena sintetica con seme fisso, o rilevamenti registrati, dà una riga JSON per evento (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Scrive la mappa di calore dell'attività (conteggi per cella, `OUT` termina in `.json`, `.png` o `.svg`); solo posizioni aggregate, mai immagini |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Stampa una configurazione di attività di partenza / ne convalida una (codice 0 buono, 1 non valida, 2 illeggibile) |
-| `ActivityEngine`, `heatmap_route` | Come libreria: il motore e il gestore di `GET /heatmap?camera=ID&format=json` (anche `png` e `svg`), per il servizio che lo monterà; questo repository non ha un server proprio e la rotta risponde 404 finché la pipeline è spenta |
+| `ActivityEngine`, `heatmap_route` | Come libreria: il motore e il gestore di `GET /heatmap?camera=ID&format=json` (anche `png` e `svg`), per il servizio che lo monta; la rotta risponde 404 finché la pipeline è spenta |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Risponde a una richiesta `GET /heatmap` da rilevamenti registrati e stampa la risposta come una riga JSON (`status`, `content_type`, `body_base64`); è ciò che esegue un server che monta la rotta. Codice 0 per ogni risposta della rotta (anche 404 a pipeline spenta e 400 per una richiesta errata), 1 per una configurazione errata, 2 per un file illeggibile |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -875,13 +888,13 @@ Oggi questi valori sono costanti di `tracker.py` e `motion.py`; il file di confi
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -894,7 +907,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Geometria, configurazione, movimento, tracker, regole, profili, la catena e la riga di comando |
 | `test_vision_edges.py` | 19 | I casi limite: configurazioni errate, oggetti fermi, rilevamenti mascherati e rilevatore non disponibile |
 | `test_characterization.py` | 2 | Fissa byte per byte l'uscita della simulazione integrata, così non cambia finché la pipeline di attività è spenta |
-| `test_activity.py` | 27 | Configurazione di attività, sorgenti sintetica e registrata, eventi, mappa di calore (determinismo, somma uguale ai rilevamenti, niente fuori dalla griglia, finestra, decadimento, memoria), il gestore `/heatmap` e la riga di comando |""",
+| `test_activity.py` | 27 | Configurazione di attività, sorgenti sintetica e registrata, eventi, mappa di calore (determinismo, somma uguale ai rilevamenti, niente fuori dalla griglia, finestra, decadimento, memoria), il gestore `/heatmap` e la riga di comando |
+| `test_heatmap_service.py` | 7 | La rotta della mappa di calore come comando: spenta dà 404 qualunque siano i dati, accesa senza dati dà una mappa vuota, conteggi nei tre formati, richieste errate, e una configurazione o un file errati sono un errore e mai una mappa vuota |""",
       "build": "È Python puro: nulla da compilare. La versione sta in `pyproject.toml` e `armor.project.json`.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -921,6 +935,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               impostazioni della pipeline di attività, spenta di default
 │   ├── sources.py heatmap.py            sorgenti sintetica e registrata; mappa di calore
 │   ├── activity.py                      eventi e gestore /heatmap
+│   ├── heatmap_service.py               la rotta /heatmap come comando
 │   └── pipeline.py cli.py __main__.py   tutta la catena e la riga di comando
 ├── tests/                               i test
 ├── docs/                                le guide di questo repository
@@ -955,7 +970,7 @@ ARMOR-VISION/
   },
   "ja": {
     "tagline": "カメラのゾーン、マスク、検知ルール",
-    "honest": "ゾーン、動きの確認、追跡、ルール、90 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
+    "honest": "ゾーン、動きの確認、追跡、ルール、97 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
     "glance": [
       [
         "役割",
@@ -967,7 +982,7 @@ ARMOR-VISION/
       ],
       [
         "テスト",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "動作環境",
@@ -984,7 +999,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "ゾーン、動きの確認、トラッカー、規則は動作しますが、実際の検出モデルはまだありません。シミュレーションはスクリプト化した検出結果を使います。",
-      "tests": "90 件のテストが通ります（`python -m unittest discover -s tests`）。",
+      "tests": "97 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "hardware": "カメラや Jetson Orin NX ではまだ何も動かしていません。",
       "docs": "8 言語と変更履歴は最新です。",
     },
@@ -1025,7 +1040,8 @@ ARMOR-VISION/
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | アクティビティ処理は、ファイルに `"enabled": true` と書かない限りオフです（オフのときは終了コード 3）。固定シードの合成シーンまたは記録済みの検出から、イベント（`zone_enter`、`zone_exit`、`dwell`、`loiter`、`line_cross`）ごとに JSON の 1 行を出力します |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | アクティビティのヒートマップ（セルごとの件数、`OUT` は `.json`、`.png`、`.svg` のいずれかで終わる）を書き出します。集計した位置だけで、画像は決して含みません |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | 出発点となるアクティビティ設定を表示 / 設定を検証します（終了コード 0 正常、1 不正、2 読み取り不可） |
-| `ActivityEngine`, `heatmap_route` | ライブラリとして：エンジンと `GET /heatmap?camera=ID&format=json`（`png`、`svg` も可）のハンドラ。これを載せるサービス向けで、このリポジトリには独自のサーバーはなく、処理がオフの間はルートは 404 を返します |
+| `ActivityEngine`, `heatmap_route` | ライブラリとして：エンジンと `GET /heatmap?camera=ID&format=json`（`png`、`svg` も可）のハンドラ。これを載せるサービス向けで、処理がオフの間はルートは 404 を返します |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | 記録された検出から `GET /heatmap` の問い合わせ 1 件に答え、答えを 1 行の JSON（`status`、`content_type`、`body_base64`）で出力します。ルートを載せるサーバーが実行するものです。ルートの答えはすべて終了コード 0（処理オフの 404 と不正な問い合わせの 400 も）、設定が誤りなら 1、読めないファイルなら 2 |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -1057,13 +1073,13 @@ ARMOR-VISION/
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1076,7 +1092,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | 幾何、設定、動き、トラッカー、ルール、プロファイル、全体の流れ、コマンドライン |
 | `test_vision_edges.py` | 19 | 境界条件：不正な設定、静止物、マスクされた検出、利用できない検出器 |
 | `test_characterization.py` | 2 | 組み込みシミュレーションの出力をバイト単位で固定し、アクティビティ処理がオフの間は変わらないようにします |
-| `test_activity.py` | 27 | アクティビティ設定、合成と記録のソース、イベント、ヒートマップ（決定性、合計が検出数と一致、グリッド外なし、ウィンドウ、減衰、メモリ）、`/heatmap` ハンドラ、コマンドライン |""",
+| `test_activity.py` | 27 | アクティビティ設定、合成と記録のソース、イベント、ヒートマップ（決定性、合計が検出数と一致、グリッド外なし、ウィンドウ、減衰、メモリ）、`/heatmap` ハンドラ、コマンドライン |
+| `test_heatmap_service.py` | 7 | コマンドとしてのヒートマップのルート：オフならデータに関係なく 404、オンでデータなしなら空の地図、3 つの形式での件数、不正な問い合わせ、誤った設定やファイルはエラーであり空の地図にはならない |""",
       "build": "純粋な Python なのでコンパイルは不要です。バージョンは `pyproject.toml` と `armor.project.json` にあります。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1103,6 +1120,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               アクティビティ処理の設定（既定でオフ）
 │   ├── sources.py heatmap.py            合成・記録ソース、ヒートマップ
 │   ├── activity.py                      イベントと /heatmap ハンドラ
+│   ├── heatmap_service.py               /heatmap ルートをコマンドとして
 │   └── pipeline.py cli.py __main__.py   全体の流れとコマンドライン
 ├── tests/                               テスト
 ├── docs/                                このリポジトリのガイド
@@ -1137,7 +1155,7 @@ ARMOR-VISION/
   },
   "zh": {
     "tagline": "摄像头的区域、遮罩与检测规则",
-    "honest": "区域、运动检查、跟踪、规则和 90 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
+    "honest": "区域、运动检查、跟踪、规则和 97 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
     "glance": [
       [
         "角色",
@@ -1149,7 +1167,7 @@ ARMOR-VISION/
       ],
       [
         "测试",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "运行位置",
@@ -1166,7 +1184,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "防区、移动检查、跟踪器和规则都能工作，但目前还没有真实的检测模型：模拟使用的是脚本化的检测结果。",
-      "tests": "90 项测试通过（`python -m unittest discover -s tests`）。",
+      "tests": "97 项测试通过（`python -m unittest discover -s tests`）。",
       "hardware": "还没有在摄像头或 Jetson Orin NX 上运行过。",
       "docs": "八种语言和更新日志均为最新。",
     },
@@ -1207,7 +1225,8 @@ ARMOR-VISION/
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | 活动管线默认关闭，除非文件写明 `"enabled": true`（关闭时退出码为 3）：用固定种子的合成场景或已记录的检测，每个事件输出一行 JSON（`zone_enter`、`zone_exit`、`dwell`、`loiter`、`line_cross`） |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | 写出活动热力图（每个格子的计数，`OUT` 以 `.json`、`.png` 或 `.svg` 结尾）；只含汇总后的位置，绝不含图像 |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | 打印一份可作起点的活动配置 / 校验一份配置（退出码 0 正常，1 无效，2 无法读取） |
-| `ActivityEngine`, `heatmap_route` | 作为库：引擎以及 `GET /heatmap?camera=ID&format=json`（也支持 `png` 和 `svg`）的处理器，供将来挂载它的服务使用；本仓库没有自己的服务器，管线关闭时该路由返回 404 |
+| `ActivityEngine`, `heatmap_route` | 作为库：引擎以及 `GET /heatmap?camera=ID&format=json`（也支持 `png` 和 `svg`）的处理器，供挂载它的服务使用；管线关闭时该路由返回 404 |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | 根据记录的检测结果回答一次 `GET /heatmap` 查询，并把答案作为一行 JSON（`status`、`content_type`、`body_base64`）输出；挂载该路由的服务器运行的就是它。路由的每个答案都以 0 退出（管线关闭时的 404 和查询有误时的 400 也是），配置错误退出 1，文件无法读取退出 2 |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -1239,13 +1258,13 @@ ARMOR-VISION/
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1258,7 +1277,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | 几何、配置、运动、跟踪、规则、配置文件、流程和命令行 |
 | `test_vision_edges.py` | 19 | 边界情况：错误配置、静止物体、被遮罩的检测以及不可用的检测器 |
 | `test_characterization.py` | 2 | 逐字节固定内置模拟的输出，使活动管线关闭时它不会改变 |
-| `test_activity.py` | 27 | 活动配置、合成与记录的来源、事件、热力图（确定性、总和等于检测数、网格之外没有内容、窗口、衰减、内存）、`/heatmap` 处理器和命令行 |""",
+| `test_activity.py` | 27 | 活动配置、合成与记录的来源、事件、热力图（确定性、总和等于检测数、网格之外没有内容、窗口、衰减、内存）、`/heatmap` 处理器和命令行 |
+| `test_heatmap_service.py` | 7 | 作为命令的热力图路由：关闭时无论数据如何都返回 404，开启但没有数据时返回空图，三种格式下的计数，错误的查询，以及错误的配置或文件会报错，绝不会变成空图 |""",
       "build": "纯 Python：无需编译。版本在 `pyproject.toml` 和 `armor.project.json` 中。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1285,6 +1305,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               活动管线设置，默认关闭
 │   ├── sources.py heatmap.py            合成与记录的来源；热力图
 │   ├── activity.py                      事件与 /heatmap 处理器
+│   ├── heatmap_service.py               作为命令的 /heatmap 路由
 │   └── pipeline.py cli.py __main__.py   整个流程与命令行
 ├── tests/                               测试
 ├── docs/                                本仓库的指南
@@ -1319,7 +1340,7 @@ ARMOR-VISION/
   },
   "pt": {
     "tagline": "Zonas, máscaras e regras de deteção para as câmaras",
-    "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 90 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
+    "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 97 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
     "glance": [
       [
         "Função",
@@ -1331,7 +1352,7 @@ ARMOR-VISION/
       ],
       [
         "Testes",
-        "90 (`python -m unittest discover -s tests`)",
+        "97 (`python -m unittest discover -s tests`)",
       ],
       [
         "Funciona em",
@@ -1348,7 +1369,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "As zonas, a verificação de movimento, o seguimento e as regras funcionam, mas ainda não há um modelo detetor real: a simulação usa deteções com guião.",
-      "tests": "Passam 90 testes (`python -m unittest discover -s tests`).",
+      "tests": "Passam 97 testes (`python -m unittest discover -s tests`).",
       "hardware": "Nada funcionou numa câmara nem no Jetson Orin NX.",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
     },
@@ -1389,7 +1410,8 @@ Nada aqui é uma função de segurança: ainda não há um modelo de deteção r
 | `python -m armor_vision simulate --simulate-events --activity-config FILE [--seed N] [--detections-file FILE]` | Cadeia de atividade, DESLIGADA salvo se o ficheiro disser `"enabled": true` (código 3 se estiver desligada): uma cena sintética com semente fixa, ou deteções gravadas, dá uma linha JSON por evento (`zone_enter`, `zone_exit`, `dwell`, `loiter`, `line_cross`) |
 | `python -m armor_vision simulate --heatmap OUT --activity-config FILE` | Escreve o mapa de calor da atividade (contagens por célula, `OUT` termina em `.json`, `.png` ou `.svg`); só posições agregadas, nunca imagens |
 | `python -m armor_vision activity-example` / `check-activity-config FILE` | Imprime uma configuração de atividade para começar / valida uma (código 0 bom, 1 inválida, 2 ilegível) |
-| `ActivityEngine`, `heatmap_route` | Como biblioteca: o motor e o tratador de `GET /heatmap?camera=ID&format=json` (também `png` e `svg`), para o serviço que o montar; este repositório não tem servidor próprio e a rota responde 404 enquanto a cadeia estiver desligada |
+| `ActivityEngine`, `heatmap_route` | Como biblioteca: o motor e o tratador de `GET /heatmap?camera=ID&format=json` (também `png` e `svg`), para o serviço que o monta; a rota responde 404 enquanto a cadeia estiver desligada |
+| `python -m armor_vision heatmap-route --activity-config FILE [--detections-file FILE] [--camera ID] [--format json|png|svg] [--scale N]` | Responde a um pedido `GET /heatmap` a partir de deteções gravadas e imprime a resposta como uma linha JSON (`status`, `content_type`, `body_base64`); é o que executa um servidor que monta a rota. Código 0 para qualquer resposta da rota (também 404 com a cadeia desligada e 400 num pedido errado), 1 se a configuração estiver errada, 2 se um ficheiro não puder ser lido |
 
 ```json
 {"schema": "armor.vision.event/v1", "type": "alert", "camera_id": "cam-front", "zone_id": "drive",
@@ -1421,13 +1443,13 @@ Estes valores são hoje constantes de `tracker.py` e `motion.py`; o ficheiro de 
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 90 tests
+python -m unittest discover -s tests   # 97 tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 90 tests
+PYTHONPATH=src python -m unittest discover -s tests   # 97 tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1440,7 +1462,8 @@ python -I tools/armor_ci_validate.py
 | `test_vision.py` | 42 | Geometria, configuração, movimento, seguimento, regras, perfis, a cadeia e a linha de comandos |
 | `test_vision_edges.py` | 19 | Os casos-limite: configurações erradas, objetos parados, deteções mascaradas e o detetor indisponível |
 | `test_characterization.py` | 2 | Fixa byte a byte a saída da simulação incorporada, para que não mude enquanto a cadeia de atividade estiver desligada |
-| `test_activity.py` | 27 | Configuração de atividade, fontes sintética e gravada, eventos, mapa de calor (determinismo, soma igual às deteções, nada fora da grelha, janela, decaimento, memória), o tratador de `/heatmap` e a linha de comandos |""",
+| `test_activity.py` | 27 | Configuração de atividade, fontes sintética e gravada, eventos, mapa de calor (determinismo, soma igual às deteções, nada fora da grelha, janela, decaimento, memória), o tratador de `/heatmap` e a linha de comandos |
+| `test_heatmap_service.py` | 7 | A rota do mapa de calor como comando: desligada dá 404 sejam quais forem os dados, ligada sem dados dá um mapa vazio, contagens nos três formatos, pedidos errados, e uma configuração ou um ficheiro errados são um erro e nunca um mapa vazio |""",
       "build": "É Python puro: nada a compilar. A versão está em `pyproject.toml` e `armor.project.json`.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
@@ -1467,6 +1490,7 @@ ARMOR-VISION/
 │   ├── activity_config.py               definições da cadeia de atividade, desligada por defeito
 │   ├── sources.py heatmap.py            fontes sintética e gravada; mapa de calor
 │   ├── activity.py                      eventos e tratador de /heatmap
+│   ├── heatmap_service.py               a rota /heatmap como comando
 │   └── pipeline.py cli.py __main__.py   toda a cadeia e a linha de comandos
 ├── tests/                               os testes
 ├── docs/                                os guias deste repositório
