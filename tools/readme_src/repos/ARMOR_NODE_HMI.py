@@ -102,7 +102,7 @@ TEXT = {
       ],
     ],
     "status": {
-      "software": "The firmware has been built once (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.",
+      "software": "The firmware builds (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.",
       "tests": "93,142 checks in 19 host programs pass (`ctest`): the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice exchange, the pins, the words of the screen in eight languages and the glyphs of its fonts.",
       "protocols": "The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, with no wake word.",
       "ui": "The web page runs against a stand-in in a real browser; the screen, the touch and the sound are written from Waveshare's examples and wait for their first power-up.",
@@ -298,7 +298,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "El firmware se ha compilado una vez (ESP-IDF 5.5.5), pero la compilación no la comprueba la integración continua y nunca ha funcionado en una placa.",
+      "software": "El firmware compila (ESP-IDF 5.5.5), pero la compilación no la comprueba la integración continua y nunca ha funcionado en una placa.",
       "tests": "Pasan 93.122 comprobaciones en 19 programas de host (`ctest`): los ajustes, lo que el panel sabe del servidor y cuándo está obsoleto, la alarma de coacción que nunca se muestra, el intercambio de voz, los pines, los textos de la pantalla en ocho idiomas y los glifos de sus fuentes.",
       "protocols": "El intercambio con el servidor y con el servicio de voz ARMOR-VOICE-AI se prueba contra simulaciones; es pulsar para hablar, sin palabra de activación.",
       "ui": "La página web se ha ejecutado contra una simulación en un navegador real; la pantalla, el táctil y el sonido están escritos a partir de los ejemplos de Waveshare y esperan su primer encendido.",
@@ -494,7 +494,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "Die Firmware wurde einmal gebaut (ESP-IDF 5.5.5), der Build wird aber nicht von der kontinuierlichen Integration geprüft, und sie lief nie auf einer Platine.",
+      "software": "Die Firmware lässt sich bauen (ESP-IDF 5.5.5), der Build wird aber nicht von der kontinuierlichen Integration geprüft, und sie lief nie auf einer Platine.",
       "tests": "93.122 Prüfungen in 19 Host-Programmen bestehen (`ctest`): die Einstellungen, was das Panel vom Server weiß und wann das veraltet ist, der nie angezeigte Zwangsalarm, der Sprachaustausch, die Pins, die Texte des Bildschirms in acht Sprachen und die Glyphen seiner Schriften.",
       "protocols": "Der Austausch mit dem Server und mit dem Sprachdienst ARMOR-VOICE-AI ist gegen Nachbildungen getestet; es ist Push-to-Talk, ohne Weckwort.",
       "ui": "Die Webseite lief gegen eine Nachbildung in einem echten Browser; Bildschirm, Touch und Ton sind nach den Beispielen von Waveshare geschrieben und warten auf das erste Einschalten.",
@@ -690,7 +690,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "Le firmware a été compilé une fois (ESP-IDF 5.5.5), mais la compilation n'est pas contrôlée par l'intégration continue et il n'a jamais tourné sur une carte.",
+      "software": "Le firmware compile (ESP-IDF 5.5.5), mais la compilation n'est pas contrôlée par l'intégration continue et il n'a jamais tourné sur une carte.",
       "tests": "93 122 vérifications dans 19 programmes d'hôte réussissent (`ctest`) : les réglages, ce que le panneau sait du serveur et quand c'est périmé, l'alarme sous contrainte qui n'est jamais affichée, l'échange vocal, les broches, les textes de l'écran en huit langues et les glyphes de ses polices.",
       "protocols": "L'échange avec le serveur et avec le service vocal ARMOR-VOICE-AI est testé contre des simulations ; c'est du push-to-talk, sans mot d'activation.",
       "ui": "La page web a tourné contre une simulation dans un vrai navigateur ; l'écran, le tactile et le son sont écrits d'après les exemples de Waveshare et attendent leur première mise sous tension.",
@@ -886,7 +886,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "Il firmware è stato compilato una volta (ESP-IDF 5.5.5), ma la compilazione non è controllata dall'integrazione continua e non ha mai girato su una scheda.",
+      "software": "Il firmware compila (ESP-IDF 5.5.5), ma la compilazione non è controllata dall'integrazione continua e non ha mai girato su una scheda.",
       "tests": "Superano 93.122 controlli in 19 programmi host (`ctest`): le impostazioni, ciò che il pannello sa del server e quando è obsoleto, l'allarme sotto minaccia che non viene mai mostrato, lo scambio vocale, i pin, i testi dello schermo in otto lingue e i glifi dei suoi caratteri.",
       "protocols": "Lo scambio con il server e con il servizio vocale ARMOR-VOICE-AI è provato contro simulazioni; è push to talk, senza parola di attivazione.",
       "ui": "La pagina web è stata eseguita contro una simulazione in un browser reale; lo schermo, il tocco e l'audio sono scritti dagli esempi di Waveshare e attendono la prima accensione.",
@@ -1082,7 +1082,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "ファームウェアは一度ビルドしました（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。",
+      "software": "ファームウェアはビルドできます（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。",
       "tests": "19 のホストプログラムで 93,142 件のチェックが通ります（`ctest`）：設定、パネルがサーバーについて知っていることとその古さ、決して表示しない脅迫警報、音声のやり取り、ピン、8 言語の画面文言とフォントのグリフ。",
       "protocols": "サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、ウェイクワードはありません。",
       "ui": "Web ページは実ブラウザーで模擬に対して動かしました。画面、タッチ、音声は Waveshare のサンプルをもとに書いたもので、初回の電源投入を待っています。",
@@ -1278,7 +1278,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "固件构建过一次（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。",
+      "software": "固件可以构建（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。",
       "tests": "19 个主机程序中的 93,142 项检查通过（`ctest`）：设置、面板对服务器的了解及其何时过期、从不显示的胁迫报警、语音交换、引脚、屏幕上八种语言的文字及其字体的字形。",
       "protocols": "与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，没有唤醒词。",
       "ui": "网页已在真实浏览器中对模拟运行过；屏幕、触摸和声音依据 Waveshare 的示例编写，等待首次上电。",
@@ -1474,7 +1474,7 @@ ARMOR-NODE-HMI/
       ],
     ],
     "status": {
-      "software": "O firmware foi compilado uma vez (ESP-IDF 5.5.5), mas a compilação não é verificada pela integração contínua e nunca funcionou numa placa.",
+      "software": "O firmware compila (ESP-IDF 5.5.5), mas a compilação não é verificada pela integração contínua e nunca funcionou numa placa.",
       "tests": "Passam 93.122 verificações em 19 programas de anfitrião (`ctest`): as definições, o que o painel sabe do servidor e quando isso está desatualizado, o alarme de coação que nunca se mostra, a troca de voz, os pinos, os textos do ecrã em oito idiomas e os glifos dos seus tipos de letra.",
       "protocols": "A troca com o servidor e com o serviço de voz ARMOR-VOICE-AI é testada contra simulações; é premir para falar, sem palavra de ativação.",
       "ui": "A página web correu contra uma simulação num navegador real; o ecrã, o toque e o som foram escritos a partir dos exemplos da Waveshare e esperam a primeira ligação.",
