@@ -657,7 +657,7 @@ ARMOR-NODE-SOLAR/
   },
   "fr": {
     "tagline": "Nœud passerelle solaire : lit onduleurs et batteries par jusqu'à dix ports série (firmware ESP32-S3, son panneau web et la bibliothèque de protocoles)",
-    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 3 013 vérifications dans 10 programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
+    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 11 824 vérifications dans 18 programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
     "glance": [
       [
         "Rôle",
@@ -1049,7 +1049,7 @@ ARMOR-NODE-SOLAR/
   },
   "ja": {
     "tagline": "太陽光ゲートウェイノード：最大 10 個のシリアルポートでインバーターとバッテリーを読み取る（ESP32-S3 ファームウェア、その Web パネル、プロトコルライブラリ）",
-    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：18 のテストプログラムで 9,319 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
+    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：18 のテストプログラムで 11,824 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
     "glance": [
       [
         "役割",
@@ -1441,7 +1441,7 @@ ARMOR-NODE-SOLAR/
   },
   "pt": {
     "tagline": "Nó de ligação solar: lê inversores e baterias através de até dez portas série (firmware ESP32-S3, o seu painel web e a biblioteca de protocolos)",
-    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 2885 verificações em 10 programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
+    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 11 824 verificações em 18 programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
     "glance": [
       [
         "Função",
