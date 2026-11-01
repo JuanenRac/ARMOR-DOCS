@@ -19,6 +19,18 @@ FACTS = {
       "red",
     ],
     [
+      "ui",
+      "yellow",
+    ],
+    [
+      "security",
+      "yellow",
+    ],
+    [
+      "integration",
+      "orange",
+    ],
+    [
       "docs",
       "green",
     ],
@@ -76,6 +88,9 @@ TEXT = {
       "software": "The zones, the motion check, the tracker and the rules work, but there is no real detector model yet: the simulation uses scripted detections.",
       "tests": "119 tests pass (`python -m unittest discover -s tests`).",
       "hardware": "Nothing has run on a camera or on the Jetson Orin NX.",
+      "ui": "The routes or messages it offers are documented and tested with a client; not every client has used them yet",
+      "security": "Access control, input limits or signatures are implemented and tested on a computer; nobody outside the project has reviewed them",
+      "integration": "Its messages are validated against the shared schemas and conformance vectors of ARMOR-COMMON; it has not run together with the real equipment",
       "docs": "Eight languages and the changelog are up to date.",
     },
     "docs": [
@@ -265,6 +280,9 @@ ARMOR-VISION/
       "software": "Las zonas, la comprobación de movimiento, el seguimiento y las reglas funcionan, pero aún no hay un modelo detector real: la simulación usa detecciones guionizadas.",
       "tests": "Pasan 119 pruebas (`python -m unittest discover -s tests`).",
       "hardware": "Nada ha funcionado en una cámara ni en la Jetson Orin NX.",
+      "ui": "Las rutas o los mensajes que ofrece están documentados y probados con un cliente; aún no los han usado todos los clientes",
+      "security": "El control de acceso, los límites de entrada o las firmas están implementados y probados en un ordenador; nadie ajeno al proyecto los ha revisado",
+      "integration": "Sus mensajes se validan contra los esquemas compartidos y los vectores de conformidad de ARMOR-COMMON; no ha funcionado junto con el equipo real",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
     },
     "docs": [
@@ -454,6 +472,9 @@ ARMOR-VISION/
       "software": "Die Zonen, die Bewegungsprüfung, die Verfolgung und die Regeln funktionieren, aber es gibt noch kein echtes Erkennungsmodell: Die Simulation nutzt geskriptete Erkennungen.",
       "tests": "119 Tests bestehen (`python -m unittest discover -s tests`).",
       "hardware": "Nichts lief an einer Kamera oder auf dem Jetson Orin NX.",
+      "ui": "Die angebotenen Routen oder Nachrichten sind dokumentiert und mit einem Client getestet; noch nicht jeder Client hat sie benutzt",
+      "security": "Zugriffskontrolle, Eingabegrenzen oder Signaturen sind umgesetzt und auf einem Rechner getestet; niemand außerhalb des Projekts hat sie geprüft",
+      "integration": "Seine Nachrichten werden gegen die gemeinsamen Schemas und Konformitätsvektoren von ARMOR-COMMON geprüft; es lief noch nicht zusammen mit der echten Ausrüstung",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
     },
     "docs": [
@@ -643,6 +664,9 @@ ARMOR-VISION/
       "software": "Les zones, le contrôle du mouvement, le suivi et les règles fonctionnent, mais il n'y a pas encore de vrai modèle détecteur : la simulation utilise des détections scénarisées.",
       "tests": "119 tests réussissent (`python -m unittest discover -s tests`).",
       "hardware": "Rien n'a tourné sur une caméra ni sur le Jetson Orin NX.",
+      "ui": "Les routes ou les messages proposés sont documentés et testés avec un client ; tous les clients ne les ont pas encore utilisés",
+      "security": "Le contrôle d'accès, les limites d'entrée ou les signatures sont implémentés et testés sur un ordinateur ; personne hors du projet ne les a relus",
+      "integration": "Ses messages sont validés par rapport aux schémas partagés et aux vecteurs de conformité d'ARMOR-COMMON ; il n'a pas fonctionné avec l'équipement réel",
       "docs": "Huit langues et le journal des modifications sont à jour.",
     },
     "docs": [
@@ -832,6 +856,9 @@ ARMOR-VISION/
       "software": "Le zone, il controllo del movimento, il tracciamento e le regole funzionano, ma non c'è ancora un vero modello di rilevamento: la simulazione usa rilevamenti da script.",
       "tests": "Superano 119 test (`python -m unittest discover -s tests`).",
       "hardware": "Nulla ha girato su una telecamera né sulla Jetson Orin NX.",
+      "ui": "Le rotte o i messaggi offerti sono documentati e provati con un client; non tutti i client li hanno ancora usati",
+      "security": "Il controllo degli accessi, i limiti d'ingresso o le firme sono implementati e provati su un computer; nessuno al di fuori del progetto li ha rivisti",
+      "integration": "I suoi messaggi sono convalidati rispetto agli schemi condivisi e ai vettori di conformità di ARMOR-COMMON; non ha ancora funzionato insieme all'apparecchiatura reale",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
     },
     "docs": [
@@ -1021,6 +1048,9 @@ ARMOR-VISION/
       "software": "ゾーン、動きの確認、トラッカー、規則は動作しますが、実際の検出モデルはまだありません。シミュレーションはスクリプト化した検出結果を使います。",
       "tests": "119 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "hardware": "カメラや Jetson Orin NX ではまだ何も動かしていません。",
+      "ui": "提供するルートやメッセージは文書化され、クライアントで試験済みです。すべてのクライアントがまだ使ったわけではありません",
+      "security": "アクセス制御、入力の制限、署名のいずれかは実装されコンピューター上で試験済みですが、プロジェクト外の誰もレビューしていません",
+      "integration": "メッセージは ARMOR-COMMON の共通スキーマと適合ベクターに照らして検証されていますが、実機と一緒に動かしたことはありません",
       "docs": "8 言語と変更履歴は最新です。",
     },
     "docs": [
@@ -1210,6 +1240,9 @@ ARMOR-VISION/
       "software": "防区、移动检查、跟踪器和规则都能工作，但目前还没有真实的检测模型：模拟使用的是脚本化的检测结果。",
       "tests": "119 项测试通过（`python -m unittest discover -s tests`）。",
       "hardware": "还没有在摄像头或 Jetson Orin NX 上运行过。",
+      "ui": "提供的路由或消息已有文档，并用客户端测试过；尚未被所有客户端使用",
+      "security": "访问控制、输入限制或签名已实现并在计算机上测试；项目之外无人审查过",
+      "integration": "其消息已对照 ARMOR-COMMON 的共享模式和一致性向量验证；尚未与真实设备一起运行",
       "docs": "八种语言和更新日志均为最新。",
     },
     "docs": [
@@ -1399,6 +1432,9 @@ ARMOR-VISION/
       "software": "As zonas, a verificação de movimento, o seguimento e as regras funcionam, mas ainda não há um modelo detetor real: a simulação usa deteções com guião.",
       "tests": "Passam 119 testes (`python -m unittest discover -s tests`).",
       "hardware": "Nada funcionou numa câmara nem no Jetson Orin NX.",
+      "ui": "As rotas ou mensagens que oferece estão documentadas e testadas com um cliente; ainda nem todos os clientes as usaram",
+      "security": "O controlo de acesso, os limites de entrada ou as assinaturas estão implementados e testados num computador; ninguém fora do projeto os reviu",
+      "integration": "As suas mensagens são validadas contra os esquemas partilhados e os vetores de conformidade do ARMOR-COMMON; ainda não funcionou em conjunto com o equipamento real",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
     },
     "docs": [

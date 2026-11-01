@@ -54,7 +54,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Documentation",
   "a_tests": "Tests",
   "a_ci": "Automatic checks",
-  "a_writing": "Writing to equipment"
+  "a_writing": "Writing to equipment",
+  "a_deployment": "Deployment",
+  "a_operation": "Operation",
+  "a_stop": "Stop and safety",
+  "a_access": "Languages and accessibility"
  },
  "es": {
   "overview": "Descripción general",
@@ -107,7 +111,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Documentación",
   "a_tests": "Pruebas",
   "a_ci": "Comprobaciones automáticas",
-  "a_writing": "Escritura en los equipos"
+  "a_writing": "Escritura en los equipos",
+  "a_deployment": "Despliegue",
+  "a_operation": "Operación",
+  "a_stop": "Parada y seguridad",
+  "a_access": "Idiomas y accesibilidad"
  },
  "fr": {
   "overview": "Présentation",
@@ -160,7 +168,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Documentation",
   "a_tests": "Tests",
   "a_ci": "Contrôles automatiques",
-  "a_writing": "Écriture sur les équipements"
+  "a_writing": "Écriture sur les équipements",
+  "a_deployment": "Déploiement",
+  "a_operation": "Exploitation",
+  "a_stop": "Arrêt et sécurité",
+  "a_access": "Langues et accessibilité"
  },
  "it": {
   "overview": "Panoramica",
@@ -213,7 +225,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Documentazione",
   "a_tests": "Test",
   "a_ci": "Controlli automatici",
-  "a_writing": "Scrittura sulle apparecchiature"
+  "a_writing": "Scrittura sulle apparecchiature",
+  "a_deployment": "Distribuzione",
+  "a_operation": "Esercizio",
+  "a_stop": "Arresto e sicurezza",
+  "a_access": "Lingue e accessibilità"
  },
  "de": {
   "overview": "Überblick",
@@ -266,7 +282,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Dokumentation",
   "a_tests": "Tests",
   "a_ci": "Automatische Prüfungen",
-  "a_writing": "Schreiben auf Geräte"
+  "a_writing": "Schreiben auf Geräte",
+  "a_deployment": "Bereitstellung",
+  "a_operation": "Betrieb",
+  "a_stop": "Stopp und Sicherheit",
+  "a_access": "Sprachen und Barrierefreiheit"
  },
  "zh": {
   "overview": "概述",
@@ -319,7 +339,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "文档",
   "a_tests": "测试",
   "a_ci": "自动检查",
-  "a_writing": "写入设备"
+  "a_writing": "写入设备",
+  "a_deployment": "部署",
+  "a_operation": "运维",
+  "a_stop": "停止与安全",
+  "a_access": "语言与无障碍"
  },
  "ja": {
   "overview": "概要",
@@ -372,7 +396,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "ドキュメント",
   "a_tests": "テスト",
   "a_ci": "自動チェック",
-  "a_writing": "機器への書き込み"
+  "a_writing": "機器への書き込み",
+  "a_deployment": "デプロイ",
+  "a_operation": "運用",
+  "a_stop": "停止と安全",
+  "a_access": "言語とアクセシビリティ"
  },
  "pt": {
   "overview": "Visão geral",
@@ -425,7 +453,11 @@ UI: dict[str, dict[str, Any]] = {
   "a_docs": "Documentação",
   "a_tests": "Testes",
   "a_ci": "Verificações automáticas",
-  "a_writing": "Escrita nos equipamentos"
+  "a_writing": "Escrita nos equipamentos",
+  "a_deployment": "Implantação",
+  "a_operation": "Operação",
+  "a_stop": "Paragem e segurança",
+  "a_access": "Idiomas e acessibilidade"
  }
 }
 

@@ -27,6 +27,14 @@ FACTS = {
       "yellow",
     ],
     [
+      "ui",
+      "yellow",
+    ],
+    [
+      "deployment",
+      "yellow",
+    ],
+    [
       "docs",
       "green",
     ],
@@ -99,6 +107,8 @@ TEXT = {
      "hardware": "No microphone or speech engine has been tried, and the touch panel that is meant to carry the assistant has not run on a board.",
      "security": "The confirmation is signed and tied to its speaker, and the audit is tested on the host; there has been no independent review.",
      "integration": "The server asks the service on the CM5 test bench; the voice flow with the touch panel has not run.",
+     "ui": "The routes or messages it offers are documented and tested with a client; not every client has used them yet",
+     "deployment": "Installed as a service on the CM5 test bench with its installer and unit; restarted on every update",
      "docs": "Eight languages and the changelog are up to date.",
    },
    "docs": [
@@ -449,6 +459,8 @@ ARMOR-VOICE-AI/
      "hardware": "No se ha probado ningún micrófono ni motor de voz, y el panel táctil que debe llevar al asistente no ha funcionado en una placa.",
      "security": "La confirmación está firmada y ligada a quien habla, y la auditoría se prueba en el equipo anfitrión; no ha habido revisión independiente.",
      "integration": "El servidor consulta al servicio en el banco de la CM5; el flujo de voz con el panel táctil no ha funcionado.",
+     "ui": "Las rutas o los mensajes que ofrece están documentados y probados con un cliente; aún no los han usado todos los clientes",
+     "deployment": "Instalado como servicio en el banco de pruebas de la CM5 con su instalador y su unidad; se reinicia en cada actualización",
      "docs": "Los ocho idiomas y el registro de cambios están al día.",
    },
    "docs": [
@@ -799,6 +811,8 @@ ARMOR-VOICE-AI/
      "hardware": "Aucun microphone ni moteur vocal n'a été essayé, et le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
      "security": "La confirmation est signée et liée à son locuteur, et l'audit est testé sur la machine hôte ; il n'y a pas eu de revue indépendante.",
      "integration": "Le serveur interroge le service sur le banc d'essai CM5 ; le flux vocal avec le panneau tactile n'a pas tourné.",
+     "ui": "Les routes ou les messages proposés sont documentés et testés avec un client ; tous les clients ne les ont pas encore utilisés",
+     "deployment": "Installé comme service sur le banc d'essai CM5 avec son installeur et son unité ; redémarré à chaque mise à jour",
      "docs": "Huit langues et le journal des modifications sont à jour.",
    },
    "docs": [
@@ -1149,6 +1163,8 @@ ARMOR-VOICE-AI/
      "hardware": "Nessun microfono né motore vocale è stato provato, e il pannello touch che dovrebbe ospitare l'assistente non ha girato su una scheda.",
      "security": "La conferma è firmata e legata a chi parla, e l'audit è provato sull'host; non c'è stata una revisione indipendente.",
      "integration": "Il server interroga il servizio sul banco di prova CM5; il flusso vocale con il pannello touch non ha girato.",
+     "ui": "Le rotte o i messaggi offerti sono documentati e provati con un client; non tutti i client li hanno ancora usati",
+     "deployment": "Installato come servizio sul banco prova CM5 con il suo installatore e la sua unità; riavviato a ogni aggiornamento",
      "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
    },
    "docs": [
@@ -1499,6 +1515,8 @@ ARMOR-VOICE-AI/
      "hardware": "Kein Mikrofon und keine Sprach-Engine wurde ausprobiert, und das Touch-Panel, das den Assistenten tragen soll, lief nicht auf einer Platine.",
      "security": "Die Bestätigung ist signiert und an ihren Sprecher gebunden, und das Audit ist auf dem Host getestet; es gab keine unabhängige Prüfung.",
      "integration": "Der Server fragt den Dienst auf dem CM5-Prüfstand ab; der Sprachablauf mit dem Touch-Panel lief nicht.",
+     "ui": "Die angebotenen Routen oder Nachrichten sind dokumentiert und mit einem Client getestet; noch nicht jeder Client hat sie benutzt",
+     "deployment": "Als Dienst auf dem CM5-Prüfstand mit Installer und Unit installiert; bei jeder Aktualisierung neu gestartet",
      "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
    },
    "docs": [
@@ -1849,6 +1867,8 @@ ARMOR-VOICE-AI/
      "hardware": "没有试过任何麦克风或语音引擎，用来承载该助手的触摸面板也还没有在板子上运行过。",
      "security": "确认经过签名并与说话人绑定，审计已在主机上测试；没有经过独立审查。",
      "integration": "服务器在 CM5 测试台上查询该服务；与触摸面板配合的语音流程尚未运行。",
+     "ui": "提供的路由或消息已有文档，并用客户端测试过；尚未被所有客户端使用",
+     "deployment": "作为服务安装在 CM5 测试台上，带有安装脚本和单元；每次更新都会重启",
      "docs": "八种语言和更新日志均为最新。",
    },
    "docs": [
@@ -2199,6 +2219,8 @@ ARMOR-VOICE-AI/
      "hardware": "マイクも音声エンジンも試しておらず、アシスタントを載せる予定のタッチパネルもボード上では動いていません。",
      "security": "確認は署名され話者に結び付いており、監査はホスト上でテストされています。独立したレビューはありません。",
      "integration": "サーバーは CM5 テストベンチ上でこのサービスに問い合わせます。タッチパネルとの音声フローはまだ動いていません。",
+     "ui": "提供するルートやメッセージは文書化され、クライアントで試験済みです。すべてのクライアントがまだ使ったわけではありません",
+     "deployment": "CM5 のテストベンチにインストーラーとユニット付きのサービスとして導入され、更新のたびに再起動されます",
      "docs": "8 言語と変更履歴は最新です。",
    },
    "docs": [
@@ -2549,6 +2571,8 @@ ARMOR-VOICE-AI/
      "hardware": "Não se experimentou nenhum microfone nem motor de voz, e o painel tátil que deverá acolher o assistente não funcionou numa placa.",
      "security": "A confirmação é assinada e ligada a quem fala, e a auditoria é testada no equipamento anfitrião; não houve revisão independente.",
      "integration": "O servidor consulta o serviço na bancada de testes do CM5; o fluxo de voz com o painel tátil não funcionou.",
+     "ui": "As rotas ou mensagens que oferece estão documentadas e testadas com um cliente; ainda nem todos os clientes as usaram",
+     "deployment": "Instalado como serviço na bancada de testes da CM5 com o seu instalador e a sua unidade; reiniciado em cada atualização",
      "docs": "Os oito idiomas e o registo de alterações estão atualizados.",
    },
    "docs": [
