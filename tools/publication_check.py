@@ -6,11 +6,13 @@ Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
     python tools/publication_check.py            # every ARMOR-* repository next to this one, tracked files and history
     python tools/publication_check.py ARMOR-NODE-RADAR --no-history
     python tools/publication_check.py ARMOR-STUDIO --ref=publicacion      # only the history that branch reaches (see clean_history.py)
+    python tools/publication_check.py ARMOR-STUDIO --staged               # only what is staged for the next commit (what tools/install_hooks.sh runs before every commit)
+    python tools/publication_check.py --json                              # the findings as one JSON document, for a CI step to read
 
 It reads git only (tracked files, and with history every revision, commit authors and messages), never the ignored files, and it never
 prints the matched secret: a finding shows the file, the line number and the kind, with the value cut to its first characters.
 
-BLOCK  something that must not go public: a private key, a public IP address, a personal e-mail address, a tracked secrets/ or .env
+BLOCK  something that must not go public: a private key, a fleet secret or a broker password set in a build configuration or compiled into a firmware image, a public IP address, a personal e-mail address, a tracked secrets/ or .env
        file, a commit with a co-author or AI trailer, a commit author other than the project's.
 REVIEW a line that looks like a literal password or token and needs a human look (test fixtures and documentation examples are common).
 
@@ -19,6 +21,7 @@ The exit status is 1 when anything is BLOCK, so a publication pipeline can refus
 from __future__ import annotations
 
 import ipaddress
+import json
 import re
 import subprocess
 import sys
@@ -34,6 +37,11 @@ PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
 EMAIL = re.compile(r"\b[A-Za-z0-9._%+-]+@(?:gmail|hotmail|outlook|yahoo|icloud|proton(?:mail)?)\.[a-z]{2,}\b", re.I)
 IPV4 = re.compile(r"(?<![\d.])(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?![\d.])")
 LITERAL = re.compile(r"""(?ix)\b(pass(?:word|wd)?|secret|token|api[_-]?key|psk)\b["']?\s*[:=]\s*["']([^"'\s$`{}<>()]{8,})["']""")
+# a build setting that carries a secret (CONFIG_ARMOR_FLEET_SECRET="...", CONFIG_ARMOR_MQTT_PASSWORD="...") with a value in it; an empty value is the public build
+_SECRET_NAME = r"CONFIG_[A-Z0-9_]*(?:FLEET_SECRET|MQTT_PASSWORD|MQTT_PASS|WIFI_PASSWORD|_SECRET|_PASSWORD)[A-Z0-9_]*"
+BUILD_SECRET = re.compile(_SECRET_NAME + r"""\s*=\s*"?([^"\s\0{}$<]{4,})""")   # a value with a space, a brace, a dollar or a bracket is a sentence or a template, not a secret
+BUILD_SECRET_BYTES = re.compile(_SECRET_NAME.encode() + rb"""\s*=\s*"?([^"\s\0{}$<]{4,})""")
+FIRMWARE_SUFFIXES = {".bin", ".elf", ".img", ".hex", ".uf2", ".apk", ".jar", ".zip", ".gz"}
 BAD_PATH = re.compile(r"(^|/)(secrets/(?!.*example)|\.env$|.*\.env$|.*\.pem$|.*\.key$|id_[a-z0-9]+$)", re.I)
 BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".webp", ".pdf", ".zip", ".gz", ".bin", ".woff", ".woff2", ".ttf", ".jar", ".apk", ".stl", ".step", ".fcstd"}
 # addresses that are public but say nothing about anyone: the well-known DNS resolvers and the boundary values that the private-address tests use
@@ -86,10 +94,40 @@ def scan_text(name: str, where: str, text: str, findings: list[tuple[str, str, s
             candidate = match.group(1)
             if all(0 <= int(part) <= 255 for part in candidate.split(".")) and candidate not in BENIGN_IPS and public_ip(candidate) and not re.search(r"(?i)version|v\d+\.\d+\.\d+\.\d+|\d+\.\d+\.\d+\.\d+-", line[max(0, match.start() - 12):match.end() + 1]):
                 findings.append(("BLOCK", name, ref, f"public IP address {candidate.split('.')[0]}.x.x.x"))
+        for match in ([] if FIXTURE_PATH.search(where) else BUILD_SECRET.finditer(line)):   # a test that builds a configuration with a secret in it is the test of the refusal
+            if not HARMLESS.search(match.group(1)) and len(set(match.group(1))) > 3:
+                findings.append(("BLOCK", name, ref, "a secret is set in a build configuration"))
         for match in LITERAL.finditer(line):
             value = match.group(2)
             if not HARMLESS.search(value) and not HARMLESS.search(line) and len(set(value)) > 3:
                 findings.append(("REVIEW", name, ref, f"literal {match.group(1).lower()} {value[:3]}..."))
+
+
+def scan_bytes(name: str, where: str, data: bytes, findings: list[tuple[str, str, str, str]]) -> None:
+    """A firmware image or an archive with a build setting that carries a secret compiled or packed into it (the setting's name stays in the image's configuration block, with its value)."""
+    for match in BUILD_SECRET_BYTES.finditer(data):
+        value = match.group(1).decode("latin-1")
+        if not HARMLESS.search(value) and len(set(value)) > 3:
+            findings.append(("BLOCK", name, where, "a binary file carries a secret set in a build configuration"))
+            return
+
+
+def check_staged(repo: Path) -> list[tuple[str, str, str, str]]:
+    """What is staged for the next commit: the paths and the content of the staged files, never the history."""
+    name = repo.name
+    findings: list[tuple[str, str, str, str]] = []
+    for path in [p for p in git(repo, "diff", "--cached", "--name-only", "--diff-filter=ACMR").splitlines() if p]:
+        if BAD_PATH.search(path):
+            findings.append(("BLOCK", name, path, "a secrets, key or environment file is staged"))
+        shown = subprocess.run(["git", "-C", str(repo), "show", f":{path}"], capture_output=True)
+        if shown.returncode != 0:
+            continue
+        suffix = Path(path).suffix.lower()
+        if suffix in FIRMWARE_SUFFIXES:
+            scan_bytes(name, path, shown.stdout, findings)
+        elif suffix not in BINARY_SUFFIXES:
+            scan_text(name, path, shown.stdout.decode("utf-8", errors="replace"), findings)
+    return findings
 
 
 def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[str, str, str, str]]:
@@ -99,6 +137,11 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
     for path in tracked:
         if BAD_PATH.search(path):
             findings.append(("BLOCK", name, path, "a secrets, key or environment file is tracked"))
+        if Path(path).suffix.lower() in FIRMWARE_SUFFIXES:
+            try:
+                scan_bytes(name, path, (repo / path).read_bytes(), findings)
+            except OSError:
+                pass
         if Path(path).suffix.lower() in BINARY_SUFFIXES:
             continue
         try:
@@ -150,21 +193,30 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
 
 def main(argv: list[str]) -> int:
     history = "--no-history" not in argv
+    staged = "--staged" in argv
+    as_json = "--json" in argv
     ref = next((a.split("=", 1)[1] for a in argv if a.startswith("--ref=")), None)
     names = [a for a in argv if not a.startswith("--")]
     repos = [ROOT / n for n in names] if names else sorted(p for p in ROOT.glob("ARMOR-*") if (p / ".git").exists())
     blocked = 0
+    report: list[dict[str, object]] = []
     for repo in repos:
-        findings = check_repo(repo, history, ref)
+        findings = check_staged(repo) if staged else check_repo(repo, history, ref)
         block = [f for f in findings if f[0] == "BLOCK"]
         review = [f for f in findings if f[0] == "REVIEW"]
         blocked += len(block)
+        report.append({"repository": repo.name, "block": len(block), "review": len(review), "findings": [{"level": k, "where": w, "what": what} for k, _n, w, what in findings]})
+        if as_json:
+            continue
         print(f"{repo.name:24} BLOCK {len(block):3}  REVIEW {len(review):3}")
         for kind, _name, where, what in findings[:60]:
             print(f"   {kind:6} {where}  {what}")
         if len(findings) > 60:
             print(f"   ... and {len(findings) - 60} more")
-    print("PUBLICATION_CHECK=" + ("FAIL" if blocked else "PASS"))
+    if as_json:
+        print(json.dumps({"result": "FAIL" if blocked else "PASS", "repositories": report}, indent=2))
+    else:
+        print("PUBLICATION_CHECK=" + ("FAIL" if blocked else "PASS"))
     return 1 if blocked else 0
 
 

@@ -149,7 +149,7 @@ TEXT = {
 
 | Name | How | What for |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Receives the radar messages (the CM5 test bench today) and orders the node |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Receives the radar messages (the CM5 test bench today) and orders the node |
 | ARMOR-STUDIO | link to the panel | Opens the node's panel from the address the node publishes |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Sets the node up in the field |
 | ARMOR-COMMON | contracts, firmware base | The messages are checked against its schemas; the common firmware is copied from it |""",
@@ -368,7 +368,7 @@ ARMOR-NODE-RADAR/
 
 | Nombre | Cómo | Para qué |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Recibe los mensajes del radar (hoy el banco CM5) y ordena al nodo |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Recibe los mensajes del radar (hoy el banco CM5) y ordena al nodo |
 | ARMOR-STUDIO | enlace al panel | Abre el panel del nodo desde la dirección que el nodo publica |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Configura el nodo en el campo |
 | ARMOR-COMMON | contratos, base de firmware | Los mensajes se comprueban con sus esquemas; el firmware común se copia de él |""",
@@ -587,7 +587,7 @@ ARMOR-NODE-RADAR/
 
 | Name | Wie | Wozu |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Empfängt die Radarnachrichten (heute der CM5-Prüfstand) und steuert den Knoten |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Empfängt die Radarnachrichten (heute der CM5-Prüfstand) und steuert den Knoten |
 | ARMOR-STUDIO | Link zum Panel | Öffnet das Panel des Knotens unter der vom Knoten veröffentlichten Adresse |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Richtet den Knoten vor Ort ein |
 | ARMOR-COMMON | Verträge, Firmware-Basis | Die Nachrichten werden gegen seine Schemas geprüft; die gemeinsame Firmware stammt daraus |""",
@@ -806,7 +806,7 @@ ARMOR-NODE-RADAR/
 
 | Nom | Comment | À quoi ça sert |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Reçoit les messages du radar (aujourd'hui le banc CM5) et commande le nœud |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Reçoit les messages du radar (aujourd'hui le banc CM5) et commande le nœud |
 | ARMOR-STUDIO | lien vers le panneau | Ouvre le panneau du nœud à l'adresse que le nœud publie |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Configure le nœud sur le terrain |
 | ARMOR-COMMON | contrats, base de firmware | Les messages sont vérifiés avec ses schémas ; le firmware commun en est copié |""",
@@ -1025,7 +1025,7 @@ ARMOR-NODE-RADAR/
 
 | Nome | Come | A cosa serve |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Riceve i messaggi del radar (oggi il banco CM5) e comanda il nodo |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Riceve i messaggi del radar (oggi il banco CM5) e comanda il nodo |
 | ARMOR-STUDIO | collegamento al pannello | Apre il pannello del nodo dall'indirizzo che il nodo pubblica |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Configura il nodo sul campo |
 | ARMOR-COMMON | contratti, base firmware | I messaggi sono verificati con i suoi schemi; il firmware comune è copiato da lì |""",
@@ -1244,7 +1244,7 @@ ARMOR-NODE-RADAR/
 
 | 名前 | 方法 | 用途 |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | レーダーのメッセージを受け取り（現在は CM5 テストベンチ）、ノードに命令する |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | レーダーのメッセージを受け取り（現在は CM5 テストベンチ）、ノードに命令する |
 | ARMOR-STUDIO | パネルへのリンク | ノードが公開するアドレスからノードのパネルを開く |
 | ARMOR-ANDROID-CONTROL | Bluetooth | 現場でノードを設定 |
 | ARMOR-COMMON | コントラクト、ファームウェア基盤 | メッセージはそのスキーマで検証し、共通ファームウェアはここからコピー |""",
@@ -1463,7 +1463,7 @@ ARMOR-NODE-RADAR/
 
 | 名称 | 方式 | 用途 |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | 接收雷达消息（目前是 CM5 测试台）并向节点下达命令 |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | 接收雷达消息（目前是 CM5 测试台）并向节点下达命令 |
 | ARMOR-STUDIO | 面板链接 | 通过节点发布的地址打开节点面板 |
 | ARMOR-ANDROID-CONTROL | Bluetooth | 在现场设置节点 |
 | ARMOR-COMMON | 合约、固件基础 | 消息按其模式校验；公共固件由此复制 |""",
@@ -1682,7 +1682,7 @@ ARMOR-NODE-RADAR/
 
 | Nome | Como | Para quê |
 |---|---|---|
-| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry|health|info|command` | Recebe as mensagens do radar (hoje a bancada CM5) e comanda o nó |
+| ARMOR-SERVER | MQTT `armor/node/<id>/telemetry\|health\|info\|command` | Recebe as mensagens do radar (hoje a bancada CM5) e comanda o nó |
 | ARMOR-STUDIO | ligação ao painel | Abre o painel do nó a partir do endereço que o nó publica |
 | ARMOR-ANDROID-CONTROL | Bluetooth | Configura o nó no terreno |
 | ARMOR-COMMON | contratos, base de firmware | As mensagens são verificadas com os seus esquemas; o firmware comum é copiado dele |""",

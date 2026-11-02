@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-251%20passing-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
@@ -40,7 +40,7 @@
 | 成熟度 | 成熟 |
 | 角色 | 文档中心：架构、安全基线、能力矩阵，以及生成 README、目录和横幅图的工具 |
 | 技术栈 | Python 3.11+（工具，标准库）、Markdown |
-| 测试 | 199 项（`python -m unittest discover -s tests`，约一分钟） |
+| 测试 | 251 项（`python -m unittest discover -s tests`，约一分钟） |
 | 接口 | `make_readmes.py`、`make_catalog.py`、`make_brand.py`、`publication_check.py`、`clean_history.py`、`sync_ci_tools.py`、`check_all.sh` |
 | 运行位置 | 装有 Python 的任意计算机；家族的各仓库放在本仓库旁边 |
 | 真实硬件 | 不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容 |
@@ -57,7 +57,7 @@
 | 领域 | 状态 | 在这里的含义 |
 |---|---|---|
 | 软件 | 🟢 | README、横幅、目录和能力矩阵的生成器，以及复制到每个仓库中的 CI 工具都能运行并经过测试。 |
-| 测试 | 🟢 | 这些工具的 199 项测试通过（`python -m unittest discover -s tests`）：发布检查、历史清理器、README、目录和品牌的生成器、CI 工具的副本以及共用流程工具。 |
+| 测试 | 🟢 | 这些工具的 251 项测试通过（`python -m unittest discover -s tests`）：发布检查、历史清理器、README、目录和品牌的生成器、CI 工具的副本以及共用流程工具。 |
 | 自动检查 | 🟢 | 每次推送都会检查 README、横幅和目录是否为最新，以及注册表中的每个仓库是否都有状态表。 |
 | 集成 | 🟢 | 所有仓库的 README 都由同一份源文件生成，每个仓库的版本和成熟度均读取自其自身的清单。 |
 | 文档 | 🟢 | 能力矩阵为每项功能说明它只是被模拟、在电脑上测试过，还是在真实硬件上验证过；八种语言和更新日志均为最新。 |
@@ -110,9 +110,10 @@ ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里
 | `python tools/make_readmes.py [--check]` | - | 从 `tools/readme_src/` 写出每个仓库八种语言的 README；`--check` 在有过期时失败。它会重写所有文件：改源文件，不要改 README |
 | `python tools/make_catalog.py [--check]`  `make_brand.py [--check]` | - | `docs/PROJECT_CATALOG.md` 的版本与成熟度，以及横幅图和图标 |
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | 如果公开这些仓库会泄露什么；出现 BLOCK 时退出码为 1 |
+| `python tools/doc_facts.py [--check]`  `doc_claims.py`  `doc_markdown.py [--all]` | - | 文档中的数字取自仓库（`<!--fact:vectors-->` 标记），带标记的代码相关语句会在代码中查找（`<!-- claim: id -->` 与 `docs/claims.json`），表格和 Mermaid 图会被解析；任何不一致都会使其失败 |
 | `python tools/clean_history.py` | - | 只有一个提交的可发布仓库副本 |
 | `python tools/sync_ci_tools.py [--check]` | - | 把共用的 CI 检查和启动器复制到每个仓库；副本偏离时 `--check` 失败 |
-| `python tools/status_lights.py --check|--suggest|--apply` | - | 让项目状态表的信号灯不超过清单允许的范围（成熟度与实证）；只移动信号灯，不改句子；每个仓库的 CI 都运行 `--check` |
+| `python tools/status_lights.py --check\|--suggest\|--apply` | - | 让项目状态表的信号灯不超过清单允许的范围（成熟度与实证）；只移动信号灯，不改句子；每个仓库的 CI 都运行 `--check` |
 | `bash tools/check_all.sh [--android] [--compose]` | - | 一次运行每个仓库的测试；缺少工具的检查记为 SKIP，绝不是 PASS |
 
 每个 README 的源文件是 `tools/readme_src/repos/<仓库>.py`（与语言无关的事实和八种语言的文字），README 周围的文字在 `ui.py`，截图在 `shots.py`。`tools/registry.py` 读取 ARMOR-COMMON 的仓库清单。另见 [docs/INTERFACES.md](docs/INTERFACES.md) 和 [docs/SETUP_CODE.md](docs/SETUP_CODE.md)。
@@ -125,9 +126,10 @@ ARMOR-DOCS 是家族的记忆：架构、安全基线和能力矩阵都在这里
 python tools/make_readmes.py --check  # README（八种语言）是最新的
 python tools/make_catalog.py --check  # 目录的版本与成熟度是最新的
 python tools/make_brand.py --check    # 横幅图和图标是最新的
+python tools/doc_facts.py --check     # 文档中的数字与仓库一致
 python tools/publication_check.py     # 发布时不会泄露私有内容
 bash tools/check_all.sh               # 一次运行每个仓库的测试
-python -m unittest discover -s tests  # 这些工具的 199 项测试；无需其他仓库
+python -m unittest discover -s tests  # 这些工具的 251 项测试；无需其他仓库
 ```
 
 ## 🧪 测试
@@ -166,28 +168,29 @@ GitHub Actions 在每次推送和拉取请求时运行 A.R.M.O.R. 基线：清�
 ```text
 ARMOR-DOCS/
 ├── tools/
-│   ├── make_readmes.py                          由单一来源生成八种语言 README
-│   ├── readme_src/                              每个仓库的事实与文字
-│   ├── make_catalog.py make_brand.py            目录；横幅图与图标
-│   ├── brand_banner.py registry.py              横幅图绘制；ARMOR-COMMON 的清单
-│   ├── publication_check.py                     发布时不泄露私有内容
-│   ├── clean_history.py sync_ci_tools.py        可发布的副本；统一的 CI 检查
-│   ├── check_all.sh                             一次运行每个仓库的测试
-│   ├── armor_ci_validate.py                     每个仓库自带的 CI 检查
-│   ├── armor_project_tool.py pretty_run.py      启动器及其实时面板
-│   ├── make_architecture.py make_structure.py   README 的两张图
-│   └── universal_readme_check.py                README 版式检查
-├── docs/                                        CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
-├── tests/                                       这些工具的测试
-├── brand/                                       徽标
-├── images/                                      横幅图、图标、家族图和本 README 的图片
-├── .github/                                     CI 工作流、仪表板通知、议题和 pull request 模板
-├── armor.project.json                           清单：版本、角色、成熟度
-├── CHANGELOG.md                                 每个版本的变化
-├── run.sh run.bat                               启动（共用流程）
-├── build.sh build.bat                           构建并测试（共用流程）
-├── build-test.sh build-test.bat                 构建、测试并打包
-├── test.sh test.bat                             只运行测试，不改版本
+│   ├── make_readmes.py                                由单一来源生成八种语言 README
+│   ├── readme_src/                                    每个仓库的事实与文字
+│   ├── make_catalog.py make_brand.py                  目录；横幅图与图标
+│   ├── brand_banner.py registry.py                    横幅图绘制；ARMOR-COMMON 的清单
+│   ├── publication_check.py  install_hooks.sh         发布时不泄露私有内容
+│   ├── doc_facts.py  doc_claims.py  doc_markdown.py   核对数字、论断与图表
+│   ├── clean_history.py sync_ci_tools.py              可发布的副本；统一的 CI 检查
+│   ├── check_all.sh                                   一次运行每个仓库的测试
+│   ├── armor_ci_validate.py                           每个仓库自带的 CI 检查
+│   ├── armor_project_tool.py pretty_run.py            启动器及其实时面板
+│   ├── make_architecture.py make_structure.py         README 的两张图
+│   └── universal_readme_check.py                      README 版式检查
+├── docs/                                              CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
+├── tests/                                             这些工具的测试
+├── brand/                                             徽标
+├── images/                                            横幅图、图标、家族图和本 README 的图片
+├── .github/                                           CI 工作流、仪表板通知、议题和 pull request 模板
+├── armor.project.json                                 清单：版本、角色、成熟度
+├── CHANGELOG.md                                       每个版本的变化
+├── run.sh run.bat                                     启动（共用流程）
+├── build.sh build.bat                                 构建并测试（共用流程）
+├── build-test.sh build-test.bat                       构建、测试并打包
+├── test.sh test.bat                                   只运行测试，不改版本
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 

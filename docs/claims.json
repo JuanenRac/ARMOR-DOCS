@@ -1,0 +1,11 @@
+{
+  "ble.pairing.passkey": {"repo": "ARMOR-COMMON", "file": "firmware_base/main/ble_provision.cpp", "pattern": "sm_io_cap\\s*=\\s*BLE_HS_IO_DISPLAY_ONLY", "says": "the node shows a PIN and the phone types it"},
+  "server.min_secret_length": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "MIN_SECRET_LENGTH\\s*=\\s*24\\b", "says": "tokens are at least 24 characters"},
+  "server.max_nodes": {"repo": "ARMOR-SERVER", "file": "src/store.ts", "pattern": "MAX_NODES\\s*=\\s*256\\b", "says": "at most 256 distinct nodes"},
+  "camera.vault.aes256gcm": {"repo": "ARMOR-SERVER", "file": "src/cameras/vault.ts", "pattern": "aes-256-gcm", "says": "camera passwords are AES-256-GCM encrypted"},
+  "ai.never_authorizes": {"repo": "ARMOR-SERVER-AI", "file": "src/armor_server_ai/policy.py", "pattern": "authorizes_action:\\s*bool\\s*=\\s*False", "says": "the visual policy never authorizes an action"},
+  "users.scrypt": {"repo": "ARMOR-SERVER", "file": "src/users.ts", "pattern": "scrypt", "says": "passwords are hashed with scrypt"},
+  "battery.write.off_by_default": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_BATTERY_WRITE\\s*===\\s*\"1\"", "says": "writing to a battery is off unless ARMOR_BATTERY_WRITE=1"},
+  "alarm.commands.off_by_default": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_ALARM_COMMANDS\\s*===\\s*\"1\"", "says": "alarm commands are off unless ARMOR_ALARM_COMMANDS=1"},
+  "disarm.pin.required": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_DISARM_PIN\\??\\.trim\\(\\)\\s*===\\s*\"required\"", "says": "ARMOR_DISARM_PIN=required makes the PIN compulsory"}
+}

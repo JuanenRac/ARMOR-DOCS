@@ -263,5 +263,69 @@ class MainTests(unittest.TestCase):
             self.assertIn("and 10 more", out)
 
 
+class BuildSecretTests(unittest.TestCase):
+    """A fleet secret or a broker password set in a build configuration, in a text file or inside a firmware image, is a leak; an empty value is the public build."""
+
+    def test_a_secret_in_a_configuration_blocks_and_is_never_printed(self):
+        findings = scan('CONFIG_ARMOR_FLEET_SECRET="0123456789abcdef"\n', "secrets/generic.conf")
+        self.assertEqual([f[0] for f in findings], ["BLOCK"])
+        self.assertNotIn("0123456789", findings[0][3])
+
+    def test_an_empty_value_a_template_and_a_sentence_are_not_secrets(self):
+        for text in ('CONFIG_ARMOR_FLEET_SECRET=""', 'CONFIG_ARMOR_MQTT_PASSWORD="{password}"', 'CONFIG_ARMOR_MQTT_PASSWORD="the password printed once"', "CONFIG_ARMOR_MQTT_PASSWORD=$PASSWORD"):
+            self.assertEqual(scan(text, "secrets/node.conf.example"), [], text)
+
+    def test_a_test_that_builds_such_a_configuration_is_not_a_finding(self):
+        self.assertEqual(scan('CONFIG_ARMOR_FLEET_SECRET="0123456789abcdef"', "tests/test_release.py"), [])
+
+    def test_a_tracked_firmware_image_with_the_secret_inside_blocks(self):
+        with TempRepo() as repo:
+            (repo.path / "node.bin").write_bytes(b'\x00\x01CONFIG_ARMOR_FLEET_SECRET="Xq7LmP4rTz91"\x00\x02')
+            (repo.path / "clean.bin").write_bytes(b'\x00\x01CONFIG_ARMOR_FLEET_SECRET=""\x00\x02')
+            repo.commit()
+            findings = check.check_repo(repo.path, history=False)
+        self.assertEqual([(f[0], f[2]) for f in findings], [("BLOCK", "node.bin")])
+        self.assertNotIn("Xq7LmP4rTz91", findings[0][3])
+
+
+class StagedAndJsonTests(unittest.TestCase):
+    def test_only_what_is_staged_is_read(self):
+        with TempRepo() as repo:
+            repo.write("a.txt", "fine\n")
+            repo.commit()
+            repo.write("b.txt", "write to somebody.private@gmail.com\n")
+            repo.write("certs/server.key", "data\n")
+            repo.git("add", "b.txt", "certs/server.key")
+            repo.write("c.txt", "write to other.private@gmail.com\n")   # not staged: not read
+            findings = check.check_staged(repo.path)
+        self.assertEqual(sorted((f[0], f[2]) for f in findings), [("BLOCK", "b.txt:1"), ("BLOCK", "certs/server.key")])
+
+    def test_nothing_staged_is_clean(self):
+        with TempRepo() as repo:
+            repo.write("a.txt", "fine\n")
+            repo.commit()
+            self.assertEqual(check.check_staged(repo.path), [])
+
+    def test_a_staged_image_with_a_secret_blocks(self):
+        with TempRepo() as repo:
+            (repo.path / "node.bin").write_bytes(b'CONFIG_ARMOR_MQTT_PASSWORD="Xq7LmP4rTz91"\x00')
+            repo.git("add", "node.bin")
+            self.assertEqual([f[0] for f in check.check_staged(repo.path)], ["BLOCK"])
+
+    def test_json_output_is_one_document(self):
+        import json
+        with TempRepo("ARMOR-JSON") as repo:
+            repo.write(".env", "A=1\n")
+            repo.commit()
+            out = io.StringIO()
+            with mock.patch.object(check, "ROOT", repo.path.parent), contextlib.redirect_stdout(out):
+                code = check.main(["ARMOR-JSON", "--no-history", "--json"])
+        document = json.loads(out.getvalue())
+        self.assertEqual(code, 1)
+        self.assertEqual(document["result"], "FAIL")
+        self.assertEqual(document["repositories"][0]["block"], 1)
+        self.assertEqual(document["repositories"][0]["findings"][0]["where"], ".env")
+
+
 if __name__ == "__main__":
     unittest.main()

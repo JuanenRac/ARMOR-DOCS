@@ -49,7 +49,7 @@ jobs:
           set -o pipefail
           python -m pip install --quiet pyyaml openapi-spec-validator
           status=0
-          for check in "tools/make_readmes.py --check" "tools/make_brand.py --check" "tools/make_catalog.py --check" "tools/sync_ci_tools.py --check" \
+          for check in "tools/make_readmes.py --check" "tools/make_brand.py --check" "tools/make_catalog.py --check" "tools/sync_ci_tools.py --check" "tools/doc_facts.py --check" "tools/doc_claims.py" "tools/doc_markdown.py --all" \
                        "../ARMOR-COMMON/tools/sync_firmware_base.py check" "../ARMOR-COMMON/tools/generate_types.py --check" "../ARMOR-COMMON/tools/make_conformance.py --check"; do
             echo "== python ${check}"
             python ${check} || status=1

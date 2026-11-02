@@ -51,27 +51,19 @@ flowchart LR
 * **The server is the only place that touches a camera.** No client receives a camera password
   or an RTSP address. Clients get JSON, MJPEG and files through an HttpOnly session.
 * **The AI services recommend, they never act.** The visual policy returns a severity with
-  reasons and `authorizes_action = false`; the voice service returns an intent and needs a
+  reasons and `authorizes_action = false` <!-- claim: ai.never_authorizes -->; the voice service returns an intent and needs a
   service-issued confirmation for arm and disarm. The server authenticates and authorises
   every action, and carries out a spoken or written command with the session of the person who gave it.
 * **Studio and Android are clients of the server**, not of the field network. They never reach
   a node's own configuration endpoint. The one exception is the set-up of a node from the Android
   app over **Bluetooth Low Energy** (below), which needs no network at all.
 * **Solar and electrical nodes read their equipment; the one thing they can write is a Pylontech
-  battery's memory, and only when asked in three places.** They publish what their inverters,
-  batteries and meters report; no request that writes to an inverter or a meter exists in their
-  firmware. A battery can be written to (its clock, counters, limits, outputs, serial number and
-  firmware) through typed operations that are off by default in the node, the server and the broker,
-  that an administrator orders after proving who they are again and typing the battery's serial
-  number, and that a node carries out in two steps (arm, then execute with a one-time token), reading
-  the battery before and after. What a node can move besides is relays (off by default in three
-  places) and, for a source-transfer switch, a channel that is off by default and needs a two-step
-  command. See `ARMOR-NODE-SOLAR/docs/BATTERY_MAINTENANCE.md`.
+  battery's memory, and only when asked in three places.** No request that writes to an inverter or a meter exists in their
+  firmware. What a node can move besides (relays, a source-transfer switch) is off by default in several places. The rules of each are in the
+  [threat model](THREAT_MODEL.md#writing-to-a-battery) and nowhere else.
 * **A phone sets a node up over Bluetooth** (name, Wi-Fi, address, broker): the same channel on the
-  radar, solar, electrical, alarm and touch-panel nodes. The link is encrypted with a PIN derived from
-  the node's set-up code, every operation but `hello` needs the set-up code or a login, changing
-  anything needs an administrator, and wrong passwords are throttled; see the
-  [security baseline](SECURITY_BASELINE.md) for what that does not stop.
+  radar, solar, electrical, alarm and touch-panel nodes, over an encrypted link; what it enforces and what it does not stop is in the
+  [security baseline](SECURITY_BASELINE.md).
 
 ## Controlling the nodes
 

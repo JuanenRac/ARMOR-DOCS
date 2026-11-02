@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-251%20passing-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
@@ -40,7 +40,7 @@
 | 成熟度 | 確立 |
 | 役割 | ドキュメントの拠点：アーキテクチャ、セキュリティ基盤、機能マトリクス、README・カタログ・バナーを書くツール |
 | 技術 | Python 3.11+（ツール、標準ライブラリ）、Markdown |
-| テスト | 199 件（`python -m unittest discover -s tests`、約 1 分） |
+| テスト | 251 件（`python -m unittest discover -s tests`、約 1 分） |
 | インターフェース | `make_readmes.py`、`make_catalog.py`、`make_brand.py`、`publication_check.py`、`clean_history.py`、`sync_ci_tools.py`、`check_all.sh` |
 | 動作環境 | Python のある任意のコンピューター（ファミリーのリポジトリをこの隣に置く） |
 | 実機での確認 | 該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します |
@@ -57,7 +57,7 @@
 | 領域 | 状態 | ここでの意味 |
 |---|---|---|
 | ソフトウェア | 🟢 | README、バナー、カタログ、機能マトリクスのジェネレーターと、各リポジトリにコピーする CI ツールは動作し、テスト済みです。 |
-| テスト | 🟢 | ツールの 199 件のテストが通ります（`python -m unittest discover -s tests`）：公開前検査、履歴クリーナー、README・カタログ・ブランドのジェネレーター、CI ツールのコピー、共通ワークフローツール。 |
+| テスト | 🟢 | ツールの 251 件のテストが通ります（`python -m unittest discover -s tests`）：公開前検査、履歴クリーナー、README・カタログ・ブランドのジェネレーター、CI ツールのコピー、共通ワークフローツール。 |
 | 自動チェック | 🟢 | プッシュのたびに、README、バナー、カタログが最新であること、そしてレジストリのすべてのリポジトリに状況の表があることを確認します。 |
 | 連携 | 🟢 | すべてのリポジトリの README は 1 つのソースから作られ、各リポジトリのバージョンと成熟度はそれぞれのマニフェストから読み取ります。 |
 | ドキュメント | 🟢 | 機能マトリクスは、各機能がシミュレーションのみか、コンピューターでテスト済みか、実機で検証済みかを示します。8 言語と変更履歴は最新です。 |
@@ -110,9 +110,10 @@ ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュ
 | `python tools/make_readmes.py [--check]` | - | `tools/readme_src/` から全リポジトリの README を 8 言語で書き出す。`--check` は古いものがあると失敗。全ファイルを書き直すので、README ではなくソースを変更する |
 | `python tools/make_catalog.py [--check]`  `make_brand.py [--check]` | - | `docs/PROJECT_CATALOG.md` のバージョンと成熟度、バナーとアイコン |
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | リポジトリを公開した場合に漏れるもの。BLOCK で終了コード 1 |
+| `python tools/doc_facts.py [--check]`  `doc_claims.py`  `doc_markdown.py [--all]` | - | 文書の数値はリポジトリから取得（`<!--fact:vectors-->` マーカー）、コードに関するマーク付きの文はコード内で検索（`<!-- claim: id -->` と `docs/claims.json`）、表と Mermaid 図は構文を検査。ずれがあればそれぞれ失敗 |
 | `python tools/clean_history.py` | - | 1 コミットだけの公開用コピー |
 | `python tools/sync_ci_tools.py [--check]` | - | 共通の CI 検査とランチャーを各リポジトリにコピー。コピーがずれると `--check` が失敗 |
-| `python tools/status_lights.py --check|--suggest|--apply` | - | プロジェクト状況表の信号をマニフェスト(成熟度と実証)が許す範囲に保つ。動かすのは信号だけで文は変えない。各リポジトリの CI が `--check` を実行 |
+| `python tools/status_lights.py --check\|--suggest\|--apply` | - | プロジェクト状況表の信号をマニフェスト(成熟度と実証)が許す範囲に保つ。動かすのは信号だけで文は変えない。各リポジトリの CI が `--check` を実行 |
 | `bash tools/check_all.sh [--android] [--compose]` | - | 全リポジトリのテストを一度に実行。ツールがない検査は PASS ではなく SKIP |
 
 各 README のソースは `tools/readme_src/repos/<リポジトリ>.py`（言語に依存しない事実と 8 言語の文言）で、README の周囲の文言は `ui.py`、スクリーンショットは `shots.py` にあります。`tools/registry.py` は ARMOR-COMMON のリポジトリ一覧を読みます。[docs/INTERFACES.md](docs/INTERFACES.md) と [docs/SETUP_CODE.md](docs/SETUP_CODE.md) も参照。
@@ -125,9 +126,10 @@ ARMOR-DOCS はファミリーの記憶です。アーキテクチャ、セキュ
 python tools/make_readmes.py --check  # README（8 言語）は最新
 python tools/make_catalog.py --check  # カタログのバージョンと成熟度は最新
 python tools/make_brand.py --check    # バナーとアイコンは最新
+python tools/doc_facts.py --check     # 文書の数値がリポジトリと一致
 python tools/publication_check.py     # 公開しても非公開情報は出ない
 bash tools/check_all.sh               # 各リポジトリのテストを一度に
-python -m unittest discover -s tests  # これらのツールの 199 件のテスト（他のリポジトリは不要）
+python -m unittest discover -s tests  # これらのツールの 251 件のテスト（他のリポジトリは不要）
 ```
 
 ## 🧪 テスト
@@ -166,28 +168,29 @@ GitHub Actions は push と pull request のたびに A.R.M.O.R. の基本検査
 ```text
 ARMOR-DOCS/
 ├── tools/
-│   ├── make_readmes.py                          1 つのソースから 8 言語の README
-│   ├── readme_src/                              各リポジトリの事実と文言
-│   ├── make_catalog.py make_brand.py            カタログ、バナーとアイコン
-│   ├── brand_banner.py registry.py              バナーの描画、ARMOR-COMMON の一覧
-│   ├── publication_check.py                     公開物に非公開情報を含めない
-│   ├── clean_history.py sync_ci_tools.py        公開用コピー、同一の CI 検査
-│   ├── check_all.sh                             各リポジトリのテストを一度に
-│   ├── armor_ci_validate.py                     各リポジトリが持つ CI 検査
-│   ├── armor_project_tool.py pretty_run.py      ランチャーとライブパネル
-│   ├── make_architecture.py make_structure.py   README の 2 つの図
-│   └── universal_readme_check.py                README のレイアウト検査
-├── docs/                                        CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
-├── tests/                                       これらのツールのテスト
-├── brand/                                       エンブレム
-├── images/                                      バナー、アイコン、ファミリーの図、この README の図
-├── .github/                                     CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート
-├── armor.project.json                           マニフェスト：版・役割・成熟度
-├── CHANGELOG.md                                 各バージョンの変更点
-├── run.sh run.bat                               起動（共通フロー）
-├── build.sh build.bat                           ビルドとテスト（共通フロー）
-├── build-test.sh build-test.bat                 ビルド、テスト、パッケージ化
-├── test.sh test.bat                             テストのみ（版は変えません）
+│   ├── make_readmes.py                                1 つのソースから 8 言語の README
+│   ├── readme_src/                                    各リポジトリの事実と文言
+│   ├── make_catalog.py make_brand.py                  カタログ、バナーとアイコン
+│   ├── brand_banner.py registry.py                    バナーの描画、ARMOR-COMMON の一覧
+│   ├── publication_check.py  install_hooks.sh         公開物に非公開情報を含めない
+│   ├── doc_facts.py  doc_claims.py  doc_markdown.py   数値・記述・図の検査
+│   ├── clean_history.py sync_ci_tools.py              公開用コピー、同一の CI 検査
+│   ├── check_all.sh                                   各リポジトリのテストを一度に
+│   ├── armor_ci_validate.py                           各リポジトリが持つ CI 検査
+│   ├── armor_project_tool.py pretty_run.py            ランチャーとライブパネル
+│   ├── make_architecture.py make_structure.py         README の 2 つの図
+│   └── universal_readme_check.py                      README のレイアウト検査
+├── docs/                                              CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
+├── tests/                                             これらのツールのテスト
+├── brand/                                             エンブレム
+├── images/                                            バナー、アイコン、ファミリーの図、この README の図
+├── .github/                                           CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート
+├── armor.project.json                                 マニフェスト：版・役割・成熟度
+├── CHANGELOG.md                                       各バージョンの変更点
+├── run.sh run.bat                                     起動（共通フロー）
+├── build.sh build.bat                                 ビルドとテスト（共通フロー）
+├── build-test.sh build-test.bat                       ビルド、テスト、パッケージ化
+├── test.sh test.bat                                   テストのみ（版は変えません）
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 

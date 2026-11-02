@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 o successiva">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Lingue">
-  <img src="https://img.shields.io/badge/Tests-199%20passing-2ea44f.svg" alt="Test">
+  <img src="https://img.shields.io/badge/Tests-251%20passing-2ea44f.svg" alt="Test">
   <img src="https://img.shields.io/badge/Version-0.8.1.4-0f6cbd.svg" alt="Versione">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturità">
 </p>
@@ -40,7 +40,7 @@
 | Maturità | Consolidato |
 | Ruolo | Centro di documentazione: architettura, base di sicurezza, matrice delle capacità e gli strumenti che scrivono README, catalogo e banner |
 | Tecnologia | Python 3.11+ (strumenti, libreria standard), Markdown |
-| Test | 199 (`python -m unittest discover -s tests`, circa un minuto) |
+| Test | 251 (`python -m unittest discover -s tests`, circa un minuto) |
 | Interfacce | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Gira su | Qualsiasi computer con Python; i repository della famiglia accanto a questo |
 | Su hardware reale | Non applicabile: è documentazione; registra ciò che gli altri repository hanno fatto girare su hardware reale |
@@ -57,7 +57,7 @@ Ogni riga è una parte di questo repository e il semaforo dice a che punto è og
 | Area | Stato | Cosa significa qui |
 |---|---|---|
 | Software | 🟢 | I generatori di README, banner, catalogo e matrice delle capacità, e gli strumenti di CI copiati in ogni repository, funzionano e sono testati. |
-| Test | 🟢 | I 199 test degli strumenti passano (`python -m unittest discover -s tests`): il controllo di pubblicazione, il pulitore della cronologia, i generatori di README, catalogo e marchio, la copia degli strumenti CI e lo strumento del flusso condiviso. |
+| Test | 🟢 | I 251 test degli strumenti passano (`python -m unittest discover -s tests`): il controllo di pubblicazione, il pulitore della cronologia, i generatori di README, catalogo e marchio, la copia degli strumenti CI e lo strumento del flusso condiviso. |
 | Controlli automatici | 🟢 | Ogni push verifica che i README, i banner e il catalogo siano aggiornati e che ogni repository del registro abbia la sua tabella di stato. |
 | Integrazione | 🟢 | I README di tutti i repository sono scritti da un'unica fonte, con la versione e la maturità di ciascuno lette dal proprio manifesto. |
 | Documentazione | 🟢 | La matrice delle capacità dice, per ogni funzione, se è stata solo simulata, testata su un computer o verificata su hardware reale; le otto lingue e il registro delle modifiche sono aggiornati. |
@@ -110,9 +110,10 @@ I documenti di sicurezza della famiglia sono [docs/SECURITY_BASELINE.md](docs/SE
 | `python tools/make_readmes.py [--check]` | - | scrive il README di ogni repository in otto lingue da `tools/readme_src/`; `--check` fallisce se uno è vecchio. Riscrive ogni file: cambia la fonte, mai i README |
 | `python tools/make_catalog.py [--check]`  `make_brand.py [--check]` | - | le versioni e la maturità di `docs/PROJECT_CATALOG.md`, e banner e icone |
 | `python tools/publication_check.py [REPO] [--no-history] [--ref=BRANCH]` | - | ciò che trapelerebbe se i repository fossero pubblicati; esce con 1 a ogni BLOCK |
+| `python tools/doc_facts.py [--check]`  `doc_claims.py`  `doc_markdown.py [--all]` | - | le cifre dei documenti vengono dai repository (marcatori `<!--fact:vectors-->`), ogni frase marcata sul codice viene cercata nel codice (`<!-- claim: id -->` e `docs/claims.json`) e le tabelle e i diagrammi Mermaid vengono analizzati; ciascuno fallisce se qualcosa non torna |
 | `python tools/clean_history.py` | - | una copia pubblicabile di un repository con un solo commit |
 | `python tools/sync_ci_tools.py [--check]` | - | copia i controlli CI e l'avviatore in ogni repository; `--check` fallisce se una copia è divergente |
-| `python tools/status_lights.py --check|--suggest|--apply` | - | mantiene le luci della tabella di stato del progetto entro ciò che il manifesto consente (maturità ed evidenza); sposta luci, mai frasi; la CI di ogni repository esegue `--check` |
+| `python tools/status_lights.py --check\|--suggest\|--apply` | - | mantiene le luci della tabella di stato del progetto entro ciò che il manifesto consente (maturità ed evidenza); sposta luci, mai frasi; la CI di ogni repository esegue `--check` |
 | `bash tools/check_all.sh [--android] [--compose]` | - | i test di ogni repository in un'esecuzione; un controllo senza il suo strumento è SKIP, mai PASS |
 
 La fonte di ogni README è `tools/readme_src/repos/<REPOSITORY>.py` (i fatti indipendenti dalla lingua e le parole delle otto lingue), con `ui.py` per le parole attorno a ogni README e `shots.py` per le schermate. `tools/registry.py` legge l'elenco dei repository di ARMOR-COMMON. Vedi anche [docs/INTERFACES.md](docs/INTERFACES.md) e [docs/SETUP_CODE.md](docs/SETUP_CODE.md).
@@ -125,9 +126,10 @@ La fonte di ogni README è `tools/readme_src/repos/<REPOSITORY>.py` (i fatti ind
 python tools/make_readmes.py --check  # i README (8 lingue) sono aggiornati
 python tools/make_catalog.py --check  # versioni e maturità del catalogo sono aggiornate
 python tools/make_brand.py --check    # banner e icone sono aggiornati
+python tools/doc_facts.py --check     # le cifre dei documenti corrispondono ai repository
 python tools/publication_check.py     # niente di privato uscirebbe con una pubblicazione
 bash tools/check_all.sh               # i test di ogni repository, in un'esecuzione
-python -m unittest discover -s tests  # 199 test di questi strumenti; non servono altri repository
+python -m unittest discover -s tests  # 251 test di questi strumenti; non servono altri repository
 ```
 
 ## 🧪 Test
@@ -166,28 +168,29 @@ Non c'è nulla da compilare. La versione risiede in `armor.project.json` e nel b
 ```text
 ARMOR-DOCS/
 ├── tools/
-│   ├── make_readmes.py                          i README da una fonte, in otto lingue
-│   ├── readme_src/                              i fatti e le parole di ogni repository
-│   ├── make_catalog.py make_brand.py            il catalogo; banner e icone
-│   ├── brand_banner.py registry.py              il disegno del banner; l'elenco di ARMOR-COMMON
-│   ├── publication_check.py                     niente di privato esce con una pubblicazione
-│   ├── clean_history.py sync_ci_tools.py        una copia pubblicabile; controlli CI uguali
-│   ├── check_all.sh                             i test di ogni repository in un'esecuzione
-│   ├── armor_ci_validate.py                     il controllo CI di ogni repository
-│   ├── armor_project_tool.py pretty_run.py      l'avviatore e il suo pannello dal vivo
-│   ├── make_architecture.py make_structure.py   le due immagini dei README
-│   └── universal_readme_check.py                il controllo del formato dei README
-├── docs/                                        CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE
-├── tests/                                       i test di questi strumenti
-├── brand/                                       l'emblema
-├── images/                                      banner, icona, l'immagine della famiglia e le immagini di questo README
-├── .github/                                     workflow CI, avviso alla dashboard, modelli per issue e pull request
-├── armor.project.json                           manifesto: versione, ruolo, maturità
-├── CHANGELOG.md                                 cosa è cambiato in ogni versione
-├── run.sh run.bat                               avvio, flusso condiviso
-├── build.sh build.bat                           compila e prova, flusso condiviso
-├── build-test.sh build-test.bat                 compila, prova e impacchetta
-├── test.sh test.bat                             solo i test, mai la versione
+│   ├── make_readmes.py                                i README da una fonte, in otto lingue
+│   ├── readme_src/                                    i fatti e le parole di ogni repository
+│   ├── make_catalog.py make_brand.py                  il catalogo; banner e icone
+│   ├── brand_banner.py registry.py                    il disegno del banner; l'elenco di ARMOR-COMMON
+│   ├── publication_check.py  install_hooks.sh         niente di privato esce con una pubblicazione
+│   ├── doc_facts.py  doc_claims.py  doc_markdown.py   cifre, affermazioni e diagrammi verificati
+│   ├── clean_history.py sync_ci_tools.py              una copia pubblicabile; controlli CI uguali
+│   ├── check_all.sh                                   i test di ogni repository in un'esecuzione
+│   ├── armor_ci_validate.py                           il controllo CI di ogni repository
+│   ├── armor_project_tool.py pretty_run.py            l'avviatore e il suo pannello dal vivo
+│   ├── make_architecture.py make_structure.py         le due immagini dei README
+│   └── universal_readme_check.py                      il controllo del formato dei README
+├── docs/                                              CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE
+├── tests/                                             i test di questi strumenti
+├── brand/                                             l'emblema
+├── images/                                            banner, icona, l'immagine della famiglia e le immagini di questo README
+├── .github/                                           workflow CI, avviso alla dashboard, modelli per issue e pull request
+├── armor.project.json                                 manifesto: versione, ruolo, maturità
+├── CHANGELOG.md                                       cosa è cambiato in ogni versione
+├── run.sh run.bat                                     avvio, flusso condiviso
+├── build.sh build.bat                                 compila e prova, flusso condiviso
+├── build-test.sh build-test.bat                       compila, prova e impacchetta
+├── test.sh test.bat                                   solo i test, mai la versione
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 

@@ -73,7 +73,7 @@
      "tree_name": "brand_banner.py registry.py"
     },
     {
-     "name": "publication_check.py",
+     "name": "publication_check.py  install_hooks.sh",
      "desc": {
       "en": "nothing private leaves with a publication",
       "es": "nada privado sale con una publicación",
@@ -83,6 +83,19 @@
       "ja": "公開物に非公開情報を含めない",
       "zh": "发布时不泄露私有内容",
       "pt": "nada privado sai com uma publicação"
+     }
+    },
+    {
+     "name": "doc_facts.py  doc_claims.py  doc_markdown.py",
+     "desc": {
+      "en": "figures, claims and diagrams checked",
+      "es": "cifras, afirmaciones y diagramas comprobados",
+      "de": "Zahlen, Aussagen und Diagramme geprüft",
+      "fr": "chiffres, affirmations et schémas vérifiés",
+      "it": "cifre, affermazioni e diagrammi verificati",
+      "ja": "数値・記述・図の検査",
+      "zh": "核对数字、论断与图表",
+      "pt": "números, afirmações e diagramas verificados"
      }
     },
     {
