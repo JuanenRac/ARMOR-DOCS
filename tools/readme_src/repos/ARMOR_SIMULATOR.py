@@ -40,7 +40,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "174%20passing",
+      "182%20passing",
       "2ea44f",
     ],
   ],
@@ -49,7 +49,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Offline telemetry simulator with repeatable faults",
-    "honest": "Scenarios, faults, delivery to a server and the 174 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
+    "honest": "Scenarios, faults, delivery to a server and the 182 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
     "glance": [
       [
         "Role",
@@ -61,7 +61,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenarios and faults",
@@ -82,7 +82,7 @@ TEXT = {
     ],
     "status": {
       "software": "The scenarios, the faults and the delivery to a server work; it is what feeds a server on a computer when no node is plugged in.",
-      "tests": "174 tests pass (`python -m unittest discover -s tests`).",
+      "tests": "182 tests pass (`python -m unittest discover -s tests`).",
       "protocols": "The geometry is illustrative, not a model of the real LD2450 radar, and nothing has been compared with real hardware.",
       "integration": "It delivers its messages to a server in the tests, and the server of the CM5 test bench can be fed by it.",
       "docs": "Eight languages and the changelog are up to date.",
@@ -133,6 +133,8 @@ This is a test tool: it is not a safety function and its geometry is not a model
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Play an alarm scenario from a JSON file / only validate it / compare the alarms a server raised with what it expects (exit 1 when they differ) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | off, -, `1`, `900` | Realistic solar and electrical data in real time instead of the fast day of `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Inject a repeatable fault into some messages |
+| `--record`, `--replay` | - | Write every emitted message to a file (never overwritten) / play such a file again instead of generating messages |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Spoil the delivery to the server, not the messages: a slow link (`latency`), a message never sent (`drop`) or one sent twice (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Check each message against ARMOR-COMMON / allow the faults that break it |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Deliver to ARMOR-SERVER; the token of each node when the server is strict |
 
@@ -223,7 +225,7 @@ ARMOR-SIMULATOR/
   },
   "es": {
     "tagline": "Simulador de telemetría sin conexión con fallos repetibles",
-    "honest": "Los escenarios, los fallos, la entrega a un servidor y los 174 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
+    "honest": "Los escenarios, los fallos, la entrega a un servidor y los 182 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
     "glance": [
       [
         "Función",
@@ -235,7 +237,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Pruebas",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Escenarios y averías",
@@ -256,7 +258,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Los escenarios, los fallos y la entrega a un servidor funcionan; es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado.",
-      "tests": "Pasan 174 pruebas (`python -m unittest discover -s tests`).",
+      "tests": "Pasan 182 pruebas (`python -m unittest discover -s tests`).",
       "protocols": "La geometría es ilustrativa, no un modelo del radar LD2450 real, y nada se ha comparado con hardware real.",
       "integration": "Entrega sus mensajes a un servidor en las pruebas, y el servidor del banco de pruebas CM5 puede alimentarse con él.",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
@@ -307,6 +309,8 @@ Es una herramienta de pruebas: no es una función de seguridad y su geometría n
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Reproducir un escenario de alarma desde un fichero JSON / solo validarlo / comparar las alarmas que levantó un servidor con lo que espera (sale con 1 si difieren) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | no, -, `1`, `900` | Datos solares y eléctricos realistas en tiempo real en lugar del día rápido de `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Inyecta una avería repetible en algunos mensajes |
+| `--record`, `--replay` | - | Escribe cada mensaje emitido en un fichero (nunca lo sobrescribe) / reproduce ese fichero en vez de generar mensajes |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Estropea la entrega al servidor, no los mensajes: un enlace lento (`latency`), un mensaje que no se envía (`drop`) o uno enviado dos veces (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Comprueba cada mensaje con ARMOR-COMMON / permite las averías que lo rompen |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Entrega a ARMOR-SERVER; el token de cada nodo si el servidor es estricto |
 
@@ -397,7 +401,7 @@ ARMOR-SIMULATOR/
   },
   "de": {
     "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
-    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 174 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
+    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 182 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
     "glance": [
       [
         "Rolle",
@@ -409,7 +413,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Szenarien und Fehler",
@@ -430,7 +434,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Die Szenarien, die Störungen und die Übergabe an einen Server funktionieren; er speist einen Server auf einem Rechner, wenn kein Knoten angeschlossen ist.",
-      "tests": "174 Tests bestehen (`python -m unittest discover -s tests`).",
+      "tests": "182 Tests bestehen (`python -m unittest discover -s tests`).",
       "protocols": "Die Geometrie ist anschaulich und kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
       "integration": "Er übergibt seine Nachrichten in den Tests an einen Server, und der Server des CM5-Prüfstands kann damit gespeist werden.",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
@@ -481,6 +485,8 @@ Dies ist ein Testwerkzeug: keine Sicherheitsfunktion, und seine Geometrie ist ke
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Ein Alarmszenario aus einer JSON-Datei abspielen / nur prüfen / die Alarme eines Servers mit der Erwartung vergleichen (Exit 1 bei Abweichung) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | aus, -, `1`, `900` | Realistische Solar- und Stromdaten in Echtzeit statt des schnellen Tages von `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Spielt in einige Nachrichten einen wiederholbaren Fehler ein |
+| `--record`, `--replay` | - | Schreibt jede ausgegebene Nachricht in eine Datei (wird nie überschrieben) / spielt eine solche Datei erneut ab, statt Nachrichten zu erzeugen |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Stört die Zustellung an den Server statt der Nachrichten: lahme Verbindung (`latency`), nie gesendete Nachricht (`drop`) oder doppelt gesendete (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Prüft jede Nachricht gegen ARMOR-COMMON / erlaubt Fehler, die ihn brechen |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Zustellung an ARMOR-SERVER; das Token jedes Knotens bei striktem Server |
 
@@ -571,7 +577,7 @@ ARMOR-SIMULATOR/
   },
   "fr": {
     "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
-    "honest": "Les scénarios, les pannes, la livraison à un serveur et les 174 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
+    "honest": "Les scénarios, les pannes, la livraison à un serveur et les 182 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
     "glance": [
       [
         "Rôle",
@@ -583,7 +589,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scénarios et pannes",
@@ -604,7 +610,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Les scénarios, les pannes et la remise à un serveur fonctionnent ; c'est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché.",
-      "tests": "174 tests réussissent (`python -m unittest discover -s tests`).",
+      "tests": "182 tests réussissent (`python -m unittest discover -s tests`).",
       "protocols": "La géométrie est illustrative, pas un modèle du vrai radar LD2450, et rien n'a été comparé à du matériel réel.",
       "integration": "Il remet ses messages à un serveur dans les tests, et le serveur du banc d'essai CM5 peut être alimenté par lui.",
       "docs": "Huit langues et le journal des modifications sont à jour.",
@@ -655,6 +661,8 @@ C'est un outil de test : ce n'est pas une fonction de sécurité et sa géométr
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Jouer un scénario d'alarme depuis un fichier JSON / seulement le valider / comparer les alarmes levées par un serveur à ce qu'il attend (code 1 si elles diffèrent) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | non, -, `1`, `900` | Données solaires et électriques réalistes en temps réel au lieu du jour rapide de `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Injecte une panne répétable dans certains messages |
+| `--record`, `--replay` | - | Écrit chaque message émis dans un fichier (jamais écrasé) / rejoue un tel fichier au lieu de générer des messages |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Dégrade la livraison au serveur, pas les messages : lien lent (`latency`), message jamais envoyé (`drop`) ou envoyé deux fois (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Vérifie chaque message avec ARMOR-COMMON / autorise les pannes qui le violent |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Livraison à ARMOR-SERVER ; le jeton de chaque nœud si le serveur est strict |
 
@@ -745,7 +753,7 @@ ARMOR-SIMULATOR/
   },
   "it": {
     "tagline": "Simulatore di telemetria offline con guasti ripetibili",
-    "honest": "Gli scenari, i guasti, la consegna a un server e i 174 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
+    "honest": "Gli scenari, i guasti, la consegna a un server e i 182 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
     "glance": [
       [
         "Ruolo",
@@ -757,7 +765,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Test",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenari e guasti",
@@ -778,7 +786,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Gli scenari, i guasti e la consegna a un server funzionano; è ciò che alimenta un server su un computer quando nessun nodo è collegato.",
-      "tests": "Superano 174 test (`python -m unittest discover -s tests`).",
+      "tests": "Superano 182 test (`python -m unittest discover -s tests`).",
       "protocols": "La geometria è illustrativa, non un modello del vero radar LD2450, e nulla è stato confrontato con hardware reale.",
       "integration": "Consegna i suoi messaggi a un server nei test e il server del banco di prova CM5 può essere alimentato da esso.",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
@@ -829,6 +837,8 @@ ARMOR-SIMULATOR/
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Riprodurre uno scenario d'allarme da un file JSON / solo validarlo / confrontare gli allarmi sollevati da un server con quanto atteso (codice 1 se differiscono) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | no, -, `1`, `900` | Dati solari ed elettrici realistici in tempo reale invece del giorno rapido di `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Inietta un guasto ripetibile in alcuni messaggi |
+| `--record`, `--replay` | - | Scrive ogni messaggio emesso in un file (mai sovrascritto) / riproduce quel file invece di generare messaggi |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Guasta la consegna al server, non i messaggi: collegamento lento (`latency`), messaggio mai inviato (`drop`) o inviato due volte (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Verifica ogni messaggio con ARMOR-COMMON / consente i guasti che lo violano |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Consegna a ARMOR-SERVER; il token di ogni nodo se il server è rigoroso |
 
@@ -919,7 +929,7 @@ ARMOR-SIMULATOR/
   },
   "ja": {
     "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
-    "honest": "シナリオ、故障、サーバーへの送信、174 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
+    "honest": "シナリオ、故障、サーバーへの送信、182 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
     "glance": [
       [
         "役割",
@@ -931,7 +941,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "テスト",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "シナリオと障害",
@@ -952,7 +962,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "シナリオ、故障、サーバーへの配信は動作します。ノードを接続していないとき、コンピューター上のサーバーにデータを送るのがこれです。",
-      "tests": "174 件のテストが通ります（`python -m unittest discover -s tests`）。",
+      "tests": "182 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "protocols": "幾何は例示用で、実際の LD2450 レーダーのモデルではありません。実機との比較もしていません。",
       "integration": "テストではメッセージをサーバーに配信しており、CM5 テストベンチのサーバーにもこれでデータを送れます。",
       "docs": "8 言語と変更履歴は最新です。",
@@ -1003,6 +1013,8 @@ ARMOR-SIMULATOR/
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | JSON ファイルのアラームシナリオを再生 / 検証のみ / サーバーが発したアラームを期待と比較（差があれば終了コード 1） |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | オフ, -, `1`, `900` | `--solar`/`--electrical` の高速な 1 日の代わりに、リアルタイムの現実的な太陽光・電力データ |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | 一部のメッセージに再現可能な障害を入れる |
+| `--record`, `--replay` | - | 出力した各メッセージをファイルに書き出す（上書きしない）/ メッセージを生成せずそのファイルを再生する |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | メッセージではなくサーバーへの配信を妨害: 遅い回線（`latency`）、送られないメッセージ（`drop`）、二重送信（`duplicate`） |
 | `--validate`, `--allow-invalid` | off | 各メッセージを ARMOR-COMMON で検証／違反する障害を許可 |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | 配信先は ARMOR-SERVER。サーバーが厳格な場合はノードごとのトークン |
 
@@ -1093,7 +1105,7 @@ ARMOR-SIMULATOR/
   },
   "zh": {
     "tagline": "带可重复故障的离线遥测模拟器",
-    "honest": "场景、故障、向服务器的投递和 174 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
+    "honest": "场景、故障、向服务器的投递和 182 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
     "glance": [
       [
         "角色",
@@ -1105,7 +1117,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "测试",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "场景与故障",
@@ -1126,7 +1138,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "场景、故障和向服务器的投递都能工作；没有接入节点时，它为电脑上的服务器提供数据。",
-      "tests": "174 项测试通过（`python -m unittest discover -s tests`）。",
+      "tests": "182 项测试通过（`python -m unittest discover -s tests`）。",
       "protocols": "几何模型仅作示意，并不是真实 LD2450 雷达的模型，也没有与真实硬件对比过。",
       "integration": "测试中它会把消息投递到服务器，CM5 测试台的服务器也可以由它提供数据。",
       "docs": "八种语言和更新日志均为最新。",
@@ -1177,6 +1189,8 @@ ARMOR-SIMULATOR/
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | 播放 JSON 文件中的报警场景 / 仅校验 / 把服务器发出的报警与期望比较（不一致时退出码为 1） |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | 关, -, `1`, `900` | 用实时的真实太阳能与电力数据取代 `--solar`/`--electrical` 的快速一天 |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | 向部分消息注入可重复的故障 |
+| `--record`, `--replay` | - | 将每条发出的消息写入文件（绝不覆盖）/ 重放该文件而不是生成消息 |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | 干扰向服务器的投递而不是消息本身：慢速链路（`latency`）、从未发送的消息（`drop`）或重复发送（`duplicate`） |
 | `--validate`, `--allow-invalid` | off | 用 ARMOR-COMMON 校验每条消息／允许违反合约的故障 |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | 投递到 ARMOR-SERVER；服务器严格时使用每个节点的令牌 |
 
@@ -1267,7 +1281,7 @@ ARMOR-SIMULATOR/
   },
   "pt": {
     "tagline": "Simulador de telemetria offline com falhas repetíveis",
-    "honest": "Os cenários, as falhas, a entrega a um servidor e os 174 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
+    "honest": "Os cenários, as falhas, a entrega a um servidor e os 182 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
     "glance": [
       [
         "Função",
@@ -1279,7 +1293,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Testes",
-        "174 (`python -m unittest discover -s tests`)",
+        "182 (`python -m unittest discover -s tests`)",
       ],
       [
         "Cenários e falhas",
@@ -1300,7 +1314,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Os cenários, as avarias e a entrega a um servidor funcionam; é o que alimenta um servidor num computador quando nenhum nó está ligado.",
-      "tests": "Passam 174 testes (`python -m unittest discover -s tests`).",
+      "tests": "Passam 182 testes (`python -m unittest discover -s tests`).",
       "protocols": "A geometria é ilustrativa, não um modelo do radar LD2450 real, e nada foi comparado com hardware real.",
       "integration": "Entrega as suas mensagens a um servidor nos testes, e o servidor da bancada de testes CM5 pode ser alimentado por ele.",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
@@ -1351,6 +1365,8 @@ ARMOR-SIMULATOR/
 | `--alarm-scenario`, `--check-alarm-scenario`, `--verify-alarms` | - | Reproduzir um cenário de alarme a partir de um ficheiro JSON / só o validar / comparar os alarmes que um servidor levantou com o esperado (sai com 1 se diferirem) |
 | `--energy`, `--energy-config`, `--energy-days`, `--energy-step-s` | não, -, `1`, `900` | Dados solares e elétricos realistas em tempo real em vez do dia rápido de `--solar`/`--electrical` |
 | `--fault`, `--fault-every`, `--fault-topic` | `none`, `3`, `all` | Injeta uma falha repetível em algumas mensagens |
+| `--record`, `--replay` | - | Escreve cada mensagem emitida num ficheiro (nunca o substitui) / repõe esse ficheiro em vez de gerar mensagens |
+| `--http-fault`, `--http-fault-every`, `--http-latency-ms` | `none`, `3`, `1500` | Estraga a entrega ao servidor, não as mensagens: ligação lenta (`latency`), mensagem nunca enviada (`drop`) ou enviada duas vezes (`duplicate`) |
 | `--validate`, `--allow-invalid` | off | Verifica cada mensagem com o ARMOR-COMMON / permite as falhas que o violam |
 | `--server-url`, `--ingest-token-file`, `--per-node-token` | - | Entrega ao ARMOR-SERVER; o token de cada nó se o servidor for estrito |
 

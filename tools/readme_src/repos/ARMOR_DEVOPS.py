@@ -43,6 +43,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     "ports only from the clients' network (when it is given), in a table of its own that mentions nothing else.",
                     '**Secrets:** `scripts/generate_secrets.sh` creates random secrets and prints none; `scripts/check-required-env.sh` refuses missing, placeholder, '
                     'short or repeated values.',
+                    '**Doctor:** `scripts/armor_doctor.py` checks, read only, that an installation hangs together: the mode and the length of every secret in `etc/armor*.env`, no secret repeated, the token of the network node derived from the ingest token, the broker port against `mosquitto.conf` and the free disk; it prints no value (`--json`, `--strict`).',
                     '**Backup and restore:** `scripts/backup_data.sh` makes an AES-256 encrypted, verified and checksummed archive of the server data (evidence excluded '
                     'unless asked); `scripts/restore_data.sh` lists it or restores it without ever overwriting existing data.',
                     '**A VPN and a name for the house, set up from Studio:** `armor_wireguard.sh` makes a WireGuard VPN in a few commands (keys on the machine, one '
@@ -105,6 +106,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     'y Studio solo desde la red de los clientes (cuando se da), en una tabla propia que no menciona nada más.',
                     '**Secretos:** `scripts/generate_secrets.sh` crea secretos aleatorios y no imprime ninguno; `scripts/check-required-env.sh` rechaza valores '
                     'ausentes, de ejemplo, cortos o repetidos.',
+                    '**Doctor:** `scripts/armor_doctor.py` comprueba, solo leyendo, que una instalación es coherente: el modo y la longitud de cada secreto de `etc/armor*.env`, que no haya secretos repetidos, que el token del nodo de red sea el derivado del de ingesta, el puerto del broker frente a `mosquitto.conf` y el disco libre; no imprime ningún valor (`--json`, `--strict`).',
                     '**Copia de seguridad y restauración:** `scripts/backup_data.sh` hace un archivo cifrado con AES-256, verificado y con suma de comprobación de los '
                     'datos del servidor (sin evidencias salvo que se pidan); `scripts/restore_data.sh` lo lista o lo restaura sin sobrescribir nunca datos existentes.',
                     '**Una VPN y un nombre para la casa, configurados desde Studio:** `armor_wireguard.sh` monta una VPN WireGuard con unos pocos comandos (claves en la '
@@ -170,6 +172,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     "serveur et de Studio seulement depuis le réseau des clients (quand il est donné), dans une table à part qui ne mentionne rien d'autre.",
                     "**Secrets :** `scripts/generate_secrets.sh` crée des secrets aléatoires et n'en imprime aucun ; `scripts/check-required-env.sh` refuse les valeurs "
                     "absentes, d'exemple, courtes ou répétées.",
+                    '**Doctor:** `scripts/armor_doctor.py` prüft nur lesend, dass eine Installation stimmig ist: Modus und Länge jedes Geheimnisses in `etc/armor*.env`, kein wiederholtes Geheimnis, das aus dem Ingest-Token abgeleitete Token des Netzwerkknotens, der Broker-Port gegen `mosquitto.conf` und der freie Plattenplatz; es gibt keinen Wert aus (`--json`, `--strict`).',
                     '**Sauvegarde et restauration :** `scripts/backup_data.sh` produit une archive chiffrée AES-256, vérifiée et avec somme de contrôle des données du '
                     'serveur (preuves exclues sauf demande) ; `scripts/restore_data.sh` la liste ou la restaure sans jamais écraser de données existantes.',
                     '**Un VPN et un nom pour la maison, configurés depuis Studio :** `armor_wireguard.sh` monte un VPN WireGuard en quelques commandes (clés sur la '
@@ -237,6 +240,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     "Studio solo dalla rete dei client (quando data), in una tabella propria che non menziona nient'altro.",
                     '**Segreti:** `scripts/generate_secrets.sh` crea segreti casuali e non ne stampa nessuno; `scripts/check-required-env.sh` rifiuta valori mancanti, '
                     'di esempio, corti o ripetuti.',
+                    "**Doctor :** `scripts/armor_doctor.py` vérifie, en lecture seule, qu'une installation est cohérente : le mode et la longueur de chaque secret de `etc/armor*.env`, aucun secret répété, le jeton du nœud réseau dérivé du jeton d'ingestion, le port du broker face à `mosquitto.conf` et le disque libre ; il n'affiche aucune valeur (`--json`, `--strict`).",
                     '**Backup e ripristino:** `scripts/backup_data.sh` produce un archivio cifrato AES-256, verificato e con checksum dei dati del server (prove escluse '
                     'salvo richiesta); `scripts/restore_data.sh` lo elenca o lo ripristina senza mai sovrascrivere dati esistenti.',
                     '**Una VPN e un nome per la casa, configurati da Studio:** `armor_wireguard.sh` crea una VPN WireGuard con pochi comandi (chiavi sulla macchina, una '
@@ -302,6 +306,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     'aus dem Netz der Clients (wenn angegeben), in einer eigenen Tabelle, die nichts anderes erwähnt.',
                     '**Geheimnisse:** `scripts/generate_secrets.sh` erzeugt zufällige Geheimnisse und gibt keines aus; `scripts/check-required-env.sh` lehnt fehlende, '
                     'Platzhalter-, zu kurze oder wiederholte Werte ab.',
+                    "**Doctor:** `scripts/armor_doctor.py` verifica, in sola lettura, che un'installazione sia coerente: modo e lunghezza di ogni segreto in `etc/armor*.env`, nessun segreto ripetuto, il token del nodo di rete derivato da quello di ingestione, la porta del broker rispetto a `mosquitto.conf` e il disco libero; non stampa alcun valore (`--json`, `--strict`).",
                     '**Sicherung und Wiederherstellung:** `scripts/backup_data.sh` erzeugt ein AES-256-verschlüsseltes, verifiziertes Archiv der Serverdaten mit '
                     'Prüfsumme (Beweise nur auf Wunsch); `scripts/restore_data.sh` listet es auf oder stellt es wieder her, ohne je vorhandene Daten zu überschreiben.',
                     '**Ein VPN und ein Name für das Haus, aus Studio eingerichtet:** `armor_wireguard.sh` baut mit wenigen Befehlen ein WireGuard-VPN (Schlüssel auf der '
@@ -352,6 +357,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     '**TLS：**可选的 `tls` Compose 配置在 Studio 前放置带自有本地证书颁发机构的 Caddy，并提供基于 TLS 的 Mosquitto 配置（[详情](docs/BACKUP_AND_TLS.md)）。',
                     '**核心机器的主机防火墙**（`scripts/firewall_core.sh`）：代理端口只对现场网络开放，服务器和 Studio 端口只对客户端网络开放（如果给出），放在不提及其他任何内容的独立表中。',
                     '**密钥：**`scripts/generate_secrets.sh` 创建随机密钥且不打印任何一个；`scripts/check-required-env.sh` 拒绝缺失、占位、过短或重复的值。',
+                    '**ドクター：** `scripts/armor_doctor.py` は読み取り専用で、設備の整合性を確認します。`etc/armor*.env` の各秘密のモードと長さ、秘密の重複がないこと、インジェストトークンから導出されたネットワークノードのトークン、ブローカーのポートと `mosquitto.conf` の一致、ディスクの空き。値は一切表示しません（`--json`、`--strict`）。',
                     '**备份与恢复：**`scripts/backup_data.sh` 生成服务器数据的 AES-256 加密、经验证并带校验和的归档（除非要求否则不含证据）；`scripts/restore_data.sh` 列出或恢复它，且从不覆盖已有数据。',
                     '**可在 Studio 中设置的 VPN 和家的域名：** `armor_wireguard.sh` 用几条命令建立 WireGuard VPN（密钥保存在本机，每部手机一份带二维码的配置，需要时可路由到节点），`armor_ddns.sh` 在运营商更换地址时让 '
                     'DuckDNS、Cloudflare 或其他域名始终指向您家；维护代理把两者提供给 Studio 和手机，无需任何人输入命令，并有八种语言的分步指南说明路由器设置。',
@@ -388,6 +394,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     '**TLS：**オプションの `tls` Compose プロファイルが、独自のローカル認証局を持つ Caddy を Studio の前に置き、TLS 上の Mosquitto 設定も用意されています（[詳細](docs/BACKUP_AND_TLS.md)）。',
                     '**中核マシン用のホストファイアウォール**（`scripts/firewall_core.sh`）：ブローカーのポートはフィールドネットワークからのみ、サーバーと Studio のポートはクライアントのネットワークからのみ（指定時）、他には何も触れない専用のテーブルで。',
                     '**秘密：**`scripts/generate_secrets.sh` はランダムな秘密を作って何も表示しません。`scripts/check-required-env.sh` は未設定、プレースホルダー、短すぎる、重複した値を拒否します。',
+                    '**诊断：** `scripts/armor_doctor.py` 以只读方式检查安装是否自洽：`etc/armor*.env` 中每个密钥的权限与长度、没有重复密钥、网络节点令牌由摄取令牌派生、代理端口与 `mosquitto.conf` 一致以及剩余磁盘空间；不打印任何值（`--json`、`--strict`）。',
                     '**バックアップと復元：**`scripts/backup_data.sh` はサーバーデータの AES-256 暗号化・検証済み・チェックサム付きアーカイブを作り（求めない限り証拠は除外）、`scripts/restore_data.sh` '
                     'はそれを一覧するか、既存データを上書きせずに復元します。',
                     '**Studio から設定できる VPN と家の名前：** `armor_wireguard.sh` は数コマンドで WireGuard VPN を作り（鍵はマシン上、スマホごとに QR コード付きの設定、必要ならノードへのルーティング）、`armor_ddns.sh` '
@@ -443,6 +450,7 @@ LEGACY = {'en': {'tagline': 'Deployment, the CM5 test bench, its updates from Gi
                     'do Studio só a partir da rede dos clientes (quando indicada), numa tabela própria que não menciona mais nada.',
                     '**Segredos:** `scripts/generate_secrets.sh` cria segredos aleatórios e não imprime nenhum; `scripts/check-required-env.sh` recusa valores em falta, '
                     'de exemplo, curtos ou repetidos.',
+                    '**Doutor:** `scripts/armor_doctor.py` verifica, só em leitura, que uma instalação é coerente: o modo e o comprimento de cada segredo em `etc/armor*.env`, nenhum segredo repetido, o token do nó de rede derivado do de ingestão, a porta do broker face a `mosquitto.conf` e o disco livre; não imprime nenhum valor (`--json`, `--strict`).',
                     '**Cópia de segurança e restauro:** `scripts/backup_data.sh` faz um ficheiro cifrado com AES-256, verificado e com soma de verificação dos dados do '
                     'servidor (sem provas salvo se pedidas); `scripts/restore_data.sh` lista-o ou restaura-o sem nunca sobrescrever dados existentes.',
                     '**Uma VPN e um nome para a casa, configurados a partir do Studio:** `armor_wireguard.sh` monta uma VPN WireGuard com poucos comandos (chaves na '

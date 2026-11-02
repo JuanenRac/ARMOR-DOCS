@@ -57,7 +57,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "118%20passing",
+      "127%20passing",
       "2ea44f",
     ],
   ],
@@ -66,7 +66,7 @@ FACTS = {
 TEXT = {
  "en": {
    "tagline": "Offline voice intents in eight languages, with a confirmation the caller cannot forge",
-   "honest": "The intent rules, the eight languages, the signed confirmation tied to its speaker, the silence policy, the local service, the turn endpoint and the audit are real and tested (118 tests), and the server asks the service on the CM5 test bench. **No speech recognition or synthesis engine is part of this repository**: `/v1/turn` runs the commands you configure for them, and none has been tried with a real microphone yet; the touch panel that is meant to carry the assistant has not run on a board.",
+   "honest": "The intent rules, the eight languages, the signed confirmation tied to its speaker, the silence policy, the local service, the turn endpoint and the audit are real and tested (127 tests), and the server asks the service on the CM5 test bench. **No speech recognition or synthesis engine is part of this repository**: `/v1/turn` runs the commands you configure for them, and none has been tried with a real microphone yet; the touch panel that is meant to carry the assistant has not run on a board.",
    "glance": [
      [
        "Role",
@@ -78,7 +78,7 @@ TEXT = {
      ],
      [
        "Tests",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Commands",
@@ -103,7 +103,7 @@ TEXT = {
    ],
    "status": {
      "software": "The intent rules, the local service and the turn endpoint run as a service on the CM5 test bench, but no speech recognition or synthesis engine is part of the repository: it runs the commands you configure for them.",
-     "tests": "118 tests pass (`python -m unittest discover -s tests`): the intent rules, the eight languages, the signed confirmation tied to its speaker, the silence policy, the local service, the turn endpoint and the audit.",
+     "tests": "127 tests pass (`python -m unittest discover -s tests`): the intent rules, the eight languages, the signed confirmation tied to its speaker, the silence policy, the local service, the turn endpoint and the audit.",
      "hardware": "No microphone or speech engine has been tried, and the touch panel that is meant to carry the assistant has not run on a board.",
      "security": "The confirmation is signed and tied to its speaker, and the audit is tested on the host; there has been no independent review.",
      "integration": "The server asks the service on the CM5 test bench; the voice flow with the touch panel has not run.",
@@ -228,6 +228,7 @@ English, Spanish, German, French, Italian, Japanese, Chinese and European Portug
 |---|---|
 | `off` (default, and when no policy arrives) | Passed on at once |
 | `double_turn` | Not carried out; the service asks to say yes, and a yes within 15 s from the same panel passes the original command on |
+| `challenge` | Not carried out; the service draws a two-digit number that is not said aloud (it goes in `challenge` for the screen of the panel) and only that number, said within 20 s from the same panel, passes the original command on; three wrong ones lock silencing by voice for five minutes |
 | `pin` | Not carried out; the service asks for the PIN, spoken as digits or as digit words in the eight languages; the right PIN within 20 s passes the command on |
 | unreadable or unknown policy | `double_turn`: a broken setting never switches a protection off |
 
@@ -339,7 +340,7 @@ Outcomes: `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-needed
 | Turns at once | 2 |
 
 The service never writes what was said to a log, whatever the settings.""",
-     "quickstart": "**Requirements:** Python 3.11+ (standard library only). Optional: a speech-to-text and a text-to-speech program for `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. the tests\npython -m unittest discover -s tests                      # 118 tests\n\n# 2. the gateway, one JSON object per line\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. the local HTTP service (loopback only)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nTo hear and speak (`/v1/turn`), point the service at your engines and at the server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV on stdin, words on stdout\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # text on stdin, WAV on stdout\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nThe wall panel is a device on the network and the service listens on the loopback only: either a proxy of the server forwards the turn, or `--allow-remote` is used behind TLS. The token and the audio must not cross the network in clear.\n\n`run.bat` / `run.sh` and `build.bat` / `build.sh` start the shared project workflow of [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (the repositories sit side by side). Pip users get the command `armor-voice-gateway`.",
+     "quickstart": "**Requirements:** Python 3.11+ (standard library only). Optional: a speech-to-text and a text-to-speech program for `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. the tests\npython -m unittest discover -s tests                      # 127 tests\n\n# 2. the gateway, one JSON object per line\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. the local HTTP service (loopback only)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nTo hear and speak (`/v1/turn`), point the service at your engines and at the server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV on stdin, words on stdout\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # text on stdin, WAV on stdout\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nThe wall panel is a device on the network and the service listens on the loopback only: either a proxy of the server forwards the turn, or `--allow-remote` is used behind TLS. The token and the audio must not cross the network in clear.\n\n`run.bat` / `run.sh` and `build.bat` / `build.sh` start the shared project workflow of [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (the repositories sit side by side). Pip users get the command `armor-voice-gateway`.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -388,7 +389,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             JSON lines on stdin/stdout, the audit, the sentences said back
 │   ├── service.py             the local HTTP service (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                one spoken turn: engines, yes/no, time budget
-├── tests/                     118 tests: silence, edges, gateway, turn, languages, service
+├── tests/                     127 tests: silence, edges, gateway, turn, languages, service
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     the shared CI checks and project tooling
 ├── images/                    banner and icon
@@ -418,7 +419,7 @@ ARMOR-VOICE-AI/
  },
  "es": {
    "tagline": "Intenciones de voz sin conexión en ocho idiomas, con una confirmación que quien llama no puede falsificar",
-   "honest": "Las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, la política de silenciado, el servicio local, el punto de entrada de turnos y la auditoría son reales y están probados (118 pruebas), y el servidor consulta al servicio en el banco de pruebas de la CM5. **Ningún motor de reconocimiento ni de síntesis de voz forma parte de este repositorio**: `/v1/turn` ejecuta los comandos que tú configures para ello, y ninguno se ha probado todavía con un micrófono real; el panel táctil que debe llevar al asistente no ha funcionado en una placa.",
+   "honest": "Las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, la política de silenciado, el servicio local, el punto de entrada de turnos y la auditoría son reales y están probados (127 pruebas), y el servidor consulta al servicio en el banco de pruebas de la CM5. **Ningún motor de reconocimiento ni de síntesis de voz forma parte de este repositorio**: `/v1/turn` ejecuta los comandos que tú configures para ello, y ninguno se ha probado todavía con un micrófono real; el panel táctil que debe llevar al asistente no ha funcionado en una placa.",
    "glance": [
      [
        "Función",
@@ -430,7 +431,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Pruebas",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Comandos",
@@ -455,7 +456,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "Las reglas de intención, el servicio local y el punto de entrada de turnos funcionan como servicio en el banco de la CM5, pero ningún motor de reconocimiento ni síntesis de voz forma parte del repositorio: ejecuta los comandos que configures para ello.",
-     "tests": "Pasan 118 pruebas (`python -m unittest discover -s tests`): las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, la política de silenciado, el servicio local, el punto de entrada de turnos y la auditoría.",
+     "tests": "Pasan 127 pruebas (`python -m unittest discover -s tests`): las reglas de intención, los ocho idiomas, la confirmación firmada ligada a quien habla, la política de silenciado, el servicio local, el punto de entrada de turnos y la auditoría.",
      "hardware": "No se ha probado ningún micrófono ni motor de voz, y el panel táctil que debe llevar al asistente no ha funcionado en una placa.",
      "security": "La confirmación está firmada y ligada a quien habla, y la auditoría se prueba en el equipo anfitrión; no ha habido revisión independiente.",
      "integration": "El servidor consulta al servicio en el banco de la CM5; el flujo de voz con el panel táctil no ha funcionado.",
@@ -580,6 +581,7 @@ Inglés, español, alemán, francés, italiano, japonés, chino y portugués de 
 |---|---|
 | `off` (por defecto, y si no llega política) | Se pasa al instante |
 | `double_turn` | No se ejecuta; el servicio pide decir sí, y un sí en 15 s desde el mismo panel pasa la orden original |
+| `challenge` | No se ejecuta; el servicio sortea un número de dos cifras que no se dice en voz alta (va en `challenge` para la pantalla del panel) y solo ese número, dicho en 20 s desde el mismo panel, pasa la orden original; tres errores bloquean el silenciado por voz cinco minutos |
 | `pin` | No se ejecuta; el servicio pide el PIN, dicho en dígitos o en palabras en los ocho idiomas; el PIN correcto en 20 s pasa la orden |
 | política ilegible o desconocida | `double_turn`: un ajuste roto nunca apaga una protección |
 
@@ -691,7 +693,7 @@ Resultados: `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-need
 | Turnos a la vez | 2 |
 
 El servicio nunca escribe lo dicho en un registro, sean cuales sean los ajustes.""",
-     "quickstart": "**Requisitos:** Python 3.11+ (solo biblioteca estándar). Opcional: un programa de voz a texto y otro de texto a voz para `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. las pruebas\npython -m unittest discover -s tests                      # 118 pruebas\n\n# 2. la pasarela, un objeto JSON por línea\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. el servicio HTTP local (solo bucle local)\n$env:ARMOR_VOICE_TOKEN = \"un-token-de-al-menos-16-caracteres\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPara oír y hablar (`/v1/turn`), apunta el servicio a tus motores y al servidor:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV por la entrada, palabras por la salida\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texto por la entrada, WAV por la salida\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nEl panel de pared es un dispositivo de la red y el servicio escucha solo en el bucle local: o bien un proxy del servidor reenvía el turno, o se usa `--allow-remote` tras TLS. El token y el audio no deben cruzar la red en claro.\n\n`run.bat` / `run.sh` y `build.bat` / `build.sh` lanzan el flujo de proyecto compartido de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (los repositorios están uno junto a otro). Con pip se dispone del comando `armor-voice-gateway`.",
+     "quickstart": "**Requisitos:** Python 3.11+ (solo biblioteca estándar). Opcional: un programa de voz a texto y otro de texto a voz para `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. las pruebas\npython -m unittest discover -s tests                      # 127 pruebas\n\n# 2. la pasarela, un objeto JSON por línea\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. el servicio HTTP local (solo bucle local)\n$env:ARMOR_VOICE_TOKEN = \"un-token-de-al-menos-16-caracteres\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPara oír y hablar (`/v1/turn`), apunta el servicio a tus motores y al servidor:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV por la entrada, palabras por la salida\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texto por la entrada, WAV por la salida\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nEl panel de pared es un dispositivo de la red y el servicio escucha solo en el bucle local: o bien un proxy del servidor reenvía el turno, o se usa `--allow-remote` tras TLS. El token y el audio no deben cruzar la red en claro.\n\n`run.bat` / `run.sh` y `build.bat` / `build.sh` lanzan el flujo de proyecto compartido de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (los repositorios están uno junto a otro). Con pip se dispone del comando `armor-voice-gateway`.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -740,7 +742,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             líneas JSON por stdin/stdout, la auditoría, las frases que se responden
 │   ├── service.py             el servicio HTTP local (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                un turno hablado: motores, sí/no, presupuesto de tiempo
-├── tests/                     118 pruebas: silencio, bordes, pasarela, turno, idiomas, servicio
+├── tests/                     127 pruebas: silencio, bordes, pasarela, turno, idiomas, servicio
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     las comprobaciones de CI compartidas y la herramienta de proyecto
 ├── images/                    banner e icono
@@ -770,7 +772,7 @@ ARMOR-VOICE-AI/
  },
  "fr": {
    "tagline": "Intentions vocales hors ligne en huit langues, avec une confirmation que l'appelant ne peut pas falsifier",
-   "honest": "Les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, la politique de mise en silence, le service local, le point d'entrée des tours et l'audit sont réels et testés (118 tests), et le serveur interroge le service sur le banc d'essai CM5. **Aucun moteur de reconnaissance ni de synthèse vocale ne fait partie de ce dépôt** : `/v1/turn` exécute les commandes que vous configurez pour cela, et aucune n'a encore été essayée avec un vrai microphone ; le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
+   "honest": "Les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, la politique de mise en silence, le service local, le point d'entrée des tours et l'audit sont réels et testés (127 tests), et le serveur interroge le service sur le banc d'essai CM5. **Aucun moteur de reconnaissance ni de synthèse vocale ne fait partie de ce dépôt** : `/v1/turn` exécute les commandes que vous configurez pour cela, et aucune n'a encore été essayée avec un vrai microphone ; le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
    "glance": [
      [
        "Rôle",
@@ -782,7 +784,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Tests",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Commandes",
@@ -807,7 +809,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "Les règles d'intention, le service local et le point d'entrée des tours tournent comme service sur le banc d'essai CM5, mais aucun moteur de reconnaissance ni de synthèse vocale ne fait partie du dépôt : il exécute les commandes que vous configurez pour cela.",
-     "tests": "118 tests réussissent (`python -m unittest discover -s tests`) : les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, la politique de mise en silence, le service local, le point d'entrée des tours et l'audit.",
+     "tests": "127 tests réussissent (`python -m unittest discover -s tests`) : les règles d'intention, les huit langues, la confirmation signée liée à son locuteur, la politique de mise en silence, le service local, le point d'entrée des tours et l'audit.",
      "hardware": "Aucun microphone ni moteur vocal n'a été essayé, et le panneau tactile censé porter l'assistant n'a pas tourné sur une carte.",
      "security": "La confirmation est signée et liée à son locuteur, et l'audit est testé sur la machine hôte ; il n'y a pas eu de revue indépendante.",
      "integration": "Le serveur interroge le service sur le banc d'essai CM5 ; le flux vocal avec le panneau tactile n'a pas tourné.",
@@ -932,6 +934,7 @@ Anglais, espagnol, allemand, français, italien, japonais, chinois et portugais 
 |---|---|
 | `off` (par défaut, et quand aucune politique n'arrive) | Transmis immédiatement |
 | `double_turn` | Non exécuté ; le service demande de dire oui, et un oui dans les 15 s depuis le même panneau transmet la commande d'origine |
+| `challenge` | Non exécuté ; le service tire un nombre à deux chiffres qui n'est pas dit à voix haute (il va dans `challenge` pour l'écran du panneau) et seul ce nombre, dit dans les 20 s depuis le même panneau, transmet la commande d'origine ; trois erreurs bloquent le silence par la voix cinq minutes |
 | `pin` | Non exécuté ; le service demande le PIN, dit en chiffres ou en mots dans les huit langues ; le bon PIN dans les 20 s transmet la commande |
 | politique illisible ou inconnue | `double_turn` : un réglage cassé ne désactive jamais une protection |
 
@@ -1043,7 +1046,7 @@ Résultats : `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-nee
 | Tours simultanés | 2 |
 
 Le service n'écrit jamais ce qui a été dit dans un journal, quels que soient les réglages.""",
-     "quickstart": "**Prérequis :** Python 3.11+ (bibliothèque standard uniquement). Facultatif : un programme de reconnaissance vocale et un de synthèse vocale pour `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. les tests\npython -m unittest discover -s tests                      # 118 tests\n\n# 2. la passerelle, un objet JSON par ligne\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. le service HTTP local (boucle locale uniquement)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPour écouter et parler (`/v1/turn`), pointez le service vers vos moteurs et vers le serveur :\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV sur l'entrée, mots sur la sortie\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texte sur l'entrée, WAV sur la sortie\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nLe panneau mural est un appareil du réseau et le service n'écoute que sur la boucle locale : soit un proxy du serveur transmet le tour, soit `--allow-remote` est utilisé derrière TLS. Le jeton et l'audio ne doivent pas traverser le réseau en clair.\n\n`run.bat` / `run.sh` et `build.bat` / `build.sh` lancent le flux de projet partagé d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (les dépôts sont côte à côte). Avec pip, la commande `armor-voice-gateway` est disponible.",
+     "quickstart": "**Prérequis :** Python 3.11+ (bibliothèque standard uniquement). Facultatif : un programme de reconnaissance vocale et un de synthèse vocale pour `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. les tests\npython -m unittest discover -s tests                      # 127 tests\n\n# 2. la passerelle, un objet JSON par ligne\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. le service HTTP local (boucle locale uniquement)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPour écouter et parler (`/v1/turn`), pointez le service vers vos moteurs et vers le serveur :\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV sur l'entrée, mots sur la sortie\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texte sur l'entrée, WAV sur la sortie\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nLe panneau mural est un appareil du réseau et le service n'écoute que sur la boucle locale : soit un proxy du serveur transmet le tour, soit `--allow-remote` est utilisé derrière TLS. Le jeton et l'audio ne doivent pas traverser le réseau en clair.\n\n`run.bat` / `run.sh` et `build.bat` / `build.sh` lancent le flux de projet partagé d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (les dépôts sont côte à côte). Avec pip, la commande `armor-voice-gateway` est disponible.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -1092,7 +1095,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             lignes JSON sur stdin/stdout, l'audit, les phrases répondues
 │   ├── service.py             le service HTTP local (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                un tour vocal : moteurs, oui/non, budget de temps
-├── tests/                     118 tests : silence, limites, passerelle, tour, langues, service
+├── tests/                     127 tests : silence, limites, passerelle, tour, langues, service
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     les contrôles CI partagés et l'outillage du projet
 ├── images/                    bannière et icône
@@ -1122,7 +1125,7 @@ ARMOR-VOICE-AI/
  },
  "it": {
    "tagline": "Intenti vocali offline in otto lingue, con una conferma che chi chiama non può falsificare",
-   "honest": "Le regole degli intenti, le otto lingue, la conferma firmata legata a chi parla, la politica di silenziamento, il servizio locale, l'endpoint dei turni e l'audit sono reali e testati (118 test), e il server interroga il servizio sul banco di prova CM5. **Nessun motore di riconoscimento o di sintesi vocale fa parte di questo repository**: `/v1/turn` esegue i comandi che configuri per questo, e nessuno è stato ancora provato con un vero microfono; il pannello touch che dovrebbe ospitare l'assistente non ha ancora girato su una scheda.",
+   "honest": "Le regole degli intenti, le otto lingue, la conferma firmata legata a chi parla, la politica di silenziamento, il servizio locale, l'endpoint dei turni e l'audit sono reali e testati (127 test), e il server interroga il servizio sul banco di prova CM5. **Nessun motore di riconoscimento o di sintesi vocale fa parte di questo repository**: `/v1/turn` esegue i comandi che configuri per questo, e nessuno è stato ancora provato con un vero microfono; il pannello touch che dovrebbe ospitare l'assistente non ha ancora girato su una scheda.",
    "glance": [
      [
        "Ruolo",
@@ -1134,7 +1137,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Test",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Comandi",
@@ -1159,7 +1162,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "Le regole degli intenti, il servizio locale e l'endpoint dei turni girano come servizio sul banco di prova CM5, ma nessun motore di riconoscimento o di sintesi vocale fa parte del repository: esegue i comandi che configuri per questo.",
-     "tests": "Superano 118 test (`python -m unittest discover -s tests`): le regole degli intenti, le otto lingue, la conferma firmata legata a chi parla, la politica di silenziamento, il servizio locale, l'endpoint dei turni e l'audit.",
+     "tests": "Superano 127 test (`python -m unittest discover -s tests`): le regole degli intenti, le otto lingue, la conferma firmata legata a chi parla, la politica di silenziamento, il servizio locale, l'endpoint dei turni e l'audit.",
      "hardware": "Nessun microfono né motore vocale è stato provato, e il pannello touch che dovrebbe ospitare l'assistente non ha girato su una scheda.",
      "security": "La conferma è firmata e legata a chi parla, e l'audit è provato sull'host; non c'è stata una revisione indipendente.",
      "integration": "Il server interroga il servizio sul banco di prova CM5; il flusso vocale con il pannello touch non ha girato.",
@@ -1284,6 +1287,7 @@ Inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese 
 |---|---|
 | `off` (predefinita, e quando non arriva alcuna politica) | Inoltrato subito |
 | `double_turn` | Non eseguito; il servizio chiede di dire sì, e un sì entro 15 s dallo stesso pannello inoltra il comando originale |
+| `challenge` | Non eseguito; il servizio estrae un numero di due cifre che non viene detto ad alta voce (va in `challenge` per lo schermo del pannello) e solo quel numero, detto entro 20 s dallo stesso pannello, inoltra il comando originale; tre errori bloccano il silenziamento a voce per cinque minuti |
 | `pin` | Non eseguito; il servizio chiede il PIN, pronunciato a cifre o a parole nelle otto lingue; il PIN giusto entro 20 s inoltra il comando |
 | politica illeggibile o sconosciuta | `double_turn`: un'impostazione guasta non disattiva mai una protezione |
 
@@ -1395,7 +1399,7 @@ Esiti: `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-needed`, 
 | Turni contemporanei | 2 |
 
 Il servizio non scrive mai ciò che è stato detto in un log, qualunque siano le impostazioni.""",
-     "quickstart": "**Requisiti:** Python 3.11+ (solo libreria standard). Facoltativo: un programma di riconoscimento vocale e uno di sintesi vocale per `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. i test\npython -m unittest discover -s tests                      # 118 test\n\n# 2. il gateway, un oggetto JSON per riga\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. il servizio HTTP locale (solo loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPer ascoltare e parlare (`/v1/turn`), punta il servizio ai tuoi motori e al server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV sull'input, parole sull'output\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # testo sull'input, WAV sull'output\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nIl pannello a parete è un dispositivo della rete e il servizio ascolta solo sul loopback: o un proxy del server inoltra il turno, oppure si usa `--allow-remote` dietro TLS. Il token e l'audio non devono attraversare la rete in chiaro.\n\n`run.bat` / `run.sh` e `build.bat` / `build.sh` avviano il flusso di progetto condiviso di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (i repository stanno affiancati). Con pip si ha il comando `armor-voice-gateway`.",
+     "quickstart": "**Requisiti:** Python 3.11+ (solo libreria standard). Facoltativo: un programma di riconoscimento vocale e uno di sintesi vocale per `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. i test\npython -m unittest discover -s tests                      # 127 test\n\n# 2. il gateway, un oggetto JSON per riga\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. il servizio HTTP locale (solo loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPer ascoltare e parlare (`/v1/turn`), punta il servizio ai tuoi motori e al server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV sull'input, parole sull'output\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # testo sull'input, WAV sull'output\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nIl pannello a parete è un dispositivo della rete e il servizio ascolta solo sul loopback: o un proxy del server inoltra il turno, oppure si usa `--allow-remote` dietro TLS. Il token e l'audio non devono attraversare la rete in chiaro.\n\n`run.bat` / `run.sh` e `build.bat` / `build.sh` avviano il flusso di progetto condiviso di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (i repository stanno affiancati). Con pip si ha il comando `armor-voice-gateway`.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -1444,7 +1448,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             righe JSON su stdin/stdout, l'audit, le frasi dette in risposta
 │   ├── service.py             il servizio HTTP locale (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                un turno vocale: motori, sì/no, budget di tempo
-├── tests/                     118 test: silenzio, limiti, gateway, turno, lingue, servizio
+├── tests/                     127 test: silenzio, limiti, gateway, turno, lingue, servizio
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     i controlli CI condivisi e gli strumenti del progetto
 ├── images/                    banner e icona
@@ -1474,7 +1478,7 @@ ARMOR-VOICE-AI/
  },
  "de": {
    "tagline": "Offline-Sprachabsichten in acht Sprachen, mit einer Bestätigung, die der Aufrufer nicht fälschen kann",
-   "honest": "Die Absichtsregeln, die acht Sprachen, die signierte, an ihren Sprecher gebundene Bestätigung, die Stummschaltungsrichtlinie, der lokale Dienst, der Turn-Endpunkt und das Audit sind real und getestet (118 Tests), und der Server fragt den Dienst auf dem CM5-Prüfstand ab. **Keine Spracherkennungs- oder Sprachsynthese-Engine ist Teil dieses Repositorys**: `/v1/turn` führt die Befehle aus, die du dafür konfigurierst, und keiner davon wurde bisher mit einem echten Mikrofon ausprobiert; das Touch-Panel, das den Assistenten tragen soll, lief noch nicht auf einer Platine.",
+   "honest": "Die Absichtsregeln, die acht Sprachen, die signierte, an ihren Sprecher gebundene Bestätigung, die Stummschaltungsrichtlinie, der lokale Dienst, der Turn-Endpunkt und das Audit sind real und getestet (127 Tests), und der Server fragt den Dienst auf dem CM5-Prüfstand ab. **Keine Spracherkennungs- oder Sprachsynthese-Engine ist Teil dieses Repositorys**: `/v1/turn` führt die Befehle aus, die du dafür konfigurierst, und keiner davon wurde bisher mit einem echten Mikrofon ausprobiert; das Touch-Panel, das den Assistenten tragen soll, lief noch nicht auf einer Platine.",
    "glance": [
      [
        "Rolle",
@@ -1486,7 +1490,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Tests",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Befehle",
@@ -1511,7 +1515,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "Die Absichtsregeln, der lokale Dienst und der Turn-Endpunkt laufen als Dienst auf dem CM5-Prüfstand, aber keine Spracherkennungs- oder Sprachsynthese-Engine ist Teil des Repositorys: Es führt die Befehle aus, die du dafür konfigurierst.",
-     "tests": "118 Tests bestehen (`python -m unittest discover -s tests`): die Absichtsregeln, die acht Sprachen, die signierte, an ihren Sprecher gebundene Bestätigung, die Stummschaltungsrichtlinie, der lokale Dienst, der Turn-Endpunkt und das Audit.",
+     "tests": "127 Tests bestehen (`python -m unittest discover -s tests`): die Absichtsregeln, die acht Sprachen, die signierte, an ihren Sprecher gebundene Bestätigung, die Stummschaltungsrichtlinie, der lokale Dienst, der Turn-Endpunkt und das Audit.",
      "hardware": "Kein Mikrofon und keine Sprach-Engine wurde ausprobiert, und das Touch-Panel, das den Assistenten tragen soll, lief nicht auf einer Platine.",
      "security": "Die Bestätigung ist signiert und an ihren Sprecher gebunden, und das Audit ist auf dem Host getestet; es gab keine unabhängige Prüfung.",
      "integration": "Der Server fragt den Dienst auf dem CM5-Prüfstand ab; der Sprachablauf mit dem Touch-Panel lief nicht.",
@@ -1636,6 +1640,7 @@ Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch un
 |---|---|
 | `off` (Standard, und wenn keine Richtlinie eintrifft) | Sofort weitergegeben |
 | `double_turn` | Nicht ausgeführt; der Dienst bittet darum, Ja zu sagen, und ein Ja innerhalb von 15 s vom selben Panel gibt den ursprünglichen Befehl weiter |
+| `challenge` | Nicht ausgeführt; der Dienst zieht eine zweistellige Zahl, die nicht laut gesagt wird (sie steht in `challenge` für den Bildschirm des Panels), und nur diese Zahl, innerhalb von 20 s vom selben Panel genannt, gibt den ursprünglichen Befehl weiter; drei falsche sperren das Stummschalten per Sprache fünf Minuten |
 | `pin` | Nicht ausgeführt; der Dienst fragt nach der PIN, gesprochen als Ziffern oder als Ziffernwörter in den acht Sprachen; die richtige PIN innerhalb von 20 s gibt den Befehl weiter |
 | unlesbare oder unbekannte Richtlinie | `double_turn`: Eine defekte Einstellung schaltet nie einen Schutz ab |
 
@@ -1747,7 +1752,7 @@ Ergebnisse: `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-need
 | Gleichzeitige Turns | 2 |
 
 Der Dienst schreibt das Gesagte nie in ein Protokoll, egal welche Einstellungen gelten.""",
-     "quickstart": "**Voraussetzungen:** Python 3.11+ (nur Standardbibliothek). Optional: ein Spracherkennungs- und ein Sprachsyntheseprogramm für `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. die Tests\npython -m unittest discover -s tests                      # 118 Tests\n\n# 2. das Gateway, ein JSON-Objekt pro Zeile\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. der lokale HTTP-Dienst (nur Loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nUm zu hören und zu sprechen (`/v1/turn`), richte den Dienst auf deine Engines und auf den Server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV auf der Eingabe, Wörter auf der Ausgabe\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # Text auf der Eingabe, WAV auf der Ausgabe\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nDas Wandpanel ist ein Gerät im Netzwerk, und der Dienst lauscht nur auf Loopback: Entweder leitet ein Proxy des Servers den Turn weiter, oder `--allow-remote` wird hinter TLS verwendet. Der Token und das Audio dürfen das Netzwerk nicht im Klartext durchqueren.\n\n`run.bat` / `run.sh` und `build.bat` / `build.sh` starten den gemeinsamen Projektablauf von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (die Repositorys liegen nebeneinander). Mit pip steht der Befehl `armor-voice-gateway` zur Verfügung.",
+     "quickstart": "**Voraussetzungen:** Python 3.11+ (nur Standardbibliothek). Optional: ein Spracherkennungs- und ein Sprachsyntheseprogramm für `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. die Tests\npython -m unittest discover -s tests                      # 127 Tests\n\n# 2. das Gateway, ein JSON-Objekt pro Zeile\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. der lokale HTTP-Dienst (nur Loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nUm zu hören und zu sprechen (`/v1/turn`), richte den Dienst auf deine Engines und auf den Server:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV auf der Eingabe, Wörter auf der Ausgabe\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # Text auf der Eingabe, WAV auf der Ausgabe\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nDas Wandpanel ist ein Gerät im Netzwerk, und der Dienst lauscht nur auf Loopback: Entweder leitet ein Proxy des Servers den Turn weiter, oder `--allow-remote` wird hinter TLS verwendet. Der Token und das Audio dürfen das Netzwerk nicht im Klartext durchqueren.\n\n`run.bat` / `run.sh` und `build.bat` / `build.sh` starten den gemeinsamen Projektablauf von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (die Repositorys liegen nebeneinander). Mit pip steht der Befehl `armor-voice-gateway` zur Verfügung.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -1796,7 +1801,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             JSON-Zeilen über stdin/stdout, das Audit, die zurückgesprochenen Sätze
 │   ├── service.py             der lokale HTTP-Dienst (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                ein gesprochener Turn: Engines, Ja/Nein, Zeitbudget
-├── tests/                     118 Tests: Stummschaltung, Grenzfälle, Gateway, Turn, Sprachen, Dienst
+├── tests/                     127 Tests: Stummschaltung, Grenzfälle, Gateway, Turn, Sprachen, Dienst
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     die gemeinsamen CI-Prüfungen und Projektwerkzeuge
 ├── images/                    Banner und Symbol
@@ -1826,7 +1831,7 @@ ARMOR-VOICE-AI/
  },
  "zh": {
    "tagline": "八种语言的离线语音意图，附带调用方无法伪造的确认",
-   "honest": "意图规则、八种语言、与说话人绑定的签名确认、静音策略、本地服务、轮次接口和审计都是真实的，并有测试覆盖（118 项测试），服务器在 CM5 测试台上会向该服务发起查询。**本仓库不包含任何语音识别或语音合成引擎**：`/v1/turn` 运行的是你为它们配置的命令，目前没有任何一个用真实麦克风试过；用来承载该助手的触摸面板还没有在板子上运行过。",
+   "honest": "意图规则、八种语言、与说话人绑定的签名确认、静音策略、本地服务、轮次接口和审计都是真实的，并有测试覆盖（127 项测试），服务器在 CM5 测试台上会向该服务发起查询。**本仓库不包含任何语音识别或语音合成引擎**：`/v1/turn` 运行的是你为它们配置的命令，目前没有任何一个用真实麦克风试过；用来承载该助手的触摸面板还没有在板子上运行过。",
    "glance": [
      [
        "角色",
@@ -1838,7 +1843,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "测试",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "命令",
@@ -1863,7 +1868,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "意图规则、本地服务和轮次接口在 CM5 测试台上作为服务运行，但本仓库不包含任何语音识别或语音合成引擎：它运行的是你为此配置的命令。",
-     "tests": "118 项测试通过（`python -m unittest discover -s tests`）：意图规则、八种语言、与说话人绑定的签名确认、静音策略、本地服务、轮次接口和审计。",
+     "tests": "127 项测试通过（`python -m unittest discover -s tests`）：意图规则、八种语言、与说话人绑定的签名确认、静音策略、本地服务、轮次接口和审计。",
      "hardware": "没有试过任何麦克风或语音引擎，用来承载该助手的触摸面板也还没有在板子上运行过。",
      "security": "确认经过签名并与说话人绑定，审计已在主机上测试；没有经过独立审查。",
      "integration": "服务器在 CM5 测试台上查询该服务；与触摸面板配合的语音流程尚未运行。",
@@ -1988,6 +1993,7 @@ sequenceDiagram
 |---|---|
 | `off`（默认，且在没有收到策略时） | 立即转交 |
 | `double_turn` | 不执行；服务要求说“是”，来自同一面板的 15 秒内的“是”会转交原始命令 |
+| `challenge` | 不执行；服务抽取一个不会被朗读出来的两位数（放在 `challenge` 中供面板屏幕显示），只有在 20 秒内由同一面板说出该数字才会转交原始命令；连错三次会将语音静音锁定五分钟 |
 | `pin` | 不执行；服务要求 PIN，可用数字或八种语言的数字词说出；20 秒内说出正确的 PIN 即转交命令 |
 | 无法读取或未知的策略 | `double_turn`：损坏的设置绝不会关闭防护 |
 
@@ -2099,7 +2105,7 @@ PIN（4 到 12 位数字，`ARMOR_VOICE_SILENCE_PIN`）以恒定时间比较，�
 | 同时轮次数 | 2 |
 
 无论如何设置，服务都不会把说过的话写入日志。""",
-     "quickstart": "**要求：** Python 3.11+（仅使用标准库）。可选：用于 `/v1/turn` 的语音转文字程序和文字转语音程序。\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. 测试\npython -m unittest discover -s tests                      # 118 项测试\n\n# 2. 网关，每行一个 JSON 对象\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. 本地 HTTP 服务（仅限本机回环）\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\n要听和说（`/v1/turn`），请把服务指向你的引擎和服务器：\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # 标准输入为 WAV，标准输出为文字\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # 标准输入为文字，标准输出为 WAV\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\n壁挂面板是网络上的设备，而服务只监听本机回环：要么由服务器的代理转发该轮次，要么在 TLS 之后使用 `--allow-remote`。令牌和音频不得在网络中明文传输。\n\n`run.bat` / `run.sh` 和 `build.bat` / `build.sh` 会启动 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的共享项目工作流（各仓库并排放置）。使用 pip 的用户可获得命令 `armor-voice-gateway`。",
+     "quickstart": "**要求：** Python 3.11+（仅使用标准库）。可选：用于 `/v1/turn` 的语音转文字程序和文字转语音程序。\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. 测试\npython -m unittest discover -s tests                      # 127 项测试\n\n# 2. 网关，每行一个 JSON 对象\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. 本地 HTTP 服务（仅限本机回环）\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\n要听和说（`/v1/turn`），请把服务指向你的引擎和服务器：\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # 标准输入为 WAV，标准输出为文字\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # 标准输入为文字，标准输出为 WAV\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\n壁挂面板是网络上的设备，而服务只监听本机回环：要么由服务器的代理转发该轮次，要么在 TLS 之后使用 `--allow-remote`。令牌和音频不得在网络中明文传输。\n\n`run.bat` / `run.sh` 和 `build.bat` / `build.sh` 会启动 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的共享项目工作流（各仓库并排放置）。使用 pip 的用户可获得命令 `armor-voice-gateway`。",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -2148,7 +2154,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             stdin/stdout 上的 JSON 行、审计、回应的语句
 │   ├── service.py             本地 HTTP 服务（/healthz、/v1/command、/v1/turn）
 │   └── turn.py                一个语音轮次：引擎、是/否、时间预算
-├── tests/                     118 项测试：静音、边界、网关、轮次、语言、服务
+├── tests/                     127 项测试：静音、边界、网关、轮次、语言、服务
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     共享的 CI 检查和项目工具
 ├── images/                    横幅和图标
@@ -2178,7 +2184,7 @@ ARMOR-VOICE-AI/
  },
  "ja": {
    "tagline": "8 言語に対応したオフライン音声インテント。呼び出し側が偽造できない確認つき",
-   "honest": "インテントのルール、8 言語、話者に結び付いた署名付き確認、サイレンスのポリシー、ローカルサービス、ターンのエンドポイント、監査は実在し、テストされています（118 件のテスト）。サーバーは CM5 テストベンチ上でこのサービスに問い合わせます。**音声認識・音声合成のエンジンはこのリポジトリに含まれません**：`/v1/turn` は、あなたが設定したコマンドを実行します。そのどれも、実際のマイクではまだ試していません。アシスタントを載せる予定のタッチパネルは、ボード上ではまだ動いていません。",
+   "honest": "インテントのルール、8 言語、話者に結び付いた署名付き確認、サイレンスのポリシー、ローカルサービス、ターンのエンドポイント、監査は実在し、テストされています（127 件のテスト）。サーバーは CM5 テストベンチ上でこのサービスに問い合わせます。**音声認識・音声合成のエンジンはこのリポジトリに含まれません**：`/v1/turn` は、あなたが設定したコマンドを実行します。そのどれも、実際のマイクではまだ試していません。アシスタントを載せる予定のタッチパネルは、ボード上ではまだ動いていません。",
    "glance": [
      [
        "役割",
@@ -2190,7 +2196,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "テスト",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "コマンド",
@@ -2215,7 +2221,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "インテントのルール、ローカルサービス、ターンのエンドポイントは CM5 テストベンチ上でサービスとして動作していますが、音声認識・音声合成のエンジンはリポジトリに含まれません。設定したコマンドを実行します。",
-     "tests": "118 件のテストが通ります（`python -m unittest discover -s tests`）：インテントのルール、8 言語、話者に結び付いた署名付き確認、サイレンスのポリシー、ローカルサービス、ターンのエンドポイント、監査。",
+     "tests": "127 件のテストが通ります（`python -m unittest discover -s tests`）：インテントのルール、8 言語、話者に結び付いた署名付き確認、サイレンスのポリシー、ローカルサービス、ターンのエンドポイント、監査。",
      "hardware": "マイクも音声エンジンも試しておらず、アシスタントを載せる予定のタッチパネルもボード上では動いていません。",
      "security": "確認は署名され話者に結び付いており、監査はホスト上でテストされています。独立したレビューはありません。",
      "integration": "サーバーは CM5 テストベンチ上でこのサービスに問い合わせます。タッチパネルとの音声フローはまだ動いていません。",
@@ -2340,6 +2346,7 @@ sequenceDiagram
 |---|---|
 | `off`（既定。ポリシーが届かないときも） | すぐに渡す |
 | `double_turn` | 実行しない。サービスが「はい」と言うよう求め、同じパネルから 15 秒以内の「はい」で元のコマンドを渡す |
+| `challenge` | 実行しない。サービスは声に出さない 2 桁の数字を引き（パネルの画面用に `challenge` に入れる）、同じパネルから 20 秒以内にその数字を言った場合のみ元のコマンドを渡す。3 回間違えると音声での消音が 5 分間ロックされる |
 | `pin` | 実行しない。サービスが PIN を求め、数字または 8 言語の数字の言葉で話す。20 秒以内の正しい PIN でコマンドを渡す |
 | 読み取れない、または未知のポリシー | `double_turn`：壊れた設定が保護をオフにすることはありません |
 
@@ -2451,7 +2458,7 @@ PIN（4〜12 桁、`ARMOR_VOICE_SILENCE_PIN`）は一定時間で比較され、
 | 同時ターン数 | 2 |
 
 設定にかかわらず、サービスは話された内容をログに書きません。""",
-     "quickstart": "**要件：** Python 3.11+（標準ライブラリのみ）。任意：`/v1/turn` 用の音声からテキストへのプログラムとテキストから音声へのプログラム。\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. テスト\npython -m unittest discover -s tests                      # 118 件のテスト\n\n# 2. ゲートウェイ、1 行に 1 つの JSON オブジェクト\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. ローカル HTTP サービス（ループバックのみ）\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\n聞いて話す（`/v1/turn`）には、サービスを自分のエンジンとサーバーに向けます：\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # 標準入力に WAV、標準出力に言葉\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # 標準入力にテキスト、標準出力に WAV\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\n壁面パネルはネットワーク上のデバイスで、サービスはループバックでしか待ち受けません。サーバーのプロキシがターンを転送するか、TLS の背後で `--allow-remote` を使います。トークンと音声は平文でネットワークを通してはいけません。\n\n`run.bat` / `run.sh` と `build.bat` / `build.sh` は、[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) の共通プロジェクトワークフローを起動します（リポジトリは並べて置きます）。pip を使う場合は `armor-voice-gateway` コマンドが使えます。",
+     "quickstart": "**要件：** Python 3.11+（標準ライブラリのみ）。任意：`/v1/turn` 用の音声からテキストへのプログラムとテキストから音声へのプログラム。\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. テスト\npython -m unittest discover -s tests                      # 127 件のテスト\n\n# 2. ゲートウェイ、1 行に 1 つの JSON オブジェクト\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. ローカル HTTP サービス（ループバックのみ）\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\n聞いて話す（`/v1/turn`）には、サービスを自分のエンジンとサーバーに向けます：\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # 標準入力に WAV、標準出力に言葉\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # 標準入力にテキスト、標準出力に WAV\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\n壁面パネルはネットワーク上のデバイスで、サービスはループバックでしか待ち受けません。サーバーのプロキシがターンを転送するか、TLS の背後で `--allow-remote` を使います。トークンと音声は平文でネットワークを通してはいけません。\n\n`run.bat` / `run.sh` と `build.bat` / `build.sh` は、[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) の共通プロジェクトワークフローを起動します（リポジトリは並べて置きます）。pip を使う場合は `armor-voice-gateway` コマンドが使えます。",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -2500,7 +2507,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             stdin/stdout の JSON Lines、監査、返す文
 │   ├── service.py             ローカル HTTP サービス（/healthz、/v1/command、/v1/turn）
 │   └── turn.py                1 回の音声ターン：エンジン、はい/いいえ、時間の持ち時間
-├── tests/                     118 件のテスト：サイレンス、エッジ、ゲートウェイ、ターン、言語、サービス
+├── tests/                     127 件のテスト：サイレンス、エッジ、ゲートウェイ、ターン、言語、サービス
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     共通の CI チェックとプロジェクトのツール
 ├── images/                    バナーとアイコン
@@ -2530,7 +2537,7 @@ ARMOR-VOICE-AI/
  },
  "pt": {
    "tagline": "Intenções de voz offline em oito idiomas, com uma confirmação que quem chama não consegue falsificar",
-   "honest": "As regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, a política de silenciamento, o serviço local, o ponto de entrada de turnos e a auditoria são reais e estão testados (118 testes), e o servidor consulta o serviço na bancada de testes do CM5. **Nenhum motor de reconhecimento ou de síntese de voz faz parte deste repositório**: o `/v1/turn` executa os comandos que configurar para isso, e nenhum foi ainda experimentado com um microfone real; o painel tátil que deverá acolher o assistente não funcionou numa placa.",
+   "honest": "As regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, a política de silenciamento, o serviço local, o ponto de entrada de turnos e a auditoria são reais e estão testados (127 testes), e o servidor consulta o serviço na bancada de testes do CM5. **Nenhum motor de reconhecimento ou de síntese de voz faz parte deste repositório**: o `/v1/turn` executa os comandos que configurar para isso, e nenhum foi ainda experimentado com um microfone real; o painel tátil que deverá acolher o assistente não funcionou numa placa.",
    "glance": [
      [
        "Função",
@@ -2542,7 +2549,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Testes",
-       "118 (`python -m unittest discover -s tests`)",
+       "127 (`python -m unittest discover -s tests`)",
      ],
      [
        "Comandos",
@@ -2567,7 +2574,7 @@ ARMOR-VOICE-AI/
    ],
    "status": {
      "software": "As regras de intenção, o serviço local e o ponto de entrada de turnos funcionam como serviço na bancada de testes do CM5, mas nenhum motor de reconhecimento ou de síntese de voz faz parte do repositório: executa os comandos que configurar para isso.",
-     "tests": "Passam 118 testes (`python -m unittest discover -s tests`): as regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, a política de silenciamento, o serviço local, o ponto de entrada de turnos e a auditoria.",
+     "tests": "Passam 127 testes (`python -m unittest discover -s tests`): as regras de intenção, os oito idiomas, a confirmação assinada ligada a quem fala, a política de silenciamento, o serviço local, o ponto de entrada de turnos e a auditoria.",
      "hardware": "Não se experimentou nenhum microfone nem motor de voz, e o painel tátil que deverá acolher o assistente não funcionou numa placa.",
      "security": "A confirmação é assinada e ligada a quem fala, e a auditoria é testada no equipamento anfitrião; não houve revisão independente.",
      "integration": "O servidor consulta o serviço na bancada de testes do CM5; o fluxo de voz com o painel tátil não funcionou.",
@@ -2692,6 +2699,7 @@ Inglês, espanhol, alemão, francês, italiano, japonês, chinês e português e
 |---|---|
 | `off` (por omissão, e quando não chega política) | Passa-se de imediato |
 | `double_turn` | Não se executa; o serviço pede para dizer sim, e um sim em 15 s vindo do mesmo painel passa o comando original |
+| `challenge` | Não se executa; o serviço sorteia um número de dois dígitos que não é dito em voz alta (vai em `challenge` para o ecrã do painel) e só esse número, dito em 20 s pelo mesmo painel, passa o comando original; três erros bloqueiam o silenciamento por voz durante cinco minutos |
 | `pin` | Não se executa; o serviço pede o PIN, dito em dígitos ou em palavras de dígitos nos oito idiomas; o PIN certo em 20 s passa o comando |
 | política ilegível ou desconhecida | `double_turn`: uma definição estragada nunca desliga uma proteção |
 
@@ -2803,7 +2811,7 @@ Resultados: `accepted`, `confirmation-needed`, `confirmation-refused`, `pin-need
 | Turnos em simultâneo | 2 |
 
 O serviço nunca escreve o que foi dito num registo, sejam quais forem as definições.""",
-     "quickstart": "**Requisitos:** Python 3.11+ (apenas biblioteca padrão). Opcional: um programa de voz para texto e outro de texto para voz para `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. os testes\npython -m unittest discover -s tests                      # 118 testes\n\n# 2. a porta de ligação, um objeto JSON por linha\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. o serviço HTTP local (apenas loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPara ouvir e falar (`/v1/turn`), aponte o serviço para os seus motores e para o servidor:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV na entrada, palavras na saída\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texto na entrada, WAV na saída\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nO painel de parede é um dispositivo da rede e o serviço escuta apenas em loopback: ou um proxy do servidor reencaminha o turno, ou se usa `--allow-remote` atrás de TLS. O token e o áudio não devem atravessar a rede em claro.\n\n`run.bat` / `run.sh` e `build.bat` / `build.sh` iniciam o fluxo de projeto partilhado do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (os repositórios estão lado a lado). Quem usa pip fica com o comando `armor-voice-gateway`.",
+     "quickstart": "**Requisitos:** Python 3.11+ (apenas biblioteca padrão). Opcional: um programa de voz para texto e outro de texto para voz para `/v1/turn`.\n\n```powershell\n$env:PYTHONPATH = \"src\"\n\n# 1. os testes\npython -m unittest discover -s tests                      # 127 testes\n\n# 2. a porta de ligação, um objeto JSON por linha\necho '{\"text\":\"arm the system\"}' | python -m armor_voice_ai.gateway\n\n# 3. o serviço HTTP local (apenas loopback)\n$env:ARMOR_VOICE_TOKEN = \"a-token-of-at-least-16-characters\"\npython -m armor_voice_ai.service --port 18090\n```\n\n```sh\ncurl -s http://127.0.0.1:18090/v1/command \\\n  -H \"X-Armor-Voice-Token: $ARMOR_VOICE_TOKEN\" \\\n  -d '{\"text\":\"status\",\"language\":\"de\"}'\n# {\"accepted\":true,\"requires_confirmation\":false,\"intent\":\"status\",\"outcome\":\"accepted\",\"speech\":\"Befehl akzeptiert\"}\n```\n\nPara ouvir e falar (`/v1/turn`), aponte o serviço para os seus motores e para o servidor:\n\n```sh\nexport ARMOR_VOICE_STT_COMMAND=\"/opt/armor/bin/hear\"        # WAV na entrada, palavras na saída\nexport ARMOR_VOICE_TTS_COMMAND=\"/opt/armor/bin/speak\"       # texto na entrada, WAV na saída\nexport ARMOR_VOICE_SERVER_URL=\"https://armor-server.local\"\nexport ARMOR_VOICE_SERVER_TOKEN=\"...\"\npython -m armor_voice_ai.service --token-file /opt/armor/etc/armor.voice.env\n```\n\nO painel de parede é um dispositivo da rede e o serviço escuta apenas em loopback: ou um proxy do servidor reencaminha o turno, ou se usa `--allow-remote` atrás de TLS. O token e o áudio não devem atravessar a rede em claro.\n\n`run.bat` / `run.sh` e `build.bat` / `build.sh` iniciam o fluxo de projeto partilhado do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) (os repositórios estão lado a lado). Quem usa pip fica com o comando `armor-voice-gateway`.",
      "testing": r"""```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests
@@ -2852,7 +2860,7 @@ ARMOR-VOICE-AI/
 │   ├── gateway.py             linhas JSON em stdin/stdout, a auditoria, as frases dadas em resposta
 │   ├── service.py             o serviço HTTP local (/healthz, /v1/command, /v1/turn)
 │   └── turn.py                um turno falado: motores, sim/não, orçamento de tempo
-├── tests/                     118 testes: silêncio, limites, porta de ligação, turno, idiomas, serviço
+├── tests/                     127 testes: silêncio, limites, porta de ligação, turno, idiomas, serviço
 ├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
 ├── tools/                     as verificações de CI partilhadas e as ferramentas do projeto
 ├── images/                    faixa e ícone
