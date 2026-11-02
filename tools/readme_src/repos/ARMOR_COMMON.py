@@ -39,7 +39,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     '**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.',
                     '**Conformance vectors:** 1318 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of '
                     'the firmware repositories), so drift fails a build.',
-                    '**Generated clients:** TypeScript and Kotlin types come from the schemas (`tools/generate_types.py --check` keeps them current).',
+                    '**Generated clients:** TypeScript and Kotlin types and the C++ constants (`generated/armor_contracts.hpp`) come from the schemas (`tools/generate_types.py --check` keeps them current).',
                     '**HTTP contract:** `openapi/armor-server.yaml` describes every server route (190 paths, 245 operations), its access rule, and a named schema for '
                     'every request body, answer and error, and a test checks that the routes the server registers are exactly the ones it describes (method and path).',
                     '**Firmware base:** `firmware_base/` keeps each file the five nodes share (network, settings and users, web panel server and login, HTTPS '
@@ -101,7 +101,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'implementa.',
                     '**Vectores de conformidad:** 1318 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las '
                     'comprobaciones de los repositorios de firmware), de modo que una deriva rompe la compilación.',
-                    '**Clientes generados:** los tipos de TypeScript y Kotlin salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).',
+                    '**Clientes generados:** los tipos de TypeScript y Kotlin y las constantes de C++ (`generated/armor_contracts.hpp`) salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).',
                     '**Contrato HTTP:** `openapi/armor-server.yaml` describe cada ruta del servidor (190 rutas, 245 operaciones), su regla de acceso y un esquema con '
                     'nombre para cada cuerpo de petición, respuesta y error, y un test comprueba que las rutas que registra el servidor son exactamente las que describe '
                     '(método y ruta).',
@@ -166,7 +166,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     "n'implémente pas.",
                     '**Vecteurs de conformité :** 1318 charges acceptées et refusées exécutées par chaque implémentation (Python ici, TypeScript dans ARMOR-SERVER, les '
                     "vérifications des dépôts firmware), si bien qu'une dérive fait échouer une compilation.",
-                    '**Clients générés :** les types TypeScript et Kotlin viennent des schémas (`tools/generate_types.py --check` les tient à jour).',
+                    '**Clients générés :** les types TypeScript et Kotlin et les constantes C++ (`generated/armor_contracts.hpp`) viennent des schémas (`tools/generate_types.py --check` les tient à jour).',
                     "**Contrat HTTP :** `openapi/armor-server.yaml` décrit chaque route du serveur (190 chemins, 245 opérations), sa règle d'accès et un schéma nommé "
                     "pour chaque corps de requête, réponse et erreur, et un test vérifie que les routes enregistrées par le serveur sont exactement celles qu'il décrit "
                     '(méthode et chemin).',
@@ -231,7 +231,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'implementa.',
                     '**Vettori di conformità:** 1318 carichi accettati e rifiutati eseguiti da ogni implementazione (Python qui, TypeScript in ARMOR-SERVER, i controlli '
                     'dei repository firmware), così una deriva fa fallire una compilazione.',
-                    '**Client generati:** i tipi TypeScript e Kotlin vengono dagli schemi (`tools/generate_types.py --check` li mantiene aggiornati).',
+                    '**Client generati:** i tipi TypeScript e Kotlin e le costanti C++ (`generated/armor_contracts.hpp`) vengono dagli schemi (`tools/generate_types.py --check` li mantiene aggiornati).',
                     '**Contratto HTTP:** `openapi/armor-server.yaml` descrive ogni rotta del server (190 percorsi, 245 operazioni), la sua regola di accesso e uno '
                     'schema con nome per ogni corpo di richiesta, risposta ed errore, e un test verifica che le rotte registrate dal server siano esattamente quelle che '
                     'descrive (metodo e percorso).',
@@ -295,7 +295,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'Schlüsselwort verwendet.',
                     '**Konformitätsvektoren:** 1318 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in '
                     'ARMOR-SERVER, die Prüfungen der Firmware-Repositories), sodass eine Abweichung einen Build scheitern lässt.',
-                    '**Erzeugte Clients:** TypeScript- und Kotlin-Typen entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).',
+                    '**Erzeugte Clients:** TypeScript- und Kotlin-Typen und die C++-Konstanten (`generated/armor_contracts.hpp`) entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).',
                     '**HTTP-Vertrag:** `openapi/armor-server.yaml` beschreibt jede Route des Servers (190 Pfade, 245 Operationen), ihre Zugriffsregel und ein benanntes '
                     'Schema für jeden Anfragekörper, jede Antwort und jeden Fehler, und ein Test prüft, dass die vom Server registrierten Routen genau die beschriebenen '
                     'sind (Methode und Pfad).',
@@ -349,7 +349,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
         'bullets': ['**唯一的事实来源：**`src/armor_common/schemas/` 中的 JSON Schema，涵盖遥测、健康、命令、节点信息、两种太阳能消息（逆变器、含电芯和容量的电池）、电气消息（读数、命令、结果）、报警消息（状态、命令、结果）和网络消息。未知字段和不可能的组合会被拒绝。',
                     '**无法跳过规则的验证器：**它直接解释模式，并拒绝使用了它未实现的关键字的模式。',
                     '**一致性向量：**1318 个被接受和被拒绝的负载，由每个实现运行（这里是 Python，ARMOR-SERVER 中是 TypeScript，以及固件仓库的检查），因此偏差会让构建失败。',
-                    '**生成的客户端：**TypeScript 和 Kotlin 类型来自模式（`tools/generate_types.py --check` 保持其最新）。',
+                    '**生成的客户端：**TypeScript 和 Kotlin 类型以及 C++ 常量（`generated/armor_contracts.hpp`）来自模式（`tools/generate_types.py --check` 保持其最新）。',
                     '**HTTP 契约：**`openapi/armor-server.yaml` 描述服务器的每条路由（190 个路径、245 个操作）、其访问规则，以及每个请求体、响应和错误的具名模式；测试会检查服务器注册的路由与其描述的路由完全一致（方法和路径）。',
                     '**固件基础：**`firmware_base/` 把五个节点共用的每个文件只保存一次（网络、设置和用户、网页面板服务器和登录、HTTPS 证书、日志、带 PIN 配对的蓝牙、签名更新检查；继电器和 Zigbee 仅限具备它们的节点）；`tools/sync_firmware_base.py` '
                     '把它写入每个节点并检查没有副本偏离（[指南](docs/FIRMWARE_BASE.md)，[签名固件](docs/SIGNED_FIRMWARE.md)）。',
@@ -384,7 +384,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'つのソーラーメッセージ（インバーター、セルと容量を含むバッテリー）、電気メッセージ（測定値、コマンド、結果）、警報メッセージ（状態、コマンド、結果）、ネットワークメッセージ。未知のフィールドや不可能な組み合わせは拒否されます。',
                     '**ルールを飛ばせない検証器：**スキーマを直接解釈し、実装していないキーワードを使うスキーマを拒否します。',
                     '**適合ベクトル：**受理と拒否の 1318 個のペイロードをすべての実装（ここでは Python、ARMOR-SERVER では TypeScript、ファームウェアリポジトリの検査）が実行するため、ずれがあればビルドが失敗します。',
-                    '**生成されるクライアント：**TypeScript と Kotlin の型はスキーマから作られます（`tools/generate_types.py --check` で最新に保ちます）。',
+                    '**生成されるクライアント：**TypeScript と Kotlin の型、および C++ の定数（`generated/armor_contracts.hpp`）はスキーマから作られます（`tools/generate_types.py --check` で最新に保ちます）。',
                     '**HTTP コントラクト：**`openapi/armor-server.yaml` はサーバーのすべてのルート（190 パス、245 '
                     '操作）、そのアクセスルール、そして各リクエスト本文・応答・エラーの名前付きスキーマを記述し、サーバーが登録するルートが記述と完全に一致すること（メソッドとパス）をテストが確認します。',
                     '**ファームウェア基盤：**`firmware_base/` は 5 つのノードが共有する各ファイル（ネットワーク、設定とユーザー、Web パネルのサーバーとログイン、HTTPS 証明書、ログ、PIN ペアリング付き Bluetooth、署名付きアップデートの検査、リレーと Zigbee '
@@ -434,7 +434,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     '**Um validador que não pode saltar uma regra:** interpreta o esquema diretamente e recusa um esquema que use uma palavra-chave que não implementa.',
                     '**Vetores de conformidade:** 1318 cargas aceites e recusadas executadas por cada implementação (Python aqui, TypeScript no ARMOR-SERVER, as '
                     'verificações dos repositórios de firmware), de modo que um desvio faz falhar uma compilação.',
-                    '**Clientes gerados:** os tipos TypeScript e Kotlin saem dos esquemas (`tools/generate_types.py --check` mantém-nos atuais).',
+                    '**Clientes gerados:** os tipos TypeScript e Kotlin e as constantes C++ (`generated/armor_contracts.hpp`) saem dos esquemas (`tools/generate_types.py --check` mantém-nos atuais).',
                     '**Contrato HTTP:** `openapi/armor-server.yaml` descreve cada rota do servidor (190 caminhos, 245 operações), a sua regra de acesso e um esquema com '
                     'nome para cada corpo de pedido, resposta e erro, e um teste verifica que as rotas que o servidor regista são exatamente as que descreve (método e '
                     'caminho).',
