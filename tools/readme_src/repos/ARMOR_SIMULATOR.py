@@ -40,7 +40,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "210%20passing",
+      "234%20passing",
       "2ea44f",
     ],
   ],
@@ -49,7 +49,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Offline telemetry simulator with repeatable faults",
-    "honest": "Scenarios, faults, delivery to a server and the 210 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
+    "honest": "Scenarios, faults, delivery to a server and the 234 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
     "glance": [
       [
         "Role",
@@ -61,7 +61,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenarios and faults",
@@ -82,7 +82,7 @@ TEXT = {
     ],
     "status": {
       "software": "The scenarios, the faults and the delivery to a server work; it is what feeds a server on a computer when no node is plugged in.",
-      "tests": "210 tests pass (`python -m unittest discover -s tests`).",
+      "tests": "234 tests pass (`python -m unittest discover -s tests`).",
       "protocols": "The geometry is illustrative, not a model of the real LD2450 radar, and nothing has been compared with real hardware.",
       "integration": "It delivers its messages to a server in the tests, and the server of the CM5 test bench can be fed by it.",
       "docs": "Eight languages and the changelog are up to date.",
@@ -105,7 +105,9 @@ TEXT = {
 * **Solar equipment:** `--solar` adds an inverter and a two-module battery stack (fifteen cells each, capacities included) over a fast day of 240 samples, with a mains outage late in the day; the messages are checked against the solar contract of ARMOR-COMMON and delivered to `/api/v1/solar`.
 * **Alarm scenarios in files:** `--alarm-scenario` plays a JSON file with a timeline (people crossing several zones, a pet, wind, a sensor that is stuck, noisy, drifting or dead, a node that loses its link, a mains outage, the mode and the calendar) and may say what the system is expected to answer; `--verify-alarms` compares the alarms a server raised with it, so the files are test cases for ARMOR-SERVER. The reading is strict: the whole file is refused at the first thing that is not understood.
 * **Realistic energy data:** `--energy` emits an inverter, a battery stack and an electrical node from a real-time model (a sun with clouds, a house by the hour, a tariff, a Pylontech-style battery with cycles, a noisy meter with holes), deterministic for a seed and tuned from a JSON file. Without the new options the output is exactly what it was.
-* **The energy meters over TCP:** `--meter-bus-port` plays the serial line of a PZEM-004T and a PZEM-017 (Modbus-RTU, read only, a bad CRC gets no answer, a write is refused) with the readings of `--electrical`, with a JSON file for the meters, thresholds and faults, so the code that reads the meters can be tried without one.""",
+* **The energy meters over TCP:** `--meter-bus-port` plays the serial line of a PZEM-004T and a PZEM-017 (Modbus-RTU, read only, a bad CRC gets no answer, a write is refused) with the readings of `--electrical`, with a JSON file for the meters, thresholds and faults, so the code that reads the meters can be tried without one.
+* **The other nodes, several at once and a broker:** `--nodes` simulates up to eight radar nodes (with `--scenario relay` one walker passes from node to node), `--info`, `--alarm-node` and `--network-node` add the information of a node, an alarm panel and a network watcher, an alarm scenario can move people along a polyline at a set speed (`walk`), and `--mqtt-url` also publishes every message on a broker of this machine or a private network, so the MQTT road of the server is exercised too.
+* **The other nodes, several at once and a broker:** `--nodes` simulates up to eight radar nodes (with `--scenario relay` one walker passes from node to node), `--info`, `--alarm-node` and `--network-node` add the information of a node, an alarm panel and a network watcher, an alarm scenario can move people along a polyline at a set speed (`walk`), and `--mqtt-url` also publishes every message on a broker of this machine or a private network, so the MQTT road of the server is exercised too.""",
       "role": r"""ARMOR-SIMULATOR is how the rest of the family is tried without hardware: it plays the part of a radar node, a solar gateway or an electrical node and sends their messages to an [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), with faults you can repeat, so [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) and the phone app can be seen working with a house that does not exist. Every message it makes is checked against the contracts of [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).
 
 | Name | How | What for |
@@ -189,11 +191,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           the options and the run
-│   ├── scenarios.py cycle.py            the four scenarios, the 270 degree geometry and the day of light
+│   ├── scenarios.py cycle.py            the five scenarios, the 270 degree geometry and the day of light
 │   ├── alarm_scenarios.py               alarm scenarios from JSON files, their messages and the check of the answer
 │   ├── solar.py                         an inverter and a two-module battery stack
 │   ├── electrical.py                    the three channels of an electrical node
 │   ├── meter_bus.py                     the serial line of the energy meters over TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         the information of a node, an alarm panel and a network watcher
+│   ├── mqtt_out.py                      publishing the messages on an MQTT broker
 │   ├── energy.py                        realistic solar and electrical data: sun with clouds, house, tariff, battery, meter
 │   ├── faults.py                        the seven repeatable faults
 │   └── publisher.py                     delivery to a server with retries
@@ -230,7 +234,7 @@ ARMOR-SIMULATOR/
   },
   "es": {
     "tagline": "Simulador de telemetría sin conexión con fallos repetibles",
-    "honest": "Los escenarios, los fallos, la entrega a un servidor y los 210 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
+    "honest": "Los escenarios, los fallos, la entrega a un servidor y los 234 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
     "glance": [
       [
         "Función",
@@ -242,7 +246,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Pruebas",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Escenarios y averías",
@@ -263,7 +267,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Los escenarios, los fallos y la entrega a un servidor funcionan; es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado.",
-      "tests": "Pasan 210 pruebas (`python -m unittest discover -s tests`).",
+      "tests": "Pasan 234 pruebas (`python -m unittest discover -s tests`).",
       "protocols": "La geometría es ilustrativa, no un modelo del radar LD2450 real, y nada se ha comparado con hardware real.",
       "integration": "Entrega sus mensajes a un servidor en las pruebas, y el servidor del banco de pruebas CM5 puede alimentarse con él.",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
@@ -286,7 +290,9 @@ ARMOR-SIMULATOR/
 * **Equipo solar:** `--solar` añade un inversor y una pila de baterías de dos módulos (quince celdas cada uno, con capacidades) durante un día rápido de 240 muestras, con un corte de red al final de la tarde; los mensajes se comprueban contra el contrato solar de ARMOR-COMMON y se entregan a `/api/v1/solar`.
 * **Escenarios de alarma en ficheros:** `--alarm-scenario` reproduce un fichero JSON con una línea de tiempo (personas que cruzan varias zonas, una mascota, viento, un sensor atascado, ruidoso, con deriva o muerto, un nodo que pierde el enlace, un corte de red, el modo y el calendario) y puede decir qué debe responder el sistema; `--verify-alarms` compara las alarmas que levantó un servidor con ello, así que los ficheros son casos de prueba para ARMOR-SERVER. La lectura es estricta: se rechaza todo el fichero ante lo primero que no se entiende.
 * **Datos de energía realistas:** `--energy` emite un inversor, una pila de baterías y un nodo eléctrico a partir de un modelo en tiempo real (un sol con nubes, una casa hora a hora, una tarifa, una batería tipo Pylontech con ciclos, un contador con ruido y huecos), determinista para una semilla y ajustable desde un fichero JSON. Sin las opciones nuevas la salida es exactamente la de antes.
-* **Los contadores de energía por TCP:** `--meter-bus-port` reproduce la línea serie de un PZEM-004T y un PZEM-017 (Modbus-RTU, solo lectura, un CRC erróneo no recibe respuesta, una escritura se rechaza) con las lecturas de `--electrical`, con un fichero JSON para los contadores, umbrales y fallos, de modo que el código que lee los contadores se pueda probar sin uno.""",
+* **Los contadores de energía por TCP:** `--meter-bus-port` reproduce la línea serie de un PZEM-004T y un PZEM-017 (Modbus-RTU, solo lectura, un CRC erróneo no recibe respuesta, una escritura se rechaza) con las lecturas de `--electrical`, con un fichero JSON para los contadores, umbrales y fallos, de modo que el código que lee los contadores se pueda probar sin uno.
+* **Los otros nodos, varios a la vez y un broker:** `--nodes` simula hasta ocho nodos de radar (con `--scenario relay` un caminante pasa de un nodo a otro), `--info`, `--alarm-node` y `--network-node` añaden la información de un nodo, una central de alarma y un vigilante de red, un escenario de alarma puede mover personas por una polilínea a una velocidad dada (`walk`), y `--mqtt-url` publica además cada mensaje en un broker de este equipo o de una red privada, de modo que también se ejercita la vía MQTT del servidor.
+* **Los otros nodos, varios a la vez y un broker:** `--nodes` simula hasta ocho nodos de radar (con `--scenario relay` un caminante pasa de un nodo a otro), `--info`, `--alarm-node` y `--network-node` añaden la información de un nodo, una central de alarma y un vigilante de red, un escenario de alarma puede mover personas por una polilínea a una velocidad dada (`walk`), y `--mqtt-url` publica además cada mensaje en un broker de este equipo o de una red privada, de modo que también se ejercita la vía MQTT del servidor.""",
       "role": r"""ARMOR-SIMULATOR es cómo se prueba el resto de la familia sin hardware: hace de nodo radar, de pasarela solar o de nodo eléctrico y envía sus mensajes a un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), con fallos que se pueden repetir, de modo que [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) y la app móvil se vean funcionando con una casa que no existe. Cada mensaje que hace se comprueba contra los contratos de [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).
 
 | Nombre | Cómo | Para qué |
@@ -370,11 +376,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           las opciones y la ejecución
-│   ├── scenarios.py cycle.py            los cuatro escenarios, la geometría de 270 grados y el día de luz
+│   ├── scenarios.py cycle.py            los cinco escenarios, la geometría de 270 grados y el día de luz
 │   ├── alarm_scenarios.py               escenarios de alarma desde ficheros JSON, sus mensajes y la comprobación de la respuesta
 │   ├── solar.py                         un inversor y una pila de dos módulos
 │   ├── electrical.py                    los tres canales de un nodo eléctrico
 │   ├── meter_bus.py                     la línea serie de los contadores de energía por TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         la información de un nodo, una central de alarma y un vigilante de red
+│   ├── mqtt_out.py                      publicar los mensajes en un broker MQTT
 │   ├── energy.py                        datos solares y eléctricos realistas: sol con nubes, casa, tarifa, batería, contador
 │   ├── faults.py                        las siete averías repetibles
 │   └── publisher.py                     entrega a un servidor con reintentos
@@ -411,7 +419,7 @@ ARMOR-SIMULATOR/
   },
   "de": {
     "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
-    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 210 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
+    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 234 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
     "glance": [
       [
         "Rolle",
@@ -423,7 +431,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Szenarien und Fehler",
@@ -444,7 +452,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Die Szenarien, die Störungen und die Übergabe an einen Server funktionieren; er speist einen Server auf einem Rechner, wenn kein Knoten angeschlossen ist.",
-      "tests": "210 Tests bestehen (`python -m unittest discover -s tests`).",
+      "tests": "234 Tests bestehen (`python -m unittest discover -s tests`).",
       "protocols": "Die Geometrie ist anschaulich und kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
       "integration": "Er übergibt seine Nachrichten in den Tests an einen Server, und der Server des CM5-Prüfstands kann damit gespeist werden.",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
@@ -467,7 +475,9 @@ ARMOR-SIMULATOR/
 * **Solaranlage:** `--solar` fügt einen Wechselrichter und einen Batteriestapel aus zwei Modulen (je fünfzehn Zellen, mit Kapazitäten) über einen Zeitraffer-Tag von 240 Werten hinzu, mit einem Netzausfall am späten Tag; die Nachrichten werden gegen den Solar-Vertrag von ARMOR-COMMON geprüft und an `/api/v1/solar` geliefert.
 * **Alarmszenarien in Dateien:** `--alarm-scenario` spielt eine JSON-Datei mit einem Zeitablauf ab (Personen, die mehrere Zonen durchqueren, ein Haustier, Wind, ein Sensor, der hängt, rauscht, driftet oder ausgefallen ist, ein Knoten, der die Verbindung verliert, ein Netzausfall, der Modus und der Kalender) und kann festlegen, was das System antworten soll; `--verify-alarms` vergleicht die Alarme, die ein Server ausgelöst hat, damit, die Dateien sind also Testfälle für ARMOR-SERVER. Das Lesen ist streng: Die ganze Datei wird beim ersten nicht verstandenen Punkt abgelehnt.
 * **Realistische Energiedaten:** `--energy` gibt einen Wechselrichter, einen Batteriestapel und einen Elektroknoten aus einem Echtzeitmodell aus (Sonne mit Wolken, ein Haus im Stundenverlauf, ein Tarif, eine Pylontech-artige Batterie mit Zyklen, ein verrauschter Zähler mit Lücken), deterministisch für einen Seed und über eine JSON-Datei einstellbar. Ohne die neuen Optionen bleibt die Ausgabe genau wie zuvor.
-* **Die Energiezähler über TCP:** `--meter-bus-port` spielt die serielle Leitung eines PZEM-004T und eines PZEM-017 (Modbus-RTU, nur lesend, bei falschem CRC keine Antwort, ein Schreibzugriff wird abgelehnt) mit den Messwerten von `--electrical`, mit einer JSON-Datei für Zähler, Schwellen und Fehler, damit der Code, der die Zähler liest, ohne Zähler erprobt werden kann.""",
+* **Die Energiezähler über TCP:** `--meter-bus-port` spielt die serielle Leitung eines PZEM-004T und eines PZEM-017 (Modbus-RTU, nur lesend, bei falschem CRC keine Antwort, ein Schreibzugriff wird abgelehnt) mit den Messwerten von `--electrical`, mit einer JSON-Datei für Zähler, Schwellen und Fehler, damit der Code, der die Zähler liest, ohne Zähler erprobt werden kann.
+* **Die anderen Knoten, mehrere zugleich und ein Broker:** `--nodes` simuliert bis zu acht Radarknoten (mit `--scenario relay` geht ein Läufer von Knoten zu Knoten), `--info`, `--alarm-node` und `--network-node` fügen die Angaben eines Knotens, eine Alarmzentrale und einen Netzwächter hinzu, ein Alarmszenario kann Personen mit fester Geschwindigkeit entlang eines Polygonzugs bewegen (`walk`), und `--mqtt-url` veröffentlicht jede Nachricht zusätzlich auf einem Broker dieses Rechners oder eines privaten Netzes, sodass auch der MQTT-Weg des Servers geprüft wird.
+* **Die anderen Knoten, mehrere zugleich und ein Broker:** `--nodes` simuliert bis zu acht Radarknoten (mit `--scenario relay` geht ein Läufer von Knoten zu Knoten), `--info`, `--alarm-node` und `--network-node` fügen die Angaben eines Knotens, eine Alarmzentrale und einen Netzwächter hinzu, ein Alarmszenario kann Personen mit fester Geschwindigkeit entlang eines Polygonzugs bewegen (`walk`), und `--mqtt-url` veröffentlicht jede Nachricht zusätzlich auf einem Broker dieses Rechners oder eines privaten Netzes, sodass auch der MQTT-Weg des Servers geprüft wird.""",
       "role": r"""ARMOR-SIMULATOR ist die Art, den Rest der Familie ohne Hardware auszuprobieren: Er spielt die Rolle eines Radarknotens, eines Solar-Gateways oder eines Elektroknotens und sendet deren Nachrichten an einen [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), mit wiederholbaren Fehlern, sodass [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) und die Handy-App mit einem Haus, das es nicht gibt, arbeiten. Jede erzeugte Nachricht wird gegen die Verträge von [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) geprüft.
 
 | Name | Wie | Wozu |
@@ -551,11 +561,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           die Optionen und der Ablauf
-│   ├── scenarios.py cycle.py            die vier Szenarien, die 270-Grad-Geometrie und der Lichttag
+│   ├── scenarios.py cycle.py            die fünf Szenarien, die 270-Grad-Geometrie und der Lichttag
 │   ├── alarm_scenarios.py               Alarmszenarien aus JSON-Dateien, ihre Nachrichten und die Prüfung der Antwort
 │   ├── solar.py                         ein Wechselrichter und ein Batteriestapel aus zwei Modulen
 │   ├── electrical.py                    die drei Kanäle eines Elektroknotens
 │   ├── meter_bus.py                     die serielle Leitung der Energiezähler über TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         die Angaben eines Knotens, eine Alarmzentrale und ein Netzwächter
+│   ├── mqtt_out.py                      die Nachrichten auf einem MQTT-Broker veröffentlichen
 │   ├── energy.py                        realistische Solar- und Stromdaten: Sonne mit Wolken, Haus, Tarif, Batterie, Zähler
 │   ├── faults.py                        die sieben wiederholbaren Fehler
 │   └── publisher.py                     Zustellung an einen Server mit Wiederholungen
@@ -592,7 +604,7 @@ ARMOR-SIMULATOR/
   },
   "fr": {
     "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
-    "honest": "Les scénarios, les pannes, la livraison à un serveur et les 210 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
+    "honest": "Les scénarios, les pannes, la livraison à un serveur et les 234 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
     "glance": [
       [
         "Rôle",
@@ -604,7 +616,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scénarios et pannes",
@@ -625,7 +637,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Les scénarios, les pannes et la remise à un serveur fonctionnent ; c'est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché.",
-      "tests": "210 tests réussissent (`python -m unittest discover -s tests`).",
+      "tests": "234 tests réussissent (`python -m unittest discover -s tests`).",
       "protocols": "La géométrie est illustrative, pas un modèle du vrai radar LD2450, et rien n'a été comparé à du matériel réel.",
       "integration": "Il remet ses messages à un serveur dans les tests, et le serveur du banc d'essai CM5 peut être alimenté par lui.",
       "docs": "Huit langues et le journal des modifications sont à jour.",
@@ -648,7 +660,9 @@ ARMOR-SIMULATOR/
 * **Équipement solaire :** `--solar` ajoute un onduleur et une pile de batteries de deux modules (quinze cellules chacun, capacités comprises) sur une journée accélérée de 240 échantillons, avec une coupure du réseau en fin de journée ; les messages sont vérifiés contre le contrat solaire d'ARMOR-COMMON et envoyés à `/api/v1/solar`.
 * **Scénarios d'alarme dans des fichiers :** `--alarm-scenario` joue un fichier JSON avec une chronologie (des personnes qui traversent plusieurs zones, un animal, le vent, un capteur bloqué, bruité, qui dérive ou mort, un nœud qui perd la liaison, une coupure du secteur, le mode et le calendrier) et peut dire ce que le système doit répondre ; `--verify-alarms` compare les alarmes levées par un serveur à ce fichier, qui sert donc de cas de test pour ARMOR-SERVER. La lecture est stricte : tout le fichier est refusé dès la première chose non comprise.
 * **Données d'énergie réalistes :** `--energy` émet un onduleur, un empilement de batteries et un nœud électrique à partir d'un modèle en temps réel (un soleil avec des nuages, une maison heure par heure, un tarif, une batterie de type Pylontech avec cycles, un compteur bruité avec des trous), déterministe pour une graine et réglable depuis un fichier JSON. Sans les nouvelles options, la sortie est exactement celle d'avant.
-* **Les compteurs d'énergie sur TCP :** `--meter-bus-port` joue la ligne série d'un PZEM-004T et d'un PZEM-017 (Modbus-RTU, lecture seule, un CRC erroné n'obtient aucune réponse, une écriture est refusée) avec les mesures de `--electrical`, avec un fichier JSON pour les compteurs, les seuils et les pannes, afin que le code qui lit les compteurs puisse être essayé sans compteur.""",
+* **Les compteurs d'énergie sur TCP :** `--meter-bus-port` joue la ligne série d'un PZEM-004T et d'un PZEM-017 (Modbus-RTU, lecture seule, un CRC erroné n'obtient aucune réponse, une écriture est refusée) avec les mesures de `--electrical`, avec un fichier JSON pour les compteurs, les seuils et les pannes, afin que le code qui lit les compteurs puisse être essayé sans compteur.
+* **Les autres nœuds, plusieurs à la fois et un broker :** `--nodes` simule jusqu'à huit nœuds radar (avec `--scenario relay` un marcheur passe d'un nœud à l'autre), `--info`, `--alarm-node` et `--network-node` ajoutent les informations d'un nœud, une centrale d'alarme et un surveillant de réseau, un scénario d'alarme peut déplacer des personnes le long d'une polyligne à une vitesse donnée (`walk`), et `--mqtt-url` publie aussi chaque message sur un broker de cette machine ou d'un réseau privé, de sorte que la voie MQTT du serveur est elle aussi exercée.
+* **Les autres nœuds, plusieurs à la fois et un broker :** `--nodes` simule jusqu'à huit nœuds radar (avec `--scenario relay` un marcheur passe d'un nœud à l'autre), `--info`, `--alarm-node` et `--network-node` ajoutent les informations d'un nœud, une centrale d'alarme et un surveillant de réseau, un scénario d'alarme peut déplacer des personnes le long d'une polyligne à une vitesse donnée (`walk`), et `--mqtt-url` publie aussi chaque message sur un broker de cette machine ou d'un réseau privé, de sorte que la voie MQTT du serveur est elle aussi exercée.""",
       "role": r"""ARMOR-SIMULATOR est la façon d'essayer le reste de la famille sans matériel : il joue le rôle d'un nœud radar, d'une passerelle solaire ou d'un nœud électrique et envoie leurs messages à un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), avec des pannes répétables, pour que [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) et l'application mobile se voient fonctionner avec une maison qui n'existe pas. Chaque message qu'il fait est vérifié contre les contrats d'[ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).
 
 | Nom | Comment | À quoi ça sert |
@@ -732,11 +746,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           les options et l'exécution
-│   ├── scenarios.py cycle.py            les quatre scénarios, la géométrie de 270 degrés et le jour de lumière
+│   ├── scenarios.py cycle.py            les cinq scénarios, la géométrie de 270 degrés et le jour de lumière
 │   ├── alarm_scenarios.py               scénarios d'alarme depuis des fichiers JSON, leurs messages et la vérification de la réponse
 │   ├── solar.py                         un onduleur et une pile de deux modules
 │   ├── electrical.py                    les trois canaux d'un nœud électrique
 │   ├── meter_bus.py                     la ligne série des compteurs d'énergie sur TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         les informations d'un nœud, une centrale d'alarme et un surveillant de réseau
+│   ├── mqtt_out.py                      publier les messages sur un broker MQTT
 │   ├── energy.py                        données solaires et électriques réalistes : soleil et nuages, maison, tarif, batterie, compteur
 │   ├── faults.py                        les sept pannes répétables
 │   └── publisher.py                     livraison à un serveur avec nouvelles tentatives
@@ -747,7 +763,7 @@ ARMOR-SIMULATOR/
 ├── examples/                            scénarios d'alarme et réglages du modèle d'énergie pour commencer
 ├── images/                              bannière, icône et les deux images de ce README
 ├── Dockerfile .dockerignore             image du banc virtuel
-├── docker/                              bench.sh, l'entrÃ©e du banc virtuel
+├── docker/                              bench.sh, l'entrée du banc virtuel
 ├── build.sh build.bat                   build par le flux de projet partagé
 ├── test.sh test.bat                     lancer les tests par le flux partagé
 ├── run.sh run.bat                       démarrer par le flux de projet partagé
@@ -773,7 +789,7 @@ ARMOR-SIMULATOR/
   },
   "it": {
     "tagline": "Simulatore di telemetria offline con guasti ripetibili",
-    "honest": "Gli scenari, i guasti, la consegna a un server e i 210 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
+    "honest": "Gli scenari, i guasti, la consegna a un server e i 234 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
     "glance": [
       [
         "Ruolo",
@@ -785,7 +801,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Test",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenari e guasti",
@@ -806,7 +822,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Gli scenari, i guasti e la consegna a un server funzionano; è ciò che alimenta un server su un computer quando nessun nodo è collegato.",
-      "tests": "Superano 210 test (`python -m unittest discover -s tests`).",
+      "tests": "Superano 234 test (`python -m unittest discover -s tests`).",
       "protocols": "La geometria è illustrativa, non un modello del vero radar LD2450, e nulla è stato confrontato con hardware reale.",
       "integration": "Consegna i suoi messaggi a un server nei test e il server del banco di prova CM5 può essere alimentato da esso.",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
@@ -829,7 +845,9 @@ ARMOR-SIMULATOR/
 * **Impianto solare:** `--solar` aggiunge un inverter e un pacco batterie da due moduli (quindici celle ciascuno, con le capacità) su un giorno accelerato di 240 campioni, con un'interruzione di rete a fine giornata; i messaggi sono verificati contro il contratto solare di ARMOR-COMMON e consegnati a `/api/v1/solar`.
 * **Scenari d'allarme in file:** `--alarm-scenario` riproduce un file JSON con una cronologia (persone che attraversano più zone, un animale, il vento, un sensore bloccato, rumoroso, che deriva o morto, un nodo che perde il collegamento, un'interruzione di rete, la modalità e il calendario) e può dire cosa deve rispondere il sistema; `--verify-alarms` confronta gli allarmi sollevati da un server con quel file, che quindi serve da caso di prova per ARMOR-SERVER. La lettura è rigorosa: l'intero file viene rifiutato alla prima cosa non compresa.
 * **Dati energetici realistici:** `--energy` emette un inverter, una pila di batterie e un nodo elettrico da un modello in tempo reale (un sole con nuvole, una casa ora per ora, una tariffa, una batteria tipo Pylontech con cicli, un contatore rumoroso con buchi), deterministico per un seed e regolabile da un file JSON. Senza le nuove opzioni l'output è esattamente quello di prima.
-* **I contatori di energia su TCP:** `--meter-bus-port` riproduce la linea seriale di un PZEM-004T e di un PZEM-017 (Modbus-RTU, sola lettura, un CRC errato non riceve risposta, una scrittura viene rifiutata) con le letture di `--electrical`, con un file JSON per i contatori, le soglie e i guasti, così il codice che legge i contatori si può provare senza contatore.""",
+* **I contatori di energia su TCP:** `--meter-bus-port` riproduce la linea seriale di un PZEM-004T e di un PZEM-017 (Modbus-RTU, sola lettura, un CRC errato non riceve risposta, una scrittura viene rifiutata) con le letture di `--electrical`, con un file JSON per i contatori, le soglie e i guasti, così il codice che legge i contatori si può provare senza contatore.
+* **Gli altri nodi, più di uno insieme e un broker:** `--nodes` simula fino a otto nodi radar (con `--scenario relay` un camminatore passa da un nodo all'altro), `--info`, `--alarm-node` e `--network-node` aggiungono le informazioni di un nodo, una centrale di allarme e un sorvegliante di rete, uno scenario di allarme può muovere persone lungo una poligonale a una velocità data (`walk`), e `--mqtt-url` pubblica inoltre ogni messaggio su un broker di questa macchina o di una rete privata, così viene provata anche la via MQTT del server.
+* **Gli altri nodi, più di uno insieme e un broker:** `--nodes` simula fino a otto nodi radar (con `--scenario relay` un camminatore passa da un nodo all'altro), `--info`, `--alarm-node` e `--network-node` aggiungono le informazioni di un nodo, una centrale di allarme e un sorvegliante di rete, uno scenario di allarme può muovere persone lungo una poligonale a una velocità data (`walk`), e `--mqtt-url` pubblica inoltre ogni messaggio su un broker di questa macchina o di una rete privata, così viene provata anche la via MQTT del server.""",
       "role": r"""ARMOR-SIMULATOR è il modo per provare il resto della famiglia senza hardware: fa la parte di un nodo radar, di un gateway solare o di un nodo elettrico e invia i loro messaggi a un [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), con guasti ripetibili, così [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e l'app mobile si vedono funzionare con una casa che non esiste. Ogni messaggio che produce è controllato contro i contratti di [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).
 
 | Nome | Come | A cosa serve |
@@ -913,11 +931,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           le opzioni e l'esecuzione
-│   ├── scenarios.py cycle.py            i quattro scenari, la geometria a 270 gradi e il giorno di luce
+│   ├── scenarios.py cycle.py            i cinque scenari, la geometria a 270 gradi e il giorno di luce
 │   ├── alarm_scenarios.py               scenari d'allarme da file JSON, i loro messaggi e la verifica della risposta
 │   ├── solar.py                         un inverter e una pila di due moduli
 │   ├── electrical.py                    i tre canali di un nodo elettrico
 │   ├── meter_bus.py                     la linea seriale dei contatori di energia su TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         le informazioni di un nodo, una centrale di allarme e un sorvegliante di rete
+│   ├── mqtt_out.py                      pubblicare i messaggi su un broker MQTT
 │   ├── energy.py                        dati solari ed elettrici realistici: sole con nuvole, casa, tariffa, batteria, contatore
 │   ├── faults.py                        i sette guasti ripetibili
 │   └── publisher.py                     consegna a un server con nuovi tentativi
@@ -954,7 +974,7 @@ ARMOR-SIMULATOR/
   },
   "ja": {
     "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
-    "honest": "シナリオ、故障、サーバーへの送信、210 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
+    "honest": "シナリオ、故障、サーバーへの送信、234 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
     "glance": [
       [
         "役割",
@@ -966,7 +986,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "テスト",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "シナリオと障害",
@@ -987,7 +1007,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "シナリオ、故障、サーバーへの配信は動作します。ノードを接続していないとき、コンピューター上のサーバーにデータを送るのがこれです。",
-      "tests": "210 件のテストが通ります（`python -m unittest discover -s tests`）。",
+      "tests": "234 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "protocols": "幾何は例示用で、実際の LD2450 レーダーのモデルではありません。実機との比較もしていません。",
       "integration": "テストではメッセージをサーバーに配信しており、CM5 テストベンチのサーバーにもこれでデータを送れます。",
       "docs": "8 言語と変更履歴は最新です。",
@@ -1010,7 +1030,9 @@ ARMOR-SIMULATOR/
 * **太陽光設備：** `--solar` は、240 サンプルの早送りの 1 日の間に、インバーターと 2 モジュールのバッテリースタック（各 15 セル、容量付き）を加え、夕方に系統の停電を起こします。メッセージは ARMOR-COMMON の太陽光契約で検査され、`/api/v1/solar` に送られます。
 * **ファイルで記述するアラームシナリオ:** `--alarm-scenario` は、時系列（複数のゾーンを横切る人、ペット、風、固着・ノイズ・ドリフト・故障したセンサー、通信が途絶えるノード、停電、モードとカレンダー）を記した JSON ファイルを再生し、システムが返すべき応答も記述できます。`--verify-alarms` はサーバーが発したアラームをそれと比較するので、このファイルは ARMOR-SERVER のテストケースになります。読み込みは厳格で、理解できない箇所が最初に見つかった時点でファイル全体を拒否します。
 * **現実的なエネルギーデータ:** `--energy` は、リアルタイムのモデル（雲のある日射、1 時間ごとの住宅の消費、料金、サイクルを持つ Pylontech 型バッテリー、ノイズと欠測のあるメーター）からインバーター、バッテリースタック、電気ノードを出力します。シードで決定的で、JSON ファイルで調整できます。新しいオプションを使わなければ、出力は従来とまったく同じです。
-* **TCP 経由のエネルギーメーター:** `--meter-bus-port` は PZEM-004T と PZEM-017 のシリアル回線を再現します（Modbus-RTU、読み取り専用、CRC が誤っていると応答なし、書き込みは拒否）。測定値は `--electrical` と同じで、メーター・しきい値・故障は JSON ファイルで指定でき、メーターなしでメーターを読むコードを試せます。""",
+* **TCP 経由のエネルギーメーター:** `--meter-bus-port` は PZEM-004T と PZEM-017 のシリアル回線を再現します（Modbus-RTU、読み取り専用、CRC が誤っていると応答なし、書き込みは拒否）。測定値は `--electrical` と同じで、メーター・しきい値・故障は JSON ファイルで指定でき、メーターなしでメーターを読むコードを試せます。
+* **ほかのノード、複数同時、ブローカー:** `--nodes` は最大8つのレーダーノードを模擬し（`--scenario relay` では歩行者がノードからノードへ移ります）、`--info`、`--alarm-node`、`--network-node` はノードの情報、警報パネル、ネットワーク監視を加え、警報シナリオでは人を折れ線に沿って一定の速度で動かせ（`walk`）、`--mqtt-url` はこのマシンまたはプライベートネットワーク上のブローカーにも全メッセージを公開するので、サーバーのMQTT経路も試せます。
+* **ほかのノード、複数同時、ブローカー:** `--nodes` は最大8つのレーダーノードを模擬し（`--scenario relay` では歩行者がノードからノードへ移ります）、`--info`、`--alarm-node`、`--network-node` はノードの情報、警報パネル、ネットワーク監視を加え、警報シナリオでは人を折れ線に沿って一定の速度で動かせ（`walk`）、`--mqtt-url` はこのマシンまたはプライベートネットワーク上のブローカーにも全メッセージを公開するので、サーバーのMQTT経路も試せます。""",
       "role": r"""ARMOR-SIMULATOR は、ハードウェアなしでファミリーの他の部分を試す手段です。レーダーノード、ソーラーゲートウェイ、電気ノードの役を演じてそのメッセージを [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) に送り、再現できる故障も起こせるため、存在しない家で [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) とスマートフォンアプリが動く様子を見られます。生成するメッセージはすべて [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) のコントラクトで検査されます。
 
 | 名前 | 方法 | 用途 |
@@ -1094,11 +1116,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           オプションと実行
-│   ├── scenarios.py cycle.py            4 つのシナリオ、270 度の配置、1 日の光
+│   ├── scenarios.py cycle.py            5つのシナリオ、270度の形状、光の一日
 │   ├── alarm_scenarios.py               JSON ファイルのアラームシナリオ、そのメッセージ、応答の検証
 │   ├── solar.py                         インバーターと 2 モジュールのバッテリー
 │   ├── electrical.py                    電気ノードの 3 チャンネル
 │   ├── meter_bus.py                     エネルギーメーターのシリアル回線をTCPで再現 (PZEM-004T、PZEM-017)
+│   ├── nodes.py                         ノードの情報、警報パネル、ネットワーク監視
+│   ├── mqtt_out.py                      メッセージをMQTTブローカーへ公開
 │   ├── energy.py                        現実的な太陽光・電力データ: 雲のある日射、住宅、料金、バッテリー、メーター
 │   ├── faults.py                        再現可能な 7 つの障害
 │   └── publisher.py                     再試行つきのサーバーへの配信
@@ -1109,7 +1133,7 @@ ARMOR-SIMULATOR/
 ├── examples/                            出発点となるアラームシナリオとエネルギーモデルの設定
 ├── images/                              バナー、アイコン、この README の 2 つの図
 ├── Dockerfile .dockerignore             仮想ベンチのイメージ
-├── docker/                              bench.shã€ä»®æƒ³ãƒ™ãƒ³ãƒã®å…¥å£
+├── docker/                              bench.sh、仮想ベンチの入口
 ├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
 ├── test.sh test.bat                     共通のワークフローでテストを実行
 ├── run.sh run.bat                       共通のプロジェクトワークフローで起動
@@ -1135,7 +1159,7 @@ ARMOR-SIMULATOR/
   },
   "zh": {
     "tagline": "带可重复故障的离线遥测模拟器",
-    "honest": "场景、故障、向服务器的投递和 210 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
+    "honest": "场景、故障、向服务器的投递和 234 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
     "glance": [
       [
         "角色",
@@ -1147,7 +1171,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "测试",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "场景与故障",
@@ -1168,7 +1192,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "场景、故障和向服务器的投递都能工作；没有接入节点时，它为电脑上的服务器提供数据。",
-      "tests": "210 项测试通过（`python -m unittest discover -s tests`）。",
+      "tests": "234 项测试通过（`python -m unittest discover -s tests`）。",
       "protocols": "几何模型仅作示意，并不是真实 LD2450 雷达的模型，也没有与真实硬件对比过。",
       "integration": "测试中它会把消息投递到服务器，CM5 测试台的服务器也可以由它提供数据。",
       "docs": "八种语言和更新日志均为最新。",
@@ -1191,7 +1215,9 @@ ARMOR-SIMULATOR/
 * **太阳能设备：** `--solar` 会在 240 个样本的快进一天中加入一台逆变器和一个两模块的电池组（每个模块十五个电芯，含容量），并在傍晚出现一次市电中断；消息会对照 ARMOR-COMMON 的太阳能契约检查，并投递到 `/api/v1/solar`。
 * **用文件描述的报警场景：** `--alarm-scenario` 播放一个带时间线的 JSON 文件（人依次穿过多个区域、宠物、风、卡死/噪声/漂移/失效的传感器、失去链路的节点、市电中断、模式与日历），还可以写明系统应当如何响应；`--verify-alarms` 把服务器实际发出的报警与之比较，因此这些文件就是 ARMOR-SERVER 的测试用例。读取很严格：遇到第一处无法理解的内容就拒绝整个文件。
 * **真实的能源数据：** `--energy` 根据实时模型（带云的日照、按小时变化的住宅用电、电价、带循环的 Pylontech 式电池、有噪声和缺失的电表）输出逆变器、电池组和电气节点的消息；对同一种子结果确定，并可通过 JSON 文件调整。不使用新选项时，输出与之前完全一致。
-* **通过 TCP 的能量电表:** `--meter-bus-port` 模拟 PZEM-004T 与 PZEM-017 的串行线路（Modbus-RTU,只读,CRC 错误不应答,写入被拒绝）,读数与 `--electrical` 相同,电表、阈值和故障由 JSON 文件设定,无需电表即可测试读取电表的代码。""",
+* **通过 TCP 的能量电表:** `--meter-bus-port` 模拟 PZEM-004T 与 PZEM-017 的串行线路（Modbus-RTU,只读,CRC 错误不应答,写入被拒绝）,读数与 `--electrical` 相同,电表、阈值和故障由 JSON 文件设定,无需电表即可测试读取电表的代码。
+* **其他节点、多节点同时运行与代理:** `--nodes` 最多模拟八个雷达节点(用 `--scenario relay` 时一名行人会从一个节点走到下一个),`--info`、`--alarm-node` 和 `--network-node` 分别加入节点信息、报警面板和网络监视器,报警场景可让人以设定速度沿折线移动(`walk`),`--mqtt-url` 还会把每条消息发布到本机或私有网络的代理上,因此服务器的 MQTT 路径也能得到测试。
+* **其他节点、多节点同时运行与代理:** `--nodes` 最多模拟八个雷达节点(用 `--scenario relay` 时一名行人会从一个节点走到下一个),`--info`、`--alarm-node` 和 `--network-node` 分别加入节点信息、报警面板和网络监视器,报警场景可让人以设定速度沿折线移动(`walk`),`--mqtt-url` 还会把每条消息发布到本机或私有网络的代理上,因此服务器的 MQTT 路径也能得到测试。""",
       "role": r"""ARMOR-SIMULATOR 让家族的其他部分无需硬件就能试用：它扮演雷达节点、太阳能网关或电气节点，把它们的消息发给 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER)，故障可重复，这样就能看到 [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) 和手机应用在一个并不存在的住宅上运行。它生成的每条消息都对照 [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON) 的契约检查。
 
 | 名称 | 方式 | 用途 |
@@ -1275,11 +1301,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           选项与运行
-│   ├── scenarios.py cycle.py            四种场景、270 度几何和一天的光照
+│   ├── scenarios.py cycle.py            五个场景、270 度几何和一天的光照
 │   ├── alarm_scenarios.py               来自 JSON 文件的报警场景、其消息以及对响应的检查
 │   ├── solar.py                         逆变器和两模块电池组
 │   ├── electrical.py                    电气节点的三个通道
 │   ├── meter_bus.py                     通过 TCP 模拟能量电表的串行线路 (PZEM-004T、PZEM-017)
+│   ├── nodes.py                         节点信息、报警面板和网络监视器
+│   ├── mqtt_out.py                      把消息发布到 MQTT 代理
 │   ├── energy.py                        真实的太阳能与电力数据:带云的日照、住宅、电价、电池、电表
 │   ├── faults.py                        七种可重复的故障
 │   └── publisher.py                     带重试的服务器投递
@@ -1290,7 +1318,7 @@ ARMOR-SIMULATOR/
 ├── examples/                            可供起步的报警场景与能源模型设置
 ├── images/                              横幅、图标和本 README 的两幅图
 ├── Dockerfile .dockerignore             虚拟测试台镜像
-├── docker/                              bench.sh,è™šæ‹Ÿæµ‹è¯•å°çš„å…¥å£
+├── docker/                              bench.sh,虚拟测试台的入口
 ├── build.sh build.bat                   通过共享的项目工作流构建
 ├── test.sh test.bat                     通过共享工作流运行测试
 ├── run.sh run.bat                       通过共享的项目工作流启动
@@ -1316,7 +1344,7 @@ ARMOR-SIMULATOR/
   },
   "pt": {
     "tagline": "Simulador de telemetria offline com falhas repetíveis",
-    "honest": "Os cenários, as falhas, a entrega a um servidor e os 210 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
+    "honest": "Os cenários, as falhas, a entrega a um servidor e os 234 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
     "glance": [
       [
         "Função",
@@ -1328,7 +1356,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Testes",
-        "210 (`python -m unittest discover -s tests`)",
+        "234 (`python -m unittest discover -s tests`)",
       ],
       [
         "Cenários e falhas",
@@ -1349,7 +1377,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Os cenários, as avarias e a entrega a um servidor funcionam; é o que alimenta um servidor num computador quando nenhum nó está ligado.",
-      "tests": "Passam 210 testes (`python -m unittest discover -s tests`).",
+      "tests": "Passam 234 testes (`python -m unittest discover -s tests`).",
       "protocols": "A geometria é ilustrativa, não um modelo do radar LD2450 real, e nada foi comparado com hardware real.",
       "integration": "Entrega as suas mensagens a um servidor nos testes, e o servidor da bancada de testes CM5 pode ser alimentado por ele.",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
@@ -1372,7 +1400,9 @@ ARMOR-SIMULATOR/
 * **Equipamento solar:** `--solar` acrescenta um inversor e um conjunto de baterias de dois módulos (quinze células cada, capacidades incluídas) ao longo de um dia rápido de 240 amostras, com um corte de energia ao fim do dia; as mensagens verificam-se contra o contrato solar do ARMOR-COMMON e entregam-se em `/api/v1/solar`.
 * **Cenários de alarme em ficheiros:** `--alarm-scenario` reproduz um ficheiro JSON com uma linha de tempo (pessoas que atravessam várias zonas, um animal de estimação, vento, um sensor preso, ruidoso, com deriva ou morto, um nó que perde a ligação, um corte de rede, o modo e o calendário) e pode dizer o que o sistema deve responder; `--verify-alarms` compara os alarmes que um servidor levantou com isso, pelo que os ficheiros são casos de teste para o ARMOR-SERVER. A leitura é estrita: o ficheiro inteiro é recusado à primeira coisa que não se entenda.
 * **Dados de energia realistas:** `--energy` emite um inversor, uma pilha de baterias e um nó elétrico a partir de um modelo em tempo real (um sol com nuvens, uma casa hora a hora, uma tarifa, uma bateria do tipo Pylontech com ciclos, um contador com ruído e falhas), determinista para uma semente e ajustável a partir de um ficheiro JSON. Sem as novas opções, a saída é exatamente a de antes.
-* **Os contadores de energia por TCP:** `--meter-bus-port` reproduz a linha série de um PZEM-004T e de um PZEM-017 (Modbus-RTU, só de leitura, um CRC errado não recebe resposta, uma escrita é recusada) com as leituras de `--electrical`, com um ficheiro JSON para os contadores, limiares e falhas, para que o código que lê os contadores possa ser experimentado sem contador.""",
+* **Os contadores de energia por TCP:** `--meter-bus-port` reproduz a linha série de um PZEM-004T e de um PZEM-017 (Modbus-RTU, só de leitura, um CRC errado não recebe resposta, uma escrita é recusada) com as leituras de `--electrical`, com um ficheiro JSON para os contadores, limiares e falhas, para que o código que lê os contadores possa ser experimentado sem contador.
+* **Os outros nós, vários ao mesmo tempo e um broker:** `--nodes` simula até oito nós de radar (com `--scenario relay` um caminhante passa de um nó para o seguinte), `--info`, `--alarm-node` e `--network-node` acrescentam a informação de um nó, uma central de alarme e um vigilante de rede, um cenário de alarme pode mover pessoas ao longo de uma poligonal a uma velocidade dada (`walk`), e `--mqtt-url` publica ainda cada mensagem num broker desta máquina ou de uma rede privada, de modo que também se exercita a via MQTT do servidor.
+* **Os outros nós, vários ao mesmo tempo e um broker:** `--nodes` simula até oito nós de radar (com `--scenario relay` um caminhante passa de um nó para o seguinte), `--info`, `--alarm-node` e `--network-node` acrescentam a informação de um nó, uma central de alarme e um vigilante de rede, um cenário de alarme pode mover pessoas ao longo de uma poligonal a uma velocidade dada (`walk`), e `--mqtt-url` publica ainda cada mensagem num broker desta máquina ou de uma rede privada, de modo que também se exercita a via MQTT do servidor.""",
       "role": r"""O ARMOR-SIMULATOR é a forma de experimentar o resto da família sem hardware: faz de nó radar, de porta de ligação solar ou de nó elétrico e envia as suas mensagens para um [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER), com falhas repetíveis, para que o [ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO) e a aplicação móvel se vejam a funcionar com uma casa que não existe. Cada mensagem que faz é verificada contra os contratos do [ARMOR-COMMON](https://github.com/JuanenRac/ARMOR-COMMON).
 
 | Nome | Como | Para quê |
@@ -1456,11 +1486,13 @@ python -I tools/armor_ci_validate.py
 ARMOR-SIMULATOR/
 ├── src/armor_simulator/
 │   ├── cli.py                           as opções e a execução
-│   ├── scenarios.py cycle.py            os quatro cenários, a geometria de 270 graus e o dia de luz
+│   ├── scenarios.py cycle.py            os cinco cenários, a geometria de 270 graus e o dia de luz
 │   ├── alarm_scenarios.py               cenários de alarme a partir de ficheiros JSON, as suas mensagens e a verificação da resposta
 │   ├── solar.py                         um inversor e uma pilha de dois módulos
 │   ├── electrical.py                    os três canais de um nó elétrico
 │   ├── meter_bus.py                     a linha série dos contadores de energia por TCP (PZEM-004T, PZEM-017)
+│   ├── nodes.py                         a informação de um nó, uma central de alarme e um vigilante de rede
+│   ├── mqtt_out.py                      publicar as mensagens num broker MQTT
 │   ├── energy.py                        dados solares e elétricos realistas: sol com nuvens, casa, tarifa, bateria, contador
 │   ├── faults.py                        as sete falhas repetíveis
 │   └── publisher.py                     entrega a um servidor com novas tentativas
