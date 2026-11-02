@@ -65,7 +65,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "382264%20checks",
+      "382548%20checks",
       "2ea44f",
     ],
   ],
@@ -74,7 +74,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network and holds the rules for switching it (host-tested core and a firmware that builds; it has never run on a board)",
-    "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 382,264 checks in 19 test programs, 375,036 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.5.5 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
+    "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 382,548 checks in 22 test programs, 375,036 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.5.5 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
     "glance": [
       [
         "Role",
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "382264 checks in 19 host programs and 5 Python checks (`ctest`)",
+        "382548 checks in 22 host programs and 6 Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -107,7 +107,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "382,264 checks in 19 host programs pass (`ctest`), 375,036 of them on the switching rules; the meters and contactors are stand-ins.",
+      "tests": "382,548 checks in 22 host programs pass (`ctest`), 375,036 of them on the switching rules; the meters and contactors are stand-ins.",
       "protocols": "The PZEM-004T v3 and PZEM-017 frames and readings are checked against the documented frames and recorded samples; no meter has answered yet.",
       "ui": "The Meters and Readings pages of the web panel are exercised in a browser against a stand-in node, not on a board.",
       "hardware": "No board built and no meter or contactor connected: nothing has run on real equipment yet.",
@@ -187,7 +187,12 @@ Mains (230 V AC) and the DC of a battery bank can kill and start fires. [docs/SA
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | The dead time of a transfer and how long a contactor has to show what was ordered |
 | `switching_enabled` | off | Switching is OFF unless this setting, the server (`ARMOR_ELECTRICAL_SWITCHING=1`) and the broker's access list all allow it |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | The settings every node shares: the name (empty gives `armor-` and the last bytes of the MAC), the set-up code (empty: random), the fleet secret (16+ characters, never in the repository), the first broker settings, the heartbeat (2 to 300 s), the minutes of Bluetooth set-up (1 to 120) and the reset with BOOT (8 s in the first 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |
+| `security.ota_check_board` | on | Refuse an uploaded firmware that was built for the other board (Wi-Fi or Ethernet); the image carries a mark of its board that the node reads while it arrives |
+| `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |
+| `analog_stream.continuous` | off | Read the analog inputs as a stream the converter fills by itself (DMA) and take the effective value of an alternating input over whole cycles of the mains found by their zero crossings; takes effect after a restart |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | The stream's sample rate (2000-80000), the longest window an input is read for, the whole cycles needed to measure over cycles (2-50), the swing in millivolts that counts as a cycle and the frequencies that can be the mains |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | The calibration of an input, measured against a reference such as a multimeter: corrected = (reading in mV - offset) x gain; 1 and 0 leave the reading as the chip gave it (an alternating input has the gain only) |""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; an ESP32-S3 board (Ethernet or Wi-Fi).
 
 ```bash
@@ -204,7 +209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 host test programs and 5 Python checks run under `ctest`; 382264 checks counted by the host programs, built with `-Werror`.
+22 host test programs and 6 Python checks run under `ctest`; 382548 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -269,7 +274,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "es": {
     "tagline": "Nodo eléctrico: lee las tensiones, corrientes, potencia y energía de la red AC y DC de la casa y guarda las reglas para maniobrarla (núcleo probado en el PC y un firmware que compila; nunca ha corrido en una placa)",
-    "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 382.264 comprobaciones en 19 programas de test, 375.036 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.5.5 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
+    "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 382.548 comprobaciones en 22 programas de test, 375.036 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.5.5 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
     "glance": [
       [
         "Función",
@@ -281,7 +286,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Pruebas",
-        "382264 comprobaciones en 19 programas de host y 5 de Python (`ctest`)",
+        "382548 comprobaciones en 22 programas de host y 6 de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -302,7 +307,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 382.264 comprobaciones en 19 programas de host (`ctest`), 375.036 de ellas sobre las reglas de maniobra; los medidores y contactores son simulaciones.",
+      "tests": "Pasan 382.548 comprobaciones en 22 programas de host (`ctest`), 375.036 de ellas sobre las reglas de maniobra; los medidores y contactores son simulaciones.",
       "protocols": "Las tramas y lecturas de los PZEM-004T v3 y PZEM-017 se comprueban contra las tramas documentadas y muestras grabadas; ningún medidor ha respondido todavía.",
       "ui": "Las páginas de medidores y lecturas del panel web se han ejercitado en un navegador contra un nodo simulado, no en una placa.",
       "hardware": "Ninguna placa construida ni medidor o contactor conectados: nada ha funcionado todavía con equipos reales.",
@@ -382,7 +387,12 @@ La red (230 V CA) y la corriente continua de un banco de baterías pueden matar 
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | El tiempo muerto de una transferencia y cuánto tiene un contactor para mostrar lo ordenado |
 | `switching_enabled` | off | La maniobra está APAGADA salvo que este ajuste, el servidor (`ARMOR_ELECTRICAL_SWITCHING=1`) y la lista de acceso del broker la permitan |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Los ajustes que comparten todos los nodos: el nombre (vacío da `armor-` y los últimos bytes de la MAC), el código de puesta en marcha (vacío: aleatorio), el secreto de flota (16+ caracteres, nunca en el repositorio), los primeros ajustes del broker, el latido (de 2 a 300 s), los minutos de puesta en marcha por Bluetooth (de 1 a 120) y el reinicio con BOOT (8 s en los primeros 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |
+| `security.ota_check_board` | on | Rechazar un firmware subido hecho para la otra placa (Wi-Fi o Ethernet); la imagen lleva una marca de su placa que el nodo lee mientras llega |
+| `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |
+| `analog_stream.continuous` | off | Leer las entradas analógicas como un flujo que el conversor llena por sí solo (DMA) y tomar el valor eficaz de una entrada alterna sobre ciclos completos de la red hallados por sus pasos por cero; se aplica tras reiniciar |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La frecuencia de muestreo del flujo (2000-80000), la ventana más larga con que se lee una entrada, los ciclos completos necesarios para medir sobre ciclos (2-50), la oscilación en milivoltios que cuenta como ciclo y las frecuencias que pueden ser la red |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibración de una entrada, medida frente a una referencia como un polímetro: corregido = (lectura en mV - desfase) x ganancia; 1 y 0 dejan la lectura como la dio el chip (una entrada alterna solo tiene ganancia) |""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una placa ESP32-S3 (Ethernet o Wi-Fi).
 
 ```bash
@@ -399,7 +409,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 programas de prueba de host y 5 comprobaciones en Python se ejecutan con `ctest`; 382264 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+22 programas de prueba de host y 6 comprobaciones en Python se ejecutan con `ctest`; 382548 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -464,7 +474,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "de": {
     "tagline": "Elektroknoten: liest Spannungen, Ströme, Leistung und Energie des AC- und DC-Netzes des Hauses und hält die Regeln fürs Schalten (am Rechner getesteter Kern und eine Firmware, die baut; sie lief noch nie auf einer Platine)",
-    "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 382.264 Prüfungen in 19 Testprogrammen, davon 375.036 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.5.5-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
+    "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 382.548 Prüfungen in 22 Testprogrammen, davon 375.036 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.5.5-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
     "glance": [
       [
         "Rolle",
@@ -476,7 +486,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Tests",
-        "382264 Prüfungen in 19 Host-Programmen und 5 Python-Prüfungen (`ctest`)",
+        "382548 Prüfungen in 22 Host-Programmen und 6 Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -497,7 +507,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "382.264 Prüfungen in 19 Host-Programmen bestehen (`ctest`), davon 375.036 zu den Schaltregeln; die Zähler und Schütze sind Nachbildungen.",
+      "tests": "382.548 Prüfungen in 22 Host-Programmen bestehen (`ctest`), davon 375.036 zu den Schaltregeln; die Zähler und Schütze sind Nachbildungen.",
       "protocols": "Die Telegramme und Messwerte der PZEM-004T v3 und PZEM-017 werden gegen die dokumentierten Telegramme und aufgezeichnete Beispiele geprüft; noch hat kein Zähler geantwortet.",
       "ui": "Die Seiten für Zähler und Messwerte des Web-Panels wurden in einem Browser gegen einen nachgebildeten Knoten erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut und kein Zähler oder Schütz angeschlossen: Bisher lief nichts auf echten Geräten.",
@@ -577,7 +587,12 @@ Netzspannung (230 V AC) und die Gleichspannung einer Batteriebank können töten
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Die Totzeit einer Umschaltung und wie lange ein Schütz Zeit hat, das Befohlene zu zeigen |
 | `switching_enabled` | off | Schalten ist AUS, außer diese Einstellung, der Server (`ARMOR_ELECTRICAL_SWITCHING=1`) und die Zugriffsliste des Brokers erlauben es |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Die Einstellungen, die alle Knoten teilen: der Name (leer ergibt `armor-` und die letzten Bytes der MAC), der Einrichtungscode (leer: zufällig), das Flottengeheimnis (16+ Zeichen, nie im Repository), die ersten Broker-Einstellungen, der Herzschlag (2 bis 300 s), die Minuten der Bluetooth-Einrichtung (1 bis 120) und der Reset mit BOOT (8 s in den ersten 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |
+| `security.ota_check_board` | on | Eine hochgeladene Firmware für die andere Platine (WLAN oder Ethernet) abweisen; das Image trägt ein Kennzeichen seiner Platine, das der Knoten beim Empfang liest |
+| `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |
+| `analog_stream.continuous` | off | Die Analogeingänge als Datenstrom lesen, den der Wandler selbst füllt (DMA), und den Effektivwert eines Wechselsignals über ganze Netzperioden bilden, die an ihren Nulldurchgängen erkannt werden; wirkt nach einem Neustart |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | Die Abtastrate des Datenstroms (2000-80000), das längste Fenster, über das ein Eingang gelesen wird, die nötigen ganzen Perioden für die Messung über Perioden (2-50), der Hub in Millivolt, der als Periode zählt, und die Frequenzen, die das Netz sein können |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | Die Kalibrierung eines Eingangs, gemessen gegen eine Referenz wie ein Multimeter: korrigiert = (Messwert in mV - Offset) x Faktor; 1 und 0 lassen den Messwert so, wie ihn der Chip liefert (ein Wechselsignal hat nur den Faktor) |""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; eine ESP32-S3-Platine (Ethernet oder WLAN).
 
 ```bash
@@ -594,7 +609,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 Host-Testprogramme und 5 Python-Prüfungen laufen unter `ctest`; 382264 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+22 Host-Testprogramme und 6 Python-Prüfungen laufen unter `ctest`; 382548 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -659,7 +674,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "fr": {
     "tagline": "Nœud électrique : lit les tensions, courants, puissance et énergie du réseau AC et DC de la maison et détient les règles pour le commander (cœur testé sur ordinateur et un firmware qui compile ; il n'a jamais tourné sur une carte)",
-    "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 382 264 vérifications dans 19 programmes de test, dont 375 036 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
+    "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 382 548 vérifications dans 22 programmes de test, dont 375 036 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
     "glance": [
       [
         "Rôle",
@@ -671,7 +686,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Tests",
-        "382264 vérifications dans 19 programmes hôte et 5 contrôles Python (`ctest`)",
+        "382548 vérifications dans 22 programmes hôte et 6 contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -692,7 +707,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "382 264 vérifications dans 19 programmes d'hôte réussissent (`ctest`), dont 375 036 sur les règles de manœuvre ; les compteurs et contacteurs sont des simulations.",
+      "tests": "382 548 vérifications dans 22 programmes d'hôte réussissent (`ctest`), dont 375 036 sur les règles de manœuvre ; les compteurs et contacteurs sont des simulations.",
       "protocols": "Les trames et lectures des PZEM-004T v3 et PZEM-017 sont vérifiées par rapport aux trames documentées et à des échantillons enregistrés ; aucun compteur n'a encore répondu.",
       "ui": "Les pages des compteurs et des mesures du panneau web ont été essayées dans un navigateur contre un nœud simulé, pas sur une carte.",
       "hardware": "Aucune carte construite ni compteur ou contacteur connectés : rien n'a encore tourné sur de vrais équipements.",
@@ -772,7 +787,12 @@ Le secteur (230 V CA) et le courant continu d'un banc de batteries peuvent tuer 
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Le temps mort d'un transfert et le temps dont un contacteur dispose pour montrer ce qui a été ordonné |
 | `switching_enabled` | off | La manœuvre est DÉSACTIVÉE sauf si ce réglage, le serveur (`ARMOR_ELECTRICAL_SWITCHING=1`) et la liste d'accès du broker l'autorisent |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Les réglages que tous les nœuds partagent : le nom (vide donne `armor-` et les derniers octets de la MAC), le code de configuration (vide : aléatoire), le secret de flotte (16+ caractères, jamais dans le dépôt), les premiers réglages du broker, le battement (de 2 à 300 s), les minutes de configuration Bluetooth (de 1 à 120) et la réinitialisation avec BOOT (8 s dans les 30 premières s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |
+| `security.ota_check_board` | on | Refuser un firmware envoyé construit pour l'autre carte (Wi-Fi ou Ethernet) ; l'image porte une marque de sa carte que le nœud lit à l'arrivée |
+| `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |
+| `analog_stream.continuous` | off | Lire les entrées analogiques en flux que le convertisseur remplit seul (DMA) et prendre la valeur efficace d'une entrée alternative sur des cycles entiers du secteur repérés par leurs passages par zéro ; effet après un redémarrage |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La fréquence d'échantillonnage du flux (2000-80000), la fenêtre la plus longue pendant laquelle une entrée est lue, les cycles entiers requis pour mesurer sur des cycles (2-50), l'excursion en millivolts qui compte comme un cycle et les fréquences qui peuvent être le secteur |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | L'étalonnage d'une entrée, mesuré par rapport à une référence comme un multimètre : corrigé = (lecture en mV - décalage) x gain ; 1 et 0 laissent la lecture telle que la puce l'a donnée (une entrée alternative n'a que le gain) |""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une carte ESP32-S3 (Ethernet ou Wi-Fi).
 
 ```bash
@@ -789,7 +809,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 programmes de test sur hôte et 5 contrôles Python tournent sous `ctest` ; 382264 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+22 programmes de test sur hôte et 6 contrôles Python tournent sous `ctest` ; 382548 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -854,7 +874,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "it": {
     "tagline": "Nodo elettrico: legge tensioni, correnti, potenza ed energia della rete AC e DC della casa e custodisce le regole per manovrarla (nucleo testato sul PC e un firmware che compila; non ha mai girato su una scheda)",
-    "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 382.264 controlli in 19 programmi di test, 375.036 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
+    "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 382.548 controlli in 19 programmi di test, 375.036 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
     "glance": [
       [
         "Ruolo",
@@ -866,7 +886,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Test",
-        "382264 verifiche in 19 programmi host e 5 verifiche Python (`ctest`)",
+        "382548 verifiche in 22 programmi host e 6 verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -887,7 +907,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 382.264 controlli in 19 programmi host (`ctest`), 375.036 dei quali sulle regole di manovra; i contatori e i contattori sono simulazioni.",
+      "tests": "Superano 382.548 controlli in 22 programmi host (`ctest`), 375.036 dei quali sulle regole di manovra; i contatori e i contattori sono simulazioni.",
       "protocols": "I frame e le letture dei PZEM-004T v3 e PZEM-017 sono verificati contro i frame documentati e campioni registrati; nessun contatore ha ancora risposto.",
       "ui": "Le pagine dei contatori e delle letture del pannello web sono state provate in un browser contro un nodo simulato, non su una scheda.",
       "hardware": "Nessuna scheda costruita e nessun contatore o contattore collegati: nulla ha ancora funzionato su apparecchiature reali.",
@@ -967,7 +987,12 @@ La rete (230 V CA) e la corrente continua di un banco di batterie possono uccide
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Il tempo morto di un trasferimento e quanto tempo ha un contattore per mostrare ciò che è stato ordinato |
 | `switching_enabled` | off | La manovra è SPENTA salvo che questa impostazione, il server (`ARMOR_ELECTRICAL_SWITCHING=1`) e la lista di accesso del broker la consentano |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Le impostazioni che tutti i nodi condividono: il nome (vuoto dà `armor-` e gli ultimi byte del MAC), il codice di configurazione (vuoto: casuale), il segreto di flotta (16+ caratteri, mai nel repository), le prime impostazioni del broker, il battito (da 2 a 300 s), i minuti di configurazione Bluetooth (da 1 a 120) e il ripristino con BOOT (8 s nei primi 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |
+| `security.ota_check_board` | on | Rifiutare un firmware caricato costruito per l'altra scheda (Wi-Fi o Ethernet); l'immagine porta una marca della sua scheda che il nodo legge mentre arriva |
+| `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |
+| `analog_stream.continuous` | off | Leggere gli ingressi analogici come flusso che il convertitore riempie da solo (DMA) e prendere il valore efficace di un ingresso alternato su cicli interi della rete trovati dai loro passaggi per lo zero; ha effetto dopo un riavvio |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La frequenza di campionamento del flusso (2000-80000), la finestra più lunga per cui si legge un ingresso, i cicli interi necessari per misurare sui cicli (2-50), l'escursione in millivolt che conta come ciclo e le frequenze che possono essere la rete |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibrazione di un ingresso, misurata rispetto a un riferimento come un multimetro: corretto = (lettura in mV - offset) x guadagno; 1 e 0 lasciano la lettura come l'ha data il chip (un ingresso alternato ha solo il guadagno) |""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una scheda ESP32-S3 (Ethernet o Wi-Fi).
 
 ```bash
@@ -984,7 +1009,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 programmi di test su host e 5 verifiche Python girano con `ctest`; 382264 verifiche contate dai programmi host, compilati con `-Werror`.
+22 programmi di test su host e 6 verifiche Python girano con `ctest`; 382548 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1049,7 +1074,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "ja": {
     "tagline": "電気ノード：住宅の AC・DC ネットワークの電圧、電流、電力、エネルギーを読み取り、その開閉のルールを持ちます（PC でテスト済みのコアとビルドできるファームウェア。基板ではまだ動作していません）",
-    "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：19 のテストプログラムで 382,264 項目、うち 375,036 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.5.5 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
+    "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：22 のテストプログラムで 382,548 項目、うち 375,036 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.5.5 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
     "glance": [
       [
         "役割",
@@ -1061,7 +1086,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "テスト",
-        "382264 件の検査（ホスト用プログラム 19 本と Python 検査 5 個、`ctest`）",
+        "382548 件の検査（ホスト用プログラム 22 本と Python 検査 6 個、`ctest`）",
       ],
       [
         "機器",
@@ -1082,7 +1107,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "19 のホストプログラムで 382,264 件のチェックが通ります（`ctest`）。そのうち 375,036 件は切り替え規則です。メーターとコンタクターは模擬です。",
+      "tests": "22 のホストプログラムで 382,548 件のチェックが通ります（`ctest`）。そのうち 375,036 件は切り替え規則です。メーターとコンタクターは模擬です。",
       "protocols": "PZEM-004T v3 と PZEM-017 のフレームと読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のメーターはまだ応答していません。",
       "ui": "Web パネルのメーターと読み取り値のページは、ブラウザーで模擬ノードに対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、メーターやコンタクターも接続していません。実機ではまだ何も動かしていません。",
@@ -1162,7 +1187,12 @@ ARMOR-NODE-ELECTRICAL/
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | 切替のデッドタイムと、接触器が命令どおりの状態を示すまでの猶予 |
 | `switching_enabled` | off | この設定、サーバー（`ARMOR_ELECTRICAL_SWITCHING=1`）、ブローカーのアクセスリストのすべてが許可しない限り開閉はオフ |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | すべてのノードに共通する設定：名前（空なら `armor-` と MAC の下位バイト）、セットアップコード（空ならランダム）、フリートシークレット（16 文字以上、リポジトリには置かない）、最初のブローカー設定、ハートビート（2〜300 秒）、Bluetooth セットアップの分数（1〜120）、BOOT によるリセット（最初の 30 秒に 8 秒） |
-| `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |""",
+| `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |
+| `security.ota_check_board` | on | もう一方の基板（Wi-Fi または Ethernet）用に作られたファームウェアのアップロードを拒否します。イメージには基板の印が入っており、ノードは到着中にそれを読み取ります |
+| `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |
+| `analog_stream.continuous` | off | アナログ入力を、変換器が自動で満たすストリーム（DMA）として読み、交流入力の実効値をゼロクロスで見つけた商用電源の整数サイクルにわたって求めます。再起動後に有効になります |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | ストリームのサンプリング周波数（2000〜80000）、1 つの入力を読む最長の時間枠、サイクル単位で測るために必要な整数サイクル数（2〜50）、1 サイクルと数える振幅（ミリボルト）、商用電源となりうる周波数 |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | テスターなどの基準と比べて測った入力の校正値。補正後 = (読み値 mV - オフセット) x ゲイン。1 と 0 ならチップの読み値のままです（交流入力はゲインのみ） |""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、ESP32-S3 基板（Ethernet または Wi-Fi）。
 
 ```bash
@@ -1179,7 +1209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム 19 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 382264 件で、`-Werror` でビルドします。
+ホスト用テストプログラム 22 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 382548 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1244,7 +1274,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "zh": {
     "tagline": "电气节点：读取住宅交流和直流电网的电压、电流、功率和电能，并保存其开关规则（已在电脑上测试的核心和可编译的固件；尚未在电路板上运行过）",
-    "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：19 个测试程序中的 382,264 项检查，其中 375,036 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.5.5 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
+    "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：22 个测试程序中的 382,548 项检查，其中 375,036 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.5.5 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
     "glance": [
       [
         "角色",
@@ -1256,7 +1286,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "测试",
-        "382264 项检查（19 个主机程序和 5 项 Python 检查，`ctest`）",
+        "382548 项检查（22 个主机程序和 6 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1277,7 +1307,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "19 个主机程序中的 382,264 项检查通过（`ctest`），其中 375,036 项针对切换规则；电表和接触器均为模拟。",
+      "tests": "22 个主机程序中的 382,548 项检查通过（`ctest`），其中 375,036 项针对切换规则；电表和接触器均为模拟。",
       "protocols": "PZEM-004T v3 和 PZEM-017 的帧与读数已对照文档中的帧和录制的样本检查；目前还没有电表响应过。",
       "ui": "网页面板的电表和读数页面已在浏览器中对模拟节点测试过，尚未在板子上测试。",
       "hardware": "尚未制作板子，也没有连接电表或接触器：还没有在真实设备上运行过。",
@@ -1357,7 +1387,12 @@ ARMOR-NODE-ELECTRICAL/
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | 转换的死区时间以及接触器显示所命令状态的时限 |
 | `switching_enabled` | off | 除非此设置、服务器（`ARMOR_ELECTRICAL_SWITCHING=1`）和代理的访问列表都允许，否则开关操作为关闭 |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | 所有节点共有的设置：名称（为空则为 `armor-` 加 MAC 的最后字节）、设置码（为空则随机）、机群密钥（16 个字符以上，绝不放入仓库）、最初的代理设置、心跳（2 到 300 秒）、蓝牙设置的分钟数（1 到 120）以及用 BOOT 重置（前 30 秒内按 8 秒） |
-| `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |""",
+| `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |
+| `security.ota_check_board` | on | 拒绝为另一种电路板（Wi-Fi 或以太网）构建的上传固件；镜像带有所属电路板的标记，节点在接收时读取 |
+| `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |
+| `analog_stream.continuous` | off | 以转换器自行填充的数据流（DMA）读取模拟输入，并按过零点找到的整数个市电周期计算交流输入的有效值；重启后生效 |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | 数据流的采样率（2000–80000）、读取一个输入的最长窗口、按周期测量所需的完整周期数（2–50）、算作一个周期的摆幅（毫伏）以及可能是市电的频率 |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | 对照万用表等基准测得的输入校准：校正值 = (读数 mV - 偏移) x 增益；1 和 0 表示保持芯片给出的读数（交流输入只有增益） |""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；ESP32-S3 电路板（以太网或 Wi-Fi）。
 
 ```bash
@@ -1374,7 +1409,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 19 个主机测试程序和 5 个 Python 检查；主机程序统计的检查共 382264 项，使用 `-Werror` 构建。
+`ctest` 运行 22 个主机测试程序和 6 个 Python 检查；主机程序统计的检查共 382548 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1439,7 +1474,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "pt": {
     "tagline": "Nó elétrico: lê as tensões, correntes, potência e energia da rede AC e DC da casa e guarda as regras para a comutar (núcleo testado em anfitrião e um firmware que compila; nunca correu numa placa)",
-    "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 382 264 verificações em 19 programas de teste, 375 036 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.5.5 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
+    "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 382 548 verificações em 22 programas de teste, 375 036 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.5.5 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
     "glance": [
       [
         "Função",
@@ -1451,7 +1486,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Testes",
-        "382264 verificações em 19 programas de anfitrião e 5 em Python (`ctest`)",
+        "382548 verificações em 22 programas de anfitrião e 6 em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1472,7 +1507,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 382.264 verificações em 19 programas de anfitrião (`ctest`), 375.036 delas sobre as regras de manobra; os contadores e contactores são simulações.",
+      "tests": "Passam 382.548 verificações em 22 programas de anfitrião (`ctest`), 375.036 delas sobre as regras de manobra; os contadores e contactores são simulações.",
       "protocols": "As tramas e leituras dos PZEM-004T v3 e PZEM-017 são verificadas contra as tramas documentadas e amostras gravadas; nenhum contador respondeu ainda.",
       "ui": "As páginas de contadores e leituras do painel web foram exercitadas num navegador contra um nó simulado, não numa placa.",
       "hardware": "Nenhuma placa construída nem contador ou contactor ligados: nada funcionou ainda em equipamentos reais.",
@@ -1552,7 +1587,12 @@ A rede (230 V CA) e a corrente contínua de um banco de baterias podem matar e p
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | O tempo morto de uma transferência e quanto tempo tem um contactor para mostrar o que foi ordenado |
 | `switching_enabled` | off | A manobra está DESLIGADA a não ser que esta definição, o servidor (`ARMOR_ELECTRICAL_SWITCHING=1`) e a lista de acesso do broker a permitam |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | As definições que todos os nós partilham: o nome (vazio dá `armor-` e os últimos bytes do MAC), o código de configuração (vazio: aleatório), o segredo de frota (16+ caracteres, nunca no repositório), as primeiras definições do broker, o batimento (de 2 a 300 s), os minutos de configuração Bluetooth (de 1 a 120) e a reposição com BOOT (8 s nos primeiros 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |
+| `security.ota_check_board` | on | Recusar um firmware enviado feito para a outra placa (Wi-Fi ou Ethernet); a imagem leva uma marca da sua placa que o nó lê enquanto chega |
+| `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |
+| `analog_stream.continuous` | off | Ler as entradas analógicas como um fluxo que o conversor enche sozinho (DMA) e tomar o valor eficaz de uma entrada alternada sobre ciclos inteiros da rede encontrados pelas passagens por zero; aplica-se após reiniciar |
+| `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | A taxa de amostragem do fluxo (2000-80000), a janela mais longa com que uma entrada é lida, os ciclos inteiros necessários para medir sobre ciclos (2-50), a oscilação em milivolts que conta como ciclo e as frequências que podem ser a rede |
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | A calibração de uma entrada, medida contra uma referência como um multímetro: corrigido = (leitura em mV - desvio) x ganho; 1 e 0 deixam a leitura como o chip a deu (uma entrada alternada só tem ganho) |""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma placa ESP32-S3 (Ethernet ou Wi-Fi).
 
 ```bash
@@ -1569,7 +1609,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-19 programas de teste de anfitrião e 5 verificações Python correm com `ctest`; 382264 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+22 programas de teste de anfitrião e 6 verificações Python correm com `ctest`; 382548 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

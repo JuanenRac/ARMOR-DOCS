@@ -60,7 +60,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "11824%20checks",
+      "11979%20checks",
       "2ea44f",
     ],
   ],
@@ -69,7 +69,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Solar gateway node: reads inverters and batteries through up to ten serial ports (ESP32-S3 firmware, its web panel and the protocol library)",
-    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 11,824 checks in 18 test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
+    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 11,979 checks in 20 test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
     "glance": [
       [
         "Role",
@@ -81,7 +81,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "11824 checks in 18 host programs and 6 Python checks (`ctest`)",
+        "11979 checks in 20 host programs and 7 Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -102,7 +102,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "11,824 checks in 18 host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
+      "tests": "11,979 checks in 20 host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
       "protocols": "The Voltronic, Pylontech and ANT-BMS frames, checksums and readings are checked against the documented frames and recorded samples; none has talked to a real inverter or battery yet.",
       "ui": "The web panel is exercised in a browser against a mock of the node, not on a board.",
       "hardware": "No board built and no inverter or battery connected: nothing has run on real equipment yet.",
@@ -116,7 +116,7 @@ TEXT = {
       "[Node firmware](docs/NODE_FIRMWARE.md): the board, the ports, the first start and the bench checklist",
       "[Wiring](docs/NODE_HARDWARE.md), [protocols](docs/PROTOCOLS.md) and [messages](docs/SOLAR_MESSAGES.md)",
       "[Battery maintenance](docs/BATTERY_MAINTENANCE.md) and its [bench test plan](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Studio menus](docs/STUDIO_MENUS.md), [bench tests](docs/BENCH_TESTS.md), [set-up code](docs/SETUP_CODE.md) and [Bluetooth provisioning](docs/BLE_PROVISIONING.md)",
+      "[Studio menus](docs/STUDIO_MENUS.md), [bench tests](docs/BENCH_TESTS.md), [compatibility table](docs/COMPATIBILITY.md), [set-up code](docs/SETUP_CODE.md) and [Bluetooth provisioning](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Before a pull request run `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py`: it must pass. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -200,7 +200,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 host test programs and 6 Python checks run under `ctest`; 11824 checks counted by the host programs, built with `-Werror`.
+20 host test programs and 7 Python checks run under `ctest`; 11979 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -265,7 +265,7 @@ ARMOR-NODE-SOLAR/
   },
   "es": {
     "tagline": "Nodo pasarela solar: lee inversores y baterías por hasta diez puertos serie (firmware para ESP32-S3, su panel web y la biblioteca de protocolos)",
-    "honest": "El firmware compila en el contenedor ESP-IDF 5.5.5, su núcleo (los ajustes, el intercambio con cada tipo de equipo, la aritmética de la UART emulada, el canal Bluetooth, las comprobaciones de versión y firma: 11.824 comprobaciones en 18 programas de test) se prueba en un ordenador con equipos de pega, los mensajes que hace los acepta ARMOR-COMMON y el panel se ejercitó en un navegador contra un nodo de pega. **Nunca ha corrido en una placa y no se ha conectado ningún inversor ni batería**: el Wi-Fi, el panel sobre TLS, la actualización, las UART de hardware y emuladas y los formatos de los protocolos (escritos a partir de documentos públicos y de memoria) están sin probar. Las tramas ANT-BMS de sus tests las capturaron otras personas en sus propias unidades: este proyecto no ha leído ninguna por sí mismo.",
+    "honest": "El firmware compila en el contenedor ESP-IDF 5.5.5, su núcleo (los ajustes, el intercambio con cada tipo de equipo, la aritmética de la UART emulada, el canal Bluetooth, las comprobaciones de versión y firma: 11.979 comprobaciones en 20 programas de test) se prueba en un ordenador con equipos de pega, los mensajes que hace los acepta ARMOR-COMMON y el panel se ejercitó en un navegador contra un nodo de pega. **Nunca ha corrido en una placa y no se ha conectado ningún inversor ni batería**: el Wi-Fi, el panel sobre TLS, la actualización, las UART de hardware y emuladas y los formatos de los protocolos (escritos a partir de documentos públicos y de memoria) están sin probar. Las tramas ANT-BMS de sus tests las capturaron otras personas en sus propias unidades: este proyecto no ha leído ninguna por sí mismo.",
     "glance": [
       [
         "Función",
@@ -277,7 +277,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Pruebas",
-        "11824 comprobaciones en 18 programas de host y 6 de Python (`ctest`)",
+        "11979 comprobaciones en 20 programas de host y 7 de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -298,7 +298,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 11.824 comprobaciones en 18 programas de host (`ctest`): los ajustes, el intercambio con cada tipo de equipo, la UART emulada, el canal Bluetooth y las comprobaciones de versión.",
+      "tests": "Pasan 11.979 comprobaciones en 20 programas de host (`ctest`): los ajustes, el intercambio con cada tipo de equipo, la UART emulada, el canal Bluetooth y las comprobaciones de versión.",
       "protocols": "Las tramas, sumas de control y lecturas de Voltronic, Pylontech y ANT-BMS se comprueban contra las tramas documentadas y muestras grabadas; ninguno ha hablado todavía con un inversor o una batería reales.",
       "ui": "El panel web se ha ejercitado en un navegador contra una simulación del nodo, no en una placa.",
       "hardware": "Ninguna placa construida ni inversor o batería conectados: nada ha funcionado todavía con equipos reales.",
@@ -312,7 +312,7 @@ ARMOR-NODE-SOLAR/
       "[Firmware del nodo](docs/NODE_FIRMWARE.md): la placa, los puertos, el primer arranque y la lista de banco",
       "[Cableado](docs/NODE_HARDWARE.md), [protocolos](docs/PROTOCOLS.md) y [mensajes](docs/SOLAR_MESSAGES.md)",
       "[Mantenimiento de baterías](docs/BATTERY_MAINTENANCE.md) y su [plan de pruebas de banco](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Menús de Studio](docs/STUDIO_MENUS.md), [pruebas de banco](docs/BENCH_TESTS.md), [código de puesta en marcha](docs/SETUP_CODE.md) y [alta por Bluetooth](docs/BLE_PROVISIONING.md)",
+      "[Menús de Studio](docs/STUDIO_MENUS.md), [pruebas de banco](docs/BENCH_TESTS.md), [tabla de compatibilidad](docs/COMPATIBILITY.md), [código de puesta en marcha](docs/SETUP_CODE.md) y [alta por Bluetooth](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Antes de un pull request ejecuta `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py`: debe pasar. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y el [código de conducta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -396,7 +396,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programas de prueba de host y 6 comprobaciones en Python se ejecutan con `ctest`; 11824 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+20 programas de prueba de host y 7 comprobaciones en Python se ejecutan con `ctest`; 11979 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -461,7 +461,7 @@ ARMOR-NODE-SOLAR/
   },
   "de": {
     "tagline": "Solar-Gateway-Knoten: liest Wechselrichter und Batterien über bis zu zehn serielle Ports (ESP32-S3-Firmware, sein Web-Panel und die Protokollbibliothek)",
-    "honest": "Die Firmware baut im ESP-IDF-5.5.5-Container, ihr Kern (die Einstellungen, der Austausch mit jeder Geräteart, die Arithmetik der emulierten UART, der Bluetooth-Kanal, die Versions- und Signaturprüfungen: 11.824 Prüfungen in 18 Testprogrammen) wird auf einem Computer mit Ersatzgeräten getestet, die von ihr erzeugten Nachrichten akzeptiert ARMOR-COMMON, und das Panel wurde in einem Browser gegen einen Ersatzknoten geprüft. **Sie lief nie auf einer Platine, und es wurde kein Wechselrichter und keine Batterie angeschlossen**: das WLAN, das Panel über TLS, das Update, die Hardware- und die emulierten UARTs und die Formate der Protokolle (nach öffentlichen Dokumenten und aus dem Gedächtnis geschrieben) sind unerprobt. Die ANT-BMS-Rahmen in den Tests wurden von anderen Personen an ihren eigenen Geräten aufgezeichnet: dieses Projekt hat selbst noch keinen gelesen.",
+    "honest": "Die Firmware baut im ESP-IDF-5.5.5-Container, ihr Kern (die Einstellungen, der Austausch mit jeder Geräteart, die Arithmetik der emulierten UART, der Bluetooth-Kanal, die Versions- und Signaturprüfungen: 11.979 Prüfungen in 20 Testprogrammen) wird auf einem Computer mit Ersatzgeräten getestet, die von ihr erzeugten Nachrichten akzeptiert ARMOR-COMMON, und das Panel wurde in einem Browser gegen einen Ersatzknoten geprüft. **Sie lief nie auf einer Platine, und es wurde kein Wechselrichter und keine Batterie angeschlossen**: das WLAN, das Panel über TLS, das Update, die Hardware- und die emulierten UARTs und die Formate der Protokolle (nach öffentlichen Dokumenten und aus dem Gedächtnis geschrieben) sind unerprobt. Die ANT-BMS-Rahmen in den Tests wurden von anderen Personen an ihren eigenen Geräten aufgezeichnet: dieses Projekt hat selbst noch keinen gelesen.",
     "glance": [
       [
         "Rolle",
@@ -473,7 +473,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "11824 Prüfungen in 18 Host-Programmen und 6 Python-Prüfungen (`ctest`)",
+        "11979 Prüfungen in 20 Host-Programmen und 7 Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -494,7 +494,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "11.824 Prüfungen in 18 Host-Programmen bestehen (`ctest`): die Einstellungen, der Austausch mit jeder Geräteart, die emulierte UART, der Bluetooth-Kanal und die Versionsprüfungen.",
+      "tests": "11.979 Prüfungen in 20 Host-Programmen bestehen (`ctest`): die Einstellungen, der Austausch mit jeder Geräteart, die emulierte UART, der Bluetooth-Kanal und die Versionsprüfungen.",
       "protocols": "Die Telegramme, Prüfsummen und Messwerte von Voltronic, Pylontech und ANT-BMS werden gegen die dokumentierten Telegramme und aufgezeichnete Beispiele geprüft; keines hat bisher mit einem echten Wechselrichter oder einer echten Batterie gesprochen.",
       "ui": "Das Web-Panel wurde in einem Browser gegen eine Nachbildung des Knotens erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut und kein Wechselrichter oder keine Batterie angeschlossen: Bisher lief nichts auf echten Geräten.",
@@ -508,7 +508,7 @@ ARMOR-NODE-SOLAR/
       "[Knoten-Firmware](docs/NODE_FIRMWARE.md): die Platine, die Ports, der erste Start und die Prüfstand-Checkliste",
       "[Verdrahtung](docs/NODE_HARDWARE.md), [Protokolle](docs/PROTOCOLS.md) und [Nachrichten](docs/SOLAR_MESSAGES.md)",
       "[Batteriewartung](docs/BATTERY_MAINTENANCE.md) und ihr [Prüfstandsplan](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Studio-Menüs](docs/STUDIO_MENUS.md), [Prüfstandtests](docs/BENCH_TESTS.md), [Einrichtungscode](docs/SETUP_CODE.md) und [Bluetooth-Einrichtung](docs/BLE_PROVISIONING.md)",
+      "[Studio-Menüs](docs/STUDIO_MENUS.md), [Prüfstandtests](docs/BENCH_TESTS.md), [Kompatibilitätstabelle](docs/COMPATIBILITY.md), [Einrichtungscode](docs/SETUP_CODE.md) und [Bluetooth-Einrichtung](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Führe vor einem Pull Request `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py` aus: Es muss bestehen. Siehe [CONTRIBUTING.md](CONTRIBUTING.md) und den [Verhaltenskodex](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -592,7 +592,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 Host-Testprogramme und 6 Python-Prüfungen laufen unter `ctest`; 11824 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+20 Host-Testprogramme und 7 Python-Prüfungen laufen unter `ctest`; 11979 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -657,7 +657,7 @@ ARMOR-NODE-SOLAR/
   },
   "fr": {
     "tagline": "Nœud passerelle solaire : lit onduleurs et batteries par jusqu'à dix ports série (firmware ESP32-S3, son panneau web et la bibliothèque de protocoles)",
-    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 11 824 vérifications dans 18 programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
+    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 11 979 vérifications dans 20 programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
     "glance": [
       [
         "Rôle",
@@ -669,7 +669,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "11824 vérifications dans 18 programmes hôte et 6 contrôles Python (`ctest`)",
+        "11979 vérifications dans 20 programmes hôte et 7 contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -690,7 +690,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "11 824 vérifications dans 18 programmes d'hôte réussissent (`ctest`) : les réglages, l'échange avec chaque type d'équipement, l'UART émulée, le canal Bluetooth et les contrôles de version.",
+      "tests": "11 979 vérifications dans 20 programmes d'hôte réussissent (`ctest`) : les réglages, l'échange avec chaque type d'équipement, l'UART émulée, le canal Bluetooth et les contrôles de version.",
       "protocols": "Les trames, sommes de contrôle et lectures de Voltronic, Pylontech et ANT-BMS sont vérifiées par rapport aux trames documentées et à des échantillons enregistrés ; aucun n'a encore parlé à un vrai onduleur ou à une vraie batterie.",
       "ui": "Le panneau web a été essayé dans un navigateur contre une simulation du nœud, pas sur une carte.",
       "hardware": "Aucune carte construite ni onduleur ou batterie connectés : rien n'a encore tourné sur de vrais équipements.",
@@ -704,7 +704,7 @@ ARMOR-NODE-SOLAR/
       "[Firmware du nœud](docs/NODE_FIRMWARE.md) : la carte, les ports, le premier démarrage et la liste de contrôle du banc",
       "[Câblage](docs/NODE_HARDWARE.md), [protocoles](docs/PROTOCOLS.md) et [messages](docs/SOLAR_MESSAGES.md)",
       "[Maintenance des batteries](docs/BATTERY_MAINTENANCE.md) et son [plan d'essais de banc](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Menus de Studio](docs/STUDIO_MENUS.md), [essais de banc](docs/BENCH_TESTS.md), [code de configuration](docs/SETUP_CODE.md) et [mise en service Bluetooth](docs/BLE_PROVISIONING.md)",
+      "[Menus de Studio](docs/STUDIO_MENUS.md), [essais de banc](docs/BENCH_TESTS.md), [table de compatibilité](docs/COMPATIBILITY.md), [code de configuration](docs/SETUP_CODE.md) et [mise en service Bluetooth](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Avant une pull request, lancez `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py` : il doit réussir. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -788,7 +788,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programmes de test sur hôte et 6 contrôles Python tournent sous `ctest` ; 11824 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+20 programmes de test sur hôte et 7 contrôles Python tournent sous `ctest` ; 11979 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -853,7 +853,7 @@ ARMOR-NODE-SOLAR/
   },
   "it": {
     "tagline": "Nodo gateway solare: legge inverter e batterie da fino a dieci porte seriali (firmware ESP32-S3, il suo pannello web e la libreria dei protocolli)",
-    "honest": "Il firmware si compila nel contenitore ESP-IDF 5.5.5, il suo nucleo (le impostazioni, lo scambio con ogni tipo di apparecchio, l'aritmetica dell'UART emulata, il canale Bluetooth, i controlli di versione e firma: 11.824 controlli in 18 programmi di test) è provato su un computer con apparecchi sostitutivi, i messaggi che produce sono accettati da ARMOR-COMMON e il pannello è stato esercitato in un browser contro un nodo sostitutivo. **Non ha mai girato su una scheda e nessun inverter o batteria è stato collegato**: il Wi-Fi, il pannello su TLS, l'aggiornamento, le UART hardware ed emulate e i formati dei protocolli (scritti da documenti pubblici e a memoria) non sono provati. I frame ANT-BMS dei suoi test sono stati catturati da altre persone sulle loro unità: questo progetto non ne ha letto nessuno di persona.",
+    "honest": "Il firmware si compila nel contenitore ESP-IDF 5.5.5, il suo nucleo (le impostazioni, lo scambio con ogni tipo di apparecchio, l'aritmetica dell'UART emulata, il canale Bluetooth, i controlli di versione e firma: 11.979 controlli in 18 programmi di test) è provato su un computer con apparecchi sostitutivi, i messaggi che produce sono accettati da ARMOR-COMMON e il pannello è stato esercitato in un browser contro un nodo sostitutivo. **Non ha mai girato su una scheda e nessun inverter o batteria è stato collegato**: il Wi-Fi, il pannello su TLS, l'aggiornamento, le UART hardware ed emulate e i formati dei protocolli (scritti da documenti pubblici e a memoria) non sono provati. I frame ANT-BMS dei suoi test sono stati catturati da altre persone sulle loro unità: questo progetto non ne ha letto nessuno di persona.",
     "glance": [
       [
         "Ruolo",
@@ -865,7 +865,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Test",
-        "11824 verifiche in 18 programmi host e 6 verifiche Python (`ctest`)",
+        "11979 verifiche in 20 programmi host e 7 verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -886,7 +886,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 11.824 controlli in 18 programmi host (`ctest`): le impostazioni, lo scambio con ogni tipo di apparecchiatura, la UART emulata, il canale Bluetooth e i controlli di versione.",
+      "tests": "Superano 11.979 controlli in 20 programmi host (`ctest`): le impostazioni, lo scambio con ogni tipo di apparecchiatura, la UART emulata, il canale Bluetooth e i controlli di versione.",
       "protocols": "I frame, i checksum e le letture di Voltronic, Pylontech e ANT-BMS sono verificati contro i frame documentati e campioni registrati; nessuno ha ancora parlato con un inverter o una batteria reali.",
       "ui": "Il pannello web è stato provato in un browser contro una simulazione del nodo, non su una scheda.",
       "hardware": "Nessuna scheda costruita e nessun inverter o batteria collegati: nulla ha ancora funzionato su apparecchiature reali.",
@@ -900,7 +900,7 @@ ARMOR-NODE-SOLAR/
       "[Firmware del nodo](docs/NODE_FIRMWARE.md): la scheda, le porte, il primo avvio e la lista di controllo del banco",
       "[Cablaggio](docs/NODE_HARDWARE.md), [protocolli](docs/PROTOCOLS.md) e [messaggi](docs/SOLAR_MESSAGES.md)",
       "[Manutenzione delle batterie](docs/BATTERY_MAINTENANCE.md) e il suo [piano di prove al banco](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Menu di Studio](docs/STUDIO_MENUS.md), [prove al banco](docs/BENCH_TESTS.md), [codice di configurazione](docs/SETUP_CODE.md) e [provisioning Bluetooth](docs/BLE_PROVISIONING.md)",
+      "[Menu di Studio](docs/STUDIO_MENUS.md), [prove al banco](docs/BENCH_TESTS.md), [tabella di compatibilità](docs/COMPATIBILITY.md), [codice di configurazione](docs/SETUP_CODE.md) e [provisioning Bluetooth](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Prima di una pull request esegui `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py`: deve passare. Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il [codice di condotta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -984,7 +984,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programmi di test su host e 6 verifiche Python girano con `ctest`; 11824 verifiche contate dai programmi host, compilati con `-Werror`.
+20 programmi di test su host e 7 verifiche Python girano con `ctest`; 11979 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1049,7 +1049,7 @@ ARMOR-NODE-SOLAR/
   },
   "ja": {
     "tagline": "太陽光ゲートウェイノード：最大 10 個のシリアルポートでインバーターとバッテリーを読み取る（ESP32-S3 ファームウェア、その Web パネル、プロトコルライブラリ）",
-    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：18 のテストプログラムで 11,824 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
+    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：20 のテストプログラムで 11,979 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
     "glance": [
       [
         "役割",
@@ -1061,7 +1061,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "テスト",
-        "11824 件の検査（ホスト用プログラム 18 本と Python 検査 6 個、`ctest`）",
+        "11979 件の検査（ホスト用プログラム 20 本と Python 検査 7 個、`ctest`）",
       ],
       [
         "機器",
@@ -1082,7 +1082,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "18 のホストプログラムで 11,824 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
+      "tests": "20 のホストプログラムで 11,979 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
       "protocols": "Voltronic、Pylontech、ANT-BMS のフレーム、チェックサム、読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のインバーターやバッテリーとはまだ通信していません。",
       "ui": "Web パネルはブラウザーでノードの模擬に対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、インバーターやバッテリーも接続していません。実機ではまだ何も動かしていません。",
@@ -1096,7 +1096,7 @@ ARMOR-NODE-SOLAR/
       "[ノードのファームウェア](docs/NODE_FIRMWARE.md)：基板、ポート、初回起動、ベンチのチェックリスト",
       "[配線](docs/NODE_HARDWARE.md)、[プロトコル](docs/PROTOCOLS.md)、[メッセージ](docs/SOLAR_MESSAGES.md)",
       "[バッテリー保守](docs/BATTERY_MAINTENANCE.md)と[ベンチテスト計画](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Studio のメニュー](docs/STUDIO_MENUS.md)、[ベンチテスト](docs/BENCH_TESTS.md)、[セットアップコード](docs/SETUP_CODE.md)、[Bluetooth プロビジョニング](docs/BLE_PROVISIONING.md)",
+      "[Studio のメニュー](docs/STUDIO_MENUS.md)、[ベンチテスト](docs/BENCH_TESTS.md)、[互換性の表](docs/COMPATIBILITY.md)、[セットアップコード](docs/SETUP_CODE.md)、[Bluetooth プロビジョニング](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Pull Request の前に `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py` を実行してください。通る必要があります。[CONTRIBUTING.md](CONTRIBUTING.md) と[行動規範](CODE_OF_CONDUCT.md)を参照してください。",
     "languages_extra": "",
@@ -1180,7 +1180,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム 18 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 11824 件で、`-Werror` でビルドします。
+ホスト用テストプログラム 20 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 11979 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1245,7 +1245,7 @@ ARMOR-NODE-SOLAR/
   },
   "zh": {
     "tagline": "太阳能网关节点：通过最多十个串口读取逆变器和电池（ESP32-S3 固件、其网页面板和协议库）",
-    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：18 个测试程序中的 11,824 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
+    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：20 个测试程序中的 11,979 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
     "glance": [
       [
         "角色",
@@ -1257,7 +1257,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "测试",
-        "11824 项检查（18 个主机程序和 6 项 Python 检查，`ctest`）",
+        "11979 项检查（20 个主机程序和 7 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1278,7 +1278,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "18 个主机程序中的 11,824 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
+      "tests": "20 个主机程序中的 11,979 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
       "protocols": "Voltronic、Pylontech 和 ANT-BMS 的帧、校验和与读数已对照文档中的帧和录制的样本检查；目前还没有与真实的逆变器或电池通信过。",
       "ui": "网页面板已在浏览器中对节点的模拟进行过测试，尚未在板子上测试。",
       "hardware": "尚未制作板子，也没有连接逆变器或电池：还没有在真实设备上运行过。",
@@ -1292,7 +1292,7 @@ ARMOR-NODE-SOLAR/
       "[节点固件](docs/NODE_FIRMWARE.md)：电路板、端口、首次启动和台架检查清单",
       "[接线](docs/NODE_HARDWARE.md)、[协议](docs/PROTOCOLS.md)和[消息](docs/SOLAR_MESSAGES.md)",
       "[电池维护](docs/BATTERY_MAINTENANCE.md)及其[台架测试计划](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Studio 菜单](docs/STUDIO_MENUS.md)、[台架测试](docs/BENCH_TESTS.md)、[设置码](docs/SETUP_CODE.md)和[蓝牙配置](docs/BLE_PROVISIONING.md)",
+      "[Studio 菜单](docs/STUDIO_MENUS.md)、[台架测试](docs/BENCH_TESTS.md)、[兼容性表](docs/COMPATIBILITY.md)、[设置码](docs/SETUP_CODE.md)和[蓝牙配置](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "提交 Pull Request 之前请运行 `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py`：必须通过。参见 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。",
     "languages_extra": "",
@@ -1376,7 +1376,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 18 个主机测试程序和 6 个 Python 检查；主机程序统计的检查共 11824 项，使用 `-Werror` 构建。
+`ctest` 运行 20 个主机测试程序和 7 个 Python 检查；主机程序统计的检查共 11979 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1441,7 +1441,7 @@ ARMOR-NODE-SOLAR/
   },
   "pt": {
     "tagline": "Nó de ligação solar: lê inversores e baterias através de até dez portas série (firmware ESP32-S3, o seu painel web e a biblioteca de protocolos)",
-    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 11 824 verificações em 18 programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
+    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 11 979 verificações em 20 programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
     "glance": [
       [
         "Função",
@@ -1453,7 +1453,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Testes",
-        "11824 verificações em 18 programas de anfitrião e 6 em Python (`ctest`)",
+        "11979 verificações em 20 programas de anfitrião e 7 em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1474,7 +1474,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 11.824 verificações em 18 programas de anfitrião (`ctest`): as definições, a troca com cada tipo de equipamento, a UART emulada, o canal Bluetooth e as verificações de versão.",
+      "tests": "Passam 11.979 verificações em 20 programas de anfitrião (`ctest`): as definições, a troca com cada tipo de equipamento, a UART emulada, o canal Bluetooth e as verificações de versão.",
       "protocols": "As tramas, somas de verificação e leituras de Voltronic, Pylontech e ANT-BMS são verificadas contra as tramas documentadas e amostras gravadas; nenhum falou ainda com um inversor ou uma bateria reais.",
       "ui": "O painel web foi exercitado num navegador contra uma simulação do nó, não numa placa.",
       "hardware": "Nenhuma placa construída nem inversor ou bateria ligados: nada funcionou ainda em equipamentos reais.",
@@ -1488,7 +1488,7 @@ ARMOR-NODE-SOLAR/
       "[Firmware do nó](docs/NODE_FIRMWARE.md): a placa, as portas, o primeiro arranque e a lista de verificação da bancada",
       "[Cablagem](docs/NODE_HARDWARE.md), [protocolos](docs/PROTOCOLS.md) e [mensagens](docs/SOLAR_MESSAGES.md)",
       "[Manutenção de baterias](docs/BATTERY_MAINTENANCE.md) e o seu [plano de testes de bancada](docs/BATTERY_BENCH_TEST_PLAN.md)",
-      "[Menus do Studio](docs/STUDIO_MENUS.md), [testes de bancada](docs/BENCH_TESTS.md), [código de configuração](docs/SETUP_CODE.md) e [provisionamento Bluetooth](docs/BLE_PROVISIONING.md)",
+      "[Menus do Studio](docs/STUDIO_MENUS.md), [testes de bancada](docs/BENCH_TESTS.md), [tabela de compatibilidade](docs/COMPATIBILITY.md), [código de configuração](docs/SETUP_CODE.md) e [provisionamento Bluetooth](docs/BLE_PROVISIONING.md)",
     ],
     "contributing_first": "Antes de um pull request, execute `ctest --test-dir build/host` and `python -I tools/armor_ci_validate.py`: tem de passar. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
@@ -1572,7 +1572,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programas de teste de anfitrião e 6 verificações Python correm com `ctest`; 11824 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+20 programas de teste de anfitrião e 7 verificações Python correm com `ctest`; 11979 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

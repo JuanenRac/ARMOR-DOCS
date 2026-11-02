@@ -60,12 +60,12 @@ FACTS = {
     ],
     [
       "Checks",
-      "482%2C535",
+      "489%2C145",
       "2ea44f",
     ],
     [
       "Tests",
-      "488930%20checks",
+      "489145%20checks",
       "2ea44f",
     ],
   ],
@@ -74,7 +74,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the firmware of the node and the rules tested on a computer (nothing has run on a board)",
-    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 488,930 checks in 18 test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
+    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 489,145 checks in 21 test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
     "glance": [
       [
         "Role",
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "488930 checks in 18 host programs and 5 Python checks (`ctest`)",
+        "489145 checks in 21 host programs and 5 Python checks (`ctest`)",
       ],
       [
         "Inputs",
@@ -107,7 +107,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "488,930 checks in 18 host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
+      "tests": "489,145 checks in 21 host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
       "protocols": "The node's own Zigbee conversation with a coordinator, local or on the network, is tested only against a stand-in coordinator; it has never met a real coordinator or sensor.",
       "ui": "The web panel is exercised in a real browser against a stand-in node, not on a board.",
       "hardware": "No board built, no zone wired and no siren or Zigbee coordinator connected: nothing has run on a real installation.",
@@ -188,6 +188,11 @@ This is not a certified alarm system ([docs/SAFETY.md](docs/SAFETY.md)): it is a
 | `zigbee_silence_min` | - | How long the server's Zigbee may be silent before the node takes the radio |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | The settings every node shares: the name (empty gives `armor-` and the last bytes of the MAC), the set-up code (empty: random), the fleet secret (16+ characters, never in the repository), the first broker settings, the heartbeat (2 to 300 s), the minutes of Bluetooth set-up (1 to 120) and the reset with BOOT (8 s in the first 30 s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |
+| `security.ota_check_board` | on | Refuse an uploaded firmware that was built for the other board (Wi-Fi or Ethernet); the image carries a mark of its board that the node reads while it arrives |
+| `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |
+| `siren_loop.enabled` | off | Supervise the siren's wiring: an analog pin reads the siren's return line and the state message carries `siren_loop` and `siren_fault` (cut, shorted or unreadable); no board has the return input yet |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | The return pin, the millivolts below which the wire is shorted and up to which the siren is there (above it the wire is cut), the time a reading must hold to report or lift a fault (100-60000 ms) and whether the line is also read while the siren sounds |
+| `siren_loop.block_arming` | off | Refuse to arm without `force` while the siren's wiring is in fault (as with an open zone); the fault is reported either way |
 
 Re-sounds after a silence are limited to 3 (`kMaxResounds`). The siren relay starts open on every restart and does not fall open when the broker is lost.""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; an ESP32-S3 board (Ethernet or Wi-Fi) with the base board.
@@ -204,7 +209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 host test programs and 5 Python checks run under `ctest`; 488930 checks counted by the host programs, built with `-Werror`.
+21 host test programs and 5 Python checks run under `ctest`; 489145 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -270,7 +275,7 @@ ARMOR-NODE-ALARM/
   },
   "es": {
     "tagline": "Nodo y central de alarma: las zonas, el armado, los retardos, la sirena y el PIN de la alarma de la casa, con el firmware del nodo y las reglas probadas en un ordenador (nada ha corrido en una placa)",
-    "honest": "Lo que existe es el **núcleo de la alarma** (qué es una zona, cómo un bucle cableado leído por el ADC se convierte en un estado, las reglas de la central: armado, retardos, la alarma, la sirena, el PIN con bloqueo) y el **firmware del nodo** construido sobre él (ajustes, panel web, mensajes con el servidor, el puente de la radio Zigbee, un coordinador Zigbee en la red, relés, Bluetooth, actualizaciones firmadas), que compila para las dos placas; el núcleo, los ajustes, los mensajes y el panel en un navegador real contra un nodo de pega se prueban en un ordenador con 488.930 comprobaciones en 18 programas de test. **Nada ha corrido en una placa ni en una instalación real, no se ha cableado ninguna zona ni conectado ninguna sirena, la conversación Zigbee del propio nodo con un coordinador (local o en la red) está escrita y probada contra un coordinador de pega pero nunca ha corrido contra un coordinador ni un sensor reales, y esto no es un sistema de alarma certificado.**",
+    "honest": "Lo que existe es el **núcleo de la alarma** (qué es una zona, cómo un bucle cableado leído por el ADC se convierte en un estado, las reglas de la central: armado, retardos, la alarma, la sirena, el PIN con bloqueo) y el **firmware del nodo** construido sobre él (ajustes, panel web, mensajes con el servidor, el puente de la radio Zigbee, un coordinador Zigbee en la red, relés, Bluetooth, actualizaciones firmadas), que compila para las dos placas; el núcleo, los ajustes, los mensajes y el panel en un navegador real contra un nodo de pega se prueban en un ordenador con 489.145 comprobaciones en 21 programas de test. **Nada ha corrido en una placa ni en una instalación real, no se ha cableado ninguna zona ni conectado ninguna sirena, la conversación Zigbee del propio nodo con un coordinador (local o en la red) está escrita y probada contra un coordinador de pega pero nunca ha corrido contra un coordinador ni un sensor reales, y esto no es un sistema de alarma certificado.**",
     "glance": [
       [
         "Función",
@@ -282,7 +287,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Pruebas",
-        "488930 comprobaciones en 18 programas de host y 5 de Python (`ctest`)",
+        "489145 comprobaciones en 21 programas de host y 5 de Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -303,7 +308,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 488.930 comprobaciones en 18 programas de host (`ctest`): las zonas, los lazos cableados leídos por el ADC, las reglas de armado, retardos, sirena y PIN, los ajustes y los mensajes.",
+      "tests": "Pasan 489.145 comprobaciones en 21 programas de host (`ctest`): las zonas, los lazos cableados leídos por el ADC, las reglas de armado, retardos, sirena y PIN, los ajustes y los mensajes.",
       "protocols": "La conversación Zigbee del propio nodo con un coordinador, local o en la red, solo se ha probado contra un coordinador simulado; nunca se ha encontrado con un coordinador o un sensor reales.",
       "ui": "El panel web se ha ejercitado en un navegador real contra un nodo simulado, no en una placa.",
       "hardware": "Ninguna placa construida, ninguna zona cableada y ninguna sirena o coordinador Zigbee conectados: nada ha funcionado en una instalación real.",
@@ -384,6 +389,11 @@ No es un sistema de alarma certificado ([docs/SAFETY.md](docs/SAFETY.md)): es un
 | `zigbee_silence_min` | - | Cuánto puede callar el Zigbee del servidor antes de que el nodo tome la radio |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Los ajustes que comparten todos los nodos: el nombre (vacío da `armor-` y los últimos bytes de la MAC), el código de puesta en marcha (vacío: aleatorio), el secreto de flota (16+ caracteres, nunca en el repositorio), los primeros ajustes del broker, el latido (de 2 a 300 s), los minutos de puesta en marcha por Bluetooth (de 1 a 120) y el reinicio con BOOT (8 s en los primeros 30 s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |
+| `security.ota_check_board` | on | Rechazar un firmware subido hecho para la otra placa (Wi-Fi o Ethernet); la imagen lleva una marca de su placa que el nodo lee mientras llega |
+| `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |
+| `siren_loop.enabled` | off | Supervisar el cableado de la sirena: un pin analógico lee la línea de retorno de la sirena y el mensaje de estado lleva `siren_loop` y `siren_fault` (cortado, en cortocircuito o ilegible); ninguna placa tiene aún la entrada de retorno |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | El pin de retorno, los milivoltios por debajo de los cuales el cable está en cortocircuito y hasta los cuales la sirena está (por encima el cable está cortado), el tiempo que una lectura debe mantenerse para avisar o quitar un fallo (100-60000 ms) y si la línea también se lee mientras suena la sirena |
+| `siren_loop.block_arming` | off | Rechazar armar sin `force` mientras el cableado de la sirena esté en fallo (como con una zona abierta); el fallo se avisa en cualquier caso |
 
 Los resonidos tras un silencio se limitan a 3 (`kMaxResounds`). El relé de la sirena arranca abierto en cada reinicio y no cae a abierto si se pierde el broker.""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una placa ESP32-S3 (Ethernet o Wi-Fi) con la placa base.
@@ -400,7 +410,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programas de prueba de host y 5 comprobaciones en Python se ejecutan con `ctest`; 488930 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+21 programas de prueba de host y 5 comprobaciones en Python se ejecutan con `ctest`; 489145 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -466,7 +476,7 @@ ARMOR-NODE-ALARM/
   },
   "de": {
     "tagline": "Alarmknoten und Alarmzentrale: die Zonen, das Scharfschalten, die Verzögerungen, die Sirene und die PIN der Hausalarmanlage, mit der Firmware des Knotens und den auf einem Rechner getesteten Regeln (nichts lief auf einer Platine)",
-    "honest": "Es existiert der **Alarmkern** (was eine Zone ist, wie eine vom ADC gelesene verdrahtete Schleife zum Zustand wird, die Regeln der Zentrale: Scharfschalten, Verzögerungen, der Alarm, die Sirene, die PIN mit Sperre) und die darauf gebaute **Firmware des Knotens** (Einstellungen, Web-Panel, Nachrichten mit dem Server, die Brücke des Zigbee-Funkmoduls, ein Zigbee-Koordinator im Netzwerk, Relais, Bluetooth, signierte Updates), die für beide Platinen baut; der Kern, die Einstellungen, die Nachrichten und das Panel in einem echten Browser gegen einen Ersatzknoten werden auf einem Computer mit 488.930 Prüfungen in 18 Testprogrammen getestet. **Nichts lief auf einer Platine oder einer echten Anlage, keine Zone wurde verdrahtet und keine Sirene angeschlossen, die Zigbee-Kommunikation des Knotens mit einem Koordinator (lokal oder im Netzwerk) ist geschrieben und gegen einen Ersatzkoordinator getestet, lief aber nie gegen einen echten Koordinator oder Sensor, und dies ist keine zertifizierte Alarmanlage.**",
+    "honest": "Es existiert der **Alarmkern** (was eine Zone ist, wie eine vom ADC gelesene verdrahtete Schleife zum Zustand wird, die Regeln der Zentrale: Scharfschalten, Verzögerungen, der Alarm, die Sirene, die PIN mit Sperre) und die darauf gebaute **Firmware des Knotens** (Einstellungen, Web-Panel, Nachrichten mit dem Server, die Brücke des Zigbee-Funkmoduls, ein Zigbee-Koordinator im Netzwerk, Relais, Bluetooth, signierte Updates), die für beide Platinen baut; der Kern, die Einstellungen, die Nachrichten und das Panel in einem echten Browser gegen einen Ersatzknoten werden auf einem Computer mit 489.145 Prüfungen in 21 Testprogrammen getestet. **Nichts lief auf einer Platine oder einer echten Anlage, keine Zone wurde verdrahtet und keine Sirene angeschlossen, die Zigbee-Kommunikation des Knotens mit einem Koordinator (lokal oder im Netzwerk) ist geschrieben und gegen einen Ersatzkoordinator getestet, lief aber nie gegen einen echten Koordinator oder Sensor, und dies ist keine zertifizierte Alarmanlage.**",
     "glance": [
       [
         "Rolle",
@@ -478,7 +488,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "488930 Prüfungen in 18 Host-Programmen und 5 Python-Prüfungen (`ctest`)",
+        "489145 Prüfungen in 21 Host-Programmen und 5 Python-Prüfungen (`ctest`)",
       ],
       [
         "Eingänge",
@@ -499,7 +509,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "488.930 Prüfungen in 18 Host-Programmen bestehen (`ctest`): die Zonen, die vom ADC gelesenen verdrahteten Schleifen, die Regeln für Scharfschalten, Verzögerungen, Sirene und PIN, die Einstellungen und die Nachrichten.",
+      "tests": "489.145 Prüfungen in 21 Host-Programmen bestehen (`ctest`): die Zonen, die vom ADC gelesenen verdrahteten Schleifen, die Regeln für Scharfschalten, Verzögerungen, Sirene und PIN, die Einstellungen und die Nachrichten.",
       "protocols": "Die Zigbee-Kommunikation des Knotens selbst mit einem Koordinator, lokal oder im Netz, ist nur gegen einen nachgebildeten Koordinator getestet; sie ist nie auf einen echten Koordinator oder Sensor getroffen.",
       "ui": "Das Web-Panel wurde in einem echten Browser gegen einen nachgebildeten Knoten erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut, keine Zone verdrahtet und weder Sirene noch Zigbee-Koordinator angeschlossen: Bisher lief nichts an einer echten Anlage.",
@@ -580,6 +590,11 @@ Dies ist kein zertifiziertes Alarmsystem ([docs/SAFETY.md](docs/SAFETY.md)): Es 
 | `zigbee_silence_min` | - | Wie lange das Zigbee des Servers schweigen darf, bevor der Knoten das Funkmodul übernimmt |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Die Einstellungen, die alle Knoten teilen: der Name (leer ergibt `armor-` und die letzten Bytes der MAC), der Einrichtungscode (leer: zufällig), das Flottengeheimnis (16+ Zeichen, nie im Repository), die ersten Broker-Einstellungen, der Herzschlag (2 bis 300 s), die Minuten der Bluetooth-Einrichtung (1 bis 120) und der Reset mit BOOT (8 s in den ersten 30 s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |
+| `security.ota_check_board` | on | Eine hochgeladene Firmware für die andere Platine (WLAN oder Ethernet) abweisen; das Image trägt ein Kennzeichen seiner Platine, das der Knoten beim Empfang liest |
+| `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |
+| `siren_loop.enabled` | off | Die Verkabelung der Sirene überwachen: Ein Analogpin liest die Rückleseleitung der Sirene, und die Zustandsmeldung enthält `siren_loop` und `siren_fault` (unterbrochen, kurzgeschlossen oder nicht lesbar); noch keine Platine hat den Rückleseeingang |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | Der Rückleseanschluss, die Millivolt, unter denen die Leitung kurzgeschlossen ist und bis zu denen die Sirene da ist (darüber ist die Leitung unterbrochen), die Zeit, die ein Messwert halten muss, um eine Störung zu melden oder aufzuheben (100-60000 ms), und ob die Leitung auch gelesen wird, während die Sirene ertönt |
+| `siren_loop.block_arming` | off | Scharfschalten ohne `force` verweigern, solange die Verkabelung der Sirene gestört ist (wie bei einer offenen Zone); die Störung wird in jedem Fall gemeldet |
 
 Erneutes Auslösen nach einem Stummschalten ist auf 3 begrenzt (`kMaxResounds`). Das Sirenenrelais startet bei jedem Neustart offen und fällt nicht auf offen, wenn der Broker verloren geht.""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; eine ESP32-S3-Platine (Ethernet oder WLAN) mit der Basisplatine.
@@ -596,7 +611,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 Host-Testprogramme und 5 Python-Prüfungen laufen unter `ctest`; 488930 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+21 Host-Testprogramme und 5 Python-Prüfungen laufen unter `ctest`; 489145 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -662,7 +677,7 @@ ARMOR-NODE-ALARM/
   },
   "fr": {
     "tagline": "Nœud et centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le code PIN de l'alarme de la maison, avec le firmware du nœud et les règles testées sur un ordinateur (rien n'a tourné sur une carte)",
-    "honest": "Ce qui existe, c'est le **cœur de l'alarme** (ce qu'est une zone, comment une boucle câblée lue par l'ADC devient un état, les règles de la centrale : armement, temporisations, l'alarme, la sirène, le PIN avec verrouillage) et le **firmware du nœud** construit dessus (réglages, panneau web, messages avec le serveur, le pont de la radio Zigbee, un coordinateur Zigbee sur le réseau, relais, Bluetooth, mises à jour signées), qui se compile pour les deux cartes ; le cœur, les réglages, les messages et le panneau dans un vrai navigateur contre un nœud factice sont testés sur un ordinateur avec 488 930 vérifications dans 18 programmes de test. **Rien n'a tourné sur une carte ni sur une installation réelle, aucune zone n'a été câblée ni aucune sirène connectée, la conversation Zigbee du nœud avec un coordinateur (local ou sur le réseau) est écrite et testée contre un coordinateur factice mais n'a jamais tourné contre un vrai coordinateur ni un vrai capteur, et ce n'est pas un système d'alarme certifié.**",
+    "honest": "Ce qui existe, c'est le **cœur de l'alarme** (ce qu'est une zone, comment une boucle câblée lue par l'ADC devient un état, les règles de la centrale : armement, temporisations, l'alarme, la sirène, le PIN avec verrouillage) et le **firmware du nœud** construit dessus (réglages, panneau web, messages avec le serveur, le pont de la radio Zigbee, un coordinateur Zigbee sur le réseau, relais, Bluetooth, mises à jour signées), qui se compile pour les deux cartes ; le cœur, les réglages, les messages et le panneau dans un vrai navigateur contre un nœud factice sont testés sur un ordinateur avec 489 145 vérifications dans 21 programmes de test. **Rien n'a tourné sur une carte ni sur une installation réelle, aucune zone n'a été câblée ni aucune sirène connectée, la conversation Zigbee du nœud avec un coordinateur (local ou sur le réseau) est écrite et testée contre un coordinateur factice mais n'a jamais tourné contre un vrai coordinateur ni un vrai capteur, et ce n'est pas un système d'alarme certifié.**",
     "glance": [
       [
         "Rôle",
@@ -674,7 +689,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "488930 vérifications dans 18 programmes hôte et 5 contrôles Python (`ctest`)",
+        "489145 vérifications dans 21 programmes hôte et 5 contrôles Python (`ctest`)",
       ],
       [
         "Entrées",
@@ -695,7 +710,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "488 930 vérifications dans 18 programmes d'hôte réussissent (`ctest`) : les zones, les boucles câblées lues par le CAN, les règles d'armement, de temporisation, de sirène et de PIN, les réglages et les messages.",
+      "tests": "489 145 vérifications dans 21 programmes d'hôte réussissent (`ctest`) : les zones, les boucles câblées lues par le CAN, les règles d'armement, de temporisation, de sirène et de PIN, les réglages et les messages.",
       "protocols": "La conversation Zigbee du nœud lui-même avec un coordinateur, local ou sur le réseau, n'est testée que contre un coordinateur simulé ; elle n'a jamais rencontré un vrai coordinateur ni un vrai capteur.",
       "ui": "Le panneau web a été essayé dans un vrai navigateur contre un nœud simulé, pas sur une carte.",
       "hardware": "Aucune carte construite, aucune zone câblée et ni sirène ni coordinateur Zigbee connectés : rien n'a tourné sur une installation réelle.",
@@ -776,6 +791,11 @@ Ce n'est pas un système d'alarme certifié ([docs/SAFETY.md](docs/SAFETY.md)) :
 | `zigbee_silence_min` | - | Combien de temps le Zigbee du serveur peut se taire avant que le nœud prenne la radio |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Les réglages que tous les nœuds partagent : le nom (vide donne `armor-` et les derniers octets de la MAC), le code de configuration (vide : aléatoire), le secret de flotte (16+ caractères, jamais dans le dépôt), les premiers réglages du broker, le battement (de 2 à 300 s), les minutes de configuration Bluetooth (de 1 à 120) et la réinitialisation avec BOOT (8 s dans les 30 premières s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |
+| `security.ota_check_board` | on | Refuser un firmware envoyé construit pour l'autre carte (Wi-Fi ou Ethernet) ; l'image porte une marque de sa carte que le nœud lit à l'arrivée |
+| `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |
+| `siren_loop.enabled` | off | Surveiller le câblage de la sirène : une broche analogique lit la ligne de retour de la sirène et le message d'état porte `siren_loop` et `siren_fault` (coupé, en court-circuit ou illisible) ; aucune carte n'a encore l'entrée de retour |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | La broche de retour, les millivolts sous lesquels le fil est en court-circuit et jusqu'auxquels la sirène est là (au-dessus le fil est coupé), le temps qu'une lecture doit tenir pour signaler ou lever un défaut (100-60000 ms) et si la ligne est aussi lue pendant que la sirène sonne |
+| `siren_loop.block_arming` | off | Refuser d'armer sans `force` tant que le câblage de la sirène est en défaut (comme avec une zone ouverte) ; le défaut est signalé dans tous les cas |
 
 Les nouvelles sonneries après un silence sont limitées à 3 (`kMaxResounds`). Le relais de la sirène démarre ouvert à chaque redémarrage et ne retombe pas ouvert si le broker est perdu.""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une carte ESP32-S3 (Ethernet ou Wi-Fi) avec la carte de base.
@@ -792,7 +812,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programmes de test sur hôte et 5 contrôles Python tournent sous `ctest` ; 488930 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+21 programmes de test sur hôte et 5 contrôles Python tournent sous `ctest` ; 489145 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -858,7 +878,7 @@ ARMOR-NODE-ALARM/
   },
   "it": {
     "tagline": "Nodo e centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN dell'allarme di casa, con il firmware del nodo e le regole provate su un computer (nulla ha girato su una scheda)",
-    "honest": "Ciò che esiste è il **nucleo dell'allarme** (cos'è una zona, come un anello cablato letto dall'ADC diventa uno stato, le regole della centrale: inserimento, ritardi, l'allarme, la sirena, il PIN con blocco) e il **firmware del nodo** costruito su di esso (impostazioni, pannello web, messaggi con il server, il ponte della radio Zigbee, un coordinatore Zigbee in rete, relè, Bluetooth, aggiornamenti firmati), che si compila per entrambe le schede; il nucleo, le impostazioni, i messaggi e il pannello in un vero browser contro un nodo sostitutivo sono provati su un computer con 488.930 controlli in 18 programmi di test. **Nulla ha girato su una scheda né su un impianto reale, nessuna zona è stata cablata né sirena collegata, la conversazione Zigbee del nodo con un coordinatore (locale o in rete) è scritta e provata contro un coordinatore sostitutivo ma non ha mai girato contro un coordinatore o un sensore reali, e questo non è un sistema d'allarme certificato.**",
+    "honest": "Ciò che esiste è il **nucleo dell'allarme** (cos'è una zona, come un anello cablato letto dall'ADC diventa uno stato, le regole della centrale: inserimento, ritardi, l'allarme, la sirena, il PIN con blocco) e il **firmware del nodo** costruito su di esso (impostazioni, pannello web, messaggi con il server, il ponte della radio Zigbee, un coordinatore Zigbee in rete, relè, Bluetooth, aggiornamenti firmati), che si compila per entrambe le schede; il nucleo, le impostazioni, i messaggi e il pannello in un vero browser contro un nodo sostitutivo sono provati su un computer con 489.145 controlli in 18 programmi di test. **Nulla ha girato su una scheda né su un impianto reale, nessuna zona è stata cablata né sirena collegata, la conversazione Zigbee del nodo con un coordinatore (locale o in rete) è scritta e provata contro un coordinatore sostitutivo ma non ha mai girato contro un coordinatore o un sensore reali, e questo non è un sistema d'allarme certificato.**",
     "glance": [
       [
         "Ruolo",
@@ -870,7 +890,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Test",
-        "488930 verifiche in 18 programmi host e 5 verifiche Python (`ctest`)",
+        "489145 verifiche in 21 programmi host e 5 verifiche Python (`ctest`)",
       ],
       [
         "Ingressi",
@@ -891,7 +911,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 488.930 controlli in 18 programmi host (`ctest`): le zone, i circuiti cablati letti dall'ADC, le regole di inserimento, ritardi, sirena e PIN, le impostazioni e i messaggi.",
+      "tests": "Superano 489.145 controlli in 21 programmi host (`ctest`): le zone, i circuiti cablati letti dall'ADC, le regole di inserimento, ritardi, sirena e PIN, le impostazioni e i messaggi.",
       "protocols": "La conversazione Zigbee del nodo stesso con un coordinatore, locale o in rete, è provata solo contro un coordinatore simulato; non ha mai incontrato un coordinatore o un sensore reali.",
       "ui": "Il pannello web è stato provato in un browser reale contro un nodo simulato, non su una scheda.",
       "hardware": "Nessuna scheda costruita, nessuna zona cablata e nessuna sirena o coordinatore Zigbee collegati: nulla ha funzionato su un impianto reale.",
@@ -972,6 +992,11 @@ Non è un sistema di allarme certificato ([docs/SAFETY.md](docs/SAFETY.md)): è 
 | `zigbee_silence_min` | - | Quanto può tacere lo Zigbee del server prima che il nodo prenda la radio |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Le impostazioni che tutti i nodi condividono: il nome (vuoto dà `armor-` e gli ultimi byte del MAC), il codice di configurazione (vuoto: casuale), il segreto di flotta (16+ caratteri, mai nel repository), le prime impostazioni del broker, il battito (da 2 a 300 s), i minuti di configurazione Bluetooth (da 1 a 120) e il ripristino con BOOT (8 s nei primi 30 s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |
+| `security.ota_check_board` | on | Rifiutare un firmware caricato costruito per l'altra scheda (Wi-Fi o Ethernet); l'immagine porta una marca della sua scheda che il nodo legge mentre arriva |
+| `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |
+| `siren_loop.enabled` | off | Supervisionare il cablaggio della sirena: un pin analogico legge la linea di ritorno della sirena e il messaggio di stato porta `siren_loop` e `siren_fault` (tagliato, in cortocircuito o illeggibile); nessuna scheda ha ancora l'ingresso di ritorno |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | Il pin di ritorno, i millivolt sotto i quali il filo è in cortocircuito e fino ai quali la sirena c'è (sopra il filo è tagliato), il tempo che una lettura deve durare per segnalare o togliere un guasto (100-60000 ms) e se la linea si legge anche mentre la sirena suona |
+| `siren_loop.block_arming` | off | Rifiutare l'armamento senza `force` finché il cablaggio della sirena è in guasto (come con una zona aperta); il guasto è segnalato comunque |
 
 I nuovi suoni dopo un silenzio sono limitati a 3 (`kMaxResounds`). Il relè della sirena parte aperto a ogni riavvio e non cade aperto se si perde il broker.""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una scheda ESP32-S3 (Ethernet o Wi-Fi) con la scheda base.
@@ -988,7 +1013,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programmi di test su host e 5 verifiche Python girano con `ctest`; 488930 verifiche contate dai programmi host, compilati con `-Werror`.
+21 programmi di test su host e 5 verifiche Python girano con `ctest`; 489145 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1054,7 +1079,7 @@ ARMOR-NODE-ALARM/
   },
   "ja": {
     "tagline": "警報ノードと警報盤：住宅の警報の警戒区域、警戒セット、遅延、サイレン、PIN を、ノードのファームウェアとコンピューターでテストしたルールを含みます（基板では動作していません）",
-    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、18 つのテストプログラムで 488,930 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
+    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、21 つのテストプログラムで 489,145 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
     "glance": [
       [
         "役割",
@@ -1066,7 +1091,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "テスト",
-        "488930 件の検査（ホスト用プログラム 18 本と Python 検査 5 個、`ctest`）",
+        "489145 件の検査（ホスト用プログラム 21 本と Python 検査 5 個、`ctest`）",
       ],
       [
         "入力",
@@ -1087,7 +1112,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "18 のホストプログラムで 488,930 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
+      "tests": "21 のホストプログラムで 489,145 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
       "protocols": "ノード自身のコーディネーター（ローカルまたはネットワーク上）との Zigbee のやり取りは、模擬のコーディネーターに対してのみテストしています。本物のコーディネーターやセンサーとはまだ接続していません。",
       "ui": "Web パネルは実ブラウザーで模擬ノードに対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、ゾーンの配線もサイレンや Zigbee コーディネーターの接続もありません。実際の設備ではまだ何も動かしていません。",
@@ -1168,6 +1193,11 @@ ARMOR-NODE-ALARM/
 | `zigbee_silence_min` | - | サーバーの Zigbee が沈黙してよい時間（超えるとノードが無線を引き継ぐ） |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | すべてのノードに共通する設定：名前（空なら `armor-` と MAC の下位バイト）、セットアップコード（空ならランダム）、フリートシークレット（16 文字以上、リポジトリには置かない）、最初のブローカー設定、ハートビート（2〜300 秒）、Bluetooth セットアップの分数（1〜120）、BOOT によるリセット（最初の 30 秒に 8 秒） |
 | `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |
+| `security.ota_check_board` | on | もう一方の基板（Wi-Fi または Ethernet）用に作られたファームウェアのアップロードを拒否します。イメージには基板の印が入っており、ノードは到着中にそれを読み取ります |
+| `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |
+| `siren_loop.enabled` | off | サイレンの配線を監視します。アナログピンがサイレンの戻り線を読み、状態メッセージに `siren_loop` と `siren_fault`（断線・短絡・読み取り不能）が入ります。この戻り入力を持つ基板はまだありません |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | 戻りピン、配線が短絡と判定するミリボルト未満の値とサイレンありと判定する上限（それを超えると断線）、故障を報告・解除するために読み取りが続くべき時間（100〜60000 ms）、サイレンが鳴っている間も読むかどうか |
+| `siren_loop.block_arming` | off | サイレンの配線が故障している間は `force` なしの警戒開始を拒否します（開いたゾーンと同じ）。故障はどちらの場合も報告されます |
 
 サイレン停止後の再鳴動は 3 回までです（`kMaxResounds`）。サイレンのリレーは再起動のたびに開いた状態で始まり、ブローカーを失っても開きません。""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、ベース基板付きの ESP32-S3 基板（Ethernet または Wi-Fi）。
@@ -1184,7 +1214,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム 18 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 488930 件で、`-Werror` でビルドします。
+ホスト用テストプログラム 21 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 489145 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1250,7 +1280,7 @@ ARMOR-NODE-ALARM/
   },
   "zh": {
     "tagline": "报警节点与报警主机：住宅报警的防区、布防、延时、警笛和 PIN，含节点固件和在电脑上测试过的规则（没有在电路板上运行过）",
-    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 18 个测试程序中的 488,930 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
+    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 21 个测试程序中的 489,145 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
     "glance": [
       [
         "角色",
@@ -1262,7 +1292,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "测试",
-        "488930 项检查（18 个主机程序和 5 项 Python 检查，`ctest`）",
+        "489145 项检查（21 个主机程序和 5 项 Python 检查，`ctest`）",
       ],
       [
         "输入",
@@ -1283,7 +1313,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "18 个主机程序中的 488,930 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
+      "tests": "21 个主机程序中的 489,145 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
       "protocols": "节点自身与协调器（本地或网络上）的 Zigbee 通信只对照模拟协调器测试过；从未遇到过真实的协调器或传感器。",
       "ui": "网页面板已在真实浏览器中对模拟节点测试过，尚未在板子上测试。",
       "hardware": "尚未制作板子，没有接线的防区，也没有连接警笛或 Zigbee 协调器：还没有在真实的安装中运行过。",
@@ -1364,6 +1394,11 @@ ARMOR-NODE-ALARM/
 | `zigbee_silence_min` | - | 服务器的 Zigbee 可沉默多久，之后节点接管无线电 |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | 所有节点共有的设置：名称（为空则为 `armor-` 加 MAC 的最后字节）、设置码（为空则随机）、机群密钥（16 个字符以上，绝不放入仓库）、最初的代理设置、心跳（2 到 300 秒）、蓝牙设置的分钟数（1 到 120）以及用 BOOT 重置（前 30 秒内按 8 秒） |
 | `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |
+| `security.ota_check_board` | on | 拒绝为另一种电路板（Wi-Fi 或以太网）构建的上传固件；镜像带有所属电路板的标记，节点在接收时读取 |
+| `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |
+| `siren_loop.enabled` | off | 监控警报器接线：模拟引脚读取警报器的回读线，状态消息带有 `siren_loop` 和 `siren_fault`（断线、短路或无法读取）；目前还没有电路板具备回读输入 |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | 回读引脚；低于多少毫伏为线路短路、不超过多少毫伏为警报器在位（高于则断线）；读数需持续多久才报告或解除故障（100–60000 毫秒）；警报器鸣响时是否也读取 |
+| `siren_loop.block_arming` | off | 在警报器接线故障期间，没有 `force` 就拒绝布防（如同有打开的防区）；无论如何都会报告故障 |
 
 静音后的再次鸣响限制为 3 次（`kMaxResounds`）。警笛继电器每次重启时处于断开状态，代理丢失时也不会自动断开。""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；带底板的 ESP32-S3 电路板（以太网或 Wi-Fi）。
@@ -1380,7 +1415,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 18 个主机测试程序和 5 个 Python 检查；主机程序统计的检查共 488930 项，使用 `-Werror` 构建。
+`ctest` 运行 21 个主机测试程序和 5 个 Python 检查；主机程序统计的检查共 489145 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1446,7 +1481,7 @@ ARMOR-NODE-ALARM/
   },
   "pt": {
     "tagline": "Nó e central de alarme: as zonas, a armação, os atrasos, a sirene e o PIN do alarme da casa, com o firmware do nó e as regras testadas num computador (nada correu numa placa)",
-    "honest": "O que existe é o **núcleo do alarme** (o que é uma zona, como um laço com fios lido pelo ADC se torna um estado, as regras da central: armar, atrasos, o alarme, a sirene, o PIN com bloqueio) e o **firmware do nó** construído sobre ele (definições, painel web, mensagens com o servidor, a ponte do rádio Zigbee, um coordenador Zigbee na rede, relés, Bluetooth, atualizações assinadas), que compila para as duas placas; o núcleo, as definições, as mensagens e o painel num navegador real contra um nó de substituição são testados num computador com 488 930 verificações em 18 programas de teste. **Nada correu numa placa nem numa instalação real, nenhuma zona foi ligada com fios nem sirene ligada, a conversa Zigbee do próprio nó com um coordenador (local ou na rede) está escrita e testada contra um coordenador de substituição mas nunca correu contra um coordenador ou sensor reais, e isto não é um sistema de alarme certificado.**",
+    "honest": "O que existe é o **núcleo do alarme** (o que é uma zona, como um laço com fios lido pelo ADC se torna um estado, as regras da central: armar, atrasos, o alarme, a sirene, o PIN com bloqueio) e o **firmware do nó** construído sobre ele (definições, painel web, mensagens com o servidor, a ponte do rádio Zigbee, um coordenador Zigbee na rede, relés, Bluetooth, atualizações assinadas), que compila para as duas placas; o núcleo, as definições, as mensagens e o painel num navegador real contra um nó de substituição são testados num computador com 489 145 verificações em 21 programas de teste. **Nada correu numa placa nem numa instalação real, nenhuma zona foi ligada com fios nem sirene ligada, a conversa Zigbee do próprio nó com um coordenador (local ou na rede) está escrita e testada contra um coordenador de substituição mas nunca correu contra um coordenador ou sensor reais, e isto não é um sistema de alarme certificado.**",
     "glance": [
       [
         "Função",
@@ -1458,7 +1493,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Testes",
-        "488930 verificações em 18 programas de anfitrião e 5 em Python (`ctest`)",
+        "489145 verificações em 21 programas de anfitrião e 5 em Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -1479,7 +1514,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 488.930 verificações em 18 programas de anfitrião (`ctest`): as zonas, os laços cablados lidos pelo ADC, as regras de armar, atrasos, sirene e PIN, as definições e as mensagens.",
+      "tests": "Passam 489.145 verificações em 21 programas de anfitrião (`ctest`): as zonas, os laços cablados lidos pelo ADC, as regras de armar, atrasos, sirene e PIN, as definições e as mensagens.",
       "protocols": "A conversa Zigbee do próprio nó com um coordenador, local ou na rede, só foi testada contra um coordenador simulado; nunca encontrou um coordenador ou um sensor reais.",
       "ui": "O painel web foi exercitado num navegador real contra um nó simulado, não numa placa.",
       "hardware": "Nenhuma placa construída, nenhuma zona cablada e nenhuma sirene ou coordenador Zigbee ligados: nada funcionou numa instalação real.",
@@ -1560,6 +1595,11 @@ Não é um sistema de alarme certificado ([docs/SAFETY.md](docs/SAFETY.md)): é 
 | `zigbee_silence_min` | - | Quanto tempo o Zigbee do servidor se pode calar antes de o nó tomar o rádio |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | As definições que todos os nós partilham: o nome (vazio dá `armor-` e os últimos bytes do MAC), o código de configuração (vazio: aleatório), o segredo de frota (16+ caracteres, nunca no repositório), as primeiras definições do broker, o batimento (de 2 a 300 s), os minutos de configuração Bluetooth (de 1 a 120) e a reposição com BOOT (8 s nos primeiros 30 s) |
 | `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |
+| `security.ota_check_board` | on | Recusar um firmware enviado feito para a outra placa (Wi-Fi ou Ethernet); a imagem leva uma marca da sua placa que o nó lê enquanto chega |
+| `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |
+| `siren_loop.enabled` | off | Supervisionar a cablagem da sirene: um pino analógico lê a linha de retorno da sirene e a mensagem de estado leva `siren_loop` e `siren_fault` (cortado, em curto-circuito ou ilegível); nenhuma placa tem ainda a entrada de retorno |
+| `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | O pino de retorno, os milivolts abaixo dos quais o fio está em curto-circuito e até aos quais a sirene está (acima o fio está cortado), o tempo que uma leitura tem de manter-se para comunicar ou retirar uma avaria (100-60000 ms) e se a linha também é lida enquanto a sirene soa |
+| `siren_loop.block_arming` | off | Recusar armar sem `force` enquanto a cablagem da sirene estiver em avaria (como com uma zona aberta); a avaria é comunicada em qualquer caso |
 
 Os novos toques depois de um silêncio estão limitados a 3 (`kMaxResounds`). O relé da sirene arranca aberto a cada reinício e não cai para aberto se o broker se perder.""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma placa ESP32-S3 (Ethernet ou Wi-Fi) com a placa base.
@@ -1576,7 +1616,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-18 programas de teste de anfitrião e 5 verificações Python correm com `ctest`; 488930 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+21 programas de teste de anfitrião e 5 verificações Python correm com `ctest`; 489145 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 
