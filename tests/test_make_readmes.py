@@ -10,9 +10,10 @@ from unittest import mock
 import _support  # noqa: F401  (puts tools/ on the path)
 
 import make_readmes
-from make_readmes import LANGUAGES, ORDER, UI, RELATED, SHOTS, CAPTIONS
+from make_readmes import LANGUAGES, ORDER, UI, RELATED
 
 CODES = [code for code, *_ in LANGUAGES]
+REAL_ROOT = Path(__file__).resolve().parents[2]
 
 
 def fake_root(version="1.2.3", maturity="functional"):
@@ -50,11 +51,12 @@ class SourceConsistencyTests(unittest.TestCase):
                 self.assertTrue(text.strip(), f"{code}.{name}")
         self.assertEqual(len(ORDER), len(set(ORDER)))
 
-    def test_screenshot_captions_exist_in_every_language(self):
-        for name, shots in SHOTS.items():
-            self.assertIn(name, ORDER)
-            for _file, key in shots:
-                self.assertEqual(set(CAPTIONS[key]), set(CODES), key)
+    def test_every_manifest_of_screenshots_is_complete(self):
+        from readme_src import shots
+        for name in ORDER:
+            repo = REAL_ROOT / name
+            if shots.has(repo):
+                self.assertEqual(shots.problems(repo), [], name)
 
     def test_every_repository_has_its_text_in_every_language(self):
         for name in ORDER:
@@ -242,13 +244,19 @@ class RenderTests(unittest.TestCase):
             with_table = "## 📋" in make_readmes.render(name, "en")
             self.assertEqual(with_table, "hardware" in data.TEXT["en"] or data.FACTS.get("layout") == "universal", name)
 
-    def test_screenshots_are_a_table_of_two_columns(self):
-        name = next(iter(SHOTS))
-        text = make_readmes.render(name, "en")
-        self.assertIn("<table>", text)
-        self.assertEqual(text.count("<td "), len(SHOTS[name]))
-        for file, _key in SHOTS[name]:
-            self.assertIn(f"images/screenshots/{file}.png", text)
+    def test_screenshots_are_a_picture_and_a_caption_each(self):
+        from readme_src import shots
+        names = [name for name in ORDER if shots.has(REAL_ROOT / name)]
+        if not names:
+            self.skipTest("no sibling repository with screenshots next to this one")
+        for name in names:
+            with mock.patch.object(make_readmes, "ROOT", REAL_ROOT):
+                text = make_readmes.render(name, "en")
+            self.assertIn("## 🖼️ Screenshots", text)
+            screens = shots.read(REAL_ROOT / name)
+            self.assertEqual(text.count('<img src="images/screenshots/'), len(screens))
+            for screen in screens:
+                self.assertIn(f"images/screenshots/{screen['file']}", text)
 
     def test_outputs_are_eight_files_per_repository_in_its_folder(self):
         files = make_readmes.outputs()

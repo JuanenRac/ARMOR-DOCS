@@ -49,7 +49,7 @@ if [[ -n "$PYTHON" ]]; then
     run "$repo" env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
   done
   # the documents that are written from the others: the READMEs, the banners, the catalogue and the tools copied into every repository
-  run ARMOR-DOCS bash -c "\"$PYTHON\" tools/make_brand.py --check && \"$PYTHON\" tools/make_readmes.py --check && \"$PYTHON\" tools/make_catalog.py --check && \"$PYTHON\" tools/sync_ci_tools.py --check"
+  run ARMOR-DOCS bash -c "\"$PYTHON\" tools/make_brand.py --check && \"$PYTHON\" tools/make_readmes.py --check && \"$PYTHON\" tools/make_catalog.py --check && \"$PYTHON\" tools/sync_ci_tools.py --check && \"$PYTHON\" tools/screenshots_check.py --all"
   # the repositories whose tests the shared launcher knows how to run (the vision one has its own, the updater needs pytest)
   run ARMOR-VISION env PYTHONPATH="src${SEP}../ARMOR-COMMON/src" "$PYTHON" -m unittest discover -s tests
   run ARMOR-UPDATER "$PYTHON" tools/armor_project_tool.py build-test .

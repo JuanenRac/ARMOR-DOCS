@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The READMEs can show screenshots from a manifest:** a repository that lists its pictures in `docs/screenshots.json` (a file name, a short name and a caption in the eight languages for each) gets a Screenshots section after the architecture, with the picture and its caption one under the other, the same format as the other families; `tools/screenshots_check.py` checks that each file exists, is a PNG of at most 400 KB, that there are at most eight, and that the file tree mentions them (it runs in `tools/check_all.sh`).
+
 ## [0.8.1.4] - A lint and type-check step that covers the tools of every repository, the shared CI tools and READMEs that follow the code and the news of the repositories
 
 - **The lint and type-check step covers the tools of every repository:** `sync_ci_tools.py` distributes a project tool whose `lint` also type-checks `tools/` and `scripts/` (with the same settings everywhere) next to `src/`, so this repository's own tools and README sources are now checked in CI; the README sources import the names they use instead of `import *`, and the generated READMEs are byte-for-byte what they were.

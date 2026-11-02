@@ -28,7 +28,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from readme_src.shots import CAPTIONS, HEADING as SHOTS_HEADING, NOTE as SHOTS_NOTE, SHOTS  # noqa: E402
+from readme_src import shots  # noqa: E402
+from readme_src.shots import HEADING as SHOTS_HEADING  # noqa: E402
 from readme_src.ui import RELATED, UI  # noqa: E402
 from registry import NAMES  # noqa: E402
 
@@ -205,7 +206,7 @@ def render_universal(name: str, language: str, data) -> str:
     bodies = text["body"]
     present = [section for section, _ in SECTIONS]
     present = [section for section in present if section in ("glance", "status", "related", "documentation", "contributing", "author", "license", "languages")
-               or section in bodies or (section == "screenshots" and SHOTS.get(name))]
+               or section in bodies or (section == "screenshots" and shots.has(ROOT / name))]
     headings = {section: section_title(language, section) for section in present}
     links = " · ".join(f"[{ui['j_' + section]}](#{github_anchor(headings[section])})" for section in JUMP_SECTIONS if section in present)
     rows = [(ui["g_version"], f"`{info['version']}`"), (ui["g_maturity"], ui["m_" + info["maturity"]])] + [tuple(row) for row in text["glance"]]
@@ -247,9 +248,7 @@ def render_universal(name: str, language: str, data) -> str:
         if section in BODY_SECTIONS:
             out.append(f"## {headings[section]}\n\n{bodies[section].strip()}\n")
         elif section == "screenshots":
-            cells = [f'<td width="50%" valign="top"><img src="images/screenshots/{file}.png" alt="{CAPTIONS[key][language]}" width="100%"><br><sub>{CAPTIONS[key][language]}</sub></td>' for file, key in SHOTS[name]]
-            table = "\n".join("<tr>" + "".join(cells[i:i + 2]) + "</tr>" for i in range(0, len(cells), 2))
-            out.append(f"## {headings[section]}\n\n{SHOTS_NOTE[language]}\n\n<table>\n{table}\n</table>\n")
+            out.append(f"## {headings[section]}\n\n{shots.section(language, ROOT / name)}\n")
         elif section == "languages":
             glue = "" if ui["l_text"].endswith("。") else " "
             extra = text.get("languages_extra", "")
@@ -321,10 +320,8 @@ def render(name: str, language: str) -> str:
     if text.get("intro"):
         parts.append(text["intro"] + "\n")
     parts.append("\n".join(f"* {item}" for item in text["bullets"]) + "\n")
-    if SHOTS.get(name):
-        cells = [f'<td width="50%" valign="top"><img src="images/screenshots/{file}.png" alt="{CAPTIONS[key][language]}" width="100%"><br><sub>{CAPTIONS[key][language]}</sub></td>' for file, key in SHOTS[name]]
-        rows = "\n".join("<tr>" + "".join(cells[i:i + 2]) + "</tr>" for i in range(0, len(cells), 2))
-        parts.append(f"## 🖼️ {SHOTS_HEADING[language]}\n\n{SHOTS_NOTE[language]}\n\n<table>\n{rows}\n</table>\n")
+    if shots.has(ROOT / name):
+        parts.append(f"## 🖼️ {SHOTS_HEADING[language]}\n\n{shots.section(language, ROOT / name)}\n")
     if text.get("fit"):
         parts.append(f"## 🧩 {ui['fit']}\n\n{text['fit']}\n")
     if diagram:
