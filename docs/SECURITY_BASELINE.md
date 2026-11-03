@@ -47,6 +47,12 @@ broker's port only to the field network and the server's and Studio's ports only
   machine; forbidding it (`cleartext=false`) is a later decision of the owner, taken after that test (see `HTTPS_PAIRING.md` of ARMOR-DEVOPS).
 * The Studio static host (and the nginx of its container image) sends a strict Content-Security-Policy on every file and makes no third-party request, except the Weather menu's (Open-Meteo, RainViewer, EUMETSAT, ArcGIS), which asks nothing until the account has a place saved.
 
+## Automatic checks of the repositories
+
+* Every repository carries a CodeQL workflow (`.github/workflows/codeql.yml`) that scans its code on each push and on a schedule, and a `.github/dependabot.yml` that proposes the updates of its dependencies and workflows once a week, grouped in one pull request per ecosystem.
+* The findings of both are read on the security page of the repository; a proposed update is merged only when the CI of the repository passes on it.
+* Neither replaces the review of the threat model nor a penetration test.
+
 ## Not done yet
 
 The Bluetooth channel has not yet been recorded running between a board and a phone. TLS on every hop, a secret store, broker TLS and per-node certificates, an audited ACL, a signed
