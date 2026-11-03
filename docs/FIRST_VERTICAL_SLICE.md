@@ -12,7 +12,7 @@ This test proves data compatibility before hardware integration:
 4. `ARMOR-STUDIO` renders the server status, and says so when it can only show demonstration data.
 
 ```powershell
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token <ingest token>
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token <ingest token>
 ```
 
 It does **not** prove MQTT connectivity, ESP32 UART decoding, camera inference, Jetson

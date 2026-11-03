@@ -160,7 +160,7 @@ Every option, scenario and fault is in [docs/USAGE.md](docs/USAGE.md). Messages:
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -346,7 +346,7 @@ Todas las opciones, escenarios y averías están en [docs/USAGE.md](docs/USAGE.m
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -532,7 +532,7 @@ Alle Optionen, Szenarien und Fehler stehen in [docs/USAGE.md](docs/USAGE.md). Na
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -718,7 +718,7 @@ Toutes les options, scénarios et pannes sont dans [docs/USAGE.md](docs/USAGE.md
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -904,7 +904,7 @@ Tutte le opzioni, gli scenari e i guasti sono in [docs/USAGE.md](docs/USAGE.md).
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1090,7 +1090,7 @@ ARMOR-SIMULATOR/
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1276,7 +1276,7 @@ ARMOR-SIMULATOR/
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1462,7 +1462,7 @@ Todas as opções, cenários e falhas estão em [docs/USAGE.md](docs/USAGE.md). 
 ```powershell
 $env:PYTHONPATH = "src"
 python -m armor_simulator --count 20 --scenario crossing --seed 1 --validate
-python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:8080 --ingest-token-file token.env
+python -m armor_simulator --count 60 --scenario two-intruders --server-url http://127.0.0.1:18080 --ingest-token-file token.env
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"

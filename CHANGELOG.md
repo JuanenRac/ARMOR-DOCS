@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The documents follow the one numbering of the ports:** the pages and the README sources of the server, Studio, the simulator, the network node and the deployment repository name 18080 (server) and 18081 (Studio) instead of the numbers the Docker stack used.
 - **Architecture page:** the boundary between the clients and a node's own endpoint now says what exists: the server's authenticated proxy to a node's panel, the firmware update pushed by the server after the signature check, the panel opened by the Android app when the phone can reach the node, and the Bluetooth set-up.
 - **Update profiles by machine role:** `data/update-profiles.json` (schema 1.0, texts in the eight languages) lists the components of the CM5, an operator PC and a development PC for the updater's profile selector. The composition is marked in the file as a proposal to be confirmed, and a test keeps its schema, its languages and its component names in step with the family registry.
 
