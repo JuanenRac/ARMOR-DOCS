@@ -7,5 +7,10 @@
   "users.scrypt": {"repo": "ARMOR-SERVER", "file": "src/users.ts", "pattern": "scrypt", "says": "passwords are hashed with scrypt"},
   "battery.write.off_by_default": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_BATTERY_WRITE\\s*===\\s*\"1\"", "says": "writing to a battery is off unless ARMOR_BATTERY_WRITE=1"},
   "alarm.commands.off_by_default": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_ALARM_COMMANDS\\s*===\\s*\"1\"", "says": "alarm commands are off unless ARMOR_ALARM_COMMANDS=1"},
-  "disarm.pin.required": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_DISARM_PIN\\??\\.trim\\(\\)\\s*===\\s*\"required\"", "says": "ARMOR_DISARM_PIN=required makes the PIN compulsory"}
+  "disarm.pin.required": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_DISARM_PIN\\??\\.trim\\(\\)\\s*===\\s*\"required\"", "says": "ARMOR_DISARM_PIN=required makes the PIN compulsory"},
+  "onvif.same_host": {"repo": "ARMOR-SERVER", "file": "src/cameras/ptz.ts", "pattern": "outside its configured host", "says": "an ONVIF address a camera advertises must stay on the configured host"},
+  "camera.redirects.refused": {"repo": "ARMOR-SERVER", "file": "src/cameras/ptz.ts", "pattern": "redirect:\\s*\"error\"", "says": "the requests to a camera refuse HTTP redirects"},
+  "webhooks.no_redirect": {"repo": "ARMOR-SERVER", "file": "src/notify.ts", "pattern": "redirect:\\s*\"error\"", "says": "alarm webhooks do not follow redirects"},
+  "studio.csp": {"repo": "ARMOR-STUDIO", "file": "nginx/security_headers.conf", "pattern": "Content-Security-Policy \"default-src 'self'; script-src 'self'", "says": "Studio sends a strict Content-Security-Policy"},
+  "remote.session.limits": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "remoteSessionTtlMs:[^\\n]*12 \\* 3_600_000[\\s\\S]{0,200}remoteIdleMs:[^\\n]*30 \\* 60_000", "says": "a session from outside lasts 12 hours and 30 minutes without use"}
 }

@@ -28,7 +28,7 @@ broker's port only to the field network and the server's and Studio's ports only
 * Camera passwords are stored only in the server, AES-256-GCM encrypted with a key separate from
   every token, and no API returns them. <!-- claim: camera.vault.aes256gcm -->
 * An ONVIF address a camera advertises must stay on the configured camera host; HTTP redirects
-  are refused.
+  are refused. <!-- claim: onvif.same_host --> <!-- claim: camera.redirects.refused -->
 * Discovery scans one private /24, sends no credentials and runs one scan at a time.
 * Sessions and tickets are bounded in number and lifetime; login is rate limited.
 * Every command is an allow-list: a node's three, the alarm's arm and disarm, the five actions of a switch, a relay's ON, OFF and TOGGLE, and the seven orders of the network node. The validators reject an unknown field in any message; the server, on its ingest routes, drops what it does not know and counts it, so that an old server keeps working with a node of a newer firmware.
@@ -45,7 +45,7 @@ broker's port only to the field network and the server's and Studio's ports only
   administrator the pin of that authority as the text `armor-pin:<name>:<pin>`, the Android app pairs with it (or remembers the key the first time) and refuses a different key, and
   `armor_tls_check.sh` checks the chain, the name, the expiry and the pin. Plain `http` stays accepted by the app for the local network until every phone is paired and tried on the
   machine; forbidding it (`cleartext=false`) is a later decision of the owner, taken after that test (see `HTTPS_PAIRING.md` of ARMOR-DEVOPS).
-* The Studio static host (and the nginx of its container image) sends a strict Content-Security-Policy on every file and makes no third-party request, except the Weather menu's (Open-Meteo, RainViewer, EUMETSAT, ArcGIS), which asks nothing until the account has a place saved.
+* The Studio static host (and the nginx of its container image) sends a strict Content-Security-Policy on every file and makes no third-party request, except the Weather menu's (Open-Meteo, RainViewer, EUMETSAT, ArcGIS), which asks nothing until the account has a place saved. <!-- claim: studio.csp -->
 
 ## Automatic checks of the repositories
 
@@ -66,4 +66,4 @@ a proxy and TLS are decided.
 * A field node's ingest token no longer returns the perimeter state (the answer is `accepted` and a revision).
 * Over MQTT the `node_id` in a message must equal the node of its topic, so a compromised node cannot impersonate a neighbour. Over HTTP all nodes share one ingest token, so a holder of it can still report as any node: use MQTT with one identity per node when that matters.
 * At most 256 distinct nodes are accepted <!-- claim: server.max_nodes -->; a decommissioned node is forgotten with `DELETE /api/v1/nodes/:id`.
-* Alarm webhooks do not follow redirects, are signed when a secret is set, and never block ingestion.
+* Alarm webhooks do not follow redirects <!-- claim: webhooks.no_redirect -->, are signed when a secret is set, and never block ingestion.
