@@ -54,9 +54,12 @@ flowchart LR
   reasons and `authorizes_action = false` <!-- claim: ai.never_authorizes -->; the voice service returns an intent and needs a
   service-issued confirmation for arm and disarm. The server authenticates and authorises
   every action, and carries out a spoken or written command with the session of the person who gave it.
-* **Studio and Android are clients of the server**, not of the field network. They never reach
-  a node's own configuration endpoint. The one exception is the set-up of a node from the Android
-  app over **Bluetooth Low Energy** (below), which needs no network at all.
+* **Studio and Android are clients of the server**, not of the field network. They do not talk to a
+  node's own configuration endpoint from the clients' network: the server reaches the node's panel
+  for them (the authenticated proxy to a node's panel, pinned to the certificate fingerprint of the
+  node, and the firmware update, which the server pushes after checking its signature). The Android
+  app can also open a node's panel when the phone can reach the node, and sets a node up over
+  **Bluetooth Low Energy** (below), which needs no network at all.
 * **Solar and electrical nodes read their equipment; the one thing they can write is a Pylontech
   battery's memory, and only when asked in three places.** No request that writes to an inverter or a meter exists in their
   firmware. What a node can move besides (relays, a source-transfer switch) is off by default in several places. The rules of each are in the
