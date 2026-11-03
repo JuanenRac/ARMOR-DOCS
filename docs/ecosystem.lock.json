@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "contracts_version": "0.8.0.6",
+  "repositories": {
+    "ARMOR-COMMON": {
+      "version": "0.8.0.6",
+      "contracts": null
+    },
+    "ARMOR-NODE-RADAR": {
+      "version": "0.8.0.8",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-NODE-SOLAR": {
+      "version": "0.6.2",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-NODE-ELECTRICAL": {
+      "version": "0.5.4",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-NODE-ALARM": {
+      "version": "0.5.2",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-NODE-HMI": {
+      "version": "0.4.3",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-NETWORK": {
+      "version": "0.1.6",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-SERVER": {
+      "version": "0.8.1.5",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-STUDIO": {
+      "version": "0.8.2.0",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-ANDROID-CONTROL": {
+      "version": "0.8.0.3",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-IOS-CONTROL": {
+      "version": "0.0.2",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-SERVER-AI": {
+      "version": "0.3.1",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-VISION": {
+      "version": "0.1.1",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-VOICE-AI": {
+      "version": "0.3.3",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-HARDWARE": {
+      "version": "0.2.8",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-DEVOPS": {
+      "version": "0.7.0",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-SIMULATOR": {
+      "version": "0.3.4",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-UPDATER": {
+      "version": "0.1.8",
+      "contracts": "0.8.0.6"
+    },
+    "ARMOR-DOCS": {
+      "version": "0.8.1.5",
+      "contracts": "0.8.0.6"
+    }
+  }
+}
