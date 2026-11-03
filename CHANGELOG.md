@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The launchers find the shared repository through `ARMOR_COMMON_DIR`:** `build`, `build-test`, `test` and `run` (`.sh` and `.bat`) use the folder named by that variable when it is set and the sibling `ARMOR-COMMON` folder otherwise, so a checkout with another layout builds without changing a file.
 - **More sentences of the security pages are checked against the code:** the ONVIF address that must stay on the camera's host, the refused redirects of camera requests and of alarm webhooks, the strict Content-Security-Policy of Studio and the 12 hours / 30 minutes of a session from outside now carry a claim marker with the expression that has to match in the code (14 claims in all).
 - **The documents follow the one numbering of the ports:** the pages and the README sources of the server, Studio, the simulator, the network node and the deployment repository name 18080 (server) and 18081 (Studio) instead of the numbers the Docker stack used.
 - **Architecture page:** the boundary between the clients and a node's own endpoint now says what exists: the server's authenticated proxy to a node's panel, the firmware update pushed by the server after the signature check, the panel opened by the Android app when the phone can reach the node, and the Bluetooth set-up.
