@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.8.1.6] - The family has a compatibility table and a lock file (docs/COMPATIBILITY.md, docs/ecosystem.lock.json): tools/makecompatibility.py writes the version of every repository next to the version of the contracts it was last checked... (and 5 more changes)
+
 - **The family has a compatibility table and a lock file (`docs/COMPATIBILITY.md`, `docs/ecosystem.lock.json`):** `tools/make_compatibility.py` writes the version of every repository next to the version of the contracts it was last checked against (the pins of ARMOR-COMMON) and marks a pin that is behind; it is run when a version of the family is prepared, with tests in `tests/test_make_compatibility.py`.
 - **The launchers find the shared repository through `ARMOR_COMMON_DIR`:** `build`, `build-test`, `test` and `run` (`.sh` and `.bat`) use the folder named by that variable when it is set and the sibling `ARMOR-COMMON` folder otherwise, so a checkout with another layout builds without changing a file.
 - **More sentences of the security pages are checked against the code:** the ONVIF address that must stay on the camera's host, the refused redirects of camera requests and of alarm webhooks, the strict Content-Security-Policy of Studio and the 12 hours / 30 minutes of a session from outside now carry a claim marker with the expression that has to match in the code (14 claims in all).
