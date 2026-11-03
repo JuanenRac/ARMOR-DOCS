@@ -231,6 +231,19 @@
      }
     },
     {
+     "name": "data/",
+     "desc": {
+      "en": "update-profiles.json: roles of an update",
+      "es": "update-profiles.json: roles de actualización",
+      "de": "update-profiles.json: Rollen für Updates",
+      "fr": "update-profiles.json : rôles de mise à jour",
+      "it": "update-profiles.json: ruoli di aggiornamento",
+      "ja": "update-profiles.json：更新の役割",
+      "zh": "update-profiles.json：更新角色",
+      "pt": "update-profiles.json: funções de atualização"
+     }
+    },
+    {
      "name": "tests/",
      "desc": {
       "en": "the tests of these tools",

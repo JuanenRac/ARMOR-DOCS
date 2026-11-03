@@ -181,6 +181,7 @@ ARMOR-DOCS/
 │   ├── make_architecture.py make_structure.py         README 的两张图
 │   └── universal_readme_check.py                      README 版式检查
 ├── docs/                                              CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
+├── data/                                              update-profiles.json：更新角色
 ├── tests/                                             这些工具的测试
 ├── brand/                                             徽标
 ├── images/                                            横幅图、图标、家族图和本 README 的图片

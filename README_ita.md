@@ -181,6 +181,7 @@ ARMOR-DOCS/
 │   ├── make_architecture.py make_structure.py         le due immagini dei README
 │   └── universal_readme_check.py                      il controllo del formato dei README
 ├── docs/                                              CAPABILITY_MATRIX, ARCHITECTURE, SECURITY_BASELINE, THREAT_MODEL, PROJECT_CATALOG, INTERFACES, FIRST_VERTICAL_SLICE, SETUP_CODE
+├── data/                                              update-profiles.json: ruoli di aggiornamento
 ├── tests/                                             i test di questi strumenti
 ├── brand/                                             l'emblema
 ├── images/                                            banner, icona, l'immagine della famiglia e le immagini di questo README

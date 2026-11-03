@@ -181,6 +181,7 @@ ARMOR-DOCS/
 │   ├── make_architecture.py make_structure.py         README の 2 つの図
 │   └── universal_readme_check.py                      README のレイアウト検査
 ├── docs/                                              CAPABILITY_MATRIX、ARCHITECTURE、SECURITY_BASELINE、THREAT_MODEL、PROJECT_CATALOG、INTERFACES、FIRST_VERTICAL_SLICE、SETUP_CODE
+├── data/                                              update-profiles.json：更新の役割
 ├── tests/                                             これらのツールのテスト
 ├── brand/                                             エンブレム
 ├── images/                                            バナー、アイコン、ファミリーの図、この README の図

@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **Update profiles by machine role:** `data/update-profiles.json` (schema 1.0, texts in the eight languages) lists the components of the CM5, an operator PC and a development PC for the updater's profile selector. The composition is marked in the file as a proposal to be confirmed, and a test keeps its schema, its languages and its component names in step with the family registry.
+
 ## [0.8.1.5] - Tools that rewrite the figures of the documents and check the security claims against the code, a stricter publication check with a pre-commit hook and a check of the tables and diagrams
 
 - **The figures of the documents are read, not typed:** `tools/doc_facts.py` rewrites every `<!--fact:vectors-->` marker of `docs/*.md` from the repositories (the conformance vectors of ARMOR-COMMON, in total or per schema, its schemas, the paths of the OpenAPI file, the version in any manifest), reading what is committed so that a file being edited does not move a page; `--check` fails when a figure is out of date. The vector counts of the capability matrix and the interfaces page were behind the contracts and now follow them.
