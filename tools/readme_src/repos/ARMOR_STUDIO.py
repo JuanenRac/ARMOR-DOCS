@@ -1186,7 +1186,7 @@ UX_BULLET = {
 for _lg in UX_BULLET:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [UX_BULLET[_lg]]
 
-NT = "1443"
+NT = "1446"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 # the claims of the previous README that the code no longer supports, corrected in every language
