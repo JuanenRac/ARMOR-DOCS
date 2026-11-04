@@ -14,13 +14,13 @@ FACTS: dict[str, Any] = {'emoji': '🧾',
             ['hardware', 'orange'],
             ['security', 'yellow'],
             ['docs', 'green']],
- 'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Vectors', '1318', '00E5FF']]}
+ 'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Vectors', '1363', '00E5FF']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
 LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the firmware base that the nodes share and the shared project launcher',
         'status': {'software': 'The schemas, the Python validator, the generated TypeScript and Kotlin types, the OpenAPI file of the server and the firmware base '
                                'shared by the five nodes are in place.',
-                   'tests': '170 tests and 1318 conformance vectors pass; the JSON, Bluetooth and Improv parsers of the firmware are also fuzzed with libFuzzer.',
+                   'tests': '170 tests and 1363 conformance vectors pass; the JSON, Bluetooth and Improv parsers of the firmware are also fuzzed with libFuzzer.',
                    'protocols': "Only the radar node's messages are used every day with a real board and the server; those of the other nodes are checked against "
                                 'stand-ins.',
                    'integration': 'The firmware base is checked to be identical in every node; the Kotlin types are generated but not yet used by the Android app, which '
@@ -29,7 +29,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                    'security': 'The firmware signature check and the derivation of the Bluetooth PIN are tested on the host; there has been no independent review.',
                    'docs': 'Eight languages, the OpenAPI file, the conformance guide and the changelog are up to date.'},
         'honest': 'The schemas (telemetry, health, command, node information, solar inverter and battery, electrical, alarm with its command and result, and network), '
-                  'the Python validator, the 1318 conformance vectors, the generated TypeScript and Kotlin types, the OpenAPI file of the server (190 paths), the '
+                  'the Python validator, the 1363 conformance vectors, the generated TypeScript and Kotlin types, the OpenAPI file of the server (190 paths), the '
                   'firmware base shared by the five nodes and the shared project launcher are real and tested (170 tests). The Kotlin file is generated but **not yet '
                   'consumed** by ARMOR-ANDROID-CONTROL (which keeps its own parsing), and the `set_thresholds` command carries a single `sensitivity` field because the '
                   'real radar parameters are not defined until firmware exists.',
@@ -37,7 +37,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     '(inverter, battery with cells and capacities), the electrical messages (readings, command, result), the alarm messages (state, command, result) and '
                     'the network message. Unknown fields and impossible combinations are refused.',
                     '**A validator that cannot skip a rule:** it interprets the schema directly and refuses a schema that uses a keyword it does not implement.',
-                    '**Conformance vectors:** 1318 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of '
+                    '**Conformance vectors:** 1363 accepted and rejected payloads run by every implementation (Python here, TypeScript in ARMOR-SERVER, the checks of '
                     'the firmware repositories), so drift fails a build.',
                     '**Generated clients:** TypeScript and Kotlin types and the C++ constants (`generated/armor_contracts.hpp`) come from the schemas (`tools/generate_types.py --check` keeps them current).',
                     '**HTTP contract:** `openapi/armor-server.yaml` describes every server route (190 paths, 245 operations), its access rule, and a named schema for '
@@ -79,7 +79,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
  'es': {'tagline': 'Contratos de mensajes, validación, la base de firmware que comparten los nodos y el lanzador de proyectos compartido',
         'status': {'software': 'Los esquemas, el validador de Python, los tipos generados de TypeScript y Kotlin, el archivo OpenAPI del servidor y la base de firmware '
                                'compartida por los cinco nodos están hechos.',
-                   'tests': 'Pasan 170 pruebas y 1318 vectores de conformidad; los analizadores de JSON, Bluetooth e Improv del firmware se prueban además con '
+                   'tests': 'Pasan 170 pruebas y 1363 vectores de conformidad; los analizadores de JSON, Bluetooth e Improv del firmware se prueban además con '
                             'libFuzzer.',
                    'protocols': 'Solo los mensajes del nodo radar se usan a diario con una placa real y el servidor; los de los demás nodos se comprueban contra '
                                 'simulaciones.',
@@ -90,7 +90,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                                'independiente.',
                    'docs': 'Ocho idiomas, el archivo OpenAPI, la guía de conformidad y el historial de cambios están al día.'},
         'honest': 'Los esquemas (telemetría, salud, comando, información del nodo, inversor y batería solares, eléctrico, alarma con su comando y resultado, y red), el '
-                  'validador de Python, los 1318 vectores de conformidad, los tipos generados de TypeScript y Kotlin, el fichero OpenAPI del servidor (190 rutas), la '
+                  'validador de Python, los 1363 vectores de conformidad, los tipos generados de TypeScript y Kotlin, el fichero OpenAPI del servidor (190 rutas), la '
                   'base de firmware compartida por los cinco nodos y el lanzador de proyectos compartido son reales y están probados (170 tests). El fichero de Kotlin '
                   'está generado pero **todavía no lo consume** ARMOR-ANDROID-CONTROL (que conserva su propia lectura), y el comando `set_thresholds` lleva un único '
                   'campo `sensitivity` porque los parámetros reales del radar no se definen hasta que exista el firmware.',
@@ -99,7 +99,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     '(estado, comando, resultado) y el mensaje de red. Se rechazan los campos desconocidos y las combinaciones imposibles.',
                     '**Un validador que no puede saltarse una regla:** interpreta el esquema directamente y rechaza un esquema que use una palabra clave que no '
                     'implementa.',
-                    '**Vectores de conformidad:** 1318 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las '
+                    '**Vectores de conformidad:** 1363 cargas aceptadas y rechazadas que ejecuta cada implementación (Python aquí, TypeScript en ARMOR-SERVER, las '
                     'comprobaciones de los repositorios de firmware), de modo que una deriva rompe la compilación.',
                     '**Clientes generados:** los tipos de TypeScript y Kotlin y las constantes de C++ (`generated/armor_contracts.hpp`) salen de los esquemas (`tools/generate_types.py --check` los mantiene al día).',
                     '**Contrato HTTP:** `openapi/armor-server.yaml` describe cada ruta del servidor (190 rutas, 245 operaciones), su regla de acceso y un esquema con '
@@ -144,7 +144,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
  'fr': {'tagline': 'Contrats de messages, validation, la base firmware que partagent les nœuds et le lanceur de projet partagé',
         'status': {'software': 'Les schémas, le validateur Python, les types TypeScript et Kotlin générés, le fichier OpenAPI du serveur et la base de firmware partagée '
                                'par les cinq nœuds sont en place.',
-                   'tests': '170 tests et 1318 vecteurs de conformité réussissent ; les analyseurs JSON, Bluetooth et Improv du firmware sont aussi soumis à du fuzzing '
+                   'tests': '170 tests et 1363 vecteurs de conformité réussissent ; les analyseurs JSON, Bluetooth et Improv du firmware sont aussi soumis à du fuzzing '
                             'avec libFuzzer.',
                    'protocols': 'Seuls les messages du nœud radar sont utilisés chaque jour avec une vraie carte et le serveur ; ceux des autres nœuds sont vérifiés par '
                                 'rapport à des simulations.',
@@ -155,7 +155,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                                'indépendante.',
                    'docs': 'Huit langues, le fichier OpenAPI, le guide de conformité et le journal des modifications sont à jour.'},
         'honest': 'Les schémas (télémétrie, santé, commande, information du nœud, onduleur et batterie solaires, électrique, alarme avec sa commande et son résultat, et '
-                  'réseau), le validateur Python, les 1318 vecteurs de conformité, les types TypeScript et Kotlin générés, le fichier OpenAPI du serveur (190 chemins), '
+                  'réseau), le validateur Python, les 1363 vecteurs de conformité, les types TypeScript et Kotlin générés, le fichier OpenAPI du serveur (190 chemins), '
                   'la base firmware partagée par les cinq nœuds et le lanceur de projet partagé sont réels et testés (170 tests). Le fichier Kotlin est généré mais '
                   '**pas encore consommé** par ARMOR-ANDROID-CONTROL (qui garde sa propre lecture), et la commande `set_thresholds` porte un seul champ `sensitivity` '
                   'car les vrais paramètres du radar ne sont définis que lorsque le firmware existe.',
@@ -164,7 +164,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     "d'alarme (état, commande, résultat) et le message réseau. Les champs inconnus et les combinaisons impossibles sont refusés.",
                     "**Un validateur qui ne peut sauter aucune règle :** il interprète le schéma directement et refuse un schéma qui utilise un mot-clé qu'il "
                     "n'implémente pas.",
-                    '**Vecteurs de conformité :** 1318 charges acceptées et refusées exécutées par chaque implémentation (Python ici, TypeScript dans ARMOR-SERVER, les '
+                    '**Vecteurs de conformité :** 1363 charges acceptées et refusées exécutées par chaque implémentation (Python ici, TypeScript dans ARMOR-SERVER, les '
                     "vérifications des dépôts firmware), si bien qu'une dérive fait échouer une compilation.",
                     '**Clients générés :** les types TypeScript et Kotlin et les constantes C++ (`generated/armor_contracts.hpp`) viennent des schémas (`tools/generate_types.py --check` les tient à jour).',
                     "**Contrat HTTP :** `openapi/armor-server.yaml` décrit chaque route du serveur (190 chemins, 245 opérations), sa règle d'accès et un schéma nommé "
@@ -209,7 +209,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
  'it': {'tagline': 'Contratti dei messaggi, validazione, la base firmware condivisa dai nodi e il lanciatore di progetto condiviso',
         'status': {'software': 'Gli schemi, il validatore Python, i tipi TypeScript e Kotlin generati, il file OpenAPI del server e la base firmware condivisa dai '
                                'cinque nodi sono pronti.',
-                   'tests': 'Superano 170 test e 1318 vettori di conformità; i parser JSON, Bluetooth e Improv del firmware sono sottoposti anche a fuzzing con '
+                   'tests': 'Superano 170 test e 1363 vettori di conformità; i parser JSON, Bluetooth e Improv del firmware sono sottoposti anche a fuzzing con '
                             'libFuzzer.',
                    'protocols': 'Solo i messaggi del nodo radar sono usati ogni giorno con una scheda reale e il server; quelli degli altri nodi sono verificati contro '
                                 'simulazioni.',
@@ -220,7 +220,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                                'indipendente.',
                    'docs': 'Otto lingue, il file OpenAPI, la guida di conformità e il registro delle modifiche sono aggiornati.'},
         'honest': 'Gli schemi (telemetria, salute, comando, informazioni del nodo, inverter e batteria solari, elettrico, allarme con il suo comando e risultato, e '
-                  'rete), il validatore Python, i 1318 vettori di conformità, i tipi TypeScript e Kotlin generati, il file OpenAPI del server (190 percorsi), la base '
+                  'rete), il validatore Python, i 1363 vettori di conformità, i tipi TypeScript e Kotlin generati, il file OpenAPI del server (190 percorsi), la base '
                   'firmware condivisa dai cinque nodi e il lanciatore di progetto condiviso sono reali e provati (170 test). Il file Kotlin è generato ma **non ancora '
                   'consumato** da ARMOR-ANDROID-CONTROL (che mantiene una propria lettura), e il comando `set_thresholds` porta un solo campo `sensitivity` perché i '
                   'veri parametri del radar non sono definiti finché non esiste il firmware.',
@@ -229,7 +229,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'risultato) e il messaggio di rete. I campi sconosciuti e le combinazioni impossibili sono rifiutati.',
                     '**Un validatore che non può saltare una regola:** interpreta direttamente lo schema e rifiuta uno schema che usa una parola chiave che non '
                     'implementa.',
-                    '**Vettori di conformità:** 1318 carichi accettati e rifiutati eseguiti da ogni implementazione (Python qui, TypeScript in ARMOR-SERVER, i controlli '
+                    '**Vettori di conformità:** 1363 carichi accettati e rifiutati eseguiti da ogni implementazione (Python qui, TypeScript in ARMOR-SERVER, i controlli '
                     'dei repository firmware), così una deriva fa fallire una compilazione.',
                     '**Client generati:** i tipi TypeScript e Kotlin e le costanti C++ (`generated/armor_contracts.hpp`) vengono dagli schemi (`tools/generate_types.py --check` li mantiene aggiornati).',
                     '**Contratto HTTP:** `openapi/armor-server.yaml` descrive ogni rotta del server (190 percorsi, 245 operazioni), la sua regola di accesso e uno '
@@ -274,7 +274,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
  'de': {'tagline': 'Nachrichtenverträge, Validierung, die von den Knoten geteilte Firmware-Basis und der gemeinsame Projektstarter',
         'status': {'software': 'Die Schemas, der Python-Validator, die erzeugten TypeScript- und Kotlin-Typen, die OpenAPI-Datei des Servers und die von den fünf Knoten '
                                'gemeinsam genutzte Firmware-Basis sind vorhanden.',
-                   'tests': '170 Tests und 1318 Konformitätsvektoren bestehen; die JSON-, Bluetooth- und Improv-Parser der Firmware werden außerdem mit libFuzzer '
+                   'tests': '170 Tests und 1363 Konformitätsvektoren bestehen; die JSON-, Bluetooth- und Improv-Parser der Firmware werden außerdem mit libFuzzer '
                             'gefuzzt.',
                    'protocols': 'Nur die Nachrichten des Radar-Knotens werden täglich mit einer echten Platine und dem Server genutzt; die der anderen Knoten werden '
                                 'gegen Nachbildungen geprüft.',
@@ -284,7 +284,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                    'security': 'Die Prüfung der Firmware-Signatur und die Ableitung der Bluetooth-PIN sind auf dem Host getestet; es gab keine unabhängige Prüfung.',
                    'docs': 'Acht Sprachen, die OpenAPI-Datei, der Konformitätsleitfaden und das Änderungsprotokoll sind aktuell.'},
         'honest': 'Die Schemas (Telemetrie, Zustand, Befehl, Knoteninformation, Solar-Wechselrichter und -Batterie, Elektro, Alarm mit Befehl und Ergebnis sowie '
-                  'Netzwerk), der Python-Validator, die 1318 Konformitätsvektoren, die erzeugten TypeScript- und Kotlin-Typen, die OpenAPI-Datei des Servers (190 '
+                  'Netzwerk), der Python-Validator, die 1363 Konformitätsvektoren, die erzeugten TypeScript- und Kotlin-Typen, die OpenAPI-Datei des Servers (190 '
                   'Pfade), die von den fünf Knoten geteilte Firmware-Basis und der gemeinsame Projektstarter sind real und getestet (170 Tests). Die Kotlin-Datei wird '
                   'erzeugt, aber **noch nicht verwendet** von ARMOR-ANDROID-CONTROL (das sein eigenes Parsen behält), und der Befehl `set_thresholds` trägt nur ein Feld '
                   '`sensitivity`, weil die echten Radarparameter erst definiert sind, wenn Firmware existiert.',
@@ -293,7 +293,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'Alarmnachrichten (Zustand, Befehl, Ergebnis) und die Netzwerknachricht. Unbekannte Felder und unmögliche Kombinationen werden abgelehnt.',
                     '**Ein Validator, der keine Regel überspringen kann:** er interpretiert das Schema direkt und lehnt ein Schema ab, das ein nicht implementiertes '
                     'Schlüsselwort verwendet.',
-                    '**Konformitätsvektoren:** 1318 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in '
+                    '**Konformitätsvektoren:** 1363 akzeptierte und abgelehnte Nutzlasten, von jeder Implementierung ausgeführt (hier Python, TypeScript in '
                     'ARMOR-SERVER, die Prüfungen der Firmware-Repositories), sodass eine Abweichung einen Build scheitern lässt.',
                     '**Erzeugte Clients:** TypeScript- und Kotlin-Typen und die C++-Konstanten (`generated/armor_contracts.hpp`) entstehen aus den Schemas (`tools/generate_types.py --check` hält sie aktuell).',
                     '**HTTP-Vertrag:** `openapi/armor-server.yaml` beschreibt jede Route des Servers (190 Pfade, 245 Operationen), ihre Zugriffsregel und ein benanntes '
@@ -337,18 +337,18 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
         'requirements': ['Python 3.11+']},
  'zh': {'tagline': '消息契约、验证、各节点共用的固件基础和共享的项目启动器',
         'status': {'software': '模式、Python 验证器、生成的 TypeScript 和 Kotlin 类型、服务器的 OpenAPI 文件以及五个节点共用的固件基础均已就绪。',
-                   'tests': '170 项测试和 1318 个一致性向量通过；固件的 JSON、蓝牙和 Improv 解析器还用 libFuzzer 做了模糊测试。',
+                   'tests': '170 项测试和 1363 个一致性向量通过；固件的 JSON、蓝牙和 Improv 解析器还用 libFuzzer 做了模糊测试。',
                    'protocols': '只有雷达节点的消息每天在真实板子和服务器上使用；其他节点的消息是对照模拟检查的。',
                    'integration': '会检查固件基础在每个节点中完全相同；Kotlin 类型已生成，但 Android 应用尚未使用，它仍保留自己的解析。',
                    'hardware': '只有雷达节点在板子上运行过这套共用固件；其他四个节点没有。',
                    'security': '固件签名检查和蓝牙 PIN 的推导已在主机上测试；没有经过独立审查。',
                    'docs': '八种语言、OpenAPI 文件、一致性指南和更新日志均为最新。'},
-        'honest': '各模式（遥测、健康、命令、节点信息、太阳能逆变器和电池、电气、带命令和结果的报警、网络）、Python 验证器、1318 个一致性向量、生成的 TypeScript 和 Kotlin 类型、服务器的 OpenAPI 文件（190 '
+        'honest': '各模式（遥测、健康、命令、节点信息、太阳能逆变器和电池、电气、带命令和结果的报警、网络）、Python 验证器、1363 个一致性向量、生成的 TypeScript 和 Kotlin 类型、服务器的 OpenAPI 文件（190 '
                   '个路径）、五个节点共用的固件基础以及共享的项目启动器都是真实的并经过测试（170 个测试）。Kotlin 文件已生成，但 ARMOR-ANDROID-CONTROL **尚未使用**（它保留自己的解析），`set_thresholds` 命令只带一个 `sensitivity` '
                   '字段，因为真实的雷达参数要等固件存在才能确定。',
         'bullets': ['**唯一的事实来源：**`src/armor_common/schemas/` 中的 JSON Schema，涵盖遥测、健康、命令、节点信息、两种太阳能消息（逆变器、含电芯和容量的电池）、电气消息（读数、命令、结果）、报警消息（状态、命令、结果）和网络消息。未知字段和不可能的组合会被拒绝。',
                     '**无法跳过规则的验证器：**它直接解释模式，并拒绝使用了它未实现的关键字的模式。',
-                    '**一致性向量：**1318 个被接受和被拒绝的负载，由每个实现运行（这里是 Python，ARMOR-SERVER 中是 TypeScript，以及固件仓库的检查），因此偏差会让构建失败。',
+                    '**一致性向量：**1363 个被接受和被拒绝的负载，由每个实现运行（这里是 Python，ARMOR-SERVER 中是 TypeScript，以及固件仓库的检查），因此偏差会让构建失败。',
                     '**生成的客户端：**TypeScript 和 Kotlin 类型以及 C++ 常量（`generated/armor_contracts.hpp`）来自模式（`tools/generate_types.py --check` 保持其最新）。',
                     '**HTTP 契约：**`openapi/armor-server.yaml` 描述服务器的每条路由（190 个路径、245 个操作）、其访问规则，以及每个请求体、响应和错误的具名模式；测试会检查服务器注册的路由与其描述的路由完全一致（方法和路径）。',
                     '**固件基础：**`firmware_base/` 把五个节点共用的每个文件只保存一次（网络、设置和用户、网页面板服务器和登录、HTTPS 证书、日志、带 PIN 配对的蓝牙、签名更新检查；继电器和 Zigbee 仅限具备它们的节点）；`tools/sync_firmware_base.py` '
@@ -371,19 +371,19 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
         'requirements': ['Python 3.11+']},
  'ja': {'tagline': 'メッセージのコントラクト、検証、ノードが共有するファームウェア基盤、共通のプロジェクトランチャー',
         'status': {'software': 'スキーマ、Python の検証ツール、生成された TypeScript と Kotlin の型、サーバーの OpenAPI ファイル、5 つのノードが共有するファームウェアの基盤が揃っています。',
-                   'tests': '170 件のテストと 1318 件の適合ベクターが通ります。ファームウェアの JSON、Bluetooth、Improv のパーサーは libFuzzer でファジングも行っています。',
+                   'tests': '170 件のテストと 1363 件の適合ベクターが通ります。ファームウェアの JSON、Bluetooth、Improv のパーサーは libFuzzer でファジングも行っています。',
                    'protocols': '毎日、実機のボードとサーバーで使われているのはレーダーノードのメッセージだけです。他のノードのメッセージは模擬に対して検証しています。',
                    'integration': 'ファームウェアの基盤が全ノードで同一であることを確認しています。Kotlin の型は生成済みですが、Android アプリは独自の解析を使っていて、まだ使っていません。',
                    'hardware': 'この共有ファームウェアをボード上で動かしたのはレーダーノードだけで、他の 4 つのノードはまだです。',
                    'security': 'ファームウェア署名の確認と Bluetooth の PIN の導出はホストでテスト済みです。独立したレビューはまだありません。',
                    'docs': '8 言語、OpenAPI ファイル、適合ガイド、変更履歴は最新です。'},
-        'honest': 'スキーマ（テレメトリ、状態、コマンド、ノード情報、ソーラーのインバーターとバッテリー、電気、コマンドと結果を含む警報、ネットワーク）、Python の検証器、1318 個の適合ベクトル、生成された TypeScript と Kotlin の型、サーバーの OpenAPI ファイル（190 '
+        'honest': 'スキーマ（テレメトリ、状態、コマンド、ノード情報、ソーラーのインバーターとバッテリー、電気、コマンドと結果を含む警報、ネットワーク）、Python の検証器、1363 個の適合ベクトル、生成された TypeScript と Kotlin の型、サーバーの OpenAPI ファイル（190 '
                   'パス）、5 つのノードが共有するファームウェア基盤、共通のプロジェクトランチャーは実在し、テストされています（170 件）。Kotlin ファイルは生成されますが ARMOR-ANDROID-CONTROL では**まだ使われていません**（独自の解析を保持）。`set_thresholds` '
                   'コマンドは `sensitivity` フィールド 1 つだけを持ちます。実際のレーダーパラメーターはファームウェアができるまで定義できないためです。',
         'bullets': ['**唯一の信頼できる情報源：**`src/armor_common/schemas/` の JSON Schema。テレメトリ、状態、コマンド、ノード情報、2 '
                     'つのソーラーメッセージ（インバーター、セルと容量を含むバッテリー）、電気メッセージ（測定値、コマンド、結果）、警報メッセージ（状態、コマンド、結果）、ネットワークメッセージ。未知のフィールドや不可能な組み合わせは拒否されます。',
                     '**ルールを飛ばせない検証器：**スキーマを直接解釈し、実装していないキーワードを使うスキーマを拒否します。',
-                    '**適合ベクトル：**受理と拒否の 1318 個のペイロードをすべての実装（ここでは Python、ARMOR-SERVER では TypeScript、ファームウェアリポジトリの検査）が実行するため、ずれがあればビルドが失敗します。',
+                    '**適合ベクトル：**受理と拒否の 1363 個のペイロードをすべての実装（ここでは Python、ARMOR-SERVER では TypeScript、ファームウェアリポジトリの検査）が実行するため、ずれがあればビルドが失敗します。',
                     '**生成されるクライアント：**TypeScript と Kotlin の型、および C++ の定数（`generated/armor_contracts.hpp`）はスキーマから作られます（`tools/generate_types.py --check` で最新に保ちます）。',
                     '**HTTP コントラクト：**`openapi/armor-server.yaml` はサーバーのすべてのルート（190 パス、245 '
                     '操作）、そのアクセスルール、そして各リクエスト本文・応答・エラーの名前付きスキーマを記述し、サーバーが登録するルートが記述と完全に一致すること（メソッドとパス）をテストが確認します。',
@@ -414,7 +414,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
  'pt': {'tagline': 'Contratos de mensagens, validação, a base de firmware que os nós partilham e o lançador de projetos partilhado',
         'status': {'software': 'Os esquemas, o validador de Python, os tipos gerados de TypeScript e Kotlin, o ficheiro OpenAPI do servidor e a base de firmware '
                                'partilhada pelos cinco nós estão feitos.',
-                   'tests': 'Passam 170 testes e 1318 vetores de conformidade; os analisadores de JSON, Bluetooth e Improv do firmware são também testados com '
+                   'tests': 'Passam 170 testes e 1363 vetores de conformidade; os analisadores de JSON, Bluetooth e Improv do firmware são também testados com '
                             'libFuzzer.',
                    'protocols': 'Só as mensagens do nó radar são usadas todos os dias com uma placa real e o servidor; as dos outros nós são verificadas contra '
                                 'simulações.',
@@ -424,7 +424,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                    'security': 'A verificação da assinatura do firmware e a derivação do PIN Bluetooth estão testadas no anfitrião; não houve revisão independente.',
                    'docs': 'Oito idiomas, o ficheiro OpenAPI, o guia de conformidade e o registo de alterações estão atualizados.'},
         'honest': 'Os esquemas (telemetria, saúde, comando, informação do nó, inversor e bateria solares, elétrico, alarme com o seu comando e resultado, e rede), o '
-                  'validador Python, os 1318 vetores de conformidade, os tipos TypeScript e Kotlin gerados, o ficheiro OpenAPI do servidor (190 caminhos), a base de '
+                  'validador Python, os 1363 vetores de conformidade, os tipos TypeScript e Kotlin gerados, o ficheiro OpenAPI do servidor (190 caminhos), a base de '
                   'firmware partilhada pelos cinco nós e o lançador de projetos partilhado são reais e testados (170 testes). O ficheiro Kotlin é gerado mas **ainda não '
                   'é consumido** pelo ARMOR-ANDROID-CONTROL (que mantém a sua própria leitura), e o comando `set_thresholds` leva um único campo `sensitivity` porque os '
                   'parâmetros reais do radar só ficam definidos quando existir firmware.',
@@ -432,7 +432,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Message contracts, validation, the 
                     'solares (inversor, bateria com células e capacidades), as mensagens elétricas (leituras, comando, resultado), as mensagens de alarme (estado, '
                     'comando, resultado) e a mensagem de rede. Campos desconhecidos e combinações impossíveis são recusados.',
                     '**Um validador que não pode saltar uma regra:** interpreta o esquema diretamente e recusa um esquema que use uma palavra-chave que não implementa.',
-                    '**Vetores de conformidade:** 1318 cargas aceites e recusadas executadas por cada implementação (Python aqui, TypeScript no ARMOR-SERVER, as '
+                    '**Vetores de conformidade:** 1363 cargas aceites e recusadas executadas por cada implementação (Python aqui, TypeScript no ARMOR-SERVER, as '
                     'verificações dos repositórios de firmware), de modo que um desvio faz falhar uma compilação.',
                     '**Clientes gerados:** os tipos TypeScript e Kotlin e as constantes C++ (`generated/armor_contracts.hpp`) saem dos esquemas (`tools/generate_types.py --check` mantém-nos atuais).',
                     '**Contrato HTTP:** `openapi/armor-server.yaml` descreve cada rota do servidor (190 caminhos, 245 operações), a sua regra de acesso e um esquema com '
@@ -487,14 +487,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           labels of the facts of an alarm\n'
        '│   └── battery_ops.json           battery operations\n'
        '├── firmware_base/                 the firmware that the five nodes share, once\n'
-       '├── conformance/                   1318 accepted and rejected payloads\n'
+       '├── conformance/                   1363 accepted and rejected payloads\n'
        '├── generated/                     TypeScript and Kotlin types (generated, do not edit)\n'
        '├── openapi/                       armor-server.yaml, HTTP contract\n'
        '├── registry/                      repositories.json, the family list\n'
        '├── fuzz/                          libFuzzer targets\n'
        '├── scripts/                       armor-project launcher\n'
        '├── tools/                         generators, firmware sync and release, launcher, CI checks\n'
-       '├── tests/                         267 tests\n'
+       '├── tests/                         290 tests\n'
        '├── docs/                          contracts, firmware, fuzzing\n'
        '├── images/                        banner, icon and the pictures of the README\n'
        '├── .github/                       CI workflow, dashboard notice, issue and pull-request templates\n'
@@ -517,14 +517,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           etiquetas de los hechos de una alarma\n'
        '│   └── battery_ops.json           operaciones de batería\n'
        '├── firmware_base/                 el firmware que comparten los cinco nodos, una sola vez\n'
-       '├── conformance/                   1318 mensajes válidos e inválidos\n'
+       '├── conformance/                   1363 mensajes válidos e inválidos\n'
        '├── generated/                     tipos TypeScript y Kotlin (generados, no editar)\n'
        '├── openapi/                       armor-server.yaml, contrato HTTP\n'
        '├── registry/                      repositories.json, lista de la familia\n'
        '├── fuzz/                          objetivos libFuzzer\n'
        '├── scripts/                       lanzador armor-project\n'
        '├── tools/                         generadores, sincronía y publicación del firmware, lanzador, comprobaciones de CI\n'
-       '├── tests/                         267 pruebas\n'
+       '├── tests/                         290 pruebas\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        banner, icono y las imágenes del README\n'
        '├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests\n'
@@ -547,14 +547,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           Bezeichnungen der Fakten eines Alarms\n'
        '│   └── battery_ops.json           Batterieoperationen\n'
        '├── firmware_base/                 die Firmware, die die fünf Knoten teilen, nur einmal\n'
-       '├── conformance/                   1318 gültige und ungültige Nachrichten\n'
+       '├── conformance/                   1363 gültige und ungültige Nachrichten\n'
        '├── generated/                     TypeScript- und Kotlin-Typen (erzeugt, nicht bearbeiten)\n'
        '├── openapi/                       armor-server.yaml, HTTP-Vertrag\n'
        '├── registry/                      repositories.json, Familienliste\n'
        '├── fuzz/                          libFuzzer-Ziele\n'
        '├── scripts/                       armor-project-Starter\n'
        '├── tools/                         Generatoren, Firmware-Abgleich und -Release, Starter, CI-Prüfungen\n'
-       '├── tests/                         267 Tests\n'
+       '├── tests/                         290 Tests\n'
        '├── docs/                          Verträge, Firmware, Fuzzing\n'
        '├── images/                        Banner, Symbol und die Bilder des READMEs\n'
        '├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests\n'
@@ -577,14 +577,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           libellés des faits d\'une alarme\n'
        '│   └── battery_ops.json           opérations de batterie\n'
        '├── firmware_base/                 le firmware que les cinq nœuds partagent, une seule fois\n'
-       '├── conformance/                   1318 messages valides et refusés\n'
+       '├── conformance/                   1363 messages valides et refusés\n'
        '├── generated/                     types TypeScript et Kotlin (générés, ne pas modifier)\n'
        '├── openapi/                       armor-server.yaml, contrat HTTP\n'
        '├── registry/                      repositories.json, liste de la famille\n'
        '├── fuzz/                          cibles libFuzzer\n'
        '├── scripts/                       lanceur armor-project\n'
        '├── tools/                         générateurs, synchronisation et publication du firmware, lanceur, vérifications CI\n'
-       '├── tests/                         267 tests\n'
+       '├── tests/                         290 tests\n'
        '├── docs/                          contrats, firmware, fuzzing\n'
        '├── images/                        bannière, icône et images du README\n'
        "├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests\n"
@@ -607,14 +607,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           etichette dei fatti di un allarme\n'
        '│   └── battery_ops.json           operazioni batteria\n'
        '├── firmware_base/                 il firmware che i cinque nodi condividono, una volta sola\n'
-       '├── conformance/                   1318 messaggi validi e rifiutati\n'
+       '├── conformance/                   1363 messaggi validi e rifiutati\n'
        '├── generated/                     tipi TypeScript e Kotlin (generati, non modificare)\n'
        '├── openapi/                       armor-server.yaml, contratto HTTP\n'
        '├── registry/                      repositories.json, elenco famiglia\n'
        '├── fuzz/                          target libFuzzer\n'
        '├── scripts/                       avviatore armor-project\n'
        '├── tools/                         generatori, sincronia e rilascio del firmware, avviatore, controlli CI\n'
-       '├── tests/                         267 test\n'
+       '├── tests/                         290 test\n'
        '├── docs/                          contratti, firmware, fuzzing\n'
        '├── images/                        banner, icona e immagini del README\n'
        '├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request\n'
@@ -637,14 +637,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           アラームの事実の表示名\n'
        '│   └── battery_ops.json           バッテリー操作\n'
        '├── firmware_base/                 5 つのノードが共有するファームウェア（1 か所）\n'
-       '├── conformance/                   受理・拒否 1318 件\n'
+       '├── conformance/                   受理・拒否 1363 件\n'
        '├── generated/                     TypeScript と Kotlin の型（生成物、編集不可）\n'
        '├── openapi/                       armor-server.yaml（HTTP 契約）\n'
        '├── registry/                      repositories.json（一覧）\n'
        '├── fuzz/                          libFuzzer ターゲット\n'
        '├── scripts/                       armor-project 起動\n'
        '├── tools/                         ジェネレーター、ファームウェアの同期とリリース、ランチャー、CI 検査\n'
-       '├── tests/                         267 件のテスト\n'
+       '├── tests/                         290 件のテスト\n'
        '├── docs/                          契約・FW・ファジング\n'
        '├── images/                        バナー、アイコン、README の画像\n'
        '├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート\n'
@@ -667,14 +667,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           报警事实的标签\n'
        '│   └── battery_ops.json           电池操作\n'
        '├── firmware_base/                 五个节点共用的固件（只此一份）\n'
-       '├── conformance/                   1318 条有效与无效消息\n'
+       '├── conformance/                   1363 条有效与无效消息\n'
        '├── generated/                     TypeScript 和 Kotlin 类型（自动生成，勿编辑）\n'
        '├── openapi/                       armor-server.yaml（HTTP 契约）\n'
        '├── registry/                      repositories.json（清单）\n'
        '├── fuzz/                          libFuzzer 目标\n'
        '├── scripts/                       armor-project 启动器\n'
        '├── tools/                         生成器、固件同步与发布、启动器、CI 检查\n'
-       '├── tests/                         267 项测试\n'
+       '├── tests/                         290 项测试\n'
        '├── docs/                          契约、固件、模糊测试\n'
        '├── images/                        横幅图、图标和 README 的图片\n'
        '├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板\n'
@@ -697,14 +697,14 @@ TREE = {'en': 'ARMOR-COMMON/\n'
        '│   ├── alarm_facts.json           etiquetas dos factos de um alarme\n'
        '│   └── battery_ops.json           operações de bateria\n'
        '├── firmware_base/                 o firmware que os cinco nós partilham, uma só vez\n'
-       '├── conformance/                   1318 mensagens válidas e recusadas\n'
+       '├── conformance/                   1363 mensagens válidas e recusadas\n'
        '├── generated/                     tipos TypeScript e Kotlin (gerados, não editar)\n'
        '├── openapi/                       armor-server.yaml, contrato HTTP\n'
        '├── registry/                      repositories.json, lista da família\n'
        '├── fuzz/                          alvos libFuzzer\n'
        '├── scripts/                       lançador armor-project\n'
        '├── tools/                         geradores, sincronia e publicação do firmware, lançador, verificações de CI\n'
-       '├── tests/                         267 testes\n'
+       '├── tests/                         290 testes\n'
        '├── docs/                          contratos, firmware, fuzzing\n'
        '├── images/                        faixa, ícone e as imagens do README\n'
        '├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests\n'
@@ -719,13 +719,13 @@ TREE = {'en': 'ARMOR-COMMON/\n'
 
 DIAGRAM = 'flowchart LR\n    S["JSON Schemas (source of truth)"] --> P["armor_common (Python validator)"]\n    S --> G["generated TS + Kotlin types"]\n    S --> V["conformance vectors"]\n    V --> P\n    V --> T["ARMOR-SERVER tests"]\n    V --> X["ARMOR-NODE-SOLAR and ARMOR-NODE-ELECTRICAL checks"]\n    S --> O["OpenAPI (HTTP contract)"]'
 
-FACTS["badges"].append(["Tests", "267%20passing", "2ea44f"])
-FACTS["badges"][2][1] = "1318"
+FACTS["badges"].append(["Tests", "290%20passing", "2ea44f"])
+FACTS["badges"][2][1] = "1363"
 
 
 def fix(s):
-    """The figures of the previous layout that moved: tests 170 -> 267, paths 190 -> 202, operations 245 -> 261."""
-    return s.replace("170", "267").replace("190", "202").replace("245", "261")
+    """The figures of the previous layout that moved: tests 170 -> 290, paths 190 -> 211, operations 245 -> 273."""
+    return s.replace("170", "290").replace("190", "211").replace("245", "273")
 
 
 def L(lg, key):
@@ -740,12 +740,12 @@ GLANCE = [
     (GL["stack"], P("Python 3.11+, JSON Schema, OpenAPI; C++ firmware base (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base de firmware en C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; Firmware-Basis in C++ (ESP-IDF)",
                     "Python 3.11+, JSON Schema, OpenAPI ; base de firmware C++ (ESP-IDF)", "Python 3.11+, JSON Schema, OpenAPI; base firmware in C++ (ESP-IDF)", "Python 3.11+、JSON Schema、OpenAPI、C++ のファームウェア基盤（ESP-IDF）",
                     "Python 3.11+、JSON Schema、OpenAPI；C++ 固件基础（ESP-IDF）", "Python 3.11+, JSON Schema, OpenAPI; base de firmware em C++ (ESP-IDF)")),
-    (GL["tests"], P("267 (`python -m unittest discover -s tests`), 1318 conformance vectors", "267 (`python -m unittest discover -s tests`), 1318 vectores de conformidad", "267 (`python -m unittest discover -s tests`), 1318 Konformitätsvektoren",
-                    "267 (`python -m unittest discover -s tests`), 1318 vecteurs de conformité", "267 (`python -m unittest discover -s tests`), 1318 vettori di conformità", "267 件（`python -m unittest discover -s tests`）、適合ベクター 1318 件",
-                    "267 项（`python -m unittest discover -s tests`），1318 个一致性向量", "267 (`python -m unittest discover -s tests`), 1318 vetores de conformidade")),
-    (GL["contract"], P("37 JSON Schemas, 202 HTTP paths (261 operations)", "37 JSON Schema, 202 rutas HTTP (261 operaciones)", "37 JSON-Schemas, 202 HTTP-Pfade (261 Operationen)",
-                       "37 JSON Schema, 202 chemins HTTP (261 opérations)", "37 JSON Schema, 202 percorsi HTTP (261 operazioni)", "JSON Schema 37 個、HTTP パス 202 本（261 操作）",
-                       "37 个 JSON Schema，202 条 HTTP 路径（261 个操作）", "37 JSON Schema, 202 caminhos HTTP (261 operações)")),
+    (GL["tests"], P("290 (`python -m unittest discover -s tests`), 1363 conformance vectors", "290 (`python -m unittest discover -s tests`), 1363 vectores de conformidad", "290 (`python -m unittest discover -s tests`), 1363 Konformitätsvektoren",
+                    "290 (`python -m unittest discover -s tests`), 1363 vecteurs de conformité", "290 (`python -m unittest discover -s tests`), 1363 vettori di conformità", "290 件（`python -m unittest discover -s tests`）、適合ベクター 1363 件",
+                    "290 项（`python -m unittest discover -s tests`），1363 个一致性向量", "290 (`python -m unittest discover -s tests`), 1363 vetores de conformidade")),
+    (GL["contract"], P("38 JSON Schemas, 211 HTTP paths (273 operations)", "38 JSON Schema, 211 rutas HTTP (273 operaciones)", "38 JSON-Schemas, 211 HTTP-Pfade (273 Operationen)",
+                       "38 JSON Schema, 211 chemins HTTP (273 opérations)", "38 JSON Schema, 211 percorsi HTTP (273 operazioni)", "JSON Schema 38 個、HTTP パス 211 本（273 操作）",
+                       "38 个 JSON Schema，211 条 HTTP 路径（273 个操作）", "38 JSON Schema, 211 caminhos HTTP (273 operações)")),
     (GL["runs"], P("Any computer (library and tools); the firmware base runs inside the five nodes", "Cualquier ordenador (biblioteca y herramientas); la base de firmware funciona dentro de los cinco nodos", "Jeder Computer (Bibliothek und Werkzeuge); die Firmware-Basis läuft in den fünf Knoten",
                    "Tout ordinateur (bibliothèque et outils) ; la base de firmware tourne dans les cinq nœuds", "Qualsiasi computer (libreria e strumenti); la base firmware gira dentro i cinque nodi", "任意のコンピューター（ライブラリとツール）。ファームウェア基盤は 5 つのノード内で動作",
                    "任意计算机（库和工具）；固件基础运行在五个节点内", "Qualquer computador (biblioteca e ferramentas); a base de firmware corre dentro dos cinco nós")),
@@ -822,14 +822,14 @@ TOOLS = [
 ]
 
 INTERFACES_SCHEMAS = P(
-    "### Schemas, vectors and OpenAPI\n\n* **37 JSON Schemas** in `src/armor_common/schemas/`: telemetry, health, command, node information, node health, node control (command and result), node maintenance, solar inverter and battery (with their commands and results), electrical (with command and result), alarm (state, command, result, policy and zone feed), network (with its orders), connection and system events, radar events, server alert, arming profile, arming modes, device state, diagnostic tokens, and the voice turn.\n* **1318 conformance vectors** in `conformance/` (37 files, one per message), run by this repository, by ARMOR-SERVER and by the checks of the firmware repositories.\n* **OpenAPI** `openapi/armor-server.yaml`: 202 paths and 261 operations, each with its access rule and a named schema for every body, answer and error. A test checks that the routes the server registers are exactly the ones described. The voice turn travels as bytes (see [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
-    "### Esquemas, vectores y OpenAPI\n\n* **37 JSON Schema** en `src/armor_common/schemas/`: telemetría, salud, orden, información del nodo, salud del nodo, control del nodo (orden y resultado), mantenimiento del nodo, inversor y batería solares (con sus órdenes y resultados), eléctrico (con orden y resultado), alarma (estado, orden, resultado, política y zonas), red (con sus órdenes), eventos de conexión y del sistema, eventos de radar, alerta del servidor, perfil de armado, modos de armado, estado de dispositivo, tokens de diagnóstico y el turno de voz.\n* **1318 vectores de conformidad** en `conformance/` (37 ficheros, uno por mensaje), ejecutados por este repositorio, por ARMOR-SERVER y por las comprobaciones de los repositorios de firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 202 rutas y 261 operaciones, cada una con su regla de acceso y un esquema con nombre para cada cuerpo, respuesta y error. Una prueba comprueba que las rutas que registra el servidor son exactamente las descritas. El turno de voz viaja como bytes (ver [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
-    "### Schemas, Vektoren und OpenAPI\n\n* **37 JSON-Schemas** in `src/armor_common/schemas/`: Telemetrie, Zustand, Befehl, Knoteninformation, Knotenzustand, Knotensteuerung (Befehl und Ergebnis), Knotenwartung, Solar-Wechselrichter und -Batterie (mit Befehlen und Ergebnissen), Elektro (mit Befehl und Ergebnis), Alarm (Zustand, Befehl, Ergebnis, Richtlinie und Zonen), Netzwerk (mit Aufträgen), Verbindungs- und Systemereignisse, Radar-Ereignisse, Server-Alarm, Scharfschaltprofil, Scharfschaltmodi, Gerätezustand, Diagnose-Token und der Sprachturn.\n* **1318 Konformitätsvektoren** in `conformance/` (37 Dateien, eine je Nachricht), ausgeführt von diesem Repository, von ARMOR-SERVER und von den Prüfungen der Firmware-Repositorys.\n* **OpenAPI** `openapi/armor-server.yaml`: 202 Pfade und 261 Operationen, jeweils mit Zugriffsregel und einem benannten Schema für jeden Inhalt, jede Antwort und jeden Fehler. Ein Test prüft, dass die vom Server registrierten Routen genau die beschriebenen sind. Der Sprachturn wird als Bytes übertragen (siehe [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
-    "### Schémas, vecteurs et OpenAPI\n\n* **37 JSON Schema** dans `src/armor_common/schemas/` : télémétrie, santé, commande, informations du nœud, santé du nœud, contrôle du nœud (commande et résultat), maintenance du nœud, onduleur et batterie solaires (avec leurs commandes et résultats), électrique (avec commande et résultat), alarme (état, commande, résultat, politique et zones), réseau (avec ses ordres), événements de connexion et système, événements radar, alerte du serveur, profil d'armement, modes d'armement, état d'appareil, jetons de diagnostic et le tour de parole.\n* **1318 vecteurs de conformité** dans `conformance/` (37 fichiers, un par message), exécutés par ce dépôt, par ARMOR-SERVER et par les vérifications des dépôts de firmware.\n* **OpenAPI** `openapi/armor-server.yaml` : 202 chemins et 261 opérations, chacun avec sa règle d'accès et un schéma nommé pour chaque corps, réponse et erreur. Un test vérifie que les routes enregistrées par le serveur sont exactement celles décrites. Le tour de parole voyage en octets (voir [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
-    "### Schemi, vettori e OpenAPI\n\n* **37 JSON Schema** in `src/armor_common/schemas/`: telemetria, salute, comando, informazioni del nodo, salute del nodo, controllo del nodo (comando e risultato), manutenzione del nodo, inverter e batteria solari (con comandi e risultati), elettrico (con comando e risultato), allarme (stato, comando, risultato, politica e zone), rete (con i suoi ordini), eventi di connessione e di sistema, eventi radar, avviso del server, profilo di armamento, modi di armamento, stato del dispositivo, token di diagnostica e il turno vocale.\n* **1318 vettori di conformità** in `conformance/` (37 file, uno per messaggio), eseguiti da questo repository, da ARMOR-SERVER e dai controlli dei repository firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 202 percorsi e 261 operazioni, ciascuno con la sua regola di accesso e uno schema con nome per ogni corpo, risposta ed errore. Un test verifica che le rotte registrate dal server siano esattamente quelle descritte. Il turno vocale viaggia come byte (vedi [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
-    "### スキーマ、ベクター、OpenAPI\n\n* **JSON Schema 37 個**（`src/armor_common/schemas/`）：テレメトリ、健康状態、コマンド、ノード情報、ノード健康、ノード制御（コマンドと結果）、ノードメンテナンス、ソーラーのインバーターとバッテリー（コマンドと結果を含む）、電気（コマンドと結果）、アラーム（状態、コマンド、結果、ポリシー、ゾーンフィード）、ネットワーク（オーダー）、接続・システムイベント、レーダーイベント、サーバー警報、警戒プロファイル、デバイス状態、診断トークン、音声ターン。\n* **適合ベクター 1318 件**（`conformance/`、メッセージごとに 1 ファイル、計 34 ファイル）。このリポジトリ、ARMOR-SERVER、ファームウェアリポジトリの検査が実行します。\n* **OpenAPI** `openapi/armor-server.yaml`：202 パス、261 操作。各操作にアクセス規則と、本文・応答・エラーごとの名前付きスキーマがあります。サーバーが登録するルートが記述と完全に一致することをテストが確認します。音声ターンはバイト列で送られます（[docs/CONTRACTS.md](docs/CONTRACTS.md) を参照）。",
-    "### 模式、向量与 OpenAPI\n\n* **37 个 JSON Schema**（`src/armor_common/schemas/`）：遥测、健康、命令、节点信息、节点健康、节点控制（命令与结果）、节点维护、太阳能逆变器和电池（含命令与结果）、电气（含命令与结果）、报警（状态、命令、结果、策略和区域）、网络（含其指令）、连接与系统事件、雷达事件、服务器警报、布防配置、布防模式、设备状态、诊断令牌以及语音轮次。\n* **1318 个一致性向量**（`conformance/`，34 个文件，每条消息一个），由本仓库、ARMOR-SERVER 和固件仓库的检查运行。\n* **OpenAPI** `openapi/armor-server.yaml`：202 条路径、261 个操作，每个都有访问规则，且每个请求体、响应和错误都有命名模式。测试确认服务器注册的路由与描述完全一致。语音轮次以字节传输（见 [docs/CONTRACTS.md](docs/CONTRACTS.md)）。",
-    "### Esquemas, vetores e OpenAPI\n\n* **37 JSON Schema** em `src/armor_common/schemas/`: telemetria, saúde, ordem, informação do nó, saúde do nó, controlo do nó (ordem e resultado), manutenção do nó, inversor e bateria solares (com as suas ordens e resultados), elétrico (com ordem e resultado), alarme (estado, ordem, resultado, política e zonas), rede (com as suas ordens), eventos de ligação e do sistema, eventos de radar, alerta do servidor, perfil de armamento, modos de armamento, estado do dispositivo, tokens de diagnóstico e o turno de voz.\n* **1318 vetores de conformidade** em `conformance/` (37 ficheiros, um por mensagem), executados por este repositório, pelo ARMOR-SERVER e pelas verificações dos repositórios de firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 202 caminhos e 261 operações, cada uma com a sua regra de acesso e um esquema com nome para cada corpo, resposta e erro. Um teste verifica que as rotas que o servidor regista são exatamente as descritas. O turno de voz viaja como bytes (ver [docs/CONTRACTS.md](docs/CONTRACTS.md)).")
+    "### Schemas, vectors and OpenAPI\n\n* **38 JSON Schemas** in `src/armor_common/schemas/`: telemetry, health, command, node information, node health, node control (command and result), node maintenance, solar inverter and battery (with their commands and results), electrical (with command and result), alarm (state, command, result, policy and zone feed), network (with its orders), connection and system events, radar events, server alert, arming profile, arming modes, device state, diagnostic tokens, and the voice turn.\n* **1363 conformance vectors** in `conformance/` (38 files, one per message), run by this repository, by ARMOR-SERVER and by the checks of the firmware repositories.\n* **OpenAPI** `openapi/armor-server.yaml`: 211 paths and 273 operations, each with its access rule and a named schema for every body, answer and error. A test checks that the routes the server registers are exactly the ones described. The voice turn travels as bytes (see [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
+    "### Esquemas, vectores y OpenAPI\n\n* **38 JSON Schema** en `src/armor_common/schemas/`: telemetría, salud, orden, información del nodo, salud del nodo, control del nodo (orden y resultado), mantenimiento del nodo, inversor y batería solares (con sus órdenes y resultados), eléctrico (con orden y resultado), alarma (estado, orden, resultado, política y zonas), red (con sus órdenes), eventos de conexión y del sistema, eventos de radar, alerta del servidor, perfil de armado, modos de armado, estado de dispositivo, tokens de diagnóstico y el turno de voz.\n* **1363 vectores de conformidad** en `conformance/` (38 ficheros, uno por mensaje), ejecutados por este repositorio, por ARMOR-SERVER y por las comprobaciones de los repositorios de firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 211 rutas y 273 operaciones, cada una con su regla de acceso y un esquema con nombre para cada cuerpo, respuesta y error. Una prueba comprueba que las rutas que registra el servidor son exactamente las descritas. El turno de voz viaja como bytes (ver [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
+    "### Schemas, Vektoren und OpenAPI\n\n* **38 JSON-Schemas** in `src/armor_common/schemas/`: Telemetrie, Zustand, Befehl, Knoteninformation, Knotenzustand, Knotensteuerung (Befehl und Ergebnis), Knotenwartung, Solar-Wechselrichter und -Batterie (mit Befehlen und Ergebnissen), Elektro (mit Befehl und Ergebnis), Alarm (Zustand, Befehl, Ergebnis, Richtlinie und Zonen), Netzwerk (mit Aufträgen), Verbindungs- und Systemereignisse, Radar-Ereignisse, Server-Alarm, Scharfschaltprofil, Scharfschaltmodi, Gerätezustand, Diagnose-Token und der Sprachturn.\n* **1363 Konformitätsvektoren** in `conformance/` (38 Dateien, eine je Nachricht), ausgeführt von diesem Repository, von ARMOR-SERVER und von den Prüfungen der Firmware-Repositorys.\n* **OpenAPI** `openapi/armor-server.yaml`: 211 Pfade und 273 Operationen, jeweils mit Zugriffsregel und einem benannten Schema für jeden Inhalt, jede Antwort und jeden Fehler. Ein Test prüft, dass die vom Server registrierten Routen genau die beschriebenen sind. Der Sprachturn wird als Bytes übertragen (siehe [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
+    "### Schémas, vecteurs et OpenAPI\n\n* **38 JSON Schema** dans `src/armor_common/schemas/` : télémétrie, santé, commande, informations du nœud, santé du nœud, contrôle du nœud (commande et résultat), maintenance du nœud, onduleur et batterie solaires (avec leurs commandes et résultats), électrique (avec commande et résultat), alarme (état, commande, résultat, politique et zones), réseau (avec ses ordres), événements de connexion et système, événements radar, alerte du serveur, profil d'armement, modes d'armement, état d'appareil, jetons de diagnostic et le tour de parole.\n* **1363 vecteurs de conformité** dans `conformance/` (38 fichiers, un par message), exécutés par ce dépôt, par ARMOR-SERVER et par les vérifications des dépôts de firmware.\n* **OpenAPI** `openapi/armor-server.yaml` : 211 chemins et 273 opérations, chacun avec sa règle d'accès et un schéma nommé pour chaque corps, réponse et erreur. Un test vérifie que les routes enregistrées par le serveur sont exactement celles décrites. Le tour de parole voyage en octets (voir [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
+    "### Schemi, vettori e OpenAPI\n\n* **38 JSON Schema** in `src/armor_common/schemas/`: telemetria, salute, comando, informazioni del nodo, salute del nodo, controllo del nodo (comando e risultato), manutenzione del nodo, inverter e batteria solari (con comandi e risultati), elettrico (con comando e risultato), allarme (stato, comando, risultato, politica e zone), rete (con i suoi ordini), eventi di connessione e di sistema, eventi radar, avviso del server, profilo di armamento, modi di armamento, stato del dispositivo, token di diagnostica e il turno vocale.\n* **1363 vettori di conformità** in `conformance/` (38 file, uno per messaggio), eseguiti da questo repository, da ARMOR-SERVER e dai controlli dei repository firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 211 percorsi e 273 operazioni, ciascuno con la sua regola di accesso e uno schema con nome per ogni corpo, risposta ed errore. Un test verifica che le rotte registrate dal server siano esattamente quelle descritte. Il turno vocale viaggia come byte (vedi [docs/CONTRACTS.md](docs/CONTRACTS.md)).",
+    "### スキーマ、ベクター、OpenAPI\n\n* **JSON Schema 38 個**（`src/armor_common/schemas/`）：テレメトリ、健康状態、コマンド、ノード情報、ノード健康、ノード制御（コマンドと結果）、ノードメンテナンス、ソーラーのインバーターとバッテリー（コマンドと結果を含む）、電気（コマンドと結果）、アラーム（状態、コマンド、結果、ポリシー、ゾーンフィード）、ネットワーク（オーダー）、接続・システムイベント、レーダーイベント、サーバー警報、警戒プロファイル、デバイス状態、診断トークン、音声ターン。\n* **適合ベクター 1363 件**（`conformance/`、メッセージごとに 1 ファイル、計 34 ファイル）。このリポジトリ、ARMOR-SERVER、ファームウェアリポジトリの検査が実行します。\n* **OpenAPI** `openapi/armor-server.yaml`：211 パス、273 操作。各操作にアクセス規則と、本文・応答・エラーごとの名前付きスキーマがあります。サーバーが登録するルートが記述と完全に一致することをテストが確認します。音声ターンはバイト列で送られます（[docs/CONTRACTS.md](docs/CONTRACTS.md) を参照）。",
+    "### 模式、向量与 OpenAPI\n\n* **38 个 JSON Schema**（`src/armor_common/schemas/`）：遥测、健康、命令、节点信息、节点健康、节点控制（命令与结果）、节点维护、太阳能逆变器和电池（含命令与结果）、电气（含命令与结果）、报警（状态、命令、结果、策略和区域）、网络（含其指令）、连接与系统事件、雷达事件、服务器警报、布防配置、布防模式、设备状态、诊断令牌以及语音轮次。\n* **1363 个一致性向量**（`conformance/`，34 个文件，每条消息一个），由本仓库、ARMOR-SERVER 和固件仓库的检查运行。\n* **OpenAPI** `openapi/armor-server.yaml`：211 条路径、273 个操作，每个都有访问规则，且每个请求体、响应和错误都有命名模式。测试确认服务器注册的路由与描述完全一致。语音轮次以字节传输（见 [docs/CONTRACTS.md](docs/CONTRACTS.md)）。",
+    "### Esquemas, vetores e OpenAPI\n\n* **38 JSON Schema** em `src/armor_common/schemas/`: telemetria, saúde, ordem, informação do nó, saúde do nó, controlo do nó (ordem e resultado), manutenção do nó, inversor e bateria solares (com as suas ordens e resultados), elétrico (com ordem e resultado), alarme (estado, ordem, resultado, política e zonas), rede (com as suas ordens), eventos de ligação e do sistema, eventos de radar, alerta do servidor, perfil de armamento, modos de armamento, estado do dispositivo, tokens de diagnóstico e o turno de voz.\n* **1363 vetores de conformidade** em `conformance/` (38 ficheiros, um por mensagem), executados por este repositório, pelo ARMOR-SERVER e pelas verificações dos repositórios de firmware.\n* **OpenAPI** `openapi/armor-server.yaml`: 211 caminhos e 273 operações, cada uma com a sua regra de acesso e um esquema com nome para cada corpo, resposta e erro. Um teste verifica que as rotas que o servidor regista são exatamente as descritas. O turno de voz viaja como bytes (ver [docs/CONTRACTS.md](docs/CONTRACTS.md)).")
 
 TOPICS_INTRO = P("### Broker topics", "### Topics del broker", "### Broker-Topics", "### Topics du broker", "### Topic del broker", "### ブローカーのトピック", "### 代理主题", "### Tópicos do broker")
 TOOLS_INTRO = P("### Command-line tools", "### Herramientas de línea de órdenes", "### Kommandozeilen-Werkzeuge", "### Outils en ligne de commande", "### Strumenti da riga di comando", "### コマンドラインツール", "### 命令行工具", "### Ferramentas de linha de comandos")
@@ -868,7 +868,7 @@ def config_body(lg):
 
 QUICK_CODE = [
     ("python -m pip install -e .", T("install the library | instala la biblioteca | die Bibliothek installieren | installe la bibliothèque | installa la libreria | ライブラリをインストール | 安装库 | instala a biblioteca")),
-    ("python -m unittest discover -s tests", T("267 tests, 1318 conformance vectors | 267 pruebas, 1318 vectores | 267 Tests, 1318 Vektoren | 267 tests, 1318 vecteurs | 267 test, 1318 vettori | 267 件のテスト、1318 ベクター | 267 项测试、1318 个向量 | 267 testes, 1318 vetores")),
+    ("python -m unittest discover -s tests", T("290 tests, 1363 conformance vectors | 290 pruebas, 1363 vectores | 290 Tests, 1363 Vektoren | 290 tests, 1363 vecteurs | 290 test, 1363 vettori | 290 件のテスト、1363 ベクター | 290 项测试、1363 个向量 | 290 testes, 1363 vetores")),
     ("python tools/generate_types.py --check", T("the generated types are current | los tipos generados están al día | die erzeugten Typen sind aktuell | les types générés sont à jour | i tipi generati sono aggiornati | 生成された型は最新 | 生成的类型是最新的 | os tipos gerados estão atualizados")),
     ("python tools/generate_rest_types.py --check", T("the types of the HTTP contract are current | los tipos del contrato HTTP están al día | die Typen des HTTP-Vertrags sind aktuell | les types du contrat HTTP sont à jour | i tipi del contratto HTTP sono aggiornati | HTTP 契約の型は最新 | HTTP 契约的类型是最新的 | os tipos do contrato HTTP estão atualizados")),
     ("python tools/make_conformance.py", T("regenerate the vectors after editing the case list (--check: they are current) | regenera los vectores tras editar la lista de casos (--check: están al día) | Vektoren nach Änderung der Fallliste neu erzeugen (--check: aktuell) | régénère les vecteurs après modification de la liste de cas (--check : à jour) | rigenera i vettori dopo aver modificato l'elenco dei casi (--check: aggiornati) | ケース一覧の編集後にベクターを再生成（--check：最新か確認） | 修改用例列表后重新生成向量（--check：检查是否最新） | regenera os vetores depois de editar a lista de casos (--check: estão atualizados)")),
@@ -983,7 +983,7 @@ def build_lg(lg):
         "interfaces": TOPICS_INTRO[lg] + "\n\n" + table(lg, "topic", TOPICS) + "\n\n" + INTERFACES_SCHEMAS[lg] + "\n\n" + TOOLS_INTRO[lg] + "\n\n" + table(lg, "tool", TOOLS),
         "configuration": config_body(lg),
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n",
-        "testing": code(lg, [("python -m unittest discover -s tests", T("267 tests | 267 pruebas | 267 Tests | 267 tests | 267 test | 267 件 | 267 项 | 267 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m unittest discover -s tests", T("290 tests | 290 pruebas | 290 Tests | 290 tests | 290 test | 290 件 | 290 项 | 290 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-COMMON", tree=TREE[lg]),

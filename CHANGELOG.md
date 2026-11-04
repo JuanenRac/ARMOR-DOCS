@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The typed figures of the READMEs of ARMOR-COMMON and ARMOR-STUDIO match their repositories:** vectors, schemas, HTTP paths and operations, conformance files and test counts.
+
 ## [0.8.1.6] - The family has a compatibility table and a lock file (docs/COMPATIBILITY.md, docs/ecosystem.lock.json): tools/makecompatibility.py writes the version of every repository next to the version of the contracts it was last checked... (and 5 more changes)
 
 - **The family has a compatibility table and a lock file (`docs/COMPATIBILITY.md`, `docs/ecosystem.lock.json`):** `tools/make_compatibility.py` writes the version of every repository next to the version of the contracts it was last checked against (the pins of ARMOR-COMMON) and marks a pin that is behind; it is run when a version of the family is prepared, with tests in `tests/test_make_compatibility.py`.
