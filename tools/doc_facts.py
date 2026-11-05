@@ -14,8 +14,10 @@ A figure in a document is written between two markers, which stay invisible when
 
 The name says where the number comes from:
 
-    vectors              every conformance vector of ARMOR-COMMON         vectors:network   the vectors of one schema (conformance/network.json)
+    vectors              every conformance vector of ARMOR-COMMON         vectors:network   the vectors of one schema (conformance/network.json); vectors:a+b adds those of several
     schemas              the JSON Schemas of ARMOR-COMMON                 openapi_paths     the paths of the OpenAPI file of the server
+    openapi_operations   the operations (method and path) of that file
+    tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository
     version:ARMOR-X      the version in the manifest of a repository
 
 A row of the capability matrix says in which version it was verified with `<!--verified:ARMOR-NODE-RADAR 0.8.0.1-->` after its evidence. `--check` fails when that version is newer than the one the
@@ -96,6 +98,24 @@ def openapi_paths() -> int:
     return len(re.findall(r"^  /", section, re.M))
 
 
+def openapi_operations() -> int:
+    text = _tracked(_repo("ARMOR-COMMON"), "openapi", ".yaml").get("armor-server.yaml")
+    if text is None:
+        raise Unavailable("openapi/armor-server.yaml is missing")
+    section = text.split("\npaths:", 1)[1]
+    following = re.search(r"\n[A-Za-z]\w*:", section)
+    section = section[: following.start()] if following else section
+    return len(re.findall(r"^    (?:get|put|post|delete|patch):", section, re.M))
+
+
+def tests(repository: str) -> int:
+    """The test functions of a Python repository: every `def test_` of the files under tests/ as committed."""
+    files = _tracked(_repo(repository), "tests", ".py")
+    if not files:
+        raise Unavailable(f"{repository} has no Python tests")
+    return sum(len(re.findall(r"^\s*(?:async )?def test_", text, re.M)) for text in files.values())
+
+
 def version(repository: str) -> str:
     return str(json.loads((_repo(repository) / "armor.project.json").read_text(encoding="utf-8"))["version"])
 
@@ -104,11 +124,15 @@ def value(name: str) -> str:
     """The value of the figure `name`; raises Unavailable when its source is not there and KeyError for a name that means nothing."""
     base, _, argument = name.partition(":")
     if base == "vectors":
-        return str(vectors(argument or None))
+        return str(sum(vectors(part) for part in argument.split("+")) if argument else vectors())
     if base == "schemas" and not argument:
         return str(schemas())
     if base == "openapi_paths" and not argument:
         return str(openapi_paths())
+    if base == "openapi_operations" and not argument:
+        return str(openapi_operations())
+    if base == "tests" and argument:
+        return str(tests(argument))
     if base == "version" and argument:
         return version(argument)
     raise KeyError(name)
