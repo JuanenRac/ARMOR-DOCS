@@ -29,8 +29,8 @@ broker's port only to the field network and the server's and Studio's ports only
   every token, and no API returns them. <!-- claim: camera.vault.aes256gcm -->
 * An ONVIF address a camera advertises must stay on the configured camera host; HTTP redirects
   are refused. <!-- claim: onvif.same_host --> <!-- claim: camera.redirects.refused -->
-* Discovery scans one private /24, sends no credentials and runs one scan at a time.
-* Sessions and tickets are bounded in number and lifetime; login is rate limited.
+* Discovery scans one private /24 <!-- claim: discovery.private_24 -->, sends no credentials and runs one scan at a time <!-- claim: discovery.one_at_a_time -->.
+* Sessions <!-- claim: sessions.bounded --> and tickets <!-- claim: tickets.bounded --> are bounded in number and lifetime; login is rate limited <!-- claim: login.rate_limited -->.
 * Every command is an allow-list: a node's three, the alarm's arm and disarm, the five actions of a switch, a relay's ON, OFF and TOGGLE, and the seven orders of the network node. The validators reject an unknown field in any message; the server, on its ingest routes, drops what it does not know and counts it, so that an old server keeps working with a node of a newer firmware.
 * Solar and electrical nodes read their equipment and write to none of it. The three things a node can move are off by default and are described once, in the threat model: a Pylontech battery through typed operations (off in the node, the server and the broker; <!-- claim: battery.write.off_by_default -->see [Writing to a battery](THREAT_MODEL.md#writing-to-a-battery)), relays, and a source-transfer switch.
 * Ordering a node to restart, pause, go on standby, identify itself, give a diagnostic or enter maintenance is for an administrator who has just proved who they are again, in two steps with a one-time token; the whole model, with the rate limits, the refusals and the audit, is in the threat model ([Controlling the nodes](THREAT_MODEL.md#controlling-the-nodes)). There is no factory reset, no erase of settings or credentials and no deep sleep.

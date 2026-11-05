@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **Five more sentences of the security pages are checked against the code:** discovery of cameras scans only a private /24 and runs one scan at a time, live sessions and video tickets are bounded in number, and sign-in is limited per person and place, per place and for the whole server (19 checked in all).
 - **The figures of the READMEs are read, not typed:** a source writes `{{fact:vectors}}`, `{{fact:openapi_paths}}`, `{{fact:openapi_operations}}`, `{{fact:schemas}}`, `{{fact:vectors:a+b}}` or `{{fact:tests:ARMOR-X}}` and `make_readmes.py` puts in the value from the repositories (as committed); a number typed before the words for conformance vectors, or for the paths and operations of the OpenAPI file, in any of the eight languages, that is not the real count fails `make_readmes.py --check`. The README sources of the common, server and network repositories use them, which also corrects the counts they had drifted to.
 - **The typed figures of the READMEs of ARMOR-COMMON and ARMOR-STUDIO match their repositories:** vectors, schemas, HTTP paths and operations, conformance files and test counts.
 

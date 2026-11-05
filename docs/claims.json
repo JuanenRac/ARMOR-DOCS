@@ -12,5 +12,10 @@
   "camera.redirects.refused": {"repo": "ARMOR-SERVER", "file": "src/cameras/ptz.ts", "pattern": "redirect:\\s*\"error\"", "says": "the requests to a camera refuse HTTP redirects"},
   "webhooks.no_redirect": {"repo": "ARMOR-SERVER", "file": "src/notify.ts", "pattern": "redirect:\\s*\"error\"", "says": "alarm webhooks do not follow redirects"},
   "studio.csp": {"repo": "ARMOR-STUDIO", "file": "nginx/security_headers.conf", "pattern": "Content-Security-Policy \"default-src 'self'; script-src 'self'", "says": "Studio sends a strict Content-Security-Policy"},
-  "remote.session.limits": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "remoteSessionTtlMs:[^\\n]*12 \\* 3_600_000[\\s\\S]{0,200}remoteIdleMs:[^\\n]*30 \\* 60_000", "says": "a session from outside lasts 12 hours and 30 minutes without use"}
+  "remote.session.limits": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "remoteSessionTtlMs:[^\\n]*12 \\* 3_600_000[\\s\\S]{0,200}remoteIdleMs:[^\\n]*30 \\* 60_000", "says": "a session from outside lasts 12 hours and 30 minutes without use"},
+  "discovery.private_24": {"repo": "ARMOR-SERVER", "file": "src/cameras/discovery.ts", "pattern": "camera discovery only scans private networks[\\s\\S]{0,600}", "says": "camera discovery scans only a private IPv4 /24"},
+  "discovery.one_at_a_time": {"repo": "ARMOR-SERVER", "file": "src/routes/cameras.ts", "pattern": "a camera discovery is already running", "says": "only one camera discovery runs at a time"},
+  "login.rate_limited": {"repo": "ARMOR-SERVER", "file": "src/routes/sessions.ts", "pattern": "windowMs: 15 \\* 60_000, limit: 12[\\s\\S]{0,900}limit: 60[\\s\\S]{0,900}windowMs: 60_000, limit: 40, skipSuccessfulRequests: true", "says": "sign-in is limited per person and place, per place and for the whole server"},
+  "sessions.bounded": {"repo": "ARMOR-SERVER", "file": "src/http/auth.ts", "pattern": "capacity \\?\\? 256", "says": "the number of live sessions is bounded"},
+  "tickets.bounded": {"repo": "ARMOR-SERVER", "file": "src/media/relay.ts", "pattern": "lifetimeMs = 5 \\* 60_000, capacity = 256", "says": "live-video tickets last five minutes and at most 256 exist"}
 }
