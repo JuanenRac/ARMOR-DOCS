@@ -32,6 +32,16 @@ from readme_src import shots  # noqa: E402
 from readme_src.shots import HEADING as SHOTS_HEADING  # noqa: E402
 from readme_src.ui import RELATED, UI  # noqa: E402
 from registry import NAMES  # noqa: E402
+import doc_facts  # noqa: E402
+
+_FACTS: dict = {}
+
+
+def fact(name: str) -> str:
+    """A figure, read once per run (each read asks git)."""
+    if name not in _FACTS:
+        _FACTS[name] = doc_facts.value(name)
+    return _FACTS[name]
 
 ROOT = Path(__file__).resolve().parents[2]
 GITHUB_OWNER = "JuanenRac"
@@ -273,7 +283,68 @@ def render_universal(name: str, language: str, data) -> str:
     return "\n".join(out)
 
 
+FACT_TOKEN = re.compile(r"\{\{fact:([A-Za-z0-9_:.+\-]+)\}\}")
+# The figures a README states about the contracts, by the words that follow the number in each language: a figure typed in a source instead of written as {{fact:...}} must still
+# be the real one, and the check fails when it is not (the figures drifted at every change and put the CI of this repository red).
+FIGURE_WORDS = {
+    "vectors": r"(?:conformance vectors?|vectores de conformidad|vecteurs de conformit[eé]|vettori di conformit[aà]|Konformit[aä]tsvektoren|vetores de conformidade|个一致性向量|個の適合ベクター|件の適合ベクター)",
+    "openapi_operations": r"(?:operations|operaciones|op[ée]rations|operazioni|Operationen|opera[cç][oõ]es|个操作|操作)",
+    "openapi_paths": r"(?:HTTP paths|paths|rutas HTTP|rutas|chemins HTTP|chemins|percorsi HTTP|percorsi|HTTP-Pfade|Pfade|caminhos HTTP|caminhos|条 HTTP 路径|条路径|个路径)",
+}
+
+
+def facts_in(text: str, where: str) -> str:
+    """The text with every {{fact:NAME}} written as the current value of the figure; a figure whose source is not next to this repository is an error, never a guess."""
+    def value(match: re.Match[str]) -> str:
+        try:
+            return fact(match.group(1))
+        except doc_facts.Unavailable as problem:
+            raise SystemExit(f"{where}: the figure {match.group(1)} cannot be read: {problem}") from None
+        except KeyError:
+            raise SystemExit(f"{where}: {{{{fact:{match.group(1)}}}}} names no figure") from None
+    return FACT_TOKEN.sub(value, text)
+
+
+def allowed(kind: str, real: str) -> set[str]:
+    """The numbers that are right to state before the words of `kind`: the total, and for the vectors the count of each one schema (a README may speak of one message)."""
+    key = "allowed:" + kind
+    if key not in _FACTS:
+        out = {real}
+        if kind == "vectors":
+            out |= {str(len(json.loads(text)["vectors"])) for text in doc_facts._tracked(doc_facts._repo("ARMOR-COMMON"), "conformance", ".json").values()}
+        _FACTS[key] = out
+    return _FACTS[key]
+
+
+def typed_figure_problems(path: Path, text: str) -> list[str]:
+    """The numbers typed in a rendered README that say how many vectors or paths there are and are not the real count."""
+    problems = []
+    for kind, words in FIGURE_WORDS.items():
+        try:
+            real = fact(kind)
+        except doc_facts.Unavailable:
+            continue
+        for match in re.finditer(r"(?<![\d.,])(\d[\d.,]*)\s*" + words, text):
+            if kind in ("openapi_paths", "openapi_operations"):   # a README may count the paths of its own API: only the sentences about the HTTP file of the contracts are checked
+                line = text[text.rfind("\n", 0, match.start()) + 1:text.find("\n", match.end())]
+                if "openapi" not in line.lower():
+                    continue
+            if match.group(1).replace(",", "").replace(".", "") not in allowed(kind, real):
+                problems.append(f"{path.parent.name}: {match.group(0)!r} but the repository has {real} ({kind})")
+    return problems
+
+
+TYPED_PROBLEMS: list[str] = []
+
+
 def render(name: str, language: str) -> str:
+    """The README of a repository in a language: the figures written as {{fact:NAME}} are read from the repositories, and a figure typed by hand that is not the real one is remembered."""
+    text = render_text(name, language)
+    TYPED_PROBLEMS.extend(typed_figure_problems(Path(name) / "README.md", text))
+    return facts_in(text, f"{name}/{language}")
+
+
+def render_text(name: str, language: str) -> str:
     fixed = verbatim_render(name, language)
     if fixed is not None:
         return fixed
@@ -367,6 +438,10 @@ def main() -> int:
         print("Status tables incomplete:", *problems, sep="\n  ", file=sys.stderr)
         return 1
     files = outputs()
+    drifted = sorted(set(TYPED_PROBLEMS))
+    if drifted:
+        print("A figure typed in a README source is not the real one (write {{fact:NAME}} instead):", *drifted, sep=chr(10) + "  ", file=sys.stderr)
+        return 1
     for path, content in files.items():
         current = path.read_text(encoding="utf-8").replace("\r\n", "\n") if path.exists() else None
         if current == content:
