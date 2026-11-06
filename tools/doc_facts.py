@@ -17,7 +17,10 @@ The name says where the number comes from:
     vectors              every conformance vector of ARMOR-COMMON         vectors:network   the vectors of one schema (conformance/network.json); vectors:a+b adds those of several
     schemas              the JSON Schemas of ARMOR-COMMON                 openapi_paths     the paths of the OpenAPI file of the server
     openapi_operations   the operations (method and path) of that file
-    tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository
+    tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository (the count `python -m unittest discover` prints)
+    unittest:ARMOR-X     the same figure under the name of the runner
+    ctest_cpp:ARMOR-X    the host test programs a node registers with CTest (`add_test` in tests/CMakeLists.txt, each name once, without the Python checks)
+    ctest_python:ARMOR-X the Python checks that file registers with CTest
     version:ARMOR-X      the version in the manifest of a repository
 
 A row of the capability matrix says in which version it was verified with `<!--verified:ARMOR-NODE-RADAR 0.8.0.1-->` after its evidence. `--check` fails when that version is newer than the one the
@@ -116,6 +119,17 @@ def tests(repository: str) -> int:
     return sum(len(re.findall(r"^\s*(?:async )?def test_", text, re.M)) for text in files.values())
 
 
+def _ctest(repository: str, python: bool) -> int:
+    """The tests registered with CTest in tests/CMakeLists.txt, by name: the two branches of an if/else that register the same test count once."""
+    text = _tracked(_repo(repository), "tests", ".txt").get("CMakeLists.txt")
+    if text is None:
+        raise Unavailable(f"{repository} has no tests/CMakeLists.txt")
+    names: dict[str, bool] = {}
+    for match in re.finditer(r"^\s*add_test\(\s*NAME\s+(\S+)\s+COMMAND\s+([^\n]*)$", text, re.M):
+        names.setdefault(match.group(1), "Python3_EXECUTABLE" in match.group(2))
+    return sum(1 for is_python in names.values() if is_python == python)
+
+
 def version(repository: str) -> str:
     return str(json.loads((_repo(repository) / "armor.project.json").read_text(encoding="utf-8"))["version"])
 
@@ -131,8 +145,10 @@ def value(name: str) -> str:
         return str(openapi_paths())
     if base == "openapi_operations" and not argument:
         return str(openapi_operations())
-    if base == "tests" and argument:
+    if base in ("tests", "unittest") and argument:
         return str(tests(argument))
+    if base in ("ctest_cpp", "ctest_python") and argument:
+        return str(_ctest(argument, base == "ctest_python"))
     if base == "version" and argument:
         return version(argument)
     raise KeyError(name)

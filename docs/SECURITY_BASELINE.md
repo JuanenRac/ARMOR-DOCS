@@ -22,7 +22,7 @@ broker's port only to the field network and the server's and Studio's ports only
 * Ingest, control, operator and Studio-login credentials are different; tokens are at least 24
   characters and are compared in constant time. <!-- claim: server.min_secret_length -->
 * A Studio password shorter than 12 characters is refused as soon as the server is reachable from
-  the network.
+  the network. <!-- claim: studio.password.min_length -->
 * Every route that configures, moves, captures, records, protects or deletes needs an operator;
   live video needs an operator or a short ticket bound to one camera.
 * Camera passwords are stored only in the server, AES-256-GCM encrypted with a key separate from
@@ -35,7 +35,7 @@ broker's port only to the field network and the server's and Studio's ports only
 * Solar and electrical nodes read their equipment and write to none of it. The three things a node can move are off by default and are described once, in the threat model: a Pylontech battery through typed operations (off in the node, the server and the broker; <!-- claim: battery.write.off_by_default -->see [Writing to a battery](THREAT_MODEL.md#writing-to-a-battery)), relays, and a source-transfer switch.
 * Ordering a node to restart, pause, go on standby, identify itself, give a diagnostic or enter maintenance is for an administrator who has just proved who they are again, in two steps with a one-time token; the whole model, with the rate limits, the refusals and the audit, is in the threat model ([Controlling the nodes](THREAT_MODEL.md#controlling-the-nodes)). There is no factory reset, no erase of settings or credentials and no deep sleep.
 * A node's Bluetooth set-up channel writes only over an encrypted link (LE Secure Connections with a six-digit PIN derived from the node's set-up code) <!-- claim: ble.pairing.passkey -->; every operation but `hello` needs the set-up code or a login, changing anything needs an administrator, a phone that fails its login is blocked for 30 seconds (doubling to five minutes), twenty failures from all phones together block the channel, five failed pairings close the door for five minutes, and one phone connects at a time. The PIN does not change while the set-up code does not: **whoever learns the code can pair**.
-* Disarming asks for the PIN of the signed-in user whenever the user has one (`ARMOR_DISARM_PIN=required` makes it compulsory <!-- claim: disarm.pin.required -->): in the mode of the system, in a command to an alarm node and in the voice. Three wrong PINs lock the user for a minute, then five, then fifteen; the duress PIN disarms and warns in silence.
+* Disarming asks for the PIN of the signed-in user whenever the user has one (`ARMOR_DISARM_PIN=required` makes it compulsory <!-- claim: disarm.pin.required -->): in the mode of the system, in a command to an alarm node and in the voice. Three wrong PINs lock the user for a minute, then five, then fifteen <!-- claim: user.pin.lock_steps -->; the duress PIN disarms and warns in silence.
 * The server's files are forced to the disk before they take their name; the state and the users keep their last good copy, and a server that finds its state unreadable starts armed.
 * Erasing the history or every recording, and lowering how much a circuit matters, need an administrator; the list of the cameras needs a session.
 * Security-relevant actions are written to an audit log with credentials scrubbed.

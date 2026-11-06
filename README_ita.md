@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 o successiva">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Lingue">
-  <img src="https://img.shields.io/badge/Tests-251%20passing-2ea44f.svg" alt="Test">
+  <img src="https://img.shields.io/badge/Tests-265%20passing-2ea44f.svg" alt="Test">
   <img src="https://img.shields.io/badge/Version-0.8.1.7-0f6cbd.svg" alt="Versione">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturità">
 </p>
@@ -40,7 +40,7 @@
 | Maturità | Consolidato |
 | Ruolo | Centro di documentazione: architettura, base di sicurezza, matrice delle capacità e gli strumenti che scrivono README, catalogo e banner |
 | Tecnologia | Python 3.11+ (strumenti, libreria standard), Markdown |
-| Test | 251 (`python -m unittest discover -s tests`, circa un minuto) |
+| Test | 265 (`python -m unittest discover -s tests`, circa un minuto) |
 | Interfacce | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Gira su | Qualsiasi computer con Python; i repository della famiglia accanto a questo |
 | Su hardware reale | Non applicabile: è documentazione; registra ciò che gli altri repository hanno fatto girare su hardware reale |
@@ -57,7 +57,7 @@ Ogni riga è una parte di questo repository e il semaforo dice a che punto è og
 | Area | Stato | Cosa significa qui |
 |---|---|---|
 | Software | 🟢 | I generatori di README, banner, catalogo e matrice delle capacità, e gli strumenti di CI copiati in ogni repository, funzionano e sono testati. |
-| Test | 🟢 | I 251 test degli strumenti passano (`python -m unittest discover -s tests`): il controllo di pubblicazione, il pulitore della cronologia, i generatori di README, catalogo e marchio, la copia degli strumenti CI e lo strumento del flusso condiviso. |
+| Test | 🟢 | I 265 test degli strumenti passano (`python -m unittest discover -s tests`): il controllo di pubblicazione, il pulitore della cronologia, i generatori di README, catalogo e marchio, la copia degli strumenti CI e lo strumento del flusso condiviso. |
 | Controlli automatici | 🟢 | Ogni push verifica che i README, i banner e il catalogo siano aggiornati e che ogni repository del registro abbia la sua tabella di stato. |
 | Integrazione | 🟢 | I README di tutti i repository sono scritti da un'unica fonte, con la versione e la maturità di ciascuno lette dal proprio manifesto. |
 | Documentazione | 🟢 | La matrice delle capacità dice, per ogni funzione, se è stata solo simulata, testata su un computer o verificata su hardware reale; le otto lingue e il registro delle modifiche sono aggiornati. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # banner e icone sono aggiornati
 python tools/doc_facts.py --check     # le cifre dei documenti corrispondono ai repository
 python tools/publication_check.py     # niente di privato uscirebbe con una pubblicazione
 bash tools/check_all.sh               # i test di ogni repository, in un'esecuzione
-python -m unittest discover -s tests  # 251 test di questi strumenti; non servono altri repository
+python -m unittest discover -s tests  # 265 test di questi strumenti; non servono altri repository
 ```
 
 ## 🧪 Test

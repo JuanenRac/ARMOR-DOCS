@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 ou ultérieure">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Langues">
-  <img src="https://img.shields.io/badge/Tests-251%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-265%20passing-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Version-0.8.1.7-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturité">
 </p>
@@ -40,7 +40,7 @@
 | Maturité | Établi |
 | Rôle | Centre de documentation : architecture, base de sécurité, matrice des capacités et outils qui écrivent les README, le catalogue et les bannières |
 | Technologie | Python 3.11+ (outils, bibliothèque standard), Markdown |
-| Tests | 251 (`python -m unittest discover -s tests`, environ une minute) |
+| Tests | 265 (`python -m unittest discover -s tests`, environ une minute) |
 | Interfaces | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Fonctionne sur | Tout ordinateur avec Python ; les dépôts de la famille à côté de celui-ci |
 | Sur matériel réel | Sans objet : c'est de la documentation ; elle consigne ce que les autres dépôts ont fait tourner sur du matériel réel |
@@ -57,7 +57,7 @@ Chaque ligne est une partie de ce dépôt et le feu dit où elle en est aujourd'
 | Domaine | État | Ce que cela veut dire ici |
 |---|---|---|
 | Logiciel | 🟢 | Les générateurs de README, de bannières, de catalogue et de matrice de capacités, et les outils de CI copiés dans chaque dépôt, fonctionnent et sont testés. |
-| Tests | 🟢 | Les 251 tests des outils réussissent (`python -m unittest discover -s tests`) : le contrôle de publication, le nettoyeur d'historique, les générateurs de README, catalogue et marque, la copie des outils CI et l'outil du flux partagé. |
+| Tests | 🟢 | Les 265 tests des outils réussissent (`python -m unittest discover -s tests`) : le contrôle de publication, le nettoyeur d'historique, les générateurs de README, catalogue et marque, la copie des outils CI et l'outil du flux partagé. |
 | Contrôles automatiques | 🟢 | Chaque push vérifie que les README, les bannières et le catalogue sont à jour et que chaque dépôt du registre a son tableau d'état. |
 | Intégration | 🟢 | Les README de tous les dépôts sont écrits à partir d'une seule source, avec la version et la maturité de chacun lues dans son propre manifeste. |
 | Documentation | 🟢 | La matrice de capacités dit, pour chaque fonction, si elle n'a été que simulée, testée sur un ordinateur ou vérifiée sur du matériel réel ; les huit langues et le journal des modifications sont à jour. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # les bannières et icônes sont à jour
 python tools/doc_facts.py --check     # les chiffres des documents correspondent aux dépôts
 python tools/publication_check.py     # rien de privé ne sortirait avec une publication
 bash tools/check_all.sh               # les tests de chaque dépôt, en un lancement
-python -m unittest discover -s tests  # 251 tests de ces outils ; ils n'ont besoin d'aucun autre dépôt
+python -m unittest discover -s tests  # 265 tests de ces outils ; ils n'ont besoin d'aucun autre dépôt
 ```
 
 ## 🧪 Tests

@@ -31,7 +31,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "22%20passing",
+      "{{fact:tests:ARMOR-HARDWARE}}%20passing",
       "2ea44f",
     ],
   ],
@@ -52,7 +52,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Designs",
@@ -73,7 +73,7 @@ TEXT = {
     ],
     "status": {
       "software": "The radar enclosure and the parametric box of the solar, electrical and alarm nodes are OpenSCAD sources; the radar box is a printable starting point, not an IP, RF or thermal rating.",
-      "tests": "22 tests pass (`python -m unittest discover -s tests`): the sources, the presets of the box, the model files and the numbers the documents quote. The boxes are also checked by the asserts of their source; none has been printed or measured.",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} tests pass (`python -m unittest discover -s tests`): the sources, the presets of the box, the model files and the numbers the documents quote. The boxes are also checked by the asserts of their source; none has been printed or measured.",
       "hardware": "Nothing has been printed or measured, the board sizes come from data sheets, and every row of the bench acceptance matrix is not tested.",
       "docs": "Eight languages, the design inputs and the bench acceptance matrix are written and up to date.",
     },
@@ -125,7 +125,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 See the [validation boundary](docs/VALIDATION.md). The intended hardware licence is CERN-OHL-S-2.0; add its full text before releasing the designs.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -192,7 +192,7 @@ ARMOR-HARDWARE/
       ],
       [
         "Pruebas",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Diseños",
@@ -213,7 +213,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "La carcasa del radar y la caja paramétrica de los nodos solar, eléctrico y de alarma son fuentes de OpenSCAD; la caja del radar es un punto de partida imprimible, no una clasificación IP, RF ni térmica.",
-      "tests": "Pasan 22 pruebas (`python -m unittest discover -s tests`): las fuentes, los presets de la caja, los ficheros de modelo y las cifras que citan los documentos. Las cajas también las comprueban los `assert` de su fuente; ninguna se ha impreso ni medido.",
+      "tests": "Pasan {{fact:tests:ARMOR-HARDWARE}} pruebas (`python -m unittest discover -s tests`): las fuentes, los presets de la caja, los ficheros de modelo y las cifras que citan los documentos. Las cajas también las comprueban los `assert` de su fuente; ninguna se ha impreso ni medido.",
       "hardware": "Nada se ha impreso ni medido, las medidas de las placas salen de hojas de datos, y cada fila de la matriz de aceptación en banco está sin probar.",
       "docs": "Ocho idiomas, los datos de diseño y la matriz de aceptación en banco están escritos y al día.",
     },
@@ -265,7 +265,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Véase el [límite de validación](docs/VALIDATION.md). La licencia de hardware prevista es CERN-OHL-S-2.0; añade su texto completo antes de publicar los diseños.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -332,7 +332,7 @@ ARMOR-HARDWARE/
       ],
       [
         "Tests",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Entwürfe",
@@ -353,7 +353,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "Das Radargehäuse und die parametrische Box der Solar-, Elektrik- und Alarmknoten sind OpenSCAD-Quellen; die Radarbox ist ein druckbarer Ausgangspunkt, keine IP-, HF- oder Temperatur-Einstufung.",
-      "tests": "22 Tests bestehen (`python -m unittest discover -s tests`): die Quellen, die Presets der Box, die Modelldateien und die Zahlen, die die Dokumente nennen. Die Boxen prüfen auch die Asserts ihrer Quelle; keine wurde gedruckt oder gemessen.",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} Tests bestehen (`python -m unittest discover -s tests`): die Quellen, die Presets der Box, die Modelldateien und die Zahlen, die die Dokumente nennen. Die Boxen prüfen auch die Asserts ihrer Quelle; keine wurde gedruckt oder gemessen.",
       "hardware": "Nichts wurde gedruckt oder vermessen, die Maße der Platinen stammen aus Datenblättern, und jede Zeile der Prüfstand-Abnahmematrix ist ungetestet.",
       "docs": "Acht Sprachen, die Entwurfsvorgaben und die Prüfstand-Abnahmematrix sind geschrieben und aktuell.",
     },
@@ -405,7 +405,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Siehe die [Validierungsgrenze](docs/VALIDATION.md). Die vorgesehene Hardware-Lizenz ist CERN-OHL-S-2.0; fügen Sie ihren vollständigen Text hinzu, bevor Sie die Entwürfe veröffentlichen.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -472,7 +472,7 @@ ARMOR-HARDWARE/
       ],
       [
         "Tests",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Conceptions",
@@ -493,7 +493,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "Le boîtier du radar et la boîte paramétrique des nœuds solaire, électrique et d'alarme sont des sources OpenSCAD ; la boîte du radar est un point de départ imprimable, pas une classe IP, RF ou thermique.",
-      "tests": "22 tests réussissent (`python -m unittest discover -s tests`) : les sources, les préréglages de la boîte, les fichiers de modèle et les chiffres cités par les documents. Les boîtes sont aussi vérifiées par les `assert` de leur source ; aucune n'a été imprimée ni mesurée.",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} tests réussissent (`python -m unittest discover -s tests`) : les sources, les préréglages de la boîte, les fichiers de modèle et les chiffres cités par les documents. Les boîtes sont aussi vérifiées par les `assert` de leur source ; aucune n'a été imprimée ni mesurée.",
       "hardware": "Rien n'a été imprimé ni mesuré, les dimensions des cartes viennent de fiches techniques, et chaque ligne de la matrice d'acceptation sur banc n'est pas testée.",
       "docs": "Huit langues, les données de conception et la matrice d'acceptation sur banc sont écrites et à jour.",
     },
@@ -545,7 +545,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Voir la [frontière de validation](docs/VALIDATION.md). La licence matérielle prévue est CERN-OHL-S-2.0 ; ajoutez son texte complet avant de publier les conceptions.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -612,7 +612,7 @@ ARMOR-HARDWARE/
       ],
       [
         "Test",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Progetti",
@@ -633,7 +633,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "L'involucro del radar e la scatola parametrica dei nodi solare, elettrico e d'allarme sono sorgenti OpenSCAD; la scatola del radar è un punto di partenza stampabile, non una classificazione IP, RF o termica.",
-      "tests": "22 test passano (`python -m unittest discover -s tests`): i sorgenti, i preset della scatola, i file di modello e i numeri citati dai documenti. Le scatole sono verificate anche dagli `assert` del loro sorgente; nessuna è stata stampata né misurata.",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} test passano (`python -m unittest discover -s tests`): i sorgenti, i preset della scatola, i file di modello e i numeri citati dai documenti. Le scatole sono verificate anche dagli `assert` del loro sorgente; nessuna è stata stampata né misurata.",
       "hardware": "Nulla è stato stampato né misurato, le dimensioni delle schede vengono dai datasheet e ogni riga della matrice di accettazione al banco non è testata.",
       "docs": "Otto lingue, i dati di progetto e la matrice di accettazione al banco sono scritti e aggiornati.",
     },
@@ -685,7 +685,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Vedi il [confine di validazione](docs/VALIDATION.md). La licenza hardware prevista è CERN-OHL-S-2.0; aggiungi il suo testo completo prima di pubblicare i progetti.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -752,7 +752,7 @@ ARMOR-HARDWARE/
       ],
       [
         "テスト",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "設計",
@@ -773,7 +773,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "レーダーの筐体と、太陽光・電気・警報ノード用のパラメトリックなボックスは OpenSCAD のソースです。レーダーのボックスは印刷できる出発点で、IP・RF・熱の等級ではありません。",
-      "tests": "22 件のテストが通ります（`python -m unittest discover -s tests`）：ソース、箱のプリセット、モデルファイル、文書が引用する数値。箱はソースの `assert` でも検証されますが、印刷も測定もしていません。",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} 件のテストが通ります（`python -m unittest discover -s tests`）：ソース、箱のプリセット、モデルファイル、文書が引用する数値。箱はソースの `assert` でも検証されますが、印刷も測定もしていません。",
       "hardware": "何も印刷も実測もしておらず、基板の寸法はデータシートに基づいています。ベンチ受け入れマトリクスの全行が未テストです。",
       "docs": "8 言語、設計の入力条件、ベンチ受け入れマトリクスが書かれていて最新です。",
     },
@@ -825,7 +825,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 [検証の境界](docs/VALIDATION.md)を参照してください。想定しているハードウェアライセンスは CERN-OHL-S-2.0 で、設計を公開する前に全文を追加してください。""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -892,7 +892,7 @@ ARMOR-HARDWARE/
       ],
       [
         "测试",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "设计",
@@ -913,7 +913,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "雷达外壳以及光伏、电气和报警节点的参数化盒子都是 OpenSCAD 源文件；雷达盒子是可打印的起点，并非 IP、射频或温度等级。",
-      "tests": "22 个测试通过（`python -m unittest discover -s tests`）：源文件、盒子预设、模型文件以及文档中引用的数字。盒子也由其源码中的 `assert` 检查；都没有打印或测量过。",
+      "tests": "{{fact:tests:ARMOR-HARDWARE}} 个测试通过（`python -m unittest discover -s tests`）：源文件、盒子预设、模型文件以及文档中引用的数字。盒子也由其源码中的 `assert` 检查；都没有打印或测量过。",
       "hardware": "没有任何东西被打印或测量过，板子的尺寸来自数据手册，测试台验收矩阵的每一行都未测试。",
       "docs": "八种语言、设计输入和测试台验收矩阵均已编写并保持最新。",
     },
@@ -965,7 +965,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 参见[验证边界](docs/VALIDATION.md)。预期的硬件许可证是 CERN-OHL-S-2.0；发布设计前请加入其完整文本。""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 
@@ -1032,7 +1032,7 @@ ARMOR-HARDWARE/
       ],
       [
         "Testes",
-        "22 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-HARDWARE}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Desenhos",
@@ -1053,7 +1053,7 @@ ARMOR-HARDWARE/
     ],
     "status": {
       "software": "A caixa do radar e a caixa paramétrica dos nós solar, elétrico e de alarme são fontes de OpenSCAD; a caixa do radar é um ponto de partida imprimível, não uma classificação IP, RF nem térmica.",
-      "tests": "Passam 22 testes (`python -m unittest discover -s tests`): as fontes, os presets da caixa, os ficheiros de modelo e os números que os documentos citam. As caixas também são verificadas pelos `assert` da sua fonte; nenhuma foi impressa nem medida.",
+      "tests": "Passam {{fact:tests:ARMOR-HARDWARE}} testes (`python -m unittest discover -s tests`): as fontes, os presets da caixa, os ficheiros de modelo e os números que os documentos citam. As caixas também são verificadas pelos `assert` da sua fonte; nenhuma foi impressa nem medida.",
       "hardware": "Nada foi impresso nem medido, as medidas das placas vêm de folhas de dados, e cada linha da matriz de aceitação em bancada está por testar.",
       "docs": "Oito idiomas, os dados de projeto e a matriz de aceitação em bancada estão escritos e atualizados.",
     },
@@ -1105,7 +1105,7 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Veja o [limite de validação](docs/VALIDATION.md). A licença de hardware prevista é CERN-OHL-S-2.0; acrescente o seu texto completo antes de publicar os desenhos.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # 22 tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
 python -I tools/armor_ci_validate.py
 ```
 

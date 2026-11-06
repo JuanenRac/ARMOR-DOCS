@@ -12,14 +12,14 @@ FACTS = {'emoji': '🛰️',
             ['security', 'yellow'],
             ['integration', 'yellow'],
             ['docs', 'green']],
- 'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Tests', '187', '00E5FF']]}
+ 'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Tests', '{{fact:tests:ARMOR-NETWORK}}', '00E5FF']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)
 LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, whether the internet is there, what changes and what is new (a Python program with no dependencies; it '
                    'runs on a machine of the network and reports to ARMOR-SERVER)',
         'status': {'software': 'The scanner, the inventory that tells what changed, the internet check, the public-address look-up and the orders from Studio run as a '
                                'service on the CM5 test bench.',
-                   'tests': '187 tests pass against a scripted network, and every message is accepted by the contract of ARMOR-COMMON.',
+                   'tests': '{{fact:tests:ARMOR-NETWORK}} tests pass against a scripted network, and every message is accepted by the contract of ARMOR-COMMON.',
                    'protocols': 'What a device is (its kind, its system, its maker) is a guess, and nothing captures packets: traffic per device and intrusion detection '
                                 'in the strict sense are not done.',
                    'hardware': 'It watches the real network of the CM5 test bench (a router, the phones and nodes of the house) but has not watched a whole house for '
@@ -28,7 +28,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'integration': 'Its messages reach the CM5 test bench server and Studio; the commands from Studio are tested against a scripted network.',
                    'docs': 'Eight languages and the changelog are up to date.'},
         'honest': 'The scanner, the inventory that tells what changed, the internet check, the public-address look-up, the orders from Studio and the sealed logins are '
-                  "tested on a computer against a scripted network (187 tests; every message is accepted by ARMOR-COMMON's contract), and the program runs as a service "
+                  "tested on a computer against a scripted network ({{fact:tests:ARMOR-NETWORK}} tests; every message is accepted by ARMOR-COMMON's contract), and the program runs as a service "
                   'on the CM5 test bench, watching the real network the bench is on (a router, the phones and nodes of the house). It has not watched a whole house for '
                   'weeks, it only asks the router and never configures it, and what a device is (its kind, its system, its maker) is a guess. It does not capture '
                   "packets: it cannot see who talks to whom, and traffic per device and intrusion detection in the strict sense need the router's counters or a mirror "
@@ -77,7 +77,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'máquina de la red e informa a ARMOR-SERVER)',
         'status': {'software': 'El escáner, el inventario que dice qué cambió, la comprobación de internet, la consulta de la dirección pública y las órdenes de Studio '
                                'funcionan como servicio en el banco de pruebas CM5.',
-                   'tests': 'Pasan 187 pruebas contra una red guionizada, y cada mensaje lo acepta el contrato de ARMOR-COMMON.',
+                   'tests': 'Pasan {{fact:tests:ARMOR-NETWORK}} pruebas contra una red guionizada, y cada mensaje lo acepta el contrato de ARMOR-COMMON.',
                    'protocols': 'Qué es un dispositivo (su tipo, su sistema, su fabricante) es una suposición, y nada captura paquetes: el tráfico por dispositivo y la '
                                 'detección de intrusiones en sentido estricto no están hechos.',
                    'hardware': 'Vigila la red real del banco de pruebas CM5 (un router, los móviles y nodos de la casa) pero no ha vigilado una casa entera durante '
@@ -86,7 +86,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'integration': 'Sus mensajes llegan al servidor del banco de pruebas CM5 y a Studio; las órdenes de Studio se prueban contra una red guionizada.',
                    'docs': 'Ocho idiomas y el historial de cambios están al día.'},
         'honest': 'El escáner, el inventario que dice qué cambió, la comprobación de internet, la consulta de la dirección pública, las órdenes desde Studio y los '
-                  'accesos sellados se prueban en un ordenador contra una red guionizada (187 tests; cada mensaje lo acepta el contrato de ARMOR-COMMON), y el programa '
+                  'accesos sellados se prueban en un ordenador contra una red guionizada ({{fact:tests:ARMOR-NETWORK}} tests; cada mensaje lo acepta el contrato de ARMOR-COMMON), y el programa '
                   'corre como servicio en el banco de pruebas de la CM5, vigilando la red real en la que está el banco (un router, los móviles y los nodos de la casa). '
                   'No ha vigilado una casa entera durante semanas, solo pregunta al router y nunca lo configura, y qué es un dispositivo (su tipo, su sistema, su '
                   'fabricante) es una suposición. No captura paquetes: no puede ver quién habla con quién, y el tráfico por dispositivo y la detección de intrusos en '
@@ -138,7 +138,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'il tourne sur une machine du réseau et rapporte à ARMOR-SERVER)',
         'status': {'software': "Le scanner, l'inventaire qui dit ce qui a changé, le contrôle d'internet, la recherche de l'adresse publique et les ordres de Studio "
                                "tournent comme service sur le banc d'essai CM5.",
-                   'tests': "187 tests réussissent contre un réseau scénarisé, et chaque message est accepté par le contrat d'ARMOR-COMMON.",
+                   'tests': "{{fact:tests:ARMOR-NETWORK}} tests réussissent contre un réseau scénarisé, et chaque message est accepté par le contrat d'ARMOR-COMMON.",
                    'protocols': "Ce qu'est un appareil (son type, son système, son fabricant) est une supposition, et rien ne capture de paquets : le trafic par "
                                 "appareil et la détection d'intrusion au sens strict ne sont pas faits.",
                    'hardware': "Il surveille le réseau réel du banc d'essai CM5 (un routeur, les téléphones et les nœuds de la maison) mais n'a pas surveillé une maison "
@@ -148,7 +148,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'integration': "Ses messages arrivent au serveur du banc d'essai CM5 et à Studio ; les ordres de Studio sont testés contre un réseau scénarisé.",
                    'docs': 'Huit langues et le journal des modifications sont à jour.'},
         'honest': "Le scanner, l'inventaire qui dit ce qui a changé, le contrôle d'internet, la recherche de l'adresse publique, les ordres depuis Studio et les "
-                  "identifiants scellés sont testés sur un ordinateur contre un réseau scripté (187 tests ; chaque message est accepté par le contrat d'ARMOR-COMMON), "
+                  "identifiants scellés sont testés sur un ordinateur contre un réseau scripté ({{fact:tests:ARMOR-NETWORK}} tests ; chaque message est accepté par le contrat d'ARMOR-COMMON), "
                   'et le programme tourne comme service sur le banc de test CM5, en surveillant le vrai réseau où se trouve le banc (un routeur, les téléphones et les '
                   "nœuds de la maison). Il n'a pas surveillé une maison entière pendant des semaines, il ne fait que demander au routeur et ne le configure jamais, et "
                   "ce qu'est un appareil (son type, son système, son fabricant) est une supposition. Il ne capture pas de paquets : il ne voit pas qui parle à qui, et "
@@ -202,7 +202,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'macchina della rete e riferisce ad ARMOR-SERVER)',
         'status': {'software': "Lo scanner, l'inventario che dice cosa è cambiato, il controllo di internet, la ricerca dell'indirizzo pubblico e gli ordini di Studio "
                                'girano come servizio sul banco di prova CM5.',
-                   'tests': 'Superano 187 test contro una rete simulata da script, e ogni messaggio è accettato dal contratto di ARMOR-COMMON.',
+                   'tests': 'Superano {{fact:tests:ARMOR-NETWORK}} test contro una rete simulata da script, e ogni messaggio è accettato dal contratto di ARMOR-COMMON.',
                    'protocols': "Cosa sia un dispositivo (tipo, sistema, produttore) è un'ipotesi, e nulla cattura pacchetti: il traffico per dispositivo e il "
                                 'rilevamento di intrusioni in senso stretto non sono fatti.',
                    'hardware': "Sorveglia la rete reale del banco di prova CM5 (un router, i telefoni e i nodi di casa) ma non ha sorvegliato un'intera casa per "
@@ -213,7 +213,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                                   'script.',
                    'docs': 'Otto lingue e il registro delle modifiche sono aggiornati.'},
         'honest': "Lo scanner, l'inventario che dice cosa è cambiato, il controllo di internet, la ricerca dell'indirizzo pubblico, gli ordini da Studio e gli accessi "
-                  'sigillati sono provati su un computer contro una rete scriptata (187 test; ogni messaggio è accettato dal contratto di ARMOR-COMMON), e il programma '
+                  'sigillati sono provati su un computer contro una rete scriptata ({{fact:tests:ARMOR-NETWORK}} test; ogni messaggio è accettato dal contratto di ARMOR-COMMON), e il programma '
                   'gira come servizio sul banco di prova CM5, sorvegliando la rete reale su cui si trova il banco (un router, i telefoni e i nodi della casa). Non ha '
                   'sorvegliato una casa intera per settimane, chiede solo al router e non lo configura mai, e cosa sia un dispositivo (il tipo, il sistema, il '
                   'produttore) è una supposizione. Non cattura pacchetti: non può vedere chi parla con chi, e il traffico per dispositivo e il rilevamento delle '
@@ -264,7 +264,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'läuft auf einem Rechner des Netzes und meldet an ARMOR-SERVER)',
         'status': {'software': 'Der Scanner, das Inventar, das sagt, was sich geändert hat, die Internetprüfung, die Abfrage der öffentlichen Adresse und die Befehle '
                                'von Studio laufen als Dienst auf dem CM5-Prüfstand.',
-                   'tests': '187 Tests bestehen gegen ein geskriptetes Netz, und jede Nachricht wird vom Vertrag von ARMOR-COMMON akzeptiert.',
+                   'tests': '{{fact:tests:ARMOR-NETWORK}} Tests bestehen gegen ein geskriptetes Netz, und jede Nachricht wird vom Vertrag von ARMOR-COMMON akzeptiert.',
                    'protocols': 'Was ein Gerät ist (Art, System, Hersteller), ist eine Vermutung, und nichts fängt Pakete ab: Verkehr pro Gerät und Einbruchserkennung '
                                 'im strengen Sinn gibt es nicht.',
                    'hardware': 'Er überwacht das echte Netz des CM5-Prüfstands (ein Router, die Telefone und Knoten des Hauses), hat aber noch nie wochenlang ein ganzes '
@@ -275,7 +275,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                                   'getestet.',
                    'docs': 'Acht Sprachen und das Änderungsprotokoll sind aktuell.'},
         'honest': 'Der Scanner, das Inventar, das sagt, was sich geändert hat, die Internetprüfung, die Abfrage der öffentlichen Adresse, die Aufträge aus Studio und '
-                  'die versiegelten Logins werden auf einem Computer gegen ein geskriptetes Netz getestet (187 Tests; jede Nachricht wird vom Vertrag von ARMOR-COMMON '
+                  'die versiegelten Logins werden auf einem Computer gegen ein geskriptetes Netz getestet ({{fact:tests:ARMOR-NETWORK}} Tests; jede Nachricht wird vom Vertrag von ARMOR-COMMON '
                   'akzeptiert), und das Programm läuft als Dienst am CM5-Testaufbau und beobachtet das echte Netz, in dem der Aufbau steht (ein Router, die Telefone und '
                   'Knoten des Hauses). Es hat noch kein ganzes Haus wochenlang beobachtet, es fragt nur den Router und konfiguriert ihn nie, und was ein Gerät ist (Art, '
                   'System, Hersteller), ist eine Vermutung. Es fängt keine Pakete ab: Es sieht nicht, wer mit wem spricht, und Verkehr pro Gerät und Einbruchserkennung '
@@ -326,13 +326,13 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
         'requirements': ['Python 3.11+ (nur die Standardbibliothek)', 'ein zu überwachender Rechner im Netz (Linux, Windows oder macOS)']},
  'zh': {'tagline': '监视本地网络：上面有哪些设备、互联网是否可用、哪些发生了变化、哪些是新的（无依赖的 Python 程序；在网络中的一台机器上运行并向 ARMOR-SERVER 报告）',
         'status': {'software': '扫描器、记录变化的清单、互联网检查、公网地址查询和来自 Studio 的指令在 CM5 测试台上作为服务运行。',
-                   'tests': '187 项测试针对脚本化网络通过，每条消息都被 ARMOR-COMMON 的契约接受。',
+                   'tests': '{{fact:tests:ARMOR-NETWORK}} 项测试针对脚本化网络通过，每条消息都被 ARMOR-COMMON 的契约接受。',
                    'protocols': '设备是什么（类型、系统、厂商）只是猜测，也不抓包：按设备统计流量和严格意义上的入侵检测尚未实现。',
                    'hardware': '它监视 CM5 测试台所在的真实网络（一台路由器以及家里的手机和节点），但还没有连续数周监视整栋房子。',
                    'security': '它只查询路由器，从不配置路由器；密封的登录信息已在主机上测试，没有经过独立审查。',
                    'integration': '它的消息送达 CM5 测试台的服务器和 Studio；来自 Studio 的指令已对照脚本化网络测试。',
                    'docs': '八种语言和更新日志均为最新。'},
-        'honest': '扫描器、说明发生了什么变化的清单、互联网检查、公网地址查询、来自 Studio 的指令和加密封装的登录信息，都在计算机上对照脚本化网络测试（187 个测试；每条消息都被 ARMOR-COMMON 的契约接受），程序在 CM5 '
+        'honest': '扫描器、说明发生了什么变化的清单、互联网检查、公网地址查询、来自 Studio 的指令和加密封装的登录信息，都在计算机上对照脚本化网络测试（{{fact:tests:ARMOR-NETWORK}} 个测试；每条消息都被 ARMOR-COMMON 的契约接受），程序在 CM5 '
                   '测试台上作为服务运行，监视测试台所在的真实网络（一台路由器、住宅的手机和节点）。它还没有连续数周监视整个住宅，只询问路由器而从不配置它，设备是什么（类型、系统、厂商）只是猜测。它不抓包：看不到谁与谁通信，每个设备的流量和严格意义上的入侵检测需要路由器的计数器或镜像端口，那是以后的一步。',
         'bullets': ['**网络上有什么：** 本机的邻居表、为填充它而对每个地址的试探、对每个发现的设备的回显（延迟与 TTL），以及设备对自身的宣告（mDNS、UPnP、NetBIOS、反向 DNS）。每台设备：地址、MAC、厂商（来自 IEEE 的 40,000 '
                     '个块的登记表）、名称、类型、系统、开放端口及各自的应答内容，以及首次和最近一次看到的时间。',
@@ -358,13 +358,13 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
         'requirements': ['Python 3.11+（仅标准库）', '网络上需要监控的机器（Linux、Windows 或 macOS）']},
  'ja': {'tagline': 'ローカルネットワークを見張ります：接続されているデバイス、インターネットがあるか、何が変わり何が新しいか（依存ライブラリなしの Python プログラム。ネットワーク上のマシンで動き、ARMOR-SERVER に報告）',
         'status': {'software': 'スキャナー、変更点を示すインベントリ、インターネット確認、公開アドレスの取得、Studio からの命令は、CM5 テストベンチ上でサービスとして動いています。',
-                   'tests': '187 件のテストがスクリプト化したネットワークに対して通り、すべてのメッセージが ARMOR-COMMON の契約に受理されます。',
+                   'tests': '{{fact:tests:ARMOR-NETWORK}} 件のテストがスクリプト化したネットワークに対して通り、すべてのメッセージが ARMOR-COMMON の契約に受理されます。',
                    'protocols': '機器の種類・システム・メーカーは推測で、パケットは取得しません。機器ごとのトラフィックと厳密な意味での侵入検知は未実装です。',
                    'hardware': 'CM5 テストベンチの実際のネットワーク（ルーター、家の電話機とノード）を監視していますが、家全体を数週間監視したことはありません。',
                    'security': 'ルーターに問い合わせるだけで設定は一切しません。封印されたログイン情報はホストでテスト済みで、独立したレビューはありません。',
                    'integration': 'メッセージは CM5 テストベンチのサーバーと Studio に届きます。Studio からの命令はスクリプト化したネットワークに対してテストしています。',
                    'docs': '8 言語と変更履歴は最新です。'},
-        'honest': 'スキャナー、何が変わったかを伝えるインベントリ、インターネットの検査、公開アドレスの問い合わせ、Studio からの指示、封印されたログインは、スクリプト化したネットワークに対してコンピューター上でテストされ（187 件。すべてのメッセージが ARMOR-COMMON '
+        'honest': 'スキャナー、何が変わったかを伝えるインベントリ、インターネットの検査、公開アドレスの問い合わせ、Studio からの指示、封印されたログインは、スクリプト化したネットワークに対してコンピューター上でテストされ（{{fact:tests:ARMOR-NETWORK}} 件。すべてのメッセージが ARMOR-COMMON '
                   'のコントラクトに受け付けられる）、プログラムは CM5 '
                   'テストベンチ上でサービスとして動き、ベンチがつながる実際のネットワーク（ルーター、家のスマートフォンとノード）を見張っています。家全体を数週間見張ったことはなく、ルーターに尋ねるだけで設定は一切せず、デバイスが何か（種類、システム、メーカー）は推測です。パケットは取得しません。誰が誰と話しているかは見えず、デバイスごとのトラフィックや厳密な意味での侵入検知にはルーターのカウンターかミラーポートが必要で、それは今後の段階です。',
         'bullets': ['**ネットワーク上にあるもの：** マシンの近隣テーブル、それを満たすための各アドレスへの呼びかけ、見つかった各機器へのエコー（遅延と TTL）、機器自身の告知（mDNS、UPnP、NetBIOS、逆引き DNS）。機器ごとに、アドレス、MAC、メーカー（IEEE の 40,000 '
@@ -398,7 +398,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                    'máquina da rede e reporta ao ARMOR-SERVER)',
         'status': {'software': 'O leitor da rede, o inventário que diz o que mudou, a verificação da internet, a consulta do endereço público e as ordens do Studio '
                                'funcionam como serviço na bancada de testes CM5.',
-                   'tests': 'Passam 187 testes contra uma rede com guião, e cada mensagem é aceite pelo contrato do ARMOR-COMMON.',
+                   'tests': 'Passam {{fact:tests:ARMOR-NETWORK}} testes contra uma rede com guião, e cada mensagem é aceite pelo contrato do ARMOR-COMMON.',
                    'protocols': 'O que um dispositivo é (o tipo, o sistema, o fabricante) é um palpite, e nada captura pacotes: o tráfego por dispositivo e a deteção de '
                                 'intrusões em sentido estrito não estão feitos.',
                    'hardware': 'Vigia a rede real da bancada de testes CM5 (um router, os telemóveis e os nós da casa), mas não vigiou uma casa inteira durante semanas.',
@@ -407,7 +407,7 @@ LEGACY = {'en': {'tagline': 'Watches the local network: the devices on it, wheth
                                   'guião.',
                    'docs': 'Oito idiomas e o registo de alterações estão atualizados.'},
         'honest': 'O scanner, o inventário que diz o que mudou, a verificação da internet, a consulta do endereço público, as ordens do Studio e os acessos selados são '
-                  'testados num computador contra uma rede guionizada (187 testes; cada mensagem é aceite pelo contrato do ARMOR-COMMON), e o programa corre como '
+                  'testados num computador contra uma rede guionizada ({{fact:tests:ARMOR-NETWORK}} testes; cada mensagem é aceite pelo contrato do ARMOR-COMMON), e o programa corre como '
                   'serviço na bancada de testes do CM5, vigiando a rede real em que a bancada está (um router, os telemóveis e os nós da casa). Não vigiou uma casa '
                   'inteira durante semanas, só pergunta ao router e nunca o configura, e o que é um dispositivo (o tipo, o sistema, o fabricante) é um palpite. Não '
                   'captura pacotes: não pode ver quem fala com quem, e o tráfego por dispositivo e a deteção de intrusos em sentido estrito precisam dos contadores do '
@@ -467,7 +467,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    Aufträge aus Studio; versiegelte Logins\n'
        '│   ├── cli.py __main__.py                   scan, watch und demo\n'
        '│   └── data/                                oui.tsv.gz, das IEEE-Register\n'
-       '├── tests/                                   187 Tests in 9 Modulen\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} Tests in 9 Modulen\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        '├── tools/                                   fetch_oui.py erneuert das Herstellerregister; die gemeinsamen CI-Prüfungen und der Starter\n'
        '├── images/                                  Banner, Symbol und die Bilder des READMEs\n'
@@ -491,7 +491,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    orders from Studio; sealed logins\n'
        '│   ├── cli.py __main__.py                   scan, watch and demo\n'
        '│   └── data/                                oui.tsv.gz, the IEEE register\n'
-       '├── tests/                                   187 tests in 9 modules\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} tests in 9 modules\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        '├── tools/                                   fetch_oui.py refreshes the register of makers; the shared CI checks and launcher\n'
        '├── images/                                  banner, icon and the pictures of the README\n'
@@ -515,7 +515,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    órdenes de Studio; accesos sellados\n'
        '│   ├── cli.py __main__.py                   scan, watch y demo\n'
        '│   └── data/                                oui.tsv.gz, el registro IEEE\n'
-       '├── tests/                                   187 pruebas en 9 módulos\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} pruebas en 9 módulos\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        '├── tools/                                   fetch_oui.py renueva el registro de fabricantes; las comprobaciones de CI y el lanzador\n'
        '├── images/                                  banner, icono y las imágenes del README\n'
@@ -539,7 +539,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    ordres de Studio ; identifiants scellés\n'
        '│   ├── cli.py __main__.py                   scan, watch et demo\n'
        '│   └── data/                                oui.tsv.gz, le registre IEEE\n'
-       '├── tests/                                   187 tests en 9 modules\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} tests en 9 modules\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        '├── tools/                                   fetch_oui.py rafraîchit le registre des fabricants ; les vérifications CI et le lanceur\n'
        '├── images/                                  bannière, icône et images du README\n'
@@ -563,7 +563,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    ordini da Studio; accessi sigillati\n'
        '│   ├── cli.py __main__.py                   scan, watch e demo\n'
        '│   └── data/                                oui.tsv.gz, il registro IEEE\n'
-       '├── tests/                                   187 test in 9 moduli\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} test in 9 moduli\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        "├── tools/                                   fetch_oui.py aggiorna il registro dei produttori; i controlli CI e l'avviatore\n"
        '├── images/                                  banner, icona e immagini del README\n'
@@ -587,7 +587,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    Studio からのオーダーと封印した認証情報\n'
        '│   ├── cli.py __main__.py                   scan・watch・demo\n'
        '│   └── data/                                oui.tsv.gz（IEEE 登録簿）\n'
-       '├── tests/                                   9 モジュール 187 件\n'
+       '├── tests/                                   9 モジュール {{fact:tests:ARMOR-NETWORK}} 件\n'
        '├── docs/                                    DESIGN、SAFETY、USAGE、MESSAGES\n'
        '├── tools/                                   fetch_oui.py がメーカー登録簿を更新、共通の CI 検査とランチャー\n'
        '├── images/                                  バナー、アイコン、README の画像\n'
@@ -611,7 +611,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    ordens do Studio; credenciais seladas\n'
        '│   ├── cli.py __main__.py                   scan, watch e demo\n'
        '│   └── data/                                oui.tsv.gz, o registo IEEE\n'
-       '├── tests/                                   187 testes em 9 módulos\n'
+       '├── tests/                                   {{fact:tests:ARMOR-NETWORK}} testes em 9 módulos\n'
        '├── docs/                                    DESIGN, SAFETY, USAGE, MESSAGES\n'
        '├── tools/                                   fetch_oui.py renova o registo de fabricantes; as verificações de CI e o lançador\n'
        '├── images/                                  faixa, ícone e as imagens do README\n'
@@ -635,7 +635,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
        '│   ├── orders.py seal.py                    来自 Studio 的指令；密封凭据\n'
        '│   ├── cli.py __main__.py                   scan、watch 和 demo\n'
        '│   └── data/                                oui.tsv.gz（IEEE 注册表）\n'
-       '├── tests/                                   9 个模块 187 项测试\n'
+       '├── tests/                                   9 个模块 {{fact:tests:ARMOR-NETWORK}} 项测试\n'
        '├── docs/                                    DESIGN、SAFETY、USAGE、MESSAGES\n'
        '├── tools/                                   fetch_oui.py 刷新厂商注册表；共用的 CI 检查与启动器\n'
        '├── images/                                  横幅图、图标和 README 的图片\n'
@@ -651,7 +651,7 @@ TREE = {'de': 'ARMOR-NETWORK/\n'
 
 DIAGRAM = ''
 
-NT = "187"
+NT = "{{fact:tests:ARMOR-NETWORK}}"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
@@ -667,7 +667,7 @@ def L(lg, key):
 GLANCE = [
     (GL["role"], T("Local network node: what is on the network, what changed, the internet, orders from Studio | Nodo de red local: qué hay en la red, qué cambió, internet, órdenes de Studio | Knoten für das lokale Netz: was im Netz ist, was sich änderte, das Internet, Aufträge aus Studio | Nœud du réseau local : ce qu'il y a sur le réseau, ce qui a changé, internet, ordres de Studio | Nodo della rete locale: cosa c'è in rete, cosa è cambiato, internet, ordini da Studio | ローカルネットワークのノード：ネットワーク上の機器、変化、インターネット、Studio からのオーダー | 本地网络节点：网络上有什么、发生了什么变化、互联网、来自 Studio 的指令 | Nó da rede local: o que há na rede, o que mudou, a internet, ordens do Studio")),
     (GL["stack"], T("Python 3.11+, standard library only | Python 3.11+, solo biblioteca estándar | Python 3.11+, nur Standardbibliothek | Python 3.11+, bibliothèque standard seule | Python 3.11+, solo libreria standard | Python 3.11+（標準ライブラリのみ） | Python 3.11+，仅用标准库 | Python 3.11+, só biblioteca padrão")),
-    (GL["tests"], T("187 (`python -m unittest discover -s tests`) | 187 (`python -m unittest discover -s tests`) | 187 (`python -m unittest discover -s tests`) | 187 (`python -m unittest discover -s tests`) | 187 (`python -m unittest discover -s tests`) | 187 件（`python -m unittest discover -s tests`） | 187 项（`python -m unittest discover -s tests`） | 187 (`python -m unittest discover -s tests`)")),
+    (GL["tests"], T("{{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`) | {{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`) | {{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`) | {{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`) | {{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`) | {{fact:tests:ARMOR-NETWORK}} 件（`python -m unittest discover -s tests`） | {{fact:tests:ARMOR-NETWORK}} 项（`python -m unittest discover -s tests`） | {{fact:tests:ARMOR-NETWORK}} (`python -m unittest discover -s tests`)")),
     (GL["contract"], T("Message `armor/network/<node>/state`, {{fact:vectors:network+network_orders}} conformance vectors (messages and orders) | Mensaje `armor/network/<nodo>/state`, {{fact:vectors:network+network_orders}} vectores de conformidad (mensajes y órdenes) | Nachricht `armor/network/<Knoten>/state`, {{fact:vectors:network+network_orders}} Konformitätsvektoren (Nachrichten und Aufträge) | Message `armor/network/<nœud>/state`, {{fact:vectors:network+network_orders}} vecteurs de conformité (messages et ordres) | Messaggio `armor/network/<nodo>/state`, {{fact:vectors:network+network_orders}} vettori di conformità (messaggi e ordini) | メッセージ `armor/network/<ノード>/state`、適合ベクター {{fact:vectors:network+network_orders}} 件（メッセージとオーダー） | 消息 `armor/network/<节点>/state`，{{fact:vectors:network+network_orders}} 个一致性向量（消息与指令） | Mensagem `armor/network/<nó>/state`, {{fact:vectors:network+network_orders}} vetores de conformidade (mensagens e ordens)")),
     (GL["runs"], T("A machine of the network to be watched (Linux, Windows or macOS); the CM5 test bench as a service | Una máquina de la red a vigilar (Linux, Windows o macOS); el banco de la CM5 como servicio | Ein Rechner des überwachten Netzes (Linux, Windows oder macOS); der CM5-Prüfstand als Dienst | Une machine du réseau à surveiller (Linux, Windows ou macOS) ; le banc d'essai CM5 en service | Una macchina della rete da sorvegliare (Linux, Windows o macOS); il banco di prova CM5 come servizio | 監視対象ネットワーク上のマシン（Linux、Windows、macOS）。CM5 テストベンチではサービスとして | 被监视网络中的一台机器（Linux、Windows 或 macOS）；CM5 测试台上作为服务 | Uma máquina da rede a vigiar (Linux, Windows ou macOS); a bancada do CM5 como serviço")),
     (GL["hardware"], {lg: LEGACY[lg]["hardware"] for lg in LGS}),
@@ -748,7 +748,7 @@ QUICK_LEAD = P("**Requirements:** Python 3.11+ (standard library only) and a mac
                "**Prérequis :** Python 3.11+ (bibliothèque standard seule) et une machine sur le réseau à surveiller (Linux, Windows ou macOS).", "**Requisiti:** Python 3.11+ (solo libreria standard) e una macchina nella rete da sorvegliare (Linux, Windows o macOS).", "**要件：** Python 3.11+（標準ライブラリのみ）と、監視対象ネットワーク上のマシン（Linux、Windows、macOS）。",
                "**要求：** Python 3.11+（仅标准库）和被监视网络中的一台机器（Linux、Windows 或 macOS）。", "**Requisitos:** Python 3.11+ (só biblioteca padrão) e uma máquina na rede a vigiar (Linux, Windows ou macOS).")
 QUICK_CODE = [
-    ("python -m unittest discover -s tests", T("187 tests: parsers with real samples, the guard on what may be probed, the inventory, the internet, the whole agent against a scripted house | 187 pruebas: analizadores con muestras reales, la guarda de lo que se puede sondear, el inventario, internet, el agente completo contra una casa guionizada | 187 Tests: Parser mit echten Proben, die Sperre dessen, was geprüft werden darf, das Inventar, das Internet, der ganze Agent gegen ein geskriptetes Haus | 187 tests : analyseurs avec échantillons réels, la garde de ce qu'on peut sonder, l'inventaire, internet, l'agent entier face à une maison scriptée | 187 test: parser con campioni reali, la guardia su cosa si può sondare, l'inventario, internet, l'intero agente contro una casa guidata | 187 件：実サンプルのパーサ、調べてよい範囲のガード、インベントリ、インターネット、スクリプト版の家に対するエージェント全体 | 187 项：用真实样本的解析器、可探测范围的防护、清单、互联网、对脚本化房子运行的完整代理 | 187 testes: analisadores com amostras reais, a guarda do que se pode sondar, o inventário, a internet, o agente completo contra uma casa com guião")),
+    ("python -m unittest discover -s tests", T("{{fact:tests:ARMOR-NETWORK}} tests: parsers with real samples, the guard on what may be probed, the inventory, the internet, the whole agent against a scripted house | {{fact:tests:ARMOR-NETWORK}} pruebas: analizadores con muestras reales, la guarda de lo que se puede sondear, el inventario, internet, el agente completo contra una casa guionizada | {{fact:tests:ARMOR-NETWORK}} Tests: Parser mit echten Proben, die Sperre dessen, was geprüft werden darf, das Inventar, das Internet, der ganze Agent gegen ein geskriptetes Haus | {{fact:tests:ARMOR-NETWORK}} tests : analyseurs avec échantillons réels, la garde de ce qu'on peut sonder, l'inventaire, internet, l'agent entier face à une maison scriptée | {{fact:tests:ARMOR-NETWORK}} test: parser con campioni reali, la guardia su cosa si può sondare, l'inventario, internet, l'intero agente contro una casa guidata | {{fact:tests:ARMOR-NETWORK}} 件：実サンプルのパーサ、調べてよい範囲のガード、インベントリ、インターネット、スクリプト版の家に対するエージェント全体 | {{fact:tests:ARMOR-NETWORK}} 项：用真实样本的解析器、可探测范围的防护、清单、互联网、对脚本化房子运行的完整代理 | {{fact:tests:ARMOR-NETWORK}} testes: analisadores com amostras reais, a guarda do que se pode sondar, o inventário, a internet, o agente completo contra uma casa com guião")),
     ("python -m armor_network scan", T("look at the network once and print it (only the private network of this machine) | mira la red una vez y la imprime (solo la red privada de esta máquina) | das Netz einmal ansehen und ausgeben (nur das private Netz dieses Rechners) | regarde le réseau une fois et l'imprime (seulement le réseau privé de cette machine) | guarda la rete una volta e la stampa (solo la rete privata di questa macchina) | ネットワークを 1 回調べて表示（このマシンのプライベートネットワークのみ） | 查看一次网络并打印（仅本机所在的私有网络） | olha para a rede uma vez e imprime-a (só a rede privada desta máquina)")),
     ("python -m armor_network watch --server-url http://127.0.0.1:18080 --ingest-token ...", T("keep watching and tell ARMOR-SERVER | sigue vigilando e informa a ARMOR-SERVER | weiter beobachten und ARMOR-SERVER melden | continue de surveiller et informe ARMOR-SERVER | continua a sorvegliare e informa ARMOR-SERVER | 監視を続けて ARMOR-SERVER に通知 | 持续监视并通知 ARMOR-SERVER | continua a vigiar e informa o ARMOR-SERVER")),
     ("python -m armor_network demo --count 3", T("a made-up house: nothing on any network is touched | una casa inventada: no se toca ninguna red | ein erfundenes Haus: kein Netz wird berührt | une maison fictive : aucun réseau n'est touché | una casa inventata: nessuna rete viene toccata | 架空の家：実ネットワークには触れない | 虚构的房子：不碰任何网络 | uma casa inventada: nenhuma rede é tocada")),
@@ -825,7 +825,7 @@ def build_lg(lg):
         "interfaces": table(lg, "route", IFACE) + "\n\n" + IFACE_NOTE[lg],
         "configuration": table(lg, "setting", CFG) + "\n\n" + CFG_NOTE[lg],
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n" + QUICK_AFTER[lg],
-        "testing": code(lg, [("python -m unittest discover -s tests", T("187 tests | 187 pruebas | 187 Tests | 187 tests | 187 test | 187 件 | 187 项 | 187 testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
+        "testing": code(lg, [("python -m unittest discover -s tests", T("{{fact:tests:ARMOR-NETWORK}} tests | {{fact:tests:ARMOR-NETWORK}} pruebas | {{fact:tests:ARMOR-NETWORK}} Tests | {{fact:tests:ARMOR-NETWORK}} tests | {{fact:tests:ARMOR-NETWORK}} test | {{fact:tests:ARMOR-NETWORK}} 件 | {{fact:tests:ARMOR-NETWORK}} 项 | {{fact:tests:ARMOR-NETWORK}} testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_TABLE) + "\n\n" + TEST_NOTE[lg],
         "build": BUILD[lg],
         "troubleshooting": table(lg, "trouble", TROUBLE),
         "structure": structure(lg, "ARMOR-NETWORK", tree=TREE[lg]),

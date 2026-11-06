@@ -17,5 +17,9 @@
   "discovery.one_at_a_time": {"repo": "ARMOR-SERVER", "file": "src/routes/cameras.ts", "pattern": "a camera discovery is already running", "says": "only one camera discovery runs at a time"},
   "login.rate_limited": {"repo": "ARMOR-SERVER", "file": "src/routes/sessions.ts", "pattern": "windowMs: 15 \\* 60_000, limit: 12[\\s\\S]{0,900}limit: 60[\\s\\S]{0,900}windowMs: 60_000, limit: 40, skipSuccessfulRequests: true", "says": "sign-in is limited per person and place, per place and for the whole server"},
   "sessions.bounded": {"repo": "ARMOR-SERVER", "file": "src/http/auth.ts", "pattern": "capacity \\?\\? 256", "says": "the number of live sessions is bounded"},
-  "tickets.bounded": {"repo": "ARMOR-SERVER", "file": "src/media/relay.ts", "pattern": "lifetimeMs = 5 \\* 60_000, capacity = 256", "says": "live-video tickets last five minutes and at most 256 exist"}
+  "tickets.bounded": {"repo": "ARMOR-SERVER", "file": "src/media/relay.ts", "pattern": "lifetimeMs = 5 \\* 60_000, capacity = 256", "says": "live-video tickets last five minutes and at most 256 exist"},
+  "studio.password.min_length": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "passwordMinLength: isLoopbackHost\\(effectiveHost\\) \\? 8 : 12", "says": "a Studio password is at least 12 characters on a server the network reaches"},
+  "user.pin.lock_steps": {"repo": "ARMOR-SERVER", "file": "src/users.ts", "pattern": "PIN_FAILS_BEFORE_LOCK = 3;\\s*const PIN_LOCKS_MS = \\[60_000, 300_000, 900_000", "says": "three wrong PINs lock a user for a minute, then five, then fifteen"},
+  "node.pause.bounds": {"repo": "ARMOR-SERVER", "file": "src/node_control.ts", "pattern": "pause: \\[60, 3600, 3600\\]", "says": "a pause lasts 60 to 3600 seconds, an hour when none is said"},
+  "node.maintenance.bounds": {"repo": "ARMOR-SERVER", "file": "src/node_control.ts", "pattern": "maintenance_on: \\[60, 28_800, 3600\\]", "says": "maintenance lasts 60 to 28800 seconds, an hour when none is said"}
 }

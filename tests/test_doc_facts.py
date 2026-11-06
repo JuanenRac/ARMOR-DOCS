@@ -40,6 +40,33 @@ class FactTests(unittest.TestCase):
         self.assertEqual(doc_facts.value("openapi_paths"), "4")
         self.assertEqual(doc_facts.value("version:ARMOR-COMMON"), "1.2.3.4")
 
+    def test_the_tests_a_node_registers_with_ctest_are_counted_by_name_and_split_into_host_programs_and_python_checks(self):
+        node = self.root / "ARMOR-NODE-X"
+        (node / "tests").mkdir(parents=True)
+        (node / "armor.project.json").write_text(json.dumps({"version": "0.0.1"}), encoding="utf-8")
+        (node / "tests" / "CMakeLists.txt").write_text(
+            "add_test(NAME core COMMAND test_core)\n"
+            "add_test(NAME node COMMAND test_node ${CMAKE_CURRENT_SOURCE_DIR}/../x)\n"
+            "if(Python3_FOUND)\n"
+            "  add_test(NAME routes COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/check_routes.py)\n"
+            "endif()\n"
+            "if(TARGET stand_in)\n"
+            "  add_test(NAME failover COMMAND ${Python3_EXECUTABLE} check.py $<TARGET_FILE:stand_in>)\n"
+            "else()\n"
+            "  add_test(NAME failover COMMAND ${Python3_EXECUTABLE} check.py)\n"
+            "endif()\n", encoding="utf-8")
+        self.assertEqual(doc_facts.value("ctest_cpp:ARMOR-NODE-X"), "2")
+        self.assertEqual(doc_facts.value("ctest_python:ARMOR-NODE-X"), "2")   # the two branches of the if/else register one test
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("ctest_cpp:ARMOR-COMMON")   # no tests/CMakeLists.txt there
+
+    def test_unittest_is_the_count_of_test_functions_under_another_name(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("class T:\n    def test_one(self): pass\n    def test_two(self): pass\n", encoding="utf-8")
+        self.assertEqual(doc_facts.value("unittest:ARMOR-COMMON"), doc_facts.value("tests:ARMOR-COMMON"))
+        self.assertEqual(doc_facts.value("unittest:ARMOR-COMMON"), "2")
+
     def test_a_name_that_means_nothing_is_an_error_and_a_missing_repository_is_unavailable(self):
         with self.assertRaises(KeyError):
             doc_facts.value("lines")

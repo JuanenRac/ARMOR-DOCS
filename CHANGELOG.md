@@ -4,6 +4,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The test counters of the READMEs are read, not typed:** `{{fact:unittest:ARMOR-X}}` (the same count as `tests:`), `{{fact:ctest_cpp:ARMOR-NODE-X}}` (the host test programs a node registers with CTest) and `{{fact:ctest_python:ARMOR-NODE-X}}` (its Python checks) join the figures `make_readmes.py` fills in; the sources of the simulator, network, hardware, server-AI and documentation repositories and of four of the five nodes use them, and the counts of ARMOR-DOCS and ARMOR-SERVER-AI that had drifted are corrected.
+- **Four more sentences of the security pages are checked against the code:** the least length of a Studio password, the three wrong PINs that lock a user for a minute, then five, then fifteen, and the bounds of a pause and of the maintenance mode each carry a marker and an expression in `docs/claims.json`.
+
 ## [0.8.1.7] - Five more sentences of the security pages are checked against the code: discovery of cameras scans only a private /24 and runs one scan at a time, live sessions and video tickets are bounded in number, and sign-in is limited... (and 2 more changes)
 
 - **Five more sentences of the security pages are checked against the code:** discovery of cameras scans only a private /24 and runs one scan at a time, live sessions and video tickets are bounded in number, and sign-in is limited per person and place, per place and for the whole server (19 checked in all).

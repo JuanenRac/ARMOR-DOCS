@@ -40,7 +40,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "253%20passing",
+      "{{fact:tests:ARMOR-SIMULATOR}}%20passing",
       "2ea44f",
     ],
   ],
@@ -49,7 +49,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Offline telemetry simulator with repeatable faults",
-    "honest": "Scenarios, faults, delivery to a server and the 253 tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
+    "honest": "Scenarios, faults, delivery to a server and the {{fact:tests:ARMOR-SIMULATOR}} tests are real, and the simulator is what feeds a server on a computer when no node is plugged in. The geometry is **illustrative**, not a model of the real LD2450 radar, and nothing here has been compared with real hardware.",
     "glance": [
       [
         "Role",
@@ -61,7 +61,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenarios and faults",
@@ -82,7 +82,7 @@ TEXT = {
     ],
     "status": {
       "software": "The scenarios, the faults and the delivery to a server work; it is what feeds a server on a computer when no node is plugged in.",
-      "tests": "253 tests pass (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-SIMULATOR}} tests pass (`python -m unittest discover -s tests`).",
       "protocols": "The geometry is illustrative, not a model of the real LD2450 radar, and nothing has been compared with real hardware.",
       "integration": "It delivers its messages to a server in the tests, and the server of the CM5 test bench can be fed by it.",
       "docs": "Eight languages and the changelog are up to date.",
@@ -239,7 +239,7 @@ ARMOR-SIMULATOR/
   },
   "es": {
     "tagline": "Simulador de telemetría sin conexión con fallos repetibles",
-    "honest": "Los escenarios, los fallos, la entrega a un servidor y los 253 tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
+    "honest": "Los escenarios, los fallos, la entrega a un servidor y los {{fact:tests:ARMOR-SIMULATOR}} tests son reales, y el simulador es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado. La geometría es **ilustrativa**, no un modelo del radar LD2450 real, y nada de esto se ha comparado con hardware real.",
     "glance": [
       [
         "Función",
@@ -251,7 +251,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Pruebas",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Escenarios y averías",
@@ -272,7 +272,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Los escenarios, los fallos y la entrega a un servidor funcionan; es lo que alimenta a un servidor en un ordenador cuando no hay ningún nodo conectado.",
-      "tests": "Pasan 253 pruebas (`python -m unittest discover -s tests`).",
+      "tests": "Pasan {{fact:tests:ARMOR-SIMULATOR}} pruebas (`python -m unittest discover -s tests`).",
       "protocols": "La geometría es ilustrativa, no un modelo del radar LD2450 real, y nada se ha comparado con hardware real.",
       "integration": "Entrega sus mensajes a un servidor en las pruebas, y el servidor del banco de pruebas CM5 puede alimentarse con él.",
       "docs": "Ocho idiomas y el historial de cambios están al día.",
@@ -429,7 +429,7 @@ ARMOR-SIMULATOR/
   },
   "de": {
     "tagline": "Offline-Telemetriesimulator mit wiederholbaren Fehlern",
-    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die 253 Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
+    "honest": "Die Szenarien, die Fehler, die Zustellung an einen Server und die {{fact:tests:ARMOR-SIMULATOR}} Tests sind real, und der Simulator speist einen Server auf einem Computer, wenn kein Knoten angeschlossen ist. Die Geometrie ist **veranschaulichend**, kein Modell des echten LD2450-Radars, und nichts davon wurde mit echter Hardware verglichen.",
     "glance": [
       [
         "Rolle",
@@ -441,7 +441,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Szenarien und Fehler",
@@ -462,7 +462,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Die Szenarien, die Störungen und die Übergabe an einen Server funktionieren; er speist einen Server auf einem Rechner, wenn kein Knoten angeschlossen ist.",
-      "tests": "253 Tests bestehen (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-SIMULATOR}} Tests bestehen (`python -m unittest discover -s tests`).",
       "protocols": "Die Geometrie ist anschaulich und kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.",
       "integration": "Er übergibt seine Nachrichten in den Tests an einen Server, und der Server des CM5-Prüfstands kann damit gespeist werden.",
       "docs": "Acht Sprachen und das Änderungsprotokoll sind aktuell.",
@@ -619,7 +619,7 @@ ARMOR-SIMULATOR/
   },
   "fr": {
     "tagline": "Simulateur de télémétrie hors ligne avec des pannes reproductibles",
-    "honest": "Les scénarios, les pannes, la livraison à un serveur et les 253 tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
+    "honest": "Les scénarios, les pannes, la livraison à un serveur et les {{fact:tests:ARMOR-SIMULATOR}} tests sont réels, et le simulateur est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché. La géométrie est **illustrative**, pas un modèle du vrai radar LD2450, et rien de tout cela n'a été comparé à du matériel réel.",
     "glance": [
       [
         "Rôle",
@@ -631,7 +631,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Tests",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Scénarios et pannes",
@@ -652,7 +652,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Les scénarios, les pannes et la remise à un serveur fonctionnent ; c'est ce qui alimente un serveur sur un ordinateur quand aucun nœud n'est branché.",
-      "tests": "253 tests réussissent (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-SIMULATOR}} tests réussissent (`python -m unittest discover -s tests`).",
       "protocols": "La géométrie est illustrative, pas un modèle du vrai radar LD2450, et rien n'a été comparé à du matériel réel.",
       "integration": "Il remet ses messages à un serveur dans les tests, et le serveur du banc d'essai CM5 peut être alimenté par lui.",
       "docs": "Huit langues et le journal des modifications sont à jour.",
@@ -809,7 +809,7 @@ ARMOR-SIMULATOR/
   },
   "it": {
     "tagline": "Simulatore di telemetria offline con guasti ripetibili",
-    "honest": "Gli scenari, i guasti, la consegna a un server e i 253 test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
+    "honest": "Gli scenari, i guasti, la consegna a un server e i {{fact:tests:ARMOR-SIMULATOR}} test sono reali, e il simulatore è ciò che alimenta un server su un computer quando nessun nodo è collegato. La geometria è **illustrativa**, non un modello del vero radar LD2450, e nulla di tutto ciò è stato confrontato con hardware reale.",
     "glance": [
       [
         "Ruolo",
@@ -821,7 +821,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Test",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Scenari e guasti",
@@ -842,7 +842,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Gli scenari, i guasti e la consegna a un server funzionano; è ciò che alimenta un server su un computer quando nessun nodo è collegato.",
-      "tests": "Superano 253 test (`python -m unittest discover -s tests`).",
+      "tests": "Superano {{fact:tests:ARMOR-SIMULATOR}} test (`python -m unittest discover -s tests`).",
       "protocols": "La geometria è illustrativa, non un modello del vero radar LD2450, e nulla è stato confrontato con hardware reale.",
       "integration": "Consegna i suoi messaggi a un server nei test e il server del banco di prova CM5 può essere alimentato da esso.",
       "docs": "Otto lingue e il registro delle modifiche sono aggiornati.",
@@ -999,7 +999,7 @@ ARMOR-SIMULATOR/
   },
   "ja": {
     "tagline": "再現可能な故障を備えたオフラインのテレメトリシミュレーター",
-    "honest": "シナリオ、故障、サーバーへの送信、253 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
+    "honest": "シナリオ、故障、サーバーへの送信、{{fact:tests:ARMOR-SIMULATOR}} 件のテストは実在し、ノードを接続していないときにコンピューター上のサーバーにデータを送るのがシミュレーターです。ジオメトリは**例示的**なもので、実際の LD2450 レーダーのモデルではなく、実機との比較は一切していません。",
     "glance": [
       [
         "役割",
@@ -1011,7 +1011,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "テスト",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "シナリオと障害",
@@ -1032,7 +1032,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "シナリオ、故障、サーバーへの配信は動作します。ノードを接続していないとき、コンピューター上のサーバーにデータを送るのがこれです。",
-      "tests": "253 件のテストが通ります（`python -m unittest discover -s tests`）。",
+      "tests": "{{fact:tests:ARMOR-SIMULATOR}} 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "protocols": "幾何は例示用で、実際の LD2450 レーダーのモデルではありません。実機との比較もしていません。",
       "integration": "テストではメッセージをサーバーに配信しており、CM5 テストベンチのサーバーにもこれでデータを送れます。",
       "docs": "8 言語と変更履歴は最新です。",
@@ -1189,7 +1189,7 @@ ARMOR-SIMULATOR/
   },
   "zh": {
     "tagline": "带可重复故障的离线遥测模拟器",
-    "honest": "场景、故障、向服务器的投递和 253 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
+    "honest": "场景、故障、向服务器的投递和 {{fact:tests:ARMOR-SIMULATOR}} 个测试都是真实的，没有节点接入时，模拟器用来给计算机上的服务器供数据。几何是**示意性的**，不是真实 LD2450 雷达的模型，这里的一切都没有与真实硬件对比过。",
     "glance": [
       [
         "角色",
@@ -1201,7 +1201,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "测试",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "场景与故障",
@@ -1222,7 +1222,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "场景、故障和向服务器的投递都能工作；没有接入节点时，它为电脑上的服务器提供数据。",
-      "tests": "253 项测试通过（`python -m unittest discover -s tests`）。",
+      "tests": "{{fact:tests:ARMOR-SIMULATOR}} 项测试通过（`python -m unittest discover -s tests`）。",
       "protocols": "几何模型仅作示意，并不是真实 LD2450 雷达的模型，也没有与真实硬件对比过。",
       "integration": "测试中它会把消息投递到服务器，CM5 测试台的服务器也可以由它提供数据。",
       "docs": "八种语言和更新日志均为最新。",
@@ -1379,7 +1379,7 @@ ARMOR-SIMULATOR/
   },
   "pt": {
     "tagline": "Simulador de telemetria offline com falhas repetíveis",
-    "honest": "Os cenários, as falhas, a entrega a um servidor e os 253 testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
+    "honest": "Os cenários, as falhas, a entrega a um servidor e os {{fact:tests:ARMOR-SIMULATOR}} testes são reais, e o simulador é o que alimenta um servidor num computador quando nenhum nó está ligado. A geometria é **ilustrativa**, não um modelo do radar LD2450 real, e nada disto foi comparado com hardware real.",
     "glance": [
       [
         "Função",
@@ -1391,7 +1391,7 @@ ARMOR-SIMULATOR/
       ],
       [
         "Testes",
-        "253 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-SIMULATOR}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Cenários e falhas",
@@ -1412,7 +1412,7 @@ ARMOR-SIMULATOR/
     ],
     "status": {
       "software": "Os cenários, as avarias e a entrega a um servidor funcionam; é o que alimenta um servidor num computador quando nenhum nó está ligado.",
-      "tests": "Passam 253 testes (`python -m unittest discover -s tests`).",
+      "tests": "Passam {{fact:tests:ARMOR-SIMULATOR}} testes (`python -m unittest discover -s tests`).",
       "protocols": "A geometria é ilustrativa, não um modelo do radar LD2450 real, e nada foi comparado com hardware real.",
       "integration": "Entrega as suas mensagens a um servidor nos testes, e o servidor da bancada de testes CM5 pode ser alimentado por ele.",
       "docs": "Oito idiomas e o registo de alterações estão atualizados.",
