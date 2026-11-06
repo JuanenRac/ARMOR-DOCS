@@ -45,8 +45,7 @@ jobs:
           python - <<'PY' > family.txt
           import json
           names = [entry["name"] for entry in json.load(open("ARMOR-COMMON/registry/repositories.json", encoding="utf-8"))["repositories"]]
-          print("
-".join(sorted(set(names) - {"ARMOR-DOCS", "ARMOR-COMMON"})))
+          print("\n".join(sorted(set(names) - {"ARMOR-DOCS", "ARMOR-COMMON"})))
           PY
           while read -r repository; do
             git clone --quiet --depth 1 "https://github.com/JuanenRac/${repository}.git" "${repository}" || echo "::warning::could not fetch ${repository}"
