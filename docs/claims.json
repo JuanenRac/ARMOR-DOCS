@@ -21,5 +21,10 @@
   "studio.password.min_length": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "passwordMinLength: isLoopbackHost\\(effectiveHost\\) \\? 8 : 12", "says": "a Studio password is at least 12 characters on a server the network reaches"},
   "user.pin.lock_steps": {"repo": "ARMOR-SERVER", "file": "src/users.ts", "pattern": "PIN_FAILS_BEFORE_LOCK = 3;\\s*const PIN_LOCKS_MS = \\[60_000, 300_000, 900_000", "says": "three wrong PINs lock a user for a minute, then five, then fifteen"},
   "node.pause.bounds": {"repo": "ARMOR-SERVER", "file": "src/node_control.ts", "pattern": "pause: \\[60, 3600, 3600\\]", "says": "a pause lasts 60 to 3600 seconds, an hour when none is said"},
-  "node.maintenance.bounds": {"repo": "ARMOR-SERVER", "file": "src/node_control.ts", "pattern": "maintenance_on: \\[60, 28_800, 3600\\]", "says": "maintenance lasts 60 to 28800 seconds, an hour when none is said"}
+  "node.maintenance.bounds": {"repo": "ARMOR-SERVER", "file": "src/node_control.ts", "pattern": "maintenance_on: \\[60, 28_800, 3600\\]", "says": "maintenance lasts 60 to 28800 seconds, an hour when none is said"},
+  "diagnostic.token.ttl": {"repo": "ARMOR-SERVER", "file": "src/diagnostic_tokens.ts", "pattern": "TTL_MIN_S = 300;\\s*export const TTL_MAX_S = 86_400;\\s*export const TTL_DEFAULT_S = 7_200", "says": "a diagnostic token lasts 5 minutes to 24 hours, 2 hours when none is said"},
+  "diagnostic.token.max_active": {"repo": "ARMOR-SERVER", "file": "src/diagnostic_tokens.ts", "pattern": "MAX_ACTIVE_TOKENS = 20;", "says": "at most twenty diagnostic tokens are active at a time"},
+  "http.body.limit": {"repo": "ARMOR-SERVER", "file": "src/app.ts", "pattern": "smallJson = express\\.json\\(\\{ limit: \"64kb\"", "says": "an ordinary request body over 64 kb is refused"},
+  "login.rate_limits": {"repo": "ARMOR-SERVER", "file": "src/routes/sessions.ts", "pattern": "windowMs: 15 \\* 60_000, limit: 12,[\\s\\S]{0,700}?placeLimit = rateLimit\\(\\{ windowMs: 15 \\* 60_000, limit: 60,", "says": "twelve Studio login tries in fifteen minutes for each person and place, sixty for each place"},
+  "studio.session.ttl": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_STUDIO_SESSION_TTL_MS\", 7 \\* 86_400_000", "says": "a Studio session lasts seven days by default"}
 }

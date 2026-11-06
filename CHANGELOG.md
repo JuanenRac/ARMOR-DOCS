@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **Six more sentences of the security pages are checked against the code:** the limit on the size of an ordinary request body, the time a diagnostic token lives (five minutes to twenty-four hours, two hours when none is said) and how many may be active at a time, the limits on the sign-in tries of each person and place, and how long a Studio session lasts.
+
 ## [0.8.1.8] - The test counters of the READMEs are read, not typed: {{fact:unittest:ARMOR-X}} (the same count as tests:), {{fact:ctestcpp:ARMOR-NODE-X}} (the host test programs a node registers with CTest) and... (and 1 more changes)
 
 - **The test counters of the READMEs are read, not typed:** `{{fact:unittest:ARMOR-X}}` (the same count as `tests:`), `{{fact:ctest_cpp:ARMOR-NODE-X}}` (the host test programs a node registers with CTest) and `{{fact:ctest_python:ARMOR-NODE-X}}` (its Python checks) join the figures `make_readmes.py` fills in; the sources of the simulator, network, hardware, server-AI and documentation repositories and of four of the five nodes use them, and the counts of ARMOR-DOCS and ARMOR-SERVER-AI that had drifted are corrected.
