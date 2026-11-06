@@ -48,7 +48,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "138%20passing",
+      "{{fact:tests:ARMOR-VISION}}%20passing",
       "2ea44f",
     ],
   ],
@@ -57,7 +57,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Zones, masks and detection rules for the cameras",
-    "honest": "The zones, the motion check, the tracker, the rules and the 138 tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
+    "honest": "The zones, the motion check, the tracker, the rules and the {{fact:tests:ARMOR-VISION}} tests are real. There is **no real detector model yet** and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.",
     "glance": [
       [
         "Role",
@@ -69,7 +69,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Runs on",
@@ -86,7 +86,7 @@ TEXT = {
     ],
     "status": {
       "software": "The zones, the motion check, the tracker and the rules work, but there is no real detector model yet: the simulation uses scripted detections.",
-      "tests": "138 tests pass (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-VISION}} tests pass (`python -m unittest discover -s tests`).",
       "hardware": "Nothing has run on a camera or on the Jetson Orin NX.",
       "ui": "The routes or messages it offers are documented and tested with a client; not every client has used them yet",
       "security": "Access control, input limits or signatures are implemented and tested on a computer; nobody outside the project has reviewed them",
@@ -166,13 +166,13 @@ These values are constants of `tracker.py` and `motion.py` today; the configurat
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -251,7 +251,7 @@ ARMOR-VISION/
   },
   "es": {
     "tagline": "Zonas, máscaras y reglas de detección para las cámaras",
-    "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los 138 tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
+    "honest": "Las zonas, la comprobación de movimiento, el seguimiento, las reglas y los {{fact:tests:ARMOR-VISION}} tests son reales. **Todavía no existe un modelo de detección real** y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.",
     "glance": [
       [
         "Función",
@@ -263,7 +263,7 @@ ARMOR-VISION/
       ],
       [
         "Pruebas",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Funciona en",
@@ -280,7 +280,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Las zonas, la comprobación de movimiento, el seguimiento y las reglas funcionan, pero aún no hay un modelo detector real: la simulación usa detecciones guionizadas.",
-      "tests": "Pasan 138 pruebas (`python -m unittest discover -s tests`).",
+      "tests": "Pasan {{fact:tests:ARMOR-VISION}} pruebas (`python -m unittest discover -s tests`).",
       "hardware": "Nada ha funcionado en una cámara ni en la Jetson Orin NX.",
       "ui": "Las rutas o los mensajes que ofrece están documentados y probados con un cliente; aún no los han usado todos los clientes",
       "security": "El control de acceso, los límites de entrada o las firmas están implementados y probados en un ordenador; nadie ajeno al proyecto los ha revisado",
@@ -360,13 +360,13 @@ Hoy estos valores son constantes de `tracker.py` y `motion.py`; el fichero de co
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -445,7 +445,7 @@ ARMOR-VISION/
   },
   "de": {
     "tagline": "Zonen, Masken und Erkennungsregeln für die Kameras",
-    "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die 138 Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
+    "honest": "Die Zonen, die Bewegungsprüfung, die Verfolgung, die Regeln und die {{fact:tests:ARMOR-VISION}} Tests sind real. Es gibt **noch kein echtes Erkennungsmodell**, und nichts lief auf einer Kamera oder auf dem Jetson Orin NX: die Simulation nutzt vorgegebene Erkennungen.",
     "glance": [
       [
         "Rolle",
@@ -457,7 +457,7 @@ ARMOR-VISION/
       ],
       [
         "Tests",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Läuft auf",
@@ -474,7 +474,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Die Zonen, die Bewegungsprüfung, die Verfolgung und die Regeln funktionieren, aber es gibt noch kein echtes Erkennungsmodell: Die Simulation nutzt geskriptete Erkennungen.",
-      "tests": "138 Tests bestehen (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-VISION}} Tests bestehen (`python -m unittest discover -s tests`).",
       "hardware": "Nichts lief an einer Kamera oder auf dem Jetson Orin NX.",
       "ui": "Die angebotenen Routen oder Nachrichten sind dokumentiert und mit einem Client getestet; noch nicht jeder Client hat sie benutzt",
       "security": "Zugriffskontrolle, Eingabegrenzen oder Signaturen sind umgesetzt und auf einem Rechner getestet; niemand außerhalb des Projekts hat sie geprüft",
@@ -554,13 +554,13 @@ Diese Werte sind heute Konstanten in `tracker.py` und `motion.py`; die Konfigura
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -639,7 +639,7 @@ ARMOR-VISION/
   },
   "fr": {
     "tagline": "Zones, masques et règles de détection pour les caméras",
-    "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les 138 tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
+    "honest": "Les zones, le contrôle du mouvement, le suivi, les règles et les {{fact:tests:ARMOR-VISION}} tests sont réels. **Il n'existe pas encore de vrai modèle de détection** et rien n'a tourné sur une caméra ni sur la Jetson Orin NX : la simulation utilise des détections scénarisées.",
     "glance": [
       [
         "Rôle",
@@ -651,7 +651,7 @@ ARMOR-VISION/
       ],
       [
         "Tests",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Fonctionne sur",
@@ -668,7 +668,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Les zones, le contrôle du mouvement, le suivi et les règles fonctionnent, mais il n'y a pas encore de vrai modèle détecteur : la simulation utilise des détections scénarisées.",
-      "tests": "138 tests réussissent (`python -m unittest discover -s tests`).",
+      "tests": "{{fact:tests:ARMOR-VISION}} tests réussissent (`python -m unittest discover -s tests`).",
       "hardware": "Rien n'a tourné sur une caméra ni sur le Jetson Orin NX.",
       "ui": "Les routes ou les messages proposés sont documentés et testés avec un client ; tous les clients ne les ont pas encore utilisés",
       "security": "Le contrôle d'accès, les limites d'entrée ou les signatures sont implémentés et testés sur un ordinateur ; personne hors du projet ne les a relus",
@@ -748,13 +748,13 @@ Ces valeurs sont aujourd'hui des constantes de `tracker.py` et `motion.py` ; le 
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -833,7 +833,7 @@ ARMOR-VISION/
   },
   "it": {
     "tagline": "Zone, maschere e regole di rilevamento per le telecamere",
-    "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i 138 test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
+    "honest": "Le zone, il controllo del movimento, il tracciamento, le regole e i {{fact:tests:ARMOR-VISION}} test sono reali. **Non esiste ancora un vero modello di rilevamento** e nulla è stato eseguito su una telecamera o sulla Jetson Orin NX: la simulazione usa rilevamenti scriptati.",
     "glance": [
       [
         "Ruolo",
@@ -845,7 +845,7 @@ ARMOR-VISION/
       ],
       [
         "Test",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Gira su",
@@ -862,7 +862,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "Le zone, il controllo del movimento, il tracciamento e le regole funzionano, ma non c'è ancora un vero modello di rilevamento: la simulazione usa rilevamenti da script.",
-      "tests": "Superano 138 test (`python -m unittest discover -s tests`).",
+      "tests": "Superano {{fact:tests:ARMOR-VISION}} test (`python -m unittest discover -s tests`).",
       "hardware": "Nulla ha girato su una telecamera né sulla Jetson Orin NX.",
       "ui": "Le rotte o i messaggi offerti sono documentati e provati con un client; non tutti i client li hanno ancora usati",
       "security": "Il controllo degli accessi, i limiti d'ingresso o le firme sono implementati e provati su un computer; nessuno al di fuori del progetto li ha rivisti",
@@ -942,13 +942,13 @@ Oggi questi valori sono costanti di `tracker.py` e `motion.py`; il file di confi
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1027,7 +1027,7 @@ ARMOR-VISION/
   },
   "ja": {
     "tagline": "カメラのゾーン、マスク、検知ルール",
-    "honest": "ゾーン、動きの確認、追跡、ルール、138 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
+    "honest": "ゾーン、動きの確認、追跡、ルール、{{fact:tests:ARMOR-VISION}} 件のテストは実在します。**実際の検知モデルはまだありません**。カメラや Jetson Orin NX では何も動かしていません。シミュレーションは台本どおりの検知結果を使います。",
     "glance": [
       [
         "役割",
@@ -1039,7 +1039,7 @@ ARMOR-VISION/
       ],
       [
         "テスト",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "動作環境",
@@ -1056,7 +1056,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "ゾーン、動きの確認、トラッカー、規則は動作しますが、実際の検出モデルはまだありません。シミュレーションはスクリプト化した検出結果を使います。",
-      "tests": "138 件のテストが通ります（`python -m unittest discover -s tests`）。",
+      "tests": "{{fact:tests:ARMOR-VISION}} 件のテストが通ります（`python -m unittest discover -s tests`）。",
       "hardware": "カメラや Jetson Orin NX ではまだ何も動かしていません。",
       "ui": "提供するルートやメッセージは文書化され、クライアントで試験済みです。すべてのクライアントがまだ使ったわけではありません",
       "security": "アクセス制御、入力の制限、署名のいずれかは実装されコンピューター上で試験済みですが、プロジェクト外の誰もレビューしていません",
@@ -1136,13 +1136,13 @@ ARMOR-VISION/
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1221,7 +1221,7 @@ ARMOR-VISION/
   },
   "zh": {
     "tagline": "摄像头的区域、遮罩与检测规则",
-    "honest": "区域、运动检查、跟踪、规则和 138 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
+    "honest": "区域、运动检查、跟踪、规则和 {{fact:tests:ARMOR-VISION}} 个测试都是真实的。**目前还没有真正的检测模型**，也没有在任何摄像头或 Jetson Orin NX 上运行过：模拟使用的是预设的检测结果。",
     "glance": [
       [
         "角色",
@@ -1233,7 +1233,7 @@ ARMOR-VISION/
       ],
       [
         "测试",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "运行位置",
@@ -1250,7 +1250,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "防区、移动检查、跟踪器和规则都能工作，但目前还没有真实的检测模型：模拟使用的是脚本化的检测结果。",
-      "tests": "138 项测试通过（`python -m unittest discover -s tests`）。",
+      "tests": "{{fact:tests:ARMOR-VISION}} 项测试通过（`python -m unittest discover -s tests`）。",
       "hardware": "还没有在摄像头或 Jetson Orin NX 上运行过。",
       "ui": "提供的路由或消息已有文档，并用客户端测试过；尚未被所有客户端使用",
       "security": "访问控制、输入限制或签名已实现并在计算机上测试；项目之外无人审查过",
@@ -1330,13 +1330,13 @@ ARMOR-VISION/
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
@@ -1415,7 +1415,7 @@ ARMOR-VISION/
   },
   "pt": {
     "tagline": "Zonas, máscaras e regras de deteção para as câmaras",
-    "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os 138 testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
+    "honest": "As zonas, a verificação de movimento, o seguidor, as regras e os {{fact:tests:ARMOR-VISION}} testes são reais. **Ainda não há nenhum modelo detetor real** e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções com guião.",
     "glance": [
       [
         "Função",
@@ -1427,7 +1427,7 @@ ARMOR-VISION/
       ],
       [
         "Testes",
-        "138 (`python -m unittest discover -s tests`)",
+        "{{fact:tests:ARMOR-VISION}} (`python -m unittest discover -s tests`)",
       ],
       [
         "Funciona em",
@@ -1444,7 +1444,7 @@ ARMOR-VISION/
     ],
     "status": {
       "software": "As zonas, a verificação de movimento, o seguimento e as regras funcionam, mas ainda não há um modelo detetor real: a simulação usa deteções com guião.",
-      "tests": "Passam 138 testes (`python -m unittest discover -s tests`).",
+      "tests": "Passam {{fact:tests:ARMOR-VISION}} testes (`python -m unittest discover -s tests`).",
       "hardware": "Nada funcionou numa câmara nem no Jetson Orin NX.",
       "ui": "As rotas ou mensagens que oferece estão documentadas e testadas com um cliente; ainda nem todos os clientes as usaram",
       "security": "O controlo de acesso, os limites de entrada ou as assinaturas estão implementados e testados num computador; ninguém fora do projeto os reviu",
@@ -1524,13 +1524,13 @@ Estes valores são hoje constantes de `tracker.py` e `motion.py`; o ficheiro de 
 $env:PYTHONPATH = "src"
 python -m armor_vision simulate --mode away
 python -m armor_vision check-config my_cameras.json
-python -m unittest discover -s tests   # 138 tests
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```
 
 ```bash
 PYTHONPATH=src python -m armor_vision simulate --mode away
 PYTHONPATH=src python -m armor_vision check-config my_cameras.json
-PYTHONPATH=src python -m unittest discover -s tests   # 138 tests
+PYTHONPATH=src python -m unittest discover -s tests   # {{fact:tests:ARMOR-VISION}} tests
 ```""",
       "testing": r"""```powershell
 $env:PYTHONPATH = "src"
