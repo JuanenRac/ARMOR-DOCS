@@ -15,6 +15,27 @@ from make_readmes import LANGUAGES, ORDER, UI, RELATED
 CODES = [code for code, *_ in LANGUAGES]
 REAL_ROOT = Path(__file__).resolve().parents[2]
 
+_REAL_FACT = make_readmes.fact
+_FACT_PATCH = None
+
+
+def _fact_or_placeholder(name):
+    """The figures of ARMOR-COMMON are read for real (its CI step puts it next to this repository); a figure whose repository is not there, such as a test count of a node, is a placeholder here: they are tested in test_doc_facts."""
+    try:
+        return _REAL_FACT(name)
+    except make_readmes.doc_facts.Unavailable:
+        return "1"
+
+
+def setUpModule():
+    global _FACT_PATCH
+    _FACT_PATCH = mock.patch.object(make_readmes, "fact", _fact_or_placeholder)
+    _FACT_PATCH.start()
+
+
+def tearDownModule():
+    _FACT_PATCH.stop()
+
 
 def fake_root(version="1.2.3", maturity="functional"):
     holder = tempfile.TemporaryDirectory()
