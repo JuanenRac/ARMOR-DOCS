@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 oder neuer">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Sprachen">
-  <img src="https://img.shields.io/badge/Tests-265%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-275%20passing-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Version-0.8.1.8-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Reifegrad">
 </p>
@@ -40,7 +40,7 @@
 | Reifegrad | Etabliert |
 | Rolle | Dokumentationszentrale: Architektur, Sicherheitsbasis, Fähigkeitsmatrix und die Werkzeuge, die READMEs, Katalog und Banner schreiben |
 | Technik | Python 3.11+ (Werkzeuge, Standardbibliothek), Markdown |
-| Tests | 265 (`python -m unittest discover -s tests`, etwa eine Minute) |
+| Tests | 275 (`python -m unittest discover -s tests`, etwa eine Minute) |
 | Schnittstellen | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Läuft auf | Jeder Computer mit Python; die Repositorys der Familie neben diesem |
 | Auf echter Hardware | Nicht zutreffend: es ist Dokumentation; sie hält fest, was die anderen Repositorys auf echter Hardware ausgeführt haben |
@@ -57,7 +57,7 @@ Jede Zeile ist ein Teil dieses Repositorys, und die Ampel sagt, wie weit er heut
 | Bereich | Stand | Was das hier bedeutet |
 |---|---|---|
 | Software | 🟢 | Die Generatoren für READMEs, Banner, Katalog und Fähigkeitenmatrix sowie die in jedes Repository kopierten CI-Werkzeuge laufen und sind getestet. |
-| Tests | 🟢 | Die 265 Tests der Werkzeuge bestehen (`python -m unittest discover -s tests`): die Veröffentlichungsprüfung, der Verlaufsbereiniger, die Generatoren für README, Katalog und Marke, die Kopie der CI-Werkzeuge und das Werkzeug des gemeinsamen Ablaufs. |
+| Tests | 🟢 | Die 275 Tests der Werkzeuge bestehen (`python -m unittest discover -s tests`): die Veröffentlichungsprüfung, der Verlaufsbereiniger, die Generatoren für README, Katalog und Marke, die Kopie der CI-Werkzeuge und das Werkzeug des gemeinsamen Ablaufs. |
 | Automatische Prüfungen | 🟢 | Jeder Push prüft, dass die READMEs, die Banner und der Katalog aktuell sind und dass jedes Repository des Registers seine Statustabelle hat. |
 | Integration | 🟢 | Die READMEs aller Repositorys entstehen aus einer Quelle, wobei Version und Reifegrad jedes Repositorys aus dessen eigenem Manifest gelesen werden. |
 | Dokumentation | 🟢 | Die Fähigkeitenmatrix sagt für jede Funktion, ob sie nur simuliert, auf einem Rechner getestet oder an echter Hardware überprüft wurde; die acht Sprachen und das Änderungsprotokoll sind aktuell. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # Banner und Symbole sind aktuell
 python tools/doc_facts.py --check     # die Zahlen der Dokumente stimmen mit den Repositorys überein
 python tools/publication_check.py     # nichts Privates würde mit einer Veröffentlichung hinausgehen
 bash tools/check_all.sh               # die Tests jedes Repositorys in einem Lauf
-python -m unittest discover -s tests  # 265 Tests dieser Werkzeuge; sie brauchen kein anderes Repository
+python -m unittest discover -s tests  # 275 Tests dieser Werkzeuge; sie brauchen kein anderes Repository
 ```
 
 ## 🧪 Tests
