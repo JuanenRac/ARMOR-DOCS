@@ -125,13 +125,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 See the [validation boundary](docs/VALIDATION.md). The intended hardware licence is CERN-OHL-S-2.0; add its full text before releasing the designs.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | Test file | Tests | What it covers |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | The sources, the presets of the box, the model files and the numbers the documents quote |
+| `test_parametric_render.py` | 12 | The box rendered by OpenSCAD: the size of every piece of every preset, a changed parameter, and what the asserts of the source refuse (10 need OpenSCAD) |
 
 OpenSCAD renders every piece on a machine that has it: the radar base and cover, and the box and lid of the three presets. The [bench acceptance matrix](docs/BENCH_ACCEPTANCE.md) is where a printed prototype is judged.""",
       "troubleshooting": r"""| You see | Because | Do |
@@ -265,13 +266,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Véase el [límite de validación](docs/VALIDATION.md). La licencia de hardware prevista es CERN-OHL-S-2.0; añade su texto completo antes de publicar los diseños.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | Fichero de pruebas | Pruebas | Qué cubre |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Las fuentes, los presets de la caja, los ficheros de modelo y las cifras que citan los documentos |
+| `test_parametric_render.py` | 12 | La caja renderizada con OpenSCAD: el tamaño de cada pieza de cada preset, un parámetro cambiado y lo que rechazan los asserts de la fuente (10 necesitan OpenSCAD) |
 
 OpenSCAD renderiza cada pieza en una máquina que lo tenga: la base y la tapa del radar, y la caja y la tapa de los tres presets. La [matriz de aceptación en banco](docs/BENCH_ACCEPTANCE.md) es donde se juzga un prototipo impreso.""",
       "troubleshooting": r"""| Ves | Porque | Haz |
@@ -405,13 +407,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Siehe die [Validierungsgrenze](docs/VALIDATION.md). Die vorgesehene Hardware-Lizenz ist CERN-OHL-S-2.0; fügen Sie ihren vollständigen Text hinzu, bevor Sie die Entwürfe veröffentlichen.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | Testdatei | Tests | Was sie abdeckt |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Die Quellen, die Presets der Box, die Modelldateien und die Zahlen, die die Dokumente nennen |
+| `test_parametric_render.py` | 12 | Die mit OpenSCAD gerenderte Box: die Größe jedes Teils jedes Presets, ein geänderter Parameter und was die Asserts der Quelle ablehnen (10 brauchen OpenSCAD) |
 
 OpenSCAD rendert jedes Teil auf einem Rechner, der es hat: Radarbasis und -deckel sowie Box und Deckel der drei Presets. In der [Prüfstand-Abnahmematrix](docs/BENCH_ACCEPTANCE.md) wird ein gedruckter Prototyp beurteilt.""",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
@@ -545,13 +548,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Voir la [frontière de validation](docs/VALIDATION.md). La licence matérielle prévue est CERN-OHL-S-2.0 ; ajoutez son texte complet avant de publier les conceptions.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | Fichier de tests | Tests | Ce qu'il couvre |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Les sources, les préréglages de la boîte, les fichiers de modèle et les chiffres cités par les documents |
+| `test_parametric_render.py` | 12 | La boîte rendue par OpenSCAD : la taille de chaque pièce de chaque préréglage, un paramètre changé et ce que refusent les asserts de la source (10 demandent OpenSCAD) |
 
 OpenSCAD rend chaque pièce sur une machine qui l'a : la base et le couvercle du radar, la boîte et le couvercle des trois préréglages. La [matrice d'acceptation sur banc](docs/BENCH_ACCEPTANCE.md) sert à juger un prototype imprimé.""",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
@@ -685,13 +689,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Vedi il [confine di validazione](docs/VALIDATION.md). La licenza hardware prevista è CERN-OHL-S-2.0; aggiungi il suo testo completo prima di pubblicare i progetti.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | File di test | Test | Cosa copre |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | I sorgenti, i preset della scatola, i file di modello e i numeri citati dai documenti |
+| `test_parametric_render.py` | 12 | La scatola resa con OpenSCAD: la dimensione di ogni pezzo di ogni preset, un parametro cambiato e ciò che rifiutano gli assert del sorgente (10 richiedono OpenSCAD) |
 
 OpenSCAD è in grado di renderizzare ogni pezzo su una macchina che lo ha: base e coperchio del radar, scatola e coperchio dei tre preset. Nella [matrice di accettazione al banco](docs/BENCH_ACCEPTANCE.md) si giudica un prototipo stampato.""",
       "troubleshooting": r"""| Vedi | Perché | Fai |
@@ -825,13 +830,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 [検証の境界](docs/VALIDATION.md)を参照してください。想定しているハードウェアライセンスは CERN-OHL-S-2.0 で、設計を公開する前に全文を追加してください。""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | テストファイル | テスト数 | 対象 |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | ソース、箱のプリセット、モデルファイル、文書が引用する数値 |
+| `test_parametric_render.py` | 12 | OpenSCAD でレンダリングした箱：各プリセットの各部品の寸法、変更したパラメータ、ソースの assert が拒否するもの（10 件は OpenSCAD が必要） |
 
 OpenSCAD が使える環境では各部品（レーダーのベースとカバー、3 つのプリセットの箱と蓋）をレンダリングします。印刷した試作品は[ベンチ受け入れマトリクス](docs/BENCH_ACCEPTANCE.md)で評価します。""",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
@@ -965,13 +971,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 参见[验证边界](docs/VALIDATION.md)。预期的硬件许可证是 CERN-OHL-S-2.0；发布设计前请加入其完整文本。""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | 测试文件 | 测试数 | 覆盖内容 |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | 源文件、盒子预设、模型文件以及文档中引用的数字 |
+| `test_parametric_render.py` | 12 | 用 OpenSCAD 渲染的盒子：每个预设每个部件的尺寸、改变的参数，以及源文件的 assert 所拒绝的内容（其中 10 个需要 OpenSCAD） |
 
 在装有 OpenSCAD 的机器上会渲染每个部件：雷达底座和盖板，以及三种预设的盒子和盖子。打印出的原型由[台架验收矩阵](docs/BENCH_ACCEPTANCE.md)评判。""",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
@@ -1105,13 +1112,14 @@ openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/n
 
 Veja o [limite de validação](docs/VALIDATION.md). A licença de hardware prevista é CERN-OHL-S-2.0; acrescente o seu texto completo antes de publicar os desenhos.""",
       "testing": r"""```powershell
-python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests, no OpenSCAD needed
+python -m unittest discover -s tests   # {{fact:tests:ARMOR-HARDWARE}} tests (10 render the box with OpenSCAD and are skipped without it)
 python -I tools/armor_ci_validate.py
 ```
 
 | Ficheiro de testes | Testes | O que cobre |
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | As fontes, os presets da caixa, os ficheiros de modelo e os números que os documentos citam |
+| `test_parametric_render.py` | 12 | A caixa renderizada com o OpenSCAD: o tamanho de cada peça de cada preset, um parâmetro alterado e o que os asserts da fonte recusam (10 precisam do OpenSCAD) |
 
 O OpenSCAD renderiza cada peça numa máquina que o tenha: a base e a tampa do radar, e a caixa e a tampa dos três presets. A [matriz de aceitação em bancada](docs/BENCH_ACCEPTANCE.md) é onde se avalia um protótipo impresso.""",
       "troubleshooting": r"""| Vê | Porque | Faça |
