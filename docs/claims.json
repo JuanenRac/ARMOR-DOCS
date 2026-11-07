@@ -26,5 +26,9 @@
   "diagnostic.token.max_active": {"repo": "ARMOR-SERVER", "file": "src/diagnostic_tokens.ts", "pattern": "MAX_ACTIVE_TOKENS = 20;", "says": "at most twenty diagnostic tokens are active at a time"},
   "http.body.limit": {"repo": "ARMOR-SERVER", "file": "src/app.ts", "pattern": "smallJson = express\\.json\\(\\{ limit: \"64kb\"", "says": "an ordinary request body over 64 kb is refused"},
   "login.rate_limits": {"repo": "ARMOR-SERVER", "file": "src/routes/sessions.ts", "pattern": "windowMs: 15 \\* 60_000, limit: 12,[\\s\\S]{0,700}?placeLimit = rateLimit\\(\\{ windowMs: 15 \\* 60_000, limit: 60,", "says": "twelve Studio login tries in fifteen minutes for each person and place, sixty for each place"},
-  "studio.session.ttl": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_STUDIO_SESSION_TTL_MS\", 7 \\* 86_400_000", "says": "a Studio session lasts seven days by default"}
+  "studio.session.ttl": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "ARMOR_STUDIO_SESSION_TTL_MS\", 7 \\* 86_400_000", "says": "a Studio session lasts seven days by default"},
+  "machine_update.off_by_default": {"repo": "ARMOR-SERVER", "file": "src/config.ts", "pattern": "env\\.ARMOR_CM5_UPDATE === \"1\"", "says": "updating the programs of the machine from Studio or the phone is off unless ARMOR_CM5_UPDATE=1"},
+  "machine_update.min_interval": {"repo": "ARMOR-SERVER", "file": "src/routes/machine_update.ts", "pattern": "APPLY_MIN_INTERVAL_MS = 5 \\* 60_000", "says": "the server accepts at most one update of the machine every five minutes"},
+  "machine_update.plan_ttl": {"repo": "ARMOR-DEVOPS", "file": "scripts/armor_maintenance_agent.py", "pattern": "UPDATER_PLAN_TTL_S = 300", "says": "the plan of an update handed out by the preview is good for five minutes"},
+  "machine_update.admin_elevated": {"repo": "ARMOR-SERVER", "file": "src/routes/machine_update.ts", "pattern": "machine-update/apply\", requireAdmin, context\\.requireElevated", "says": "applying an update needs an administrator and a fresh proof of identity"}
 }

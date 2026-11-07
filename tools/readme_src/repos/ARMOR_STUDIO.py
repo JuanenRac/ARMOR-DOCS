@@ -1186,7 +1186,20 @@ UX_BULLET = {
 for _lg in UX_BULLET:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [UX_BULLET[_lg]]
 
-NT = "1446"
+MACHINE_UPDATE_BULLET = {
+    'en': '**Programs of the machine from the phone, shown in Studio:** Configuration > Updates has a card that says whether the programs of the machine can be updated from the phone (on or off, and why), how to turn it on (`ARMOR_CM5_UPDATE` on the server and `ARMOR_MAINT_UPDATER` on the helper), which programs it covers, whether a signature is required and the recent activity of the audit log. The card only shows: the switches live in the environment of the server.',
+    'es': '**Programas del equipo desde el móvil, vistos en Studio:** Configuración > Actualizaciones tiene una tarjeta que dice si los programas del equipo se pueden actualizar desde el móvil (activado o no, y por qué), cómo encenderlo (`ARMOR_CM5_UPDATE` en el servidor y `ARMOR_MAINT_UPDATER` en el ayudante), qué programas abarca, si exige firma y la actividad reciente del registro de auditoría. La tarjeta solo muestra: los interruptores viven en el entorno del servidor.',
+    'de': '**Programme der Maschine vom Handy aus, in Studio angezeigt:** Konfiguration > Updates hat eine Karte, die sagt, ob die Programme der Maschine vom Handy aus aktualisiert werden können (an oder aus, und warum), wie man es einschaltet (`ARMOR_CM5_UPDATE` auf dem Server und `ARMOR_MAINT_UPDATER` beim Helfer), welche Programme es umfasst, ob eine Signatur verlangt wird und die jüngste Aktivität des Audit-Protokolls. Die Karte zeigt nur an: Die Schalter liegen in der Umgebung des Servers.',
+    'fr': "**Programmes de la machine depuis le téléphone, vus dans Studio :** Configuration > Mises à jour a une carte qui dit si les programmes de la machine peuvent être mis à jour depuis le téléphone (activé ou non, et pourquoi), comment l'activer (`ARMOR_CM5_UPDATE` sur le serveur et `ARMOR_MAINT_UPDATER` chez l'assistant), quels programmes elle couvre, si une signature est exigée et l'activité récente du journal d'audit. La carte ne fait qu'afficher : les interrupteurs sont dans l'environnement du serveur.",
+    'it': "**Programmi della macchina dal telefono, visti in Studio:** Configurazione > Aggiornamenti ha una scheda che dice se i programmi della macchina si possono aggiornare dal telefono (attivo o no, e perché), come accenderlo (`ARMOR_CM5_UPDATE` sul server e `ARMOR_MAINT_UPDATER` sull'assistente), quali programmi copre, se è richiesta la firma e l'attività recente del registro di audit. La scheda si limita a mostrare: gli interruttori stanno nell'ambiente del server.",
+    'ja': '**スマートフォンから行う本体のプログラム更新を Studio で確認:** 設定 > アップデート に、本体のプログラムをスマートフォンから更新できるか（オンかオフか、その理由）、有効にする方法（サーバー側の `ARMOR_CM5_UPDATE` とヘルパー側の `ARMOR_MAINT_UPDATER`）、対象のプログラム、署名が必要か、監査ログの最近の動きを示すカードがあります。カードは表示するだけで、スイッチはサーバーの環境にあります。',
+    'zh': '**在 Studio 中查看从手机更新设备程序的状态：** 配置 > 更新 中有一张卡片，说明是否可以从手机更新设备的程序（开或关及原因）、如何开启（服务器上的 `ARMOR_CM5_UPDATE` 和助手上的 `ARMOR_MAINT_UPDATER`）、涵盖哪些程序、是否要求签名，以及审计日志的近期活动。卡片只负责显示：开关位于服务器的环境中。',
+    'pt': '**Programas do equipamento a partir do telemóvel, vistos no Studio:** Configuração > Atualizações tem um cartão que diz se os programas do equipamento se podem atualizar a partir do telemóvel (ligado ou não, e porquê), como o ligar (`ARMOR_CM5_UPDATE` no servidor e `ARMOR_MAINT_UPDATER` no ajudante), que programas abrange, se exige assinatura e a atividade recente do registo de auditoria. O cartão só mostra: os interruptores vivem no ambiente do servidor.',
+}
+for _lg in MACHINE_UPDATE_BULLET:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [MACHINE_UPDATE_BULLET[_lg]]
+
+NT = "1495"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 # the claims of the previous README that the code no longer supports, corrected in every language

@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The update of the machine from the phone is written down and checked:** the security baseline says it is off unless `ARMOR_CM5_UPDATE=1`, that it needs an administrator and a fresh proof of identity, that the plan of the preview is good once for five minutes and that one update is accepted every five minutes, each sentence with its marker against the code; the interfaces and capability tables get their row, with what has not been tried on the real helper.
 - **Six more sentences of the security pages are checked against the code:** the limit on the size of an ordinary request body, the time a diagnostic token lives (five minutes to twenty-four hours, two hours when none is said) and how many may be active at a time, the limits on the sign-in tries of each person and place, and how long a Studio session lasts.
 
 ## [0.8.1.8] - The test counters of the READMEs are read, not typed: {{fact:unittest:ARMOR-X}} (the same count as tests:), {{fact:ctestcpp:ARMOR-NODE-X}} (the host test programs a node registers with CTest) and... (and 1 more changes)

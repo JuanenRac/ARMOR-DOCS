@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 MAX_BYTES = 400 * 1024
-MAX_SHOTS = 8
+MAX_SHOTS = 10
 LANGS = ("en", "es", "fr", "it", "de", "zh", "ja", "pt")
 RELATIVE = Path("docs") / "screenshots.json"
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"

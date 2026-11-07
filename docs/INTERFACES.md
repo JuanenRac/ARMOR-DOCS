@@ -29,6 +29,7 @@
 | Server | Alarm messages: the Telegram bot API and a Home Assistant webhook | Telegram, Home Assistant | Tokens in the server's environment file, never in an answer or the audit trail |
 | Observation service | Camera list and policy questions, `camera_motion` alarms | Server | A token of its own on `/api/v1/ai/*` |
 | Studio | Services, broker and configuration files | Administration agent of the machine | A Unix socket for the `armor` group and a closed list of actions |
+| Studio, Android, iOS | `GET /api/v1/admin/machine-update` (whether it is on), `POST .../preview`, `POST .../apply`, `GET .../jobs/:id`: check and update the programs of the machine through the maintenance agent | Server, which passes it to the agent | Off unless `ARMOR_CM5_UPDATE=1`; administrators only; the apply step needs a fresh proof of identity, the plan of the preview and the project typed again |
 
 The contracts live in **ARMOR-COMMON**: JSON Schemas (`telemetry`, `health`, `command`, `info`, `solar_inverter`, `solar_battery`, `electrical`, `electrical_command`, `electrical_result`, `node_control_command`, `node_control_result`, `network`, `network_orders`, `alarm`, `alarm_command`, `alarm_result`, `alarm_zone_feed`, `device_state`, `server_alert`), the
 OpenAPI file for the server, <!--fact:vectors-->1387<!--/fact--> conformance vectors (the server API, including `/history` and `/rules`, is in `armor-server.yaml`) and generated TypeScript and Kotlin types. Any
