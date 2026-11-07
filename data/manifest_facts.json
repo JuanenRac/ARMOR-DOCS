@@ -12,7 +12,7 @@
     "app/build.gradle.kts": "0.8.0.5"
    },
    "tests_present": true,
-   "unreleased_entries": 1
+   "unreleased_entries": 3
   },
   "ARMOR-COMMON": {
    "changelog_head": "0.8.1.1",
@@ -26,7 +26,7 @@
     "pyproject.toml": "0.8.1.1"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 2
   },
   "ARMOR-DEVOPS": {
    "changelog_head": "0.7.3",
@@ -38,25 +38,25 @@
    "maturity": "established",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 3
   },
   "ARMOR-DOCS": {
    "changelog_head": "0.8.1.8",
    "ci_simulation": true,
-   "evidence": "host-test",
+   "evidence": "simulator",
    "hardware_bound": false,
    "latest_release": "v0.8.1.8",
    "manifest_version": "0.8.1.8",
    "maturity": "established",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 1
+   "unreleased_entries": 3
   },
   "ARMOR-HARDWARE": {
    "changelog_head": "0.2.8",
    "ci_simulation": true,
-   "evidence": "host-test",
-   "hardware_bound": true,
+   "evidence": "simulator",
+   "hardware_bound": false,
    "latest_release": "v0.2.8",
    "manifest_version": "0.2.8",
    "maturity": "functional",
@@ -74,7 +74,7 @@
    "maturity": "scaffolding",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 2
   },
   "ARMOR-NETWORK": {
    "changelog_head": "0.1.7",
@@ -101,7 +101,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-NODE-ELECTRICAL": {
    "changelog_head": "0.5.6",
@@ -113,7 +113,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 3
   },
   "ARMOR-NODE-HMI": {
    "changelog_head": "0.4.6",
@@ -125,7 +125,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 2
   },
   "ARMOR-NODE-RADAR": {
    "changelog_head": "0.8.1.0",
@@ -137,7 +137,7 @@
    "maturity": "established",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 3
   },
   "ARMOR-NODE-SOLAR": {
    "changelog_head": "0.6.4",
@@ -149,7 +149,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 2
   },
   "ARMOR-SERVER": {
    "changelog_head": "0.8.2.0",
@@ -163,7 +163,7 @@
     "package.json": "0.8.2.0"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 3
   },
   "ARMOR-SERVER-AI": {
    "changelog_head": "0.3.2",
@@ -193,27 +193,27 @@
     "src/armor_simulator/__init__.py": "0.3.6"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 7
   },
   "ARMOR-STUDIO": {
-   "changelog_head": "0.8.2.1",
+   "changelog_head": "0.8.2.3",
    "ci_simulation": true,
    "evidence": "bench",
    "hardware_bound": true,
-   "latest_release": "v0.8.2.1",
-   "manifest_version": "0.8.2.1",
+   "latest_release": "v0.8.2.3",
+   "manifest_version": "0.8.2.3",
    "maturity": "established",
    "native": {
-    "package.json": "0.8.2.1"
+    "package.json": "0.8.2.3"
    },
    "tests_present": true,
-   "unreleased_entries": 5
+   "unreleased_entries": 2
   },
   "ARMOR-UPDATER": {
    "changelog_head": "0.2.1",
    "ci_simulation": true,
-   "evidence": "host-test",
-   "hardware_bound": true,
+   "evidence": "simulator",
+   "hardware_bound": false,
    "latest_release": "v0.2.1",
    "manifest_version": "0.2.1",
    "maturity": "established",
@@ -222,7 +222,7 @@
     "src/armor_updater/__init__.py": "0.2.1"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 1
   },
   "ARMOR-VISION": {
    "changelog_head": "0.1.4",
@@ -237,7 +237,7 @@
     "src/armor_vision/__init__.py": "0.1.4"
    },
    "tests_present": true,
-   "unreleased_entries": 1
+   "unreleased_entries": 3
   },
   "ARMOR-VOICE-AI": {
    "changelog_head": "0.3.4",
@@ -252,7 +252,7 @@
     "src/armor_voice_ai/__init__.py": "0.3.4"
    },
    "tests_present": true,
-   "unreleased_entries": 1
+   "unreleased_entries": 2
   }
  }
 }
