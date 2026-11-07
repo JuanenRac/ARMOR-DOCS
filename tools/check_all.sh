@@ -31,7 +31,7 @@ run() {
   if ( cd "$ROOT/$name" && "$@" ) >"$LOGS/$name.log" 2>&1; then
     report "$name" PASS "$(grep -E '(passed|Ran [0-9]+ tests|[0-9]+ checks|Tests +[0-9]+ passed|ℹ pass [0-9]+)' "$LOGS/$name.log" | tail -1 | sed 's/^ *//')"
   else
-    report "$name" FAIL "see below"; sed 's/^/    | /' "$LOGS/$name.log" | tail -25
+    report "$name" FAIL "see below"; sed 's/^/    | /' "$LOGS/$name.log" | grep -v -E "^ *(universal_readme|UNIVERSAL_README)" | tail -60
   fi
 }
 skip() { report "$1" SKIP "$2"; }
