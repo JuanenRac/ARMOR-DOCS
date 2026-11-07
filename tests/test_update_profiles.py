@@ -22,7 +22,7 @@ class UpdateProfilesTests(unittest.TestCase):
 
     def test_every_profile_has_its_texts_in_eight_languages_and_components_of_the_registry(self):
         ids = [item["id"] for item in self.data["profiles"]]
-        self.assertEqual(ids, ["cm5", "operator-pc", "development-pc"])
+        self.assertEqual(ids, ["cm5", "cm5-minimal", "cm5-standard", "cm5-complete", "operator-pc", "development-pc"])
         for item in self.data["profiles"]:
             self.assertEqual(set(item["title"]), LANGUAGES, item["id"])
             self.assertEqual(set(item["description"]), LANGUAGES, item["id"])
@@ -32,6 +32,9 @@ class UpdateProfilesTests(unittest.TestCase):
     def test_the_roles_have_the_proposed_composition(self):
         by_id = {item["id"]: item for item in self.data["profiles"]}
         self.assertEqual(by_id["cm5"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-NETWORK", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-VISION", "ARMOR-DEVOPS"])
+        self.assertEqual(by_id["cm5-minimal"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-COMMON"])
+        self.assertEqual(by_id["cm5-standard"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-COMMON", "ARMOR-UPDATER", "ARMOR-DEVOPS", "ARMOR-VISION", "ARMOR-NETWORK"])
+        self.assertTrue(set(by_id["cm5-complete"]["components"]) >= set(by_id["cm5-standard"]["components"]) | set(by_id["cm5"]["components"]))
         self.assertEqual(by_id["operator-pc"]["components"], ["ARMOR-STUDIO", "ARMOR-UPDATER"])
         self.assertTrue(by_id["development-pc"]["all_installable"])
         self.assertIn("ARMOR-SIMULATOR", by_id["development-pc"]["components"])
