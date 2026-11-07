@@ -73,10 +73,10 @@ class ShotsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             shots.section("en", repo)
 
-    def test_more_than_eight_screens_or_a_repeated_one_are_refused(self):
+    def test_more_screens_than_the_limit_or_a_repeated_one_are_refused(self):
         many = [screen(f"s{i}.png") for i in range(shots.MAX_SHOTS + 1)]
         repo = self.make_repo(many, {f"s{i}.png": PNG for i in range(shots.MAX_SHOTS + 1)})
-        self.assertTrue(any("at most 8" in problem for problem in shots.problems(repo)))
+        self.assertTrue(any(f"at most {shots.MAX_SHOTS}" in problem for problem in shots.problems(repo)))
         twice = self.make_repo([screen(), screen()], {"overview.png": PNG})
         self.assertTrue(any("listed twice" in problem for problem in shots.problems(twice)))
 
