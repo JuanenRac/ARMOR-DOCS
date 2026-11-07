@@ -61,7 +61,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "99511%20checks",
+      "99716%20checks",
       "2ea44f",
     ],
   ],
@@ -70,7 +70,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "The touch panel of the house: a 7-inch screen on the wall that shows the state of the system, arms and disarms it and acknowledges alarms, with a microphone and a speaker for the voice assistant to come (a node of the family on the ESP32-S3-Touch-LCD-7C-BOX, with its own web page for the settings)",
-    "honest": "What does not depend on the board is real and tested on a computer (the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice conversation and the long answer of the speech service, the board's pins, the words of the screen in eight languages and the glyphs of its fonts, the release and signature checks: 99,511 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} test programs) and so is the web page (run against a stand-in in a real browser). **The firmware has been built once (ESP-IDF 5.5.5, not checked by the continuous integration) and has never run on a board:** the screen, the touch, the sound and the link to the server are written from Waveshare's examples for this family of boards and need their first power-up. The speech service (ARMOR-VOICE-AI) answers this panel's requests, there is no wake word: it is push to talk.",
+    "honest": "What does not depend on the board is real and tested on a computer (the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice conversation and the long answer of the speech service, the board's pins, the words of the screen in eight languages and the glyphs of its fonts, the release and signature checks: 99,716 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} test programs) and so is the web page (run against a stand-in in a real browser). **The firmware has been built once (ESP-IDF 5.5.5, not checked by the continuous integration) and has never run on a board:** the screen, the touch, the sound and the link to the server are written from Waveshare's examples for this family of boards and need their first power-up. The speech service (ARMOR-VOICE-AI) answers this panel's requests, there is no wake word: it is push to talk.",
     "glance": [
       [
         "Role",
@@ -82,7 +82,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "99511 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} host programs and {{fact:ctest_python:ARMOR-NODE-HMI}} Python checks (`ctest`)",
+        "99716 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} host programs and {{fact:ctest_python:ARMOR-NODE-HMI}} Python checks (`ctest`)",
       ],
       [
         "Board",
@@ -103,7 +103,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.",
-      "tests": "99,511 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} host programs pass (`ctest`): the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice exchange, the pins, the words of the screen in eight languages and the glyphs of its fonts.",
+      "tests": "99,716 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} host programs pass (`ctest`): the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice exchange, the pins, the words of the screen in eight languages and the glyphs of its fonts.",
       "protocols": "The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, with no wake word.",
       "ui": "The web page runs against a stand-in in a real browser; the screen, the touch and the sound are written from Waveshare's examples and wait for their first power-up.",
       "hardware": "The firmware has not run on the board: nothing has run on real equipment yet.",
@@ -203,7 +203,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} host test programs and {{fact:ctest_python:ARMOR-NODE-HMI}} Python checks run under `ctest`; 99511 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} host test programs and {{fact:ctest_python:ARMOR-NODE-HMI}} Python checks run under `ctest`; 99716 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -269,7 +269,7 @@ ARMOR-NODE-HMI/
   },
   "es": {
     "tagline": "El panel táctil de la casa: una pantalla de 7 pulgadas en la pared que muestra el estado del sistema, lo arma y desarma y reconoce alarmas, con micrófono y altavoz para el asistente de voz que vendrá (un nodo de la familia en la ESP32-S3-Touch-LCD-7C-BOX, con su propia página web de ajustes)",
-    "honest": "Lo que no depende de la placa es real y está probado en un ordenador (los ajustes, lo que el panel sabe del servidor y cuándo está desfasado, la alarma de coacción que nunca se muestra, la conversación de voz y la respuesta larga del servicio de voz, los pines de la placa, los textos de la pantalla en ocho idiomas y los glifos de sus fuentes, las comprobaciones de versión y firma: 99,511 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de test) y también lo está la página web (ejecutada contra un sustituto en un navegador real). **El firmware se ha compilado una vez (ESP-IDF 5.5.5, que la integración continua no comprueba) y nunca ha corrido en una placa:** la pantalla, el táctil, el sonido y el enlace con el servidor están escritos a partir de los ejemplos de Waveshare para esta familia de placas y necesitan su primer encendido. El servicio de voz (ARMOR-VOICE-AI) atiende las peticiones de este panel; no hay palabra de activación: es pulsar para hablar.",
+    "honest": "Lo que no depende de la placa es real y está probado en un ordenador (los ajustes, lo que el panel sabe del servidor y cuándo está desfasado, la alarma de coacción que nunca se muestra, la conversación de voz y la respuesta larga del servicio de voz, los pines de la placa, los textos de la pantalla en ocho idiomas y los glifos de sus fuentes, las comprobaciones de versión y firma: 99,716 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de test) y también lo está la página web (ejecutada contra un sustituto en un navegador real). **El firmware se ha compilado una vez (ESP-IDF 5.5.5, que la integración continua no comprueba) y nunca ha corrido en una placa:** la pantalla, el táctil, el sonido y el enlace con el servidor están escritos a partir de los ejemplos de Waveshare para esta familia de placas y necesitan su primer encendido. El servicio de voz (ARMOR-VOICE-AI) atiende las peticiones de este panel; no hay palabra de activación: es pulsar para hablar.",
     "glance": [
       [
         "Función",
@@ -281,7 +281,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "Pruebas",
-        "99511 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de host y {{fact:ctest_python:ARMOR-NODE-HMI}} de Python (`ctest`)",
+        "99716 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de host y {{fact:ctest_python:ARMOR-NODE-HMI}} de Python (`ctest`)",
       ],
       [
         "Placa",
@@ -402,7 +402,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-HMI}} comprobaciones en Python se ejecutan con `ctest`; 99511 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-HMI}} comprobaciones en Python se ejecutan con `ctest`; 99716 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -468,7 +468,7 @@ ARMOR-NODE-HMI/
   },
   "de": {
     "tagline": "Das Touch-Panel des Hauses: ein 7-Zoll-Bildschirm an der Wand, der den Systemzustand zeigt, es scharf und unscharf schaltet und Alarme quittiert, mit Mikrofon und Lautsprecher für den kommenden Sprachassistenten (ein Knoten der Familie auf dem ESP32-S3-Touch-LCD-7C-BOX mit eigener Webseite für die Einstellungen)",
-    "honest": "Was nicht von der Platine abhängt, ist real und auf einem Computer getestet (die Einstellungen, was das Panel vom Server weiß und wann das veraltet ist, der Zwangsalarm, der nie angezeigt wird, das Sprachgespräch und die lange Antwort des Sprachdienstes, die Pins der Platine, die Texte des Bildschirms in acht Sprachen und die Glyphen seiner Schriften, die Release- und Signaturprüfungen: 99,511 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-HMI}} Testprogrammen), ebenso die Webseite (gegen einen Ersatz in einem echten Browser ausgeführt). **Die Firmware wurde einmal gebaut (ESP-IDF 5.5.5, von der kontinuierlichen Integration nicht geprüft) und lief nie auf einer Platine:** Bildschirm, Touch, Ton und die Verbindung zum Server sind nach Waveshares Beispielen für diese Platinenfamilie geschrieben und brauchen ihr erstes Einschalten. Der Sprachdienst (ARMOR-VOICE-AI) beantwortet die Anfragen dieses Panels; es gibt kein Aktivierungswort: Man tippt zum Sprechen.",
+    "honest": "Was nicht von der Platine abhängt, ist real und auf einem Computer getestet (die Einstellungen, was das Panel vom Server weiß und wann das veraltet ist, der Zwangsalarm, der nie angezeigt wird, das Sprachgespräch und die lange Antwort des Sprachdienstes, die Pins der Platine, die Texte des Bildschirms in acht Sprachen und die Glyphen seiner Schriften, die Release- und Signaturprüfungen: 99,716 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-HMI}} Testprogrammen), ebenso die Webseite (gegen einen Ersatz in einem echten Browser ausgeführt). **Die Firmware wurde einmal gebaut (ESP-IDF 5.5.5, von der kontinuierlichen Integration nicht geprüft) und lief nie auf einer Platine:** Bildschirm, Touch, Ton und die Verbindung zum Server sind nach Waveshares Beispielen für diese Platinenfamilie geschrieben und brauchen ihr erstes Einschalten. Der Sprachdienst (ARMOR-VOICE-AI) beantwortet die Anfragen dieses Panels; es gibt kein Aktivierungswort: Man tippt zum Sprechen.",
     "glance": [
       [
         "Rolle",
@@ -480,7 +480,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "Tests",
-        "99511 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-HMI}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-HMI}} Python-Prüfungen (`ctest`)",
+        "99716 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-HMI}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-HMI}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Platine",
@@ -601,7 +601,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-HMI}} Python-Prüfungen laufen unter `ctest`; 99511 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-HMI}} Python-Prüfungen laufen unter `ctest`; 99716 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -667,7 +667,7 @@ ARMOR-NODE-HMI/
   },
   "fr": {
     "tagline": "Le panneau tactile de la maison : un écran de 7 pouces au mur qui montre l'état du système, l'arme et le désarme et acquitte les alarmes, avec un micro et un haut-parleur pour l'assistant vocal à venir (un nœud de la famille sur l'ESP32-S3-Touch-LCD-7C-BOX, avec sa propre page web de réglages)",
-    "honest": "Ce qui ne dépend pas de la carte est réel et testé sur un ordinateur (les réglages, ce que le panneau sait du serveur et quand cela est périmé, l'alarme de contrainte qui n'est jamais affichée, la conversation vocale et la longue réponse du service vocal, les broches de la carte, les textes de l'écran en huit langues et les glyphes de ses polices, les contrôles de version et de signature : 99,511 vérifications en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes de test), de même que la page web (exécutée contre un substitut dans un vrai navigateur). **Le firmware a été compilé une fois (ESP-IDF 5.5.5, non vérifié par l'intégration continue) et n'a jamais tourné sur une carte :** l'écran, le tactile, le son et la liaison avec le serveur sont écrits d'après les exemples de Waveshare pour cette famille de cartes et attendent leur première mise sous tension. Le service vocal (ARMOR-VOICE-AI) répond aux requêtes de ce panneau ; il n'y a pas de mot d'activation : c'est appuyer pour parler.",
+    "honest": "Ce qui ne dépend pas de la carte est réel et testé sur un ordinateur (les réglages, ce que le panneau sait du serveur et quand cela est périmé, l'alarme de contrainte qui n'est jamais affichée, la conversation vocale et la longue réponse du service vocal, les broches de la carte, les textes de l'écran en huit langues et les glyphes de ses polices, les contrôles de version et de signature : 99,716 vérifications en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes de test), de même que la page web (exécutée contre un substitut dans un vrai navigateur). **Le firmware a été compilé une fois (ESP-IDF 5.5.5, non vérifié par l'intégration continue) et n'a jamais tourné sur une carte :** l'écran, le tactile, le son et la liaison avec le serveur sont écrits d'après les exemples de Waveshare pour cette famille de cartes et attendent leur première mise sous tension. Le service vocal (ARMOR-VOICE-AI) répond aux requêtes de ce panneau ; il n'y a pas de mot d'activation : c'est appuyer pour parler.",
     "glance": [
       [
         "Rôle",
@@ -679,7 +679,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "Tests",
-        "99511 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-HMI}} contrôles Python (`ctest`)",
+        "99716 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-HMI}} contrôles Python (`ctest`)",
       ],
       [
         "Carte",
@@ -800,7 +800,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-HMI}} contrôles Python tournent sous `ctest` ; 99511 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-HMI}} contrôles Python tournent sous `ctest` ; 99716 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -866,7 +866,7 @@ ARMOR-NODE-HMI/
   },
   "it": {
     "tagline": "Il pannello touch della casa: uno schermo da 7 pollici a parete che mostra lo stato del sistema, lo attiva e disattiva e riconosce gli allarmi, con microfono e altoparlante per l'assistente vocale che arriverà (un nodo della famiglia sull'ESP32-S3-Touch-LCD-7C-BOX, con la sua pagina web per le impostazioni)",
-    "honest": "Ciò che non dipende dalla scheda è reale e provato su un computer (le impostazioni, ciò che il pannello sa del server e quando è obsoleto, l'allarme di coercizione che non viene mai mostrato, la conversazione vocale e la lunga risposta del servizio vocale, i pin della scheda, i testi dello schermo in otto lingue e i glifi dei suoi caratteri, i controlli di versione e firma: 99,511 verifiche in {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi di test) e lo è anche la pagina web (eseguita contro un sostituto in un browser reale). **Il firmware è stato compilato una volta (ESP-IDF 5.5.5, non verificato dall'integrazione continua) e non è mai girato su una scheda:** lo schermo, il touch, l'audio e il collegamento al server sono scritti dagli esempi di Waveshare per questa famiglia di schede e attendono la prima accensione. Il servizio vocale (ARMOR-VOICE-AI) risponde alle richieste di questo pannello; non c'è una parola di attivazione: si tocca per parlare.",
+    "honest": "Ciò che non dipende dalla scheda è reale e provato su un computer (le impostazioni, ciò che il pannello sa del server e quando è obsoleto, l'allarme di coercizione che non viene mai mostrato, la conversazione vocale e la lunga risposta del servizio vocale, i pin della scheda, i testi dello schermo in otto lingue e i glifi dei suoi caratteri, i controlli di versione e firma: 99,716 verifiche in {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi di test) e lo è anche la pagina web (eseguita contro un sostituto in un browser reale). **Il firmware è stato compilato una volta (ESP-IDF 5.5.5, non verificato dall'integrazione continua) e non è mai girato su una scheda:** lo schermo, il touch, l'audio e il collegamento al server sono scritti dagli esempi di Waveshare per questa famiglia di schede e attendono la prima accensione. Il servizio vocale (ARMOR-VOICE-AI) risponde alle richieste di questo pannello; non c'è una parola di attivazione: si tocca per parlare.",
     "glance": [
       [
         "Ruolo",
@@ -878,7 +878,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "Test",
-        "99511 verifiche in {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi host e {{fact:ctest_python:ARMOR-NODE-HMI}} verifiche Python (`ctest`)",
+        "99716 verifiche in {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi host e {{fact:ctest_python:ARMOR-NODE-HMI}} verifiche Python (`ctest`)",
       ],
       [
         "Scheda",
@@ -999,7 +999,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-HMI}} verifiche Python girano con `ctest`; 99511 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-HMI}} verifiche Python girano con `ctest`; 99716 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1065,7 +1065,7 @@ ARMOR-NODE-HMI/
   },
   "ja": {
     "tagline": "家のタッチパネル：壁に掛ける7インチ画面でシステムの状態を表示し、警戒・解除とアラームの確認ができ、将来の音声アシスタント用にマイクとスピーカーを備えています（ESP32-S3-Touch-LCD-7C-BOX 上のファミリーのノードで、設定用の専用Webページ付き）",
-    "honest": "ボードに依存しない部分は実在し、コンピューター上でテストされています（設定、パネルがサーバーについて知っていることとそれが古くなる時点、決して表示されない強要警報、音声会話と音声サービスの長い応答、ボードのピン、8言語の画面テキストとフォントのグリフ、リリースと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-HMI}} のテストプログラムで 99,511 項目）。Webページも同様です（実ブラウザで代替機に対して実行）。**ファームウェアは一度ビルドされましたが（ESP-IDF 5.5.5、継続的インテグレーションでは確認していません）、ボード上で動作したことはありません。**画面、タッチ、音、サーバーとの接続は、このボード系列向けの Waveshare のサンプルをもとに書かれており、初めての電源投入が必要です。音声サービス（ARMOR-VOICE-AI）はこのパネルの要求に応答します。ウェイクワードはなく、タッチして話します。",
+    "honest": "ボードに依存しない部分は実在し、コンピューター上でテストされています（設定、パネルがサーバーについて知っていることとそれが古くなる時点、決して表示されない強要警報、音声会話と音声サービスの長い応答、ボードのピン、8言語の画面テキストとフォントのグリフ、リリースと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-HMI}} のテストプログラムで 99,716 項目）。Webページも同様です（実ブラウザで代替機に対して実行）。**ファームウェアは一度ビルドされましたが（ESP-IDF 5.5.5、継続的インテグレーションでは確認していません）、ボード上で動作したことはありません。**画面、タッチ、音、サーバーとの接続は、このボード系列向けの Waveshare のサンプルをもとに書かれており、初めての電源投入が必要です。音声サービス（ARMOR-VOICE-AI）はこのパネルの要求に応答します。ウェイクワードはなく、タッチして話します。",
     "glance": [
       [
         "役割",
@@ -1077,7 +1077,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "テスト",
-        "99511 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-HMI}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-HMI}} 個、`ctest`）",
+        "99716 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-HMI}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-HMI}} 個、`ctest`）",
       ],
       [
         "基板",
@@ -1098,7 +1098,7 @@ ARMOR-NODE-HMI/
     ],
     "status": {
       "software": "ファームウェアはビルドできます（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} のホストプログラムで 99,511 件のチェックが通ります（`ctest`）：設定、パネルがサーバーについて知っていることとその古さ、決して表示しない脅迫警報、音声のやり取り、ピン、8 言語の画面文言とフォントのグリフ。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} のホストプログラムで 99,716 件のチェックが通ります（`ctest`）：設定、パネルがサーバーについて知っていることとその古さ、決して表示しない脅迫警報、音声のやり取り、ピン、8 言語の画面文言とフォントのグリフ。",
       "protocols": "サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、ウェイクワードはありません。",
       "ui": "Web ページは実ブラウザーで模擬に対して動かしました。画面、タッチ、音声は Waveshare のサンプルをもとに書いたもので、初回の電源投入を待っています。",
       "hardware": "ファームウェアはボード上で動かしていません。実機ではまだ何も動かしていません。",
@@ -1198,7 +1198,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-HMI}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 99511 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-HMI}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 99716 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1264,7 +1264,7 @@ ARMOR-NODE-HMI/
   },
   "zh": {
     "tagline": "家用触摸面板：挂在墙上的7英寸屏幕，显示系统状态、布防与撤防并确认警报，配有麦克风和扬声器供将来的语音助手使用（家族中基于 ESP32-S3-Touch-LCD-7C-BOX 的节点，带有自己的设置网页）",
-    "honest": "不依赖板子的部分是真实的，并已在计算机上测试（设置、面板对服务器的了解及其何时过期、永不显示的胁迫告警、语音对话和语音服务的长回复、板子的引脚、八种语言的屏幕文字及其字体字形、发布与签名检查：{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个测试程序共 99,511 项检查），网页也是如此（在真实浏览器中对替身运行）。**固件已构建过一次（ESP-IDF 5.5.5，持续集成不检查），但从未在板上运行：**屏幕、触摸、声音和与服务器的连接是根据 Waveshare 对这一系列板子的示例编写的，等待首次上电。语音服务（ARMOR-VOICE-AI）会应答此面板的请求；没有唤醒词，需点按说话。",
+    "honest": "不依赖板子的部分是真实的，并已在计算机上测试（设置、面板对服务器的了解及其何时过期、永不显示的胁迫告警、语音对话和语音服务的长回复、板子的引脚、八种语言的屏幕文字及其字体字形、发布与签名检查：{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个测试程序共 99,716 项检查），网页也是如此（在真实浏览器中对替身运行）。**固件已构建过一次（ESP-IDF 5.5.5，持续集成不检查），但从未在板上运行：**屏幕、触摸、声音和与服务器的连接是根据 Waveshare 对这一系列板子的示例编写的，等待首次上电。语音服务（ARMOR-VOICE-AI）会应答此面板的请求；没有唤醒词，需点按说话。",
     "glance": [
       [
         "角色",
@@ -1276,7 +1276,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "测试",
-        "99511 项检查（{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-HMI}} 项 Python 检查，`ctest`）",
+        "99716 项检查（{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-HMI}} 项 Python 检查，`ctest`）",
       ],
       [
         "电路板",
@@ -1297,7 +1297,7 @@ ARMOR-NODE-HMI/
     ],
     "status": {
       "software": "固件可以构建（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机程序中的 99,511 项检查通过（`ctest`）：设置、面板对服务器的了解及其何时过期、从不显示的胁迫报警、语音交换、引脚、屏幕上八种语言的文字及其字体的字形。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机程序中的 99,716 项检查通过（`ctest`）：设置、面板对服务器的了解及其何时过期、从不显示的胁迫报警、语音交换、引脚、屏幕上八种语言的文字及其字体的字形。",
       "protocols": "与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，没有唤醒词。",
       "ui": "网页已在真实浏览器中对模拟运行过；屏幕、触摸和声音依据 Waveshare 的示例编写，等待首次上电。",
       "hardware": "固件尚未在板子上运行过：还没有在真实设备上运行过。",
@@ -1397,7 +1397,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-HMI}} 个 Python 检查；主机程序统计的检查共 99511 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-HMI}} 个 Python 检查；主机程序统计的检查共 99716 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1463,7 +1463,7 @@ ARMOR-NODE-HMI/
   },
   "pt": {
     "tagline": "O painel tátil da casa: um ecrã de 7 polegadas na parede que mostra o estado do sistema, arma e desarma e reconhece alarmes, com um microfone e um altifalante para o assistente de voz que virá (um nó da família na ESP32-S3-Touch-LCD-7C-BOX, com a sua própria página web para as definições)",
-    "honest": "O que não depende da placa é real e está testado num computador (as definições, o que o painel sabe do servidor e quando está desatualizado, o alarme de coação que nunca é mostrado, a conversa de voz e a resposta longa do serviço de voz, os pinos da placa, os textos do ecrã em oito idiomas e os glifos das suas fontes, as verificações de versão e assinatura: 99,511 verificações em {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de teste), e a página web também (executada contra um substituto num navegador real). **O firmware foi compilado uma vez (ESP-IDF 5.5.5, não verificado pela integração contínua) e nunca correu numa placa:** o ecrã, o toque, o som e a ligação ao servidor estão escritos a partir dos exemplos da Waveshare para esta família de placas e precisam do primeiro arranque. O serviço de voz (ARMOR-VOICE-AI) responde aos pedidos deste painel; não há palavra de ativação: toca-se para falar.",
+    "honest": "O que não depende da placa é real e está testado num computador (as definições, o que o painel sabe do servidor e quando está desatualizado, o alarme de coação que nunca é mostrado, a conversa de voz e a resposta longa do serviço de voz, os pinos da placa, os textos do ecrã em oito idiomas e os glifos das suas fontes, as verificações de versão e assinatura: 99,716 verificações em {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de teste), e a página web também (executada contra um substituto num navegador real). **O firmware foi compilado uma vez (ESP-IDF 5.5.5, não verificado pela integração contínua) e nunca correu numa placa:** o ecrã, o toque, o som e a ligação ao servidor estão escritos a partir dos exemplos da Waveshare para esta família de placas e precisam do primeiro arranque. O serviço de voz (ARMOR-VOICE-AI) responde aos pedidos deste painel; não há palavra de ativação: toca-se para falar.",
     "glance": [
       [
         "Função",
@@ -1475,7 +1475,7 @@ ARMOR-NODE-HMI/
       ],
       [
         "Testes",
-        "99511 verificações em {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-HMI}} em Python (`ctest`)",
+        "99716 verificações em {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-HMI}} em Python (`ctest`)",
       ],
       [
         "Placa",
@@ -1596,7 +1596,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-HMI}} verificações Python correm com `ctest`; 99511 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-HMI}} verificações Python correm com `ctest`; 99716 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

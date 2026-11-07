@@ -60,7 +60,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "18014%20checks",
+      "18310%20checks",
       "2ea44f",
     ],
   ],
@@ -69,7 +69,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Solar gateway node: reads inverters and batteries through up to ten serial ports (ESP32-S3 firmware, its web panel and the protocol library)",
-    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 18,014 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
+    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 18,310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
     "glance": [
       [
         "Role",
@@ -81,7 +81,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "18014 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
+        "18310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -102,7 +102,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "18,014 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
+      "tests": "18,310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
       "protocols": "The Voltronic, Pylontech and ANT-BMS frames, checksums and readings are checked against the documented frames and recorded samples; none has talked to a real inverter or battery yet.",
       "ui": "The web panel is exercised in a browser against a mock of the node, not on a board.",
       "hardware": "No board built and no inverter or battery connected: nothing has run on real equipment yet.",
@@ -183,7 +183,9 @@ No frame has been read from a real inverter or battery; the formats are written 
 | `battery.write_enabled` | off | The node's lock for writing to a Pylontech battery (administrators, with the battery's service password, which never leaves the node) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | The board: ESP32-S3-WROOM-1 N16R8 on Wi-Fi (the default) or the Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | The settings every node shares: the name (empty gives `armor-` and the last bytes of the MAC), the set-up code (empty: random), the fleet secret (16+ characters, never in the repository), the first broker settings, the heartbeat (2 to 300 s), the minutes of Bluetooth set-up (1 to 120) and the reset with BOOT (8 s in the first 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |
+| `security.ota_check_board` | on | Refuse an uploaded firmware that was built for the other board (Wi-Fi or Ethernet); the image carries a mark of its board that the node reads while it arrives |
+| `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; an ESP32-S3-WROOM-1 N16R8 or a Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -200,7 +202,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 18014 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 18310 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -265,7 +267,7 @@ ARMOR-NODE-SOLAR/
   },
   "es": {
     "tagline": "Nodo pasarela solar: lee inversores y baterías por hasta diez puertos serie (firmware para ESP32-S3, su panel web y la biblioteca de protocolos)",
-    "honest": "El firmware compila en el contenedor ESP-IDF 5.5.5, su núcleo (los ajustes, el intercambio con cada tipo de equipo, la aritmética de la UART emulada, el canal Bluetooth, las comprobaciones de versión y firma: 18.014 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de test) se prueba en un ordenador con equipos de pega, los mensajes que hace los acepta ARMOR-COMMON y el panel se ejercitó en un navegador contra un nodo de pega. **Nunca ha corrido en una placa y no se ha conectado ningún inversor ni batería**: el Wi-Fi, el panel sobre TLS, la actualización, las UART de hardware y emuladas y los formatos de los protocolos (escritos a partir de documentos públicos y de memoria) están sin probar. Las tramas ANT-BMS de sus tests las capturaron otras personas en sus propias unidades: este proyecto no ha leído ninguna por sí mismo.",
+    "honest": "El firmware compila en el contenedor ESP-IDF 5.5.5, su núcleo (los ajustes, el intercambio con cada tipo de equipo, la aritmética de la UART emulada, el canal Bluetooth, las comprobaciones de versión y firma: 18.310 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de test) se prueba en un ordenador con equipos de pega, los mensajes que hace los acepta ARMOR-COMMON y el panel se ejercitó en un navegador contra un nodo de pega. **Nunca ha corrido en una placa y no se ha conectado ningún inversor ni batería**: el Wi-Fi, el panel sobre TLS, la actualización, las UART de hardware y emuladas y los formatos de los protocolos (escritos a partir de documentos públicos y de memoria) están sin probar. Las tramas ANT-BMS de sus tests las capturaron otras personas en sus propias unidades: este proyecto no ha leído ninguna por sí mismo.",
     "glance": [
       [
         "Función",
@@ -277,7 +279,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Pruebas",
-        "18014 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
+        "18310 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -298,7 +300,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 18.014 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host (`ctest`): los ajustes, el intercambio con cada tipo de equipo, la UART emulada, el canal Bluetooth y las comprobaciones de versión.",
+      "tests": "Pasan 18.310 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host (`ctest`): los ajustes, el intercambio con cada tipo de equipo, la UART emulada, el canal Bluetooth y las comprobaciones de versión.",
       "protocols": "Las tramas, sumas de control y lecturas de Voltronic, Pylontech y ANT-BMS se comprueban contra las tramas documentadas y muestras grabadas; ninguno ha hablado todavía con un inversor o una batería reales.",
       "ui": "El panel web se ha ejercitado en un navegador contra una simulación del nodo, no en una placa.",
       "hardware": "Ninguna placa construida ni inversor o batería conectados: nada ha funcionado todavía con equipos reales.",
@@ -379,7 +381,9 @@ Ninguna trama se ha leído de un inversor o una batería reales; los formatos es
 | `battery.write_enabled` | off | El cerrojo del nodo para escribir en una batería Pylontech (administradores, con la contraseña de servicio de la batería, que nunca sale del nodo) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | La placa: ESP32-S3-WROOM-1 N16R8 por Wi-Fi (por defecto) o la Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Los ajustes que comparten todos los nodos: el nombre (vacío da `armor-` y los últimos bytes de la MAC), el código de puesta en marcha (vacío: aleatorio), el secreto de flota (16+ caracteres, nunca en el repositorio), los primeros ajustes del broker, el latido (de 2 a 300 s), los minutos de puesta en marcha por Bluetooth (de 1 a 120) y el reinicio con BOOT (8 s en los primeros 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |
+| `security.ota_check_board` | on | Rechazar un firmware subido hecho para la otra placa (Wi-Fi o Ethernet); la imagen lleva una marca de su placa que el nodo lee mientras llega |
+| `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una ESP32-S3-WROOM-1 N16R8 o una Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -396,7 +400,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 18014 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 18310 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -461,7 +465,7 @@ ARMOR-NODE-SOLAR/
   },
   "de": {
     "tagline": "Solar-Gateway-Knoten: liest Wechselrichter und Batterien über bis zu zehn serielle Ports (ESP32-S3-Firmware, sein Web-Panel und die Protokollbibliothek)",
-    "honest": "Die Firmware baut im ESP-IDF-5.5.5-Container, ihr Kern (die Einstellungen, der Austausch mit jeder Geräteart, die Arithmetik der emulierten UART, der Bluetooth-Kanal, die Versions- und Signaturprüfungen: 18.014 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Testprogrammen) wird auf einem Computer mit Ersatzgeräten getestet, die von ihr erzeugten Nachrichten akzeptiert ARMOR-COMMON, und das Panel wurde in einem Browser gegen einen Ersatzknoten geprüft. **Sie lief nie auf einer Platine, und es wurde kein Wechselrichter und keine Batterie angeschlossen**: das WLAN, das Panel über TLS, das Update, die Hardware- und die emulierten UARTs und die Formate der Protokolle (nach öffentlichen Dokumenten und aus dem Gedächtnis geschrieben) sind unerprobt. Die ANT-BMS-Rahmen in den Tests wurden von anderen Personen an ihren eigenen Geräten aufgezeichnet: dieses Projekt hat selbst noch keinen gelesen.",
+    "honest": "Die Firmware baut im ESP-IDF-5.5.5-Container, ihr Kern (die Einstellungen, der Austausch mit jeder Geräteart, die Arithmetik der emulierten UART, der Bluetooth-Kanal, die Versions- und Signaturprüfungen: 18.310 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Testprogrammen) wird auf einem Computer mit Ersatzgeräten getestet, die von ihr erzeugten Nachrichten akzeptiert ARMOR-COMMON, und das Panel wurde in einem Browser gegen einen Ersatzknoten geprüft. **Sie lief nie auf einer Platine, und es wurde kein Wechselrichter und keine Batterie angeschlossen**: das WLAN, das Panel über TLS, das Update, die Hardware- und die emulierten UARTs und die Formate der Protokolle (nach öffentlichen Dokumenten und aus dem Gedächtnis geschrieben) sind unerprobt. Die ANT-BMS-Rahmen in den Tests wurden von anderen Personen an ihren eigenen Geräten aufgezeichnet: dieses Projekt hat selbst noch keinen gelesen.",
     "glance": [
       [
         "Rolle",
@@ -473,7 +477,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "18014 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
+        "18310 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -494,7 +498,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "18.014 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen bestehen (`ctest`): die Einstellungen, der Austausch mit jeder Geräteart, die emulierte UART, der Bluetooth-Kanal und die Versionsprüfungen.",
+      "tests": "18.310 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen bestehen (`ctest`): die Einstellungen, der Austausch mit jeder Geräteart, die emulierte UART, der Bluetooth-Kanal und die Versionsprüfungen.",
       "protocols": "Die Telegramme, Prüfsummen und Messwerte von Voltronic, Pylontech und ANT-BMS werden gegen die dokumentierten Telegramme und aufgezeichnete Beispiele geprüft; keines hat bisher mit einem echten Wechselrichter oder einer echten Batterie gesprochen.",
       "ui": "Das Web-Panel wurde in einem Browser gegen eine Nachbildung des Knotens erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut und kein Wechselrichter oder keine Batterie angeschlossen: Bisher lief nichts auf echten Geräten.",
@@ -575,7 +579,9 @@ Es wurde noch kein Frame von einem echten Wechselrichter oder einer echten Batte
 | `battery.write_enabled` | off | Der Riegel des Knotens für das Schreiben auf eine Pylontech-Batterie (Administratoren, mit dem Servicepasswort der Batterie, das den Knoten nie verlässt) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | Die Platine: ESP32-S3-WROOM-1 N16R8 per WLAN (Standard) oder die Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Die Einstellungen, die alle Knoten teilen: der Name (leer ergibt `armor-` und die letzten Bytes der MAC), der Einrichtungscode (leer: zufällig), das Flottengeheimnis (16+ Zeichen, nie im Repository), die ersten Broker-Einstellungen, der Herzschlag (2 bis 300 s), die Minuten der Bluetooth-Einrichtung (1 bis 120) und der Reset mit BOOT (8 s in den ersten 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |
+| `security.ota_check_board` | on | Eine hochgeladene Firmware für die andere Platine (WLAN oder Ethernet) abweisen; das Image trägt ein Kennzeichen seiner Platine, das der Knoten beim Empfang liest |
+| `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; ein ESP32-S3-WROOM-1 N16R8 oder ein Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -592,7 +598,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 18014 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 18310 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -657,7 +663,7 @@ ARMOR-NODE-SOLAR/
   },
   "fr": {
     "tagline": "Nœud passerelle solaire : lit onduleurs et batteries par jusqu'à dix ports série (firmware ESP32-S3, son panneau web et la bibliothèque de protocoles)",
-    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 18 014 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
+    "honest": "Le firmware se compile dans le conteneur ESP-IDF 5.5.5, son cœur (les réglages, l'échange avec chaque type d'équipement, l'arithmétique de l'UART émulée, le canal Bluetooth, les contrôles de version et de signature : 18 310 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test) est testé sur un ordinateur avec des équipements factices, les messages qu'il produit sont acceptés par ARMOR-COMMON et le panneau a été exercé dans un navigateur contre un nœud factice. **Il n'a jamais tourné sur une carte et aucun onduleur ni batterie n'a été connecté** : le Wi-Fi, le panneau sur TLS, la mise à jour, les UART matérielles et émulées et les formats des protocoles (écrits d'après des documents publics et de mémoire) ne sont pas essayés. Les trames ANT-BMS de ses tests ont été capturées par d'autres personnes sur leurs propres unités : ce projet n'en a lu aucune lui-même.",
     "glance": [
       [
         "Rôle",
@@ -669,7 +675,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "18014 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
+        "18310 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -690,7 +696,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "18 014 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes d'hôte réussissent (`ctest`) : les réglages, l'échange avec chaque type d'équipement, l'UART émulée, le canal Bluetooth et les contrôles de version.",
+      "tests": "18 310 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes d'hôte réussissent (`ctest`) : les réglages, l'échange avec chaque type d'équipement, l'UART émulée, le canal Bluetooth et les contrôles de version.",
       "protocols": "Les trames, sommes de contrôle et lectures de Voltronic, Pylontech et ANT-BMS sont vérifiées par rapport aux trames documentées et à des échantillons enregistrés ; aucun n'a encore parlé à un vrai onduleur ou à une vraie batterie.",
       "ui": "Le panneau web a été essayé dans un navigateur contre une simulation du nœud, pas sur une carte.",
       "hardware": "Aucune carte construite ni onduleur ou batterie connectés : rien n'a encore tourné sur de vrais équipements.",
@@ -771,7 +777,9 @@ Aucune trame n'a été lue d'un vrai onduleur ou d'une vraie batterie ; les form
 | `battery.write_enabled` | off | Le verrou du nœud pour écrire sur une batterie Pylontech (administrateurs, avec le mot de passe de service de la batterie, qui ne quitte jamais le nœud) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | La carte : ESP32-S3-WROOM-1 N16R8 en Wi-Fi (par défaut) ou la Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Les réglages que tous les nœuds partagent : le nom (vide donne `armor-` et les derniers octets de la MAC), le code de configuration (vide : aléatoire), le secret de flotte (16+ caractères, jamais dans le dépôt), les premiers réglages du broker, le battement (de 2 à 300 s), les minutes de configuration Bluetooth (de 1 à 120) et la réinitialisation avec BOOT (8 s dans les 30 premières s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |
+| `security.ota_check_board` | on | Refuser un firmware envoyé construit pour l'autre carte (Wi-Fi ou Ethernet) ; l'image porte une marque de sa carte que le nœud lit à l'arrivée |
+| `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une ESP32-S3-WROOM-1 N16R8 ou une Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -788,7 +796,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 18014 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 18310 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -853,7 +861,7 @@ ARMOR-NODE-SOLAR/
   },
   "it": {
     "tagline": "Nodo gateway solare: legge inverter e batterie da fino a dieci porte seriali (firmware ESP32-S3, il suo pannello web e la libreria dei protocolli)",
-    "honest": "Il firmware si compila nel contenitore ESP-IDF 5.5.5, il suo nucleo (le impostazioni, lo scambio con ogni tipo di apparecchio, l'aritmetica dell'UART emulata, il canale Bluetooth, i controlli di versione e firma: 18.014 controlli in 18 programmi di test) è provato su un computer con apparecchi sostitutivi, i messaggi che produce sono accettati da ARMOR-COMMON e il pannello è stato esercitato in un browser contro un nodo sostitutivo. **Non ha mai girato su una scheda e nessun inverter o batteria è stato collegato**: il Wi-Fi, il pannello su TLS, l'aggiornamento, le UART hardware ed emulate e i formati dei protocolli (scritti da documenti pubblici e a memoria) non sono provati. I frame ANT-BMS dei suoi test sono stati catturati da altre persone sulle loro unità: questo progetto non ne ha letto nessuno di persona.",
+    "honest": "Il firmware si compila nel contenitore ESP-IDF 5.5.5, il suo nucleo (le impostazioni, lo scambio con ogni tipo di apparecchio, l'aritmetica dell'UART emulata, il canale Bluetooth, i controlli di versione e firma: 18.310 controlli in 18 programmi di test) è provato su un computer con apparecchi sostitutivi, i messaggi che produce sono accettati da ARMOR-COMMON e il pannello è stato esercitato in un browser contro un nodo sostitutivo. **Non ha mai girato su una scheda e nessun inverter o batteria è stato collegato**: il Wi-Fi, il pannello su TLS, l'aggiornamento, le UART hardware ed emulate e i formati dei protocolli (scritti da documenti pubblici e a memoria) non sono provati. I frame ANT-BMS dei suoi test sono stati catturati da altre persone sulle loro unità: questo progetto non ne ha letto nessuno di persona.",
     "glance": [
       [
         "Ruolo",
@@ -865,7 +873,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Test",
-        "18014 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
+        "18310 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -886,7 +894,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 18.014 controlli in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host (`ctest`): le impostazioni, lo scambio con ogni tipo di apparecchiatura, la UART emulata, il canale Bluetooth e i controlli di versione.",
+      "tests": "Superano 18.310 controlli in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host (`ctest`): le impostazioni, lo scambio con ogni tipo di apparecchiatura, la UART emulata, il canale Bluetooth e i controlli di versione.",
       "protocols": "I frame, i checksum e le letture di Voltronic, Pylontech e ANT-BMS sono verificati contro i frame documentati e campioni registrati; nessuno ha ancora parlato con un inverter o una batteria reali.",
       "ui": "Il pannello web è stato provato in un browser contro una simulazione del nodo, non su una scheda.",
       "hardware": "Nessuna scheda costruita e nessun inverter o batteria collegati: nulla ha ancora funzionato su apparecchiature reali.",
@@ -967,7 +975,9 @@ Nessun frame è stato letto da un vero inverter o da una vera batteria; i format
 | `battery.write_enabled` | off | La serratura del nodo per scrivere su una batteria Pylontech (amministratori, con la password di servizio della batteria, che non lascia mai il nodo) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | La scheda: ESP32-S3-WROOM-1 N16R8 via Wi-Fi (predefinita) o la Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Le impostazioni che tutti i nodi condividono: il nome (vuoto dà `armor-` e gli ultimi byte del MAC), il codice di configurazione (vuoto: casuale), il segreto di flotta (16+ caratteri, mai nel repository), le prime impostazioni del broker, il battito (da 2 a 300 s), i minuti di configurazione Bluetooth (da 1 a 120) e il ripristino con BOOT (8 s nei primi 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |
+| `security.ota_check_board` | on | Rifiutare un firmware caricato costruito per l'altra scheda (Wi-Fi o Ethernet); l'immagine porta una marca della sua scheda che il nodo legge mentre arriva |
+| `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una ESP32-S3-WROOM-1 N16R8 o una Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -984,7 +994,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 18014 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 18310 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1049,7 +1059,7 @@ ARMOR-NODE-SOLAR/
   },
   "ja": {
     "tagline": "太陽光ゲートウェイノード：最大 10 個のシリアルポートでインバーターとバッテリーを読み取る（ESP32-S3 ファームウェア、その Web パネル、プロトコルライブラリ）",
-    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のテストプログラムで 18,014 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
+    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のテストプログラムで 18,310 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
     "glance": [
       [
         "役割",
@@ -1061,7 +1071,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "テスト",
-        "18014 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
+        "18310 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
       ],
       [
         "機器",
@@ -1082,7 +1092,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のホストプログラムで 18,014 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のホストプログラムで 18,310 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
       "protocols": "Voltronic、Pylontech、ANT-BMS のフレーム、チェックサム、読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のインバーターやバッテリーとはまだ通信していません。",
       "ui": "Web パネルはブラウザーでノードの模擬に対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、インバーターやバッテリーも接続していません。実機ではまだ何も動かしていません。",
@@ -1163,7 +1173,9 @@ ARMOR-NODE-SOLAR/
 | `battery.write_enabled` | off | Pylontech バッテリーへの書き込みに対するノードの錠（管理者、バッテリーのサービスパスワードを使い、パスワードはノードの外に出ません） |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | 基板：ESP32-S3-WROOM-1 N16R8（Wi-Fi、既定）または Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | すべてのノードに共通する設定：名前（空なら `armor-` と MAC の下位バイト）、セットアップコード（空ならランダム）、フリートシークレット（16 文字以上、リポジトリには置かない）、最初のブローカー設定、ハートビート（2〜300 秒）、Bluetooth セットアップの分数（1〜120）、BOOT によるリセット（最初の 30 秒に 8 秒） |
-| `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |""",
+| `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |
+| `security.ota_check_board` | on | もう一方の基板（Wi-Fi または Ethernet）用に作られたファームウェアのアップロードを拒否します。イメージには基板の印が入っており、ノードは到着中にそれを読み取ります |
+| `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、ESP32-S3-WROOM-1 N16R8 または Waveshare ESP32-S3-ETH。
 
 ```bash
@@ -1180,7 +1192,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 18014 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 18310 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1245,7 +1257,7 @@ ARMOR-NODE-SOLAR/
   },
   "zh": {
     "tagline": "太阳能网关节点：通过最多十个串口读取逆变器和电池（ESP32-S3 固件、其网页面板和协议库）",
-    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个测试程序中的 18,014 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
+    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个测试程序中的 18,310 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
     "glance": [
       [
         "角色",
@@ -1257,7 +1269,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "测试",
-        "18014 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
+        "18310 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1278,7 +1290,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序中的 18,014 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序中的 18,310 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
       "protocols": "Voltronic、Pylontech 和 ANT-BMS 的帧、校验和与读数已对照文档中的帧和录制的样本检查；目前还没有与真实的逆变器或电池通信过。",
       "ui": "网页面板已在浏览器中对节点的模拟进行过测试，尚未在板子上测试。",
       "hardware": "尚未制作板子，也没有连接逆变器或电池：还没有在真实设备上运行过。",
@@ -1359,7 +1371,9 @@ ARMOR-NODE-SOLAR/
 | `battery.write_enabled` | off | 节点对 Pylontech 电池写入的锁（管理员，使用电池的服务密码，该密码从不离开节点） |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | 电路板：ESP32-S3-WROOM-1 N16R8（Wi-Fi，默认）或 Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | 所有节点共有的设置：名称（为空则为 `armor-` 加 MAC 的最后字节）、设置码（为空则随机）、机群密钥（16 个字符以上，绝不放入仓库）、最初的代理设置、心跳（2 到 300 秒）、蓝牙设置的分钟数（1 到 120）以及用 BOOT 重置（前 30 秒内按 8 秒） |
-| `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |""",
+| `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |
+| `security.ota_check_board` | on | 拒绝为另一种电路板（Wi-Fi 或以太网）构建的上传固件；镜像带有所属电路板的标记，节点在接收时读取 |
+| `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；ESP32-S3-WROOM-1 N16R8 或 Waveshare ESP32-S3-ETH。
 
 ```bash
@@ -1376,7 +1390,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 18014 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 18310 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1441,7 +1455,7 @@ ARMOR-NODE-SOLAR/
   },
   "pt": {
     "tagline": "Nó de ligação solar: lê inversores e baterias através de até dez portas série (firmware ESP32-S3, o seu painel web e a biblioteca de protocolos)",
-    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 18 014 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
+    "honest": "O firmware compila no contentor ESP-IDF 5.5.5, o seu núcleo (as definições, a troca com cada tipo de equipamento, a aritmética da UART emulada, o canal Bluetooth, as verificações de versão e assinatura: 18 310 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste) é testado num computador com equipamentos de substituição, as mensagens que produz são aceites pelo ARMOR-COMMON e o painel foi exercitado num navegador contra um nó de substituição. **Nunca correu numa placa e nenhum inversor ou bateria foi ligado**: o Wi-Fi, o painel sobre TLS, a atualização, as UART de hardware e emuladas e os formatos dos protocolos (escritos a partir de documentos públicos e de memória) estão por experimentar. As tramas ANT-BMS dos seus testes foram capturadas por outras pessoas nas suas próprias unidades: este projeto ainda não leu nenhuma por si.",
     "glance": [
       [
         "Função",
@@ -1453,7 +1467,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Testes",
-        "18014 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
+        "18310 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1474,7 +1488,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 18.014 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião (`ctest`): as definições, a troca com cada tipo de equipamento, a UART emulada, o canal Bluetooth e as verificações de versão.",
+      "tests": "Passam 18.310 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião (`ctest`): as definições, a troca com cada tipo de equipamento, a UART emulada, o canal Bluetooth e as verificações de versão.",
       "protocols": "As tramas, somas de verificação e leituras de Voltronic, Pylontech e ANT-BMS são verificadas contra as tramas documentadas e amostras gravadas; nenhum falou ainda com um inversor ou uma bateria reais.",
       "ui": "O painel web foi exercitado num navegador contra uma simulação do nó, não numa placa.",
       "hardware": "Nenhuma placa construída nem inversor ou bateria ligados: nada funcionou ainda em equipamentos reais.",
@@ -1555,7 +1569,9 @@ Nenhuma trama foi lida de um inversor ou bateria reais; os formatos estão escri
 | `battery.write_enabled` | off | A tranca do nó para escrever numa bateria Pylontech (administradores, com a palavra-passe de serviço da bateria, que nunca sai do nó) |
 | `CONFIG_ARMOR_BOARD_S3_WIFI` / `_S3_ETH` | wifi | A placa: ESP32-S3-WROOM-1 N16R8 por Wi-Fi (predefinição) ou a Waveshare ESP32-S3-ETH |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | As definições que todos os nós partilham: o nome (vazio dá `armor-` e os últimos bytes do MAC), o código de configuração (vazio: aleatório), o segredo de frota (16+ caracteres, nunca no repositório), as primeiras definições do broker, o batimento (de 2 a 300 s), os minutos de configuração Bluetooth (de 1 a 120) e a reposição com BOOT (8 s nos primeiros 30 s) |
-| `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |""",
+| `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |
+| `security.ota_check_board` | on | Recusar um firmware enviado feito para a outra placa (Wi-Fi ou Ethernet); a imagem leva uma marca da sua placa que o nó lê enquanto chega |
+| `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma ESP32-S3-WROOM-1 N16R8 ou uma Waveshare ESP32-S3-ETH.
 
 ```bash
@@ -1572,7 +1588,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 18014 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 18310 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 
