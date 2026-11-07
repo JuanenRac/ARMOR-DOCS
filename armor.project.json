@@ -13,7 +13,7 @@
   ],
   "deployment_target": "All users and maintainers",
   "maturity": "established",
-  "evidence": "host-test",
+  "evidence": "simulator",
   "hardware_bound": false,
   "family": "Documentation",
   "parent": null,
