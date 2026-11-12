@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The floor of the test coverage of `tools/` goes up to lines 87.0, branches 82.5** (measured by the workflow: 87.32 and 82.82 after the tests of the command lines of the checkers and of the status lights).
+
 - **Tests of the status lights:** what the answer of the CI becomes (the last completed run of the main branch decides; no gh, a timeout or no run is unknown), the refusal of a repository without a manifest or with one that is not JSON, what counts as a CI and as a test, and the suggestions of `--suggest`.
 
 - **Tests of the command lines of the two checkers of sentences that depend on the code:** `doc_claims.py` and `doc_facts.py` are run over a folder of documents made for the test (a marker without an entry, an entry without a marker, a repository that is not there, an entry without one of its keys, a figure that means nothing, a verified version newer than the repository, the stale list, the fix that keeps the line ends and the check that leaves the file alone).
