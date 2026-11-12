@@ -65,7 +65,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "495455%20checks",
+      "495685%20checks",
       "2ea44f",
     ],
   ],
@@ -74,7 +74,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the firmware of the node and the rules tested on a computer (nothing has run on a board)",
-    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 495,455 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
+    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 495,685 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
     "glance": [
       [
         "Role",
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "495455 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
+        "495685 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
       ],
       [
         "Inputs",
@@ -107,7 +107,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "495,455 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
+      "tests": "495,685 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
       "protocols": "The node's own Zigbee conversation with a coordinator, local or on the network, is tested only against a stand-in coordinator; it has never met a real coordinator or sensor.",
       "ui": "The web panel is exercised in a real browser against a stand-in node, not on a board.",
       "hardware": "No board built, no zone wired and no siren or Zigbee coordinator connected: nothing has run on a real installation.",
@@ -209,7 +209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 495455 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 495685 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -287,7 +287,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Pruebas",
-        "495455 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
+        "495685 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -410,7 +410,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 495455 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 495685 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -488,7 +488,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "495455 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
+        "495685 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Eingänge",
@@ -611,7 +611,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 495455 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 495685 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -689,7 +689,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "495455 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
+        "495685 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
       ],
       [
         "Entrées",
@@ -812,7 +812,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 495455 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 495685 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -890,7 +890,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Test",
-        "495455 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
+        "495685 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
       ],
       [
         "Ingressi",
@@ -1013,7 +1013,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 495455 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 495685 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1079,7 +1079,7 @@ ARMOR-NODE-ALARM/
   },
   "ja": {
     "tagline": "警報ノードと警報盤：住宅の警報の警戒区域、警戒セット、遅延、サイレン、PIN を、ノードのファームウェアとコンピューターでテストしたルールを含みます（基板では動作していません）",
-    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、{{fact:ctest_cpp:ARMOR-NODE-ALARM}} つのテストプログラムで 495,455 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
+    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、{{fact:ctest_cpp:ARMOR-NODE-ALARM}} つのテストプログラムで 495,685 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
     "glance": [
       [
         "役割",
@@ -1091,7 +1091,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "テスト",
-        "495455 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
+        "495685 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
       ],
       [
         "入力",
@@ -1112,7 +1112,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} のホストプログラムで 495,455 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} のホストプログラムで 495,685 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
       "protocols": "ノード自身のコーディネーター（ローカルまたはネットワーク上）との Zigbee のやり取りは、模擬のコーディネーターに対してのみテストしています。本物のコーディネーターやセンサーとはまだ接続していません。",
       "ui": "Web パネルは実ブラウザーで模擬ノードに対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、ゾーンの配線もサイレンや Zigbee コーディネーターの接続もありません。実際の設備ではまだ何も動かしていません。",
@@ -1214,7 +1214,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 495455 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 495685 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1280,7 +1280,7 @@ ARMOR-NODE-ALARM/
   },
   "zh": {
     "tagline": "报警节点与报警主机：住宅报警的防区、布防、延时、警笛和 PIN，含节点固件和在电脑上测试过的规则（没有在电路板上运行过）",
-    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个测试程序中的 495,455 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
+    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个测试程序中的 495,685 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
     "glance": [
       [
         "角色",
@@ -1292,7 +1292,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "测试",
-        "495455 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
+        "495685 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
       ],
       [
         "输入",
@@ -1313,7 +1313,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序中的 495,455 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序中的 495,685 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
       "protocols": "节点自身与协调器（本地或网络上）的 Zigbee 通信只对照模拟协调器测试过；从未遇到过真实的协调器或传感器。",
       "ui": "网页面板已在真实浏览器中对模拟节点测试过，尚未在板子上测试。",
       "hardware": "尚未制作板子，没有接线的防区，也没有连接警笛或 Zigbee 协调器：还没有在真实的安装中运行过。",
@@ -1415,7 +1415,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 495455 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 495685 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1493,7 +1493,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Testes",
-        "495455 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
+        "495685 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -1616,7 +1616,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 495455 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 495685 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

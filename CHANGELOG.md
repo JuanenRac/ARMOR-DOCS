@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The floor of the test coverage of `tools/` goes up to lines 85.4, branches 80.3 (measured 85.92 and 80.87; before: 50.2 and 45.3):** the shared tools this repository carries now have the tests they have in ARMOR-COMMON (the README pictures, the lights of the status table, the run panel, the workflow tool, the manifest facts and the layout check of the README). The typed totals of checks in the READMEs of the five nodes count the new shared host tests.
+
 - **A floor for the test coverage:** the workflow `coverage-floor.yml` runs the Python tests under coverage and fails when the lines or the branches of `tools/` (not the sources of the READMEs) fall below `docs/coverage_threshold.json` (floor: lines 49.5, branches 44.8; measured 50.16 and 45.34). Raising the floor is a change of that file, made with a figure measured by the workflow.
 
 - **The README sources follow three repositories:** ARMOR-NODE-HMI (the wake word is optional and off by default, and the number of the spoken challenge is shown on the screen), ARMOR-SERVER (the fourth value `challenge` of the voice silence option) and ARMOR-HARDWARE (the model files are made from the sources, the shared file of the enclosures and the one table of the pins), in the eight languages; the figures of the capability matrix and the interfaces follow the conformance vectors.

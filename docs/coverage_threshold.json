@@ -1,5 +1,5 @@
 {
   "about": "The floor of the test coverage of tools/ (not the sources of the READMEs), measured by the workflow coverage-floor.yml: a figure a little under what the tests reach. Raise it only with a measured figure.",
-  "lines": 49.5,
-  "branches": 44.8
+  "lines": 85.4,
+  "branches": 80.3
 }

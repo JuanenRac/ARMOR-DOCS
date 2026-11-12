@@ -60,7 +60,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "18310%20checks",
+      "18540%20checks",
       "2ea44f",
     ],
   ],
@@ -69,7 +69,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Solar gateway node: reads inverters and batteries through up to ten serial ports (ESP32-S3 firmware, its web panel and the protocol library)",
-    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 18,310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
+    "honest": "The firmware builds in the ESP-IDF 5.5.5 container, its core (the settings, the exchange with each kind of equipment, the arithmetic of the emulated UART, the Bluetooth channel, the release and signature checks: 18,540 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} test programs) is tested on a computer with stand-in equipment, the messages it makes are accepted by ARMOR-COMMON and the panel was exercised in a browser against a stand-in node. **It has never run on a board and no inverter or battery has been connected**: the Wi-Fi, the panel over TLS, the update, the hardware and emulated UARTs and the formats of the protocols (written from public documents and from memory) are untried. The ANT-BMS frames in its tests were captured by other people on their own units: this project has not read one itself.",
     "glance": [
       [
         "Role",
@@ -81,7 +81,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "18310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
+        "18540 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -102,7 +102,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "18,310 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
+      "tests": "18,540 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs pass (`ctest`): the settings, the exchange with each kind of equipment, the emulated UART, the Bluetooth channel and the release checks.",
       "protocols": "The Voltronic, Pylontech and ANT-BMS frames, checksums and readings are checked against the documented frames and recorded samples; none has talked to a real inverter or battery yet.",
       "ui": "The web panel is exercised in a browser against a mock of the node, not on a board.",
       "hardware": "No board built and no inverter or battery connected: nothing has run on real equipment yet.",
@@ -202,7 +202,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 18310 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 18540 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -279,7 +279,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Pruebas",
-        "18310 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
+        "18540 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -400,7 +400,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 18310 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 18540 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -477,7 +477,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "18310 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
+        "18540 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -598,7 +598,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 18310 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 18540 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -675,7 +675,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "18310 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
+        "18540 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -796,7 +796,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 18310 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 18540 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -873,7 +873,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Test",
-        "18310 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
+        "18540 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -994,7 +994,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 18310 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 18540 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1059,7 +1059,7 @@ ARMOR-NODE-SOLAR/
   },
   "ja": {
     "tagline": "太陽光ゲートウェイノード：最大 10 個のシリアルポートでインバーターとバッテリーを読み取る（ESP32-S3 ファームウェア、その Web パネル、プロトコルライブラリ）",
-    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のテストプログラムで 18,310 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
+    "honest": "ファームウェアは ESP-IDF 5.5.5 コンテナーでビルドでき、そのコア（設定、各種機器とのやり取り、エミュレートした UART の計算、Bluetooth チャネル、バージョンと署名の検査：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のテストプログラムで 18,540 項目）は代替機器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられ、パネルは代替ノードに対してブラウザーで動かしました。**基板上で動いたことはなく、インバーターやバッテリーも接続されていません**：Wi-Fi、TLS のパネル、アップデート、ハードウェアとエミュレートした UART、プロトコルの形式（公開資料と記憶から作成）は未検証です。テスト内の ANT-BMS フレームは他の人が自分の機器で取得したもので、このプロジェクト自身はまだ 1 つも読み取っていません。",
     "glance": [
       [
         "役割",
@@ -1071,7 +1071,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "テスト",
-        "18310 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
+        "18540 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
       ],
       [
         "機器",
@@ -1092,7 +1092,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のホストプログラムで 18,310 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} のホストプログラムで 18,540 件のチェックが通ります（`ctest`）：設定、各種機器とのやり取り、エミュレートした UART、Bluetooth チャネル、バージョン確認。",
       "protocols": "Voltronic、Pylontech、ANT-BMS のフレーム、チェックサム、読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のインバーターやバッテリーとはまだ通信していません。",
       "ui": "Web パネルはブラウザーでノードの模擬に対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、インバーターやバッテリーも接続していません。実機ではまだ何も動かしていません。",
@@ -1192,7 +1192,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 18310 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 18540 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1257,7 +1257,7 @@ ARMOR-NODE-SOLAR/
   },
   "zh": {
     "tagline": "太阳能网关节点：通过最多十个串口读取逆变器和电池（ESP32-S3 固件、其网页面板和协议库）",
-    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个测试程序中的 18,310 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
+    "honest": "固件可在 ESP-IDF 5.5.5 容器中构建，其核心（设置、与每种设备的交互、模拟 UART 的运算、蓝牙通道、版本和签名检查：{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个测试程序中的 18,540 项检查）在计算机上用替身设备测试，它生成的消息被 ARMOR-COMMON 接受，面板已在浏览器中对照替身节点验证。**它从未在板上运行，也没有连接过任何逆变器或电池**：Wi-Fi、TLS 上的面板、更新、硬件和模拟 UART 以及协议格式（根据公开文档和记忆编写）都未经尝试。其测试中的 ANT-BMS 帧由其他人在自己的设备上捕获：本项目自己还没有读取过任何一帧。",
     "glance": [
       [
         "角色",
@@ -1269,7 +1269,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "测试",
-        "18310 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
+        "18540 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1290,7 +1290,7 @@ ARMOR-NODE-SOLAR/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序中的 18,310 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序中的 18,540 项检查通过（`ctest`）：设置、与各类设备的交换、模拟 UART、蓝牙通道和版本检查。",
       "protocols": "Voltronic、Pylontech 和 ANT-BMS 的帧、校验和与读数已对照文档中的帧和录制的样本检查；目前还没有与真实的逆变器或电池通信过。",
       "ui": "网页面板已在浏览器中对节点的模拟进行过测试，尚未在板子上测试。",
       "hardware": "尚未制作板子，也没有连接逆变器或电池：还没有在真实设备上运行过。",
@@ -1390,7 +1390,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 18310 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 18540 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1467,7 +1467,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Testes",
-        "18310 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
+        "18540 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1588,7 +1588,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 18310 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 18540 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 
