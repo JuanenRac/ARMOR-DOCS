@@ -65,7 +65,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "497057%20checks",
+      "511647%20checks",
       "2ea44f",
     ],
   ],
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "497057 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
+        "511647 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
       ],
       [
         "Inputs",
@@ -209,7 +209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 497057 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 511647 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -287,7 +287,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Pruebas",
-        "497057 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
+        "511647 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -410,7 +410,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 497057 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 511647 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -488,7 +488,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "497057 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
+        "511647 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Eingänge",
@@ -611,7 +611,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 497057 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 511647 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -689,7 +689,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "497057 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
+        "511647 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
       ],
       [
         "Entrées",
@@ -812,7 +812,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 497057 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 511647 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -890,7 +890,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Test",
-        "497057 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
+        "511647 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
       ],
       [
         "Ingressi",
@@ -1013,7 +1013,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 497057 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 511647 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1091,7 +1091,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "テスト",
-        "497057 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
+        "511647 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
       ],
       [
         "入力",
@@ -1214,7 +1214,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 497057 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 511647 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1292,7 +1292,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "测试",
-        "497057 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
+        "511647 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
       ],
       [
         "输入",
@@ -1415,7 +1415,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 497057 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 511647 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1493,7 +1493,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Testes",
-        "497057 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
+        "511647 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -1616,7 +1616,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 497057 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 511647 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

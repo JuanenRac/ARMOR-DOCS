@@ -60,7 +60,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "19919%20checks",
+      "20264%20checks",
       "2ea44f",
     ],
   ],
@@ -81,7 +81,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "19919 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
+        "20264 checks in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -202,7 +202,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 19919 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python checks run under `ctest`; 20264 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -279,7 +279,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Pruebas",
-        "19919 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
+        "20264 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -400,7 +400,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 19919 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-SOLAR}} comprobaciones en Python se ejecutan con `ctest`; 20264 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -477,7 +477,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "19919 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
+        "20264 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -598,7 +598,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 19919 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-SOLAR}} Python-Prüfungen laufen unter `ctest`; 20264 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -675,7 +675,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Tests",
-        "19919 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
+        "20264 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -796,7 +796,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 19919 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-SOLAR}} contrôles Python tournent sous `ctest` ; 20264 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -873,7 +873,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Test",
-        "19919 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
+        "20264 verifiche in {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -994,7 +994,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 19919 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verifiche Python girano con `ctest`; 20264 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1071,7 +1071,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "テスト",
-        "19919 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
+        "20264 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 個、`ctest`）",
       ],
       [
         "機器",
@@ -1192,7 +1192,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 19919 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 20264 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1269,7 +1269,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "测试",
-        "19919 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
+        "20264 项检查（{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1390,7 +1390,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 19919 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-SOLAR}} 个 Python 检查；主机程序统计的检查共 20264 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1467,7 +1467,7 @@ ARMOR-NODE-SOLAR/
       ],
       [
         "Testes",
-        "19919 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
+        "20264 verificações em {{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1588,7 +1588,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 19919 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-SOLAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-SOLAR}} verificações Python correm com `ctest`; 20264 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 
