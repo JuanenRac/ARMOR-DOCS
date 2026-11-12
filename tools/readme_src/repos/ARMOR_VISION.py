@@ -150,7 +150,7 @@ As a library: `parse_config`, `Pipeline.process_detections` and `process_frame`.
 | `zones[]` | `id`, `name`, `kind` (`alert` or `detection`), `labels`, `min_frames`, `min_seconds`, `points` (polygon, 0 to 1); counted by the feet of the box |
 | `masks[]` | Polygons where movement is ignored; detections whose centre is inside are dropped |
 | `profiles` | Which zones are watched in each arming mode (`away`, `home`, ...) |
-| `activity configuration (separate file)` | `enabled` (default `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` up to 65536, `position`, `labels`) and `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` with `id`, `a`, `b`); the heat map is normalised as weight divided by the maximum |
+| `activity configuration (separate file)` | `enabled` (default `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` up to 65536, `position`, `labels`) and `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` with `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); the heat map is normalised as weight divided by the maximum |
 
 | Limit | Value |
 |---|---|
@@ -350,7 +350,7 @@ Como biblioteca: `parse_config`, `Pipeline.process_detections` y `process_frame`
 | `zones[]` | `id`, `name`, `kind` (`alert` o `detection`), `labels`, `min_frames`, `min_seconds`, `points` (polígono, 0 a 1); se cuenta por los pies de la caja |
 | `masks[]` | Polígonos donde se ignora el movimiento; se descartan las detecciones cuyo centro está dentro |
 | `profiles` | Qué zonas se vigilan en cada modo de armado (`away`, `home`, ...) |
-| `configuración de actividad (fichero aparte)` | `enabled` (por defecto `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` hasta 65536, `position`, `labels`) y `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`); el mapa se normaliza como peso dividido por el máximo |
+| `configuración de actividad (fichero aparte)` | `enabled` (por defecto `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` hasta 65536, `position`, `labels`) y `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); el mapa se normaliza como peso dividido por el máximo |
 
 | Límite | Valor |
 |---|---|
@@ -550,7 +550,7 @@ Als Bibliothek: `parse_config`, `Pipeline.process_detections` und `process_frame
 | `zones[]` | `id`, `name`, `kind` (`alert` oder `detection`), `labels`, `min_frames`, `min_seconds`, `points` (Polygon, 0 bis 1); gezählt wird an den Füßen der Box |
 | `masks[]` | Polygone, in denen Bewegung ignoriert wird; Erkennungen mit Mittelpunkt darin entfallen |
 | `profiles` | Welche Zonen in jedem Scharfschaltmodus überwacht werden (`away`, `home`, ...) |
-| `Aktivitätskonfiguration (eigene Datei)` | `enabled` (Standard `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` bis 65536, `position`, `labels`) und `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` mit `id`, `a`, `b`); die Heatmap wird als Gewicht geteilt durch das Maximum normiert |
+| `Aktivitätskonfiguration (eigene Datei)` | `enabled` (Standard `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` bis 65536, `position`, `labels`) und `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` mit `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); die Heatmap wird als Gewicht geteilt durch das Maximum normiert |
 
 | Grenze | Wert |
 |---|---|
@@ -750,7 +750,7 @@ En bibliothèque : `parse_config`, `Pipeline.process_detections` et `process_fra
 | `zones[]` | `id`, `name`, `kind` (`alert` ou `detection`), `labels`, `min_frames`, `min_seconds`, `points` (polygone, 0 à 1) ; compté par les pieds de la boîte |
 | `masks[]` | Polygones où le mouvement est ignoré ; les détections dont le centre est dedans sont écartées |
 | `profiles` | Quelles zones sont surveillées dans chaque mode d'armement (`away`, `home`, ...) |
-| `configuration d'activité (fichier à part)` | `enabled` (par défaut `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` jusqu'à 65536, `position`, `labels`) et `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` avec `id`, `a`, `b`) ; la carte est normalisée comme poids divisé par le maximum |
+| `configuration d'activité (fichier à part)` | `enabled` (par défaut `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` jusqu'à 65536, `position`, `labels`) et `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` avec `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)) ; la carte est normalisée comme poids divisé par le maximum |
 
 | Limite | Valeur |
 |---|---|
@@ -950,7 +950,7 @@ Come libreria: `parse_config`, `Pipeline.process_detections` e `process_frame`. 
 | `zones[]` | `id`, `name`, `kind` (`alert` o `detection`), `labels`, `min_frames`, `min_seconds`, `points` (poligono, da 0 a 1); si conta dai piedi del riquadro |
 | `masks[]` | Poligoni dove il movimento è ignorato; i rilevamenti con il centro all'interno vengono scartati |
 | `profiles` | Quali zone sono sorvegliate in ogni modalità di inserimento (`away`, `home`, ...) |
-| `configurazione di attività (file a parte)` | `enabled` (predefinito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` fino a 65536, `position`, `labels`) ed `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`); la mappa è normalizzata come peso diviso per il massimo |
+| `configurazione di attività (file a parte)` | `enabled` (predefinito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` fino a 65536, `position`, `labels`) ed `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); la mappa è normalizzata come peso diviso per il massimo |
 
 | Limite | Valore |
 |---|---|
@@ -1150,7 +1150,7 @@ ARMOR-VISION/
 | `zones[]` | `id`、`name`、`kind`（`alert` または `detection`）、`labels`、`min_frames`、`min_seconds`、`points`（多角形、0〜1）。ボックスの足元で判定 |
 | `masks[]` | 動きを無視する多角形。中心が内側にある検出は破棄されます |
 | `profiles` | 警戒モードごとに監視するゾーン（`away`、`home` など） |
-| `アクティビティ設定（別ファイル）` | `enabled`（既定 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、65536 までの `max_cells`、`position`、`labels`）、`events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、`id`・`a`・`b` を持つ `lines[]`）。ヒートマップは重みを最大値で割って正規化します |
+| `アクティビティ設定（別ファイル）` | `enabled`（既定 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、65536 までの `max_cells`、`position`、`labels`）、`events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、`id`・`a`・`b` を持つ `lines[]`、`sensitivity_floor`（`low`、`normal`、`high`））。ヒートマップは重みを最大値で割って正規化します |
 
 | 制限 | 値 |
 |---|---|
@@ -1350,7 +1350,7 @@ ARMOR-VISION/
 | `zones[]` | `id`、`name`、`kind`（`alert` 或 `detection`）、`labels`、`min_frames`、`min_seconds`、`points`（多边形，0 到 1）；按框的脚部计数 |
 | `masks[]` | 忽略运动的多边形；中心位于其中的检测会被丢弃 |
 | `profiles` | 每种布防模式下监视哪些区域（`away`、`home` 等） |
-| `活动配置（单独的文件）` | `enabled`（默认 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、最大 65536 的 `max_cells`、`position`、`labels`）和 `events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、含 `id`、`a`、`b` 的 `lines[]`）；热力图按权重除以最大值归一化 |
+| `活动配置（单独的文件）` | `enabled`（默认 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、最大 65536 的 `max_cells`、`position`、`labels`）和 `events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、含 `id`、`a`、`b` 的 `lines[]`、`sensitivity_floor`（`low`、`normal`、`high`））；热力图按权重除以最大值归一化 |
 
 | 限制 | 值 |
 |---|---|
@@ -1550,7 +1550,7 @@ Como biblioteca: `parse_config`, `Pipeline.process_detections` e `process_frame`
 | `zones[]` | `id`, `name`, `kind` (`alert` ou `detection`), `labels`, `min_frames`, `min_seconds`, `points` (polígono, 0 a 1); conta-se pelos pés da caixa |
 | `masks[]` | Polígonos onde o movimento é ignorado; as deteções com o centro lá dentro são descartadas |
 | `profiles` | Que zonas são vigiadas em cada modo de armação (`away`, `home`, ...) |
-| `configuração de atividade (ficheiro à parte)` | `enabled` (por defeito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` até 65536, `position`, `labels`) e `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` com `id`, `a`, `b`); o mapa é normalizado como peso dividido pelo máximo |
+| `configuração de atividade (ficheiro à parte)` | `enabled` (por defeito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` até 65536, `position`, `labels`) e `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` com `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); o mapa é normalizado como peso dividido pelo máximo |
 
 | Limite | Valor |
 |---|---|
