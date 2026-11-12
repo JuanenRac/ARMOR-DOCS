@@ -104,7 +104,7 @@ TEXT = {
     "status": {
       "software": "The firmware builds (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.",
       "tests": "99,716 checks in {{fact:ctest_cpp:ARMOR-NODE-HMI}} host programs pass (`ctest`): the settings, what the panel knows of the server and when that is stale, the duress alarm that is never shown, the voice exchange, the pins, the words of the screen in eight languages and the glyphs of its fonts.",
-      "protocols": "The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, with no wake word.",
+      "protocols": "The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, plus an optional wake word (off by default) that has only run against stand-ins, and the number of the spoken challenge is shown on the screen.",
       "ui": "The web page runs against a stand-in in a real browser; the screen, the touch and the sound are written from Waveshare's examples and wait for their first power-up.",
       "hardware": "The firmware has not run on the board: nothing has run on real equipment yet.",
       "security": "The set-up code, the login limit, the Bluetooth PIN, the duress handling and the signed updates are tested on the host; there has been no independent review.",
@@ -128,7 +128,7 @@ TEXT = {
 * **The board:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB flash, 16 MB PSRAM, a 7-inch RGB screen with a GT911 touch, four microphones, a speaker); the pins come from Waveshare's examples and a test proves that no two functions share a GPIO ([the board](docs/HARDWARE.md)).
 * **Signed over-the-air updates:** the node installs from GitHub only an image whose SHA-256 matches and that carries a valid Ed25519 signature of the maintainer (the public key is in the firmware, the private one never leaves the maintainer); a file uploaded by hand by an administrator in the panel is still accepted. The pages and messages of the panel are in eight languages.
 * **Bluetooth pairing with a PIN:** the six-digit PIN is derived from the set-up code, printed on the USB console and shown to an administrator in the panel; the phone has to enter it before it may write the node's settings.
-* **Not yet:** a first compilation and power-up of the firmware, a wake word, the speech service on the Jetson, and a view of the cameras on the screen.
+* **Not yet:** a first compilation and power-up of the firmware, the wake word on the board with a trained model, the speech service on the Jetson, and a view of the cameras on the screen.
 * **Only the house may use the panel:** the panel answers the private network by default (or the networks its owner lists, such as a VPN), refuses a list that would lock out whoever saves it, counts wrong passwords for each person as well as each address, and works behind the server's proxy so that it can be reached from outside the house without publishing the node.
 * **It says what happens:** the screen knows the text, in eight languages, of every alarm code the server raises (network, solar, electrical, alarm zones...), and it tells the server that it is a wall panel, so it is listed as one and does not count as a radar.
 * **Optional encrypted link to the broker (TLS):** off by default, so the node talks plain MQTT as before. A switch and a box for the certificate of the installation's own authority (PEM, at most 2 KB) in the Broker page make it connect with `mqtts://`, trust that authority only and check that the broker's certificate was made for the address it reached; anything that is not one PEM certificate is refused. Covered by host tests; the handshake has not been run on a board yet.
@@ -255,7 +255,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Known limits today**
 
 * The firmware has been built once (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.
-* The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, with no wake word.
+* The exchange with the server and with the speech service ARMOR-VOICE-AI is tested against stand-ins; it is push to talk, plus an optional wake word (off by default) that has only run against stand-ins, and the number of the spoken challenge is shown on the screen.
 * The web page runs against a stand-in in a real browser; the screen, the touch and the sound are written from Waveshare's examples and wait for their first power-up.
 * The firmware has not run on the board: nothing has run on real equipment yet.
 * The set-up code, the login limit, the Bluetooth PIN, the duress handling and the signed updates are tested on the host; there has been no independent review.
@@ -264,7 +264,7 @@ ARMOR-NODE-HMI/
 
 **Next**
 
-* Do the first full build and the first power-up on the board, then the speech service on the Jetson, a wake word and the camera view on the screen.""",
+* Do the first full build and the first power-up on the board, then the speech service on the Jetson, the wake word with a trained model and the camera view on the screen.""",
     },
   },
   "es": {
@@ -303,7 +303,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "El firmware compila (ESP-IDF 5.5.5), pero la compilación no la comprueba la integración continua y nunca ha funcionado en una placa.",
       "tests": "Pasan 93.122 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de host (`ctest`): los ajustes, lo que el panel sabe del servidor y cuándo está obsoleto, la alarma de coacción que nunca se muestra, el intercambio de voz, los pines, los textos de la pantalla en ocho idiomas y los glifos de sus fuentes.",
-      "protocols": "El intercambio con el servidor y con el servicio de voz ARMOR-VOICE-AI se prueba contra simulaciones; es pulsar para hablar, sin palabra de activación.",
+      "protocols": "El intercambio con el servidor y con el servicio de voz ARMOR-VOICE-AI se prueba contra simulaciones; es pulsar para hablar, más una palabra de activación opcional (apagada por defecto) probada solo contra simulaciones, y el número del reto hablado se muestra en la pantalla.",
       "ui": "La página web se ha ejecutado contra una simulación en un navegador real; la pantalla, el táctil y el sonido están escritos a partir de los ejemplos de Waveshare y esperan su primer encendido.",
       "hardware": "El firmware no ha funcionado en la placa: nada ha funcionado todavía con equipos reales.",
       "security": "El código de configuración, el límite de accesos, el PIN Bluetooth, el manejo de la coacción y las actualizaciones firmadas están probados en el host; no ha habido una revisión independiente.",
@@ -327,7 +327,7 @@ ARMOR-NODE-HMI/
 * **La placa:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB de flash, 16 MB de PSRAM, pantalla RGB de 7 pulgadas con tacto GT911, cuatro micrófonos, un altavoz); los pines vienen de los ejemplos de Waveshare y una prueba demuestra que dos funciones no comparten un GPIO ([la placa](docs/HARDWARE.md)).
 * **Actualizaciones por aire firmadas:** el nodo solo instala desde GitHub una imagen cuyo SHA-256 coincide y que lleva una firma Ed25519 válida del responsable (la clave pública está en el firmware, la privada nunca sale del responsable); un archivo subido a mano por un administrador en el panel se sigue aceptando. Las páginas y mensajes del panel están en ocho idiomas.
 * **Emparejamiento Bluetooth con PIN:** el PIN de seis cifras se deriva del código de configuración, se imprime en la consola USB y se muestra a un administrador en el panel; el móvil tiene que escribirlo antes de poder cambiar los ajustes del nodo.
-* **Todavía no:** una primera compilación y encendido del firmware, una palabra de activación, el servicio de voz en la Jetson y una vista de las cámaras en la pantalla.
+* **Todavía no:** una primera compilación y encendido del firmware, la palabra de activación en la placa con un modelo entrenado, el servicio de voz en la Jetson y una vista de las cámaras en la pantalla.
 * **Solo la casa puede usar el panel:** el panel responde por defecto a la red privada (o a las redes que su dueño indique, como una VPN), rechaza una lista que dejaría fuera a quien la guarda, cuenta las contraseñas erróneas por persona y por dirección, y funciona detrás del proxy del servidor para llegar a él desde fuera de casa sin publicar el nodo.
 * **Dice qué pasa:** la pantalla conoce el texto, en ocho idiomas, de cada código de alarma que levanta el servidor (red, solar, eléctrica, zonas de alarma...), y avisa al servidor de que es un panel de pared, así que se lista como tal y no cuenta como radar.
 * **Enlace cifrado opcional con el broker (TLS):** desactivado por defecto, así que el nodo habla MQTT sin cifrar como antes. Un interruptor y una caja para el certificado de la autoridad propia de la instalación (PEM, 2 KB como máximo) en la página Broker hacen que se conecte con `mqtts://`, confíe solo en esa autoridad y compruebe que el certificado del broker se hizo para la dirección a la que llegó; lo que no sea un único certificado PEM se rechaza. Cubierto con pruebas en el ordenador; el handshake aún no se ha ejecutado en una placa.
@@ -454,7 +454,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Límites conocidos hoy**
 
 * El firmware se ha compilado una vez (ESP-IDF 5.5.5), pero la compilación no la comprueba la integración continua y nunca ha funcionado en una placa.
-* El intercambio con el servidor y con el servicio de voz ARMOR-VOICE-AI se prueba contra simulaciones; es pulsar para hablar, sin palabra de activación.
+* El intercambio con el servidor y con el servicio de voz ARMOR-VOICE-AI se prueba contra simulaciones; es pulsar para hablar, más una palabra de activación opcional (apagada por defecto) probada solo contra simulaciones, y el número del reto hablado se muestra en la pantalla.
 * La página web se ha ejecutado contra una simulación en un navegador real; la pantalla, el táctil y el sonido están escritos a partir de los ejemplos de Waveshare y esperan su primer encendido.
 * El firmware no ha funcionado en la placa: nada ha funcionado todavía con equipos reales.
 * El código de configuración, el límite de accesos, el PIN Bluetooth, el manejo de la coacción y las actualizaciones firmadas están probados en el host; no ha habido una revisión independiente.
@@ -463,7 +463,7 @@ ARMOR-NODE-HMI/
 
 **Lo siguiente**
 
-* Hacer la primera compilación completa y el primer encendido en la placa, y después el servicio de voz en la Jetson, una palabra de activación y la vista de cámaras en la pantalla.""",
+* Hacer la primera compilación completa y el primer encendido en la placa, y después el servicio de voz en la Jetson, la palabra de activación con un modelo entrenado y la vista de cámaras en la pantalla.""",
     },
   },
   "de": {
@@ -502,7 +502,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "Die Firmware lässt sich bauen (ESP-IDF 5.5.5), der Build wird aber nicht von der kontinuierlichen Integration geprüft, und sie lief nie auf einer Platine.",
       "tests": "93.122 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-HMI}} Host-Programmen bestehen (`ctest`): die Einstellungen, was das Panel vom Server weiß und wann das veraltet ist, der nie angezeigte Zwangsalarm, der Sprachaustausch, die Pins, die Texte des Bildschirms in acht Sprachen und die Glyphen seiner Schriften.",
-      "protocols": "Der Austausch mit dem Server und mit dem Sprachdienst ARMOR-VOICE-AI ist gegen Nachbildungen getestet; es ist Push-to-Talk, ohne Weckwort.",
+      "protocols": "Der Austausch mit dem Server und mit dem Sprachdienst ARMOR-VOICE-AI ist gegen Nachbildungen getestet; es ist Push-to-Talk, dazu ein optionales Weckwort (standardmäßig aus), nur gegen Nachbildungen getestet, und die Zahl der gesprochenen Herausforderung erscheint auf dem Bildschirm.",
       "ui": "Die Webseite lief gegen eine Nachbildung in einem echten Browser; Bildschirm, Touch und Ton sind nach den Beispielen von Waveshare geschrieben und warten auf das erste Einschalten.",
       "hardware": "Die Firmware lief nicht auf der Platine: Bisher lief nichts auf echten Geräten.",
       "security": "Der Einrichtungscode, die Anmeldebegrenzung, die Bluetooth-PIN, der Umgang mit Zwang und die signierten Aktualisierungen sind auf dem Host getestet; es gab keine unabhängige Prüfung.",
@@ -526,7 +526,7 @@ ARMOR-NODE-HMI/
 * **Das Board:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB Flash, 16 MB PSRAM, 7-Zoll-RGB-Bildschirm mit GT911-Touch, vier Mikrofone, ein Lautsprecher); die Pins stammen aus Waveshares Beispielen, und ein Test beweist, dass keine zwei Funktionen einen GPIO teilen ([das Board](docs/HARDWARE.md)).
 * **Signierte Over-the-Air-Updates:** der Knoten installiert von GitHub nur ein Abbild, dessen SHA-256 stimmt und das eine gültige Ed25519-Signatur des Betreuers trägt (der öffentliche Schlüssel steckt in der Firmware, der private verlässt den Betreuer nie); eine von einem Administrator im Panel von Hand hochgeladene Datei wird weiterhin akzeptiert. Seiten und Meldungen des Panels sind in acht Sprachen.
 * **Bluetooth-Kopplung mit PIN:** die sechsstellige PIN wird aus dem Einrichtungscode abgeleitet, auf der USB-Konsole ausgegeben und einem Administrator im Panel angezeigt; das Telefon muss sie eingeben, bevor es die Einstellungen des Knotens schreiben darf.
-* **Noch nicht:** eine erste Kompilierung und ein erster Start der Firmware, ein Aktivierungswort, der Sprachdienst auf dem Jetson und eine Kameraansicht auf dem Bildschirm.
+* **Noch nicht:** eine erste Kompilierung und ein erster Start der Firmware, das Weckwort auf der Platine mit einem trainierten Modell, der Sprachdienst auf dem Jetson und eine Kameraansicht auf dem Bildschirm.
 * **Nur das Haus darf das Panel nutzen:** Das Panel antwortet standardmäßig dem privaten Netz (oder den Netzen, die der Besitzer nennt, etwa einem VPN), lehnt eine Liste ab, die den Speichernden aussperren würde, zählt falsche Passwörter je Person und je Adresse und funktioniert hinter dem Proxy des Servers, sodass man es von außerhalb des Hauses erreicht, ohne den Knoten zu veröffentlichen.
 * **Es sagt, was passiert:** der Bildschirm kennt den Text jedes Alarmcodes des Servers (Netzwerk, Solar, Elektrik, Alarmzonen...) in acht Sprachen und meldet dem Server, dass er ein Wandpanel ist; so wird er als solches gelistet und zählt nicht als Radar.
 * **Optionale verschlüsselte Verbindung zum Broker (TLS):** standardmäßig aus, der Knoten spricht also wie bisher unverschlüsseltes MQTT. Ein Schalter und ein Feld für das Zertifikat der eigenen Zertifizierungsstelle der Anlage (PEM, höchstens 2 KB) auf der Broker-Seite sorgen dafür, dass er sich mit `mqtts://` verbindet, nur dieser Stelle vertraut und prüft, ob das Zertifikat des Brokers für die erreichte Adresse ausgestellt wurde; alles, was nicht genau ein PEM-Zertifikat ist, wird abgelehnt. Durch Host-Tests abgedeckt; der Handshake wurde auf einer Platine noch nicht ausgeführt.
@@ -653,7 +653,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Firmware wurde einmal gebaut (ESP-IDF 5.5.5), der Build wird aber nicht von der kontinuierlichen Integration geprüft, und sie lief nie auf einer Platine.
-* Der Austausch mit dem Server und mit dem Sprachdienst ARMOR-VOICE-AI ist gegen Nachbildungen getestet; es ist Push-to-Talk, ohne Weckwort.
+* Der Austausch mit dem Server und mit dem Sprachdienst ARMOR-VOICE-AI ist gegen Nachbildungen getestet; es ist Push-to-Talk, dazu ein optionales Weckwort (standardmäßig aus), nur gegen Nachbildungen getestet, und die Zahl der gesprochenen Herausforderung erscheint auf dem Bildschirm.
 * Die Webseite lief gegen eine Nachbildung in einem echten Browser; Bildschirm, Touch und Ton sind nach den Beispielen von Waveshare geschrieben und warten auf das erste Einschalten.
 * Die Firmware lief nicht auf der Platine: Bisher lief nichts auf echten Geräten.
 * Der Einrichtungscode, die Anmeldebegrenzung, die Bluetooth-PIN, der Umgang mit Zwang und die signierten Aktualisierungen sind auf dem Host getestet; es gab keine unabhängige Prüfung.
@@ -662,7 +662,7 @@ ARMOR-NODE-HMI/
 
 **Als Nächstes**
 
-* Den ersten vollständigen Build und das erste Einschalten auf der Platine machen, danach den Sprachdienst auf dem Jetson, ein Aktivierungswort und die Kameraansicht auf dem Bildschirm.""",
+* Den ersten vollständigen Build und das erste Einschalten auf der Platine machen, danach den Sprachdienst auf dem Jetson, das Weckwort mit einem trainierten Modell und die Kameraansicht auf dem Bildschirm.""",
     },
   },
   "fr": {
@@ -701,7 +701,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "Le firmware compile (ESP-IDF 5.5.5), mais la compilation n'est pas contrôlée par l'intégration continue et il n'a jamais tourné sur une carte.",
       "tests": "93 122 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmes d'hôte réussissent (`ctest`) : les réglages, ce que le panneau sait du serveur et quand c'est périmé, l'alarme sous contrainte qui n'est jamais affichée, l'échange vocal, les broches, les textes de l'écran en huit langues et les glyphes de ses polices.",
-      "protocols": "L'échange avec le serveur et avec le service vocal ARMOR-VOICE-AI est testé contre des simulations ; c'est du push-to-talk, sans mot d'activation.",
+      "protocols": "L'échange avec le serveur et avec le service vocal ARMOR-VOICE-AI est testé contre des simulations ; c'est du push-to-talk, plus un mot d'activation facultatif (désactivé par défaut) testé seulement contre des simulations, et le nombre du défi vocal s'affiche à l'écran.",
       "ui": "La page web a tourné contre une simulation dans un vrai navigateur ; l'écran, le tactile et le son sont écrits d'après les exemples de Waveshare et attendent leur première mise sous tension.",
       "hardware": "Le firmware n'a pas tourné sur la carte : rien n'a encore tourné sur de vrais équipements.",
       "security": "Le code de configuration, la limite de connexions, le PIN Bluetooth, la gestion de la contrainte et les mises à jour signées sont testés sur l'hôte ; il n'y a pas eu de revue indépendante.",
@@ -725,7 +725,7 @@ ARMOR-NODE-HMI/
 * **La carte :** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 Mo de flash, 16 Mo de PSRAM, écran RGB de 7 pouces avec tactile GT911, quatre micros, un haut-parleur) ; les broches viennent des exemples de Waveshare et un test prouve que deux fonctions ne partagent pas un GPIO ([la carte](docs/HARDWARE.md)).
 * **Mises à jour par radio signées :** le nœud n'installe depuis GitHub qu'une image dont le SHA-256 correspond et qui porte une signature Ed25519 valide du responsable (la clé publique est dans le firmware, la privée ne quitte jamais le responsable) ; un fichier envoyé à la main par un administrateur dans le panneau reste accepté. Les pages et messages du panneau sont en huit langues.
 * **Appairage Bluetooth avec un PIN :** le PIN à six chiffres est dérivé du code de configuration, imprimé sur la console USB et montré à un administrateur dans le panneau ; le téléphone doit le saisir avant de pouvoir écrire les réglages du nœud.
-* **Pas encore :** une première compilation et mise sous tension du firmware, un mot de réveil, le service vocal sur le Jetson et une vue des caméras à l'écran.
+* **Pas encore :** une première compilation et mise sous tension du firmware, le mot d'activation sur la carte avec un modèle entraîné, le service vocal sur le Jetson et une vue des caméras à l'écran.
 * **Seule la maison peut utiliser le panneau :** le panneau répond par défaut au réseau privé (ou aux réseaux que son propriétaire indique, comme un VPN), refuse une liste qui exclurait celui qui l'enregistre, compte les mauvais mots de passe par personne et par adresse, et fonctionne derrière le proxy du serveur pour être atteint depuis l'extérieur sans publier le nœud.
 * **Il dit ce qui se passe :** l'écran connaît le texte, en huit langues, de chaque code d'alarme que lève le serveur (réseau, solaire, électrique, zones d'alarme...) et il indique au serveur qu'il est un panneau mural ; il est donc listé comme tel et ne compte pas comme un radar.
 * **Liaison chiffrée facultative avec le broker (TLS) :** désactivée par défaut, le nœud parle donc MQTT non chiffré comme avant. Un interrupteur et une zone pour le certificat de l'autorité propre à l'installation (PEM, 2 Ko au plus) dans la page Broker lui font se connecter en `mqtts://`, ne faire confiance qu'à cette autorité et vérifier que le certificat du broker a été établi pour l'adresse atteinte ; ce qui n'est pas un seul certificat PEM est refusé. Couvert par des tests sur ordinateur ; la poignée de main n'a pas encore été exécutée sur une carte.
@@ -852,7 +852,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Le firmware a été compilé une fois (ESP-IDF 5.5.5), mais la compilation n'est pas contrôlée par l'intégration continue et il n'a jamais tourné sur une carte.
-* L'échange avec le serveur et avec le service vocal ARMOR-VOICE-AI est testé contre des simulations ; c'est du push-to-talk, sans mot d'activation.
+* L'échange avec le serveur et avec le service vocal ARMOR-VOICE-AI est testé contre des simulations ; c'est du push-to-talk, plus un mot d'activation facultatif (désactivé par défaut) testé seulement contre des simulations, et le nombre du défi vocal s'affiche à l'écran.
 * La page web a tourné contre une simulation dans un vrai navigateur ; l'écran, le tactile et le son sont écrits d'après les exemples de Waveshare et attendent leur première mise sous tension.
 * Le firmware n'a pas tourné sur la carte : rien n'a encore tourné sur de vrais équipements.
 * Le code de configuration, la limite de connexions, le PIN Bluetooth, la gestion de la contrainte et les mises à jour signées sont testés sur l'hôte ; il n'y a pas eu de revue indépendante.
@@ -861,7 +861,7 @@ ARMOR-NODE-HMI/
 
 **Ensuite**
 
-* Faire la première compilation complète et la première mise sous tension sur la carte, puis le service vocal sur le Jetson, un mot d'activation et la vue des caméras à l'écran.""",
+* Faire la première compilation complète et la première mise sous tension sur la carte, puis le service vocal sur le Jetson, le mot d'activation avec un modèle entraîné et la vue des caméras à l'écran.""",
     },
   },
   "it": {
@@ -900,7 +900,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "Il firmware compila (ESP-IDF 5.5.5), ma la compilazione non è controllata dall'integrazione continua e non ha mai girato su una scheda.",
       "tests": "Superano 93.122 controlli in {{fact:ctest_cpp:ARMOR-NODE-HMI}} programmi host (`ctest`): le impostazioni, ciò che il pannello sa del server e quando è obsoleto, l'allarme sotto minaccia che non viene mai mostrato, lo scambio vocale, i pin, i testi dello schermo in otto lingue e i glifi dei suoi caratteri.",
-      "protocols": "Lo scambio con il server e con il servizio vocale ARMOR-VOICE-AI è provato contro simulazioni; è push to talk, senza parola di attivazione.",
+      "protocols": "Lo scambio con il server e con il servizio vocale ARMOR-VOICE-AI è provato contro simulazioni; è push to talk, più una parola di attivazione facoltativa (spenta per impostazione predefinita) provata solo contro simulazioni, e il numero della sfida vocale compare sullo schermo.",
       "ui": "La pagina web è stata eseguita contro una simulazione in un browser reale; lo schermo, il tocco e l'audio sono scritti dagli esempi di Waveshare e attendono la prima accensione.",
       "hardware": "Il firmware non ha mai girato sulla scheda: nulla ha ancora funzionato su apparecchiature reali.",
       "security": "Il codice di configurazione, il limite di accessi, il PIN Bluetooth, la gestione della minaccia e gli aggiornamenti firmati sono testati sull'host; non c'è stata una revisione indipendente.",
@@ -924,7 +924,7 @@ ARMOR-NODE-HMI/
 * **La scheda:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB di flash, 16 MB di PSRAM, schermo RGB da 7 pollici con tocco GT911, quattro microfoni, un altoparlante); i pin vengono dagli esempi di Waveshare e un test dimostra che due funzioni non condividono un GPIO ([la scheda](docs/HARDWARE.md)).
 * **Aggiornamenti via etere firmati:** il nodo installa da GitHub solo un'immagine il cui SHA-256 coincide e che porta una firma Ed25519 valida del responsabile (la chiave pubblica è nel firmware, quella privata non lascia mai il responsabile); un file caricato a mano da un amministratore nel pannello resta accettato. Le pagine e i messaggi del pannello sono in otto lingue.
 * **Abbinamento Bluetooth con PIN:** il PIN a sei cifre deriva dal codice di configurazione, è stampato sulla console USB e mostrato a un amministratore nel pannello; il telefono deve inserirlo prima di poter scrivere le impostazioni del nodo.
-* **Non ancora:** una prima compilazione e accensione del firmware, una parola di attivazione, il servizio vocale sul Jetson e una vista delle telecamere sullo schermo.
+* **Non ancora:** una prima compilazione e accensione del firmware, la parola di attivazione sulla scheda con un modello addestrato, il servizio vocale sul Jetson e una vista delle telecamere sullo schermo.
 * **Solo la casa può usare il pannello:** il pannello risponde per impostazione predefinita alla rete privata (o alle reti indicate dal proprietario, come una VPN), rifiuta un elenco che escluderebbe chi lo salva, conta le password errate per persona e per indirizzo e funziona dietro il proxy del server per essere raggiunto da fuori casa senza pubblicare il nodo.
 * **Dice cosa succede:** lo schermo conosce il testo, in otto lingue, di ogni codice d'allarme che il server solleva (rete, solare, elettrico, zone d'allarme...) e dice al server di essere un pannello a parete, quindi viene elencato come tale e non conta come radar.
 * **Collegamento cifrato facoltativo con il broker (TLS):** disattivato per impostazione predefinita, quindi il nodo parla MQTT non cifrato come prima. Un interruttore e una casella per il certificato dell'autorità propria dell'installazione (PEM, al massimo 2 KB) nella pagina Broker lo fanno collegare con `mqtts://`, fidarsi solo di quell'autorità e verificare che il certificato del broker sia stato fatto per l'indirizzo raggiunto; ciò che non è un solo certificato PEM viene rifiutato. Coperto da test sul computer; l'handshake non è ancora stato eseguito su una scheda.
@@ -1051,7 +1051,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Limiti noti oggi**
 
 * Il firmware è stato compilato una volta (ESP-IDF 5.5.5), ma la compilazione non è controllata dall'integrazione continua e non ha mai girato su una scheda.
-* Lo scambio con il server e con il servizio vocale ARMOR-VOICE-AI è provato contro simulazioni; è push to talk, senza parola di attivazione.
+* Lo scambio con il server e con il servizio vocale ARMOR-VOICE-AI è provato contro simulazioni; è push to talk, più una parola di attivazione facoltativa (spenta per impostazione predefinita) provata solo contro simulazioni, e il numero della sfida vocale compare sullo schermo.
 * La pagina web è stata eseguita contro una simulazione in un browser reale; lo schermo, il tocco e l'audio sono scritti dagli esempi di Waveshare e attendono la prima accensione.
 * Il firmware non ha mai girato sulla scheda: nulla ha ancora funzionato su apparecchiature reali.
 * Il codice di configurazione, il limite di accessi, il PIN Bluetooth, la gestione della minaccia e gli aggiornamenti firmati sono testati sull'host; non c'è stata una revisione indipendente.
@@ -1060,7 +1060,7 @@ ARMOR-NODE-HMI/
 
 **Prossimi passi**
 
-* Fare la prima compilazione completa e la prima accensione sulla scheda, poi il servizio vocale sul Jetson, una parola di attivazione e la vista delle telecamere sullo schermo.""",
+* Fare la prima compilazione completa e la prima accensione sulla scheda, poi il servizio vocale sul Jetson, la parola di attivazione con un modello addestrato e la vista delle telecamere sullo schermo.""",
     },
   },
   "ja": {
@@ -1099,7 +1099,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "ファームウェアはビルドできます（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。",
       "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} のホストプログラムで 99,716 件のチェックが通ります（`ctest`）：設定、パネルがサーバーについて知っていることとその古さ、決して表示しない脅迫警報、音声のやり取り、ピン、8 言語の画面文言とフォントのグリフ。",
-      "protocols": "サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、ウェイクワードはありません。",
+      "protocols": "サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、任意のウェイクワード（既定ではオフ）は模擬に対してのみテストし、音声チャレンジの番号は画面に表示します。",
       "ui": "Web ページは実ブラウザーで模擬に対して動かしました。画面、タッチ、音声は Waveshare のサンプルをもとに書いたもので、初回の電源投入を待っています。",
       "hardware": "ファームウェアはボード上で動かしていません。実機ではまだ何も動かしていません。",
       "security": "設定コード、ログイン制限、Bluetooth の PIN、脅迫時の扱い、署名付きアップデートはホストでテスト済みです。独立したレビューはまだありません。",
@@ -1121,7 +1121,7 @@ ARMOR-NODE-HMI/
 * **他と同じノード：** ARMOR-NODE-RADAR、ARMOR-NODE-SOLAR、ARMOR-NODE-ELECTRICAL と同じ設定ストア、Wi-Fi、8言語のWebページ、スマートフォンからのBluetooth設定、ロールバック付きファームウェア更新、HTTPS を備え（`ARMOR-COMMON/firmware_base` を共有）、サーバー・画面・サウンド・音声のページが加わります。MQTT で Studio に存在を知らせ、Studio がそのページ付きで一覧表示します。
 * **音声アシスタント（プッシュトゥトーク）：** タッチでマイクが開き、音声は設定したアドレスの音声サービスにのみ送られ（既定ではオフ）、返答が表示・読み上げされます。手順の順序、時間制限、タッチの動作はテスト済みのステートマシンで、パネルが自らコマンドを実行することはありません（[契約](docs/VOICE.md)）。録音はバイナリ要求で生のバイト列として送られ、音声の返答もバイト列で戻ります。受け付けないサーバーには従来の要求を送ります。
 * **ボード：** Waveshare ESP32-S3-Touch-LCD-7C-BOX（フラッシュ32 MB、PSRAM 16 MB、GT911タッチ付き7インチRGB画面、マイク4個、スピーカー）。ピンはWaveshareのサンプル由来で、2つの機能が同じGPIOを共有しないことをテストで証明しています（[ボード](docs/HARDWARE.md)）。
-* **未対応：** ファームウェアの最初のコンパイルと電源投入、ウェイクワード、Jetson 上の音声サービス、画面上のカメラ表示。
+* **未対応：** ファームウェアの最初のコンパイルと電源投入、学習済みモデルによる基板上のウェイクワード、Jetson 上の音声サービス、画面上のカメラ表示。
 * **署名付きの無線アップデート：**ノードが GitHub からインストールするのは、SHA-256 が一致し、管理者の有効な Ed25519 署名を持つイメージだけです（公開鍵はファームウェア内、秘密鍵は管理者の手元から出ません）。管理者がパネルで手動アップロードしたファイルは引き続き受け付けます。パネルのページとメッセージは 8 言語です。
 * **PIN 付きの Bluetooth ペアリング：**6 桁の PIN は設定コードから導出され、USB コンソールに表示され、管理者にはパネルにも表示されます。スマートフォンはこれを入力して初めてノードの設定を書き込めます。
 * **パネルを使えるのは家だけ：**パネルは既定でプライベートネットワーク（または所有者が指定した VPN などのネットワーク）にだけ応答し、保存する本人を締め出す一覧は拒否します。誤ったパスワードは人ごと・アドレスごとに数え、サーバーのプロキシの背後でも動くので、ノードを公開せずに家の外から使えます。
@@ -1250,7 +1250,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**現時点の既知の制限**
 
 * ファームウェアは一度ビルドしました（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。
-* サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、ウェイクワードはありません。
+* サーバーおよび音声サービス ARMOR-VOICE-AI とのやり取りは模擬に対してテストしています。プッシュトゥトークで、任意のウェイクワード（既定ではオフ）は模擬に対してのみテストし、音声チャレンジの番号は画面に表示します。
 * Web ページは実ブラウザーで模擬に対して動かしました。画面、タッチ、音声は Waveshare のサンプルをもとに書いたもので、初回の電源投入を待っています。
 * ファームウェアはボード上で動かしていません。実機ではまだ何も動かしていません。
 * 設定コード、ログイン制限、Bluetooth の PIN、脅迫時の扱い、署名付きアップデートはホストでテスト済みです。独立したレビューはまだありません。
@@ -1259,7 +1259,7 @@ ARMOR-NODE-HMI/
 
 **今後**
 
-* 基板での最初のフルビルドと初めての電源投入を行い、続いて Jetson の音声サービス、ウェイクワード、画面でのカメラ表示に進む。""",
+* 基板での最初のフルビルドと初めての電源投入を行い、続いて Jetson の音声サービス、学習済みモデルによるウェイクワード、画面でのカメラ表示に進む。""",
     },
   },
   "zh": {
@@ -1298,7 +1298,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "固件可以构建（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。",
       "tests": "{{fact:ctest_cpp:ARMOR-NODE-HMI}} 个主机程序中的 99,716 项检查通过（`ctest`）：设置、面板对服务器的了解及其何时过期、从不显示的胁迫报警、语音交换、引脚、屏幕上八种语言的文字及其字体的字形。",
-      "protocols": "与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，没有唤醒词。",
+      "protocols": "与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，另有可选的唤醒词（默认关闭），仅对照模拟测试，语音挑战的号码显示在屏幕上。",
       "ui": "网页已在真实浏览器中对模拟运行过；屏幕、触摸和声音依据 Waveshare 的示例编写，等待首次上电。",
       "hardware": "固件尚未在板子上运行过：还没有在真实设备上运行过。",
       "security": "设置码、登录限制、蓝牙 PIN、胁迫处理和签名更新已在主机上测试；没有经过独立审查。",
@@ -1322,7 +1322,7 @@ ARMOR-NODE-HMI/
 * **开发板：** Waveshare ESP32-S3-Touch-LCD-7C-BOX（32 MB 闪存、16 MB PSRAM、带 GT911 触摸的7英寸RGB屏幕、四个麦克风、一个扬声器）；引脚来自 Waveshare 的示例，并有测试证明没有两个功能共用同一个 GPIO（[开发板](docs/HARDWARE.md)）。
 * **签名的无线更新：**节点只会从 GitHub 安装 SHA-256 匹配且带有维护者有效 Ed25519 签名的镜像（公钥在固件中，私钥从不离开维护者）；管理员在面板中手动上传的文件仍然被接受。面板的页面和消息有八种语言。
 * **带 PIN 的蓝牙配对：**六位 PIN 由设置码派生，打印在 USB 控制台上并向管理员显示在面板中；手机必须输入它才能写入节点的设置。
-* **尚未完成：** 固件的第一次编译和上电、唤醒词、Jetson 上的语音服务，以及屏幕上的摄像头视图。
+* **尚未完成：** 固件的第一次编译和上电、使用训练模型的板上唤醒词、Jetson 上的语音服务，以及屏幕上的摄像头视图。
 * **只有家中才能使用面板：**面板默认只响应私有网络（或所有者列出的网络，如 VPN），拒绝会把保存者自己挡在外面的列表，按人和按地址统计错误密码，并可在服务器代理之后工作，从而无需公开节点就能在家外访问。
 * **它会说明发生了什么：** 屏幕知道服务器发出的每个报警代码（网络、太阳能、电气、报警防区等）的八种语言文字，并告诉服务器自己是壁挂面板，因此会作为面板列出，不计为雷达。
 * **可选的与代理加密连接(TLS):** 默认关闭,因此节点仍像以前一样使用未加密的 MQTT。代理页面中的一个开关和一个用于填写本安装自有证书颁发机构证书(PEM,最大 2 KB)的框,会让节点用 `mqtts://` 连接、只信任该机构,并检查代理证书是否为其所到达的地址而签发;不是单个 PEM 证书的内容会被拒绝。已有主机测试覆盖;握手尚未在电路板上运行。
@@ -1449,7 +1449,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**目前已知的限制**
 
 * 固件构建过一次（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。
-* 与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，没有唤醒词。
+* 与服务器和语音服务 ARMOR-VOICE-AI 的交互已对照模拟测试；采用按键说话，另有可选的唤醒词（默认关闭），仅对照模拟测试，语音挑战的号码显示在屏幕上。
 * 网页已在真实浏览器中对模拟运行过；屏幕、触摸和声音依据 Waveshare 的示例编写，等待首次上电。
 * 固件尚未在板子上运行过：还没有在真实设备上运行过。
 * 设置码、登录限制、蓝牙 PIN、胁迫处理和签名更新已在主机上测试；没有经过独立审查。
@@ -1458,7 +1458,7 @@ ARMOR-NODE-HMI/
 
 **下一步**
 
-* 在电路板上完成首次完整构建和首次通电，然后是 Jetson 上的语音服务、唤醒词和屏幕上的摄像头视图。""",
+* 在电路板上完成首次完整构建和首次通电，然后是 Jetson 上的语音服务、使用训练模型的唤醒词和屏幕上的摄像头视图。""",
     },
   },
   "pt": {
@@ -1497,7 +1497,7 @@ ARMOR-NODE-HMI/
     "status": {
       "software": "O firmware compila (ESP-IDF 5.5.5), mas a compilação não é verificada pela integração contínua e nunca funcionou numa placa.",
       "tests": "Passam 93.122 verificações em {{fact:ctest_cpp:ARMOR-NODE-HMI}} programas de anfitrião (`ctest`): as definições, o que o painel sabe do servidor e quando isso está desatualizado, o alarme de coação que nunca se mostra, a troca de voz, os pinos, os textos do ecrã em oito idiomas e os glifos dos seus tipos de letra.",
-      "protocols": "A troca com o servidor e com o serviço de voz ARMOR-VOICE-AI é testada contra simulações; é premir para falar, sem palavra de ativação.",
+      "protocols": "A troca com o servidor e com o serviço de voz ARMOR-VOICE-AI é testada contra simulações; é premir para falar, mais uma palavra de ativação opcional (desligada por defeito) testada apenas contra simulações, e o número do desafio de voz aparece no ecrã.",
       "ui": "A página web correu contra uma simulação num navegador real; o ecrã, o toque e o som foram escritos a partir dos exemplos da Waveshare e esperam a primeira ligação.",
       "hardware": "O firmware não funcionou na placa: nada funcionou ainda em equipamentos reais.",
       "security": "O código de configuração, o limite de acessos, o PIN Bluetooth, o tratamento da coação e as atualizações assinadas estão testados no anfitrião; não houve revisão independente.",
@@ -1521,7 +1521,7 @@ ARMOR-NODE-HMI/
 * **A placa:** Waveshare ESP32-S3-Touch-LCD-7C-BOX (32 MB de flash, 16 MB de PSRAM, um ecrã RGB de 7 polegadas com toque GT911, quatro microfones, um altifalante); os pinos vêm dos exemplos da Waveshare e um teste prova que nenhumas duas funções partilham um GPIO ([a placa](docs/HARDWARE.md)).
 * **Atualizações pelo ar assinadas:** o nó só instala do GitHub uma imagem cujo SHA-256 coincide e que leva uma assinatura Ed25519 válida do responsável (a chave pública está no firmware, a privada nunca sai do responsável); um ficheiro carregado à mão por um administrador no painel continua a ser aceite. As páginas e mensagens do painel estão em oito idiomas.
 * **Emparelhamento Bluetooth com PIN:** o PIN de seis dígitos deriva do código de configuração, é impresso na consola USB e mostrado a um administrador no painel; o telemóvel tem de o introduzir antes de poder escrever as definições do nó.
-* **Ainda não:** uma primeira compilação e arranque do firmware, uma palavra de ativação, o serviço de fala no Jetson, e uma vista das câmaras no ecrã.
+* **Ainda não:** uma primeira compilação e arranque do firmware, a palavra de ativação na placa com um modelo treinado, o serviço de fala no Jetson, e uma vista das câmaras no ecrã.
 * **Só a casa pode usar o painel:** o painel responde por omissão à rede privada (ou às redes que o dono indicar, como uma VPN), recusa uma lista que deixaria de fora quem a guarda, conta as palavras-passe erradas por pessoa e por endereço e funciona atrás do proxy do servidor para ser alcançado de fora de casa sem publicar o nó.
 * **Diz o que se passa:** o ecrã conhece o texto, em oito idiomas, de cada código de alarme que o servidor levanta (rede, solar, elétrica, zonas de alarme...) e avisa o servidor de que é um painel de parede, por isso é listado como tal e não conta como radar.
 * **Ligação cifrada opcional ao broker (TLS):** desativada por predefinição, por isso o nó fala MQTT sem cifra como antes. Um interruptor e uma caixa para o certificado da autoridade própria da instalação (PEM, no máximo 2 KB) na página Broker fazem-no ligar-se com `mqtts://`, confiar só nessa autoridade e verificar que o certificado do broker foi feito para o endereço alcançado; o que não for um único certificado PEM é recusado. Coberto por testes no computador; o handshake ainda não foi executado numa placa.
@@ -1648,7 +1648,7 @@ ARMOR-NODE-HMI/
       "roadmap": r"""**Limites conhecidos hoje**
 
 * O firmware foi compilado uma vez (ESP-IDF 5.5.5), mas a compilação não é verificada pela integração contínua e nunca funcionou numa placa.
-* A troca com o servidor e com o serviço de voz ARMOR-VOICE-AI é testada contra simulações; é premir para falar, sem palavra de ativação.
+* A troca com o servidor e com o serviço de voz ARMOR-VOICE-AI é testada contra simulações; é premir para falar, mais uma palavra de ativação opcional (desligada por defeito) testada apenas contra simulações, e o número do desafio de voz aparece no ecrã.
 * A página web correu contra uma simulação num navegador real; o ecrã, o toque e o som foram escritos a partir dos exemplos da Waveshare e esperam a primeira ligação.
 * O firmware não funcionou na placa: nada funcionou ainda em equipamentos reais.
 * O código de configuração, o limite de acessos, o PIN Bluetooth, o tratamento da coação e as atualizações assinadas estão testados no anfitrião; não houve revisão independente.
@@ -1657,7 +1657,7 @@ ARMOR-NODE-HMI/
 
 **A seguir**
 
-* Fazer a primeira compilação completa e o primeiro arranque na placa, e depois o serviço de voz no Jetson, uma palavra de ativação e a vista de câmaras no ecrã.""",
+* Fazer a primeira compilação completa e o primeiro arranque na placa, e depois o serviço de voz no Jetson, a palavra de ativação com um modelo treinado e a vista de câmaras no ecrã.""",
     },
   },
 }

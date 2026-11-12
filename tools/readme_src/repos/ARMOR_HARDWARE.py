@@ -85,7 +85,8 @@ TEXT = {
     "contributing_first": "Before a pull request run `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: it must pass. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **The radar enclosure is `scad/node_enclosure_radar.scad`** (with STL, 3MF and AMF exports and two slicer projects, the base and the sliding cover): a 90-degree corner base with a visor, roof and floor, retaining steps, a sliding 2 mm front cover and side flaps, all driven by named parameters.
+      "overview": r"""* **The radar enclosure is `scad/node_enclosure_radar.scad`** (with two slicer projects, the base and the sliding cover; the STL and 3MF of every piece are made from the sources by `tools/export_models.py` and kept as an artifact of the CI, not in the repository): a 90-degree corner base with a visor, roof and floor, retaining steps, a sliding 2 mm front cover and side flaps, all driven by named parameters.
+* **One table of the pins and one shared file.** `docs/PINOUT.md` is made by `tools/pinout.py` from the tables the firmware is built with (the pins of the module, the ten serial ports, the Zigbee radio, the relays and the analog inputs of the base board, for both boards) and a test fails when it differs; `scad/node_common.scad` holds what both enclosures share: wall, lid, play and the cable-gland sizes of the shop (PG7 12.5 mm, M12 12 mm, PG9 15.2 mm, M16 16 mm), so a hole is a thread plus a play and not a round number.
 * **A parametric box for the solar, electrical and alarm nodes** (`scad/node_box.scad`, presets `solar`, `electrical` and `alarm`): walls, posts for the board, cable-gland holes, a vent, a pocket for a tamper micro-switch under the lid and a lid with a ring-shaped lip. It is a low-voltage box, not an enclosure for mains wiring.
 * **Holders** for three radar modules, a cable gland and drain holes. There are no volumes yet for the ESP32-S3-ETH-PoE board, the PoE magnetics, the PTC heater or the light-sensor window that the bench matrix wants to test. No metallic, conductive or carbon-loaded material in front of a 24 GHz aperture without measuring it first.
 * **Bench acceptance matrix:** the radio, environment, power, network and camera checks with a method and a proposed pass criterion each, and a camera compatibility table to fill in.
@@ -104,7 +105,7 @@ TEXT = {
 The radar enclosure is a printable mechanical starting point, **not an IP, RF or thermal rating**. Nothing has been printed or measured.""",
       "configuration": r"""| Name | Value | What it sets |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Wall and lid thickness of `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Wall and lid thickness of `node_box.scad` (defined in `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | The posts for the board and for the lid screws |
 | `screw_d` | 3.2 mm | M3 self-tapping screws into the posts |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Play between lid and box; width of the ring-shaped lip (1.2 to 3 mm) |
@@ -121,6 +122,8 @@ The radar enclosure is a printable mechanical starting point, **not an IP, RF or
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 See the [validation boundary](docs/VALIDATION.md). The intended hardware licence is CERN-OHL-S-2.0; add its full text before releasing the designs.""",
@@ -226,7 +229,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Antes de un pull request ejecuta `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: debe pasar. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y el [código de conducta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **La carcasa del radar es `scad/node_enclosure_radar.scad`** (con exportaciones STL, 3MF y AMF y dos proyectos de laminador, la base y la tapa corredera): una base de esquina de 90 grados con visera, techo y suelo, escalones de retención, una tapa frontal corredera de 2 mm y aletas laterales, todo gobernado por parámetros con nombre.
+      "overview": r"""* **La carcasa del radar es `scad/node_enclosure_radar.scad`** (con dos proyectos de laminador, la base y la tapa corredera; el STL y el 3MF de cada pieza los hace `tools/export_models.py` desde las fuentes y se guardan como artefacto del CI, no en el repositorio): una base de esquina de 90 grados con visera, techo y suelo, escalones de retención, una tapa frontal corredera de 2 mm y aletas laterales, todo gobernado por parámetros con nombre.
+* **Una tabla de pines y un fichero compartido.** `docs/PINOUT.md` lo hace `tools/pinout.py` con las tablas con las que se compila el firmware (los pines del módulo, los diez puertos serie, la radio Zigbee, los relés y las entradas analógicas de la placa base, para las dos placas) y un test falla si difiere; `scad/node_common.scad` guarda lo que comparten las dos cajas: pared, tapa, holgura y los tamaños de prensaestopas de tienda (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de modo que un agujero es una rosca más una holgura y no un número redondo.
 * **Una caja paramétrica para los nodos solar, eléctrico y de alarma** (`scad/node_box.scad`, preajustes `solar`, `electrical` y `alarm`): paredes, postes para la placa, agujeros para prensaestopas, una ventilación, un hueco para un microinterruptor antisabotaje bajo la tapa y una tapa con labio anular. Es una caja de baja tensión, no una envolvente para cableado de red.
 * **Soportes** para tres módulos de radar, un prensaestopas y agujeros de drenaje. Todavía no hay volúmenes para la placa ESP32-S3-ETH-PoE, la magnética PoE, el calefactor PTC ni la ventana del sensor de luz que la matriz de banco quiere probar. Ningún material metálico, conductor o cargado de carbono delante de una apertura de 24 GHz sin medirlo antes.
 * **Matriz de aceptación en banco:** las comprobaciones de radio, entorno, alimentación, red y cámara con un método y un criterio de aprobado propuesto cada una, y una tabla de compatibilidad de cámaras por rellenar.
@@ -245,7 +249,7 @@ ARMOR-HARDWARE/
 La caja del radar es un punto de partida mecánico imprimible, **no una clasificación IP, RF ni térmica**. Nada se ha impreso ni medido.""",
       "configuration": r"""| Nombre | Valor | Qué define |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Grosor de pared y tapa de `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Grosor de pared y tapa de `node_box.scad` (definidos en `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | Los postes de la placa y de los tornillos de la tapa |
 | `screw_d` | 3.2 mm | Tornillos M3 autorroscantes en los postes |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Holgura entre tapa y caja; ancho del labio anular (1,2 a 3 mm) |
@@ -262,6 +266,8 @@ La caja del radar es un punto de partida mecánico imprimible, **no una clasific
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 Véase el [límite de validación](docs/VALIDATION.md). La licencia de hardware prevista es CERN-OHL-S-2.0; añade su texto completo antes de publicar los diseños.""",
@@ -367,7 +373,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Führe vor einem Pull Request `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` aus: Es muss bestehen. Siehe [CONTRIBUTING.md](CONTRIBUTING.md) und den [Verhaltenskodex](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **Das Radargehäuse ist `scad/node_enclosure_radar.scad`** (mit STL-, 3MF- und AMF-Exporten und zwei Slicer-Projekten, der Basis und dem Schiebedeckel): eine 90-Grad-Eckbasis mit Blende, Dach und Boden, Haltestufen, einem 2 mm dicken Schiebedeckel vorn und Seitenklappen, alles über benannte Parameter gesteuert.
+      "overview": r"""* **Das Radargehäuse ist `scad/node_enclosure_radar.scad`** (mit zwei Slicer-Projekten, der Basis und dem Schiebedeckel; STL und 3MF jedes Teils erzeugt `tools/export_models.py` aus den Quellen, und sie liegen als Artefakt der CI, nicht im Repository): eine 90-Grad-Eckbasis mit Blende, Dach und Boden, Haltestufen, einem 2 mm dicken Schiebedeckel vorn und Seitenklappen, alles über benannte Parameter gesteuert.
+* **Eine Pinbelegung und eine gemeinsame Datei.** `docs/PINOUT.md` erzeugt `tools/pinout.py` aus den Tabellen, mit denen die Firmware gebaut wird (die Pins des Moduls, die zehn seriellen Ports, das Zigbee-Funkmodul, die Relais und die Analogeingänge der Basisplatine, für beide Platinen), und ein Test schlägt fehl, wenn sie abweicht; `scad/node_common.scad` enthält, was beide Gehäuse teilen: Wand, Deckel, Spiel und die handelsüblichen Kabelverschraubungen (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), sodass ein Loch ein Gewinde plus Spiel ist und keine runde Zahl.
 * **Eine parametrische Box für die Knoten Solar, Elektro und Alarm** (`scad/node_box.scad`, Voreinstellungen `solar`, `electrical` und `alarm`): Wände, Pfosten für die Platine, Löcher für Kabelverschraubungen, eine Lüftung, eine Aufnahme für einen Sabotage-Mikroschalter unter dem Deckel und ein Deckel mit ringförmiger Lippe. Es ist eine Kleinspannungsbox, kein Gehäuse für Netzverdrahtung.
 * **Halter** für drei Radarmodule, eine Kabelverschraubung und Ablaufbohrungen. Für die Platine ESP32-S3-ETH-PoE, die PoE-Magnetik, die PTC-Heizung und das Lichtsensorfenster, die die Prüfstandmatrix testen will, gibt es noch keine Volumina. Kein metallisches, leitendes oder kohlenstoffhaltiges Material vor einer 24-GHz-Öffnung, ohne es vorher zu messen.
 * **Prüfstand-Abnahmematrix:** die Prüfungen für Funk, Umgebung, Stromversorgung, Netzwerk und Kamera, jeweils mit Methode und vorgeschlagenem Bestehenskriterium, und eine auszufüllende Kamera-Kompatibilitätstabelle.
@@ -386,7 +393,7 @@ ARMOR-HARDWARE/
 Das Radargehäuse ist ein druckbarer mechanischer Ausgangspunkt, **keine IP-, HF- oder Wärmeklassifizierung**. Nichts wurde gedruckt oder gemessen.""",
       "configuration": r"""| Name | Wert | Was sie festlegt |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Wand- und Deckelstärke von `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Wand- und Deckelstärke von `node_box.scad` (definiert in `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | Die Pfosten für die Platine und die Deckelschrauben |
 | `screw_d` | 3.2 mm | M3-Schneidschrauben in die Pfosten |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Spiel zwischen Deckel und Box; Breite der ringförmigen Lippe (1,2 bis 3 mm) |
@@ -403,6 +410,8 @@ Das Radargehäuse ist ein druckbarer mechanischer Ausgangspunkt, **keine IP-, HF
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 Siehe die [Validierungsgrenze](docs/VALIDATION.md). Die vorgesehene Hardware-Lizenz ist CERN-OHL-S-2.0; fügen Sie ihren vollständigen Text hinzu, bevor Sie die Entwürfe veröffentlichen.""",
@@ -508,7 +517,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Avant une pull request, lancez `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` : il doit réussir. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **Le boîtier du radar est `scad/node_enclosure_radar.scad`** (avec exports STL, 3MF et AMF et deux projets de trancheur, la base et le couvercle coulissant) : une base d'angle à 90 degrés avec visière, toit et plancher, des gradins de retenue, un couvercle avant coulissant de 2 mm et des volets latéraux, le tout piloté par des paramètres nommés.
+      "overview": r"""* **Le boîtier du radar est `scad/node_enclosure_radar.scad`** (avec deux projets de trancheur, la base et le couvercle coulissant ; le STL et le 3MF de chaque pièce sont produits depuis les sources par `tools/export_models.py` et conservés comme artefact de la CI, pas dans le dépôt) : une base d'angle à 90 degrés avec visière, toit et plancher, des gradins de retenue, un couvercle avant coulissant de 2 mm et des volets latéraux, le tout piloté par des paramètres nommés.
+* **Un tableau des broches et un fichier partagé.** `docs/PINOUT.md` est produit par `tools/pinout.py` à partir des tables avec lesquelles le firmware est compilé (les broches du module, les dix ports série, la radio Zigbee, les relais et les entrées analogiques de la carte de base, pour les deux cartes) et un test échoue s'il diffère ; `scad/node_common.scad` contient ce que les deux boîtiers partagent : paroi, couvercle, jeu et les tailles de presse-étoupe du commerce (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de sorte qu'un trou est un filetage plus un jeu et non un nombre rond.
 * **Une boîte paramétrique pour les nœuds solaire, électrique et alarme** (`scad/node_box.scad`, préréglages `solar`, `electrical` et `alarm`) : parois, plots pour la carte, trous de presse-étoupe, une aération, un logement pour un micro-interrupteur anti-sabotage sous le couvercle et un couvercle à lèvre annulaire. C'est une boîte basse tension, pas un coffret pour câblage secteur.
 * **Supports** pour trois modules radar, un presse-étoupe et des trous de drainage. Il n'y a pas encore de volumes pour la carte ESP32-S3-ETH-PoE, la magnétique PoE, le chauffage PTC ni la fenêtre du capteur de lumière que la matrice de banc veut tester. Aucun matériau métallique, conducteur ou chargé de carbone devant une ouverture 24 GHz sans l'avoir mesuré.
 * **Matrice d'acceptation sur banc :** les contrôles radio, environnement, alimentation, réseau et caméra avec une méthode et un critère de réussite proposé chacun, et un tableau de compatibilité des caméras à remplir.
@@ -527,7 +537,7 @@ ARMOR-HARDWARE/
 Le boîtier du radar est un point de départ mécanique imprimable, **pas une classe IP, RF ou thermique**. Rien n'a été imprimé ni mesuré.""",
       "configuration": r"""| Nom | Valeur | Ce qu'elle règle |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Épaisseur de paroi et de couvercle de `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Épaisseur de paroi et de couvercle de `node_box.scad` (définies dans `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | Les plots de la carte et des vis du couvercle |
 | `screw_d` | 3.2 mm | Vis M3 autotaraudeuses dans les plots |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Jeu entre couvercle et boîte ; largeur de la lèvre annulaire (1,2 à 3 mm) |
@@ -544,6 +554,8 @@ Le boîtier du radar est un point de départ mécanique imprimable, **pas une cl
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 Voir la [frontière de validation](docs/VALIDATION.md). La licence matérielle prévue est CERN-OHL-S-2.0 ; ajoutez son texte complet avant de publier les conceptions.""",
@@ -649,7 +661,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Prima di una pull request esegui `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: deve passare. Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il [codice di condotta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **L'involucro del radar è `scad/node_enclosure_radar.scad`** (con esportazioni STL, 3MF e AMF e due progetti dello slicer, la base e il coperchio scorrevole): una base d'angolo a 90 gradi con visiera, tetto e pavimento, gradini di ritenuta, un coperchio frontale scorrevole da 2 mm e alette laterali, tutto governato da parametri con nome.
+      "overview": r"""* **L'involucro del radar è `scad/node_enclosure_radar.scad`** (con due progetti dello slicer, la base e il coperchio scorrevole; lo STL e il 3MF di ogni pezzo li crea `tools/export_models.py` dai sorgenti e restano come artefatto della CI, non nel repository): una base d'angolo a 90 gradi con visiera, tetto e pavimento, gradini di ritenuta, un coperchio frontale scorrevole da 2 mm e alette laterali, tutto governato da parametri con nome.
+* **Una tabella dei pin e un file condiviso.** `docs/PINOUT.md` lo crea `tools/pinout.py` dalle tabelle con cui si compila il firmware (i pin del modulo, le dieci porte seriali, la radio Zigbee, i relè e gli ingressi analogici della scheda base, per le due schede) e un test fallisce se differisce; `scad/node_common.scad` contiene ciò che i due involucri condividono: parete, coperchio, gioco e le misure dei pressacavi in commercio (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), così un foro è una filettatura più un gioco e non un numero tondo.
 * **Una scatola parametrica per i nodi solare, elettrico e allarme** (`scad/node_box.scad`, preset `solar`, `electrical` e `alarm`): pareti, colonnine per la scheda, fori per pressacavi, una ventilazione, un alloggiamento per un microinterruttore antimanomissione sotto il coperchio e un coperchio con labbro ad anello. È una scatola a bassa tensione, non un involucro per cablaggio di rete.
 * **Supporti** per tre moduli radar, un pressacavo e fori di drenaggio. Non ci sono ancora volumi per la scheda ESP32-S3-ETH-PoE, la magnetica PoE, il riscaldatore PTC né la finestra del sensore di luce che la matrice di banco vuole provare. Nessun materiale metallico, conduttivo o caricato con carbonio davanti a un'apertura a 24 GHz senza averlo misurato.
 * **Matrice di accettazione al banco:** i controlli di radio, ambiente, alimentazione, rete e telecamera con un metodo e un criterio di superamento proposto ciascuno, e una tabella di compatibilità delle telecamere da compilare.
@@ -668,7 +681,7 @@ ARMOR-HARDWARE/
 L'involucro del radar è un punto di partenza meccanico stampabile, **non una classificazione IP, RF o termica**. Nulla è stato stampato né misurato.""",
       "configuration": r"""| Nome | Valore | Cosa imposta |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Spessore di parete e coperchio di `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Spessore di parete e coperchio di `node_box.scad` (definiti in `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | I supporti della scheda e delle viti del coperchio |
 | `screw_d` | 3.2 mm | Viti M3 autofilettanti nei supporti |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Gioco tra coperchio e scatola; larghezza del labbro ad anello (da 1,2 a 3 mm) |
@@ -685,6 +698,8 @@ L'involucro del radar è un punto di partenza meccanico stampabile, **non una cl
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 Vedi il [confine di validazione](docs/VALIDATION.md). La licenza hardware prevista è CERN-OHL-S-2.0; aggiungi il suo testo completo prima di pubblicare i progetti.""",
@@ -790,7 +805,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Pull Request の前に `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` を実行してください。通る必要があります。[CONTRIBUTING.md](CONTRIBUTING.md) と[行動規範](CODE_OF_CONDUCT.md)を参照してください。",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **レーダーの筐体は `scad/node_enclosure_radar.scad`**（STL・3MF・AMF の出力と、ベースとスライドカバーの 2 つのスライサープロジェクト付き）：バイザー、屋根、床、固定用の段差、2 mm のスライド式フロントカバー、側面フラップを備えた 90 度コーナーのベースで、すべて名前付きパラメーターで動きます。
+      "overview": r"""* **レーダーの筐体は `scad/node_enclosure_radar.scad`**（ベースとスライドカバーの 2 つのスライサープロジェクト付き。各パーツの STL と 3MF は `tools/export_models.py` がソースから作り、リポジトリではなく CI のアーティファクトとして保管します）：バイザー、屋根、床、固定用の段差、2 mm のスライド式フロントカバー、側面フラップを備えた 90 度コーナーのベースで、すべて名前付きパラメーターで動きます。
+* **ピン表 1 つと共有ファイル 1 つ。** `docs/PINOUT.md` は、ファームウェアのビルドに使う表（モジュールのピン、10 個のシリアルポート、Zigbee 無線、ベースボードのリレーとアナログ入力。2 枚のボードの分）から `tools/pinout.py` が作り、食い違えばテストが失敗します。`scad/node_common.scad` は 2 つの筐体が共有する値（壁、蓋、遊び、市販ケーブルグランドの寸法：PG7 12.5 mm、M12 12 mm、PG9 15.2 mm、M16 16 mm）を持つので、穴はキリのよい数字ではなく、ねじ径に遊びを足した値です。
 * **太陽光・電気・警報ノード用のパラメトリックボックス**（`scad/node_box.scad`、プリセット `solar`、`electrical`、`alarm`）：壁、基板用のポスト、ケーブルグランド用の穴、通気口、蓋の下の改ざん検知マイクロスイッチ用ポケット、リング状のリップ付きの蓋。低電圧用のボックスであり、商用電源配線用の筐体ではありません。
 * **ホルダー**：3 つのレーダーモジュール、ケーブルグランド、排水穴用。ベンチマトリクスが試験したい ESP32-S3-ETH-PoE 基板、PoE マグネティクス、PTC ヒーター、光センサー窓の空間はまだありません。24 GHz の開口の前には、測定せずに金属・導電性・カーボン入りの材料を置かないでください。
 * **ベンチ受入マトリクス：**無線、環境、電源、ネットワーク、カメラの検査それぞれに方法と合格基準の案があり、記入するカメラ互換表もあります。
@@ -809,7 +825,7 @@ ARMOR-HARDWARE/
 レーダー筐体は印刷できる機構上の出発点であり、**IP・RF・熱の等級ではありません**。印刷も測定もしていません。""",
       "configuration": r"""| 名前 | 値 | 設定内容 |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | `node_box.scad` の壁と蓋の厚さ |
+| `wall`, `lid_t` | 3 mm, 3 mm | `node_box.scad` の壁と蓋の厚さ（`node_common.scad` で定義） |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | 基板と蓋ネジ用のポスト |
 | `screw_d` | 3.2 mm | ポストにねじ込む M3 タッピングネジ |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | 蓋と箱の隙間、リング状リップの幅（1.2〜3 mm） |
@@ -826,6 +842,8 @@ ARMOR-HARDWARE/
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 [検証の境界](docs/VALIDATION.md)を参照してください。想定しているハードウェアライセンスは CERN-OHL-S-2.0 で、設計を公開する前に全文を追加してください。""",
@@ -931,7 +949,8 @@ ARMOR-HARDWARE/
     "contributing_first": "提交 Pull Request 之前请运行 `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`：必须通过。参见 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **雷达外壳是 `scad/node_enclosure_radar.scad`**（带 STL、3MF 和 AMF 导出以及两个切片项目：底座和滑动盖）：带遮阳罩、顶和底的 90 度转角底座、固定台阶、2 毫米的滑动前盖和侧翼，全部由命名参数驱动。
+      "overview": r"""* **雷达外壳是 `scad/node_enclosure_radar.scad`**（带两个切片项目：底座和滑动盖；每个零件的 STL 和 3MF 由 `tools/export_models.py` 从源文件生成，作为 CI 的构件保存，而不放在仓库里）：带遮阳罩、顶和底的 90 度转角底座、固定台阶、2 毫米的滑动前盖和侧翼，全部由命名参数驱动。
+* **一张引脚表和一个共享文件。** `docs/PINOUT.md` 由 `tools/pinout.py` 根据固件编译所用的表生成（模块引脚、十个串口、Zigbee 无线电、底板的继电器和模拟输入，两块板各一份），不一致时测试失败；`scad/node_common.scad` 保存两种外壳共用的值：壁厚、盖厚、间隙和市售线缆格兰头的尺寸（PG7 12.5 毫米、M12 12 毫米、PG9 15.2 毫米、M16 16 毫米），因此孔径是螺纹加间隙，而不是随手取的整数。
 * **用于太阳能、电气和报警节点的参数化盒子**（`scad/node_box.scad`，预设 `solar`、`electrical` 和 `alarm`）：墙壁、板子立柱、电缆格兰头孔、通风孔、盖下的防拆微动开关槽，以及带环形唇边的盖子。这是低压盒子，不是市电布线的外壳。
 * **支架**用于三个雷达模块、一个电缆格兰头和排水孔。台架矩阵要测试的 ESP32-S3-ETH-PoE 板、PoE 磁件、PTC 加热器和光传感器窗口还没有预留空间。未经测量，24 GHz 孔径前不要放置金属、导电或含碳的材料。
 * **台架验收矩阵：**射频、环境、电源、网络和摄像头检查，每项都有方法和建议的通过标准，另有待填写的摄像头兼容性表。
@@ -950,7 +969,7 @@ ARMOR-HARDWARE/
 雷达外壳是可打印的机械起点，**不是 IP、射频或热学等级**。尚未打印或测量过任何东西。""",
       "configuration": r"""| 名称 | 值 | 作用 |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | `node_box.scad` 的壁厚与盖厚 |
+| `wall`, `lid_t` | 3 mm, 3 mm | `node_box.scad` 的壁厚与盖厚（定义在 `node_common.scad` 中） |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | 电路板与盖板螺钉的立柱 |
 | `screw_d` | 3.2 mm | 拧入立柱的 M3 自攻螺钉 |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | 盖与盒之间的间隙；环形唇的宽度（1.2 到 3 mm） |
@@ -967,6 +986,8 @@ ARMOR-HARDWARE/
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 参见[验证边界](docs/VALIDATION.md)。预期的硬件许可证是 CERN-OHL-S-2.0；发布设计前请加入其完整文本。""",
@@ -1072,7 +1093,8 @@ ARMOR-HARDWARE/
     "contributing_first": "Antes de um pull request, execute `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: tem de passar. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **A caixa do radar é `scad/node_enclosure_radar.scad`** (com exportações STL, 3MF e AMF e dois projetos de fatiador, a base e a tampa deslizante): uma base de canto de 90 graus com viseira, teto e chão, degraus de retenção, uma tampa frontal deslizante de 2 mm e abas laterais, tudo governado por parâmetros com nome.
+      "overview": r"""* **A caixa do radar é `scad/node_enclosure_radar.scad`** (com dois projetos de fatiador, a base e a tampa deslizante; o STL e o 3MF de cada peça são feitos por `tools/export_models.py` a partir das fontes e guardados como artefacto da CI, não no repositório): uma base de canto de 90 graus com viseira, teto e chão, degraus de retenção, uma tampa frontal deslizante de 2 mm e abas laterais, tudo governado por parâmetros com nome.
+* **Uma tabela de pinos e um ficheiro partilhado.** O `docs/PINOUT.md` é feito por `tools/pinout.py` a partir das tabelas com que o firmware é compilado (os pinos do módulo, as dez portas série, o rádio Zigbee, os relés e as entradas analógicas da placa base, para as duas placas) e um teste falha se diferir; o `scad/node_common.scad` guarda o que as duas caixas partilham: parede, tampa, folga e os tamanhos de bucins de loja (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de modo que um furo é uma rosca mais uma folga e não um número redondo.
 * **Uma caixa paramétrica para os nós solar, elétrico e de alarme** (`scad/node_box.scad`, predefinidos `solar`, `electrical` e `alarm`): paredes, pilares para a placa, furos para bucins, uma ventilação, um espaço para um microinterruptor antissabotagem sob a tampa e uma tampa com lábio anular. É uma caixa de baixa tensão, não um invólucro para cablagem de rede.
 * **Suportes** para três módulos de radar, um bucim e furos de drenagem. Ainda não há volumes para a placa ESP32-S3-ETH-PoE, a magnética PoE, o aquecedor PTC nem a janela do sensor de luz que a matriz de bancada quer testar. Nenhum material metálico, condutor ou carregado de carbono à frente de uma abertura de 24 GHz sem o medir.
 * **Matriz de aceitação em bancada:** as verificações de rádio, ambiente, alimentação, rede e câmara com um método e um critério de aprovação proposto cada uma, e uma tabela de compatibilidade de câmaras por preencher.
@@ -1091,7 +1113,7 @@ ARMOR-HARDWARE/
 A caixa do radar é um ponto de partida mecânico imprimível, **não uma classificação IP, RF nem térmica**. Nada foi impresso nem medido.""",
       "configuration": r"""| Nome | Valor | O que define |
 |---|---|---|
-| `wall`, `lid_t` | 3 mm, 3 mm | Espessura da parede e da tampa de `node_box.scad` |
+| `wall`, `lid_t` | 3 mm, 3 mm | Espessura da parede e da tampa de `node_box.scad` (definidas em `node_common.scad`) |
 | `post_d`, `post_h`, `post_cap` | 7, 6, 9 mm | Os postes da placa e dos parafusos da tampa |
 | `screw_d` | 3.2 mm | Parafusos M3 autorroscantes nos postes |
 | `clear`, `lip_w` | 0.3 mm, 1.6 mm | Folga entre tampa e caixa; largura do lábio em anel (1,2 a 3 mm) |
@@ -1108,6 +1130,8 @@ A caixa do radar é um ponto de partida mecânico imprimível, **não uma classi
 ```powershell
 openscad -o build/node_enclosure_radar.stl scad/node_enclosure_radar.scad
 openscad -D 'part="both"' -D 'preset="alarm"' -o build/node_box_alarm.stl scad/node_box.scad   # presets: solar, electrical, alarm
+python tools/export_models.py --out build/models   # every piece as STL and 3MF
+python tools/pinout.py --check   # docs/PINOUT.md against the firmware tables
 ```
 
 Veja o [limite de validação](docs/VALIDATION.md). A licença de hardware prevista é CERN-OHL-S-2.0; acrescente o seu texto completo antes de publicar os desenhos.""",
