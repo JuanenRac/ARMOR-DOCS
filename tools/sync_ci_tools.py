@@ -37,12 +37,23 @@ TARGETS = tuple(names_where("shared_tools"))
 E2E_TARGETS = tuple(names_where("studio_e2e"))
 
 
-def render_workflow() -> str:
-    return (SOURCE / "ci.yml.template").read_text(encoding="utf-8")
+# The Node.js line the templates name is the one of every repository that has no entry here; a repository that moved on to a newer one (its Dockerfile and its package.json say so) names it
+# here, so the shared workflow follows the template in everything else and the nightly check stays green.
+NODE_VERSIONS = {"ARMOR-STUDIO": "26"}
+TEMPLATE_NODE = 'node-version: "22"'
 
 
-def render_e2e_workflow() -> str:
-    return (SOURCE / "e2e.yml.template").read_text(encoding="utf-8")
+def _for_node(text: str, name: str) -> str:
+    version = NODE_VERSIONS.get(name)
+    return text if version is None else text.replace(TEMPLATE_NODE, f'node-version: "{version}"')
+
+
+def render_workflow(name: str = "") -> str:
+    return _for_node((SOURCE / "ci.yml.template").read_text(encoding="utf-8"), name)
+
+
+def render_e2e_workflow(name: str = "") -> str:
+    return _for_node((SOURCE / "e2e.yml.template").read_text(encoding="utf-8"), name)
 
 
 def main() -> int:
@@ -99,15 +110,16 @@ def main() -> int:
 
         destination = repo / ".github" / "workflows" / "ci.yml"
         current = destination.read_text(encoding="utf-8") if destination.is_file() else None
-        if current != workflow:
+        wanted = render_workflow(name)
+        if current != wanted:
             if check:
                 stale.append(f"{name}/.github/workflows/ci.yml")
             else:
-                destination.write_text(workflow, encoding="utf-8")
+                destination.write_text(wanted, encoding="utf-8")
                 written += 1
 
-    e2e_workflow = render_e2e_workflow()
     for name in E2E_TARGETS:
+        e2e_workflow = render_e2e_workflow(name)
         repo = ROOT / name
         if not repo.is_dir():
             print(f"SKIP {name}: no local checkout")

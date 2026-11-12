@@ -109,5 +109,18 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(real.VENDORED_FILES, ("armor_project_tool.py", "armor_ci_validate.py", "_armor_readme_parity.py", "universal_readme_check.py", "pretty_run.py", "status_lights.py", "sync_manifests.py"))
 
 
+class NodeVersionTests(unittest.TestCase):
+    def test_a_repository_that_names_its_own_node_line_keeps_it_and_the_others_follow_the_template(self):
+        with mock.patch.object(sync, "SOURCE", Path(tempfile.mkdtemp())):
+            (sync.SOURCE / "ci.yml.template").write_text('      node-version: "22"\n      other: 1\n', encoding="utf-8")
+            (sync.SOURCE / "e2e.yml.template").write_text('      node-version: "22"\n', encoding="utf-8")
+            with mock.patch.dict(sync.NODE_VERSIONS, {"ARMOR-STUDIO": "26"}, clear=True):
+                self.assertIn('node-version: "26"', sync.render_workflow("ARMOR-STUDIO"))
+                self.assertIn('node-version: "26"', sync.render_e2e_workflow("ARMOR-STUDIO"))
+                self.assertIn('node-version: "22"', sync.render_workflow("ARMOR-SERVER"))
+                self.assertIn('node-version: "22"', sync.render_workflow())
+        self.assertEqual(sync.NODE_VERSIONS.get("ARMOR-STUDIO"), "26")
+
+
 if __name__ == "__main__":
     unittest.main()
