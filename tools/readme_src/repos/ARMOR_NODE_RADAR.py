@@ -56,7 +56,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "13944%20checks",
+      "14005%20checks",
       "2ea44f",
     ],
   ],
@@ -65,7 +65,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Field-node firmware (Waveshare ESP32-S3-ETH, three radars or presence sensors, Ethernet and Wi-Fi) with its own web panel, and its host-tested core",
-    "honest": "The radar node is the one node that exists as hardware: its firmware runs on a real Waveshare ESP32-S3-ETH board with a radar and reports to the CM5 test bench, and its web panel and over-the-air updates are in use on it. The hardware-independent core (13,944 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} test programs: the decoders of the LD2450, the LD2461 and four presence sensors, the LD2450 command channel, the settings and their checks, the pin table, users and sessions, the network plan, the message serialiser whose output ARMOR-COMMON accepts, and the release and signature checks) is tested on a computer, the **web panel** is exercised in a real browser against a stand-in node, and the **firmware image builds** in the ESP-IDF 5.5.5 container. What is **not** proven yet: the LD2461 and presence-sensor decoders match only the worked examples of their manuals, with no module behind them; the signature check of the updates and the Bluetooth PIN pairing are proven on a computer with real signatures but not yet on the board; the radar command channel is unchecked against a module; and the panel's HTTPS certificate (made by the node itself) is untried in every browser.",
+    "honest": "The radar node is the one node that exists as hardware: its firmware runs on a real Waveshare ESP32-S3-ETH board with a radar and reports to the CM5 test bench, and its web panel and over-the-air updates are in use on it. The hardware-independent core (14,005 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} test programs: the decoders of the LD2450, the LD2461 and four presence sensors, the LD2450 command channel, the settings and their checks, the pin table, users and sessions, the network plan, the message serialiser whose output ARMOR-COMMON accepts, and the release and signature checks) is tested on a computer, the **web panel** is exercised in a real browser against a stand-in node, and the **firmware image builds** in the ESP-IDF 5.5.5 container. What is **not** proven yet: the LD2461 and presence-sensor decoders match only the worked examples of their manuals, with no module behind them; the signature check of the updates and the Bluetooth PIN pairing are proven on a computer with real signatures but not yet on the board; the radar command channel is unchecked against a module; and the panel's HTTPS certificate (made by the node itself) is untried in every browser.",
     "glance": [
       [
         "Role",
@@ -77,7 +77,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "13944 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks (`ctest`)",
+        "14005 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks (`ctest`)",
       ],
       [
         "Boards",
@@ -102,7 +102,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container and runs on a real ESP32-S3-ETH board.",
-      "tests": "13,944 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs pass (`ctest`): the decoders, the settings, the pin table, the users, the network plan, the message serialiser and the release checks.",
+      "tests": "14,005 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs pass (`ctest`): the decoders, the settings, the pin table, the users, the network plan, the message serialiser and the release checks.",
       "protocols": "The LD2450 runs on a real radar; the LD2461 and the four presence-sensor decoders only match the worked examples of their manuals, and the radar command channel is unchecked against a module.",
       "ui": "The web panel is in use on the board and is exercised in a real browser against a stand-in node; its HTTPS certificate, made by the node itself, is untried in every browser.",
       "hardware": "It is the one node that exists as hardware: a real Waveshare ESP32-S3-ETH board with a radar reports to the CM5 test bench; no other sensor module is connected.",
@@ -221,7 +221,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks run under `ctest`; 13944 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks run under `ctest`; 14005 checks counted by the host programs, built with `-Werror`.
 
 | Part | What it covers |
 |---|---|
@@ -286,7 +286,7 @@ ARMOR-NODE-RADAR/
   },
   "es": {
     "tagline": "Firmware del nodo de campo (Waveshare ESP32-S3-ETH, tres radares o sensores de presencia, Ethernet y Wi-Fi) con su propio panel web, y su núcleo probado en el ordenador",
-    "honest": "El nodo radar es el único nodo que existe como hardware: su firmware corre en una placa real Waveshare ESP32-S3-ETH con un radar y reporta al banco de pruebas de la CM5, y su panel web y las actualizaciones por aire se usan en ella. El núcleo independiente del hardware (13,944 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de test: los decodificadores del LD2450, el LD2461 y cuatro sensores de presencia, el canal de órdenes del LD2450, los ajustes y sus comprobaciones, la tabla de pines, usuarios y sesiones, el plan de red, el serializador de mensajes cuya salida acepta ARMOR-COMMON, y las comprobaciones de versión y firma) se prueba en un ordenador, el **panel web** se ejercitó en un navegador real contra un nodo de pega y la **imagen del firmware compila** en el contenedor ESP-IDF 5.5.5. Lo que **todavía no** está probado: los decodificadores del LD2461 y de los sensores de presencia solo coinciden con los ejemplos resueltos de sus manuales, sin un módulo detrás; la comprobación de firma de las actualizaciones y el emparejamiento Bluetooth con PIN están probados en ordenador con firmas reales pero aún no en la placa; el canal de órdenes del radar no se ha contrastado con un módulo; y el certificado HTTPS del panel (lo hace el propio nodo) no se ha probado en todos los navegadores.",
+    "honest": "El nodo radar es el único nodo que existe como hardware: su firmware corre en una placa real Waveshare ESP32-S3-ETH con un radar y reporta al banco de pruebas de la CM5, y su panel web y las actualizaciones por aire se usan en ella. El núcleo independiente del hardware (14,005 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de test: los decodificadores del LD2450, el LD2461 y cuatro sensores de presencia, el canal de órdenes del LD2450, los ajustes y sus comprobaciones, la tabla de pines, usuarios y sesiones, el plan de red, el serializador de mensajes cuya salida acepta ARMOR-COMMON, y las comprobaciones de versión y firma) se prueba en un ordenador, el **panel web** se ejercitó en un navegador real contra un nodo de pega y la **imagen del firmware compila** en el contenedor ESP-IDF 5.5.5. Lo que **todavía no** está probado: los decodificadores del LD2461 y de los sensores de presencia solo coinciden con los ejemplos resueltos de sus manuales, sin un módulo detrás; la comprobación de firma de las actualizaciones y el emparejamiento Bluetooth con PIN están probados en ordenador con firmas reales pero aún no en la placa; el canal de órdenes del radar no se ha contrastado con un módulo; y el certificado HTTPS del panel (lo hace el propio nodo) no se ha probado en todos los navegadores.",
     "glance": [
       [
         "Función",
@@ -298,7 +298,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Pruebas",
-        "13944 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} de Python (`ctest`)",
+        "14005 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} de Python (`ctest`)",
       ],
       [
         "Placas",
@@ -442,7 +442,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} comprobaciones en Python se ejecutan con `ctest`; 13944 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} comprobaciones en Python se ejecutan con `ctest`; 14005 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 | Parte | Qué cubre |
 |---|---|
@@ -507,7 +507,7 @@ ARMOR-NODE-RADAR/
   },
   "de": {
     "tagline": "Feldknoten-Firmware (Waveshare ESP32-S3-ETH, drei Radare oder Präsenzsensoren, Ethernet und WLAN) mit eigenem Web-Panel und ihrem am Rechner getesteten Kern",
-    "honest": "Der Radarknoten ist der einzige Knoten, der als Hardware existiert: Seine Firmware läuft auf einer echten Waveshare-ESP32-S3-ETH-Platine mit einem Radar und meldet an den CM5-Testaufbau, und sein Web-Panel und die Over-the-Air-Updates werden dort genutzt. Der hardwareunabhängige Kern (13,944 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Testprogrammen: die Decoder des LD2450, des LD2461 und von vier Präsenzsensoren, der Befehlskanal des LD2450, die Einstellungen und ihre Prüfungen, die Pin-Tabelle, Benutzer und Sitzungen, der Netzplan, der Nachrichten-Serialisierer, dessen Ausgabe ARMOR-COMMON akzeptiert, und die Versions- und Signaturprüfungen) wird auf einem Computer getestet, das **Web-Panel** wurde in einem echten Browser gegen einen Ersatzknoten geprüft und das **Firmware-Abbild baut** im ESP-IDF-5.5.5-Container. **Noch nicht** bewiesen: Die Decoder des LD2461 und der Präsenzsensoren entsprechen nur den durchgerechneten Beispielen ihrer Handbücher, ohne Modul dahinter; die Signaturprüfung der Updates und die Bluetooth-Kopplung mit PIN sind auf dem Computer mit echten Signaturen bewiesen, aber noch nicht auf der Platine; der Befehlskanal des Radars ist nicht gegen ein Modul geprüft; und das HTTPS-Zertifikat des Panels (vom Knoten selbst erzeugt) ist nicht in allen Browsern erprobt.",
+    "honest": "Der Radarknoten ist der einzige Knoten, der als Hardware existiert: Seine Firmware läuft auf einer echten Waveshare-ESP32-S3-ETH-Platine mit einem Radar und meldet an den CM5-Testaufbau, und sein Web-Panel und die Over-the-Air-Updates werden dort genutzt. Der hardwareunabhängige Kern (14,005 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Testprogrammen: die Decoder des LD2450, des LD2461 und von vier Präsenzsensoren, der Befehlskanal des LD2450, die Einstellungen und ihre Prüfungen, die Pin-Tabelle, Benutzer und Sitzungen, der Netzplan, der Nachrichten-Serialisierer, dessen Ausgabe ARMOR-COMMON akzeptiert, und die Versions- und Signaturprüfungen) wird auf einem Computer getestet, das **Web-Panel** wurde in einem echten Browser gegen einen Ersatzknoten geprüft und das **Firmware-Abbild baut** im ESP-IDF-5.5.5-Container. **Noch nicht** bewiesen: Die Decoder des LD2461 und der Präsenzsensoren entsprechen nur den durchgerechneten Beispielen ihrer Handbücher, ohne Modul dahinter; die Signaturprüfung der Updates und die Bluetooth-Kopplung mit PIN sind auf dem Computer mit echten Signaturen bewiesen, aber noch nicht auf der Platine; der Befehlskanal des Radars ist nicht gegen ein Modul geprüft; und das HTTPS-Zertifikat des Panels (vom Knoten selbst erzeugt) ist nicht in allen Browsern erprobt.",
     "glance": [
       [
         "Rolle",
@@ -519,7 +519,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Tests",
-        "13944 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen (`ctest`)",
+        "14005 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Platinen",
@@ -663,7 +663,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen laufen unter `ctest`; 13944 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen laufen unter `ctest`; 14005 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 | Teil | Was sie abdeckt |
 |---|---|
@@ -728,7 +728,7 @@ ARMOR-NODE-RADAR/
   },
   "fr": {
     "tagline": "Firmware de nœud de terrain (Waveshare ESP32-S3-ETH, trois radars ou capteurs de présence, Ethernet et Wi-Fi) avec son propre panneau web, et son cœur testé sur ordinateur",
-    "honest": "Le nœud radar est le seul nœud qui existe en matériel : son firmware tourne sur une vraie carte Waveshare ESP32-S3-ETH avec un radar et rapporte au banc de test CM5, et son panneau web et ses mises à jour par radio y sont utilisés. Le cœur indépendant du matériel (13,944 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test : les décodeurs du LD2450, du LD2461 et de quatre capteurs de présence, le canal de commande du LD2450, les réglages et leurs contrôles, la table des broches, utilisateurs et sessions, le plan réseau, le sérialiseur de messages dont la sortie est acceptée par ARMOR-COMMON, et les contrôles de version et de signature) est testé sur un ordinateur, le **panneau web** a été exercé dans un vrai navigateur contre un nœud factice et l'**image du firmware se compile** dans le conteneur ESP-IDF 5.5.5. Ce qui n'est **pas** encore prouvé : les décodeurs du LD2461 et des capteurs de présence ne correspondent qu'aux exemples détaillés de leurs manuels, sans module derrière ; le contrôle de signature des mises à jour et l'appairage Bluetooth avec PIN sont prouvés sur ordinateur avec de vraies signatures mais pas encore sur la carte ; le canal de commande du radar n'est pas vérifié contre un module ; et le certificat HTTPS du panneau (fait par le nœud lui-même) n'est pas essayé dans tous les navigateurs.",
+    "honest": "Le nœud radar est le seul nœud qui existe en matériel : son firmware tourne sur une vraie carte Waveshare ESP32-S3-ETH avec un radar et rapporte au banc de test CM5, et son panneau web et ses mises à jour par radio y sont utilisés. Le cœur indépendant du matériel (14,005 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test : les décodeurs du LD2450, du LD2461 et de quatre capteurs de présence, le canal de commande du LD2450, les réglages et leurs contrôles, la table des broches, utilisateurs et sessions, le plan réseau, le sérialiseur de messages dont la sortie est acceptée par ARMOR-COMMON, et les contrôles de version et de signature) est testé sur un ordinateur, le **panneau web** a été exercé dans un vrai navigateur contre un nœud factice et l'**image du firmware se compile** dans le conteneur ESP-IDF 5.5.5. Ce qui n'est **pas** encore prouvé : les décodeurs du LD2461 et des capteurs de présence ne correspondent qu'aux exemples détaillés de leurs manuels, sans module derrière ; le contrôle de signature des mises à jour et l'appairage Bluetooth avec PIN sont prouvés sur ordinateur avec de vraies signatures mais pas encore sur la carte ; le canal de commande du radar n'est pas vérifié contre un module ; et le certificat HTTPS du panneau (fait par le nœud lui-même) n'est pas essayé dans tous les navigateurs.",
     "glance": [
       [
         "Rôle",
@@ -740,7 +740,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Tests",
-        "13944 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python (`ctest`)",
+        "14005 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python (`ctest`)",
       ],
       [
         "Cartes",
@@ -884,7 +884,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python tournent sous `ctest` ; 13944 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python tournent sous `ctest` ; 14005 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 | Partie | Ce qu'il couvre |
 |---|---|
@@ -949,7 +949,7 @@ ARMOR-NODE-RADAR/
   },
   "it": {
     "tagline": "Firmware del nodo di campo (Waveshare ESP32-S3-ETH, tre radar o sensori di presenza, Ethernet e Wi-Fi) con un proprio pannello web e il nucleo testato su computer",
-    "honest": "Il nodo radar è l'unico nodo che esiste come hardware: il suo firmware gira su una vera scheda Waveshare ESP32-S3-ETH con un radar e riferisce al banco di prova CM5, e il suo pannello web e gli aggiornamenti via etere vi sono in uso. Il nucleo indipendente dall'hardware (13,944 controlli in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test: i decodificatori dell'LD2450, dell'LD2461 e di quattro sensori di presenza, il canale di comando dell'LD2450, le impostazioni e i loro controlli, la tabella dei pin, utenti e sessioni, il piano di rete, il serializzatore di messaggi la cui uscita è accettata da ARMOR-COMMON, e i controlli di versione e firma) è provato su un computer, il **pannello web** è stato esercitato in un vero browser contro un nodo sostitutivo e l'**immagine del firmware si compila** nel contenitore ESP-IDF 5.5.5. Ciò che **non** è ancora provato: i decodificatori dell'LD2461 e dei sensori di presenza corrispondono solo agli esempi svolti dei loro manuali, senza un modulo dietro; il controllo della firma degli aggiornamenti e l'abbinamento Bluetooth con PIN sono provati su computer con firme vere ma non ancora sulla scheda; il canale di comando del radar non è verificato con un modulo; e il certificato HTTPS del pannello (fatto dal nodo stesso) non è provato in tutti i browser.",
+    "honest": "Il nodo radar è l'unico nodo che esiste come hardware: il suo firmware gira su una vera scheda Waveshare ESP32-S3-ETH con un radar e riferisce al banco di prova CM5, e il suo pannello web e gli aggiornamenti via etere vi sono in uso. Il nucleo indipendente dall'hardware (14,005 controlli in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test: i decodificatori dell'LD2450, dell'LD2461 e di quattro sensori di presenza, il canale di comando dell'LD2450, le impostazioni e i loro controlli, la tabella dei pin, utenti e sessioni, il piano di rete, il serializzatore di messaggi la cui uscita è accettata da ARMOR-COMMON, e i controlli di versione e firma) è provato su un computer, il **pannello web** è stato esercitato in un vero browser contro un nodo sostitutivo e l'**immagine del firmware si compila** nel contenitore ESP-IDF 5.5.5. Ciò che **non** è ancora provato: i decodificatori dell'LD2461 e dei sensori di presenza corrispondono solo agli esempi svolti dei loro manuali, senza un modulo dietro; il controllo della firma degli aggiornamenti e l'abbinamento Bluetooth con PIN sono provati su computer con firme vere ma non ancora sulla scheda; il canale di comando del radar non è verificato con un modulo; e il certificato HTTPS del pannello (fatto dal nodo stesso) non è provato in tutti i browser.",
     "glance": [
       [
         "Ruolo",
@@ -961,7 +961,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Test",
-        "13944 verifiche in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python (`ctest`)",
+        "14005 verifiche in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python (`ctest`)",
       ],
       [
         "Schede",
@@ -1105,7 +1105,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python girano con `ctest`; 13944 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python girano con `ctest`; 14005 verifiche contate dai programmi host, compilati con `-Werror`.
 
 | Parte | Cosa copre |
 |---|---|
@@ -1170,7 +1170,7 @@ ARMOR-NODE-RADAR/
   },
   "ja": {
     "tagline": "フィールドノードのファームウェア（Waveshare ESP32-S3-ETH、レーダーまたは人感センサー 3 基、イーサネットと Wi-Fi）。独自の Web パネルと、コンピューターでテスト済みのコア付き",
-    "honest": "レーダーノードはハードウェアとして実在する唯一のノードです。そのファームウェアはレーダー付きの実際の Waveshare ESP32-S3-ETH 基板で動作して CM5 テストベンチに報告し、Web パネルと無線アップデートもその基板で使われています。ハードウェアに依存しないコア（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} のテストプログラムで 13,944 項目：LD2450・LD2461 と 4 種の人感センサーのデコーダー、LD2450 のコマンドチャネル、設定とその検査、ピン表、ユーザーとセッション、ネットワーク計画、ARMOR-COMMON が出力を受け付けるメッセージシリアライザー、バージョンと署名の検査）はコンピューター上でテストされ、**Web パネル**は代替ノードに対して実際のブラウザーで動かし、**ファームウェアイメージ**は ESP-IDF 5.5.5 コンテナーでビルドできます。**まだ**証明されていないもの：LD2461 と人感センサーのデコーダーはマニュアルの計算例にしか一致せず、実モジュールがありません。アップデートの署名検査と PIN 付き Bluetooth ペアリングは実際の署名でコンピューター上で証明済みですが、基板上ではまだです。レーダーのコマンドチャネルはモジュールで確認していません。パネルの HTTPS 証明書（ノード自身が作る）はすべてのブラウザーで試していません。",
+    "honest": "レーダーノードはハードウェアとして実在する唯一のノードです。そのファームウェアはレーダー付きの実際の Waveshare ESP32-S3-ETH 基板で動作して CM5 テストベンチに報告し、Web パネルと無線アップデートもその基板で使われています。ハードウェアに依存しないコア（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} のテストプログラムで 14,005 項目：LD2450・LD2461 と 4 種の人感センサーのデコーダー、LD2450 のコマンドチャネル、設定とその検査、ピン表、ユーザーとセッション、ネットワーク計画、ARMOR-COMMON が出力を受け付けるメッセージシリアライザー、バージョンと署名の検査）はコンピューター上でテストされ、**Web パネル**は代替ノードに対して実際のブラウザーで動かし、**ファームウェアイメージ**は ESP-IDF 5.5.5 コンテナーでビルドできます。**まだ**証明されていないもの：LD2461 と人感センサーのデコーダーはマニュアルの計算例にしか一致せず、実モジュールがありません。アップデートの署名検査と PIN 付き Bluetooth ペアリングは実際の署名でコンピューター上で証明済みですが、基板上ではまだです。レーダーのコマンドチャネルはモジュールで確認していません。パネルの HTTPS 証明書（ノード自身が作る）はすべてのブラウザーで試していません。",
     "glance": [
       [
         "役割",
@@ -1182,7 +1182,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "テスト",
-        "13944 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-RADAR}} 個、`ctest`）",
+        "14005 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-RADAR}} 個、`ctest`）",
       ],
       [
         "基板",
@@ -1207,7 +1207,7 @@ ARMOR-NODE-RADAR/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナでビルドでき、実機の ESP32-S3-ETH ボードで動作しています。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-RADAR}} のホストプログラムで 13,944 件のチェックが通ります（`ctest`）：デコーダー、設定、ピン表、ユーザー、ネットワーク計画、メッセージのシリアライザー、バージョン確認。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-RADAR}} のホストプログラムで 14,005 件のチェックが通ります（`ctest`）：デコーダー、設定、ピン表、ユーザー、ネットワーク計画、メッセージのシリアライザー、バージョン確認。",
       "protocols": "LD2450 は実機のレーダーで動作しています。LD2461 と 4 種類の人感センサーのデコーダーはマニュアルの例と一致するだけで、レーダーのコマンドチャネルはモジュールでは未確認です。",
       "ui": "Web パネルはボード上で使われており、実ブラウザーで模擬ノードに対しても試しています。ノード自身が作る HTTPS 証明書は、すべてのブラウザーでは試していません。",
       "hardware": "ハードウェアとして存在する唯一のノードです。実機の Waveshare ESP32-S3-ETH ボードとレーダーが CM5 テストベンチに報告しています。他のセンサーモジュールは接続していません。",
@@ -1326,7 +1326,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 13944 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 14005 件で、`-Werror` でビルドします。
 
 | 部分 | 対象 |
 |---|---|
@@ -1391,7 +1391,7 @@ ARMOR-NODE-RADAR/
   },
   "zh": {
     "tagline": "现场节点固件（Waveshare ESP32-S3-ETH，三个雷达或存在传感器，以太网和 Wi-Fi），自带网页面板，并有在电脑上测试过的核心",
-    "honest": "雷达节点是目前唯一真正存在的硬件节点：它的固件运行在带雷达的真实 Waveshare ESP32-S3-ETH 板上，向 CM5 测试台报告，其网页面板和无线更新也在该板上使用。与硬件无关的核心（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个测试程序中的 13,944 项检查：LD2450、LD2461 和四种存在传感器的解码器、LD2450 命令通道、设置及其检查、引脚表、用户和会话、网络方案、ARMOR-COMMON 接受其输出的消息序列化器，以及版本和签名检查）在计算机上测试，**网页面板**已在真实浏览器中对照替身节点验证，**固件镜像**可在 ESP-IDF 5.5.5 容器中构建。**尚未**证明的是：LD2461 和存在传感器的解码器只与其手册中的示例吻合，背后没有真实模块；更新的签名检查和带 PIN 的蓝牙配对已在计算机上用真实签名验证，但尚未在板上验证；雷达命令通道没有对照真实模块检查；面板的 HTTPS 证书（由节点自己生成）没有在所有浏览器中试过。",
+    "honest": "雷达节点是目前唯一真正存在的硬件节点：它的固件运行在带雷达的真实 Waveshare ESP32-S3-ETH 板上，向 CM5 测试台报告，其网页面板和无线更新也在该板上使用。与硬件无关的核心（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个测试程序中的 14,005 项检查：LD2450、LD2461 和四种存在传感器的解码器、LD2450 命令通道、设置及其检查、引脚表、用户和会话、网络方案、ARMOR-COMMON 接受其输出的消息序列化器，以及版本和签名检查）在计算机上测试，**网页面板**已在真实浏览器中对照替身节点验证，**固件镜像**可在 ESP-IDF 5.5.5 容器中构建。**尚未**证明的是：LD2461 和存在传感器的解码器只与其手册中的示例吻合，背后没有真实模块；更新的签名检查和带 PIN 的蓝牙配对已在计算机上用真实签名验证，但尚未在板上验证；雷达命令通道没有对照真实模块检查；面板的 HTTPS 证书（由节点自己生成）没有在所有浏览器中试过。",
     "glance": [
       [
         "角色",
@@ -1403,7 +1403,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "测试",
-        "13944 项检查（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 项 Python 检查，`ctest`）",
+        "14005 项检查（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 项 Python 检查，`ctest`）",
       ],
       [
         "电路板",
@@ -1428,7 +1428,7 @@ ARMOR-NODE-RADAR/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中构建，并在真实的 ESP32-S3-ETH 板上运行。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序中的 13,944 项检查通过（`ctest`）：解码器、设置、引脚表、用户、网络方案、消息序列化器和版本检查。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序中的 14,005 项检查通过（`ctest`）：解码器、设置、引脚表、用户、网络方案、消息序列化器和版本检查。",
       "protocols": "LD2450 已在真实雷达上运行；LD2461 和四种人体存在传感器的解码器只与其手册中的示例一致，雷达命令通道尚未对照模块检查。",
       "ui": "网页面板已在板子上使用，并在真实浏览器中对模拟节点做过测试；由节点自己生成的 HTTPS 证书尚未在所有浏览器中试过。",
       "hardware": "这是唯一实际存在的硬件节点：一块真实的 Waveshare ESP32-S3-ETH 板带着雷达向 CM5 测试台上报；没有连接其他传感器模块。",
@@ -1547,7 +1547,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 个 Python 检查；主机程序统计的检查共 13944 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 个 Python 检查；主机程序统计的检查共 14005 项，使用 `-Werror` 构建。
 
 | 部分 | 覆盖内容 |
 |---|---|
@@ -1612,7 +1612,7 @@ ARMOR-NODE-RADAR/
   },
   "pt": {
     "tagline": "Firmware de nó de campo (Waveshare ESP32-S3-ETH, três radares ou sensores de presença, Ethernet e Wi-Fi) com o seu próprio painel web, e o seu núcleo testado em anfitrião",
-    "honest": "O nó radar é o único nó que existe como hardware: o seu firmware corre numa placa real Waveshare ESP32-S3-ETH com um radar e reporta à bancada de testes do CM5, e o seu painel web e as atualizações pelo ar são usados nela. O núcleo independente do hardware (13,944 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste: os descodificadores do LD2450, do LD2461 e de quatro sensores de presença, o canal de comandos do LD2450, as definições e as suas verificações, a tabela de pinos, utilizadores e sessões, o plano de rede, o serializador de mensagens cuja saída o ARMOR-COMMON aceita, e as verificações de versão e assinatura) é testado num computador, o **painel web** foi exercitado num navegador real contra um nó de substituição e a **imagem do firmware compila** no contentor ESP-IDF 5.5.5. O que **ainda não** está provado: os descodificadores do LD2461 e dos sensores de presença só coincidem com os exemplos resolvidos dos seus manuais, sem um módulo por trás; a verificação da assinatura das atualizações e o emparelhamento Bluetooth com PIN estão provados no computador com assinaturas reais mas ainda não na placa; o canal de comandos do radar não foi confrontado com um módulo; e o certificado HTTPS do painel (feito pelo próprio nó) não foi experimentado em todos os navegadores.",
+    "honest": "O nó radar é o único nó que existe como hardware: o seu firmware corre numa placa real Waveshare ESP32-S3-ETH com um radar e reporta à bancada de testes do CM5, e o seu painel web e as atualizações pelo ar são usados nela. O núcleo independente do hardware (14,005 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste: os descodificadores do LD2450, do LD2461 e de quatro sensores de presença, o canal de comandos do LD2450, as definições e as suas verificações, a tabela de pinos, utilizadores e sessões, o plano de rede, o serializador de mensagens cuja saída o ARMOR-COMMON aceita, e as verificações de versão e assinatura) é testado num computador, o **painel web** foi exercitado num navegador real contra um nó de substituição e a **imagem do firmware compila** no contentor ESP-IDF 5.5.5. O que **ainda não** está provado: os descodificadores do LD2461 e dos sensores de presença só coincidem com os exemplos resolvidos dos seus manuais, sem um módulo por trás; a verificação da assinatura das atualizações e o emparelhamento Bluetooth com PIN estão provados no computador com assinaturas reais mas ainda não na placa; o canal de comandos do radar não foi confrontado com um módulo; e o certificado HTTPS do painel (feito pelo próprio nó) não foi experimentado em todos os navegadores.",
     "glance": [
       [
         "Função",
@@ -1624,7 +1624,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Testes",
-        "13944 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} em Python (`ctest`)",
+        "14005 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} em Python (`ctest`)",
       ],
       [
         "Placas",
@@ -1768,7 +1768,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} verificações Python correm com `ctest`; 13944 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} verificações Python correm com `ctest`; 14005 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 | Parte | O que cobre |
 |---|---|
