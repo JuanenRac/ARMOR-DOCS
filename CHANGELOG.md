@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **Tests of the command lines of the two checkers of sentences that depend on the code:** `doc_claims.py` and `doc_facts.py` are run over a folder of documents made for the test (a marker without an entry, an entry without a marker, a repository that is not there, an entry without one of its keys, a figure that means nothing, a verified version newer than the repository, the stale list, the fix that keeps the line ends and the check that leaves the file alone).
+
 ## [0.8.1.9] - The floor of the test coverage of `tools/` goes up to lines 85.4, branches 80.3 (measured 85.92 and 80.87; before: 50.2 and 45.3): the shared tools this repository carries now have the tests they have in ARMOR-COMMON (the README pictures, t
 
 - **The floor of the test coverage of `tools/` goes up to lines 85.4, branches 80.3 (measured 85.92 and 80.87; before: 50.2 and 45.3):** the shared tools this repository carries now have the tests they have in ARMOR-COMMON (the README pictures, the lights of the status table, the run panel, the workflow tool, the manifest facts and the layout check of the README). The typed totals of checks in the READMEs of the five nodes count the new shared host tests.
