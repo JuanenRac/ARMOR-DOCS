@@ -21,7 +21,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 o posterior">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Idiomas">
-  <img src="https://img.shields.io/badge/Tests-424%20passing-2ea44f.svg" alt="Pruebas">
+  <img src="https://img.shields.io/badge/Tests-438%20passing-2ea44f.svg" alt="Pruebas">
   <img src="https://img.shields.io/badge/Version-0.8.1.9-0f6cbd.svg" alt="Versión">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Madurez">
 </p>
@@ -40,7 +40,7 @@
 | Madurez | Establecido |
 | Función | Centro de documentación: arquitectura, base de seguridad, matriz de capacidades y las herramientas que escriben los README, el catálogo y los banners |
 | Tecnología | Python 3.11+ (herramientas, biblioteca estándar), Markdown |
-| Pruebas | 424 (`python -m unittest discover -s tests`, cerca de un minuto) |
+| Pruebas | 438 (`python -m unittest discover -s tests`, cerca de un minuto) |
 | Interfaces | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Funciona en | Cualquier ordenador con Python; los repositorios de la familia junto a este |
 | En hardware real | No aplica: es documentación; registra lo que los demás repositorios han corrido en hardware real |
@@ -57,7 +57,7 @@ Cada línea es una parte de este repositorio y la luz dice hasta dónde llega ho
 | Área | Estado | Qué significa aquí |
 |---|---|---|
 | Software | 🟢 | Los generadores de READMEs, banners, catálogo y matriz de capacidades, y las herramientas de CI copiadas a cada repositorio, funcionan y están probados. |
-| Pruebas | 🟢 | Pasan las 424 pruebas de las herramientas (`python -m unittest discover -s tests`): la comprobación de publicación, el limpiador de historial, los generadores de README, catálogo y marca, la copia de las herramientas de CI y la herramienta del flujo compartido. |
+| Pruebas | 🟢 | Pasan las 438 pruebas de las herramientas (`python -m unittest discover -s tests`): la comprobación de publicación, el limpiador de historial, los generadores de README, catálogo y marca, la copia de las herramientas de CI y la herramienta del flujo compartido. |
 | Comprobaciones automáticas | 🟢 | Cada push comprueba que los READMEs, los banners y el catálogo estén al día y que cada repositorio del registro tenga su tabla de estado. |
 | Integración | 🟢 | Los READMEs de todos los repositorios se escriben desde una sola fuente, con la versión y la madurez de cada uno leídas de su propio manifiesto. |
 | Documentación | 🟢 | La matriz de capacidades dice, para cada función, si solo se simuló, se probó en un ordenador o se verificó en hardware real; los ocho idiomas y el historial de cambios están al día. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # los banners e iconos están al día
 python tools/doc_facts.py --check     # las cifras de los documentos coinciden con los repositorios
 python tools/publication_check.py     # nada privado saldría con una publicación
 bash tools/check_all.sh               # las pruebas de cada repositorio, de una vez
-python -m unittest discover -s tests  # 424 pruebas de estas herramientas; no necesitan otro repositorio
+python -m unittest discover -s tests  # 438 pruebas de estas herramientas; no necesitan otro repositorio
 ```
 
 ## 🧪 Pruebas
