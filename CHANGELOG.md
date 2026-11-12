@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **A floor for the test coverage:** the workflow `coverage-floor.yml` runs the Python tests under coverage and fails when the lines or the branches of `tools/` (not the sources of the READMEs) fall below `docs/coverage_threshold.json` (floor: lines 49.5, branches 44.8; measured 50.16 and 45.34). Raising the floor is a change of that file, made with a figure measured by the workflow.
+
 - **The README sources follow three repositories:** ARMOR-NODE-HMI (the wake word is optional and off by default, and the number of the spoken challenge is shown on the screen), ARMOR-SERVER (the fourth value `challenge` of the voice silence option) and ARMOR-HARDWARE (the model files are made from the sources, the shared file of the enclosures and the one table of the pins), in the eight languages; the figures of the capability matrix and the interfaces follow the conformance vectors.
 
 - **The update profiles name the three CM5 tiers:** `data/update-profiles.json` gains "cm5-minimal", "cm5-standard" and "cm5-complete" (texts in eight languages; the copy bundled in ARMOR-UPDATER is the same file), and the test of the profiles checks their composition.
