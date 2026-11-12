@@ -90,6 +90,7 @@ TEXT = {
     "docs": [
       "[Usage](docs/USAGE.md): every option, scenario and fault",
       "[Alarm scenarios](docs/ALARM_SCENARIOS.md): the file format and how to verify a server's answer",
+      "[Vision scenarios](docs/VISION_SCENARIOS.md): the file format, the detection zones by mode and how to verify the events",
       "[Energy model](docs/ENERGY_MODEL.md): the realistic solar and electrical data and its settings",
       "[Meter bus](docs/METER_BUS.md): the energy meters over TCP and the settings file",
       "[Simulation bench](docs/NODE_BENCH.md): the buses of the nodes played into the real firmware code, and the server without Docker",
@@ -176,6 +177,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Scenarios, faults, solar, electrical, validation, delivery to a local HTTP server |
 | `test_cli_options.py` | 26 | The options, their limits and the refusals |
 | `test_alarm_scenarios.py` | 32 | Alarm scenario files: strict reading, the stream, modes and calendar, verification of the answer, the options |
+| `test_vision_scenarios.py` | 22 | Vision scenario files: strict reading, visits, labels and profiles by mode, the contract of the event, the verification and the options |
 | `test_energy.py` | 32 | Energy model: physical properties for many seeds, tariff, meter, settings, contracts, the options |
 | `test_fake_cameras.py` | 17 | Fake cameras: the pictures, Basic and Digest logins, faults, the file and the command line |""",
       "build": "It is plain Python: nothing to compile. The version lives in `pyproject.toml` and `armor.project.json`.",
@@ -198,6 +200,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           the options and the run
 │   ├── scenarios.py cycle.py            the five scenarios, the 270 degree geometry and the day of light
 │   ├── alarm_scenarios.py               alarm scenarios from JSON files, their messages and the check of the answer
+│   ├── vision_scenarios.py              vision scenarios: objects walking across detection zones in each arming mode
 │   ├── solar.py                         an inverter and a two-module battery stack
 │   ├── electrical.py                    the three channels of an electrical node
 │   ├── meter_bus.py                     the serial line of the energy meters over TCP (PZEM-004T, PZEM-017)
@@ -281,6 +284,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[Uso](docs/USAGE.md): todas las opciones, escenarios y averías",
       "[Escenarios de alarma](docs/ALARM_SCENARIOS.md): el formato del fichero y cómo verificar la respuesta de un servidor",
+      "[Escenarios de visión](docs/VISION_SCENARIOS.md): el formato del fichero, las zonas de detección por modo y cómo verificar los eventos",
       "[Modelo de energía](docs/ENERGY_MODEL.md): los datos solares y eléctricos realistas y sus ajustes",
       "[Bus de contadores](docs/METER_BUS.md): los contadores de energía por TCP y su fichero de ajustes",
       "[Banco de simulación](docs/NODE_BENCH.md): los buses de los nodos jugados contra el código real del firmware, y el servidor sin Docker",
@@ -367,6 +371,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Escenarios, averías, solar, eléctrico, validación, entrega a un servidor HTTP local |
 | `test_cli_options.py` | 26 | Las opciones, sus límites y los rechazos |
 | `test_alarm_scenarios.py` | 32 | Ficheros de escenarios de alarma: lectura estricta, el flujo, modos y calendario, verificación de la respuesta, las opciones |
+| `test_vision_scenarios.py` | 22 | Ficheros de escenarios de visión: lectura estricta, visitas, etiquetas y perfiles por modo, el contrato del evento, la verificación y las opciones |
 | `test_energy.py` | 32 | Modelo de energía: propiedades físicas con muchas semillas, tarifa, contador, ajustes, contratos, las opciones |
 | `test_fake_cameras.py` | 17 | Cámaras falsas: las imágenes, los login Basic y Digest, los fallos, el fichero y la línea de comandos |""",
       "build": "Es Python puro: no hay nada que compilar. La versión vive en `pyproject.toml` y `armor.project.json`.",
@@ -389,6 +394,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           las opciones y la ejecución
 │   ├── scenarios.py cycle.py            los cinco escenarios, la geometría de 270 grados y el día de luz
 │   ├── alarm_scenarios.py               escenarios de alarma desde ficheros JSON, sus mensajes y la comprobación de la respuesta
+│   ├── vision_scenarios.py              escenarios de visión: objetos que cruzan zonas de detección en cada modo
 │   ├── solar.py                         un inversor y una pila de dos módulos
 │   ├── electrical.py                    los tres canales de un nodo eléctrico
 │   ├── meter_bus.py                     la línea serie de los contadores de energía por TCP (PZEM-004T, PZEM-017)
@@ -472,6 +478,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[Verwendung](docs/USAGE.md): alle Optionen, Szenarien und Fehler",
       "[Alarmszenarien](docs/ALARM_SCENARIOS.md): das Dateiformat und wie man die Antwort eines Servers prüft",
+      "[Visionsszenarien](docs/VISION_SCENARIOS.md): das Dateiformat, die Erkennungszonen je Modus und wie man die Ereignisse prüft",
       "[Energiemodell](docs/ENERGY_MODEL.md): die realistischen Solar- und Stromdaten und ihre Einstellungen",
       "[Zählerbus](docs/METER_BUS.md): die Energiezähler über TCP und die Einstellungsdatei",
       "[Simulationsbank](docs/NODE_BENCH.md): die Busse der Knoten gegen den echten Firmware-Code gespielt und der Server ohne Docker",
@@ -558,6 +565,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Szenarien, Fehler, Solar, Elektro, Validierung, Zustellung an einen lokalen HTTP-Server |
 | `test_cli_options.py` | 26 | Die Optionen, ihre Grenzen und die Ablehnungen |
 | `test_alarm_scenarios.py` | 32 | Alarmszenario-Dateien: strenges Lesen, der Nachrichtenstrom, Modi und Kalender, Prüfung der Antwort, die Optionen |
+| `test_vision_scenarios.py` | 22 | Visionsszenario-Dateien: strenges Lesen, Besuche, Labels und Profile je Modus, der Vertrag des Ereignisses, die Prüfung und die Optionen |
 | `test_energy.py` | 32 | Energiemodell: physikalische Eigenschaften für viele Seeds, Tarif, Zähler, Einstellungen, Verträge, die Optionen |
 | `test_fake_cameras.py` | 17 | Falsche Kameras: die Bilder, Basic- und Digest-Login, Fehler, die Datei und die Befehlszeile |""",
       "build": "Es ist reines Python: nichts zu kompilieren. Die Version steht in `pyproject.toml` und `armor.project.json`.",
@@ -580,6 +588,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           die Optionen und der Ablauf
 │   ├── scenarios.py cycle.py            die fünf Szenarien, die 270-Grad-Geometrie und der Lichttag
 │   ├── alarm_scenarios.py               Alarmszenarien aus JSON-Dateien, ihre Nachrichten und die Prüfung der Antwort
+│   ├── vision_scenarios.py              Visionsszenarien: Objekte, die in jedem Modus durch Erkennungszonen laufen
 │   ├── solar.py                         ein Wechselrichter und ein Batteriestapel aus zwei Modulen
 │   ├── electrical.py                    die drei Kanäle eines Elektroknotens
 │   ├── meter_bus.py                     die serielle Leitung der Energiezähler über TCP (PZEM-004T, PZEM-017)
@@ -663,6 +672,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[Utilisation](docs/USAGE.md) : toutes les options, scénarios et pannes",
       "[Scénarios d'alarme](docs/ALARM_SCENARIOS.md) : le format du fichier et comment vérifier la réponse d'un serveur",
+      "[Scénarios de vision](docs/VISION_SCENARIOS.md) : le format du fichier, les zones de détection par mode et comment vérifier les événements",
       "[Modèle d'énergie](docs/ENERGY_MODEL.md) : les données solaires et électriques réalistes et leurs réglages",
       "[Bus de compteurs](docs/METER_BUS.md) : les compteurs d'énergie sur TCP et le fichier de réglages",
       "[Banc de simulation](docs/NODE_BENCH.md) : les bus des nœuds joués dans le vrai code du firmware, et le serveur sans Docker",
@@ -749,6 +759,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Scénarios, pannes, solaire, électrique, validation, livraison à un serveur HTTP local |
 | `test_cli_options.py` | 26 | Les options, leurs limites et les refus |
 | `test_alarm_scenarios.py` | 32 | Fichiers de scénarios d'alarme : lecture stricte, le flux, modes et calendrier, vérification de la réponse, les options |
+| `test_vision_scenarios.py` | 22 | Fichiers de scénarios de vision : lecture stricte, passages, étiquettes et profils par mode, le contrat de l'événement, la vérification et les options |
 | `test_energy.py` | 32 | Modèle d'énergie : propriétés physiques pour beaucoup de graines, tarif, compteur, réglages, contrats, les options |
 | `test_fake_cameras.py` | 17 | Fausses caméras : les images, les logins Basic et Digest, les pannes, le fichier et la ligne de commande |""",
       "build": "C'est du Python pur : rien à compiler. La version est dans `pyproject.toml` et `armor.project.json`.",
@@ -771,6 +782,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           les options et l'exécution
 │   ├── scenarios.py cycle.py            les cinq scénarios, la géométrie de 270 degrés et le jour de lumière
 │   ├── alarm_scenarios.py               scénarios d'alarme depuis des fichiers JSON, leurs messages et la vérification de la réponse
+│   ├── vision_scenarios.py              scénarios de vision : des objets qui traversent des zones de détection dans chaque mode
 │   ├── solar.py                         un onduleur et une pile de deux modules
 │   ├── electrical.py                    les trois canaux d'un nœud électrique
 │   ├── meter_bus.py                     la ligne série des compteurs d'énergie sur TCP (PZEM-004T, PZEM-017)
@@ -854,6 +866,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[Uso](docs/USAGE.md): tutte le opzioni, gli scenari e i guasti",
       "[Scenari d'allarme](docs/ALARM_SCENARIOS.md): il formato del file e come verificare la risposta di un server",
+      "[Scenari di visione](docs/VISION_SCENARIOS.md): il formato del file, le zone di rilevamento per modalità e come verificare gli eventi",
       "[Modello energetico](docs/ENERGY_MODEL.md): i dati solari ed elettrici realistici e le loro impostazioni",
       "[Bus dei contatori](docs/METER_BUS.md): i contatori di energia su TCP e il file di impostazioni",
       "[Banco di simulazione](docs/NODE_BENCH.md): i bus dei nodi suonati contro il codice vero del firmware, e il server senza Docker",
@@ -940,6 +953,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Scenari, guasti, solare, elettrico, validazione, consegna a un server HTTP locale |
 | `test_cli_options.py` | 26 | Le opzioni, i loro limiti e i rifiuti |
 | `test_alarm_scenarios.py` | 32 | File di scenari d'allarme: lettura rigorosa, il flusso, modalità e calendario, verifica della risposta, le opzioni |
+| `test_vision_scenarios.py` | 22 | File di scenari di visione: lettura rigorosa, visite, etichette e profili per modalità, il contratto dell'evento, la verifica e le opzioni |
 | `test_energy.py` | 32 | Modello energetico: proprietà fisiche con molti seed, tariffa, contatore, impostazioni, contratti, le opzioni |
 | `test_fake_cameras.py` | 17 | False telecamere: le immagini, i login Basic e Digest, i guasti, il file e la riga di comando |""",
       "build": "È Python puro: nulla da compilare. La versione sta in `pyproject.toml` e `armor.project.json`.",
@@ -962,6 +976,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           le opzioni e l'esecuzione
 │   ├── scenarios.py cycle.py            i cinque scenari, la geometria a 270 gradi e il giorno di luce
 │   ├── alarm_scenarios.py               scenari d'allarme da file JSON, i loro messaggi e la verifica della risposta
+│   ├── vision_scenarios.py              scenari di visione: oggetti che attraversano le zone di rilevamento in ogni modalità
 │   ├── solar.py                         un inverter e una pila di due moduli
 │   ├── electrical.py                    i tre canali di un nodo elettrico
 │   ├── meter_bus.py                     la linea seriale dei contatori di energia su TCP (PZEM-004T, PZEM-017)
@@ -1045,6 +1060,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[使い方](docs/USAGE.md)：すべてのオプション、シナリオ、障害",
       "[アラームシナリオ](docs/ALARM_SCENARIOS.md)：ファイル形式とサーバーの応答の検証方法",
+      "[ビジョンシナリオ](docs/VISION_SCENARIOS.md)：ファイル形式、モードごとの検知ゾーン、イベントの検証方法",
       "[エネルギーモデル](docs/ENERGY_MODEL.md)：現実的な太陽光・電力データとその設定",
       "[メーターバス](docs/METER_BUS.md)：TCP 経由のエネルギーメーターと設定ファイル",
       "[シミュレーションベンチ](docs/NODE_BENCH.md)：ノードのバスを実際のファームウェアコードに流し込み、Docker なしでサーバーを動かす",
@@ -1131,6 +1147,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | シナリオ、障害、ソーラー、電気、検証、ローカル HTTP サーバーへの配信 |
 | `test_cli_options.py` | 26 | オプション、その制限、拒否 |
 | `test_alarm_scenarios.py` | 32 | アラームシナリオファイル：厳格な読み込み、メッセージ列、モードとカレンダー、応答の検証、オプション |
+| `test_vision_scenarios.py` | 22 | ビジョンシナリオファイル：厳格な読み込み、滞在、ラベルとモード別プロファイル、イベントの契約、検証、オプション |
 | `test_energy.py` | 32 | エネルギーモデル：多数のシードでの物理的性質、料金、メーター、設定、契約、オプション |
 | `test_fake_cameras.py` | 17 | 偽カメラ：画像、Basic と Digest のログイン、故障、ファイルとコマンドライン |""",
       "build": "純粋な Python なのでコンパイルは不要です。バージョンは `pyproject.toml` と `armor.project.json` にあります。",
@@ -1153,6 +1170,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           オプションと実行
 │   ├── scenarios.py cycle.py            5つのシナリオ、270度の形状、光の一日
 │   ├── alarm_scenarios.py               JSON ファイルのアラームシナリオ、そのメッセージ、応答の検証
+│   ├── vision_scenarios.py              ビジョンシナリオ：各モードで検知ゾーンを横切る物体
 │   ├── solar.py                         インバーターと 2 モジュールのバッテリー
 │   ├── electrical.py                    電気ノードの 3 チャンネル
 │   ├── meter_bus.py                     エネルギーメーターのシリアル回線をTCPで再現 (PZEM-004T、PZEM-017)
@@ -1236,6 +1254,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[用法](docs/USAGE.md)：所有选项、场景和故障",
       "[报警场景](docs/ALARM_SCENARIOS.md)：文件格式以及如何验证服务器的响应",
+      "[视觉场景](docs/VISION_SCENARIOS.md)：文件格式、按模式划分的检测区域以及如何验证事件",
       "[能源模型](docs/ENERGY_MODEL.md)：真实的太阳能与电力数据及其设置",
       "[电表总线](docs/METER_BUS.md)：通过 TCP 的能量电表及设置文件",
       "[仿真台](docs/NODE_BENCH.md)：把节点的总线送入真实的固件代码，并在没有 Docker 的情况下运行服务器",
@@ -1322,6 +1341,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | 场景、故障、太阳能、电气、校验、向本地 HTTP 服务器投递 |
 | `test_cli_options.py` | 26 | 选项、其限制和拒绝情形 |
 | `test_alarm_scenarios.py` | 32 | 报警场景文件：严格读取、消息流、模式与日历、响应验证、选项 |
+| `test_vision_scenarios.py` | 22 | 视觉场景文件：严格读取、停留、标签与按模式的配置、事件契约、验证、选项 |
 | `test_energy.py` | 32 | 能源模型：多种子下的物理性质、电价、电表、设置、契约、选项 |
 | `test_fake_cameras.py` | 17 | 模拟摄像头：图像、Basic 与 Digest 登录、故障、文件和命令行 |""",
       "build": "纯 Python：无需编译。版本在 `pyproject.toml` 和 `armor.project.json` 中。",
@@ -1344,6 +1364,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           选项与运行
 │   ├── scenarios.py cycle.py            五个场景、270 度几何和一天的光照
 │   ├── alarm_scenarios.py               来自 JSON 文件的报警场景、其消息以及对响应的检查
+│   ├── vision_scenarios.py              视觉场景：各模式下穿过检测区域的物体
 │   ├── solar.py                         逆变器和两模块电池组
 │   ├── electrical.py                    电气节点的三个通道
 │   ├── meter_bus.py                     通过 TCP 模拟能量电表的串行线路 (PZEM-004T、PZEM-017)
@@ -1427,6 +1448,7 @@ ARMOR-SIMULATOR/
     "docs": [
       "[Utilização](docs/USAGE.md): todas as opções, cenários e falhas",
       "[Cenários de alarme](docs/ALARM_SCENARIOS.md): o formato do ficheiro e como verificar a resposta de um servidor",
+      "[Cenários de visão](docs/VISION_SCENARIOS.md): o formato do ficheiro, as zonas de deteção por modo e como verificar os eventos",
       "[Modelo de energia](docs/ENERGY_MODEL.md): os dados solares e elétricos realistas e as suas definições",
       "[Bus de contadores](docs/METER_BUS.md): os contadores de energia por TCP e o ficheiro de definições",
       "[Banco de simulação](docs/NODE_BENCH.md): os barramentos dos nós jogados contra o código real do firmware, e o servidor sem Docker",
@@ -1513,6 +1535,7 @@ python -I tools/armor_ci_validate.py
 | `test_simulator.py` | 37 | Cenários, falhas, solar, elétrico, validação, entrega a um servidor HTTP local |
 | `test_cli_options.py` | 26 | As opções, os seus limites e as recusas |
 | `test_alarm_scenarios.py` | 32 | Ficheiros de cenários de alarme: leitura estrita, o fluxo, modos e calendário, verificação da resposta, as opções |
+| `test_vision_scenarios.py` | 22 | Ficheiros de cenários de visão: leitura estrita, visitas, etiquetas e perfis por modo, o contrato do evento, a verificação e as opções |
 | `test_energy.py` | 32 | Modelo de energia: propriedades físicas com muitas sementes, tarifa, contador, definições, contratos, as opções |
 | `test_fake_cameras.py` | 17 | Câmaras falsas: as imagens, os logins Basic e Digest, as falhas, o ficheiro e a linha de comandos |""",
       "build": "É Python puro: nada a compilar. A versão está em `pyproject.toml` e `armor.project.json`.",
@@ -1535,6 +1558,7 @@ ARMOR-SIMULATOR/
 │   ├── cli.py                           as opções e a execução
 │   ├── scenarios.py cycle.py            os cinco cenários, a geometria de 270 graus e o dia de luz
 │   ├── alarm_scenarios.py               cenários de alarme a partir de ficheiros JSON, as suas mensagens e a verificação da resposta
+│   ├── vision_scenarios.py              cenários de visão: objetos que atravessam zonas de deteção em cada modo
 │   ├── solar.py                         um inversor e uma pilha de dois módulos
 │   ├── electrical.py                    os três canais de um nó elétrico
 │   ├── meter_bus.py                     a linha série dos contadores de energia por TCP (PZEM-004T, PZEM-017)
