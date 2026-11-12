@@ -56,7 +56,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "15921%20checks",
+      "17321%20checks",
       "2ea44f",
     ],
   ],
@@ -77,7 +77,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "15921 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks (`ctest`)",
+        "17321 checks in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} host programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks (`ctest`)",
       ],
       [
         "Boards",
@@ -221,7 +221,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks run under `ctest`; 15921 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} host test programs and {{fact:ctest_python:ARMOR-NODE-RADAR}} Python checks run under `ctest`; 17321 checks counted by the host programs, built with `-Werror`.
 
 | Part | What it covers |
 |---|---|
@@ -298,7 +298,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Pruebas",
-        "15921 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} de Python (`ctest`)",
+        "17321 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} de Python (`ctest`)",
       ],
       [
         "Placas",
@@ -442,7 +442,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} comprobaciones en Python se ejecutan con `ctest`; 15921 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-RADAR}} comprobaciones en Python se ejecutan con `ctest`; 17321 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 | Parte | Qué cubre |
 |---|---|
@@ -519,7 +519,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Tests",
-        "15921 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen (`ctest`)",
+        "17321 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Platinen",
@@ -663,7 +663,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen laufen unter `ctest`; 15921 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-RADAR}} Python-Prüfungen laufen unter `ctest`; 17321 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 | Teil | Was sie abdeckt |
 |---|---|
@@ -740,7 +740,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Tests",
-        "15921 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python (`ctest`)",
+        "17321 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python (`ctest`)",
       ],
       [
         "Cartes",
@@ -884,7 +884,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python tournent sous `ctest` ; 15921 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-RADAR}} contrôles Python tournent sous `ctest` ; 17321 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 | Partie | Ce qu'il couvre |
 |---|---|
@@ -961,7 +961,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Test",
-        "15921 verifiche in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python (`ctest`)",
+        "17321 verifiche in {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python (`ctest`)",
       ],
       [
         "Schede",
@@ -1105,7 +1105,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python girano con `ctest`; 15921 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-RADAR}} verifiche Python girano con `ctest`; 17321 verifiche contate dai programmi host, compilati con `-Werror`.
 
 | Parte | Cosa copre |
 |---|---|
@@ -1182,7 +1182,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "テスト",
-        "15921 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-RADAR}} 個、`ctest`）",
+        "17321 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-RADAR}} 個、`ctest`）",
       ],
       [
         "基板",
@@ -1326,7 +1326,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 15921 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 個と Python の検査 6 個を `ctest` で実行します。ホストのプログラムが数えた検査は 17321 件で、`-Werror` でビルドします。
 
 | 部分 | 対象 |
 |---|---|
@@ -1403,7 +1403,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "测试",
-        "15921 项检查（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 项 Python 检查，`ctest`）",
+        "17321 项检查（{{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 项 Python 检查，`ctest`）",
       ],
       [
         "电路板",
@@ -1547,7 +1547,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 个 Python 检查；主机程序统计的检查共 15921 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-RADAR}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-RADAR}} 个 Python 检查；主机程序统计的检查共 17321 项，使用 `-Werror` 构建。
 
 | 部分 | 覆盖内容 |
 |---|---|
@@ -1624,7 +1624,7 @@ ARMOR-NODE-RADAR/
       ],
       [
         "Testes",
-        "15921 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} em Python (`ctest`)",
+        "17321 verificações em {{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} em Python (`ctest`)",
       ],
       [
         "Placas",
@@ -1768,7 +1768,7 @@ build/host/emit_samples | python tests/check_contract.py
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} verificações Python correm com `ctest`; 15921 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-RADAR}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-RADAR}} verificações Python correm com `ctest`; 17321 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 | Parte | O que cobre |
 |---|---|
