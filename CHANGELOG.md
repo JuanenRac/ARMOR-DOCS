@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **Tests of the status lights:** what the answer of the CI becomes (the last completed run of the main branch decides; no gh, a timeout or no run is unknown), the refusal of a repository without a manifest or with one that is not JSON, what counts as a CI and as a test, and the suggestions of `--suggest`.
+
 - **Tests of the command lines of the two checkers of sentences that depend on the code:** `doc_claims.py` and `doc_facts.py` are run over a folder of documents made for the test (a marker without an entry, an entry without a marker, a repository that is not there, an entry without one of its keys, a figure that means nothing, a verified version newer than the repository, the stale list, the fix that keeps the line ends and the check that leaves the file alone).
 
 ## [0.8.1.9] - The floor of the test coverage of `tools/` goes up to lines 85.4, branches 80.3 (measured 85.92 and 80.87; before: 50.2 and 45.3): the shared tools this repository carries now have the tests they have in ARMOR-COMMON (the README pictures, t
