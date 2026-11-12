@@ -189,6 +189,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | The heat map route as a command: off is 404 whatever the data, on with no data is an empty map, counts in the three formats, bad queries, and a wrong configuration or file is an error and never an empty map |
 | `test_service.py` | 15 | The live service: the same map as the replayed file, off is 404 and 503, what is not understood is refused, the limits of the settings, bounded memory and the command |
 | `test_service_load.py` | 7 | The live service under light load and with clients that misbehave: the new limits and their ranges, a client that goes quiet is dropped, the requests at once are bounded, exact counters under many threads, the drawing of an unchanged map is reused and bounded, and a map being drawn does not hold up the observations |
+| `test_delivery.py` | 14 | The delivery of events to the server: off by default, the token never in the settings, https or this machine only, a bounded queue, and `notify:false` travelling untouched |
 | `test_tensorrt_and_streams.py` | 21 | The TensorRT detector with a simulated engine, the pair of streams and the recorder, the clips with pre and post capture and the retention by type |
 | `test_analytics_schedule_phase2.py` | 30 | Speed in a zone, left objects, the PTZ follower, the vectors of an event, the schedule by hour and the second phase off by default |""",
       "build": "It is plain Python: nothing to compile. The version lives in `pyproject.toml` and `armor.project.json`.",
@@ -223,6 +224,7 @@ ARMOR-VISION/
 │   ├── activity.py                      events and the /heatmap handler
 │   ├── heatmap_service.py               the /heatmap route as a command
 │   ├── service.py                       the live service: the engine in memory, POST /ingest and GET /heatmap
+│   ├── delivery.py                      the delivery of events to the server (off by default)
 │   └── pipeline.py cli.py __main__.py   the whole chain and the command line
 ├── tests/                               the tests
 ├── docs/                                the guides of this repository
@@ -389,6 +391,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | La ruta del mapa de calor como comando: apagado es 404 sea cual sea el dato, encendido sin datos es un mapa vacío, cuentas en los tres formatos, consultas malas, y una configuración o un fichero erróneos son un error y nunca un mapa vacío |
 | `test_service.py` | 15 | El servicio vivo: el mismo mapa que el fichero reproducido, apagado da 404 y 503, lo que no se entiende se rechaza, los límites de los ajustes, memoria acotada y el comando |
 | `test_service_load.py` | 7 | El servicio vivo con carga ligera y con clientes que se portan mal: los límites nuevos y sus rangos, se corta al cliente que se queda callado, las peticiones a la vez están acotadas, contadores exactos con muchos hilos, el dibujo de un mapa sin cambios se reutiliza y está acotado, y un mapa que se dibuja no retrasa las observaciones |
+| `test_delivery.py` | 14 | La entrega de eventos al servidor: apagada por defecto, el token nunca en los ajustes, solo https o esta máquina, una cola acotada y `notify:false` viajando intacto |
 | `test_tensorrt_and_streams.py` | 21 | El detector TensorRT con un motor simulado, el par de corrientes y el grabador, los clips con pre y post captura y la retención por tipo |
 | `test_analytics_schedule_phase2.py` | 30 | Velocidad en zona, objetos abandonados, el seguidor PTZ, los vectores de un evento, el horario y la segunda fase apagada por defecto |""",
       "build": "Es Python puro: no hay nada que compilar. La versión vive en `pyproject.toml` y `armor.project.json`.",
@@ -423,6 +426,7 @@ ARMOR-VISION/
 │   ├── activity.py                      eventos y manejador de /heatmap
 │   ├── heatmap_service.py               la ruta /heatmap como comando
 │   ├── service.py                       el servicio vivo: el motor en memoria, POST /ingest y GET /heatmap
+│   ├── delivery.py                      la entrega de eventos al servidor (apagada por defecto)
 │   └── pipeline.py cli.py __main__.py   toda la cadena y la línea de órdenes
 ├── tests/                               las pruebas
 ├── docs/                                las guías de este repositorio
@@ -589,6 +593,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | Die Heatmap-Route als Befehl: aus ist 404, egal welche Daten, an ohne Daten ist eine leere Karte, Zählungen in den drei Formaten, fehlerhafte Anfragen, und eine falsche Konfiguration oder Datei ist ein Fehler und nie eine leere Karte |
 | `test_service.py` | 15 | Der Live-Dienst: dieselbe Karte wie die abgespielte Datei, aus ist 404 und 503, Unverstandenes wird abgelehnt, die Grenzen der Einstellungen, begrenzter Speicher und der Befehl |
 | `test_service_load.py` | 7 | Der Live-Dienst unter leichter Last und mit sich schlecht benehmenden Clients: die neuen Grenzen und ihre Bereiche, ein verstummter Client wird getrennt, die gleichzeitigen Anfragen sind begrenzt, exakte Zähler bei vielen Threads, die Zeichnung einer unveränderten Karte wird wiederverwendet und begrenzt, und eine Karte, die gezeichnet wird, hält die Beobachtungen nicht auf |
+| `test_delivery.py` | 14 | Die Zustellung von Ereignissen an den Server: standardmäßig aus, das Token nie in den Einstellungen, nur https oder dieser Rechner, eine begrenzte Warteschlange und `notify:false` unverändert |
 | `test_tensorrt_and_streams.py` | 21 | Der TensorRT-Detektor mit simulierter Engine, das Streampaar und der Recorder, die Clips mit Vor- und Nachlauf und die Aufbewahrung nach Typ |
 | `test_analytics_schedule_phase2.py` | 30 | Geschwindigkeit in einer Zone, zurückgelassene Objekte, der PTZ-Verfolger, die Vektoren eines Ereignisses, der Zeitplan und die standardmäßig ausgeschaltete zweite Phase |""",
       "build": "Es ist reines Python: nichts zu kompilieren. Die Version steht in `pyproject.toml` und `armor.project.json`.",
@@ -623,6 +628,7 @@ ARMOR-VISION/
 │   ├── activity.py                      Ereignisse und der /heatmap-Handler
 │   ├── heatmap_service.py               die /heatmap-Route als Befehl
 │   ├── service.py                       der Live-Dienst: die Engine im Speicher, POST /ingest und GET /heatmap
+│   ├── delivery.py                      die Zustellung von Ereignissen an den Server (standardmäßig aus)
 │   └── pipeline.py cli.py __main__.py   die ganze Kette und die Kommandozeile
 ├── tests/                               die Tests
 ├── docs/                                die Anleitungen dieses Repositorys
@@ -789,6 +795,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | La route de la carte de chaleur en commande : éteinte donne 404 quelles que soient les données, allumée sans données donne une carte vide, comptes dans les trois formats, requêtes fausses, et une configuration ou un fichier faux est une erreur et jamais une carte vide |
 | `test_service.py` | 15 | Le service vivant : la même carte que le fichier rejoué, éteint donne 404 et 503, ce qui n'est pas compris est refusé, les limites des réglages, mémoire bornée et la commande |
 | `test_service_load.py` | 7 | Le service vivant sous charge légère et avec des clients qui se conduisent mal : les nouvelles limites et leurs plages, un client qui se tait est coupé, les requêtes simultanées sont bornées, compteurs exacts avec beaucoup de fils, le dessin d'une carte inchangée est réutilisé et borné, et une carte en cours de dessin ne retarde pas les observations |
+| `test_delivery.py` | 14 | La remise des événements au serveur : éteinte par défaut, le jeton jamais dans les réglages, https ou cette machine seulement, une file bornée et `notify:false` transmis tel quel |
 | `test_tensorrt_and_streams.py` | 21 | Le détecteur TensorRT avec un moteur simulé, la paire de flux et l'enregistreur, les clips avec pré et post-capture et la rétention par type |
 | `test_analytics_schedule_phase2.py` | 30 | Vitesse dans une zone, objets abandonnés, le suiveur PTZ, les vecteurs d'un événement, l'horaire et la seconde phase éteinte par défaut |""",
       "build": "C'est du Python pur : rien à compiler. La version est dans `pyproject.toml` et `armor.project.json`.",
@@ -823,6 +830,7 @@ ARMOR-VISION/
 │   ├── activity.py                      événements et gestionnaire /heatmap
 │   ├── heatmap_service.py               la route /heatmap en commande
 │   ├── service.py                       le service vivant : le moteur en mémoire, POST /ingest et GET /heatmap
+│   ├── delivery.py                      la remise des événements au serveur (éteinte par défaut)
 │   └── pipeline.py cli.py __main__.py   toute la chaîne et la ligne de commande
 ├── tests/                               les tests
 ├── docs/                                les guides de ce dépôt
@@ -989,6 +997,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | La rotta della mappa di calore come comando: spenta dà 404 qualunque siano i dati, accesa senza dati dà una mappa vuota, conteggi nei tre formati, richieste errate, e una configurazione o un file errati sono un errore e mai una mappa vuota |
 | `test_service.py` | 15 | Il servizio vivo: la stessa mappa del file riprodotto, spento dà 404 e 503, ciò che non si capisce viene rifiutato, i limiti delle impostazioni, memoria limitata e il comando |
 | `test_service_load.py` | 7 | Il servizio vivo sotto carico leggero e con client che si comportano male: i nuovi limiti e i loro intervalli, un client che tace viene chiuso, le richieste contemporanee sono limitate, contatori esatti con molti thread, il disegno di una mappa invariata viene riusato ed è limitato, e una mappa in corso di disegno non trattiene le osservazioni |
+| `test_delivery.py` | 14 | La consegna degli eventi al server: spenta di default, il token mai nelle impostazioni, solo https o questa macchina, una coda limitata e `notify:false` trasmesso intatto |
 | `test_tensorrt_and_streams.py` | 21 | Il rilevatore TensorRT con motore simulato, la coppia di flussi e il registratore, le clip con pre e post-cattura e la conservazione per tipo |
 | `test_analytics_schedule_phase2.py` | 30 | Velocità in una zona, oggetti abbandonati, il seguitore PTZ, i vettori di un evento, l'orario e la seconda fase spenta per impostazione predefinita |""",
       "build": "È Python puro: nulla da compilare. La versione sta in `pyproject.toml` e `armor.project.json`.",
@@ -1023,6 +1032,7 @@ ARMOR-VISION/
 │   ├── activity.py                      eventi e gestore /heatmap
 │   ├── heatmap_service.py               la rotta /heatmap come comando
 │   ├── service.py                       il servizio vivo: il motore in memoria, POST /ingest e GET /heatmap
+│   ├── delivery.py                      la consegna degli eventi al server (spenta di default)
 │   └── pipeline.py cli.py __main__.py   tutta la catena e la riga di comando
 ├── tests/                               i test
 ├── docs/                                le guide di questo repository
@@ -1189,6 +1199,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | コマンドとしてのヒートマップのルート：オフならデータに関係なく 404、オンでデータなしなら空の地図、3 つの形式での件数、不正な問い合わせ、誤った設定やファイルはエラーであり空の地図にはならない |
 | `test_service.py` | 15 | ライブサービス：再生したファイルと同じマップ、オフなら 404 と 503、理解できないものは拒否、設定の上限、メモリの上限、コマンド |
 | `test_service_load.py` | 7 | 軽い負荷と行儀の悪いクライアントの下でのライブサービス：新しい上限とその範囲、黙り込んだクライアントの切断、同時リクエストの上限、多数のスレッドでも正確なカウンター、変化のない地図の描画の再利用とその上限、描画中の地図が観測を妨げないこと |
+| `test_delivery.py` | 14 | サーバーへのイベント配信：既定でオフ、トークンは設定に書かない、https かこのマシンのみ、上限付きキュー、`notify:false` はそのまま届く |
 | `test_tensorrt_and_streams.py` | 21 | 模擬エンジンの TensorRT 検知器、ストリームの組と録画、前後キャプチャ付きクリップ、種類別の保存期間 |
 | `test_analytics_schedule_phase2.py` | 30 | ゾーン内の速度、置き去り物、PTZ 追従、イベントのベクトル、時間帯設定、既定でオフの第 2 段階 |""",
       "build": "純粋な Python なのでコンパイルは不要です。バージョンは `pyproject.toml` と `armor.project.json` にあります。",
@@ -1223,6 +1234,7 @@ ARMOR-VISION/
 │   ├── activity.py                      イベントと /heatmap ハンドラ
 │   ├── heatmap_service.py               /heatmap ルートをコマンドとして
 │   ├── service.py                       ライブサービス：メモリ上のエンジン、POST /ingest と GET /heatmap
+│   ├── delivery.py                      サーバーへのイベント配信（既定でオフ）
 │   └── pipeline.py cli.py __main__.py   全体の流れとコマンドライン
 ├── tests/                               テスト
 ├── docs/                                このリポジトリのガイド
@@ -1389,6 +1401,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | 作为命令的热力图路由：关闭时无论数据如何都返回 404，开启但没有数据时返回空图，三种格式下的计数，错误的查询，以及错误的配置或文件会报错，绝不会变成空图 |
 | `test_service.py` | 15 | 实时服务：与回放文件相同的地图，关闭时返回 404 和 503，无法理解的内容被拒绝，设置的限制，内存有上限，以及命令 |
 | `test_service_load.py` | 7 | 轻负载和行为不良的客户端下的实时服务：新的上限及其范围、沉默的客户端被断开、同时请求数有上限、多线程下计数器精确、未变化地图的绘制被复用且有上限、正在绘制的地图不会阻塞观测 |
+| `test_delivery.py` | 14 | 向服务器投递事件：默认关闭，令牌绝不放在设置里，仅限 https 或本机，有上限的队列，`notify:false` 原样传递 |
 | `test_tensorrt_and_streams.py` | 21 | 使用模拟引擎的 TensorRT 检测器、码流对与录制器、带前后捕获的片段以及按类型的保留 |
 | `test_analytics_schedule_phase2.py` | 30 | 区域内速度、遗留物、PTZ 跟随器、事件的向量、时间表以及默认关闭的第二阶段 |""",
       "build": "纯 Python：无需编译。版本在 `pyproject.toml` 和 `armor.project.json` 中。",
@@ -1423,6 +1436,7 @@ ARMOR-VISION/
 │   ├── activity.py                      事件与 /heatmap 处理器
 │   ├── heatmap_service.py               作为命令的 /heatmap 路由
 │   ├── service.py                       实时服务：内存中的引擎、POST /ingest 与 GET /heatmap
+│   ├── delivery.py                      向服务器投递事件（默认关闭）
 │   └── pipeline.py cli.py __main__.py   整个流程与命令行
 ├── tests/                               测试
 ├── docs/                                本仓库的指南
@@ -1589,6 +1603,7 @@ python -I tools/armor_ci_validate.py
 | `test_heatmap_service.py` | 7 | A rota do mapa de calor como comando: desligada dá 404 sejam quais forem os dados, ligada sem dados dá um mapa vazio, contagens nos três formatos, pedidos errados, e uma configuração ou um ficheiro errados são um erro e nunca um mapa vazio |
 | `test_service.py` | 15 | O serviço vivo: o mesmo mapa que o ficheiro reproduzido, desligado dá 404 e 503, o que não se entende é recusado, os limites das definições, memória limitada e o comando |
 | `test_service_load.py` | 7 | O serviço vivo com carga ligeira e com clientes que se portam mal: os novos limites e os seus intervalos, o cliente que fica calado é cortado, os pedidos em simultâneo são limitados, contadores exatos com muitos fios, o desenho de um mapa sem alterações é reutilizado e limitado, e um mapa em desenho não atrasa as observações |
+| `test_delivery.py` | 14 | A entrega de eventos ao servidor: desligada por omissão, o token nunca nas definições, só https ou esta máquina, uma fila limitada e `notify:false` a viajar intacto |
 | `test_tensorrt_and_streams.py` | 21 | O detetor TensorRT com motor simulado, o par de correntes e o gravador, os clipes com pré e pós-captura e a retenção por tipo |
 | `test_analytics_schedule_phase2.py` | 30 | Velocidade numa zona, objetos abandonados, o seguidor PTZ, os vetores de um evento, o horário e a segunda fase desligada por omissão |""",
       "build": "É Python puro: nada a compilar. A versão está em `pyproject.toml` e `armor.project.json`.",
@@ -1623,6 +1638,7 @@ ARMOR-VISION/
 │   ├── activity.py                      eventos e tratador de /heatmap
 │   ├── heatmap_service.py               a rota /heatmap como comando
 │   ├── service.py                       o serviço vivo: o motor em memória, POST /ingest e GET /heatmap
+│   ├── delivery.py                      a entrega de eventos ao servidor (desligada por omissão)
 │   └── pipeline.py cli.py __main__.py   toda a cadeia e a linha de comandos
 ├── tests/                               os testes
 ├── docs/                                os guias deste repositório

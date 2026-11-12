@@ -1089,7 +1089,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      Tresor, PTZ, RTSP, Suche, Zustand\n'
        '│   ├── media/                        FFmpeg-Relais und Beweisbibliothek\n'
        '│   └── devices/                      Gerätemodell und MQTT-Brücke\n'
-       '├── tests/                            1136 Tests, Unit und HTTP-Integration\n'
+       '├── tests/                            1141 Tests, Unit und HTTP-Integration\n'
        '├── docs/                             8 Leitfäden, Routentabelle, Umgebung\n'
        '├── tools/                            Generatoren für docs/ROUTES.md und docs/ENVIRONMENT.md, gemeinsame CI-Prüfungen, Starter\n'
        '├── images/                           Banner, Symbol und die Bilder des READMEs\n'
@@ -1120,7 +1120,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      vault, PTZ, RTSP, discovery, health\n'
        '│   ├── media/                        FFmpeg relay and evidence library\n'
        '│   └── devices/                      device model and its MQTT bridge\n'
-       '├── tests/                            1136 tests, unit and HTTP integration\n'
+       '├── tests/                            1141 tests, unit and HTTP integration\n'
        '├── docs/                             8 guides, route table, environment\n'
        '├── tools/                            generators of docs/ROUTES.md and docs/ENVIRONMENT.md, shared CI checks, launcher\n'
        '├── images/                           banner, icon and the pictures of the README\n'
@@ -1151,7 +1151,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      caja fuerte, PTZ, RTSP, descubrimiento, salud\n'
        '│   ├── media/                        relé FFmpeg y biblioteca de evidencias\n'
        '│   └── devices/                      modelo de dispositivos y su puente MQTT\n'
-       '├── tests/                            1136 pruebas, unitarias e integración HTTP\n'
+       '├── tests/                            1141 pruebas, unitarias e integración HTTP\n'
        '├── docs/                             8 guías, tabla de rutas, entorno\n'
        '├── tools/                            generadores de docs/ROUTES.md y docs/ENVIRONMENT.md, comprobaciones de CI, lanzador\n'
        '├── images/                           banner, icono y las imágenes del README\n'
@@ -1182,7 +1182,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      coffre, PTZ, RTSP, découverte, santé\n'
        '│   ├── media/                        relais FFmpeg et bibliothèque de preuves\n'
        "│   └── devices/                      modèle d'appareils et son pont MQTT\n"
-       '├── tests/                            1136 tests, unitaires et intégration HTTP\n'
+       '├── tests/                            1141 tests, unitaires et intégration HTTP\n'
        '├── docs/                             8 guides, table des routes, environnement\n'
        '├── tools/                            générateurs de docs/ROUTES.md et docs/ENVIRONMENT.md, vérifications CI, lanceur\n'
        '├── images/                           bannière, icône et images du README\n'
@@ -1213,7 +1213,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cassaforte, PTZ, RTSP, scoperta, salute\n'
        '│   ├── media/                        relè FFmpeg e libreria di prove\n'
        '│   └── devices/                      modello dei dispositivi e ponte MQTT\n'
-       '├── tests/                            1136 test, unitari e integrazione HTTP\n'
+       '├── tests/                            1141 test, unitari e integrazione HTTP\n'
        '├── docs/                             8 guide, tabella delle rotte, ambiente\n'
        '├── tools/                            generatori di docs/ROUTES.md e docs/ENVIRONMENT.md, controlli CI, avviatore\n'
        '├── images/                           banner, icona e immagini del README\n'
@@ -1244,7 +1244,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      金庫、PTZ、RTSP、探索、健全性\n'
        '│   ├── media/                        FFmpeg 中継と証拠ライブラリ\n'
        '│   └── devices/                      デバイスモデルと MQTT ブリッジ\n'
-       '├── tests/                            1136 件（単体と HTTP 結合）\n'
+       '├── tests/                            1141 件（単体と HTTP 結合）\n'
        '├── docs/                             8 つのガイド、ルート表、環境変数\n'
        '├── tools/                            docs/ROUTES.md と docs/ENVIRONMENT.md の生成、CI 検査、ランチャー\n'
        '├── images/                           バナー、アイコン、README の画像\n'
@@ -1275,7 +1275,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cofre, PTZ, RTSP, descoberta, saúde\n'
        '│   ├── media/                        relé FFmpeg e biblioteca de provas\n'
        '│   └── devices/                      modelo de dispositivos e a sua ponte MQTT\n'
-       '├── tests/                            1136 testes, unitários e integração HTTP\n'
+       '├── tests/                            1141 testes, unitários e integração HTTP\n'
        '├── docs/                             8 guias, tabela de rotas, ambiente\n'
        '├── tools/                            geradores de docs/ROUTES.md e docs/ENVIRONMENT.md, verificações de CI, lançador\n'
        '├── images/                           faixa, ícone e as imagens do README\n'
@@ -1306,7 +1306,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      保险库、PTZ、RTSP、发现、健康\n'
        '│   ├── media/                        FFmpeg 中继与证据库\n'
        '│   └── devices/                      设备模型及其 MQTT 桥\n'
-       '├── tests/                            1136 项测试（单元与 HTTP 集成）\n'
+       '├── tests/                            1141 项测试（单元与 HTTP 集成）\n'
        '├── docs/                             8 份指南、路由表、环境变量\n'
        '├── tools/                            docs/ROUTES.md 和 docs/ENVIRONMENT.md 的生成器、CI 检查、启动器\n'
        '├── images/                           横幅图、图标和 README 的图片\n'
@@ -1337,7 +1337,7 @@ NEW_BULLETS: dict[str, Any] = {
 for _lg in NEW_BULLETS:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + NEW_BULLETS[_lg]
 
-NT = "1136"
+NT = "1141"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
@@ -1358,7 +1358,7 @@ GLANCE = [
     (GL["role"], T("Central security coordinator of the family: nodes, alarms, devices, energy, cameras, network | Coordinador central de seguridad de la familia: nodos, alarmas, dispositivos, energía, cámaras, red | Zentraler Sicherheitskoordinator der Familie: Knoten, Alarme, Geräte, Energie, Kameras, Netzwerk | Coordinateur central de sécurité de la famille : nœuds, alarmes, appareils, énergie, caméras, réseau | Coordinatore centrale di sicurezza della famiglia: nodi, allarmi, dispositivi, energia, telecamere, rete | ファミリーの中央セキュリティコーディネーター：ノード、アラーム、デバイス、エネルギー、カメラ、ネットワーク | 家族的中央安全协调器：节点、报警、设备、能源、摄像头、网络 | Coordenador central de segurança da família: nós, alarmes, dispositivos, energia, câmaras, rede")),
     (GL["stack"], "Node.js 22+, TypeScript, Express 5, MQTT, WebSocket, FFmpeg"),
     (GL["tests"], T("NTESTS (`npm test`: unit and full HTTP integration) | NTESTS (`npm test`: unitarias e integración HTTP completa) | NTESTS (`npm test`: Unit und volle HTTP-Integration) | NTESTS (`npm test` : unitaires et intégration HTTP complète) | NTESTS (`npm test`: unitari e integrazione HTTP completa) | NTESTS 件（`npm test`：単体と完全な HTTP 結合） | NTESTS 项（`npm test`：单元与完整 HTTP 集成） | NTESTS (`npm test`: unitários e integração HTTP completa)".replace("NTESTS", NT))),
-    (GL["contract"], T("{{fact:openapi_paths}} HTTP paths, {{fact:openapi_operations}} operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | {{fact:openapi_paths}} rutas HTTP, {{fact:openapi_operations}} operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | {{fact:openapi_paths}} HTTP-Pfade, {{fact:openapi_operations}} Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | {{fact:openapi_paths}} chemins HTTP, {{fact:openapi_operations}} opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | {{fact:openapi_paths}} percorsi HTTP, {{fact:openapi_operations}} operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス 196 本、{{fact:openapi_operations}} 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | {{fact:openapi_paths}} 条 HTTP 路径、{{fact:openapi_operations}} 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | {{fact:openapi_paths}} caminhos HTTP, {{fact:openapi_operations}} operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
+    (GL["contract"], T("{{fact:openapi_paths}} HTTP paths, {{fact:openapi_operations}} operations (OpenAPI in ARMOR-COMMON), route table in `docs/ROUTES.md` | {{fact:openapi_paths}} rutas HTTP, {{fact:openapi_operations}} operaciones (OpenAPI en ARMOR-COMMON), tabla de rutas en `docs/ROUTES.md` | {{fact:openapi_paths}} HTTP-Pfade, {{fact:openapi_operations}} Operationen (OpenAPI in ARMOR-COMMON), Routentabelle in `docs/ROUTES.md` | {{fact:openapi_paths}} chemins HTTP, {{fact:openapi_operations}} opérations (OpenAPI dans ARMOR-COMMON), table des routes dans `docs/ROUTES.md` | {{fact:openapi_paths}} percorsi HTTP, {{fact:openapi_operations}} operazioni (OpenAPI in ARMOR-COMMON), tabella delle rotte in `docs/ROUTES.md` | HTTP パス {{fact:openapi_paths}} 本、{{fact:openapi_operations}} 操作（OpenAPI は ARMOR-COMMON）、ルート表は `docs/ROUTES.md` | {{fact:openapi_paths}} 条 HTTP 路径、{{fact:openapi_operations}} 个操作（OpenAPI 在 ARMOR-COMMON 中），路由表见 `docs/ROUTES.md` | {{fact:openapi_paths}} caminhos HTTP, {{fact:openapi_operations}} operações (OpenAPI no ARMOR-COMMON), tabela de rotas em `docs/ROUTES.md`")),
     (GL["listens"], T("`127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`) | `127.0.0.1:18080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:18080`（`ARMOR_HOST`、`ARMOR_PORT`） | `127.0.0.1:18080` (`ARMOR_HOST`, `ARMOR_PORT`)")),
     (GL["runs"], T("The CM5 test bench (as a service, see ARMOR-DEVOPS) or any computer with Node.js | El banco de la CM5 (como servicio, ver ARMOR-DEVOPS) o cualquier ordenador con Node.js | Der CM5-Prüfstand (als Dienst, siehe ARMOR-DEVOPS) oder jeder Computer mit Node.js | Le banc d'essai CM5 (en service, voir ARMOR-DEVOPS) ou tout ordinateur avec Node.js | Il banco di prova CM5 (come servizio, vedi ARMOR-DEVOPS) o qualsiasi computer con Node.js | CM5 テストベンチ（サービスとして。ARMOR-DEVOPS 参照）または Node.js のある任意のコンピューター | CM5 测试台（作为服务，见 ARMOR-DEVOPS）或任何装有 Node.js 的计算机 | A bancada do CM5 (como serviço, ver ARMOR-DEVOPS) ou qualquer computador com Node.js")),
     (GL["hardware"], LEGACY["en"]["hardware"] and {lg: LEGACY[lg]["hardware"] for lg in LGS}),
