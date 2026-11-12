@@ -65,7 +65,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "495879%20checks",
+      "496974%20checks",
       "2ea44f",
     ],
   ],
@@ -74,7 +74,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the firmware of the node and the rules tested on a computer (nothing has run on a board)",
-    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 495,879 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
+    "honest": "What exists is the **core of the alarm** (what a zone is, how a wired loop read by the ADC becomes a state, the panel's rules: arming, delays, the alarm, the siren, the PIN with lockout) and the **firmware of the node** built on it (settings, web panel, messages with the server, the Zigbee radio's bridge, a Zigbee coordinator on the network, relays, Bluetooth, signed updates), which builds for both boards; the core, the settings, the messages and the panel in a real browser against a stand-in node are tested on a computer with 496,974 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} test programs. **Nothing has run on a board or on a real installation, no zone has been wired and no siren connected, the node's own Zigbee conversation with a coordinator (local or on the network) is written and tested against a stand-in coordinator but has never run against a real coordinator or a real sensor, and this is not a certified alarm system.**",
     "glance": [
       [
         "Role",
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "495879 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
+        "496974 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks (`ctest`)",
       ],
       [
         "Inputs",
@@ -107,7 +107,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "495,879 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
+      "tests": "496,974 checks in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} host programs pass (`ctest`): the zones, the wired loops read by the ADC, the arming, delays, siren and PIN rules, the settings and the messages.",
       "protocols": "The node's own Zigbee conversation with a coordinator, local or on the network, is tested only against a stand-in coordinator; it has never met a real coordinator or sensor.",
       "ui": "The web panel is exercised in a real browser against a stand-in node, not on a board.",
       "hardware": "No board built, no zone wired and no siren or Zigbee coordinator connected: nothing has run on a real installation.",
@@ -209,7 +209,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 495879 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} host test programs and {{fact:ctest_python:ARMOR-NODE-ALARM}} Python checks run under `ctest`; 496974 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
@@ -275,7 +275,7 @@ ARMOR-NODE-ALARM/
   },
   "es": {
     "tagline": "Nodo y central de alarma: las zonas, el armado, los retardos, la sirena y el PIN de la alarma de la casa, con el firmware del nodo y las reglas probadas en un ordenador (nada ha corrido en una placa)",
-    "honest": "Lo que existe es el **núcleo de la alarma** (qué es una zona, cómo un bucle cableado leído por el ADC se convierte en un estado, las reglas de la central: armado, retardos, la alarma, la sirena, el PIN con bloqueo) y el **firmware del nodo** construido sobre él (ajustes, panel web, mensajes con el servidor, el puente de la radio Zigbee, un coordinador Zigbee en la red, relés, Bluetooth, actualizaciones firmadas), que compila para las dos placas; el núcleo, los ajustes, los mensajes y el panel en un navegador real contra un nodo de pega se prueban en un ordenador con 495.879 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de test. **Nada ha corrido en una placa ni en una instalación real, no se ha cableado ninguna zona ni conectado ninguna sirena, la conversación Zigbee del propio nodo con un coordinador (local o en la red) está escrita y probada contra un coordinador de pega pero nunca ha corrido contra un coordinador ni un sensor reales, y esto no es un sistema de alarma certificado.**",
+    "honest": "Lo que existe es el **núcleo de la alarma** (qué es una zona, cómo un bucle cableado leído por el ADC se convierte en un estado, las reglas de la central: armado, retardos, la alarma, la sirena, el PIN con bloqueo) y el **firmware del nodo** construido sobre él (ajustes, panel web, mensajes con el servidor, el puente de la radio Zigbee, un coordinador Zigbee en la red, relés, Bluetooth, actualizaciones firmadas), que compila para las dos placas; el núcleo, los ajustes, los mensajes y el panel en un navegador real contra un nodo de pega se prueban en un ordenador con 496.974 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de test. **Nada ha corrido en una placa ni en una instalación real, no se ha cableado ninguna zona ni conectado ninguna sirena, la conversación Zigbee del propio nodo con un coordinador (local o en la red) está escrita y probada contra un coordinador de pega pero nunca ha corrido contra un coordinador ni un sensor reales, y esto no es un sistema de alarma certificado.**",
     "glance": [
       [
         "Función",
@@ -287,7 +287,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Pruebas",
-        "495879 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
+        "496974 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} de Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -308,7 +308,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 495.879 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host (`ctest`): las zonas, los lazos cableados leídos por el ADC, las reglas de armado, retardos, sirena y PIN, los ajustes y los mensajes.",
+      "tests": "Pasan 496.974 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de host (`ctest`): las zonas, los lazos cableados leídos por el ADC, las reglas de armado, retardos, sirena y PIN, los ajustes y los mensajes.",
       "protocols": "La conversación Zigbee del propio nodo con un coordinador, local o en la red, solo se ha probado contra un coordinador simulado; nunca se ha encontrado con un coordinador o un sensor reales.",
       "ui": "El panel web se ha ejercitado en un navegador real contra un nodo simulado, no en una placa.",
       "hardware": "Ninguna placa construida, ninguna zona cableada y ninguna sirena o coordinador Zigbee conectados: nada ha funcionado en una instalación real.",
@@ -410,7 +410,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 495879 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ALARM}} comprobaciones en Python se ejecutan con `ctest`; 496974 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
@@ -476,7 +476,7 @@ ARMOR-NODE-ALARM/
   },
   "de": {
     "tagline": "Alarmknoten und Alarmzentrale: die Zonen, das Scharfschalten, die Verzögerungen, die Sirene und die PIN der Hausalarmanlage, mit der Firmware des Knotens und den auf einem Rechner getesteten Regeln (nichts lief auf einer Platine)",
-    "honest": "Es existiert der **Alarmkern** (was eine Zone ist, wie eine vom ADC gelesene verdrahtete Schleife zum Zustand wird, die Regeln der Zentrale: Scharfschalten, Verzögerungen, der Alarm, die Sirene, die PIN mit Sperre) und die darauf gebaute **Firmware des Knotens** (Einstellungen, Web-Panel, Nachrichten mit dem Server, die Brücke des Zigbee-Funkmoduls, ein Zigbee-Koordinator im Netzwerk, Relais, Bluetooth, signierte Updates), die für beide Platinen baut; der Kern, die Einstellungen, die Nachrichten und das Panel in einem echten Browser gegen einen Ersatzknoten werden auf einem Computer mit 495.879 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Testprogrammen getestet. **Nichts lief auf einer Platine oder einer echten Anlage, keine Zone wurde verdrahtet und keine Sirene angeschlossen, die Zigbee-Kommunikation des Knotens mit einem Koordinator (lokal oder im Netzwerk) ist geschrieben und gegen einen Ersatzkoordinator getestet, lief aber nie gegen einen echten Koordinator oder Sensor, und dies ist keine zertifizierte Alarmanlage.**",
+    "honest": "Es existiert der **Alarmkern** (was eine Zone ist, wie eine vom ADC gelesene verdrahtete Schleife zum Zustand wird, die Regeln der Zentrale: Scharfschalten, Verzögerungen, der Alarm, die Sirene, die PIN mit Sperre) und die darauf gebaute **Firmware des Knotens** (Einstellungen, Web-Panel, Nachrichten mit dem Server, die Brücke des Zigbee-Funkmoduls, ein Zigbee-Koordinator im Netzwerk, Relais, Bluetooth, signierte Updates), die für beide Platinen baut; der Kern, die Einstellungen, die Nachrichten und das Panel in einem echten Browser gegen einen Ersatzknoten werden auf einem Computer mit 496.974 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Testprogrammen getestet. **Nichts lief auf einer Platine oder einer echten Anlage, keine Zone wurde verdrahtet und keine Sirene angeschlossen, die Zigbee-Kommunikation des Knotens mit einem Koordinator (lokal oder im Netzwerk) ist geschrieben und gegen einen Ersatzkoordinator getestet, lief aber nie gegen einen echten Koordinator oder Sensor, und dies ist keine zertifizierte Alarmanlage.**",
     "glance": [
       [
         "Rolle",
@@ -488,7 +488,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "495879 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
+        "496974 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Eingänge",
@@ -509,7 +509,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "495.879 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen bestehen (`ctest`): die Zonen, die vom ADC gelesenen verdrahteten Schleifen, die Regeln für Scharfschalten, Verzögerungen, Sirene und PIN, die Einstellungen und die Nachrichten.",
+      "tests": "496.974 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Programmen bestehen (`ctest`): die Zonen, die vom ADC gelesenen verdrahteten Schleifen, die Regeln für Scharfschalten, Verzögerungen, Sirene und PIN, die Einstellungen und die Nachrichten.",
       "protocols": "Die Zigbee-Kommunikation des Knotens selbst mit einem Koordinator, lokal oder im Netz, ist nur gegen einen nachgebildeten Koordinator getestet; sie ist nie auf einen echten Koordinator oder Sensor getroffen.",
       "ui": "Das Web-Panel wurde in einem echten Browser gegen einen nachgebildeten Knoten erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut, keine Zone verdrahtet und weder Sirene noch Zigbee-Koordinator angeschlossen: Bisher lief nichts an einer echten Anlage.",
@@ -611,7 +611,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 495879 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ALARM}} Python-Prüfungen laufen unter `ctest`; 496974 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
@@ -677,7 +677,7 @@ ARMOR-NODE-ALARM/
   },
   "fr": {
     "tagline": "Nœud et centrale d'alarme : les zones, l'armement, les temporisations, la sirène et le code PIN de l'alarme de la maison, avec le firmware du nœud et les règles testées sur un ordinateur (rien n'a tourné sur une carte)",
-    "honest": "Ce qui existe, c'est le **cœur de l'alarme** (ce qu'est une zone, comment une boucle câblée lue par l'ADC devient un état, les règles de la centrale : armement, temporisations, l'alarme, la sirène, le PIN avec verrouillage) et le **firmware du nœud** construit dessus (réglages, panneau web, messages avec le serveur, le pont de la radio Zigbee, un coordinateur Zigbee sur le réseau, relais, Bluetooth, mises à jour signées), qui se compile pour les deux cartes ; le cœur, les réglages, les messages et le panneau dans un vrai navigateur contre un nœud factice sont testés sur un ordinateur avec 495 879 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test. **Rien n'a tourné sur une carte ni sur une installation réelle, aucune zone n'a été câblée ni aucune sirène connectée, la conversation Zigbee du nœud avec un coordinateur (local ou sur le réseau) est écrite et testée contre un coordinateur factice mais n'a jamais tourné contre un vrai coordinateur ni un vrai capteur, et ce n'est pas un système d'alarme certifié.**",
+    "honest": "Ce qui existe, c'est le **cœur de l'alarme** (ce qu'est une zone, comment une boucle câblée lue par l'ADC devient un état, les règles de la centrale : armement, temporisations, l'alarme, la sirène, le PIN avec verrouillage) et le **firmware du nœud** construit dessus (réglages, panneau web, messages avec le serveur, le pont de la radio Zigbee, un coordinateur Zigbee sur le réseau, relais, Bluetooth, mises à jour signées), qui se compile pour les deux cartes ; le cœur, les réglages, les messages et le panneau dans un vrai navigateur contre un nœud factice sont testés sur un ordinateur avec 496 974 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test. **Rien n'a tourné sur une carte ni sur une installation réelle, aucune zone n'a été câblée ni aucune sirène connectée, la conversation Zigbee du nœud avec un coordinateur (local ou sur le réseau) est écrite et testée contre un coordinateur factice mais n'a jamais tourné contre un vrai coordinateur ni un vrai capteur, et ce n'est pas un système d'alarme certifié.**",
     "glance": [
       [
         "Rôle",
@@ -689,7 +689,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Tests",
-        "495879 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
+        "496974 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python (`ctest`)",
       ],
       [
         "Entrées",
@@ -710,7 +710,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "495 879 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes d'hôte réussissent (`ctest`) : les zones, les boucles câblées lues par le CAN, les règles d'armement, de temporisation, de sirène et de PIN, les réglages et les messages.",
+      "tests": "496 974 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes d'hôte réussissent (`ctest`) : les zones, les boucles câblées lues par le CAN, les règles d'armement, de temporisation, de sirène et de PIN, les réglages et les messages.",
       "protocols": "La conversation Zigbee du nœud lui-même avec un coordinateur, local ou sur le réseau, n'est testée que contre un coordinateur simulé ; elle n'a jamais rencontré un vrai coordinateur ni un vrai capteur.",
       "ui": "Le panneau web a été essayé dans un vrai navigateur contre un nœud simulé, pas sur une carte.",
       "hardware": "Aucune carte construite, aucune zone câblée et ni sirène ni coordinateur Zigbee connectés : rien n'a tourné sur une installation réelle.",
@@ -812,7 +812,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 495879 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ALARM}} contrôles Python tournent sous `ctest` ; 496974 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
@@ -878,7 +878,7 @@ ARMOR-NODE-ALARM/
   },
   "it": {
     "tagline": "Nodo e centrale d'allarme: le zone, l'inserimento, i ritardi, la sirena e il PIN dell'allarme di casa, con il firmware del nodo e le regole provate su un computer (nulla ha girato su una scheda)",
-    "honest": "Ciò che esiste è il **nucleo dell'allarme** (cos'è una zona, come un anello cablato letto dall'ADC diventa uno stato, le regole della centrale: inserimento, ritardi, l'allarme, la sirena, il PIN con blocco) e il **firmware del nodo** costruito su di esso (impostazioni, pannello web, messaggi con il server, il ponte della radio Zigbee, un coordinatore Zigbee in rete, relè, Bluetooth, aggiornamenti firmati), che si compila per entrambe le schede; il nucleo, le impostazioni, i messaggi e il pannello in un vero browser contro un nodo sostitutivo sono provati su un computer con 495.879 controlli in 18 programmi di test. **Nulla ha girato su una scheda né su un impianto reale, nessuna zona è stata cablata né sirena collegata, la conversazione Zigbee del nodo con un coordinatore (locale o in rete) è scritta e provata contro un coordinatore sostitutivo ma non ha mai girato contro un coordinatore o un sensore reali, e questo non è un sistema d'allarme certificato.**",
+    "honest": "Ciò che esiste è il **nucleo dell'allarme** (cos'è una zona, come un anello cablato letto dall'ADC diventa uno stato, le regole della centrale: inserimento, ritardi, l'allarme, la sirena, il PIN con blocco) e il **firmware del nodo** costruito su di esso (impostazioni, pannello web, messaggi con il server, il ponte della radio Zigbee, un coordinatore Zigbee in rete, relè, Bluetooth, aggiornamenti firmati), che si compila per entrambe le schede; il nucleo, le impostazioni, i messaggi e il pannello in un vero browser contro un nodo sostitutivo sono provati su un computer con 496.974 controlli in 18 programmi di test. **Nulla ha girato su una scheda né su un impianto reale, nessuna zona è stata cablata né sirena collegata, la conversazione Zigbee del nodo con un coordinatore (locale o in rete) è scritta e provata contro un coordinatore sostitutivo ma non ha mai girato contro un coordinatore o un sensore reali, e questo non è un sistema d'allarme certificato.**",
     "glance": [
       [
         "Ruolo",
@@ -890,7 +890,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Test",
-        "495879 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
+        "496974 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python (`ctest`)",
       ],
       [
         "Ingressi",
@@ -911,7 +911,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 495.879 controlli in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host (`ctest`): le zone, i circuiti cablati letti dall'ADC, le regole di inserimento, ritardi, sirena e PIN, le impostazioni e i messaggi.",
+      "tests": "Superano 496.974 controlli in {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi host (`ctest`): le zone, i circuiti cablati letti dall'ADC, le regole di inserimento, ritardi, sirena e PIN, le impostazioni e i messaggi.",
       "protocols": "La conversazione Zigbee del nodo stesso con un coordinatore, locale o in rete, è provata solo contro un coordinatore simulato; non ha mai incontrato un coordinatore o un sensore reali.",
       "ui": "Il pannello web è stato provato in un browser reale contro un nodo simulato, non su una scheda.",
       "hardware": "Nessuna scheda costruita, nessuna zona cablata e nessuna sirena o coordinatore Zigbee collegati: nulla ha funzionato su un impianto reale.",
@@ -1013,7 +1013,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 495879 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ALARM}} verifiche Python girano con `ctest`; 496974 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
@@ -1079,7 +1079,7 @@ ARMOR-NODE-ALARM/
   },
   "ja": {
     "tagline": "警報ノードと警報盤：住宅の警報の警戒区域、警戒セット、遅延、サイレン、PIN を、ノードのファームウェアとコンピューターでテストしたルールを含みます（基板では動作していません）",
-    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、{{fact:ctest_cpp:ARMOR-NODE-ALARM}} つのテストプログラムで 495,879 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
+    "honest": "存在するのは**警報のコア**（警戒区域とは何か、ADC が読む配線ループがどう状態になるか、警報盤のルール：警戒、遅延、警報、サイレン、ロックアウト付き PIN）と、その上に作られた**ノードのファームウェア**（設定、Web パネル、サーバーとのメッセージ、Zigbee 無線のブリッジ、ネットワーク上の Zigbee コーディネーター、リレー、Bluetooth、署名付きアップデート）で、両方の基板向けにビルドできます。コア、設定、メッセージ、実際のブラウザーでの代替ノードに対するパネルは、{{fact:ctest_cpp:ARMOR-NODE-ALARM}} つのテストプログラムで 496,974 項目としてコンピューター上でテストされています。**基板上でも実際の設備でも何も動いたことはなく、警戒区域の配線もサイレンの接続もなく、ノード自身の Zigbee コーディネーター（ローカルまたはネットワーク上）との通信は書かれて代替コーディネーターに対してテストされていますが、実際のコーディネーターやセンサーに対して動いたことはなく、これは認証済みの警報システムではありません。**",
     "glance": [
       [
         "役割",
@@ -1091,7 +1091,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "テスト",
-        "495879 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
+        "496974 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個、`ctest`）",
       ],
       [
         "入力",
@@ -1112,7 +1112,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} のホストプログラムで 495,879 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} のホストプログラムで 496,974 件のチェックが通ります（`ctest`）：ゾーン、ADC で読む有線ループ、警戒・遅延・サイレン・PIN の規則、設定、メッセージ。",
       "protocols": "ノード自身のコーディネーター（ローカルまたはネットワーク上）との Zigbee のやり取りは、模擬のコーディネーターに対してのみテストしています。本物のコーディネーターやセンサーとはまだ接続していません。",
       "ui": "Web パネルは実ブラウザーで模擬ノードに対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、ゾーンの配線もサイレンや Zigbee コーディネーターの接続もありません。実際の設備ではまだ何も動かしていません。",
@@ -1214,7 +1214,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 495879 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 個と Python の検査 {{fact:ctest_python:ARMOR-NODE-ALARM}} 個を `ctest` で実行します。ホストのプログラムが数えた検査は 496974 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
@@ -1280,7 +1280,7 @@ ARMOR-NODE-ALARM/
   },
   "zh": {
     "tagline": "报警节点与报警主机：住宅报警的防区、布防、延时、警笛和 PIN，含节点固件和在电脑上测试过的规则（没有在电路板上运行过）",
-    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个测试程序中的 495,879 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
+    "honest": "目前存在的是**报警核心**（什么是防区、ADC 读取的有线回路如何变成状态、主机的规则：布防、延时、报警、警笛、带锁定的 PIN）以及建立在其上的**节点固件**（设置、网页面板、与服务器的消息、Zigbee 无线电的桥接、网络上的 Zigbee 协调器、继电器、蓝牙、签名更新），可为两种板子构建；核心、设置、消息以及在真实浏览器中对照替身节点的面板，在计算机上用 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个测试程序中的 496,974 项检查进行测试。**没有任何东西在板上或真实安装中运行过，没有接过任何防区，也没有连接过警笛；节点自己与协调器（本地或网络上）的 Zigbee 对话已编写并对照替身协调器测试，但从未对照真实的协调器或传感器运行，而且这不是经过认证的报警系统。**",
     "glance": [
       [
         "角色",
@@ -1292,7 +1292,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "测试",
-        "495879 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
+        "496974 项检查（{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 项 Python 检查，`ctest`）",
       ],
       [
         "输入",
@@ -1313,7 +1313,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序中的 495,879 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机程序中的 496,974 项检查通过（`ctest`）：防区、由 ADC 读取的有线回路、布防、延时、警笛和 PIN 规则、设置和消息。",
       "protocols": "节点自身与协调器（本地或网络上）的 Zigbee 通信只对照模拟协调器测试过；从未遇到过真实的协调器或传感器。",
       "ui": "网页面板已在真实浏览器中对模拟节点测试过，尚未在板子上测试。",
       "hardware": "尚未制作板子，没有接线的防区，也没有连接警笛或 Zigbee 协调器：还没有在真实的安装中运行过。",
@@ -1415,7 +1415,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 495879 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ALARM}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ALARM}} 个 Python 检查；主机程序统计的检查共 496974 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
@@ -1481,7 +1481,7 @@ ARMOR-NODE-ALARM/
   },
   "pt": {
     "tagline": "Nó e central de alarme: as zonas, a armação, os atrasos, a sirene e o PIN do alarme da casa, com o firmware do nó e as regras testadas num computador (nada correu numa placa)",
-    "honest": "O que existe é o **núcleo do alarme** (o que é uma zona, como um laço com fios lido pelo ADC se torna um estado, as regras da central: armar, atrasos, o alarme, a sirene, o PIN com bloqueio) e o **firmware do nó** construído sobre ele (definições, painel web, mensagens com o servidor, a ponte do rádio Zigbee, um coordenador Zigbee na rede, relés, Bluetooth, atualizações assinadas), que compila para as duas placas; o núcleo, as definições, as mensagens e o painel num navegador real contra um nó de substituição são testados num computador com 495 879 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste. **Nada correu numa placa nem numa instalação real, nenhuma zona foi ligada com fios nem sirene ligada, a conversa Zigbee do próprio nó com um coordenador (local ou na rede) está escrita e testada contra um coordenador de substituição mas nunca correu contra um coordenador ou sensor reais, e isto não é um sistema de alarme certificado.**",
+    "honest": "O que existe é o **núcleo do alarme** (o que é uma zona, como um laço com fios lido pelo ADC se torna um estado, as regras da central: armar, atrasos, o alarme, a sirene, o PIN com bloqueio) e o **firmware do nó** construído sobre ele (definições, painel web, mensagens com o servidor, a ponte do rádio Zigbee, um coordenador Zigbee na rede, relés, Bluetooth, atualizações assinadas), que compila para as duas placas; o núcleo, as definições, as mensagens e o painel num navegador real contra um nó de substituição são testados num computador com 496 974 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste. **Nada correu numa placa nem numa instalação real, nenhuma zona foi ligada com fios nem sirene ligada, a conversa Zigbee do próprio nó com um coordenador (local ou na rede) está escrita e testada contra um coordenador de substituição mas nunca correu contra um coordenador ou sensor reais, e isto não é um sistema de alarme certificado.**",
     "glance": [
       [
         "Função",
@@ -1493,7 +1493,7 @@ ARMOR-NODE-ALARM/
       ],
       [
         "Testes",
-        "495879 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
+        "496974 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} em Python (`ctest`)",
       ],
       [
         "Entradas",
@@ -1514,7 +1514,7 @@ ARMOR-NODE-ALARM/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 495.879 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião (`ctest`): as zonas, os laços cablados lidos pelo ADC, as regras de armar, atrasos, sirene e PIN, as definições e as mensagens.",
+      "tests": "Passam 496.974 verificações em {{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de anfitrião (`ctest`): as zonas, os laços cablados lidos pelo ADC, as regras de armar, atrasos, sirene e PIN, as definições e as mensagens.",
       "protocols": "A conversa Zigbee do próprio nó com um coordenador, local ou na rede, só foi testada contra um coordenador simulado; nunca encontrou um coordenador ou um sensor reais.",
       "ui": "O painel web foi exercitado num navegador real contra um nó simulado, não numa placa.",
       "hardware": "Nenhuma placa construída, nenhuma zona cablada e nenhuma sirene ou coordenador Zigbee ligados: nada funcionou numa instalação real.",
@@ -1616,7 +1616,7 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 495879 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ALARM}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ALARM}} verificações Python correm com `ctest`; 496974 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 

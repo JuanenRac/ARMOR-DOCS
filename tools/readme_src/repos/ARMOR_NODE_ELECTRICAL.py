@@ -65,7 +65,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "389178%20checks",
+      "390369%20checks",
       "2ea44f",
     ],
   ],
@@ -74,7 +74,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network and holds the rules for switching it (host-tested core and a firmware that builds; it has never run on a board)",
-    "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 389,178 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} test programs, 389,178 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.5.5 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
+    "honest": "The core (the frames of the PZEM-004T v3 and PZEM-017 meters, the bus that asks them, the message of the node, the analogue inputs and the rules for switching: 390,369 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} test programs, 375,039 of them on the switching rules) is tested on a computer with stand-in meters and contactors, and the messages it makes are accepted by ARMOR-COMMON. The firmware of the node (the settings, the serial line, the Meters and Readings pages of its panel, Bluetooth, signed updates) builds in the ESP-IDF 5.5.5 container for both boards. **It has never run on a board, nothing has been connected to a meter or a contactor, and nothing here switches anything.**",
     "glance": [
       [
         "Role",
@@ -86,7 +86,7 @@ TEXT = {
       ],
       [
         "Tests",
-        "389178 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host programs and {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python checks (`ctest`)",
+        "390369 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host programs and {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python checks (`ctest`)",
       ],
       [
         "Equipment",
@@ -107,7 +107,7 @@ TEXT = {
     ],
     "status": {
       "software": "The firmware builds in the ESP-IDF 5.5.5 container for both boards (Wi-Fi and Ethernet).",
-      "tests": "389,178 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host programs pass (`ctest`), 389,178 of them on the switching rules; the meters and contactors are stand-ins.",
+      "tests": "390,369 checks in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host programs pass (`ctest`), 375,039 of them on the switching rules; the meters and contactors are stand-ins.",
       "protocols": "The PZEM-004T v3 and PZEM-017 frames and readings are checked against the documented frames and recorded samples; no meter has answered yet.",
       "ui": "The Meters and Readings pages of the web panel are exercised in a browser against a stand-in node, not on a board.",
       "hardware": "No board built and no meter or contactor connected: nothing has run on real equipment yet.",
@@ -209,13 +209,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host test programs and {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python checks run under `ctest`; 389178 checks counted by the host programs, built with `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} host test programs and {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python checks run under `ctest`; 390369 checks counted by the host programs, built with `-Werror`.
 
 Python checks: the panel texts in eight languages, the tasks, the save paths, the Bluetooth session under its lock and the routes the panel calls (and, in some nodes, the HTTP codes or the glyphs of the fonts)
 
 The host tests need any C++17 compiler (Linux, WSL, MSYS2); the web panel is also exercised in a real browser against a stand-in node (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-Most of the checks are exhaustive sweeps of the switching rules (`test_switch_set` and `test_interlock`: 389,178); the meters and contactors are stand-ins. `test_clock` prints only `ok`.""",
+Most of the checks are exhaustive sweeps of the switching rules (`test_switch_set` and `test_interlock`: 375,039); the meters and contactors are stand-ins. `test_clock` prints only `ok`.""",
       "build": "`tools/build_node.sh` builds the image in the ESP-IDF 5.5.5 container and the release carries the image, its SHA-256 and its Ed25519 signature, one per board; the image is written by USB-C the first time and updated from the panel afterwards.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -274,7 +274,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "es": {
     "tagline": "Nodo eléctrico: lee las tensiones, corrientes, potencia y energía de la red AC y DC de la casa y guarda las reglas para maniobrarla (núcleo probado en el PC y un firmware que compila; nunca ha corrido en una placa)",
-    "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 389.178 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de test, 389.178 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.5.5 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
+    "honest": "El núcleo (las tramas de los medidores PZEM-004T v3 y PZEM-017, el bus que los pregunta, el mensaje del nodo, las entradas analógicas y las reglas de conmutación: 390.369 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de test, 375.039 de ellas sobre las reglas de conmutación) se prueba en un ordenador con medidores y contactores de pega, y los mensajes que hace los acepta ARMOR-COMMON. El firmware del nodo (los ajustes, la línea serie, las páginas Medidores y Lecturas de su panel, Bluetooth, actualizaciones firmadas) compila en el contenedor ESP-IDF 5.5.5 para las dos placas. **Nunca ha corrido en una placa, no se ha conectado nada a un medidor ni a un contactor, y nada de aquí conmuta nada.**",
     "glance": [
       [
         "Función",
@@ -286,7 +286,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Pruebas",
-        "389178 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de host y {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} de Python (`ctest`)",
+        "390369 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de host y {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} de Python (`ctest`)",
       ],
       [
         "Equipos",
@@ -307,7 +307,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "El firmware compila en el contenedor ESP-IDF 5.5.5 para las dos placas (Wi-Fi y Ethernet).",
-      "tests": "Pasan 389.178 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de host (`ctest`), 389.178 de ellas sobre las reglas de maniobra; los medidores y contactores son simulaciones.",
+      "tests": "Pasan 390.369 comprobaciones en {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de host (`ctest`), 375.039 de ellas sobre las reglas de maniobra; los medidores y contactores son simulaciones.",
       "protocols": "Las tramas y lecturas de los PZEM-004T v3 y PZEM-017 se comprueban contra las tramas documentadas y muestras grabadas; ningún medidor ha respondido todavía.",
       "ui": "Las páginas de medidores y lecturas del panel web se han ejercitado en un navegador contra un nodo simulado, no en una placa.",
       "hardware": "Ninguna placa construida ni medidor o contactor conectados: nada ha funcionado todavía con equipos reales.",
@@ -409,13 +409,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} comprobaciones en Python se ejecutan con `ctest`; 389178 comprobaciones contadas por los programas de host, compilados con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de prueba de host y {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} comprobaciones en Python se ejecutan con `ctest`; 390369 comprobaciones contadas por los programas de host, compilados con `-Werror`.
 
 Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo y las rutas que llama el panel (y, en algunos nodos, los códigos HTTP o los glifos de las fuentes)
 
 Las pruebas de host necesitan cualquier compilador C++17 (Linux, WSL, MSYS2); el panel web también se ejercita en un navegador real contra un nodo de pruebas (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La mayoría de las comprobaciones son barridos exhaustivos de las reglas de maniobra (`test_switch_set` y `test_interlock`: 389 178); los medidores y contactores son sustitutos. `test_clock` solo imprime `ok`.""",
+La mayoría de las comprobaciones son barridos exhaustivos de las reglas de maniobra (`test_switch_set` y `test_interlock`: 375 039); los medidores y contactores son sustitutos. `test_clock` solo imprime `ok`.""",
       "build": "`tools/build_node.sh` compila la imagen en el contenedor ESP-IDF 5.5.5 y la versión lleva la imagen, su SHA-256 y su firma Ed25519, una por placa; la imagen se graba por USB-C la primera vez y después se actualiza desde el panel.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -474,7 +474,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "de": {
     "tagline": "Elektroknoten: liest Spannungen, Ströme, Leistung und Energie des AC- und DC-Netzes des Hauses und hält die Regeln fürs Schalten (am Rechner getesteter Kern und eine Firmware, die baut; sie lief noch nie auf einer Platine)",
-    "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 389.178 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Testprogrammen, davon 389.178 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.5.5-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
+    "honest": "Der Kern (die Rahmen der Zähler PZEM-004T v3 und PZEM-017, der Bus, der sie abfragt, die Nachricht des Knotens, die analogen Eingänge und die Schaltregeln: 390.369 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Testprogrammen, davon 375.039 zu den Schaltregeln) wird auf einem Computer mit Ersatzzählern und -schützen getestet, und die von ihm erzeugten Nachrichten akzeptiert ARMOR-COMMON. Die Firmware des Knotens (die Einstellungen, die serielle Leitung, die Seiten Zähler und Messwerte seines Panels, Bluetooth, signierte Updates) baut im ESP-IDF-5.5.5-Container für beide Platinen. **Sie lief nie auf einer Platine, an keinen Zähler und kein Schütz wurde etwas angeschlossen, und nichts hier schaltet irgendetwas.**",
     "glance": [
       [
         "Rolle",
@@ -486,7 +486,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Tests",
-        "389178 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python-Prüfungen (`ctest`)",
+        "390369 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Programmen und {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python-Prüfungen (`ctest`)",
       ],
       [
         "Geräte",
@@ -507,7 +507,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Die Firmware wird im ESP-IDF-5.5.5-Container für beide Platinen (WLAN und Ethernet) gebaut.",
-      "tests": "389.178 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Programmen bestehen (`ctest`), davon 389.178 zu den Schaltregeln; die Zähler und Schütze sind Nachbildungen.",
+      "tests": "390.369 Prüfungen in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Programmen bestehen (`ctest`), davon 375.039 zu den Schaltregeln; die Zähler und Schütze sind Nachbildungen.",
       "protocols": "Die Telegramme und Messwerte der PZEM-004T v3 und PZEM-017 werden gegen die dokumentierten Telegramme und aufgezeichnete Beispiele geprüft; noch hat kein Zähler geantwortet.",
       "ui": "Die Seiten für Zähler und Messwerte des Web-Panels wurden in einem Browser gegen einen nachgebildeten Knoten erprobt, nicht auf einer Platine.",
       "hardware": "Keine Platine gebaut und kein Zähler oder Schütz angeschlossen: Bisher lief nichts auf echten Geräten.",
@@ -609,13 +609,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python-Prüfungen laufen unter `ctest`; 389178 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} Host-Testprogramme und {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} Python-Prüfungen laufen unter `ctest`; 390369 Prüfungen, gezählt von den Host-Programmen, mit `-Werror` gebaut.
 
 Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre und die vom Panel aufgerufenen Routen (und in manchen Knoten die HTTP-Codes oder die Glyphen der Schriften)
 
 Die Host-Tests brauchen einen beliebigen C++17-Compiler (Linux, WSL, MSYS2); das Web-Panel wird außerdem in einem echten Browser gegen einen Ersatzknoten geprüft (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-Die meisten Prüfungen sind erschöpfende Durchläufe der Schaltregeln (`test_switch_set` und `test_interlock`: 389 178); Zähler und Schütze sind Ersatz. `test_clock` gibt nur `ok` aus.""",
+Die meisten Prüfungen sind erschöpfende Durchläufe der Schaltregeln (`test_switch_set` und `test_interlock`: 375 039); Zähler und Schütze sind Ersatz. `test_clock` gibt nur `ok` aus.""",
       "build": "`tools/build_node.sh` baut das Image im ESP-IDF-5.5.5-Container, und die Version trägt das Image, sein SHA-256 und seine Ed25519-Signatur, je eines pro Platine; das Image wird beim ersten Mal per USB-C geschrieben und danach vom Panel aktualisiert.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -674,7 +674,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "fr": {
     "tagline": "Nœud électrique : lit les tensions, courants, puissance et énergie du réseau AC et DC de la maison et détient les règles pour le commander (cœur testé sur ordinateur et un firmware qui compile ; il n'a jamais tourné sur une carte)",
-    "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 389 178 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes de test, dont 389 178 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
+    "honest": "Le cœur (les trames des compteurs PZEM-004T v3 et PZEM-017, le bus qui les interroge, le message du nœud, les entrées analogiques et les règles de commutation : 390 369 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes de test, dont 375 039 sur les règles de commutation) est testé sur un ordinateur avec des compteurs et contacteurs factices, et les messages qu'il produit sont acceptés par ARMOR-COMMON. Le firmware du nœud (les réglages, la ligne série, les pages Compteurs et Mesures de son panneau, Bluetooth, mises à jour signées) se compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes. **Il n'a jamais tourné sur une carte, rien n'a été connecté à un compteur ni à un contacteur, et rien ici ne commute quoi que ce soit.**",
     "glance": [
       [
         "Rôle",
@@ -686,7 +686,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Tests",
-        "389178 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} contrôles Python (`ctest`)",
+        "390369 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes hôte et {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} contrôles Python (`ctest`)",
       ],
       [
         "Équipements",
@@ -707,7 +707,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Le firmware compile dans le conteneur ESP-IDF 5.5.5 pour les deux cartes (Wi-Fi et Ethernet).",
-      "tests": "389 178 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes d'hôte réussissent (`ctest`), dont 389 178 sur les règles de manœuvre ; les compteurs et contacteurs sont des simulations.",
+      "tests": "390 369 vérifications dans {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes d'hôte réussissent (`ctest`), dont 375 039 sur les règles de manœuvre ; les compteurs et contacteurs sont des simulations.",
       "protocols": "Les trames et lectures des PZEM-004T v3 et PZEM-017 sont vérifiées par rapport aux trames documentées et à des échantillons enregistrés ; aucun compteur n'a encore répondu.",
       "ui": "Les pages des compteurs et des mesures du panneau web ont été essayées dans un navigateur contre un nœud simulé, pas sur une carte.",
       "hardware": "Aucune carte construite ni compteur ou contacteur connectés : rien n'a encore tourné sur de vrais équipements.",
@@ -809,13 +809,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} contrôles Python tournent sous `ctest` ; 389178 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmes de test sur hôte et {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} contrôles Python tournent sous `ctest` ; 390369 vérifications comptées par les programmes hôte, compilés avec `-Werror`.
 
 Contrôles Python : les textes du panneau en huit langues, les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou et les routes appelées par le panneau (et, dans certains nœuds, les codes HTTP ou les glyphes des polices)
 
 Les tests sur hôte demandent un compilateur C++17 quelconque (Linux, WSL, MSYS2) ; le panneau web est aussi exercé dans un vrai navigateur contre un nœud de substitution (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La plupart des vérifications sont des balayages exhaustifs des règles de manœuvre (`test_switch_set` et `test_interlock` : 389 178) ; les compteurs et contacteurs sont des substituts. `test_clock` n'imprime que `ok`.""",
+La plupart des vérifications sont des balayages exhaustifs des règles de manœuvre (`test_switch_set` et `test_interlock` : 375 039) ; les compteurs et contacteurs sont des substituts. `test_clock` n'imprime que `ok`.""",
       "build": "`tools/build_node.sh` construit l'image dans le conteneur ESP-IDF 5.5.5 et la version porte l'image, son SHA-256 et sa signature Ed25519, une par carte ; l'image est écrite par USB-C la première fois, puis mise à jour depuis le panneau.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -874,7 +874,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "it": {
     "tagline": "Nodo elettrico: legge tensioni, correnti, potenza ed energia della rete AC e DC della casa e custodisce le regole per manovrarla (nucleo testato sul PC e un firmware che compila; non ha mai girato su una scheda)",
-    "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 389.178 controlli in 19 programmi di test, 389.178 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
+    "honest": "Il nucleo (i frame dei contatori PZEM-004T v3 e PZEM-017, il bus che li interroga, il messaggio del nodo, gli ingressi analogici e le regole di commutazione: 390.369 controlli in 19 programmi di test, 375.039 dei quali sulle regole di commutazione) è provato su un computer con contatori e contattori sostitutivi, e i messaggi che produce sono accettati da ARMOR-COMMON. Il firmware del nodo (le impostazioni, la linea seriale, le pagine Contatori e Letture del suo pannello, Bluetooth, aggiornamenti firmati) si compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede. **Non ha mai girato su una scheda, nulla è stato collegato a un contatore o a un contattore, e nulla qui commuta niente.**",
     "glance": [
       [
         "Ruolo",
@@ -886,7 +886,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Test",
-        "389178 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi host e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verifiche Python (`ctest`)",
+        "390369 verifiche in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi host e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verifiche Python (`ctest`)",
       ],
       [
         "Apparecchiature",
@@ -907,7 +907,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "Il firmware compila nel contenitore ESP-IDF 5.5.5 per entrambe le schede (Wi-Fi ed Ethernet).",
-      "tests": "Superano 389.178 controlli in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi host (`ctest`), 389.178 dei quali sulle regole di manovra; i contatori e i contattori sono simulazioni.",
+      "tests": "Superano 390.369 controlli in {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi host (`ctest`), 375.039 dei quali sulle regole di manovra; i contatori e i contattori sono simulazioni.",
       "protocols": "I frame e le letture dei PZEM-004T v3 e PZEM-017 sono verificati contro i frame documentati e campioni registrati; nessun contatore ha ancora risposto.",
       "ui": "Le pagine dei contatori e delle letture del pannello web sono state provate in un browser contro un nodo simulato, non su una scheda.",
       "hardware": "Nessuna scheda costruita e nessun contatore o contattore collegati: nulla ha ancora funzionato su apparecchiature reali.",
@@ -1009,13 +1009,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verifiche Python girano con `ctest`; 389178 verifiche contate dai programmi host, compilati con `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programmi di test su host e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verifiche Python girano con `ctest`; 390369 verifiche contate dai programmi host, compilati con `-Werror`.
 
 Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock e i percorsi chiamati dal pannello (e, in alcuni nodi, i codici HTTP o i glifi dei caratteri)
 
 I test su host richiedono un qualsiasi compilatore C++17 (Linux, WSL, MSYS2); il pannello web è anche provato in un browser reale contro un nodo sostitutivo (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La maggior parte delle verifiche sono scansioni esaustive delle regole di manovra (`test_switch_set` e `test_interlock`: 389 178); contatori e contattori sono sostituti. `test_clock` stampa solo `ok`.""",
+La maggior parte delle verifiche sono scansioni esaustive delle regole di manovra (`test_switch_set` e `test_interlock`: 375 039); contatori e contattori sono sostituti. `test_clock` stampa solo `ok`.""",
       "build": "`tools/build_node.sh` costruisce l'immagine nel container ESP-IDF 5.5.5 e la versione porta l'immagine, il suo SHA-256 e la sua firma Ed25519, una per scheda; l'immagine si scrive via USB-C la prima volta e poi si aggiorna dal pannello.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -1074,7 +1074,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "ja": {
     "tagline": "電気ノード：住宅の AC・DC ネットワークの電圧、電流、電力、エネルギーを読み取り、その開閉のルールを持ちます（PC でテスト済みのコアとビルドできるファームウェア。基板ではまだ動作していません）",
-    "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} のテストプログラムで 389,178 項目、うち 389,178 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.5.5 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
+    "honest": "コア（PZEM-004T v3 と PZEM-017 メーターのフレーム、それらに問い合わせるバス、ノードのメッセージ、アナログ入力、切り替えのルール：{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} のテストプログラムで 390,369 項目、うち 375,039 項目が切り替えルール）は代替メーターと接触器を使ってコンピューター上でテストされ、生成するメッセージは ARMOR-COMMON に受け付けられます。ノードのファームウェア（設定、シリアルライン、パネルのメーターと測定値のページ、Bluetooth、署名付きアップデート）は ESP-IDF 5.5.5 コンテナーで両方の基板向けにビルドできます。**基板上で動いたことはなく、メーターにも接触器にも何も接続されておらず、ここには何かを切り替えるものはありません。**",
     "glance": [
       [
         "役割",
@@ -1086,7 +1086,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "テスト",
-        "389178 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 個、`ctest`）",
+        "390369 件の検査（ホスト用プログラム {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 本と Python 検査 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 個、`ctest`）",
       ],
       [
         "機器",
@@ -1107,7 +1107,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "ファームウェアは ESP-IDF 5.5.5 コンテナで両方のボード（Wi-Fi とイーサネット）向けにビルドできます。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} のホストプログラムで 389,178 件のチェックが通ります（`ctest`）。そのうち 389,178 件は切り替え規則です。メーターとコンタクターは模擬です。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} のホストプログラムで 390,369 件のチェックが通ります（`ctest`）。そのうち 375,039 件は切り替え規則です。メーターとコンタクターは模擬です。",
       "protocols": "PZEM-004T v3 と PZEM-017 のフレームと読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のメーターはまだ応答していません。",
       "ui": "Web パネルのメーターと読み取り値のページは、ブラウザーで模擬ノードに対して試しており、ボード上では試していません。",
       "hardware": "ボードは未製作で、メーターやコンタクターも接続していません。実機ではまだ何も動かしていません。",
@@ -1209,13 +1209,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 389178 件で、`-Werror` でビルドします。
+ホスト用テストプログラム {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 個と Python の検査 5 個を `ctest` で実行します。ホストのプログラムが数えた検査は 390369 件で、`-Werror` でビルドします。
 
 Python の検査：8 言語のパネル文言、タスク、保存パス、ロック下の Bluetooth セッション、パネルが呼ぶルート（ノードによっては HTTP コードやフォントのグリフも）
 
 ホストテストには任意の C++17 コンパイラ（Linux、WSL、MSYS2）が必要です。Web パネルは代役ノード（`tools/panel_mock.mjs`、`tools/panel_browser_test.mjs`）を相手に実際のブラウザでも検証します。
 
-検査の大半は開閉ルールの網羅的な総当たりです（`test_switch_set` と `test_interlock`：389 178）。メーターと接触器は代役です。`test_clock` は `ok` だけを出力します。""",
+検査の大半は開閉ルールの網羅的な総当たりです（`test_switch_set` と `test_interlock`：375 039）。メーターと接触器は代役です。`test_clock` は `ok` だけを出力します。""",
       "build": "`tools/build_node.sh` が ESP-IDF 5.5.5 コンテナでイメージをビルドし、リリースにはイメージ、その SHA-256 と Ed25519 署名が基板ごとに付きます。イメージは初回のみ USB-C で書き込み、その後はパネルから更新します。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1274,7 +1274,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "zh": {
     "tagline": "电气节点：读取住宅交流和直流电网的电压、电流、功率和电能，并保存其开关规则（已在电脑上测试的核心和可编译的固件；尚未在电路板上运行过）",
-    "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个测试程序中的 389,178 项检查，其中 389,178 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.5.5 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
+    "honest": "核心（PZEM-004T v3 和 PZEM-017 电表的帧、轮询它们的总线、节点的消息、模拟输入和切换规则：{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个测试程序中的 390,369 项检查，其中 375,039 项针对切换规则）在计算机上用替身电表和接触器测试，它生成的消息被 ARMOR-COMMON 接受。节点固件（设置、串行线路、面板的电表和读数页面、蓝牙、签名更新）可在 ESP-IDF 5.5.5 容器中为两种板子构建。**它从未在板上运行，没有连接任何电表或接触器，这里的任何东西都不会切换任何设备。**",
     "glance": [
       [
         "角色",
@@ -1286,7 +1286,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "测试",
-        "389178 项检查（{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 项 Python 检查，`ctest`）",
+        "390369 项检查（{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机程序和 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 项 Python 检查，`ctest`）",
       ],
       [
         "设备",
@@ -1307,7 +1307,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "固件可在 ESP-IDF 5.5.5 容器中为两块板（Wi-Fi 和以太网）构建。",
-      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机程序中的 389,178 项检查通过（`ctest`），其中 389,178 项针对切换规则；电表和接触器均为模拟。",
+      "tests": "{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机程序中的 390,369 项检查通过（`ctest`），其中 375,039 项针对切换规则；电表和接触器均为模拟。",
       "protocols": "PZEM-004T v3 和 PZEM-017 的帧与读数已对照文档中的帧和录制的样本检查；目前还没有电表响应过。",
       "ui": "网页面板的电表和读数页面已在浏览器中对模拟节点测试过，尚未在板子上测试。",
       "hardware": "尚未制作板子，也没有连接电表或接触器：还没有在真实设备上运行过。",
@@ -1409,13 +1409,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 个 Python 检查；主机程序统计的检查共 389178 项，使用 `-Werror` 构建。
+`ctest` 运行 {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} 个主机测试程序和 {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} 个 Python 检查；主机程序统计的检查共 390369 项，使用 `-Werror` 构建。
 
 Python 检查：八种语言的面板文字、任务、保存路径、受锁保护的蓝牙会话以及面板调用的路由（部分节点还包括 HTTP 状态码或字体字形）
 
 主机测试需要任意 C++17 编译器（Linux、WSL、MSYS2）；网页面板还会在真实浏览器中对着模拟节点（`tools/panel_mock.mjs`、`tools/panel_browser_test.mjs`）进行验证。
 
-大部分检查是对开关规则的穷举遍历（`test_switch_set` 和 `test_interlock`：389 178）；电表和接触器是替身。`test_clock` 只输出 `ok`。""",
+大部分检查是对开关规则的穷举遍历（`test_switch_set` 和 `test_interlock`：375 039）；电表和接触器是替身。`test_clock` 只输出 `ok`。""",
       "build": "`tools/build_node.sh` 在 ESP-IDF 5.5.5 容器中构建镜像，发布版带有镜像、其 SHA-256 和 Ed25519 签名，每块电路板一份；镜像第一次通过 USB-C 写入，之后从面板更新。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1474,7 +1474,7 @@ ARMOR-NODE-ELECTRICAL/
   },
   "pt": {
     "tagline": "Nó elétrico: lê as tensões, correntes, potência e energia da rede AC e DC da casa e guarda as regras para a comutar (núcleo testado em anfitrião e um firmware que compila; nunca correu numa placa)",
-    "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 389 178 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de teste, 389 178 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.5.5 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
+    "honest": "O núcleo (as tramas dos contadores PZEM-004T v3 e PZEM-017, o barramento que os interroga, a mensagem do nó, as entradas analógicas e as regras de comutação: 390 369 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de teste, 375 039 delas sobre as regras de comutação) é testado num computador com contadores e contactores de substituição, e as mensagens que produz são aceites pelo ARMOR-COMMON. O firmware do nó (as definições, a linha série, as páginas Contadores e Leituras do seu painel, Bluetooth, atualizações assinadas) compila no contentor ESP-IDF 5.5.5 para as duas placas. **Nunca correu numa placa, nada foi ligado a um contador nem a um contactor, e nada aqui comuta coisa alguma.**",
     "glance": [
       [
         "Função",
@@ -1486,7 +1486,7 @@ ARMOR-NODE-ELECTRICAL/
       ],
       [
         "Testes",
-        "389178 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} em Python (`ctest`)",
+        "390369 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de anfitrião e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} em Python (`ctest`)",
       ],
       [
         "Equipamentos",
@@ -1507,7 +1507,7 @@ ARMOR-NODE-ELECTRICAL/
     ],
     "status": {
       "software": "O firmware compila no contentor ESP-IDF 5.5.5 para as duas placas (Wi-Fi e Ethernet).",
-      "tests": "Passam 389.178 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de anfitrião (`ctest`), 389.178 delas sobre as regras de manobra; os contadores e contactores são simulações.",
+      "tests": "Passam 390.369 verificações em {{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de anfitrião (`ctest`), 375.039 delas sobre as regras de manobra; os contadores e contactores são simulações.",
       "protocols": "As tramas e leituras dos PZEM-004T v3 e PZEM-017 são verificadas contra as tramas documentadas e amostras gravadas; nenhum contador respondeu ainda.",
       "ui": "As páginas de contadores e leituras do painel web foram exercitadas num navegador contra um nó simulado, não numa placa.",
       "hardware": "Nenhuma placa construída nem contador ou contactor ligados: nada funcionou ainda em equipamentos reais.",
@@ -1609,13 +1609,13 @@ cmake -S tests -B build/host && cmake --build build/host && ctest --test-dir bui
 python -I tools/armor_ci_validate.py
 ```
 
-{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verificações Python correm com `ctest`; 389178 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
+{{fact:ctest_cpp:ARMOR-NODE-ELECTRICAL}} programas de teste de anfitrião e {{fact:ctest_python:ARMOR-NODE-ELECTRICAL}} verificações Python correm com `ctest`; 390369 verificações contadas pelos programas de anfitrião, compiladas com `-Werror`.
 
 Verificações Python: os textos do painel em oito línguas, as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio e as rotas que o painel chama (e, em alguns nós, os códigos HTTP ou os glifos dos tipos de letra)
 
 Os testes de anfitrião precisam de qualquer compilador C++17 (Linux, WSL, MSYS2); o painel web também é exercitado num navegador real contra um nó de substituição (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-A maior parte das verificações são varrimentos exaustivos das regras de manobra (`test_switch_set` e `test_interlock`: 389 178); os contadores e contactores são substitutos. O `test_clock` só imprime `ok`.""",
+A maior parte das verificações são varrimentos exaustivos das regras de manobra (`test_switch_set` e `test_interlock`: 375 039); os contadores e contactores são substitutos. O `test_clock` só imprime `ok`.""",
       "build": "`tools/build_node.sh` compila a imagem no contentor ESP-IDF 5.5.5 e a versão leva a imagem, o seu SHA-256 e a sua assinatura Ed25519, uma por placa; a imagem grava-se por USB-C da primeira vez e depois atualiza-se a partir do painel.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
