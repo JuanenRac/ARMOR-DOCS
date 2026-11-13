@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The update profiles `data/update-profiles.json` hold the three confirmed tiers:** Minimal (server, shared contracts, Studio), Standard (plus the field nodes, the Android and iPhone apps and the vision service) and Complete (plus voice, AI, simulator, hardware, network and DevOps), with texts in the eight languages; it is the same file the updater ships.
 - **The floor of the test coverage of `tools/` goes up to lines 87.0, branches 82.5** (measured by the workflow: 87.32 and 82.82 after the tests of the command lines of the checkers and of the status lights).
 
 - **Tests of the status lights:** what the answer of the CI becomes (the last completed run of the main branch decides; no gh, a timeout or no run is unknown), the refusal of a repository without a manifest or with one that is not JSON, what counts as a CI and as a test, and the suggestions of `--suggest`.
