@@ -32,9 +32,12 @@ class UpdateProfilesTests(unittest.TestCase):
     def test_the_roles_have_the_proposed_composition(self):
         by_id = {item["id"]: item for item in self.data["profiles"]}
         self.assertEqual(by_id["cm5"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-NETWORK", "ARMOR-SERVER-AI", "ARMOR-VOICE-AI", "ARMOR-VISION", "ARMOR-DEVOPS"])
-        self.assertEqual(by_id["cm5-minimal"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-COMMON"])
-        self.assertEqual(by_id["cm5-standard"]["components"], ["ARMOR-SERVER", "ARMOR-STUDIO", "ARMOR-COMMON", "ARMOR-UPDATER", "ARMOR-DEVOPS", "ARMOR-VISION", "ARMOR-NETWORK"])
-        self.assertTrue(set(by_id["cm5-complete"]["components"]) >= set(by_id["cm5-standard"]["components"]) | set(by_id["cm5"]["components"]))
+        minimal, standard, complete = (by_id[key]["components"] for key in ("cm5-minimal", "cm5-standard", "cm5-complete"))
+        # the three tiers the owner confirmed: Minimal = server + contracts + Studio; Standard adds the nodes, the two apps and the vision service; Complete adds voice, AI, simulator, hardware, network and DevOps
+        self.assertEqual(minimal, ["ARMOR-SERVER", "ARMOR-COMMON", "ARMOR-STUDIO"])
+        self.assertEqual(set(standard), set(minimal) | {"ARMOR-NODE-RADAR", "ARMOR-NODE-ALARM", "ARMOR-NODE-ELECTRICAL", "ARMOR-NODE-SOLAR", "ARMOR-NODE-HMI", "ARMOR-ANDROID-CONTROL", "ARMOR-IOS-CONTROL", "ARMOR-VISION"})
+        self.assertEqual(set(complete), set(standard) | {"ARMOR-VOICE-AI", "ARMOR-SERVER-AI", "ARMOR-SIMULATOR", "ARMOR-HARDWARE", "ARMOR-NETWORK", "ARMOR-DEVOPS"})
+        self.assertTrue(set(minimal) < set(standard) < set(complete))
         self.assertEqual(by_id["operator-pc"]["components"], ["ARMOR-STUDIO", "ARMOR-UPDATER"])
         self.assertTrue(by_id["development-pc"]["all_installable"])
         self.assertIn("ARMOR-SIMULATOR", by_id["development-pc"]["components"])
