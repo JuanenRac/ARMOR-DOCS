@@ -53,7 +53,7 @@ FACTS = {
     ],
     [
       "Tests",
-      "384%20passing",
+      "483%20passing",
       "2ea44f",
     ],
   ],
@@ -62,7 +62,7 @@ FACTS = {
 TEXT = {
   "en": {
     "tagline": "iPhone operator client for ARMOR-SERVER: status, arming, alarms, alarm panels, cameras and the assistant, in eight languages",
-    "honest": "the rules of the app (server link, parsing, choice of address, lock of the phone, vault of the session, trust in the certificate, alarm policy, use cases, MJPEG cutting) are the Swift package `ArmorCore`, covered by 384 unit tests that run with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac. What is **not** proven yet: the SwiftUI screens and the parts that need an iPhone (Face ID, Keychain, certificate rules, live camera, push through Firebase) have not been built in Xcode or run on a device.",
+    "honest": "the rules of the app (server link, parsing, choice of address, lock of the phone, vault of the session, trust in the certificate, alarm policy, use cases, MJPEG cutting) are the Swift package `ArmorCore`, covered by 483 unit tests that run with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac. What is **not** proven yet: the SwiftUI screens and the parts that need an iPhone (Face ID, Keychain, certificate rules, live camera, push through Firebase) have not been built in Xcode or run on a device.",
     "glance": [
       [
         "Role",
@@ -74,11 +74,11 @@ TEXT = {
       ],
       [
         "Tests",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Languages",
-        "8 (1195 phrases per language, checked by `ios_lint.py`)",
+        "8 (1229 phrases per language, checked by `ios_lint.py`)",
       ],
       [
         "Runs on",
@@ -95,7 +95,7 @@ TEXT = {
     ],
     "status": {
       "software": "The rules of the app are a Swift package (`ArmorCore`) and the SwiftUI app is built for the simulator by the CI on macOS; it has not run on an iPhone.",
-      "tests": "384 unit tests pass with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac; no test runs on a device.",
+      "tests": "483 unit tests pass with `swift test` on macOS or Linux, and `tools/ios_lint.py` checks the structure, the eight language tables and the contract without a Mac; no test runs on a device.",
       "ui": "The SwiftUI screens are built for the simulator by the CI on macOS but have not been run on an iPhone.",
       "hardware": "It has not run on an iPhone: the rules are tested on Linux only.",
       "security": "The lock of the phone, the session vault and the trust in the certificate are rules tested on Linux; Face ID, the Keychain and the certificate rules have not run on a device.",
@@ -146,7 +146,7 @@ TEXT = {
 | The assistant arms or disarms by mistake | Written commands only (the keyboard's microphone dictates); arming and disarming need a confirmation bound to you, behind the lock of the phone |
 
 Permission texts (Face ID, local network) exist in all eight languages. Nothing here has run on an iPhone: Face ID, the Keychain and the certificate rules are untested on a device. Read [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) and [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""It is a client: it calls 62 paths of ARMOR-SERVER (`tools/ios_lint.py` counts them and checks that the Android client calls them too), and cuts the MJPEG stream of the cameras with its own parser (`MjpegParser.swift`).
+      "interfaces": r"""It is a client: it calls 70 paths of ARMOR-SERVER (`tools/ios_lint.py` counts them and checks that the Android client calls them too), and cuts the MJPEG stream of the cameras with its own parser (`MjpegParser.swift`).
 
 | Part | What it sets |
 |---|---|
@@ -164,7 +164,7 @@ In the app: the two addresses, *Remember me*, the lock of the phone and the lang
       "quickstart": r"""**Requirements:** a Mac with Xcode 15+ and iOS 16+ to build the app; Swift 5.9+ (macOS or Linux) for the tests; Python 3.11 for the checks.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -179,20 +179,21 @@ python -I tools/armor_ci_validate.py
 | Test file | Tests | What it covers |
 |---|---|---|
 | `ControllerTests.swift` | 15 | The use cases of the controller |
-| `ClientTests.swift` | 14 | The link to the server and its parsing |
+| `ClientTests.swift` | 15 | The link to the server and its parsing |
 | `LockTests.swift` | 12 | The lock of the phone |
 | `ModelsTests.swift` | 12 | The models read from the server |
 | `ReachTests.swift` | 11 | The choice between the two addresses |
 | `SecurityTests.swift` | 8 | The session vault and the trust in the certificate |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | The address parsing, the MJPEG cutting and the translator |
 | `ResponseLimitTests.swift` | 2 | The longest answer the app takes from a server |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | The camera action of a notice, the trusted phone (its rules, with a fake server and a fake key) and the alarm window |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | The sheet of the new proof of identity and the pairing QR code drawn and read back as a picture (the 5 of the QR need a Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | The Bluetooth channel of a node (framing, requests, set-up code, settings, SHA-256) and the health of the nodes |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | The control of the nodes, the connections, the address of a node's panel and the radar plan |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | The alarm policy and the alarm codes |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, batteries, electrical network and the client calls |
 
-The 384 tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 90 Swift files, 1195 phrases in 8 languages, 64 server paths. No test runs on a device.""",
+The 483 tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 108 Swift files, 1229 phrases in 8 languages, 70 server paths. No test runs on a device.""",
       "build": "The Xcode project is generated from `project.yml` with XcodeGen: choose a signing team, add the app icon to `App/Resources/Assets.xcassets/AppIcon.appiconset` and, for push, the installation's `GoogleService-Info.plist`. It has never been built in Xcode.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -210,7 +211,7 @@ The 384 tests run with fixtures of a real server. `tools/ios_lint.py` passes wit
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   the rules of the app: a Swift package
 ├── App/                                 the SwiftUI screens and the parts that need an iPhone
-├── Tests/                               384 tests and fixtures of a real server
+├── Tests/                               483 tests and fixtures of a real server
 ├── docs/                                the guides of this repository
 ├── tools/                               the shared CI checks and project tooling
 ├── .github/                             CI workflow, issue and pull-request templates
@@ -240,7 +241,7 @@ ARMOR-IOS-CONTROL/
   },
   "es": {
     "tagline": "Cliente de operador para iPhone de ARMOR-SERVER: estado, armado, alarmas, centrales de alarma, cámaras y el asistente, en ocho idiomas",
-    "honest": "las reglas de la app (enlace con el servidor, lectura de las respuestas, elección de dirección, bloqueo del teléfono, caja de la sesión, confianza en el certificado, política de alarmas, casos de uso, corte del MJPEG) son el paquete Swift `ArmorCore`, cubierto por 384 pruebas unitarias que se ejecutan con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las ocho tablas de idiomas y el contrato sin Mac. Lo que **no** está demostrado todavía: las pantallas SwiftUI y las partes que necesitan un iPhone (Face ID, llavero, reglas de certificado, cámara en vivo, push con Firebase) no se han compilado en Xcode ni ejecutado en un dispositivo.",
+    "honest": "las reglas de la app (enlace con el servidor, lectura de las respuestas, elección de dirección, bloqueo del teléfono, caja de la sesión, confianza en el certificado, política de alarmas, casos de uso, corte del MJPEG) son el paquete Swift `ArmorCore`, cubierto por 483 pruebas unitarias que se ejecutan con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las ocho tablas de idiomas y el contrato sin Mac. Lo que **no** está demostrado todavía: las pantallas SwiftUI y las partes que necesitan un iPhone (Face ID, llavero, reglas de certificado, cámara en vivo, push con Firebase) no se han compilado en Xcode ni ejecutado en un dispositivo.",
     "glance": [
       [
         "Función",
@@ -252,11 +253,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Pruebas",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Idiomas",
-        "8 (1195 frases por idioma, comprobadas por `ios_lint.py`)",
+        "8 (1229 frases por idioma, comprobadas por `ios_lint.py`)",
       ],
       [
         "Funciona en",
@@ -273,7 +274,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Las reglas de la app son un paquete Swift (`ArmorCore`) y la app SwiftUI se compila para el simulador en la CI de macOS; no ha funcionado en un iPhone.",
-      "tests": "Pasan 384 pruebas unitarias con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las tablas de los ocho idiomas y el contrato sin un Mac; ninguna prueba se ejecuta en un dispositivo.",
+      "tests": "Pasan 483 pruebas unitarias con `swift test` en macOS o Linux, y `tools/ios_lint.py` comprueba la estructura, las tablas de los ocho idiomas y el contrato sin un Mac; ninguna prueba se ejecuta en un dispositivo.",
       "ui": "Las pantallas SwiftUI se compilan para el simulador en la CI de macOS pero no se han ejecutado en un iPhone.",
       "hardware": "No ha funcionado en un iPhone: las reglas solo se prueban en Linux.",
       "security": "El bloqueo del teléfono, la caja de la sesión y la confianza en el certificado son reglas probadas en Linux; Face ID, el llavero y las reglas del certificado no se han ejecutado en un dispositivo.",
@@ -324,7 +325,7 @@ ARMOR-IOS-CONTROL/
 | El asistente arma o desarma por error | Solo órdenes escritas (el micrófono del teclado dicta); armar y desarmar exigen una confirmación atada a ti, tras el bloqueo del teléfono |
 
 Los textos de permisos (Face ID, red local) existen en los ocho idiomas. Nada de esto ha corrido en un iPhone: Face ID, el Keychain y las reglas de certificado no se han probado en un dispositivo. Lee [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) y [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""Es un cliente: llama a 64 rutas de ARMOR-SERVER (`tools/ios_lint.py` las cuenta y comprueba que el cliente Android también las llama) y corta el flujo MJPEG de las cámaras con su propio intérprete (`MjpegParser.swift`).
+      "interfaces": r"""Es un cliente: llama a 70 rutas de ARMOR-SERVER (`tools/ios_lint.py` las cuenta y comprueba que el cliente Android también las llama) y corta el flujo MJPEG de las cámaras con su propio intérprete (`MjpegParser.swift`).
 
 | Parte | Qué define |
 |---|---|
@@ -342,7 +343,7 @@ En la app: las dos direcciones, *Recordarme*, el bloqueo del teléfono y el idio
       "quickstart": r"""**Requisitos:** un Mac con Xcode 15+ e iOS 16+ para compilar la app; Swift 5.9+ (macOS o Linux) para las pruebas; Python 3.11 para las comprobaciones.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -357,20 +358,21 @@ python -I tools/armor_ci_validate.py
 | Fichero de pruebas | Pruebas | Qué cubre |
 |---|---|---|
 | `ControllerTests.swift` | 15 | Los casos de uso del controlador |
-| `ClientTests.swift` | 14 | El enlace con el servidor y su interpretación |
+| `ClientTests.swift` | 15 | El enlace con el servidor y su interpretación |
 | `LockTests.swift` | 12 | El bloqueo del teléfono |
 | `ModelsTests.swift` | 12 | Los modelos leídos del servidor |
 | `ReachTests.swift` | 11 | La elección entre las dos direcciones |
 | `SecurityTests.swift` | 8 | El almacén de sesión y la confianza en el certificado |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | La lectura de direcciones, el corte MJPEG y el traductor |
 | `ResponseLimitTests.swift` | 2 | La respuesta más larga que la app acepta de un servidor |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | La acción de cámara de un aviso, el teléfono de confianza (sus reglas, con un servidor y una clave falsos) y la ventana de alarma |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | La hoja de la nueva prueba de identidad y el código QR de emparejamiento dibujado y leído como imagen (los 5 del QR necesitan un Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | El canal Bluetooth de un nodo (tramas, peticiones, código de configuración, ajustes, SHA-256) y la salud de los nodos |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | El control de los nodos, las conexiones, la dirección del panel de un nodo y el plano del radar |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La política de alarmas y los códigos de alarma |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, baterías, red eléctrica y las llamadas del cliente |
 
-Las 384 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 90 ficheros Swift, 1195 frases en 8 idiomas, 64 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
+Las 483 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 108 ficheros Swift, 1229 frases en 8 idiomas, 70 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
       "build": "El proyecto de Xcode se genera desde `project.yml` con XcodeGen: elige un equipo de firma, añade el icono de la app a `App/Resources/Assets.xcassets/AppIcon.appiconset` y, para push, el `GoogleService-Info.plist` de la instalación. Nunca se ha compilado en Xcode.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -388,7 +390,7 @@ Las 384 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   las reglas de la app: un paquete Swift
 ├── App/                                 las pantallas SwiftUI y las partes que necesitan un iPhone
-├── Tests/                               384 pruebas y datos de un servidor real
+├── Tests/                               483 pruebas y datos de un servidor real
 ├── docs/                                las guías de este repositorio
 ├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
 ├── .github/                             flujo de CI y plantillas de issues y pull requests
@@ -418,7 +420,7 @@ ARMOR-IOS-CONTROL/
   },
   "de": {
     "tagline": "iPhone-Bedienclient für ARMOR-SERVER: Status, Scharfschaltung, Alarme, Alarmzentralen, Kameras und der Assistent, in acht Sprachen",
-    "honest": "Die Regeln der App (Serververbindung, Auswertung der Antworten, Adressauswahl, Telefonsperre, Tresor der Sitzung, Vertrauen in das Zertifikat, Alarmrichtlinie, Anwendungsfälle, MJPEG-Zerlegung) sind das Swift-Paket `ArmorCore`, abgedeckt durch 384 Unit-Tests, die mit `swift test` unter macOS oder Linux laufen; `tools/ios_lint.py` prüft Struktur, die acht Sprachtabellen und den Vertrag ohne Mac. **Noch nicht** belegt: Die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen (Face ID, Schlüsselbund, Zertifikatsregeln, Live-Kamera, Push über Firebase), wurden weder in Xcode gebaut noch auf einem Gerät ausgeführt.",
+    "honest": "Die Regeln der App (Serververbindung, Auswertung der Antworten, Adressauswahl, Telefonsperre, Tresor der Sitzung, Vertrauen in das Zertifikat, Alarmrichtlinie, Anwendungsfälle, MJPEG-Zerlegung) sind das Swift-Paket `ArmorCore`, abgedeckt durch 483 Unit-Tests, die mit `swift test` unter macOS oder Linux laufen; `tools/ios_lint.py` prüft Struktur, die acht Sprachtabellen und den Vertrag ohne Mac. **Noch nicht** belegt: Die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen (Face ID, Schlüsselbund, Zertifikatsregeln, Live-Kamera, Push über Firebase), wurden weder in Xcode gebaut noch auf einem Gerät ausgeführt.",
     "glance": [
       [
         "Rolle",
@@ -430,11 +432,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Tests",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Sprachen",
-        "8 (1195 Sätze je Sprache, von `ios_lint.py` geprüft)",
+        "8 (1229 Sätze je Sprache, von `ios_lint.py` geprüft)",
       ],
       [
         "Läuft auf",
@@ -451,7 +453,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Die Regeln der App sind ein Swift-Paket (`ArmorCore`), und die SwiftUI-App wird von der CI unter macOS für den Simulator gebaut; sie lief nicht auf einem iPhone.",
-      "tests": "384 Unit-Tests bestehen mit `swift test` unter macOS oder Linux, und `tools/ios_lint.py` prüft Struktur, die Tabellen der acht Sprachen und den Vertrag ohne Mac; auf einem Gerät läuft kein Test.",
+      "tests": "483 Unit-Tests bestehen mit `swift test` unter macOS oder Linux, und `tools/ios_lint.py` prüft Struktur, die Tabellen der acht Sprachen und den Vertrag ohne Mac; auf einem Gerät läuft kein Test.",
       "ui": "Die SwiftUI-Bildschirme werden von der CI unter macOS für den Simulator gebaut, wurden aber nicht auf einem iPhone ausgeführt.",
       "hardware": "Sie lief nicht auf einem iPhone: Die Regeln sind nur unter Linux getestet.",
       "security": "Die Sperre des Telefons, der Tresor der Sitzung und das Vertrauen ins Zertifikat sind unter Linux getestete Regeln; Face ID, der Schlüsselbund und die Zertifikatsregeln liefen nicht auf einem Gerät.",
@@ -502,7 +504,7 @@ ARMOR-IOS-CONTROL/
 | Der Assistent schaltet versehentlich scharf oder unscharf | Nur geschriebene Befehle (das Mikrofon der Tastatur diktiert); Scharf- und Unscharfschalten brauchen eine an dich gebundene Bestätigung, hinter der Telefonsperre |
 
 Die Berechtigungstexte (Face ID, lokales Netzwerk) gibt es in allen acht Sprachen. Nichts davon lief auf einem iPhone: Face ID, der Keychain und die Zertifikatsregeln sind nicht auf einem Gerät getestet. Lies [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) und [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""Er ist ein Client: Er ruft 62 Pfade von ARMOR-SERVER auf (`tools/ios_lint.py` zählt sie und prüft, dass auch der Android-Client sie aufruft) und zerlegt den MJPEG-Strom der Kameras mit eigenem Parser (`MjpegParser.swift`).
+      "interfaces": r"""Er ist ein Client: Er ruft 70 Pfade von ARMOR-SERVER auf (`tools/ios_lint.py` zählt sie und prüft, dass auch der Android-Client sie aufruft) und zerlegt den MJPEG-Strom der Kameras mit eigenem Parser (`MjpegParser.swift`).
 
 | Teil | Was sie festlegt |
 |---|---|
@@ -520,7 +522,7 @@ In der App: die zwei Adressen, *Angemeldet bleiben*, die Telefonsperre und die S
       "quickstart": r"""**Voraussetzungen:** ein Mac mit Xcode 15+ und iOS 16+ zum Bauen der App; Swift 5.9+ (macOS oder Linux) für die Tests; Python 3.11 für die Prüfungen.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -535,20 +537,21 @@ python -I tools/armor_ci_validate.py
 | Testdatei | Tests | Was sie abdeckt |
 |---|---|---|
 | `ControllerTests.swift` | 15 | Die Anwendungsfälle des Controllers |
-| `ClientTests.swift` | 14 | Die Verbindung zum Server und ihre Auswertung |
+| `ClientTests.swift` | 15 | Die Verbindung zum Server und ihre Auswertung |
 | `LockTests.swift` | 12 | Die Telefonsperre |
 | `ModelsTests.swift` | 12 | Die vom Server gelesenen Modelle |
 | `ReachTests.swift` | 11 | Die Wahl zwischen den zwei Adressen |
 | `SecurityTests.swift` | 8 | Der Sitzungstresor und das Zertifikatsvertrauen |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | Die Adressauswertung, das MJPEG-Zerlegen und der Übersetzer |
 | `ResponseLimitTests.swift` | 2 | Die längste Antwort, die die App von einem Server annimmt |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | Die Kameraaktion einer Meldung, das vertrauenswürdige Telefon (seine Regeln, mit falschem Server und falschem Schlüssel) und das Alarmfenster |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | Das Blatt für den erneuten Identitätsnachweis und der Kopplungs-QR-Code, als Bild gezeichnet und gelesen (die 5 des QR brauchen einen Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | Der Bluetooth-Kanal eines Knotens (Rahmen, Anfragen, Einrichtungscode, Einstellungen, SHA-256) und der Zustand der Knoten |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | Die Steuerung der Knoten, die Verbindungen, die Adresse der Seite eines Knotens und der Radarplan |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | Die Alarmrichtlinie und die Alarmcodes |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, Batterien, Stromnetz und die Aufrufe des Clients |
 
-Die 384 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 90 Swift-Dateien, 1195 Sätze in 8 Sprachen, 64 Serverpfade. Kein Test läuft auf einem Gerät.""",
+Die 483 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 108 Swift-Dateien, 1229 Sätze in 8 Sprachen, 70 Serverpfade. Kein Test läuft auf einem Gerät.""",
       "build": "Das Xcode-Projekt wird aus `project.yml` mit XcodeGen erzeugt: Wähle ein Signing-Team, füge das App-Symbol zu `App/Resources/Assets.xcassets/AppIcon.appiconset` hinzu und für Push die `GoogleService-Info.plist` der Installation. Es wurde nie in Xcode gebaut.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -566,7 +569,7 @@ Die 384 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   die Regeln der App: ein Swift-Paket
 ├── App/                                 die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen
-├── Tests/                               384 Tests und Daten eines echten Servers
+├── Tests/                               483 Tests und Daten eines echten Servers
 ├── docs/                                die Anleitungen dieses Repositorys
 ├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
 ├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
@@ -596,7 +599,7 @@ ARMOR-IOS-CONTROL/
   },
   "fr": {
     "tagline": "Client opérateur iPhone d'ARMOR-SERVER : état, armement, alarmes, centrales d'alarme, caméras et assistant, en huit langues",
-    "honest": "les règles de l'app (liaison au serveur, lecture des réponses, choix de l'adresse, verrou du téléphone, coffre de la session, confiance dans le certificat, politique d'alarmes, cas d'usage, découpage du MJPEG) forment le paquet Swift `ArmorCore`, couvert par 384 tests unitaires qui s'exécutent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les huit tables de langues et le contrat sans Mac. Ce qui n'est **pas** encore prouvé : les écrans SwiftUI et les parties qui exigent un iPhone (Face ID, trousseau, règles de certificat, caméra en direct, push via Firebase) n'ont pas été compilés dans Xcode ni exécutés sur un appareil.",
+    "honest": "les règles de l'app (liaison au serveur, lecture des réponses, choix de l'adresse, verrou du téléphone, coffre de la session, confiance dans le certificat, politique d'alarmes, cas d'usage, découpage du MJPEG) forment le paquet Swift `ArmorCore`, couvert par 483 tests unitaires qui s'exécutent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les huit tables de langues et le contrat sans Mac. Ce qui n'est **pas** encore prouvé : les écrans SwiftUI et les parties qui exigent un iPhone (Face ID, trousseau, règles de certificat, caméra en direct, push via Firebase) n'ont pas été compilés dans Xcode ni exécutés sur un appareil.",
     "glance": [
       [
         "Rôle",
@@ -608,11 +611,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Tests",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Langues",
-        "8 (1195 phrases par langue, vérifiées par `ios_lint.py`)",
+        "8 (1229 phrases par langue, vérifiées par `ios_lint.py`)",
       ],
       [
         "Fonctionne sur",
@@ -629,7 +632,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Les règles de l'application forment un paquet Swift (`ArmorCore`) et l'app SwiftUI est compilée pour le simulateur par la CI sous macOS ; elle n'a pas tourné sur un iPhone.",
-      "tests": "384 tests unitaires réussissent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les tables des huit langues et le contrat sans Mac ; aucun test ne tourne sur un appareil.",
+      "tests": "483 tests unitaires réussissent avec `swift test` sous macOS ou Linux, et `tools/ios_lint.py` vérifie la structure, les tables des huit langues et le contrat sans Mac ; aucun test ne tourne sur un appareil.",
       "ui": "Les écrans SwiftUI sont compilés pour le simulateur par la CI sous macOS mais n'ont pas été exécutés sur un iPhone.",
       "hardware": "Elle n'a pas tourné sur un iPhone : les règles ne sont testées que sous Linux.",
       "security": "Le verrouillage du téléphone, le coffre de la session et la confiance dans le certificat sont des règles testées sous Linux ; Face ID, le trousseau et les règles du certificat n'ont pas tourné sur un appareil.",
@@ -680,7 +683,7 @@ ARMOR-IOS-CONTROL/
 | L'assistant arme ou désarme par erreur | Seulement des ordres écrits (le micro du clavier dicte) ; armer et désarmer exigent une confirmation liée à vous, derrière le verrouillage du téléphone |
 
 Les textes d'autorisation (Face ID, réseau local) existent dans les huit langues. Rien de tout cela n'a tourné sur un iPhone : Face ID, le Keychain et les règles de certificat ne sont pas testés sur un appareil. Lisez [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) et [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""C'est un client : il appelle 64 chemins d'ARMOR-SERVER (`tools/ios_lint.py` les compte et vérifie que le client Android les appelle aussi) et découpe le flux MJPEG des caméras avec son propre analyseur (`MjpegParser.swift`).
+      "interfaces": r"""C'est un client : il appelle 70 chemins d'ARMOR-SERVER (`tools/ios_lint.py` les compte et vérifie que le client Android les appelle aussi) et découpe le flux MJPEG des caméras avec son propre analyseur (`MjpegParser.swift`).
 
 | Partie | Ce qu'elle règle |
 |---|---|
@@ -698,7 +701,7 @@ Dans l'app : les deux adresses, *Se souvenir de moi*, le verrouillage du télép
       "quickstart": r"""**Prérequis:** un Mac avec Xcode 15+ et iOS 16+ pour compiler l'app ; Swift 5.9+ (macOS ou Linux) pour les tests ; Python 3.11 pour les contrôles.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -713,20 +716,21 @@ python -I tools/armor_ci_validate.py
 | Fichier de tests | Tests | Ce qu'il couvre |
 |---|---|---|
 | `ControllerTests.swift` | 15 | Les cas d'usage du contrôleur |
-| `ClientTests.swift` | 14 | Le lien avec le serveur et son analyse |
+| `ClientTests.swift` | 15 | Le lien avec le serveur et son analyse |
 | `LockTests.swift` | 12 | Le verrouillage du téléphone |
 | `ModelsTests.swift` | 12 | Les modèles lus depuis le serveur |
 | `ReachTests.swift` | 11 | Le choix entre les deux adresses |
 | `SecurityTests.swift` | 8 | Le coffre de session et la confiance dans le certificat |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | L'analyse d'adresses, le découpage MJPEG et le traducteur |
 | `ResponseLimitTests.swift` | 2 | La réponse la plus longue que l'app accepte d'un serveur |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | L'action caméra d'un avis, le téléphone de confiance (ses règles, avec un faux serveur et une fausse clé) et la fenêtre d'alarme |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | La feuille de la nouvelle preuve d'identité et le QR code d'appairage dessiné et relu comme image (les 5 du QR demandent un Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | Le canal Bluetooth d'un nœud (trames, requêtes, code de configuration, réglages, SHA-256) et la santé des nœuds |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | Le contrôle des nœuds, les connexions, l'adresse de la page d'un nœud et le plan du radar |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La politique d'alarme et les codes d'alarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solaire, batteries, réseau électrique et appels du client |
 
-Les 384 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 90 fichiers Swift, 1195 phrases en 8 langues, 64 chemins du serveur. Aucun test ne tourne sur un appareil.""",
+Les 483 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 108 fichiers Swift, 1229 phrases en 8 langues, 70 chemins du serveur. Aucun test ne tourne sur un appareil.""",
       "build": "Le projet Xcode est généré depuis `project.yml` avec XcodeGen : choisissez une équipe de signature, ajoutez l'icône de l'app à `App/Resources/Assets.xcassets/AppIcon.appiconset` et, pour le push, le `GoogleService-Info.plist` de l'installation. Il n'a jamais été compilé dans Xcode.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -744,7 +748,7 @@ Les 384 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réu
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   les règles de l'app : un paquet Swift
 ├── App/                                 les écrans SwiftUI et les parties qui exigent un iPhone
-├── Tests/                               384 tests et données d'un vrai serveur
+├── Tests/                               483 tests et données d'un vrai serveur
 ├── docs/                                les guides de ce dépôt
 ├── tools/                               les contrôles CI partagés et les outils du projet
 ├── .github/                             workflow CI et modèles d'issues et de pull requests
@@ -774,7 +778,7 @@ ARMOR-IOS-CONTROL/
   },
   "it": {
     "tagline": "Client operatore per iPhone di ARMOR-SERVER: stato, armamento, allarmi, centrali di allarme, telecamere e assistente, in otto lingue",
-    "honest": "le regole dell'app (collegamento al server, lettura delle risposte, scelta dell'indirizzo, blocco del telefono, cassaforte della sessione, fiducia nel certificato, politica degli allarmi, casi d'uso, taglio dell'MJPEG) sono il pacchetto Swift `ArmorCore`, coperto da 384 test unitari che girano con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le otto tabelle delle lingue e il contratto senza Mac. Ciò che **non** è ancora provato: le schermate SwiftUI e le parti che richiedono un iPhone (Face ID, portachiavi, regole del certificato, telecamera dal vivo, push con Firebase) non sono state compilate in Xcode né eseguite su un dispositivo.",
+    "honest": "le regole dell'app (collegamento al server, lettura delle risposte, scelta dell'indirizzo, blocco del telefono, cassaforte della sessione, fiducia nel certificato, politica degli allarmi, casi d'uso, taglio dell'MJPEG) sono il pacchetto Swift `ArmorCore`, coperto da 483 test unitari che girano con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le otto tabelle delle lingue e il contratto senza Mac. Ciò che **non** è ancora provato: le schermate SwiftUI e le parti che richiedono un iPhone (Face ID, portachiavi, regole del certificato, telecamera dal vivo, push con Firebase) non sono state compilate in Xcode né eseguite su un dispositivo.",
     "glance": [
       [
         "Ruolo",
@@ -786,11 +790,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Test",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Lingue",
-        "8 (1195 frasi per lingua, verificate da `ios_lint.py`)",
+        "8 (1229 frasi per lingua, verificate da `ios_lint.py`)",
       ],
       [
         "Gira su",
@@ -807,7 +811,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "Le regole dell'app sono un pacchetto Swift (`ArmorCore`) e l'app SwiftUI è compilata per il simulatore dalla CI su macOS; non ha girato su un iPhone.",
-      "tests": "Superano 384 test unitari con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le tabelle delle otto lingue e il contratto senza un Mac; nessun test gira su un dispositivo.",
+      "tests": "Superano 483 test unitari con `swift test` su macOS o Linux, e `tools/ios_lint.py` controlla la struttura, le tabelle delle otto lingue e il contratto senza un Mac; nessun test gira su un dispositivo.",
       "ui": "Le schermate SwiftUI sono compilate per il simulatore dalla CI su macOS ma non sono state eseguite su un iPhone.",
       "hardware": "Non ha girato su un iPhone: le regole sono provate solo su Linux.",
       "security": "Il blocco del telefono, il deposito della sessione e la fiducia nel certificato sono regole provate su Linux; Face ID, il portachiavi e le regole del certificato non sono stati eseguiti su un dispositivo.",
@@ -858,7 +862,7 @@ ARMOR-IOS-CONTROL/
 | L'assistente inserisce o disinserisce per errore | Solo comandi scritti (il microfono della tastiera detta); inserire e disinserire richiedono una conferma legata a te, dietro il blocco del telefono |
 
 I testi dei permessi (Face ID, rete locale) esistono in tutte e otto le lingue. Nulla di tutto ciò è girato su un iPhone: Face ID, il Keychain e le regole del certificato non sono testati su un dispositivo. Leggi [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) e [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""È un client: chiama 64 percorsi di ARMOR-SERVER (`tools/ios_lint.py` li conta e verifica che li chiami anche il client Android) e taglia il flusso MJPEG delle telecamere con un parser proprio (`MjpegParser.swift`).
+      "interfaces": r"""È un client: chiama 70 percorsi di ARMOR-SERVER (`tools/ios_lint.py` li conta e verifica che li chiami anche il client Android) e taglia il flusso MJPEG delle telecamere con un parser proprio (`MjpegParser.swift`).
 
 | Parte | Cosa imposta |
 |---|---|
@@ -876,7 +880,7 @@ Nell'app: i due indirizzi, *Ricordami*, il blocco del telefono e la lingua (le o
       "quickstart": r"""**Requisiti:** un Mac con Xcode 15+ e iOS 16+ per compilare l'app; Swift 5.9+ (macOS o Linux) per i test; Python 3.11 per le verifiche.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -891,20 +895,21 @@ python -I tools/armor_ci_validate.py
 | File di test | Test | Cosa copre |
 |---|---|---|
 | `ControllerTests.swift` | 15 | I casi d'uso del controller |
-| `ClientTests.swift` | 14 | Il collegamento al server e la sua interpretazione |
+| `ClientTests.swift` | 15 | Il collegamento al server e la sua interpretazione |
 | `LockTests.swift` | 12 | Il blocco del telefono |
 | `ModelsTests.swift` | 12 | I modelli letti dal server |
 | `ReachTests.swift` | 11 | La scelta tra i due indirizzi |
 | `SecurityTests.swift` | 8 | Il deposito della sessione e la fiducia nel certificato |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | La lettura degli indirizzi, il taglio MJPEG e il traduttore |
 | `ResponseLimitTests.swift` | 2 | La risposta più lunga che l'app accetta da un server |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | L'azione telecamera di un avviso, il telefono fidato (le sue regole, con un server finto e una chiave finta) e la finestra d'allarme |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | Il foglio della nuova prova d'identità e il QR code di abbinamento disegnato e riletto come immagine (i 5 del QR richiedono un Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | Il canale Bluetooth di un nodo (trame, richieste, codice di configurazione, impostazioni, SHA-256) e la salute dei nodi |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | Il controllo dei nodi, le connessioni, l'indirizzo della pagina di un nodo e la mappa del radar |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La politica degli allarmi e i codici di allarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solare, batterie, rete elettrica e chiamate del client |
 
-I 384 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 90 file Swift, 1195 frasi in 8 lingue, 64 percorsi del server. Nessun test gira su un dispositivo.""",
+I 483 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 108 file Swift, 1229 frasi in 8 lingue, 70 percorsi del server. Nessun test gira su un dispositivo.""",
       "build": "Il progetto Xcode si genera da `project.yml` con XcodeGen: scegli un team di firma, aggiungi l'icona dell'app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, per il push, il `GoogleService-Info.plist` dell'installazione. Non è mai stato compilato in Xcode.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -922,7 +927,7 @@ I 384 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 9
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   le regole dell'app: un pacchetto Swift
 ├── App/                                 le schermate SwiftUI e le parti che richiedono un iPhone
-├── Tests/                               384 test e dati di un server reale
+├── Tests/                               483 test e dati di un server reale
 ├── docs/                                le guide di questo repository
 ├── tools/                               i controlli CI condivisi e gli strumenti del progetto
 ├── .github/                             workflow CI e modelli per issue e pull request
@@ -952,7 +957,7 @@ ARMOR-IOS-CONTROL/
   },
   "ja": {
     "tagline": "ARMOR-SERVER の iPhone オペレータークライアント：状態、警戒、警報、警報盤、カメラ、アシスタント。8 言語対応",
-    "honest": "アプリのルール（サーバー接続、応答の解析、アドレスの選択、端末ロック、セッションの保管庫、証明書の信頼、警報ポリシー、ユースケース、MJPEG の切り出し）は Swift パッケージ `ArmorCore` にあり、macOS または Linux で `swift test` により実行される 384 件の単体テストでカバーされています。`tools/ios_lint.py` は Mac なしで構造、8 言語の表、契約を検査します。**まだ**証明されていないもの：SwiftUI の画面と iPhone が必要な部分（Face ID、キーチェーン、証明書ルール、ライブカメラ、Firebase 経由のプッシュ）は、Xcode でのビルドも実機での実行もしていません。",
+    "honest": "アプリのルール（サーバー接続、応答の解析、アドレスの選択、端末ロック、セッションの保管庫、証明書の信頼、警報ポリシー、ユースケース、MJPEG の切り出し）は Swift パッケージ `ArmorCore` にあり、macOS または Linux で `swift test` により実行される 483 件の単体テストでカバーされています。`tools/ios_lint.py` は Mac なしで構造、8 言語の表、契約を検査します。**まだ**証明されていないもの：SwiftUI の画面と iPhone が必要な部分（Face ID、キーチェーン、証明書ルール、ライブカメラ、Firebase 経由のプッシュ）は、Xcode でのビルドも実機での実行もしていません。",
     "glance": [
       [
         "役割",
@@ -964,11 +969,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "テスト",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "言語",
-        "8（言語ごとに 1195 フレーズ、`ios_lint.py` が検査）",
+        "8（言語ごとに 1229 フレーズ、`ios_lint.py` が検査）",
       ],
       [
         "動作環境",
@@ -985,7 +990,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "アプリの規則は Swift パッケージ（`ArmorCore`）で、SwiftUI アプリは macOS の CI でシミュレーター向けにビルドされますが、iPhone では動かしていません。",
-      "tests": "384 件のユニットテストが macOS または Linux の `swift test` で通り、`tools/ios_lint.py` が Mac なしで構造、8 言語の表、契約を確認します。実機で動くテストはありません。",
+      "tests": "483 件のユニットテストが macOS または Linux の `swift test` で通り、`tools/ios_lint.py` が Mac なしで構造、8 言語の表、契約を確認します。実機で動くテストはありません。",
       "ui": "SwiftUI の画面は macOS の CI でシミュレーター向けにビルドされますが、iPhone での実行はしていません。",
       "hardware": "iPhone 上ではまだ動かしていません。規則は Linux でのみテストしています。",
       "security": "端末のロック、セッションの保管庫、証明書の信頼は Linux でテストした規則です。Face ID、キーチェーン、証明書の規則は実機では動かしていません。",
@@ -1036,7 +1041,7 @@ ARMOR-IOS-CONTROL/
 | アシスタントが誤ってアーム・ディスアームする | 入力したコマンドのみ（音声入力はキーボードのマイク）。アームとディスアームには、あなたに結び付いた確認が必要で、電話のロックの内側で行います |
 
 権限のテキスト（Face ID、ローカルネットワーク）は 8 言語すべてにあります。ここにあるものは iPhone では一度も動いていません。Face ID、キーチェーン、証明書ルールは実機で未検証です。[docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) と [SECURITY.md](SECURITY.md) を参照してください。""",
-      "interfaces": r"""これはクライアントです。ARMOR-SERVER の 62 のパスを呼び出し（`tools/ios_lint.py` が数え、Android クライアントも呼ぶことを検査）、カメラの MJPEG ストリームを独自のパーサー（`MjpegParser.swift`）で切り出します。
+      "interfaces": r"""これはクライアントです。ARMOR-SERVER の 70 のパスを呼び出し（`tools/ios_lint.py` が数え、Android クライアントも呼ぶことを検査）、カメラの MJPEG ストリームを独自のパーサー（`MjpegParser.swift`）で切り出します。
 
 | 部分 | 設定内容 |
 |---|---|
@@ -1054,7 +1059,7 @@ ARMOR-IOS-CONTROL/
       "quickstart": r"""**必要なもの:** アプリのビルドには Xcode 15+ と iOS 16+ の Mac、テストには Swift 5.9+（macOS または Linux）、検査には Python 3.11。
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -1069,20 +1074,21 @@ python -I tools/armor_ci_validate.py
 | テストファイル | テスト数 | 対象 |
 |---|---|---|
 | `ControllerTests.swift` | 15 | コントローラーのユースケース |
-| `ClientTests.swift` | 14 | サーバーとの接続とその解析 |
+| `ClientTests.swift` | 15 | サーバーとの接続とその解析 |
 | `LockTests.swift` | 12 | 電話のロック |
 | `ModelsTests.swift` | 12 | サーバーから読むモデル |
 | `ReachTests.swift` | 11 | 2 つのアドレスの選択 |
 | `SecurityTests.swift` | 8 | セッション保管庫と証明書への信頼 |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | アドレス解析、MJPEG の切り出し、翻訳 |
 | `ResponseLimitTests.swift` | 2 | アプリがサーバーから受け取る応答の最大の長さ |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | 通知のカメラ操作、信頼済みの電話（偽のサーバーと偽の鍵による規則）、アラームウィンドウ |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | 本人確認をやり直すシートと、画像として描いて読み戻すペアリング QR コード（QR の 5 件は Mac が必要） |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | ノードの Bluetooth チャネル（フレーム、要求、設定コード、設定、SHA-256）とノードの状態 |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | ノードの制御、接続、ノードのページのアドレス、レーダーの平面図 |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | アラームポリシーとアラームコード |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | 太陽光、バッテリー、電力網、クライアントの呼び出し |
 
-384 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 90、8 言語の 1195 フレーズ、サーバーパス 64。実機で動くテストはありません。""",
+483 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 108、8 言語の 1229 フレーズ、サーバーパス 70。実機で動くテストはありません。""",
       "build": "Xcode プロジェクトは XcodeGen で `project.yml` から生成します。署名チームを選び、アプリのアイコンを `App/Resources/Assets.xcassets/AppIcon.appiconset` に、プッシュ用に設置環境の `GoogleService-Info.plist` を追加してください。Xcode でビルドしたことはありません。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1100,7 +1106,7 @@ python -I tools/armor_ci_validate.py
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   アプリのルール：Swift パッケージ
 ├── App/                                 SwiftUI 画面と iPhone が必要な部分
-├── Tests/                               384 件のテストと実サーバーのデータ
+├── Tests/                               483 件のテストと実サーバーのデータ
 ├── docs/                                このリポジトリのガイド
 ├── tools/                               共通の CI チェックとプロジェクトツール
 ├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
@@ -1130,7 +1136,7 @@ ARMOR-IOS-CONTROL/
   },
   "zh": {
     "tagline": "ARMOR-SERVER 的 iPhone 操作员客户端：状态、布防、警报、报警主机、摄像头和助手，支持八种语言",
-    "honest": "应用的规则（服务器连接、响应解析、地址选择、手机锁、会话保险库、证书信任、警报策略、用例、MJPEG 切分）是 Swift 包 `ArmorCore`，由 384 个单元测试覆盖，可在 macOS 或 Linux 上用 `swift test` 运行；`tools/ios_lint.py` 无需 Mac 即可检查结构、八张语言表和接口契约。**尚未**证明的部分：SwiftUI 界面以及需要 iPhone 的部分（Face ID、钥匙串、证书规则、实时摄像头、通过 Firebase 的推送）尚未在 Xcode 中构建，也未在设备上运行。",
+    "honest": "应用的规则（服务器连接、响应解析、地址选择、手机锁、会话保险库、证书信任、警报策略、用例、MJPEG 切分）是 Swift 包 `ArmorCore`，由 483 个单元测试覆盖，可在 macOS 或 Linux 上用 `swift test` 运行；`tools/ios_lint.py` 无需 Mac 即可检查结构、八张语言表和接口契约。**尚未**证明的部分：SwiftUI 界面以及需要 iPhone 的部分（Face ID、钥匙串、证书规则、实时摄像头、通过 Firebase 的推送）尚未在 Xcode 中构建，也未在设备上运行。",
     "glance": [
       [
         "角色",
@@ -1142,11 +1148,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "测试",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "语言",
-        "8（每种语言 1195 条短语，由 `ios_lint.py` 检查）",
+        "8（每种语言 1229 条短语，由 `ios_lint.py` 检查）",
       ],
       [
         "运行位置",
@@ -1163,7 +1169,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "应用的规则是一个 Swift 包（`ArmorCore`），SwiftUI 应用由 macOS 上的 CI 为模拟器构建；它没有在 iPhone 上运行过。",
-      "tests": "384 项单元测试在 macOS 或 Linux 上通过 `swift test` 运行，`tools/ios_lint.py` 无需 Mac 即可检查结构、八种语言表和契约；没有任何测试在设备上运行。",
+      "tests": "483 项单元测试在 macOS 或 Linux 上通过 `swift test` 运行，`tools/ios_lint.py` 无需 Mac 即可检查结构、八种语言表和契约；没有任何测试在设备上运行。",
       "ui": "SwiftUI 界面由 macOS 上的 CI 为模拟器构建，但没有在 iPhone 上运行过。",
       "hardware": "尚未在 iPhone 上运行过：规则只在 Linux 上测试。",
       "security": "手机锁定、会话保险库和对证书的信任是在 Linux 上测试的规则；Face ID、钥匙串和证书规则尚未在设备上运行过。",
@@ -1214,7 +1220,7 @@ ARMOR-IOS-CONTROL/
 | 助手误操作布防或撤防 | 仅限文字命令（键盘麦克风负责听写）；布防和撤防需要与你绑定的确认，并位于手机锁之后 |
 
 权限文字（Face ID、本地网络）有全部八种语言。这里的一切都没有在 iPhone 上运行过：Face ID、钥匙串和证书规则都没有在真机上测试。请阅读 [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) 和 [SECURITY.md](SECURITY.md)。""",
-      "interfaces": r"""它是客户端：调用 ARMOR-SERVER 的 62 条路径（`tools/ios_lint.py` 会统计并检查 Android 客户端也调用它们），并用自己的解析器切分摄像头的 MJPEG 流（`MjpegParser.swift`）。
+      "interfaces": r"""它是客户端：调用 ARMOR-SERVER 的 70 条路径（`tools/ios_lint.py` 会统计并检查 Android 客户端也调用它们），并用自己的解析器切分摄像头的 MJPEG 流（`MjpegParser.swift`）。
 
 | 部分 | 作用 |
 |---|---|
@@ -1232,7 +1238,7 @@ ARMOR-IOS-CONTROL/
       "quickstart": r"""**要求:** 构建应用需要装有 Xcode 15+ 和 iOS 16+ 的 Mac；测试需要 Swift 5.9+（macOS 或 Linux）；检查需要 Python 3.11。
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -1247,20 +1253,21 @@ python -I tools/armor_ci_validate.py
 | 测试文件 | 测试数 | 覆盖内容 |
 |---|---|---|
 | `ControllerTests.swift` | 15 | 控制器的用例 |
-| `ClientTests.swift` | 14 | 与服务器的连接及解析 |
+| `ClientTests.swift` | 15 | 与服务器的连接及解析 |
 | `LockTests.swift` | 12 | 手机锁 |
 | `ModelsTests.swift` | 12 | 从服务器读取的模型 |
 | `ReachTests.swift` | 11 | 两个地址之间的选择 |
 | `SecurityTests.swift` | 8 | 会话保险库和对证书的信任 |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | 地址解析、MJPEG 切分和翻译器 |
 | `ResponseLimitTests.swift` | 2 | 应用从服务器接收的最长应答 |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | 通知的摄像头操作、受信任的手机（用假服务器和假密钥测试其规则）以及警报窗口 |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | 再次验证身份的表单，以及作为图片绘制并读回的配对二维码（二维码的 5 个需要 Mac） |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | 节点的蓝牙通道（帧、请求、设置码、设置、SHA-256）和节点健康状况 |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | 节点控制、连接、节点页面的地址和雷达平面图 |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | 报警策略和报警代码 |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | 太阳能、电池、电网和客户端调用 |
 
-这 384 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：90 个 Swift 文件、8 种语言的 1195 条短语、64 条服务器路径。没有任何测试在真机上运行。""",
+这 483 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：108 个 Swift 文件、8 种语言的 1229 条短语、70 条服务器路径。没有任何测试在真机上运行。""",
       "build": "Xcode 项目由 XcodeGen 根据 `project.yml` 生成：选择签名团队，把应用图标加入 `App/Resources/Assets.xcassets/AppIcon.appiconset`，推送还需加入安装环境的 `GoogleService-Info.plist`。从未在 Xcode 中构建过。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1278,7 +1285,7 @@ python -I tools/armor_ci_validate.py
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   应用的规则：一个 Swift 包
 ├── App/                                 SwiftUI 界面和需要 iPhone 的部分
-├── Tests/                               384 个测试和真实服务器的数据
+├── Tests/                               483 个测试和真实服务器的数据
 ├── docs/                                本仓库的指南
 ├── tools/                               共享的 CI 检查和项目工具
 ├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
@@ -1308,7 +1315,7 @@ ARMOR-IOS-CONTROL/
   },
   "pt": {
     "tagline": "Cliente de operador para iPhone do ARMOR-SERVER: estado, armar, alarmes, centrais de alarme, câmaras e o assistente, em oito idiomas",
-    "honest": "as regras da app (ligação ao servidor, leitura das respostas, escolha do endereço, bloqueio do telemóvel, cofre da sessão, confiança no certificado, política de alarmes, casos de uso, corte do MJPEG) são o pacote Swift `ArmorCore`, coberto por 384 testes unitários que correm com `swift test` em macOS ou Linux, e `tools/ios_lint.py` verifica a estrutura, as oito tabelas de idiomas e o contrato sem Mac. O que **ainda não** está provado: os ecrãs SwiftUI e as partes que precisam de um iPhone (Face ID, porta-chaves, regras de certificado, câmara em direto, push com Firebase) não foram compilados no Xcode nem executados num dispositivo.",
+    "honest": "as regras da app (ligação ao servidor, leitura das respostas, escolha do endereço, bloqueio do telemóvel, cofre da sessão, confiança no certificado, política de alarmes, casos de uso, corte do MJPEG) são o pacote Swift `ArmorCore`, coberto por 483 testes unitários que correm com `swift test` em macOS ou Linux, e `tools/ios_lint.py` verifica a estrutura, as oito tabelas de idiomas e o contrato sem Mac. O que **ainda não** está provado: os ecrãs SwiftUI e as partes que precisam de um iPhone (Face ID, porta-chaves, regras de certificado, câmara em direto, push com Firebase) não foram compilados no Xcode nem executados num dispositivo.",
     "glance": [
       [
         "Função",
@@ -1320,11 +1327,11 @@ ARMOR-IOS-CONTROL/
       ],
       [
         "Testes",
-        "384 (`swift test`)",
+        "483 (`swift test`)",
       ],
       [
         "Línguas",
-        "8 (1195 frases por língua, verificadas pelo `ios_lint.py`)",
+        "8 (1229 frases por língua, verificadas pelo `ios_lint.py`)",
       ],
       [
         "Funciona em",
@@ -1341,7 +1348,7 @@ ARMOR-IOS-CONTROL/
     ],
     "status": {
       "software": "As regras da app são um pacote Swift (`ArmorCore`) e a app SwiftUI é compilada para o simulador pela CI no macOS; não funcionou num iPhone.",
-      "tests": "Passam 384 testes unitários com `swift test` em macOS ou Linux, e o `tools/ios_lint.py` verifica a estrutura, as tabelas dos oito idiomas e o contrato sem um Mac; nenhum teste corre num dispositivo.",
+      "tests": "Passam 483 testes unitários com `swift test` em macOS ou Linux, e o `tools/ios_lint.py` verifica a estrutura, as tabelas dos oito idiomas e o contrato sem um Mac; nenhum teste corre num dispositivo.",
       "ui": "Os ecrãs SwiftUI são compilados para o simulador pela CI no macOS, mas não foram executados num iPhone.",
       "hardware": "Não correu num iPhone: as regras só são testadas em Linux.",
       "security": "O bloqueio do telefone, o cofre da sessão e a confiança no certificado são regras testadas em Linux; o Face ID, o porta-chaves e as regras do certificado não correram num dispositivo.",
@@ -1392,7 +1399,7 @@ ARMOR-IOS-CONTROL/
 | O assistente arma ou desarma por engano | Só ordens escritas (o microfone do teclado dita); armar e desarmar exigem uma confirmação ligada a si, atrás do bloqueio do telemóvel |
 
 Os textos de permissões (Face ID, rede local) existem nas oito línguas. Nada disto correu num iPhone: o Face ID, o Keychain e as regras de certificado não foram testados num dispositivo. Leia [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) e [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""É um cliente: chama 64 caminhos do ARMOR-SERVER (o `tools/ios_lint.py` conta-os e verifica que o cliente Android também os chama) e corta o fluxo MJPEG das câmaras com um analisador próprio (`MjpegParser.swift`).
+      "interfaces": r"""É um cliente: chama 70 caminhos do ARMOR-SERVER (o `tools/ios_lint.py` conta-os e verifica que o cliente Android também os chama) e corta o fluxo MJPEG das câmaras com um analisador próprio (`MjpegParser.swift`).
 
 | Parte | O que define |
 |---|---|
@@ -1410,7 +1417,7 @@ Na app: os dois endereços, *Lembrar-me*, o bloqueio do telemóvel e a língua (
       "quickstart": r"""**Requisitos:** um Mac com Xcode 15+ e iOS 16+ para compilar a app; Swift 5.9+ (macOS ou Linux) para os testes; Python 3.11 para as verificações.
 
 ```sh
-swift test                  # 384 tests of ArmorCore (macOS or Linux)
+swift test                  # 483 tests of ArmorCore (macOS or Linux)
 python tools/ios_lint.py    # structure, eight languages, contract (any system)
 xcodegen generate           # then open ARMOR-IOS-CONTROL.xcodeproj in Xcode (on a Mac)
 ```
@@ -1425,20 +1432,21 @@ python -I tools/armor_ci_validate.py
 | Ficheiro de testes | Testes | O que cobre |
 |---|---|---|
 | `ControllerTests.swift` | 15 | Os casos de uso do controlador |
-| `ClientTests.swift` | 14 | A ligação ao servidor e a sua interpretação |
+| `ClientTests.swift` | 15 | A ligação ao servidor e a sua interpretação |
 | `LockTests.swift` | 12 | O bloqueio do telemóvel |
 | `ModelsTests.swift` | 12 | Os modelos lidos do servidor |
 | `ReachTests.swift` | 11 | A escolha entre os dois endereços |
 | `SecurityTests.swift` | 8 | O cofre da sessão e a confiança no certificado |
 | `EndpointTests.swift`, `MjpegTests.swift`, `TranslatorTests.swift` | 7 + 10 + 7 | A leitura de endereços, o corte MJPEG e o tradutor |
 | `ResponseLimitTests.swift` | 2 | A resposta mais longa que a app aceita de um servidor |
+| `OpenCameraTests.swift`, `TrustedPhoneTests.swift`, `AlarmBannerTests.swift` | 8 + 18 + 10 | A ação de câmara de um aviso, o telemóvel de confiança (as suas regras, com um servidor falso e uma chave falsa) e a janela de alarme |
 | `ElevationFormTests.swift`, `QrImageTests.swift` | 3 + 5 | A folha da nova prova de identidade e o código QR de emparelhamento desenhado e lido como imagem (os 5 do QR precisam de um Mac) |
 | `NodeBleTests.swift`, `NodeHealthTests.swift` | 17 + 5 | O canal Bluetooth de um nó (tramas, pedidos, código de configuração, definições, SHA-256) e a saúde dos nós |
 | `NodeControlTests.swift`, `ConnectionsTests.swift`, `NodePanelTests.swift`, `SiteDesignTests.swift` | 8 + 2 + 6 + 11 | O controlo dos nós, as ligações, o endereço da página de um nó e o plano do radar |
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | A política de alarmes e os códigos de alarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, baterias, rede elétrica e as chamadas do cliente |
 
-Os 384 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 90 ficheiros Swift, 1195 frases em 8 línguas, 64 caminhos do servidor. Nenhum teste corre num dispositivo.""",
+Os 483 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 108 ficheiros Swift, 1229 frases em 8 línguas, 70 caminhos do servidor. Nenhum teste corre num dispositivo.""",
       "build": "O projeto Xcode gera-se a partir de `project.yml` com o XcodeGen: escolha uma equipa de assinatura, junte o ícone da app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, para push, o `GoogleService-Info.plist` da instalação. Nunca foi compilado no Xcode.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
@@ -1456,7 +1464,7 @@ Os 384 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Ma
 ARMOR-IOS-CONTROL/
 ├── Sources/ArmorCore/                   as regras da app: um pacote Swift
 ├── App/                                 os ecrãs SwiftUI e as partes que precisam de um iPhone
-├── Tests/                               384 testes e dados de um servidor real
+├── Tests/                               483 testes e dados de um servidor real
 ├── docs/                                os guias deste repositório
 ├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
 ├── .github/                             fluxo de CI e modelos de issues e pull requests
@@ -1503,3 +1511,40 @@ for _lg, _bullet in EQUIPMENT_BULLET.items():
 GROUP2_BULLET = {'en': '**Weather, network, node finder, services and security:** More > Weather shows the weather of a place you choose (now, the rain of the next hour, 48 hours, ten days, air, pollen, sun and moon) with a live rain and cloud radar; only the coordinates of the place leave the phone, and the server is not involved. More > Network shows the internet, the devices, the outages and what changed; the Solar and Electrical screens carry a panel that finds nodes on the network. More > Services lists the programs and field nodes, running or not. More > Security manages the second factor of the account, the open sessions and how the server sees the phone (for administrators also the VPN into the house and the dynamic address; the private key of a device is shown once, never stored, and copying it is off unless the settings allow it). A solar, battery or electrical alarm opens its own screen from its detail. It follows the Android app; the code and its tests are written and were not compiled or tried on an iPhone.', 'es': '**Tiempo, red, buscador de nodos, servicios y seguridad:** Más > Meteorología muestra el tiempo de un lugar que eliges (ahora, la lluvia de la próxima hora, 48 horas, diez días, aire, polen, sol y luna) con un radar de lluvia y nubes en directo; solo sale la coordenada del lugar y el servidor no interviene. Más > Red muestra internet, los dispositivos, los cortes y lo que ha cambiado; las pantallas Solar y Eléctrica llevan un panel que busca nodos en la red. Más > Servicios lista los programas y los nodos de campo, activos o no. Más > Seguridad gestiona el segundo factor de la cuenta, las sesiones abiertas y cómo ve el servidor al móvil (para administradores también la VPN de la casa y la dirección dinámica; la clave privada de un dispositivo se muestra una vez, no se guarda nunca y copiarla está desactivado salvo que los ajustes lo permitan). Una alarma solar, de batería o eléctrica abre su pantalla desde su detalle. Sigue a la app de Android; el código y sus pruebas están escritos y no se compilaron ni se probaron en un iPhone.', 'de': '**Wetter, Netzwerk, Knotensuche, Dienste und Sicherheit:** Mehr > Wetter zeigt das Wetter eines gewählten Ortes (jetzt, der Regen der nächsten Stunde, 48 Stunden, zehn Tage, Luft, Pollen, Sonne und Mond) mit einem Live-Regen- und Wolkenradar; nur die Koordinaten des Ortes verlassen das Telefon, der Server ist nicht beteiligt. Mehr > Netzwerk zeigt das Internet, die Geräte, die Ausfälle und was sich geändert hat; die Bildschirme Solar und Elektrisch enthalten ein Feld, das Knoten im Netzwerk sucht. Mehr > Dienste listet die Programme und Feldknoten auf, laufend oder nicht. Mehr > Sicherheit verwaltet den zweiten Faktor des Kontos, die offenen Sitzungen und wie der Server das Telefon sieht (für Administratoren auch das VPN ins Haus und die dynamische Adresse; der private Schlüssel eines Geräts wird einmal angezeigt, nie gespeichert, und das Kopieren ist aus, solange die Einstellungen es nicht erlauben). Ein Solar-, Batterie- oder Stromalarm öffnet aus seinem Detail den passenden Bildschirm. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden weder kompiliert noch auf einem iPhone ausprobiert.', 'fr': "**Météo, réseau, recherche de nœuds, services et sécurité :** Plus > Météo montre le temps d'un lieu que vous choisissez (maintenant, la pluie de l'heure suivante, 48 heures, dix jours, air, pollen, soleil et lune) avec un radar de pluie et de nuages en direct ; seules les coordonnées du lieu quittent le téléphone et le serveur n'intervient pas. Plus > Réseau montre internet, les appareils, les coupures et ce qui a changé ; les écrans Solaire et Électrique portent un panneau qui cherche des nœuds sur le réseau. Plus > Services liste les programmes et les nœuds de terrain, actifs ou non. Plus > Sécurité gère le second facteur du compte, les sessions ouvertes et la façon dont le serveur voit le téléphone (pour les administrateurs aussi le VPN de la maison et l'adresse dynamique ; la clé privée d'un appareil est montrée une fois, jamais conservée, et la copier est désactivé sauf si les réglages le permettent). Une alarme solaire, de batterie ou électrique ouvre son écran depuis son détail. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont été ni compilés ni essayés sur un iPhone.", 'it': "**Meteo, rete, ricerca di nodi, servizi e sicurezza:** Altro > Meteo mostra il tempo di un luogo scelto (adesso, la pioggia dell'ora successiva, 48 ore, dieci giorni, aria, polline, sole e luna) con un radar di pioggia e nuvole in diretta; solo le coordinate del luogo lasciano il telefono e il server non interviene. Altro > Rete mostra internet, i dispositivi, le interruzioni e ciò che è cambiato; le schermate Solare ed Elettrica hanno un pannello che cerca nodi sulla rete. Altro > Servizi elenca i programmi e i nodi di campo, attivi o no. Altro > Sicurezza gestisce il secondo fattore dell'account, le sessioni aperte e come il server vede il telefono (per gli amministratori anche la VPN di casa e l'indirizzo dinamico; la chiave privata di un dispositivo si mostra una volta, non viene mai conservata e copiarla è disattivato salvo che le impostazioni lo permettano). Un allarme solare, di batteria o elettrico apre la sua schermata dal dettaglio. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati compilati né provati su un iPhone.", 'ja': '**天気、ネットワーク、ノード検索、サービス、セキュリティ:** その他 > 天気 は選んだ場所の天気（現在、次の1時間の雨、48時間、10日間、空気、花粉、太陽と月）をライブの雨雲レーダーとともに表示します。電話から出るのは場所の座標だけで、サーバーは関与しません。その他 > ネットワーク はインターネット、機器、停止、変更点を表示し、太陽光と電気の画面にはネットワーク上のノードを探すパネルがあります。その他 > サービス は稼働中かどうかを問わずプログラムとフィールドノードを一覧します。その他 > セキュリティ ではアカウントの第2要素、開いているセッション、サーバーから見た電話の状態を管理します（管理者は家への VPN と動的アドレスも扱えます。機器の秘密鍵は一度だけ表示され、保存されず、設定で許可しない限りコピーもできません）。太陽光、バッテリー、電気のアラームは詳細から該当の画面を開きます。Android アプリに準拠しており、コードとテストは書かれていますが、コンパイルも iPhone での動作確認も行っていません。', 'zh': '**天气、网络、节点查找、服务和安全：** 更多 > 天气 显示你所选地点的天气（当前、下一小时的降雨、48 小时、十天、空气、花粉、太阳和月亮），并带有实时降雨和云层雷达；只有地点的坐标会离开手机，服务器不参与。更多 > 网络 显示互联网、设备、中断和变化；太阳能和电气界面带有在网络上查找节点的面板。更多 > 服务 列出程序和现场节点，无论是否运行。更多 > 安全 管理账户的第二因素、已打开的会话以及服务器如何看待手机（管理员还可管理通往家里的 VPN 和动态地址；设备的私钥只显示一次、从不保存，除非设置允许，否则无法复制）。太阳能、电池或电气警报可从其详情打开对应界面。它与 Android 应用保持一致；代码及其测试已编写，但尚未编译，也未在 iPhone 上试用。', 'pt': '**Tempo, rede, procura de nós, serviços e segurança:** Mais > Meteorologia mostra o tempo de um lugar que escolhe (agora, a chuva da próxima hora, 48 horas, dez dias, ar, pólen, sol e lua) com um radar de chuva e nuvens em direto; só sai do telemóvel a coordenada do lugar e o servidor não intervém. Mais > Rede mostra a internet, os dispositivos, os cortes e o que mudou; os ecrãs Solar e Elétrica têm um painel que procura nós na rede. Mais > Serviços lista os programas e os nós de campo, ativos ou não. Mais > Segurança gere o segundo fator da conta, as sessões abertas e como o servidor vê o telemóvel (para administradores também a VPN da casa e o endereço dinâmico; a chave privada de um dispositivo mostra-se uma vez, nunca fica guardada e copiá-la está desativado, salvo se as definições o permitirem). Um alarme solar, de bateria ou elétrico abre o seu ecrã a partir do detalhe. Segue a app Android; o código e os seus testes estão escritos e não foram compilados nem experimentados num iPhone.'}
 for _lg, _bullet in GROUP2_BULLET.items():
     _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet
+
+# the status count, the alarm window, the camera from a notice, the widget and the trusted phone, in the eight languages (the same as the Android app)
+MOBILE_PARITY_BULLETS = [
+    {
+        "en": "**The whole system on the status screen, and a window for alarms:** the status screen counts the nodes of every kind (radar, solar, electrical, alarm panel, wall panel), not only the radar nodes of the live stream, and a tap opens their health; while an alarm waits for a person a banner pulses over every screen but the alarms (red and fast for a critical one, amber for the rest, still when the phone is set for less motion), says which alarm is the worst and how many wait, and lets you open the alarms, confirm from the banner or close it until another alarm arrives. The phone also tells the server the language of the app when it registers for push, so the notice is written in it. It follows the Android app; the code and its tests are written and were not tried on an iPhone.",
+        "es": "**Todo el sistema en la pantalla de estado y una ventana para las alarmas:** la pantalla de estado cuenta los nodos de todos los tipos (radar, solar, eléctrico, central de alarma, panel de pared), no solo los nodos de radar del flujo en vivo, y al tocarla se abre su salud; mientras una alarma espera a una persona, un aviso pulsa sobre todas las pantallas menos las alarmas (rojo y rápido si es crítica, ámbar en las demás, quieto si el teléfono pide menos movimiento), dice cuál es la peor alarma y cuántas esperan, y deja abrir las alarmas, confirmar desde el aviso o cerrarlo hasta que llegue otra alarma. El teléfono también le dice al servidor el idioma de la app al registrarse para el push, de modo que el aviso llegue escrito en él. Sigue a la app de Android; el código y sus pruebas están escritos y no se probaron en un iPhone.",
+        "de": "**Das ganze System auf dem Statusbildschirm und ein Fenster für Alarme:** Der Statusbildschirm zählt die Knoten aller Arten (Radar, Solar, Elektrisch, Alarmzentrale, Wandpanel), nicht nur die Radarknoten des Live-Stroms, und ein Tippen öffnet ihre Gesundheit; solange ein Alarm auf eine Person wartet, pulsiert ein Banner über allen Bildschirmen außer den Alarmen (rot und schnell bei einem kritischen, gelb bei den übrigen, ruhig, wenn das Telefon auf weniger Bewegung eingestellt ist), nennt den schlimmsten Alarm und wie viele warten und lässt die Alarme öffnen, vom Banner aus bestätigen oder es schließen, bis ein weiterer Alarm eintrifft. Das Telefon teilt dem Server beim Anmelden für Push auch die Sprache der App mit, damit die Meldung darin geschrieben ist. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden nicht auf einem iPhone ausprobiert.",
+        "fr": "**Tout le système sur l'écran d'état, et une fenêtre pour les alarmes :** l'écran d'état compte les nœuds de tous les types (radar, solaire, électrique, centrale d'alarme, panneau mural), pas seulement les nœuds radar du flux en direct, et un appui ouvre leur santé ; tant qu'une alarme attend une personne, une bannière pulse sur tous les écrans sauf les alarmes (rouge et rapide pour une alarme critique, ambre pour les autres, immobile si le téléphone est réglé pour moins de mouvement), dit quelle est la pire alarme et combien attendent, et permet d'ouvrir les alarmes, de confirmer depuis la bannière ou de la fermer jusqu'à l'arrivée d'une autre alarme. Le téléphone indique aussi au serveur la langue de l'application lors de l'enregistrement pour le push, afin que l'avis soit écrit dans cette langue. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont pas été essayés sur un iPhone.",
+        "it": "**Tutto il sistema nella schermata di stato e una finestra per gli allarmi:** la schermata di stato conta i nodi di ogni tipo (radar, solare, elettrico, centrale d'allarme, pannello a muro), non solo i nodi radar del flusso in diretta, e un tocco apre il loro stato di salute; finché un allarme aspetta una persona, un banner pulsa su tutte le schermate tranne gli allarmi (rosso e rapido se critico, ambra per gli altri, fermo se il telefono è impostato per meno movimento), dice qual è l'allarme peggiore e quanti aspettano, e permette di aprire gli allarmi, confermare dal banner o chiuderlo fino all'arrivo di un altro allarme. Il telefono comunica inoltre al server la lingua dell'app quando si registra per il push, così l'avviso è scritto in quella lingua. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati provati su un iPhone.",
+        "ja": "**状態画面でシステム全体を確認、アラーム用のウィンドウ:** 状態画面は、ライブストリームのレーダーノードだけでなく、あらゆる種類のノード（レーダー、太陽光、電気、警報盤、壁パネル）を数え、タップするとそのヘルスが開きます。アラームが人の対応を待っている間は、アラーム画面以外のすべての画面の上にバナーが点滅し（重大なものは赤で速く、そのほかは琥珀色、端末が動きを減らす設定なら静止）、最も深刻なアラームと待機中の件数を示し、アラームを開く、バナーから確認する、別のアラームが来るまで閉じる、のいずれかができます。端末はプッシュ登録時にアプリの言語もサーバーへ伝えるため、通知はその言語で書かれます。Android アプリに準拠しており、コードとテストは書かれていますが、iPhone での動作確認は行っていません。",
+        "zh": "**在状态页查看整个系统，以及警报窗口：** 状态页会统计所有类型的节点（雷达、太阳能、电气、报警主机、壁挂面板），而不只是实时流中的雷达节点，点按即可打开它们的健康状态；当有警报等待人工处理时，横幅会在除警报页以外的所有页面上闪动（严重警报为红色且更快，其余为琥珀色，手机设置为减少动态效果时则保持静止），显示最严重的警报以及等待的数量，并可打开警报、直接在横幅上确认，或关闭它直到出现新的警报。手机在为推送注册时还会把应用的语言告诉服务器，使通知以该语言书写。它与 Android 应用保持一致；代码及其测试已编写，但尚未在 iPhone 上试用。",
+        "pt": "**Todo o sistema no ecrã de estado e uma janela para os alarmes:** o ecrã de estado conta os nós de todos os tipos (radar, solar, elétrico, central de alarme, painel de parede), e não só os nós de radar do fluxo em direto, e um toque abre a sua saúde; enquanto um alarme espera por uma pessoa, um aviso pulsa sobre todos os ecrãs exceto os alarmes (vermelho e rápido se for crítico, âmbar nos restantes, parado se o telemóvel estiver definido para menos movimento), diz qual é o pior alarme e quantos esperam, e deixa abrir os alarmes, confirmar a partir do aviso ou fechá-lo até chegar outro alarme. O telemóvel também diz ao servidor o idioma da app ao registar-se para o push, para que o aviso chegue escrito nele. Segue a app Android; o código e os seus testes estão escritos e não foram experimentados num iPhone.",
+    },
+    {
+        "en": "**Open the camera from a notice, and a widget on its way:** a notice about a camera (one that stopped answering, or an alarm a camera raised) carries the action \"Open camera\"; touching it brings the app to the Cameras place with that camera in full screen. What a home-screen widget says (armed, disarmed or no data) is ready in the core in the eight languages, and its source waits in `docs/widget` until a Mac builds it as a target; like the tile of the Android app it only shows and opens the app, it never arms or disarms. It follows the Android app; the code and its tests are written and were not tried on an iPhone.",
+        "es": "**Abrir la cámara desde un aviso, y un widget en camino:** un aviso sobre una cámara (una que dejó de responder, o una alarma que levantó una cámara) lleva la acción \"Abrir cámara\"; al tocarla, la app pasa al lugar Cámaras con esa cámara a pantalla completa. Lo que dice un widget de la pantalla de inicio (armado, desarmado o sin datos) está listo en el núcleo en los ocho idiomas, y su código espera en `docs/widget` hasta que un Mac lo construya como destino; igual que el tile de la app de Android, solo muestra y abre la app, nunca arma ni desarma. Sigue a la app de Android; el código y sus pruebas están escritos y no se probaron en un iPhone.",
+        "de": "**Die Kamera aus einer Meldung öffnen, und ein Widget in Vorbereitung:** Eine Meldung zu einer Kamera (eine, die nicht mehr antwortet, oder ein von einer Kamera ausgelöster Alarm) trägt die Aktion \"Kamera öffnen\"; ein Tippen bringt die App auf den Ort Kameras mit dieser Kamera im Vollbild. Was ein Widget des Home-Bildschirms sagt (scharf, unscharf oder keine Daten), ist im Kern in den acht Sprachen fertig, und sein Quelltext wartet in `docs/widget`, bis ein Mac ihn als Ziel baut; wie die Kachel der Android-App zeigt es nur an und öffnet die App, es schaltet nie scharf oder unscharf. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden nicht auf einem iPhone ausprobiert.",
+        "fr": "**Ouvrir la caméra depuis un avis, et un widget en route :** un avis à propos d'une caméra (une qui ne répond plus, ou une alarme levée par une caméra) porte l'action « Ouvrir la caméra » ; la toucher amène l'application sur l'onglet Caméras avec cette caméra en plein écran. Ce que dit un widget de l'écran d'accueil (armé, désarmé ou pas de données) est prêt dans le noyau dans les huit langues, et son code attend dans `docs/widget` qu'un Mac le construise comme cible ; comme la tuile de l'application Android, il ne fait qu'afficher et ouvrir l'application, il n'arme ni ne désarme jamais. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont pas été essayés sur un iPhone.",
+        "it": "**Aprire la telecamera da un avviso, e un widget in arrivo:** un avviso su una telecamera (una che ha smesso di rispondere, o un allarme sollevato da una telecamera) porta l'azione «Apri telecamera»; toccandola l'app passa alla sezione Telecamere con quella telecamera a schermo intero. Ciò che dice un widget della schermata Home (inserito, disinserito o nessun dato) è pronto nel nucleo nelle otto lingue, e il suo sorgente aspetta in `docs/widget` che un Mac lo costruisca come target; come il tile dell'app Android, mostra soltanto e apre l'app, non inserisce né disinserisce mai. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati provati su un iPhone.",
+        "ja": "**通知からカメラを開く、そしてウィジェットの準備:** カメラに関する通知（応答しなくなったカメラ、またはカメラが発した警報）には「カメラを開く」操作が付き、タップするとアプリがカメラの場所に移動し、そのカメラを全画面で表示します。ホーム画面のウィジェットが示す内容（警戒中・解除中・データなし）は8言語でコアに用意済みで、そのソースは Mac がターゲットとしてビルドするまで `docs/widget` に置かれています。Android アプリのタイルと同じく、表示してアプリを開くだけで、警戒も解除もしません。Android アプリに準拠しており、コードとテストは書かれていますが、iPhone での動作確認は行っていません。",
+        "zh": "**从通知打开摄像头，以及即将到来的小组件：** 关于摄像头的通知（不再响应的摄像头，或由摄像头触发的警报）带有“打开摄像头”操作；点按后应用会切换到摄像头页面并全屏显示该摄像头。主屏幕小组件所显示的内容（已布防、已撤防或无数据）已在核心库中以八种语言准备好，其源码放在 `docs/widget`，等待有 Mac 将其构建为目标；与 Android 应用的快捷设置磁贴一样，它只显示并打开应用，从不布防或撤防。它与 Android 应用保持一致；代码及其测试已编写，但尚未在 iPhone 上试用。",
+        "pt": "**Abrir a câmara a partir de um aviso, e um widget a caminho:** um aviso sobre uma câmara (uma que deixou de responder, ou um alarme levantado por uma câmara) traz a ação \"Abrir câmara\"; ao tocar, a app passa ao separador Câmaras com essa câmara em ecrã inteiro. O que diz um widget do ecrã inicial (armado, desarmado ou sem dados) está pronto no núcleo nos oito idiomas, e o seu código espera em `docs/widget` até um Mac o construir como alvo; tal como o atalho da app Android, só mostra e abre a app, nunca arma nem desarma. Segue a app Android; o código e os seus testes estão escritos e não foram experimentados num iPhone.",
+    },
+    {
+        "en": "**A trusted phone, off until you turn it on:** when the administrator allows it in Studio, a switch in More > Lock with the phone makes the phone create a key pair inside the Secure Enclave (it cannot be exported and works only while the phone is unlocked), register the public half with the server and renew the session by signing a one-time challenge instead of asking for the password and the code again. A phone the server no longer knows forgets its id, a locked phone tries again later, and turning the switch off or signing out makes the server forget the phone. It follows the Android app; the rules are tested with a fake server and a fake key, and the Secure Enclave itself was not tried on an iPhone.",
+        "es": "**Un teléfono de confianza, apagado hasta que lo actives:** cuando el administrador lo permite en Studio, un interruptor en Más > Bloqueo con el teléfono hace que el teléfono cree un par de claves dentro del Secure Enclave (no se puede exportar y solo funciona con el teléfono desbloqueado), registre la mitad pública en el servidor y renueve la sesión firmando un reto de un solo uso en lugar de pedir otra vez la contraseña y el código. Un teléfono que el servidor ya no conoce olvida su id, un teléfono bloqueado lo intenta más tarde, y apagar el interruptor o cerrar la sesión hace que el servidor olvide el teléfono. Sigue a la app de Android; las reglas se prueban con un servidor falso y una clave falsa, y el Secure Enclave en sí no se probó en un iPhone.",
+        "de": "**Ein vertrauenswürdiges Telefon, aus, bis Sie es einschalten:** Erlaubt der Administrator es in Studio, lässt ein Schalter unter Mehr > Sperre mit dem Telefon das Telefon ein Schlüsselpaar im Secure Enclave erzeugen (es lässt sich nicht exportieren und funktioniert nur bei entsperrtem Telefon), die öffentliche Hälfte beim Server registrieren und die Sitzung durch Signieren einer einmaligen Herausforderung erneuern, statt erneut nach Passwort und Code zu fragen. Ein Telefon, das der Server nicht mehr kennt, vergisst seine Kennung, ein gesperrtes Telefon versucht es später erneut, und das Ausschalten des Schalters oder das Abmelden lässt den Server das Telefon vergessen. Sie folgt der Android-App; die Regeln sind mit einem falschen Server und einem falschen Schlüssel getestet, und das Secure Enclave selbst wurde nicht auf einem iPhone ausprobiert.",
+        "fr": "**Un téléphone de confiance, désactivé jusqu'à ce que vous l'activiez :** quand l'administrateur l'autorise dans Studio, un interrupteur dans Plus > Verrouillage avec le téléphone fait créer au téléphone une paire de clés dans le Secure Enclave (elle ne peut pas être exportée et ne fonctionne que téléphone déverrouillé), enregistrer la moitié publique auprès du serveur et renouveler la session en signant un défi à usage unique au lieu de redemander le mot de passe et le code. Un téléphone que le serveur ne connaît plus oublie son identifiant, un téléphone verrouillé réessaie plus tard, et désactiver l'interrupteur ou se déconnecter fait oublier le téléphone par le serveur. Elle suit l'application Android ; les règles sont testées avec un faux serveur et une fausse clé, et le Secure Enclave lui-même n'a pas été essayé sur un iPhone.",
+        "it": "**Un telefono fidato, spento finché non lo accendi:** quando l'amministratore lo consente in Studio, un interruttore in Altro > Blocco con il telefono fa creare al telefono una coppia di chiavi nel Secure Enclave (non si può esportare e funziona solo a telefono sbloccato), registrare la metà pubblica sul server e rinnovare la sessione firmando una sfida monouso invece di chiedere di nuovo la password e il codice. Un telefono che il server non conosce più dimentica il suo identificativo, un telefono bloccato riprova più tardi, e spegnere l'interruttore o uscire fa dimenticare il telefono al server. Segue l'app Android; le regole sono provate con un server finto e una chiave finta, e il Secure Enclave in sé non è stato provato su un iPhone.",
+        "ja": "**信頼済みの電話、オンにするまでオフ:** 管理者が Studio で許可すると、その他 > 電話でロック のスイッチにより、電話は Secure Enclave の中にキーペアを作り（書き出しはできず、電話のロック解除中だけ使えます）、公開鍵の半分をサーバーに登録し、パスワードとコードを再び尋ねる代わりに、一度きりのチャレンジに署名してセッションを更新します。サーバーがもう知らない電話は自分の ID を忘れ、ロック中の電話は後でもう一度試し、スイッチをオフにするかサインアウトするとサーバーはその電話を忘れます。Android アプリに準拠しており、規則は偽のサーバーと偽の鍵でテストされ、Secure Enclave 自体は iPhone で試していません。",
+        "zh": "**受信任的手机，开启前默认关闭：** 当管理员在 Studio 中允许时，更多 > 用手机锁定 中的开关会让手机在安全隔区（Secure Enclave）内生成一对密钥（无法导出，且仅在手机解锁时可用），把公钥一半注册到服务器，并通过签署一次性挑战来续期会话，而不必再次询问密码和验证码。服务器不再认识的手机会忘记自己的编号，已锁定的手机稍后重试，关闭开关或退出登录会让服务器忘记该手机。它与 Android 应用保持一致；规则用假的服务器和假的密钥测试，安全隔区本身尚未在 iPhone 上试用。",
+        "pt": "**Um telemóvel de confiança, desligado até o ligar:** quando o administrador o permite no Studio, um interruptor em Mais > Bloqueio com o telemóvel faz o telemóvel criar um par de chaves dentro do Secure Enclave (não pode ser exportada e só funciona com o telemóvel desbloqueado), registar a metade pública no servidor e renovar a sessão assinando um desafio de utilização única em vez de pedir de novo a palavra-passe e o código. Um telemóvel que o servidor já não conhece esquece o seu id, um telemóvel bloqueado tenta mais tarde, e desligar o interruptor ou terminar a sessão faz o servidor esquecer o telemóvel. Segue a app Android; as regras são testadas com um servidor falso e uma chave falsa, e o próprio Secure Enclave não foi experimentado num iPhone.",
+    },
+]
+for _bullet in MOBILE_PARITY_BULLETS:
+    for _lg, _text_of in _bullet.items():
+        _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _text_of
