@@ -19,6 +19,7 @@ jobs:
   family:
     name: Compare every repository with the others
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - name: Check out this repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -68,6 +69,19 @@ jobs:
       - name: Run the tests of the repositories that can run here
         working-directory: ARMOR-DOCS
         run: bash tools/check_all.sh
+
+      - name: Write the drift report of the night
+        if: ${{ !cancelled() }}
+        working-directory: ARMOR-DOCS
+        run: python tools/drift_report.py || true
+
+      - name: Keep the drift report as an artifact
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: drift-report
+          path: ARMOR-DOCS/drift.json
+          if-no-files-found: ignore
 
       - name: Open an issue when the night failed
         if: ${{ failure() }}
