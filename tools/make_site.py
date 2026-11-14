@@ -9,7 +9,7 @@ Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
 Only text that is already committed in public repositories goes in: the documents of this repository, and (when ARMOR-COMMON is next to it) its contract documents, the paths and
 operations of the OpenAPI file and the channels of the AsyncAPI file. Every page is scanned with the rules of publication_check.py before it is written and a BLOCK finding stops the
-build. Nothing is fetched from the network and nothing is published here: the `site` workflow builds the folder as an artifact.
+build. Nothing is fetched from the network and nothing is published here: the `site` workflow builds the folder, keeps it as an artifact and deploys it to GitHub Pages.
 """
 from __future__ import annotations
 

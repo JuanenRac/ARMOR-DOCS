@@ -1,18 +1,22 @@
-# ARMOR-DOCS - the static documentation site, built as an artifact.
+# ARMOR-DOCS - the static documentation site, built as an artifact and deployed to GitHub Pages.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 #
-# Builds the site from the documents that are already public (tools/make_site.py) and keeps it as a build artifact. It is run by hand; nothing is published from here.
+# Builds the site from the documents that are already public (tools/make_site.py, which refuses to write a page that carries anything that must not go public) and publishes it on GitHub
+# Pages. It runs by hand (workflow_dispatch) and on every push to main. The build job can only read; only the deploy job may write to Pages. Pages must be switched on in the
+# settings of the repository with the source "GitHub Actions" (Settings > Pages) before the first deploy: until then the deploy job fails and the artifact is still kept by the build job.
 name: Documentation site
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 permissions:
   contents: read
 
 concurrency:
-  group: site-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/') }}
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   site:
@@ -47,3 +51,24 @@ jobs:
           name: documentation-site
           path: ARMOR-DOCS/site
           if-no-files-found: error
+
+      - name: Package the site for Pages
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: ARMOR-DOCS/site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
