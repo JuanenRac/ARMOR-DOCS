@@ -8,18 +8,18 @@ FACTS = {'emoji': '⌚',
  'badges': [['Wear OS', 'Kotlin', '7f52ff'], ['Tests', '{{fact:tests:ARMOR-WATCH}}%20passing', '2ea44f']]}
 
 TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one tap to confirm an alarm',
-        'honest': 'The message contract, the Kotlin core and the watch session are tested on a computer, and the Wear OS app and the sending side of the Android app compile and pass their tests in CI; **nothing has run on a real watch or an emulator, and the iPhone has no counterpart (it does not pair with a Wear OS watch).**',
+        'honest': 'The message contract, the Kotlin and Swift cores and the watch session are tested on a computer, and the Wear OS app, the Apple Watch app and the sending side of the Android and iPhone apps are built and pass their tests in CI; **nothing has run on a real watch, an emulator or a simulator, and the Apple Watch app is not yet inside the iPhone app.**',
         'glance': [['Role', 'The minimal watch client of A.R.M.O.R. (family: Clients, parent: ARMOR-ANDROID-CONTROL)'],
-                   ['Stack', 'Kotlin (JVM core and the Wear OS app with Compose, Gradle); Python 3.11+ for the checks'],
+                   ['Stack', 'Kotlin (JVM core and the Wear OS app with Compose, Gradle), Swift (core and the Apple Watch app with SwiftUI); Python 3.11+ for the checks'],
                    ['Tests', '{{fact:tests:ARMOR-WATCH}} in Python (`python -m unittest discover -s tests`) and the Kotlin tests (`./gradlew test`)'],
                    ['Messages', 'The switch of the relay, an alert, the clear of an alert and the confirmation back'],
-                   ['Runs on', 'Any computer with a JDK 21 (core); a Wear OS 3+ watch paired with the phone (app compiled in CI, never run)'],
+                   ['Runs on', 'Any computer with a JDK 21 (Kotlin core) or a Mac (Swift core); a Wear OS 3+ watch or an Apple Watch paired with the phone (apps built in CI, never run)'],
                    ['On real hardware', 'None yet: no watch or emulator has run it'],
                    ['License', 'GPL-3.0-or-later']],
-        'status': {'software': 'The Kotlin core reads and checks every message and keeps the alerts in memory; the Wear OS app (screen and Data Layer service) and the sender in the Android app are written.',
+        'status': {'software': 'The Kotlin and Swift cores read and check every message and keep the alerts in memory; the Wear OS app, the Apple Watch app and the senders in the Android and iPhone apps are written.',
                    'tests': '{{fact:tests:ARMOR-WATCH}} Python tests and the Kotlin tests run the same accepted and rejected examples of the contract; the Kotlin tests '
                             'run in CI.',
-                   'hardware': 'No watch or emulator has run it; the app and the Data Layer are only compiled and unit-tested in CI.',
+                   'hardware': 'No watch, emulator or simulator has run them; the apps are only built and unit-tested in CI.',
                    'docs': 'Eight languages, the protocol notes and the contract are written and up to date.'},
         'docs': ['[Protocol notes](docs/PROTOCOL.md): how the phone and the watch talk',
                  '[Message contract](docs/watch_alert_contract.json): the messages, the limits and the accepted and rejected examples'],
@@ -102,6 +102,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol (the messages and their checks) and AlertInbox (the alerts on the screen)\n'
                               '│   └── test/                               the same examples as the contract, and the rules of the inbox\n'
                               '├── wear/                               the Wear OS app: screen, Data Layer service and runtime\n'
+                              '├── watchos/                            the Apple Watch app: Swift core, screen and WatchConnectivity\n'
                               '├── tests/                                  the contract checked in Python\n'
                               '├── docs/                                   the contract and the protocol\n'
                               '├── tools/                                  checks and contract\n'
@@ -118,20 +119,20 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**Known limits today**\n\n* The Wear OS app (`wear/`, built with `-ParmorWear`) and the sender in ARMOR-ANDROID-CONTROL (off by default) compile and pass their unit tests in CI, but nothing has run on a real watch or an emulator.\n* An iPhone does not pair with a Wear OS watch, so ARMOR-IOS-CONTROL has no counterpart (an Apple Watch would be another app).\n* The contract is kept here; the Android app holds the same rules and runs the same examples.\n\n**Next**\n\n* Prove it on a real watch: pair it, switch the option on, raise a test alarm, see it on the watch, confirm it with a tap and see it confirmed in ARMOR-SERVER; then switch the option off and see the alert disappear.'}},
+                 'roadmap': '**Known limits today**\n\n* The Wear OS app (`wear/`, built with `-ParmorWear`), the Apple Watch app (`watchos/`, built only on a Mac) and the senders in ARMOR-ANDROID-CONTROL and ARMOR-IOS-CONTROL (off by default) are built and pass their tests in CI, but nothing has run on a real watch, an emulator or a simulator.\n* The Apple Watch app is not yet inside the iPhone app, so the pairing of the two is still to be tried; an iPhone does not pair with a Wear OS watch and an Android phone does not pair with an Apple Watch.\n* The contract is kept here; the Kotlin core, the Swift core and the phone apps run the same examples.\n\n**Next**\n\n* Prove it on a real watch, one of each kind: pair it, switch the option on, raise a test alarm, see it on the watch, confirm it with a tap and see it confirmed in ARMOR-SERVER; then switch the option off and see the alert disappear.'}},
  'es': {'tagline': 'El reloj mínimo de A.R.M.O.R.: avisos de alarma y un toque para confirmar una alarma',
-        'honest': 'El contrato de mensajes, el núcleo Kotlin y la sesión del reloj se prueban en un ordenador, y la app de Wear OS y el lado que envía de la app Android compilan y pasan sus pruebas en CI; **nada ha corrido en un reloj real ni en un emulador, y el iPhone no tiene equivalente (no se empareja con un reloj Wear OS).**',
+        'honest': 'El contrato de mensajes, los núcleos Kotlin y Swift y la sesión del reloj se prueban en un ordenador, y la app de Wear OS, la app del Apple Watch y el lado que envía de las apps Android e iPhone se compilan y pasan sus pruebas en CI; **nada ha corrido en un reloj real, un emulador ni un simulador, y la app del Apple Watch aún no está dentro de la app del iPhone.**',
         'glance': [['Rol', 'El cliente de reloj mínimo de A.R.M.O.R. (familia: Clients, padre: ARMOR-ANDROID-CONTROL)'],
-                   ['Stack', 'Kotlin (núcleo JVM y la app de Wear OS con Compose, Gradle); Python 3.11+ para las comprobaciones'],
+                   ['Stack', 'Kotlin (núcleo JVM y la app de Wear OS con Compose, Gradle), Swift (núcleo y la app del Apple Watch con SwiftUI); Python 3.11+ para las comprobaciones'],
                    ['Pruebas', '{{fact:tests:ARMOR-WATCH}} en Python (`python -m unittest discover -s tests`) y las pruebas de Kotlin (`./gradlew test`)'],
                    ['Mensajes', 'El interruptor del relé, una alerta, el borrado de una alerta y la confirmación de vuelta'],
-                   ['Funciona en', 'Cualquier ordenador con JDK 21 (núcleo); un reloj Wear OS 3+ emparejado con el móvil (app compilada en CI, nunca ejecutada)'],
+                   ['Funciona en', 'Cualquier ordenador con JDK 21 (núcleo Kotlin) o un Mac (núcleo Swift); un reloj Wear OS 3+ o un Apple Watch emparejado con el móvil (apps compiladas en CI, nunca ejecutadas)'],
                    ['En hardware real', 'Ninguno todavía: ningún reloj ni emulador lo ha ejecutado'],
                    ['Licencia', 'GPL-3.0-or-later']],
-        'status': {'software': 'El núcleo Kotlin lee y comprueba cada mensaje y guarda las alertas en memoria; la app de Wear OS (pantalla y servicio del Data Layer) y el emisor de la app Android están escritos.',
+        'status': {'software': 'Los núcleos Kotlin y Swift leen y comprueban cada mensaje y guardan las alertas en memoria; la app de Wear OS, la app del Apple Watch y los emisores de las apps Android e iPhone están escritos.',
                    'tests': '{{fact:tests:ARMOR-WATCH}} pruebas de Python y las de Kotlin ejecutan los mismos ejemplos aceptados y rechazados del contrato; las de '
                             'Kotlin corren en CI.',
-                   'hardware': 'Ningún reloj ni emulador la ha ejecutado; la app y el Data Layer solo se compilan y se prueban con pruebas unitarias en CI.',
+                   'hardware': 'Ningún reloj, emulador ni simulador las ha ejecutado; las apps solo se compilan y se prueban con pruebas unitarias en CI.',
                    'docs': 'Ocho idiomas, las notas del protocolo y el contrato están escritos y al día.'},
         'docs': ['[Notas del protocolo](docs/PROTOCOL.md): cómo hablan el móvil y el reloj',
                  '[Contrato de mensajes](docs/watch_alert_contract.json): los mensajes, los límites y los ejemplos aceptados y rechazados'],
@@ -215,6 +216,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol (los mensajes y sus comprobaciones) y AlertInbox (las alertas en pantalla)\n'
                               '│   └── test/                               los mismos ejemplos que el contrato y las reglas de la bandeja\n'
                               '├── wear/                               la app de Wear OS: pantalla, servicio del Data Layer y runtime\n'
+                              '├── watchos/                            la app del Apple Watch: núcleo Swift, pantalla y WatchConnectivity\n'
                               '├── tests/                                  el contrato comprobado en Python\n'
                               '├── docs/                                   el contrato y el protocolo\n'
                               '├── tools/                                  comprobaciones y contrato\n'
@@ -231,20 +233,20 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**Límites conocidos hoy**\n\n* La app de Wear OS (`wear/`, se compila con `-ParmorWear`) y el emisor de ARMOR-ANDROID-CONTROL (apagado por defecto) compilan y pasan sus pruebas unitarias en CI, pero nada ha corrido en un reloj real ni en un emulador.\n* Un iPhone no se empareja con un reloj Wear OS, así que ARMOR-IOS-CONTROL no tiene equivalente (un Apple Watch sería otra app).\n* El contrato vive aquí; la app Android guarda las mismas reglas y ejecuta los mismos ejemplos.\n\n**Siguiente**\n\n* Probarlo en un reloj real: emparejarlo, activar la opción, lanzar una alarma de prueba, verla en el reloj, confirmarla con un toque y ver la confirmación en ARMOR-SERVER; después apagar la opción y ver desaparecer el aviso.'}},
+                 'roadmap': '**Límites conocidos hoy**\n\n* La app de Wear OS (`wear/`, se compila con `-ParmorWear`), la app del Apple Watch (`watchos/`, solo se compila en un Mac) y los emisores de ARMOR-ANDROID-CONTROL y ARMOR-IOS-CONTROL (apagados por defecto) se compilan y pasan sus pruebas en CI, pero nada ha corrido en un reloj real, un emulador ni un simulador.\n* La app del Apple Watch aún no está dentro de la app del iPhone, así que el emparejamiento de las dos está por probar; un iPhone no se empareja con un reloj Wear OS ni un móvil Android con un Apple Watch.\n* El contrato vive aquí; el núcleo Kotlin, el núcleo Swift y las apps del móvil ejecutan los mismos ejemplos.\n\n**Siguiente**\n\n* Probarlo en un reloj real de cada tipo: emparejarlo, activar la opción, lanzar una alarma de prueba, verla en el reloj, confirmarla con un toque y ver la confirmación en ARMOR-SERVER; después apagar la opción y ver desaparecer el aviso.'}},
  'de': {'tagline': 'Die minimale A.R.M.O.R.-Uhr: Alarmmeldungen und ein Tipp zum Bestätigen eines Alarms',
-        'honest': 'Der Nachrichtenvertrag, der Kotlin-Kern und die Uhr-Sitzung werden auf einem Computer getestet, und die Wear-OS-App und die Sendeseite der Android-App werden in CI gebaut und bestehen ihre Tests; **nichts lief auf einer echten Uhr oder einem Emulator, und das iPhone hat keine Entsprechung (es koppelt nicht mit einer Wear-OS-Uhr).**',
+        'honest': 'Der Nachrichtenvertrag, die Kotlin- und Swift-Kerne und die Uhr-Sitzung werden auf einem Computer getestet, und die Wear-OS-App, die Apple-Watch-App und die Sendeseite der Android- und iPhone-Apps werden in CI gebaut und bestehen ihre Tests; **nichts lief auf einer echten Uhr, einem Emulator oder einem Simulator, und die Apple-Watch-App ist noch nicht in der iPhone-App.**',
         'glance': [['Rolle', 'Der minimale Uhren-Client von A.R.M.O.R. (Familie: Clients, Eltern: ARMOR-ANDROID-CONTROL)'],
-                   ['Stack', 'Kotlin (JVM-Kern und die Wear-OS-App mit Compose, Gradle); Python 3.11+ für die Prüfungen'],
+                   ['Stack', 'Kotlin (JVM-Kern und die Wear-OS-App mit Compose, Gradle), Swift (Kern und die Apple-Watch-App mit SwiftUI); Python 3.11+ für die Prüfungen'],
                    ['Tests', '{{fact:tests:ARMOR-WATCH}} in Python (`python -m unittest discover -s tests`) und die Kotlin-Tests (`./gradlew test`)'],
                    ['Nachrichten', 'Der Schalter des Relays, ein Alarm, das Löschen eines Alarms und die Bestätigung zurück'],
-                   ['Läuft auf', 'Jedem Computer mit JDK 21 (Kern); einer Wear-OS-3+-Uhr, gekoppelt mit dem Telefon (App in CI gebaut, nie ausgeführt)'],
+                   ['Läuft auf', 'Jedem Computer mit JDK 21 (Kotlin-Kern) oder einem Mac (Swift-Kern); einer Wear-OS-3+-Uhr oder einer Apple Watch, gekoppelt mit dem Telefon (Apps in CI gebaut, nie ausgeführt)'],
                    ['Auf echter Hardware', 'Noch nicht: keine Uhr und kein Emulator hat es ausgeführt'],
                    ['Lizenz', 'GPL-3.0-or-later']],
-        'status': {'software': 'Der Kotlin-Kern liest und prüft jede Nachricht und hält die Alarme im Speicher; die Wear-OS-App (Bildschirm und Data-Layer-Dienst) und der Sender in der Android-App sind geschrieben.',
+        'status': {'software': 'Die Kotlin- und Swift-Kerne lesen und prüfen jede Nachricht und halten die Alarme im Speicher; die Wear-OS-App, die Apple-Watch-App und die Sender in den Android- und iPhone-Apps sind geschrieben.',
                    'tests': '{{fact:tests:ARMOR-WATCH}} Python-Tests und die Kotlin-Tests führen dieselben angenommenen und abgelehnten Beispiele des Vertrags aus; die '
                             'Kotlin-Tests laufen in der CI.',
-                   'hardware': 'Keine Uhr und kein Emulator hat sie ausgeführt; App und Data Layer werden nur in CI gebaut und per Unit-Test geprüft.',
+                   'hardware': 'Keine Uhr, kein Emulator und kein Simulator hat sie ausgeführt; die Apps werden nur in CI gebaut und per Unit-Test geprüft.',
                    'docs': 'Acht Sprachen, die Protokollnotizen und der Vertrag sind geschrieben und aktuell.'},
         'docs': ['[Protokollnotizen](docs/PROTOCOL.md): wie Telefon und Uhr miteinander sprechen',
                  '[Nachrichtenvertrag](docs/watch_alert_contract.json): die Nachrichten, die Grenzen und die angenommenen und abgelehnten Beispiele'],
@@ -330,6 +332,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               'Bildschirm)\n'
                               '│   └── test/                               dieselben Beispiele wie der Vertrag und die Regeln des Posteingangs\n'
                               '├── wear/                               die Wear-OS-App: Bildschirm, Data-Layer-Dienst und Laufzeit\n'
+                              '├── watchos/                            die Apple-Watch-App: Swift-Kern, Bildschirm und WatchConnectivity\n'
                               '├── tests/                                  der Vertrag in Python geprüft\n'
                               '├── docs/                                   der Vertrag und das Protokoll\n'
                               '├── tools/                                  Prüfungen, Vertrag\n'
@@ -346,20 +349,20 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**Bekannte Grenzen heute**\n\n* Die Wear-OS-App (`wear/`, gebaut mit `-ParmorWear`) und der Sender in ARMOR-ANDROID-CONTROL (standardmäßig aus) werden in CI gebaut und bestehen ihre Unit-Tests, aber nichts lief auf einer echten Uhr oder einem Emulator.\n* Ein iPhone koppelt nicht mit einer Wear-OS-Uhr, daher hat ARMOR-IOS-CONTROL keine Entsprechung (eine Apple Watch wäre eine andere App).\n* Der Vertrag liegt hier; die Android-App enthält dieselben Regeln und führt dieselben Beispiele aus.\n\n**Als Nächstes**\n\n* Auf einer echten Uhr beweisen: koppeln, die Option einschalten, einen Testalarm auslösen, ihn auf der Uhr sehen, mit einem Tipp bestätigen und die Bestätigung in ARMOR-SERVER sehen; dann die Option ausschalten und die Meldung verschwinden sehen.'}},
+                 'roadmap': '**Bekannte Grenzen heute**\n\n* Die Wear-OS-App (`wear/`, gebaut mit `-ParmorWear`), die Apple-Watch-App (`watchos/`, nur auf einem Mac gebaut) und die Sender in ARMOR-ANDROID-CONTROL und ARMOR-IOS-CONTROL (standardmäßig aus) werden in CI gebaut und bestehen ihre Unit-Tests, aber nichts lief auf einer echten Uhr, einem Emulator oder einem Simulator.\n* Die Apple-Watch-App ist noch nicht in der iPhone-App, die Kopplung beider ist also noch zu prüfen; ein iPhone koppelt nicht mit einer Wear-OS-Uhr und ein Android-Telefon nicht mit einer Apple Watch.\n* Der Vertrag liegt hier; der Kotlin-Kern, der Swift-Kern und die Telefon-Apps führen dieselben Beispiele aus.\n\n**Als Nächstes**\n\n* Auf einer echten Uhr jeder Art beweisen: koppeln, die Option einschalten, einen Testalarm auslösen, ihn auf der Uhr sehen, mit einem Tipp bestätigen und die Bestätigung in ARMOR-SERVER sehen; dann die Option ausschalten und die Meldung verschwinden sehen.'}},
  'fr': {'tagline': "La montre minimale d'A.R.M.O.R. : avis d'alarme et un toucher pour confirmer une alarme",
-        'honest': "Le contrat des messages, le noyau Kotlin et la session de la montre sont testés sur un ordinateur, et l'app Wear OS et le côté émetteur de l'app Android se compilent et passent leurs tests en CI ; **rien n'a tourné sur une vraie montre ni sur un émulateur, et l'iPhone n'a pas d'équivalent (il ne s'appaire pas avec une montre Wear OS).**",
+        'honest': "Le contrat des messages, les noyaux Kotlin et Swift et la session de la montre sont testés sur un ordinateur, et l'app Wear OS, l'app Apple Watch et le côté émetteur des apps Android et iPhone se compilent et passent leurs tests en CI ; **rien n'a tourné sur une vraie montre, un émulateur ou un simulateur, et l'app Apple Watch n'est pas encore dans l'app iPhone.**",
         'glance': [['Rôle', "Le client montre minimal d'A.R.M.O.R. (famille : Clients, parent : ARMOR-ANDROID-CONTROL)"],
-                   ['Stack', "Kotlin (noyau JVM et l'app Wear OS avec Compose, Gradle) ; Python 3.11+ pour les vérifications"],
+                   ['Stack', "Kotlin (noyau JVM et l'app Wear OS avec Compose, Gradle), Swift (noyau et l'app Apple Watch avec SwiftUI) ; Python 3.11+ pour les vérifications"],
                    ['Tests', '{{fact:tests:ARMOR-WATCH}} en Python (`python -m unittest discover -s tests`) et les tests Kotlin (`./gradlew test`)'],
                    ['Messages', "L'interrupteur du relais, une alerte, l'effacement d'une alerte et la confirmation en retour"],
-                   ['Fonctionne sur', 'Tout ordinateur avec un JDK 21 (noyau) ; une montre Wear OS 3+ appairée au téléphone (app compilée en CI, jamais exécutée)'],
+                   ['Fonctionne sur', 'Tout ordinateur avec un JDK 21 (noyau Kotlin) ou un Mac (noyau Swift) ; une montre Wear OS 3+ ou une Apple Watch appairée au téléphone (apps compilées en CI, jamais exécutées)'],
                    ['Sur matériel réel', "Aucun pour l'instant : aucune montre ni émulateur ne l'a exécuté"],
                    ['Licence', 'GPL-3.0-or-later']],
-        'status': {'software': "Le noyau Kotlin lit et vérifie chaque message et garde les alertes en mémoire ; l'app Wear OS (écran et service Data Layer) et l'émetteur de l'app Android sont écrits.",
+        'status': {'software': "Les noyaux Kotlin et Swift lisent et vérifient chaque message et gardent les alertes en mémoire ; l'app Wear OS, l'app Apple Watch et les émetteurs des apps Android et iPhone sont écrits.",
                    'tests': '{{fact:tests:ARMOR-WATCH}} tests Python et les tests Kotlin exécutent les mêmes exemples acceptés et refusés du contrat ; les tests Kotlin '
                             'tournent en CI.',
-                   'hardware': "Aucune montre ni émulateur ne l'a exécutée ; l'app et le Data Layer sont seulement compilés et testés unitairement en CI.",
+                   'hardware': 'Aucune montre, aucun émulateur ni simulateur ne les a exécutées ; les apps sont seulement compilées et testées unitairement en CI.',
                    'docs': 'Huit langues, les notes du protocole et le contrat sont écrits et à jour.'},
         'docs': ['[Notes du protocole](docs/PROTOCOL.md) : comment le téléphone et la montre se parlent',
                  '[Contrat des messages](docs/watch_alert_contract.json) : les messages, les limites et les exemples acceptés et refusés'],
@@ -445,6 +448,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               "│   ├── main/                               WatchProtocol (les messages et leurs contrôles) et AlertInbox (les alertes à l'écran)\n"
                               '│   └── test/                               les mêmes exemples que le contrat et les règles de la boîte\n'
                               '├── wear/                               l\'app Wear OS : écran, service Data Layer et runtime\n'
+                              '├── watchos/                            l\'app Apple Watch : noyau Swift, écran et WatchConnectivity\n'
                               '├── tests/                                  le contrat vérifié en Python\n'
                               '├── docs/                                   le contrat et le protocole\n'
                               '├── tools/                                  contrôles et contrat\n'
@@ -461,20 +465,20 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': "**Limites connues aujourd'hui**\n\n* L'app Wear OS (`wear/`, compilée avec `-ParmorWear`) et l'émetteur d'ARMOR-ANDROID-CONTROL (désactivé par défaut) se compilent et passent leurs tests unitaires en CI, mais rien n'a tourné sur une vraie montre ni sur un émulateur.\n* Un iPhone ne s'appaire pas avec une montre Wear OS, donc ARMOR-IOS-CONTROL n'a pas d'équivalent (une Apple Watch serait une autre app).\n* Le contrat est conservé ici ; l'app Android garde les mêmes règles et exécute les mêmes exemples.\n\n**Ensuite**\n\n* Le prouver sur une vraie montre : l'appairer, activer l'option, lancer une alarme d'essai, la voir sur la montre, la confirmer d'un toucher et voir la confirmation dans ARMOR-SERVER ; puis désactiver l'option et voir l'alerte disparaître."}},
+                 'roadmap': "**Limites connues aujourd'hui**\n\n* L'app Wear OS (`wear/`, compilée avec `-ParmorWear`), l'app Apple Watch (`watchos/`, compilée seulement sur un Mac) et les émetteurs d'ARMOR-ANDROID-CONTROL et d'ARMOR-IOS-CONTROL (désactivés par défaut) se compilent et passent leurs tests en CI, mais rien n'a tourné sur une vraie montre, un émulateur ou un simulateur.\n* L'app Apple Watch n'est pas encore dans l'app iPhone : l'appairage des deux reste à essayer ; un iPhone ne s'appaire pas avec une montre Wear OS ni un téléphone Android avec une Apple Watch.\n* Le contrat est conservé ici ; le noyau Kotlin, le noyau Swift et les apps du téléphone exécutent les mêmes exemples.\n\n**Ensuite**\n\n* Le prouver sur une vraie montre de chaque type : l'appairer, activer l'option, lancer une alarme d'essai, la voir sur la montre, la confirmer d'un toucher et voir la confirmation dans ARMOR-SERVER ; puis désactiver l'option et voir l'alerte disparaître."}},
  'it': {'tagline': "L'orologio minimale di A.R.M.O.R.: avvisi di allarme e un tocco per confermare un allarme",
-        'honest': "Il contratto dei messaggi, il nucleo Kotlin e la sessione dell'orologio sono testati su un computer, e l'app Wear OS e il lato che invia dell'app Android si compilano e superano i test in CI; **nulla è stato eseguito su un orologio reale o su un emulatore, e l'iPhone non ha un equivalente (non si associa a un orologio Wear OS).**",
+        'honest': "Il contratto dei messaggi, i nuclei Kotlin e Swift e la sessione dell'orologio sono testati su un computer, e l'app Wear OS, l'app Apple Watch e il lato che invia delle app Android e iPhone si compilano e superano i test in CI; **nulla è stato eseguito su un orologio reale, un emulatore o un simulatore, e l'app Apple Watch non è ancora dentro l'app iPhone.**",
         'glance': [['Ruolo', 'Il client orologio minimale di A.R.M.O.R. (famiglia: Clients, genitore: ARMOR-ANDROID-CONTROL)'],
-                   ['Stack', 'Kotlin (nucleo JVM e app Wear OS con Compose, Gradle); Python 3.11+ per i controlli'],
+                   ['Stack', 'Kotlin (nucleo JVM e app Wear OS con Compose, Gradle), Swift (nucleo e app Apple Watch con SwiftUI); Python 3.11+ per i controlli'],
                    ['Test', '{{fact:tests:ARMOR-WATCH}} in Python (`python -m unittest discover -s tests`) e i test Kotlin (`./gradlew test`)'],
                    ['Messaggi', "L'interruttore del relay, un avviso, la cancellazione di un avviso e la conferma di ritorno"],
-                   ['Funziona su', 'Qualsiasi computer con JDK 21 (nucleo); un orologio Wear OS 3+ associato al telefono (app compilata in CI, mai eseguita)'],
+                   ['Funziona su', 'Qualsiasi computer con JDK 21 (nucleo Kotlin) o un Mac (nucleo Swift); un orologio Wear OS 3+ o un Apple Watch associato al telefono (app compilate in CI, mai eseguite)'],
                    ['Su hardware reale', "Ancora nessuno: nessun orologio o emulatore l'ha eseguito"],
                    ['Licenza', 'GPL-3.0-or-later']],
-        'status': {'software': "Il nucleo Kotlin legge e controlla ogni messaggio e tiene gli avvisi in memoria; l'app Wear OS (schermo e servizio Data Layer) e il mittente dell'app Android sono scritti.",
+        'status': {'software': "I nuclei Kotlin e Swift leggono e controllano ogni messaggio e tengono gli avvisi in memoria; l'app Wear OS, l'app Apple Watch e i mittenti delle app Android e iPhone sono scritti.",
                    'tests': '{{fact:tests:ARMOR-WATCH}} test Python e i test Kotlin eseguono gli stessi esempi accettati e rifiutati del contratto; i test Kotlin girano '
                             'in CI.',
-                   'hardware': "Nessun orologio o emulatore l'ha eseguita; l'app e il Data Layer sono solo compilati e provati con test unitari in CI.",
+                   'hardware': 'Nessun orologio, emulatore o simulatore le ha eseguite; le app sono solo compilate e provate con test unitari in CI.',
                    'docs': 'Otto lingue, le note del protocollo e il contratto sono scritti e aggiornati.'},
         'docs': ['[Note del protocollo](docs/PROTOCOL.md): come parlano telefono e orologio',
                  '[Contratto dei messaggi](docs/watch_alert_contract.json): i messaggi, i limiti e gli esempi accettati e rifiutati'],
@@ -558,6 +562,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol (i messaggi e i loro controlli) e AlertInbox (gli avvisi sullo schermo)\n'
                               '│   └── test/                               gli stessi esempi del contratto e le regole della casella\n'
                               '├── wear/                               l\'app Wear OS: schermo, servizio Data Layer e runtime\n'
+                              '├── watchos/                            l\'app Apple Watch: nucleo Swift, schermo e WatchConnectivity\n'
                               '├── tests/                                  il contratto verificato in Python\n'
                               '├── docs/                                   il contratto e il protocollo\n'
                               '├── tools/                                  controlli e contratto\n'
@@ -574,19 +579,19 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': "**Limiti noti oggi**\n\n* L'app Wear OS (`wear/`, compilata con `-ParmorWear`) e il mittente di ARMOR-ANDROID-CONTROL (spento per impostazione predefinita) si compilano e superano i test unitari in CI, ma nulla è stato eseguito su un orologio reale o su un emulatore.\n* Un iPhone non si associa a un orologio Wear OS, quindi ARMOR-IOS-CONTROL non ha un equivalente (un Apple Watch sarebbe un'altra app).\n* Il contratto è custodito qui; l'app Android contiene le stesse regole ed esegue gli stessi esempi.\n\n**Prossimi passi**\n\n* Provarlo su un orologio reale: associarlo, attivare l'opzione, lanciare un allarme di prova, vederlo sull'orologio, confermarlo con un tocco e vedere la conferma in ARMOR-SERVER; poi spegnere l'opzione e vedere sparire l'avviso."}},
+                 'roadmap': "**Limiti noti oggi**\n\n* L'app Wear OS (`wear/`, compilata con `-ParmorWear`), l'app Apple Watch (`watchos/`, compilata solo su un Mac) e i mittenti di ARMOR-ANDROID-CONTROL e ARMOR-IOS-CONTROL (spenti per impostazione predefinita) si compilano e superano i test in CI, ma nulla è stato eseguito su un orologio reale, un emulatore o un simulatore.\n* L'app Apple Watch non è ancora dentro l'app iPhone: l'associazione dei due è ancora da provare; un iPhone non si associa a un orologio Wear OS né un telefono Android a un Apple Watch.\n* Il contratto è custodito qui; il nucleo Kotlin, il nucleo Swift e le app del telefono eseguono gli stessi esempi.\n\n**Prossimi passi**\n\n* Provarlo su un orologio reale di ciascun tipo: associarlo, attivare l'opzione, lanciare un allarme di prova, vederlo sull'orologio, confermarlo con un tocco e vedere la conferma in ARMOR-SERVER; poi spegnere l'opzione e vedere sparire l'avviso."}},
  'ja': {'tagline': 'A.R.M.O.R. の最小ウォッチ：アラーム通知と、タップ 1 回でのアラーム確認',
-        'honest': 'メッセージ契約、Kotlin コア、ウォッチのセッションはコンピューター上でテストされ、Wear OS アプリと Android アプリの送信側は CI でビルドされてテストに合格しています。**実機のウォッチやエミュレーターではまだ何も動かしていません。iPhone には対応するものがありません（Wear OS ウォッチとはペアリングできません）。**',
+        'honest': 'メッセージ契約、Kotlin と Swift のコア、ウォッチのセッションはコンピューター上でテストされ、Wear OS アプリ、Apple Watch アプリ、Android と iPhone アプリの送信側は CI でビルドされてテストに合格しています。**実機のウォッチ、エミュレーター、シミュレーターではまだ何も動かしていません。Apple Watch アプリはまだ iPhone アプリの中に入っていません。**',
         'glance': [['役割', 'A.R.M.O.R. の最小ウォッチクライアント（ファミリー：Clients、親：ARMOR-ANDROID-CONTROL）'],
-                   ['スタック', 'Kotlin（JVM コアと Compose の Wear OS アプリ、Gradle）。検査は Python 3.11+'],
+                   ['スタック', 'Kotlin（JVM コアと Compose の Wear OS アプリ、Gradle）、Swift（コアと SwiftUI の Apple Watch アプリ）。検査は Python 3.11+'],
                    ['テスト', 'Python に {{fact:tests:ARMOR-WATCH}} 件（`python -m unittest discover -s tests`）と Kotlin テスト（`./gradlew test`）'],
                    ['メッセージ', 'リレーのスイッチ、アラート、アラートの解除、返信の確認'],
-                   ['動作環境', 'JDK 21 のある任意のコンピューター（コア）、スマートフォンとペアリングした Wear OS 3+ ウォッチ（アプリは CI でビルド済み、実行は未）'],
+                   ['動作環境', 'JDK 21 のある任意のコンピューター（Kotlin コア）または Mac（Swift コア）、スマートフォンとペアリングした Wear OS 3+ ウォッチまたは Apple Watch（アプリは CI でビルド済み、実行は未）'],
                    ['実機での動作', 'まだなし：ウォッチでもエミュレーターでも実行されていません'],
                    ['ライセンス', 'GPL-3.0-or-later']],
-        'status': {'software': 'Kotlin コアはすべてのメッセージを読み取って検査し、アラートをメモリ上に保持します。Wear OS アプリ（画面と Data Layer サービス）と Android アプリの送信側は実装済みです。',
+        'status': {'software': 'Kotlin と Swift のコアはすべてのメッセージを読み取って検査し、アラートをメモリ上に保持します。Wear OS アプリ、Apple Watch アプリ、Android と iPhone アプリの送信側は実装済みです。',
                    'tests': 'Python テスト {{fact:tests:ARMOR-WATCH}} 件と Kotlin テストが、契約の同じ受理例・拒否例を実行します。Kotlin テストは CI で動きます。',
-                   'hardware': 'ウォッチでもエミュレーターでも実行されていません。アプリと Data Layer は CI でのビルドと単体テストのみです。',
+                   'hardware': 'ウォッチ、エミュレーター、シミュレーターのいずれでも実行されていません。アプリは CI でのビルドと単体テストのみです。',
                    'docs': '8 言語、プロトコルの説明、契約が書かれ、最新です。'},
         'docs': ['[プロトコルの説明](docs/PROTOCOL.md)：スマートフォンとウォッチの通信方法', '[メッセージ契約](docs/watch_alert_contract.json)：メッセージ、上限、受理される例と拒否される例'],
         'contributing_first': 'プルリクエストの前に `python -m unittest discover -s tests` と `python -I tools/armor_ci_validate.py` '
@@ -660,6 +665,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol（メッセージとその検査）と AlertInbox（画面上のアラート）\n'
                               '│   └── test/                               契約と同じ例と受信箱のルール\n'
                               '├── wear/                               Wear OS アプリ：画面、Data Layer サービス、ランタイム\n'
+                              '├── watchos/                            Apple Watch アプリ：Swift コア、画面、WatchConnectivity\n'
                               '├── tests/                                  Python で検査した契約\n'
                               '├── docs/                                   契約とプロトコル\n'
                               '├── tools/                                  検査と契約\n'
@@ -676,19 +682,19 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**現時点の既知の制限**\n\n* Wear OS アプリ（`wear/`、`-ParmorWear` でビルド）と ARMOR-ANDROID-CONTROL の送信側（既定ではオフ）は CI でビルドされ単体テストに合格していますが、実機のウォッチやエミュレーターでは何も動かしていません。\n* iPhone は Wear OS ウォッチとペアリングできないため、ARMOR-IOS-CONTROL には対応するものがありません（Apple Watch なら別のアプリになります）。\n* 契約はここで管理されます。Android アプリは同じルールを持ち、同じ例を実行します。\n\n**次のステップ**\n\n* 実機のウォッチで確認する：ペアリングし、オプションをオンにし、テストアラームを発生させ、ウォッチで見て、タップで確認し、ARMOR-SERVER で確認済みになるのを見る。その後オプションをオフにして通知が消えるのを見る。'}},
+                 'roadmap': '**現時点の既知の制限**\n\n* Wear OS アプリ（`wear/`、`-ParmorWear` でビルド）、Apple Watch アプリ（`watchos/`、Mac でのみビルド）、ARMOR-ANDROID-CONTROL と ARMOR-IOS-CONTROL の送信側（既定ではオフ）は CI でビルドされ単体テストに合格していますが、実機のウォッチ、エミュレーター、シミュレーターでは何も動かしていません。\n* Apple Watch アプリはまだ iPhone アプリの中に入っていないため、両者のペアリングは未確認です。iPhone は Wear OS ウォッチと、Android スマートフォンは Apple Watch とペアリングできません。\n* 契約はここで管理されます。Kotlin コア、Swift コア、スマートフォンアプリは同じ例を実行します。\n\n**次のステップ**\n\n* 各種類の実機ウォッチで確認する：ペアリングし、オプションをオンにし、テストアラームを発生させ、ウォッチで見て、タップで確認し、ARMOR-SERVER で確認済みになるのを見る。その後オプションをオフにして通知が消えるのを見る。'}},
  'zh': {'tagline': 'A.R.M.O.R. 的极简手表：警报通知，轻点一下确认警报',
-        'honest': '消息契约、Kotlin 核心和手表会话已在电脑上测试，Wear OS 应用和 Android 应用的发送端在 CI 中构建并通过测试；**尚未在真实手表或模拟器上运行，iPhone 没有对应物（它不能与 Wear OS 手表配对）。**',
+        'honest': '消息契约、Kotlin 和 Swift 核心以及手表会话已在电脑上测试，Wear OS 应用、Apple Watch 应用以及 Android 和 iPhone 应用的发送端在 CI 中构建并通过测试；**尚未在真实手表、模拟器或仿真器上运行，Apple Watch 应用也还没有放进 iPhone 应用。**',
         'glance': [['角色', 'A.R.M.O.R. 的极简手表客户端（家族：Clients，上级：ARMOR-ANDROID-CONTROL）'],
-                   ['技术栈', 'Kotlin（JVM 核心和使用 Compose 的 Wear OS 应用，Gradle）；检查用 Python 3.11+'],
+                   ['技术栈', 'Kotlin（JVM 核心和使用 Compose 的 Wear OS 应用，Gradle），Swift（核心和使用 SwiftUI 的 Apple Watch 应用）；检查用 Python 3.11+'],
                    ['测试', 'Python 中 {{fact:tests:ARMOR-WATCH}} 个（`python -m unittest discover -s tests`）和 Kotlin 测试（`./gradlew test`）'],
                    ['消息', '转发开关、一条警报、警报的清除以及回传的确认'],
-                   ['运行于', '任何带 JDK 21 的电脑（核心）；与手机配对的 Wear OS 3+ 手表（应用已在 CI 中构建，尚未运行）'],
+                   ['运行于', '任何带 JDK 21 的电脑（Kotlin 核心）或 Mac（Swift 核心）；与手机配对的 Wear OS 3+ 手表或 Apple Watch（应用已在 CI 中构建，尚未运行）'],
                    ['真实硬件', '尚无：没有手表或模拟器运行过'],
                    ['许可证', 'GPL-3.0-or-later']],
-        'status': {'software': 'Kotlin 核心读取并检查每条消息，并把警报保存在内存中；Wear OS 应用（界面和 Data Layer 服务）以及 Android 应用中的发送端已编写。',
+        'status': {'software': 'Kotlin 和 Swift 核心读取并检查每条消息，并把警报保存在内存中；Wear OS 应用、Apple Watch 应用以及 Android 和 iPhone 应用中的发送端已编写。',
                    'tests': '{{fact:tests:ARMOR-WATCH}} 个 Python 测试和 Kotlin 测试运行契约中相同的被接受和被拒绝示例；Kotlin 测试在 CI 中运行。',
-                   'hardware': '没有手表或模拟器运行过它；应用和 Data Layer 只在 CI 中构建并做单元测试。',
+                   'hardware': '没有手表、模拟器或仿真器运行过它们；应用只在 CI 中构建并做单元测试。',
                    'docs': '八种语言、协议说明和契约均已编写并保持最新。'},
         'docs': ['[协议说明](docs/PROTOCOL.md)：手机与手表如何通信', '[消息契约](docs/watch_alert_contract.json)：消息、限制以及被接受和被拒绝的示例'],
         'contributing_first': '提交 Pull Request 之前运行 `python -m unittest discover -s tests` 和 `python -I tools/armor_ci_validate.py`：必须通过。参见 '
@@ -760,6 +766,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol（消息及其检查）和 AlertInbox（屏幕上的警报）\n'
                               '│   └── test/                               与契约相同的示例以及收件箱的规则\n'
                               '├── wear/                               Wear OS 应用：界面、Data Layer 服务和运行时\n'
+                              '├── watchos/                            Apple Watch 应用：Swift 核心、界面和 WatchConnectivity\n'
                               '├── tests/                                  用 Python 检查的契约\n'
                               '├── docs/                                   契约与协议\n'
                               '├── tools/                                  检查与契约\n'
@@ -776,20 +783,20 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**当前已知限制**\n\n* Wear OS 应用（`wear/`，用 `-ParmorWear` 构建）和 ARMOR-ANDROID-CONTROL 的发送端（默认关闭）在 CI 中构建并通过单元测试，但尚未在真实手表或模拟器上运行。\n* iPhone 不能与 Wear OS 手表配对，所以 ARMOR-IOS-CONTROL 没有对应物（Apple Watch 将是另一个应用）。\n* 契约保存在这里；Android 应用持有相同的规则并运行相同的示例。\n\n**下一步**\n\n* 在真实手表上验证：配对，打开选项，触发测试警报，在手表上看到它，轻点确认，并在 ARMOR-SERVER 中看到已确认；然后关闭选项，看到提醒消失。'}},
+                 'roadmap': '**当前已知限制**\n\n* Wear OS 应用（`wear/`，用 `-ParmorWear` 构建）、Apple Watch 应用（`watchos/`，只在 Mac 上构建）以及 ARMOR-ANDROID-CONTROL 和 ARMOR-IOS-CONTROL 的发送端（默认关闭）在 CI 中构建并通过单元测试，但尚未在真实手表、模拟器或仿真器上运行。\n* Apple Watch 应用还没有放进 iPhone 应用，所以两者的配对尚待试验；iPhone 不能与 Wear OS 手表配对，Android 手机也不能与 Apple Watch 配对。\n* 契约保存在这里；Kotlin 核心、Swift 核心和手机应用运行相同的示例。\n\n**下一步**\n\n* 在每种真实手表上验证：配对，打开选项，触发测试警报，在手表上看到它，轻点确认，并在 ARMOR-SERVER 中看到已确认；然后关闭选项，看到提醒消失。'}},
  'pt': {'tagline': 'O relógio mínimo do A.R.M.O.R.: avisos de alarme e um toque para confirmar um alarme',
-        'honest': 'O contrato das mensagens, o núcleo Kotlin e a sessão do relógio são testados num computador, e a app Wear OS e o lado que envia da app Android compilam e passam os seus testes na CI; **nada correu num relógio real nem num emulador, e o iPhone não tem equivalente (não emparelha com um relógio Wear OS).**',
+        'honest': 'O contrato das mensagens, os núcleos Kotlin e Swift e a sessão do relógio são testados num computador, e a app Wear OS, a app do Apple Watch e o lado que envia das apps Android e iPhone compilam e passam os seus testes na CI; **nada correu num relógio real, num emulador nem num simulador, e a app do Apple Watch ainda não está dentro da app do iPhone.**',
         'glance': [['Função', 'O cliente de relógio mínimo do A.R.M.O.R. (família: Clients, pai: ARMOR-ANDROID-CONTROL)'],
-                   ['Stack', 'Kotlin (núcleo JVM e a app Wear OS com Compose, Gradle); Python 3.11+ para as verificações'],
+                   ['Stack', 'Kotlin (núcleo JVM e a app Wear OS com Compose, Gradle), Swift (núcleo e a app do Apple Watch com SwiftUI); Python 3.11+ para as verificações'],
                    ['Testes', '{{fact:tests:ARMOR-WATCH}} em Python (`python -m unittest discover -s tests`) e os testes Kotlin (`./gradlew test`)'],
                    ['Mensagens', 'O interruptor do relé, um alerta, a limpeza de um alerta e a confirmação de volta'],
-                   ['Corre em', 'Qualquer computador com JDK 21 (núcleo); um relógio Wear OS 3+ emparelhado com o telemóvel (app compilada na CI, nunca executada)'],
+                   ['Corre em', 'Qualquer computador com JDK 21 (núcleo Kotlin) ou um Mac (núcleo Swift); um relógio Wear OS 3+ ou um Apple Watch emparelhado com o telemóvel (apps compiladas na CI, nunca executadas)'],
                    ['Em hardware real', 'Nenhum ainda: nenhum relógio ou emulador o executou'],
                    ['Licença', 'GPL-3.0-or-later']],
-        'status': {'software': 'O núcleo Kotlin lê e verifica cada mensagem e guarda os alertas em memória; a app Wear OS (ecrã e serviço Data Layer) e o emissor da app Android estão escritos.',
+        'status': {'software': 'Os núcleos Kotlin e Swift lêem e verificam cada mensagem e guardam os alertas em memória; a app Wear OS, a app do Apple Watch e os emissores das apps Android e iPhone estão escritos.',
                    'tests': '{{fact:tests:ARMOR-WATCH}} testes Python e os testes Kotlin executam os mesmos exemplos aceites e recusados do contrato; os testes Kotlin '
                             'correm na CI.',
-                   'hardware': 'Nenhum relógio nem emulador a executou; a app e o Data Layer só são compilados e testados com testes unitários na CI.',
+                   'hardware': 'Nenhum relógio, emulador nem simulador as executou; as apps só são compiladas e testadas com testes unitários na CI.',
                    'docs': 'Oito idiomas, as notas do protocolo e o contrato estão escritos e atualizados.'},
         'docs': ['[Notas do protocolo](docs/PROTOCOL.md): como falam o telemóvel e o relógio',
                  '[Contrato das mensagens](docs/watch_alert_contract.json): as mensagens, os limites e os exemplos aceites e recusados'],
@@ -872,6 +879,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '│   ├── main/                               WatchProtocol (as mensagens e as suas verificações) e AlertInbox (os alertas no ecrã)\n'
                               '│   └── test/                               os mesmos exemplos do contrato e as regras da caixa\n'
                               '├── wear/                               a app Wear OS: ecrã, serviço Data Layer e runtime\n'
+                              '├── watchos/                            a app do Apple Watch: núcleo Swift, ecrã e WatchConnectivity\n'
                               '├── tests/                                  o contrato verificado em Python\n'
                               '├── docs/                                   o contrato e o protocolo\n'
                               '├── tools/                                  verificações e contrato\n'
@@ -888,4 +896,4 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                               '```\n'
                               '\n'
                               '</details>',
-                 'roadmap': '**Limites conhecidos hoje**\n\n* A app Wear OS (`wear/`, compilada com `-ParmorWear`) e o emissor do ARMOR-ANDROID-CONTROL (desligado por predefinição) compilam e passam os testes unitários na CI, mas nada correu num relógio real nem num emulador.\n* Um iPhone não emparelha com um relógio Wear OS, por isso o ARMOR-IOS-CONTROL não tem equivalente (um Apple Watch seria outra app).\n* O contrato fica aqui; a app Android tem as mesmas regras e executa os mesmos exemplos.\n\n**A seguir**\n\n* Prová-lo num relógio real: emparelhá-lo, ativar a opção, lançar um alarme de teste, vê-lo no relógio, confirmá-lo com um toque e ver a confirmação no ARMOR-SERVER; depois desligar a opção e ver o aviso desaparecer.'}}}
+                 'roadmap': '**Limites conhecidos hoje**\n\n* A app Wear OS (`wear/`, compilada com `-ParmorWear`), a app do Apple Watch (`watchos/`, compilada só num Mac) e os emissores do ARMOR-ANDROID-CONTROL e do ARMOR-IOS-CONTROL (desligados por predefinição) compilam e passam os testes unitários na CI, mas nada correu num relógio real, num emulador nem num simulador.\n* A app do Apple Watch ainda não está dentro da app do iPhone, por isso o emparelhamento das duas está por tentar; um iPhone não emparelha com um relógio Wear OS nem um telemóvel Android com um Apple Watch.\n* O contrato fica aqui; o núcleo Kotlin, o núcleo Swift e as apps do telemóvel executam os mesmos exemplos.\n\n**A seguir**\n\n* Prová-lo num relógio real de cada tipo: emparelhá-lo, ativar a opção, lançar um alarme de teste, vê-lo no relógio, confirmá-lo com um toque e ver a confirmação no ARMOR-SERVER; depois desligar a opção e ver o aviso desaparecer.'}}}

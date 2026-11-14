@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The README sources tell about the Apple Watch app:** the sentences of ARMOR-WATCH (honesty check, glance table, status lights, file tree with `watchos/` and limits) say that the Wear OS app, the Apple Watch app and the senders of the two phone apps are built and tested in CI and never run on a watch, in the eight languages; the Android README no longer says the iPhone has no counterpart, and the iPhone README has its own bullet for the option of the Apple Watch.
 - **The README of ARMOR-ANDROID-CONTROL tells about the alarms on a Wear OS watch:** a bullet in the eight languages (off by default, only title and text, the confirmation of the watch acted on once and with the session of the phone, never run with a real watch, no counterpart on the iPhone).
 - **The README source of ARMOR-WATCH says what the repository has now:** the Wear OS app and the sending side of the Android app are written, compile and pass their tests in CI, nothing has run on a real watch, and the iPhone has no counterpart because it does not pair with a Wear OS watch; the file tree lists `wear/`. In the eight languages.
 - **The README of the electrical node and of the wall panel follow what the two repositories gained:** the file trees list the settings file of the switching image (electrical node) and the screen simulator (wall panel), and the configuration table of the electrical node has the row of the switching image and its pins and times, in the eight languages.
