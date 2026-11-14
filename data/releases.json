@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "project": "ARMOR-ANDROID-CONTROL",
+      "version": "0.8.0.7",
+      "commit": "e03a04039cdd51f45a78be4525e9590a092bb670"
+    },
+    {
+      "project": "ARMOR-COMMON",
+      "version": "0.8.1.4",
+      "commit": "3259d1af61f14dc353c330740c66b618900066fe"
+    },
+    {
+      "project": "ARMOR-DEVOPS",
+      "version": "0.7.6",
+      "commit": "0e95b352a5528db655afe1559a3895d9eadefa09"
+    },
+    {
+      "project": "ARMOR-DOCS",
+      "version": "0.8.2.0",
+      "commit": "f7ec2dbd23ec420d25e82408c1b2db5c089b3f30"
+    },
+    {
+      "project": "ARMOR-HARDWARE",
+      "version": "0.2.9",
+      "commit": "7a57c649f94844e8f21289a26ba4d8b4cc02b367"
+    },
+    {
+      "project": "ARMOR-IOS-CONTROL",
+      "version": "0.0.5",
+      "commit": "ba93673461356844942d72a3fcd361e5abcdd723"
+    },
+    {
+      "project": "ARMOR-NETWORK",
+      "version": "0.1.8",
+      "commit": "c7b148d6024d87150a586902fa921d248b21c687"
+    },
+    {
+      "project": "ARMOR-NODE-ALARM",
+      "version": "0.5.6",
+      "commit": "7126242002de60057aae2450ebe881455ec71697"
+    },
+    {
+      "project": "ARMOR-NODE-ELECTRICAL",
+      "version": "0.5.8",
+      "commit": "adc9e77d06405ea9908616e6818c0716a8c3555c"
+    },
+    {
+      "project": "ARMOR-NODE-HMI",
+      "version": "0.4.8",
+      "commit": "01432778406d71099e1055aa586244c9311abe21"
+    },
+    {
+      "project": "ARMOR-NODE-RADAR",
+      "version": "0.8.1.2",
+      "commit": "31e737cdc0e772f11bd47092df2bb5bb19558690"
+    },
+    {
+      "project": "ARMOR-NODE-SOLAR",
+      "version": "0.6.6",
+      "commit": "999e4a4cbaf4a645505b428883d87504e4155759"
+    },
+    {
+      "project": "ARMOR-SERVER",
+      "version": "0.8.2.2",
+      "commit": "00646b37d69ca0fd17183e7ca9772bb2424376ac"
+    },
+    {
+      "project": "ARMOR-SERVER-AI",
+      "version": "0.3.3",
+      "commit": "fd06c5f8ff6b9c72c5bf86bc29ff1a86da43ca21"
+    },
+    {
+      "project": "ARMOR-SIMULATOR",
+      "version": "0.3.8",
+      "commit": "f5e39ddfb81dc3757b7cce69dc482fa0f17466e9"
+    },
+    {
+      "project": "ARMOR-STUDIO",
+      "version": "0.8.2.4",
+      "commit": "b2ed1b589fc3f1f0aaae5f4f1b77faeec91975aa"
+    },
+    {
+      "project": "ARMOR-UPDATER",
+      "version": "0.2.2",
+      "commit": "2e72ce3d18b85d3d21d06b9b4b15b3ecc382a224"
+    },
+    {
+      "project": "ARMOR-VISION",
+      "version": "0.1.7",
+      "commit": "9dbe2c26d50c6322b4962c45c0d316405ca204a1"
+    },
+    {
+      "project": "ARMOR-VOICE-AI",
+      "version": "0.3.6",
+      "commit": "48b2287ececc6a8d4f6727c13a295c086c3f2606"
+    }
+  ]
+}
