@@ -21,8 +21,8 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-448%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.9-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Tests-470%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Version-0.8.2.0-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,11 +36,11 @@
 
 | | |
 |---|---|
-| バージョン | `0.8.1.9` |
+| バージョン | `0.8.2.0` |
 | 成熟度 | 確立 |
 | 役割 | ドキュメントの拠点：アーキテクチャ、セキュリティ基盤、機能マトリクス、README・カタログ・バナーを書くツール |
 | 技術 | Python 3.11+（ツール、標準ライブラリ）、Markdown |
-| テスト | 448 件（`python -m unittest discover -s tests`、約 1 分） |
+| テスト | 470 件（`python -m unittest discover -s tests`、約 1 分） |
 | インターフェース | `make_readmes.py`、`make_catalog.py`、`make_brand.py`、`publication_check.py`、`clean_history.py`、`sync_ci_tools.py`、`check_all.sh` |
 | 動作環境 | Python のある任意のコンピューター（ファミリーのリポジトリをこの隣に置く） |
 | 実機での確認 | 該当なし：ドキュメントで、他のリポジトリが実機で動かしたものを記録します |
@@ -57,7 +57,7 @@
 | 領域 | 状態 | ここでの意味 |
 |---|---|---|
 | ソフトウェア | 🟢 | README、バナー、カタログ、機能マトリクスのジェネレーターと、各リポジトリにコピーする CI ツールは動作し、テスト済みです。 |
-| テスト | 🟢 | ツールの 448 件のテストが通ります（`python -m unittest discover -s tests`）：公開前検査、履歴クリーナー、README・カタログ・ブランドのジェネレーター、CI ツールのコピー、共通ワークフローツール。 |
+| テスト | 🟢 | ツールの 470 件のテストが通ります（`python -m unittest discover -s tests`）：公開前検査、履歴クリーナー、README・カタログ・ブランドのジェネレーター、CI ツールのコピー、共通ワークフローツール。 |
 | 自動チェック | 🟢 | プッシュのたびに、README、バナー、カタログが最新であること、そしてレジストリのすべてのリポジトリに状況の表があることを確認します。 |
 | 連携 | 🟢 | すべてのリポジトリの README は 1 つのソースから作られ、各リポジトリのバージョンと成熟度はそれぞれのマニフェストから読み取ります。 |
 | ドキュメント | 🟢 | 機能マトリクスは、各機能がシミュレーションのみか、コンピューターでテスト済みか、実機で検証済みかを示します。8 言語と変更履歴は最新です。 |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # バナーとアイコンは最新
 python tools/doc_facts.py --check     # 文書の数値がリポジトリと一致
 python tools/publication_check.py     # 公開しても非公開情報は出ない
 bash tools/check_all.sh               # 各リポジトリのテストを一度に
-python -m unittest discover -s tests  # これらのツールの 448 件のテスト（他のリポジトリは不要）
+python -m unittest discover -s tests  # これらのツールの 470 件のテスト（他のリポジトリは不要）
 ```
 
 ## 🧪 テスト
@@ -228,6 +228,7 @@ README とテキストは、英語、スペイン語、フランス語、イタ�
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - Web コンソール：カメラ、レーダー、警報、太陽光エネルギー、2D/3D のサイトデザイナー
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - ライブの 2D/3D レーダーを備えた Android オペレータークライアント
 * **[ARMOR-IOS-CONTROL](https://github.com/JuanenRac/ARMOR-IOS-CONTROL)** - iPhone オペレータークライアント
+* **[ARMOR-WATCH](https://github.com/JuanenRac/ARMOR-WATCH)** - 最小のウォッチクライアント：アラーム通知とアラームの確認
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - 判断を説明し、決して作動させない視覚推論ポリシー
 * **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Jetson Orin NX 向けのカメラゾーン、マスク、検出ルール
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - 偽造できない確認つきのオフライン音声インテント

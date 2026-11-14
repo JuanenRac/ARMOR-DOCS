@@ -187,6 +187,7 @@ Mains (230 V AC) and the DC of a battery bank can kill and start fires. [docs/SA
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | The dead time of a transfer and how long a contactor has to show what was ordered |
 | `switching_enabled` | off | Switching is OFF unless this setting, the server (`ARMOR_ELECTRICAL_SWITCHING=1`) and the broker's access list all allow it |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | The settings every node shares: the name (empty gives `armor-` and the last bytes of the MAC), the set-up code (empty: random), the fleet secret (16+ characters, never in the repository), the first broker settings, the heartbeat (2 to 300 s), the minutes of Bluetooth set-up (1 to 120) and the reset with BOOT (8 s in the first 30 s) |
+| `CONFIG_ARMOR_SWITCHING` and the `ARMOR_SWITCH_*` pins and times | off | Builds the SWITCHING image (`ARMOR_SWITCHING=1 tools/build_node.sh generic <board>`, never published): one transfer switch with two coil pins and two auxiliary-contact pins (GPIO 4, 5, 6 and 7 by default), a dead time of 2000 ms, 1000 ms for a contactor to confirm and an arm window of 10000 ms; see `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |
 | `security.ota_check_board` | on | Refuse an uploaded firmware that was built for the other board (Wi-Fi or Ethernet); the image carries a mark of its board that the node reads while it arrives |
 | `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |
@@ -239,7 +240,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 guides: safety, switching, messages, hardware
 ├── tools/                               build, pack and check tools
 ├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
+├── images/                              banner, icon, README pictures, screenshots
 ├── build.sh build.bat                   build through the shared project workflow
 ├── test.sh test.bat                     run the tests through the shared workflow
 ├── run.sh run.bat                       start through the shared project workflow
@@ -252,6 +253,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   the firmware settings
 ├── sdkconfig.board.s3-eth               the settings of one board
 ├── sdkconfig.board.s3-wifi              the settings of one board
+├── sdkconfig.switching                  the switching image (off by default, never published)
 ├── secrets/                             example of the node file (the real ones are not versioned)
 ├── build-test.sh build-test.bat         run the tests through the shared workflow
 └── .gitattributes .gitignore            Git settings
@@ -387,6 +389,7 @@ La red (230 V CA) y la corriente continua de un banco de baterías pueden matar 
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | El tiempo muerto de una transferencia y cuánto tiene un contactor para mostrar lo ordenado |
 | `switching_enabled` | off | La maniobra está APAGADA salvo que este ajuste, el servidor (`ARMOR_ELECTRICAL_SWITCHING=1`) y la lista de acceso del broker la permitan |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Los ajustes que comparten todos los nodos: el nombre (vacío da `armor-` y los últimos bytes de la MAC), el código de puesta en marcha (vacío: aleatorio), el secreto de flota (16+ caracteres, nunca en el repositorio), los primeros ajustes del broker, el latido (de 2 a 300 s), los minutos de puesta en marcha por Bluetooth (de 1 a 120) y el reinicio con BOOT (8 s en los primeros 30 s) |
+| `CONFIG_ARMOR_SWITCHING` y los pines y tiempos `ARMOR_SWITCH_*` | apagado | Compila la imagen CON CONMUTACIÓN (`ARMOR_SWITCHING=1 tools/build_node.sh generic <placa>`, nunca se publica): un conmutador de transferencia con dos pines de bobina y dos de contacto auxiliar (GPIO 4, 5, 6 y 7 por defecto), un tiempo muerto de 2000 ms, 1000 ms para que un contactor confirme y una ventana de armado de 10000 ms; véase `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |
 | `security.ota_check_board` | on | Rechazar un firmware subido hecho para la otra placa (Wi-Fi o Ethernet); la imagen lleva una marca de su placa que el nodo lee mientras llega |
 | `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |
@@ -439,7 +442,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 guías: seguridad, maniobra, mensajes, hardware
 ├── tools/                               herramientas de compilación, empaquetado y comprobación
 ├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
+├── images/                              banner, icono, imágenes del README, capturas
 ├── build.sh build.bat                   compilar con el flujo de proyecto compartido
 ├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
 ├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
@@ -452,6 +455,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   los ajustes del firmware
 ├── sdkconfig.board.s3-eth               los ajustes de una placa
 ├── sdkconfig.board.s3-wifi              los ajustes de una placa
+├── sdkconfig.switching                  la imagen con conmutación (apagada por defecto, nunca publicada)
 ├── secrets/                             ejemplo del fichero del nodo (los reales no se versionan)
 ├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
 └── .gitattributes .gitignore            ajustes de Git
@@ -587,6 +591,7 @@ Netzspannung (230 V AC) und die Gleichspannung einer Batteriebank können töten
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Die Totzeit einer Umschaltung und wie lange ein Schütz Zeit hat, das Befohlene zu zeigen |
 | `switching_enabled` | off | Schalten ist AUS, außer diese Einstellung, der Server (`ARMOR_ELECTRICAL_SWITCHING=1`) und die Zugriffsliste des Brokers erlauben es |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Die Einstellungen, die alle Knoten teilen: der Name (leer ergibt `armor-` und die letzten Bytes der MAC), der Einrichtungscode (leer: zufällig), das Flottengeheimnis (16+ Zeichen, nie im Repository), die ersten Broker-Einstellungen, der Herzschlag (2 bis 300 s), die Minuten der Bluetooth-Einrichtung (1 bis 120) und der Reset mit BOOT (8 s in den ersten 30 s) |
+| `CONFIG_ARMOR_SWITCHING` und die Pins und Zeiten `ARMOR_SWITCH_*` | aus | Baut das SCHALTABBILD (`ARMOR_SWITCHING=1 tools/build_node.sh generic <Platine>`, nie veröffentlicht): ein Umschalter mit zwei Spulenpins und zwei Hilfskontaktpins (standardmäßig GPIO 4, 5, 6 und 7), eine Totzeit von 2000 ms, 1000 ms bis ein Schütz bestätigt und ein Scharfschaltfenster von 10000 ms; siehe `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |
 | `security.ota_check_board` | on | Eine hochgeladene Firmware für die andere Platine (WLAN oder Ethernet) abweisen; das Image trägt ein Kennzeichen seiner Platine, das der Knoten beim Empfang liest |
 | `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |
@@ -639,7 +644,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 Anleitungen: Sicherheit, Schalten, Nachrichten, Hardware
 ├── tools/                               Werkzeuge für Build, Packen und Prüfung
 ├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
+├── images/                              Banner, Symbol, README-Bilder, Screenshots
 ├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
 ├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
 ├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
@@ -652,6 +657,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   die Firmware-Einstellungen
 ├── sdkconfig.board.s3-eth               die Einstellungen einer Platine
 ├── sdkconfig.board.s3-wifi              die Einstellungen einer Platine
+├── sdkconfig.switching                  das Schaltabbild (standardmäßig aus, nie veröffentlicht)
 ├── secrets/                             Beispiel der Knotendatei (die echten sind nicht versioniert)
 ├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
 └── .gitattributes .gitignore            Git-Einstellungen
@@ -787,6 +793,7 @@ Le secteur (230 V CA) et le courant continu d'un banc de batteries peuvent tuer 
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Le temps mort d'un transfert et le temps dont un contacteur dispose pour montrer ce qui a été ordonné |
 | `switching_enabled` | off | La manœuvre est DÉSACTIVÉE sauf si ce réglage, le serveur (`ARMOR_ELECTRICAL_SWITCHING=1`) et la liste d'accès du broker l'autorisent |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Les réglages que tous les nœuds partagent : le nom (vide donne `armor-` et les derniers octets de la MAC), le code de configuration (vide : aléatoire), le secret de flotte (16+ caractères, jamais dans le dépôt), les premiers réglages du broker, le battement (de 2 à 300 s), les minutes de configuration Bluetooth (de 1 à 120) et la réinitialisation avec BOOT (8 s dans les 30 premières s) |
+| `CONFIG_ARMOR_SWITCHING` et les broches et durées `ARMOR_SWITCH_*` | désactivé | Construit l'image de COMMUTATION (`ARMOR_SWITCHING=1 tools/build_node.sh generic <carte>`, jamais publiée) : un commutateur de transfert avec deux broches de bobine et deux de contact auxiliaire (GPIO 4, 5, 6 et 7 par défaut), un temps mort de 2000 ms, 1000 ms pour qu'un contacteur confirme et une fenêtre d'armement de 10000 ms ; voir `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |
 | `security.ota_check_board` | on | Refuser un firmware envoyé construit pour l'autre carte (Wi-Fi ou Ethernet) ; l'image porte une marque de sa carte que le nœud lit à l'arrivée |
 | `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |
@@ -839,7 +846,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 guides : sécurité, manœuvre, messages, matériel
 ├── tools/                               outils de build, d'empaquetage et de contrôle
 ├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
+├── images/                              bannière, icône, images du README, captures
 ├── build.sh build.bat                   build par le flux de projet partagé
 ├── test.sh test.bat                     lancer les tests par le flux partagé
 ├── run.sh run.bat                       démarrer par le flux de projet partagé
@@ -852,6 +859,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   les réglages du firmware
 ├── sdkconfig.board.s3-eth               les réglages d'une carte
 ├── sdkconfig.board.s3-wifi              les réglages d'une carte
+├── sdkconfig.switching                  l'image de commutation (désactivée par défaut, jamais publiée)
 ├── secrets/                             exemple du fichier de nœud (les vrais ne sont pas versionnés)
 ├── build-test.sh build-test.bat         lancer les tests par le flux partagé
 └── .gitattributes .gitignore            réglages Git
@@ -987,6 +995,7 @@ La rete (230 V CA) e la corrente continua di un banco di batterie possono uccide
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | Il tempo morto di un trasferimento e quanto tempo ha un contattore per mostrare ciò che è stato ordinato |
 | `switching_enabled` | off | La manovra è SPENTA salvo che questa impostazione, il server (`ARMOR_ELECTRICAL_SWITCHING=1`) e la lista di accesso del broker la consentano |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | Le impostazioni che tutti i nodi condividono: il nome (vuoto dà `armor-` e gli ultimi byte del MAC), il codice di configurazione (vuoto: casuale), il segreto di flotta (16+ caratteri, mai nel repository), le prime impostazioni del broker, il battito (da 2 a 300 s), i minuti di configurazione Bluetooth (da 1 a 120) e il ripristino con BOOT (8 s nei primi 30 s) |
+| `CONFIG_ARMOR_SWITCHING` e i pin e i tempi `ARMOR_SWITCH_*` | spento | Costruisce l'immagine di COMMUTAZIONE (`ARMOR_SWITCHING=1 tools/build_node.sh generic <scheda>`, mai pubblicata): un commutatore di trasferimento con due pin di bobina e due di contatto ausiliario (GPIO 4, 5, 6 e 7 per impostazione predefinita), un tempo morto di 2000 ms, 1000 ms perché un contattore confermi e una finestra di armamento di 10000 ms; vedi `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |
 | `security.ota_check_board` | on | Rifiutare un firmware caricato costruito per l'altra scheda (Wi-Fi o Ethernet); l'immagine porta una marca della sua scheda che il nodo legge mentre arriva |
 | `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |
@@ -1039,7 +1048,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 guide: sicurezza, manovra, messaggi, hardware
 ├── tools/                               strumenti di build, impacchettamento e verifica
 ├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
+├── images/                              banner, icona, immagini del README, schermate
 ├── build.sh build.bat                   build tramite il flusso di progetto condiviso
 ├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
 ├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
@@ -1052,6 +1061,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   le impostazioni del firmware
 ├── sdkconfig.board.s3-eth               le impostazioni di una scheda
 ├── sdkconfig.board.s3-wifi              le impostazioni di una scheda
+├── sdkconfig.switching                  l'immagine di commutazione (spenta per impostazione predefinita, mai pubblicata)
 ├── secrets/                             esempio del file del nodo (quelli veri non sono versionati)
 ├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
 └── .gitattributes .gitignore            impostazioni di Git
@@ -1187,6 +1197,7 @@ ARMOR-NODE-ELECTRICAL/
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | 切替のデッドタイムと、接触器が命令どおりの状態を示すまでの猶予 |
 | `switching_enabled` | off | この設定、サーバー（`ARMOR_ELECTRICAL_SWITCHING=1`）、ブローカーのアクセスリストのすべてが許可しない限り開閉はオフ |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | すべてのノードに共通する設定：名前（空なら `armor-` と MAC の下位バイト）、セットアップコード（空ならランダム）、フリートシークレット（16 文字以上、リポジトリには置かない）、最初のブローカー設定、ハートビート（2〜300 秒）、Bluetooth セットアップの分数（1〜120）、BOOT によるリセット（最初の 30 秒に 8 秒） |
+| `CONFIG_ARMOR_SWITCHING` と `ARMOR_SWITCH_*` のピンと時間 | オフ | 切替イメージをビルドします（`ARMOR_SWITCHING=1 tools/build_node.sh generic <ボード>`、公開されません）：コイル用 2 ピンと補助接点用 2 ピン（既定は GPIO 4、5、6、7）を持つ切替スイッチ 1 つ、デッドタイム 2000 ms、接触器の確認に 1000 ms、アーム時間 10000 ms。`docs/SWITCHING.md` を参照 |
 | `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |
 | `security.ota_check_board` | on | もう一方の基板（Wi-Fi または Ethernet）用に作られたファームウェアのアップロードを拒否します。イメージには基板の印が入っており、ノードは到着中にそれを読み取ります |
 | `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |
@@ -1239,7 +1250,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 のガイド：安全、開閉、メッセージ、ハードウェア
 ├── tools/                               ビルド・パッケージ・検査のツール
 ├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
+├── images/                              バナー、アイコン、README の図、スクリーンショット
 ├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
 ├── test.sh test.bat                     共通のワークフローでテストを実行
 ├── run.sh run.bat                       共通のプロジェクトワークフローで起動
@@ -1252,6 +1263,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   ファームウェアの設定
 ├── sdkconfig.board.s3-eth               基板ごとの設定
 ├── sdkconfig.board.s3-wifi              基板ごとの設定
+├── sdkconfig.switching                  切替イメージ（既定ではオフ、公開しません）
 ├── secrets/                             ノードファイルの例（本物はバージョン管理しません）
 ├── build-test.sh build-test.bat         共通のワークフローでテストを実行
 └── .gitattributes .gitignore            Git の設定
@@ -1387,6 +1399,7 @@ ARMOR-NODE-ELECTRICAL/
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | 转换的死区时间以及接触器显示所命令状态的时限 |
 | `switching_enabled` | off | 除非此设置、服务器（`ARMOR_ELECTRICAL_SWITCHING=1`）和代理的访问列表都允许，否则开关操作为关闭 |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | 所有节点共有的设置：名称（为空则为 `armor-` 加 MAC 的最后字节）、设置码（为空则随机）、机群密钥（16 个字符以上，绝不放入仓库）、最初的代理设置、心跳（2 到 300 秒）、蓝牙设置的分钟数（1 到 120）以及用 BOOT 重置（前 30 秒内按 8 秒） |
+| `CONFIG_ARMOR_SWITCHING` 以及 `ARMOR_SWITCH_*` 引脚和时间 | 关 | 构建切换镜像（`ARMOR_SWITCHING=1 tools/build_node.sh generic <板>`，从不发布）：一个转换开关，带两个线圈引脚和两个辅助触点引脚（默认 GPIO 4、5、6、7），死区时间 2000 ms，接触器确认时间 1000 ms，预备窗口 10000 ms；见 `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |
 | `security.ota_check_board` | on | 拒绝为另一种电路板（Wi-Fi 或以太网）构建的上传固件；镜像带有所属电路板的标记，节点在接收时读取 |
 | `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |
@@ -1439,7 +1452,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 份指南：安全、开关、消息、硬件
 ├── tools/                               构建、打包和检查工具
 ├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
+├── images/                              横幅、图标、README 图片、屏幕截图
 ├── build.sh build.bat                   通过共享的项目工作流构建
 ├── test.sh test.bat                     通过共享工作流运行测试
 ├── run.sh run.bat                       通过共享的项目工作流启动
@@ -1452,6 +1465,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   固件设置
 ├── sdkconfig.board.s3-eth               某块电路板的设置
 ├── sdkconfig.board.s3-wifi              某块电路板的设置
+├── sdkconfig.switching                  切换镜像（默认关闭，从不发布）
 ├── secrets/                             节点文件示例（真实文件不纳入版本管理）
 ├── build-test.sh build-test.bat         通过共享工作流运行测试
 └── .gitattributes .gitignore            Git 设置
@@ -1587,6 +1601,7 @@ A rede (230 V CA) e a corrente contínua de um banco de baterias podem matar e p
 | `dead_time_ms`, `confirm_timeout_ms` | 2000 | O tempo morto de uma transferência e quanto tempo tem um contactor para mostrar o que foi ordenado |
 | `switching_enabled` | off | A manobra está DESLIGADA a não ser que esta definição, o servidor (`ARMOR_ELECTRICAL_SWITCHING=1`) e a lista de acesso do broker a permitam |
 | `CONFIG_ARMOR_NODE_ID`, `_SETUP_CODE`, `_FLEET_SECRET`, `_MQTT_*`, `_HEARTBEAT_S`, `_BLE_SETUP_MINUTES`, `_BOOT_FACTORY_RESET` | - | As definições que todos os nós partilham: o nome (vazio dá `armor-` e os últimos bytes do MAC), o código de configuração (vazio: aleatório), o segredo de frota (16+ caracteres, nunca no repositório), as primeiras definições do broker, o batimento (de 2 a 300 s), os minutos de configuração Bluetooth (de 1 a 120) e a reposição com BOOT (8 s nos primeiros 30 s) |
+| `CONFIG_ARMOR_SWITCHING` e os pinos e tempos `ARMOR_SWITCH_*` | desligado | Compila a imagem de COMUTAÇÃO (`ARMOR_SWITCHING=1 tools/build_node.sh generic <placa>`, nunca publicada): um comutador de transferência com dois pinos de bobina e dois de contacto auxiliar (GPIO 4, 5, 6 e 7 por defeito), um tempo morto de 2000 ms, 1000 ms para um contactor confirmar e uma janela de armação de 10000 ms; veja `docs/SWITCHING.md` |
 | `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |
 | `security.ota_check_board` | on | Recusar um firmware enviado feito para a outra placa (Wi-Fi ou Ethernet); a imagem leva uma marca da sua placa que o nó lê enquanto chega |
 | `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |
@@ -1639,7 +1654,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── docs/                                12 guias: segurança, manobra, mensagens, hardware
 ├── tools/                               ferramentas de compilação, empacotamento e verificação
 ├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
+├── images/                              faixa, ícone, imagens do README, capturas de ecrã
 ├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
 ├── test.sh test.bat                     executar os testes pelo fluxo partilhado
 ├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
@@ -1652,6 +1667,7 @@ ARMOR-NODE-ELECTRICAL/
 ├── sdkconfig.defaults                   as definições do firmware
 ├── sdkconfig.board.s3-eth               as definições de uma placa
 ├── sdkconfig.board.s3-wifi              as definições de uma placa
+├── sdkconfig.switching                  a imagem de comutação (desligada por defeito, nunca publicada)
 ├── secrets/                             exemplo do ficheiro do nó (os verdadeiros não são versionados)
 ├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
 └── .gitattributes .gitignore            definições do Git

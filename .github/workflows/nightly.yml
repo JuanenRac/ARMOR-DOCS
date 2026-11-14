@@ -19,6 +19,7 @@ jobs:
   family:
     name: Compare every repository with the others
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - name: Check out this repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -29,7 +30,7 @@ jobs:
       - name: Fetch the other repositories next to it
         run: |
           for repository in ARMOR-COMMON ARMOR-NODE-RADAR ARMOR-NODE-SOLAR ARMOR-NODE-ELECTRICAL ARMOR-NODE-ALARM ARMOR-NODE-HMI ARMOR-NETWORK ARMOR-SERVER ARMOR-STUDIO ARMOR-ANDROID-CONTROL \
-                            ARMOR-SERVER-AI ARMOR-VISION ARMOR-VOICE-AI ARMOR-HARDWARE ARMOR-DEVOPS ARMOR-SIMULATOR ARMOR-UPDATER ARMOR-IOS-CONTROL; do
+                            ARMOR-SERVER-AI ARMOR-VISION ARMOR-VOICE-AI ARMOR-HARDWARE ARMOR-DEVOPS ARMOR-SIMULATOR ARMOR-UPDATER ARMOR-IOS-CONTROL ARMOR-WATCH; do
             git clone --depth 1 "https://github.com/JuanenRac/${repository}.git" "${repository}"
           done
 
@@ -50,7 +51,7 @@ jobs:
           set -o pipefail
           python -m pip install --quiet pyyaml openapi-spec-validator
           status=0
-          for check in "tools/make_readmes.py --check" "tools/make_brand.py --check" "tools/make_catalog.py --check" "tools/sync_ci_tools.py --check" "tools/doc_facts.py --check" "tools/doc_claims.py" "tools/doc_markdown.py --all" \
+          for check in "tools/make_readmes.py --check" "tools/make_brand.py --check" "tools/make_catalog.py --check" "tools/sync_ci_tools.py --check" "tools/doc_facts.py --check" "tools/doc_claims.py" "tools/doc_markdown.py --all" "tools/check_sequences.py" \
                        "../ARMOR-COMMON/tools/sync_firmware_base.py check" "../ARMOR-COMMON/tools/generate_types.py --check" "../ARMOR-COMMON/tools/make_conformance.py --check"; do
             echo "== python ${check}"
             python ${check} || status=1
@@ -68,6 +69,19 @@ jobs:
       - name: Run the tests of the repositories that can run here
         working-directory: ARMOR-DOCS
         run: bash tools/check_all.sh
+
+      - name: Write the drift report of the night
+        if: ${{ !cancelled() }}
+        working-directory: ARMOR-DOCS
+        run: python tools/drift_report.py || true
+
+      - name: Keep the drift report as an artifact
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: drift-report
+          path: ARMOR-DOCS/drift.json
+          if-no-files-found: ignore
 
       - name: Open an issue when the night failed
         if: ${{ failure() }}

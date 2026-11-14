@@ -1,0 +1,96 @@
+# ARMOR-DOCS - the static documentation site, built as an artifact and deployed to GitHub Pages.
+# Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
+#
+# Builds the site from the documents that are already public (tools/make_site.py, which refuses to write a page that carries anything that must not go public) and publishes it on GitHub
+# Pages. It builds on every push to main and on demand (workflow_dispatch); only a manual run deploys. The build job can only read; only the deploy job may write to Pages. Pages must be switched on in the
+# settings of the repository with the source "GitHub Actions" (Settings > Pages) before the first deploy: until then do not run the deploy by hand; the artifact is always kept by the build job.
+name: Documentation site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  site:
+    name: Build the site
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: ARMOR-DOCS
+
+      - name: Fetch the shared contracts next to it
+        run: git clone --depth 1 https://github.com/JuanenRac/ARMOR-COMMON.git ARMOR-COMMON
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+
+      - name: Build the site and check it for anything that must not go public
+        working-directory: ARMOR-DOCS
+        run: |
+          python -m pip install --quiet pyyaml
+          python tools/make_site.py --check
+          python tools/make_site.py
+
+      - name: Keep the site as an artifact
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: documentation-site
+          path: ARMOR-DOCS/site
+          if-no-files-found: error
+
+      - name: Package the site for Pages
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: ARMOR-DOCS/site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: site
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment3.outputs.page_url || steps.deployment2.outputs.page_url || steps.deployment.outputs.page_url }}
+    steps:
+      # Creating the deployment can fail because of the service and not because of the site: up to three attempts, 30 s and 90 s apart. Only this step is retried; a third failure fails the job.
+      - name: Deploy
+        id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+      - name: Wait before the second attempt
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy (second attempt)
+        id: deployment2
+        if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+      - name: Wait before the third attempt
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        run: sleep 90
+
+      - name: Deploy (third attempt)
+        id: deployment3
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
