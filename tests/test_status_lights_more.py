@@ -114,3 +114,30 @@ class SuggestTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WhiteLightTest(unittest.TestCase):
+    """A white light says that a row does not apply: only a hardware or integration row of a repository with no hardware may carry it."""
+
+    def problems(self, kind, light, manifest=None, ceiling=None):
+        manifest = {"evidence": "host-test", **(manifest or {})}
+        item = {"index": 0, "label": "row", "kind": kind, "light": light, "ceiling": ceiling or status_lights.GREEN, "why": "test"}
+        with tempfile.TemporaryDirectory() as folder:
+            return status_lights.problems_of(Path(folder), {"manifest": manifest, "items": [item]})
+
+    def test_white_is_a_light_the_names_know(self):
+        self.assertEqual(status_lights.NAMES["white"], status_lights.WHITE)
+
+    def test_a_software_tests_or_docs_row_is_never_white(self):
+        for kind in ("software", "tests", "docs"):
+            self.assertTrue(any("always applies" in found for found in self.problems(kind, status_lights.WHITE)), kind)
+
+    def test_a_hardware_row_is_white_only_when_the_manifest_says_hardware_bound_false(self):
+        for kind in ("hardware", "integration"):
+            self.assertTrue(any("hardware_bound false" in found for found in self.problems(kind, status_lights.WHITE)), kind)
+            self.assertEqual(self.problems(kind, status_lights.WHITE, {"hardware_bound": False}), [])
+
+    def test_a_green_hardware_row_of_a_repository_with_no_hardware_is_refused(self):
+        found = self.problems("hardware", status_lights.GREEN, {"hardware_bound": False})
+        self.assertTrue(any("not applicable is white" in line for line in found))
+        self.assertEqual(self.problems("hardware", status_lights.GREEN, {"hardware_bound": True}), [])

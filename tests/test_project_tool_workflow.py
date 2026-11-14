@@ -315,7 +315,7 @@ class Steps(unittest.TestCase):
         self.assertIn("CTest", error)
 
     def test_the_android_client_prefers_its_wrapper(self) -> None:
-        recorded, _, _ = self.run_steps("ARMOR-ANDROID-CONTROL", files={"gradlew": ""}, tools=set())
+        recorded, _, _ = self.run_steps("ARMOR-ANDROID-CONTROL", files={"gradlew": "", "tests/test_a.py": ""}, tools=set())
         self.assertEqual(recorded[0][0], "./gradlew")
         _, _, error = self.run_steps("ARMOR-ANDROID-CONTROL", tools=set())
         self.assertIn("Gradle", error)
@@ -328,6 +328,16 @@ class Steps(unittest.TestCase):
         self.assertIn("Swift is required", error)
         recorded, _, _ = self.run_steps("ARMOR-IOS-CONTROL")
         self.assertEqual(len(recorded), 2)
+
+    def test_the_watch_client_runs_its_python_checks_and_the_kotlin_core_only_in_ci(self) -> None:
+        recorded, text, _ = self.run_steps("ARMOR-WATCH", files={"gradlew": "", "tests/test_a.py": ""})
+        self.assertIn("WATCH_KOTLIN_TESTS=SKIPPED", text)
+        self.assertEqual(len(recorded), 1)
+        recorded, text, _ = self.run_steps("ARMOR-WATCH", files={"gradlew": "", "tests/test_a.py": ""}, CI="1")
+        self.assertEqual(len(recorded), 2)
+        self.assertEqual(recorded[1], ["./gradlew", "test"])
+        recorded, _, _ = self.run_steps("ARMOR-WATCH", files={"tests/test_a.py": ""}, ARMOR_REQUIRE_GRADLE="1")
+        self.assertEqual(len(recorded), 1)
 
     def test_an_unknown_repository_is_refused(self) -> None:
         _, _, error = self.run_steps("ARMOR-SOMETHING")
