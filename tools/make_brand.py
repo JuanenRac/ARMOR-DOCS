@@ -56,6 +56,8 @@ def glyph(name: str) -> str:
         "ARMOR-IOS-CONTROL": f"""<rect x="-24" y="-46" width="48" height="90" rx="12"/><rect x="-9" y="-40" width="18" height="6" rx="3" stroke-width="2"/>
     <circle r="6" cy="-4" stroke-width="2" opacity=".6"/><circle r="15" cy="-4" stroke-width="2" opacity=".6"/><path d="M0,-4 L11,-15" stroke="{AMBER}" stroke-width="3"/>
     <path d="M-8,36 h16" stroke="{CYAN}" stroke-width="3"/>""",
+        "ARMOR-WATCH": f"""<path d="M-14,-44 h28 l4,14 h-36 Z M-14,44 h28 l4,-14 h-36 Z" stroke-width="3"/><rect x="-26" y="-30" width="52" height="60" rx="14"/>
+    <path d="M0,-18 V0 L12,8" stroke="{AMBER}" stroke-width="3.4"/><circle r="3" fill="{AMBER}" stroke="none"/>""",
         "ARMOR-SERVER-AI": f"""<path d="M-46,0 Q0,-44 46,0 Q0,44 -46,0 Z"/><circle r="15" stroke="{AMBER}" stroke-width="3.4"/><circle r="5" fill="{AMBER}" stroke="none"/>
     <path d="M-30,-30 l-6,-8 M0,-38 v-8 M30,-30 l6,-8" stroke-width="2" opacity=".6"/>""",
         "ARMOR-VOICE-AI": f"""<rect x="-13" y="-42" width="26" height="46" rx="13"/><path d="M-26,-6 a26,26 0 0 0 52,0 M0,20 v18 M-14,38 h28"/>
