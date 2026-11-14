@@ -2,8 +2,8 @@
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 #
 # Builds the site from the documents that are already public (tools/make_site.py, which refuses to write a page that carries anything that must not go public) and publishes it on GitHub
-# Pages. It runs by hand (workflow_dispatch) and on every push to main. The build job can only read; only the deploy job may write to Pages. Pages must be switched on in the
-# settings of the repository with the source "GitHub Actions" (Settings > Pages) before the first deploy: until then the deploy job fails and the artifact is still kept by the build job.
+# Pages. It builds on every push to main and on demand (workflow_dispatch); only a manual run deploys. The build job can only read; only the deploy job may write to Pages. Pages must be switched on in the
+# settings of the repository with the source "GitHub Actions" (Settings > Pages) before the first deploy: until then do not run the deploy by hand; the artifact is always kept by the build job.
 name: Documentation site
 
 on:
