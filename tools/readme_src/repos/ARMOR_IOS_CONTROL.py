@@ -1545,6 +1545,6 @@ MOBILE_PARITY_BULLETS = [
         "pt": "**Um telemóvel de confiança, desligado até o ligar:** quando o administrador o permite no Studio, um interruptor em Mais > Bloqueio com o telemóvel faz o telemóvel criar um par de chaves dentro do Secure Enclave (não pode ser exportada e só funciona com o telemóvel desbloqueado), registar a metade pública no servidor e renovar a sessão assinando um desafio de utilização única em vez de pedir de novo a palavra-passe e o código. Um telemóvel que o servidor já não conhece esquece o seu id, um telemóvel bloqueado tenta mais tarde, e desligar o interruptor ou terminar a sessão faz o servidor esquecer o telemóvel. Segue a app Android; as regras são testadas com um servidor falso e uma chave falsa, e o próprio Secure Enclave não foi experimentado num iPhone.",
     },
 ]
-for _bullet in MOBILE_PARITY_BULLETS:
-    for _lg, _text_of in _bullet.items():
+for _entry in MOBILE_PARITY_BULLETS:
+    for _lg, _text_of in _entry.items():
         _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _text_of
