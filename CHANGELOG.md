@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.8.2.0] - ARMOR-WATCH in the generators, documentation site, install guide in three levels, update profiles and wider tests
+
 - **The deployment to GitHub Pages is retried when the service fails to create it:** the deploy step of the `site` workflow makes up to three attempts, 30 s and 90 s apart, and only that step is retried (the build of the site is not); a third failure still fails the run.
 - **ARMOR-WATCH is part of the family in the generators:** its README source, its shield, its place in the catalogue and the family picture, its line in every list of related projects, and its clone in the nightly comparison.
 - **The documentation site is deployed to GitHub Pages:** the `site` workflow (by hand and on every push to main) builds the site, which still refuses to write a page that carries anything that must not go public, keeps it as an artifact and deploys it with a job of its own that is the only one with the right to write to Pages (the build job only reads). The site is public and in English, as the documents are. Pages has to be switched on once in the settings of the repository with the source "GitHub Actions".
@@ -11,9 +13,7 @@ All notable changes to this project are documented here.
 - **A static documentation site and a drift report are built from what is already public:** `tools/make_site.py` writes a small site (the documents of this repository, the contract documents of ARMOR-COMMON and tables of the REST paths and MQTT channels) and stops when a page would carry something the publication check blocks; the manual workflow `site` keeps it as an artifact and publishes nothing. `tools/drift_report.py` runs the checks of the nightly run and writes `drift.json` (name and result of each check, and the counts, without any output), which the nightly run keeps as an artifact for a dashboard panel; tests for both.
 - **The update profiles `data/update-profiles.json` hold the three confirmed tiers:** Minimal (server, shared contracts, Studio), Standard (plus the field nodes, the Android and iPhone apps and the vision service) and Complete (plus voice, AI, simulator, hardware, network and DevOps), with texts in the eight languages; it is the same file the updater ships.
 - **The floor of the test coverage of `tools/` goes up to lines 87.0, branches 82.5** (measured by the workflow: 87.32 and 82.82 after the tests of the command lines of the checkers and of the status lights).
-
 - **Tests of the status lights:** what the answer of the CI becomes (the last completed run of the main branch decides; no gh, a timeout or no run is unknown), the refusal of a repository without a manifest or with one that is not JSON, what counts as a CI and as a test, and the suggestions of `--suggest`.
-
 - **Tests of the command lines of the two checkers of sentences that depend on the code:** `doc_claims.py` and `doc_facts.py` are run over a folder of documents made for the test (a marker without an entry, an entry without a marker, a repository that is not there, an entry without one of its keys, a figure that means nothing, a verified version newer than the repository, the stale list, the fix that keeps the line ends and the check that leaves the file alone).
 
 ## [0.8.1.9] - The floor of the test coverage of `tools/` goes up to lines 85.4, branches 80.3 (measured 85.92 and 80.87; before: 50.2 and 45.3): the shared tools this repository carries now have the tests they have in ARMOR-COMMON (the README pictures, t
