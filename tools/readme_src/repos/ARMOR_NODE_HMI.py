@@ -230,10 +230,11 @@ ARMOR-NODE-HMI/
 ├── core/                                the logic with no ESP-IDF, tested on a computer
 ├── panel/                               the web panel embedded in the firmware
 ├── tests/                               host tests and Python checks
+├── simulator/                           the screen drawn on a computer, in eight languages
 ├── docs/                                9 guides: design, voice, fonts, hardware
 ├── tools/                               build, pack and check tools
 ├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
+├── images/                              banner, icon, README pictures, screenshots
 ├── build.sh build.bat                   build through the shared project workflow
 ├── test.sh test.bat                     run the tests through the shared workflow
 ├── run.sh run.bat                       start through the shared project workflow
@@ -429,10 +430,11 @@ ARMOR-NODE-HMI/
 ├── core/                                la lógica sin ESP-IDF, probada en un ordenador
 ├── panel/                               el panel web embebido en el firmware
 ├── tests/                               pruebas de host y comprobaciones Python
+├── simulator/                           la pantalla dibujada en un ordenador, en ocho idiomas
 ├── docs/                                9 guías: diseño, voz, fuentes, hardware
 ├── tools/                               herramientas de compilación, empaquetado y comprobación
 ├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
+├── images/                              banner, icono, imágenes del README, capturas
 ├── build.sh build.bat                   compilar con el flujo de proyecto compartido
 ├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
 ├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
@@ -628,10 +630,11 @@ ARMOR-NODE-HMI/
 ├── core/                                die Logik ohne ESP-IDF, am Rechner getestet
 ├── panel/                               das in die Firmware eingebettete Web-Panel
 ├── tests/                               Host-Tests und Python-Prüfungen
+├── simulator/                           der Bildschirm auf einem Computer gezeichnet, in acht Sprachen
 ├── docs/                                9 Anleitungen: Entwurf, Sprache, Schriften, Hardware
 ├── tools/                               Werkzeuge für Build, Packen und Prüfung
 ├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
+├── images/                              Banner, Symbol, README-Bilder, Screenshots
 ├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
 ├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
 ├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
@@ -827,10 +830,11 @@ ARMOR-NODE-HMI/
 ├── core/                                la logique sans ESP-IDF, testée sur ordinateur
 ├── panel/                               le panneau web intégré au firmware
 ├── tests/                               tests sur hôte et contrôles Python
+├── simulator/                           l'écran dessiné sur un ordinateur, en huit langues
 ├── docs/                                9 guides : conception, voix, polices, matériel
 ├── tools/                               outils de build, d'empaquetage et de contrôle
 ├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
+├── images/                              bannière, icône, images du README, captures
 ├── build.sh build.bat                   build par le flux de projet partagé
 ├── test.sh test.bat                     lancer les tests par le flux partagé
 ├── run.sh run.bat                       démarrer par le flux de projet partagé
@@ -1026,10 +1030,11 @@ ARMOR-NODE-HMI/
 ├── core/                                la logica senza ESP-IDF, testata su un computer
 ├── panel/                               il pannello web incorporato nel firmware
 ├── tests/                               test su host e verifiche Python
+├── simulator/                           lo schermo disegnato su un computer, in otto lingue
 ├── docs/                                9 guide: progetto, voce, caratteri, hardware
 ├── tools/                               strumenti di build, impacchettamento e verifica
 ├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
+├── images/                              banner, icona, immagini del README, schermate
 ├── build.sh build.bat                   build tramite il flusso di progetto condiviso
 ├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
 ├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
@@ -1225,10 +1230,11 @@ ARMOR-NODE-HMI/
 ├── core/                                ESP-IDF なしのロジック（コンピューターでテスト）
 ├── panel/                               ファームウェアに埋め込まれた Web パネル
 ├── tests/                               ホストテストと Python 検査
+├── simulator/                           コンピューター上で描画した画面（8 言語）
 ├── docs/                                9 つのガイド：設計、音声、フォント、ハードウェア
 ├── tools/                               ビルド・パッケージ・検査のツール
 ├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
+├── images/                              バナー、アイコン、README の図、スクリーンショット
 ├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
 ├── test.sh test.bat                     共通のワークフローでテストを実行
 ├── run.sh run.bat                       共通のプロジェクトワークフローで起動
@@ -1424,10 +1430,11 @@ ARMOR-NODE-HMI/
 ├── core/                                不依赖 ESP-IDF 的逻辑，在计算机上测试
 ├── panel/                               嵌入固件的网页面板
 ├── tests/                               主机测试和 Python 检查
+├── simulator/                           在计算机上绘制的屏幕（八种语言）
 ├── docs/                                9 份指南：设计、语音、字体、硬件
 ├── tools/                               构建、打包和检查工具
 ├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
+├── images/                              横幅、图标、README 图片、屏幕截图
 ├── build.sh build.bat                   通过共享的项目工作流构建
 ├── test.sh test.bat                     通过共享工作流运行测试
 ├── run.sh run.bat                       通过共享的项目工作流启动
@@ -1623,10 +1630,11 @@ ARMOR-NODE-HMI/
 ├── core/                                a lógica sem ESP-IDF, testada num computador
 ├── panel/                               o painel web embebido no firmware
 ├── tests/                               testes de anfitrião e verificações Python
+├── simulator/                           o ecrã desenhado num computador, em oito idiomas
 ├── docs/                                9 guias: desenho, voz, tipos de letra, hardware
 ├── tools/                               ferramentas de compilação, empacotamento e verificação
 ├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
+├── images/                              faixa, ícone, imagens do README, capturas de ecrã
 ├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
 ├── test.sh test.bat                     executar os testes pelo fluxo partilhado
 ├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
