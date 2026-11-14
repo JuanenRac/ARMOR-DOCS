@@ -60,6 +60,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: site
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
