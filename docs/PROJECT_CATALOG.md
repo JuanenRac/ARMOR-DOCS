@@ -16,11 +16,11 @@
 | ARMOR-IOS-CONTROL | 0.0.5 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.1 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.2 | Camera movement observation service (CM5 today, Jetson planned) | Established |
-| ARMOR-VISION | 0.1.6 | Camera zones, masks and detection rules | Functional |
+| ARMOR-VISION | 0.1.7 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.5 | Offline speech and intent gateway | Established |
 | ARMOR-HARDWARE | 0.2.9 | Open hardware and parametric enclosure designs | Functional |
-| ARMOR-DEVOPS | 0.7.5 | Repeatable deployment and operations | Established |
-| ARMOR-SIMULATOR | 0.3.7 | Offline telemetry and environment simulator | Established |
+| ARMOR-DEVOPS | 0.7.6 | Repeatable deployment and operations | Established |
+| ARMOR-SIMULATOR | 0.3.8 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.2.2 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
 | ARMOR-DOCS | 0.8.1.9 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
