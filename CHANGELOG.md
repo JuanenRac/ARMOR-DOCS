@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The README of the two phone apps speaks to you in the familiar form in German, French and Portuguese, as the apps do:** the sources `ARMOR_ANDROID_CONTROL.py` and `ARMOR_IOS_CONTROL.py` now say du, tu and tu (second person, informal) instead of Sie, vous and the formal third person, in the steps, the warnings and the troubleshooting tables; the other languages and the parts that speak of the node or the server are as they were.
 ## [0.8.2.0] - ARMOR-WATCH in the generators, documentation site, install guide in three levels, update profiles and wider tests
 
 - **The deployment to GitHub Pages is retried when the service fails to create it:** the deploy step of the `site` workflow makes up to three attempts, 30 s and 90 s apart, and only that step is retried (the build of the site is not); a third failure still fails the run.
