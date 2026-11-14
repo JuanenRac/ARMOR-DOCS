@@ -31,6 +31,7 @@ CHECKS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
     ("figures", "tools/doc_facts.py", ("--check",)),
     ("claims", "tools/doc_claims.py", ()),
     ("markdown", "tools/doc_markdown.py", ("--all",)),
+    ("sequences", "tools/check_sequences.py", ()),
     ("firmware base", "../ARMOR-COMMON/tools/sync_firmware_base.py", ("check",)),
     ("generated types", "../ARMOR-COMMON/tools/generate_types.py", ("--check",)),
     ("conformance vectors", "../ARMOR-COMMON/tools/make_conformance.py", ("--check",)),
