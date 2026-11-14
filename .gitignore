@@ -1,3 +1,4 @@
 site/
+drift.json
 .cache/
 __pycache__/

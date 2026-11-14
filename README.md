@@ -21,8 +21,8 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-448%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.9-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Tests-470%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Version-0.8.2.0-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,11 +36,11 @@
 
 | | |
 |---|---|
-| Version | `0.8.1.9` |
+| Version | `0.8.2.0` |
 | Maturity | Established |
 | Role | Documentation hub: architecture, security baseline, capability matrix, and the tools that write the READMEs, catalogue and banners |
 | Stack | Python 3.11+ (tools, standard library), Markdown |
-| Tests | 448 (`python -m unittest discover -s tests`, about a minute) |
+| Tests | 470 (`python -m unittest discover -s tests`, about a minute) |
 | Interfaces | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Runs on | Any computer with Python; the repositories of the family next to this one |
 | On real hardware | Not applicable: it is documentation; it records what the other repositories have run on real hardware |
@@ -57,7 +57,7 @@ Each line is one part of this repository and the light says how far it is today.
 | Area | State | What it means here |
 |---|---|---|
 | Software | 🟢 | The generators for the READMEs, the banners, the catalogue and the capability matrix, and the CI tools copied into every repository, run and are tested. |
-| Tests | 🟢 | The 448 tests of the tools pass (`python -m unittest discover -s tests`): the publication check, the history cleaner, the README, catalogue and brand generators, the copy of the CI tools and the shared workflow tool. |
+| Tests | 🟢 | The 470 tests of the tools pass (`python -m unittest discover -s tests`): the publication check, the history cleaner, the README, catalogue and brand generators, the copy of the CI tools and the shared workflow tool. |
 | Automatic checks | 🟢 | Every push checks that the READMEs, the banners and the catalogue are up to date and that every repository of the registry has its status table. |
 | Integration | 🟢 | The READMEs of all the repositories are written from one source with the version and the maturity of each read from its own manifest. |
 | Documentation | 🟢 | The capability matrix says for each feature whether it was only simulated, tested on a computer or verified on real hardware; the eight languages and the changelog are up to date. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # the banners and icons are current
 python tools/doc_facts.py --check     # the figures of the documents match the repositories
 python tools/publication_check.py     # nothing private would leave with a publication
 bash tools/check_all.sh               # every repository's own tests, in one run
-python -m unittest discover -s tests  # 448 tests of these tools; they need no other repository
+python -m unittest discover -s tests  # 470 tests of these tools; they need no other repository
 ```
 
 ## 🧪 Testing
@@ -228,6 +228,7 @@ README and texts exist in English, Spanish, French, Italian, German, Chinese, Ja
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - Web console: cameras, radar, alarms, solar energy and the 2D/3D site designer
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - Android operator client with a live 2D/3D radar
 * **[ARMOR-IOS-CONTROL](https://github.com/JuanenRac/ARMOR-IOS-CONTROL)** - iPhone operator client
+* **[ARMOR-WATCH](https://github.com/JuanenRac/ARMOR-WATCH)** - Minimal watch client: alarm notices and alarm confirmation
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - Visual inference policy that explains its decisions and never actuates
 * **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Camera zones, masks and detection rules for the Jetson Orin NX
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - Offline voice intents with a confirmation that cannot be forged

@@ -21,8 +21,8 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-448%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.9-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Tests-470%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Version-0.8.2.0-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,11 +36,11 @@
 
 | | |
 |---|---|
-| 版本 | `0.8.1.9` |
+| 版本 | `0.8.2.0` |
 | 成熟度 | 成熟 |
 | 角色 | 文档中心：架构、安全基线、能力矩阵，以及生成 README、目录和横幅图的工具 |
 | 技术栈 | Python 3.11+（工具，标准库）、Markdown |
-| 测试 | 448 项（`python -m unittest discover -s tests`，约一分钟） |
+| 测试 | 470 项（`python -m unittest discover -s tests`，约一分钟） |
 | 接口 | `make_readmes.py`、`make_catalog.py`、`make_brand.py`、`publication_check.py`、`clean_history.py`、`sync_ci_tools.py`、`check_all.sh` |
 | 运行位置 | 装有 Python 的任意计算机；家族的各仓库放在本仓库旁边 |
 | 真实硬件 | 不适用：这是文档；它记录其他仓库在真实硬件上运行过的内容 |
@@ -57,7 +57,7 @@
 | 领域 | 状态 | 在这里的含义 |
 |---|---|---|
 | 软件 | 🟢 | README、横幅、目录和能力矩阵的生成器，以及复制到每个仓库中的 CI 工具都能运行并经过测试。 |
-| 测试 | 🟢 | 这些工具的 448 项测试通过（`python -m unittest discover -s tests`）：发布检查、历史清理器、README、目录和品牌的生成器、CI 工具的副本以及共用流程工具。 |
+| 测试 | 🟢 | 这些工具的 470 项测试通过（`python -m unittest discover -s tests`）：发布检查、历史清理器、README、目录和品牌的生成器、CI 工具的副本以及共用流程工具。 |
 | 自动检查 | 🟢 | 每次推送都会检查 README、横幅和目录是否为最新，以及注册表中的每个仓库是否都有状态表。 |
 | 集成 | 🟢 | 所有仓库的 README 都由同一份源文件生成，每个仓库的版本和成熟度均读取自其自身的清单。 |
 | 文档 | 🟢 | 能力矩阵为每项功能说明它只是被模拟、在电脑上测试过，还是在真实硬件上验证过；八种语言和更新日志均为最新。 |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # 横幅图和图标是最新的
 python tools/doc_facts.py --check     # 文档中的数字与仓库一致
 python tools/publication_check.py     # 发布时不会泄露私有内容
 bash tools/check_all.sh               # 一次运行每个仓库的测试
-python -m unittest discover -s tests  # 这些工具的 448 项测试；无需其他仓库
+python -m unittest discover -s tests  # 这些工具的 470 项测试；无需其他仓库
 ```
 
 ## 🧪 测试
@@ -228,6 +228,7 @@ README 和文本提供英语、西班牙语、法语、意大利语、德语、�
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - 网页控制台：摄像头、雷达、报警、太阳能以及 2D/3D 场地设计器
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - 带实时 2D/3D 雷达的 Android 操作员客户端
 * **[ARMOR-IOS-CONTROL](https://github.com/JuanenRac/ARMOR-IOS-CONTROL)** - iPhone 操作员客户端
+* **[ARMOR-WATCH](https://github.com/JuanenRac/ARMOR-WATCH)** - 极简手表客户端：警报通知与警报确认
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - 视觉推理策略，会解释其决策且从不驱动设备
 * **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - 面向 Jetson Orin NX 的摄像头区域、遮罩和检测规则
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - 离线语音意图，附带无法伪造的确认

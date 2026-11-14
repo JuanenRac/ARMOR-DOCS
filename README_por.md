@@ -21,8 +21,8 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Markdown-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Tests-448%20passing-2ea44f.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/Version-0.8.1.9-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Tests-470%20passing-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Version-0.8.2.0-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Maturity-established-2EA44F.svg" alt="Maturity">
 </p>
 
@@ -36,11 +36,11 @@
 
 | | |
 |---|---|
-| Versão | `0.8.1.9` |
+| Versão | `0.8.2.0` |
 | Maturidade | Estabelecido |
 | Função | Centro de documentação: arquitetura, base de segurança, matriz de capacidades e as ferramentas que escrevem os README, o catálogo e as faixas |
 | Tecnologia | Python 3.11+ (ferramentas, biblioteca padrão), Markdown |
-| Testes | 448 (`python -m unittest discover -s tests`, cerca de um minuto) |
+| Testes | 470 (`python -m unittest discover -s tests`, cerca de um minuto) |
 | Interfaces | `make_readmes.py`, `make_catalog.py`, `make_brand.py`, `publication_check.py`, `clean_history.py`, `sync_ci_tools.py`, `check_all.sh` |
 | Funciona em | Qualquer computador com Python; os repositórios da família ao lado deste |
 | Em hardware real | Não se aplica: é documentação; regista o que os outros repositórios correram em hardware real |
@@ -57,7 +57,7 @@ Cada linha é uma parte deste repositório e a luz diz até onde chega hoje. É 
 | Área | Estado | O que significa aqui |
 |---|---|---|
 | Software | 🟢 | Os geradores de READMEs, faixas, catálogo e matriz de capacidades, e as ferramentas de CI copiadas para cada repositório, funcionam e estão testados. |
-| Testes | 🟢 | Os 448 testes das ferramentas passam (`python -m unittest discover -s tests`): a verificação de publicação, o limpador de histórico, os geradores de README, catálogo e marca, a cópia das ferramentas de CI e a ferramenta do fluxo partilhado. |
+| Testes | 🟢 | Os 470 testes das ferramentas passam (`python -m unittest discover -s tests`): a verificação de publicação, o limpador de histórico, os geradores de README, catálogo e marca, a cópia das ferramentas de CI e a ferramenta do fluxo partilhado. |
 | Verificações automáticas | 🟢 | Cada push verifica que os READMEs, as faixas e o catálogo estão atualizados e que cada repositório do registo tem a sua tabela de estado. |
 | Integração | 🟢 | Os READMEs de todos os repositórios são escritos a partir de uma só fonte, com a versão e a maturidade de cada um lidas do seu próprio manifesto. |
 | Documentação | 🟢 | A matriz de capacidades diz, para cada função, se foi apenas simulada, testada num computador ou verificada em hardware real; os oito idiomas e o registo de alterações estão atualizados. |
@@ -129,7 +129,7 @@ python tools/make_brand.py --check    # as faixas e os ícones estão atualizado
 python tools/doc_facts.py --check     # os números dos documentos coincidem com os repositórios
 python tools/publication_check.py     # nada privado sairia com uma publicação
 bash tools/check_all.sh               # os testes de cada repositório, numa execução
-python -m unittest discover -s tests  # 448 testes destas ferramentas; não precisam de outro repositório
+python -m unittest discover -s tests  # 470 testes destas ferramentas; não precisam de outro repositório
 ```
 
 ## 🧪 Testes
@@ -228,6 +228,7 @@ O **A.R.M.O.R.** (Autonomous Radar & Multimodal Observation Range) é um sistema
 * **[ARMOR-STUDIO](https://github.com/JuanenRac/ARMOR-STUDIO)** - Consola web: câmaras, radar, alarmes, energia solar e o desenhador 2D/3D do local
 * **[ARMOR-ANDROID-CONTROL](https://github.com/JuanenRac/ARMOR-ANDROID-CONTROL)** - Cliente de operador Android com radar 2D/3D em direto
 * **[ARMOR-IOS-CONTROL](https://github.com/JuanenRac/ARMOR-IOS-CONTROL)** - Cliente de operador para iPhone
+* **[ARMOR-WATCH](https://github.com/JuanenRac/ARMOR-WATCH)** - Cliente de relógio mínimo: avisos de alarme e confirmação de alarme
 * **[ARMOR-SERVER-AI](https://github.com/JuanenRac/ARMOR-SERVER-AI)** - Política de inferência visual que explica as suas decisões e nunca atua
 * **[ARMOR-VISION](https://github.com/JuanenRac/ARMOR-VISION)** - Zonas de câmara, máscaras e regras de deteção para o Jetson Orin NX
 * **[ARMOR-VOICE-AI](https://github.com/JuanenRac/ARMOR-VOICE-AI)** - Intenções de voz offline com uma confirmação que não pode ser falsificada
