@@ -10,8 +10,8 @@
 | ARMOR-NODE-ALARM | 0.5.6 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
 | ARMOR-NODE-HMI | 0.4.8 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NETWORK | 0.1.8 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
-| ARMOR-SERVER | 0.8.2.2 | Central event coordinator and web API | Established |
-| ARMOR-STUDIO | 0.8.2.4 | Web administration and calibration console | Established |
+| ARMOR-SERVER | 0.8.2.3 | Central event coordinator and web API | Established |
+| ARMOR-STUDIO | 0.8.2.5 | Web administration and calibration console | Established |
 | ARMOR-ANDROID-CONTROL | 0.8.0.7 | Android operator client | Established |
 | ARMOR-IOS-CONTROL | 0.0.5 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.1 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
