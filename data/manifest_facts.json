@@ -41,12 +41,12 @@
    "unreleased_entries": 0
   },
   "ARMOR-DOCS": {
-   "changelog_head": "0.8.2.0",
+   "changelog_head": "0.8.2.1",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": false,
    "latest_release": "v0.8.2.0",
-   "manifest_version": "0.8.2.0",
+   "manifest_version": "0.8.2.1",
    "maturity": "established",
    "native": {},
    "tests_present": true,
