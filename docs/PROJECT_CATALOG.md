@@ -14,7 +14,7 @@
 | ARMOR-STUDIO | 0.8.2.5 | Web administration and calibration console | Established |
 | ARMOR-ANDROID-CONTROL | 0.8.0.7 | Android operator client | Established |
 | ARMOR-IOS-CONTROL | 0.0.5 | iPhone operator client | Scaffolding |
-| ARMOR-WATCH | 0.0.1 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
+| ARMOR-WATCH | 0.0.2 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.3 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.1.7 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.6 | Offline speech and intent gateway | Established |
