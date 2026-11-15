@@ -17,7 +17,7 @@ The name says where the number comes from:
     vectors              every conformance vector of ARMOR-COMMON         vectors:network   the vectors of one schema (conformance/network.json); vectors:a+b adds those of several
     schemas              the JSON Schemas of ARMOR-COMMON                 openapi_paths     the paths of the OpenAPI file of the server
     openapi_operations   the operations (method and path) of that file
-    tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository (the count `python -m unittest discover` prints)
+    tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository (the count `python -m unittest discover` prints); ARMOR-DEVOPS keeps them in scripts/test_*.py
     unittest:ARMOR-X     the same figure under the name of the runner
     ctest_cpp:ARMOR-X    the host test programs a node registers with CTest (`add_test` in tests/CMakeLists.txt, each name once, without the Python checks)
     ctest_python:ARMOR-X the Python checks that file registers with CTest
@@ -42,6 +42,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FAMILY = ROOT.parent
 DOCS = ROOT / "docs"
 VERIFIED = re.compile(r"<!--verified:(ARMOR-[A-Z0-9-]+) (\d+(?:\.\d+){1,3})-->")
+TESTS_NEXT_TO_SCRIPTS = {"ARMOR-DEVOPS"}
 MARKER = re.compile(r"<!--fact:([A-Za-z0-9_:.\-]+)-->(.*?)<!--/fact-->", re.S)
 
 
@@ -112,8 +113,11 @@ def openapi_operations() -> int:
 
 
 def tests(repository: str) -> int:
-    """The test functions of a Python repository: every `def test_` of the files under tests/ as committed."""
-    files = _tracked(_repo(repository), "tests", ".py")
+    """The test functions of a Python repository: every `def test_` of the files under tests/ as committed (ARMOR-DEVOPS keeps its tests next to its scripts: the scripts/test_*.py files)."""
+    if repository in TESTS_NEXT_TO_SCRIPTS:
+        files = {name: text for name, text in _tracked(_repo(repository), "scripts", ".py").items() if name.startswith("test_")}
+    else:
+        files = _tracked(_repo(repository), "tests", ".py")
     if not files:
         raise Unavailable(f"{repository} has no Python tests")
     return sum(len(re.findall(r"^\s*(?:async )?def test_", text, re.M)) for text in files.values())
