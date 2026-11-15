@@ -4,10 +4,10 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.8.1.4 | Shared contracts and validation library | Established |
-| ARMOR-NODE-RADAR | 0.8.1.2 | ESP32-S3 PoE field-node firmware | Established |
-| ARMOR-NODE-SOLAR | 0.6.6 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
+| ARMOR-NODE-RADAR | 0.8.1.3 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-NODE-SOLAR | 0.6.7 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-NODE-ELECTRICAL | 0.5.8 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
-| ARMOR-NODE-ALARM | 0.5.6 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
+| ARMOR-NODE-ALARM | 0.5.7 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
 | ARMOR-NODE-HMI | 0.4.8 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NETWORK | 0.1.8 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
 | ARMOR-SERVER | 0.8.2.3 | Central event coordinator and web API | Established |
