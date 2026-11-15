@@ -433,11 +433,10 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '|---|---|---|\n'
                             '| `test_watch_contract.py` | 10 | Chaque exemple du contrat, les limites, les constantes Kotlin et les notes du protocole |\n'
                             '| `WatchProtocolTest.kt` | 6 | Les mêmes exemples contre le lecteur Kotlin, les limites et la confirmation |\n'
-                            '| `AlertInboxTest.kt` | 10 | Désactivé par défaut, ordre, remplacement, expiration, effacement, une seule confirmation, la limite de huit '
+                            '| `AlertInboxTest.kt` | 10 | Désactivé par défaut, ordre, remplacement, expiration, effacement, une seule confirmation, la limite de huit |\n'
                             '| `WatchSessionTest.kt` | 11 | La conversation de la montre avec un téléphone qui n\'existe qu\'en mémoire |\n'
                             '| `WatchRuntimeTest.kt` | 5 | La session partagée de l\'app Wear OS, le chemin des alertes et le bouton |\n'
                             '| `ArmorWatchCoreTests.swift` | 18 | Le cœur Swift de l\'app Apple Watch face aux mêmes exemples du contrat |\n'
-                            '|\n'
                             '\n'
                             "Les tests Kotlin tournent en CI ; aucun test n'a tourné sur une montre ni sur un émulateur.",
                  'troubleshooting': '| Vous voyez | Parce que | Faites |\n'
