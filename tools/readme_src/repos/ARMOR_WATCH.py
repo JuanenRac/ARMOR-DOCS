@@ -80,6 +80,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Every example of the contract, the limits, the Kotlin constants and the protocol notes |\n'
                             '| `WatchProtocolTest.kt` | 6 | The same examples against the Kotlin parser, the limits and the acknowledgement |\n'
                             '| `AlertInboxTest.kt` | 10 | Off by default, order, replacement, expiry, clear, one confirmation, the limit of eight |\n'
+                            '| `WatchSessionTest.kt` | 11 | The conversation of the watch against a phone that exists only in memory |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | The shared session of the Wear OS app, the path of the alerts and the button |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | The Swift core of the Apple Watch app against the same examples of the contract |\n'
                             '\n'
                             'The Kotlin tests run in CI; no test has run on a watch or an emulator.',
                  'troubleshooting': '| You see | Because | Do |\n'
@@ -195,6 +198,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Cada ejemplo del contrato, los límites, las constantes de Kotlin y las notas del protocolo |\n'
                             '| `WatchProtocolTest.kt` | 6 | Los mismos ejemplos contra el lector Kotlin, los límites y la confirmación |\n'
                             '| `AlertInboxTest.kt` | 10 | Apagado por defecto, orden, sustitución, caducidad, borrado, una sola confirmación, el límite de ocho |\n'
+                            '| `WatchSessionTest.kt` | 11 | La conversación del reloj contra un teléfono que solo existe en memoria |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | La sesión compartida de la app Wear OS, la ruta de las alertas y el botón |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | El núcleo Swift de la app del Apple Watch contra los mismos ejemplos del contrato |\n'
                             '\n'
                             'Las pruebas de Kotlin corren en CI; ninguna prueba ha corrido en un reloj ni en un emulador.',
                  'troubleshooting': '| Ves | Porque | Haz |\n'
@@ -308,6 +314,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Jedes Beispiel des Vertrags, die Grenzen, die Kotlin-Konstanten und die Protokollnotizen |\n'
                             '| `WatchProtocolTest.kt` | 6 | Dieselben Beispiele gegen den Kotlin-Parser, die Grenzen und die Bestätigung |\n'
                             '| `AlertInboxTest.kt` | 10 | Standardmäßig aus, Reihenfolge, Ersetzen, Ablauf, Löschen, eine Bestätigung, das Limit von acht |\n'
+                            '| `WatchSessionTest.kt` | 11 | Das Gespräch der Uhr mit einem Telefon, das nur im Speicher existiert |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | Die gemeinsame Sitzung der Wear-OS-App, der Pfad der Alarme und die Schaltfläche |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | Der Swift-Kern der Apple-Watch-App gegen dieselben Beispiele des Vertrags |\n'
                             '\n'
                             'Die Kotlin-Tests laufen in der CI; kein Test lief auf einer Uhr oder einem Emulator.',
                  'troubleshooting': '| Du siehst | Weil | Tu |\n'
@@ -425,6 +434,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Chaque exemple du contrat, les limites, les constantes Kotlin et les notes du protocole |\n'
                             '| `WatchProtocolTest.kt` | 6 | Les mêmes exemples contre le lecteur Kotlin, les limites et la confirmation |\n'
                             '| `AlertInboxTest.kt` | 10 | Désactivé par défaut, ordre, remplacement, expiration, effacement, une seule confirmation, la limite de huit '
+                            '| `WatchSessionTest.kt` | 11 | La conversation de la montre avec un téléphone qui n\'existe qu\'en mémoire |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | La session partagée de l\'app Wear OS, le chemin des alertes et le bouton |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | Le cœur Swift de l\'app Apple Watch face aux mêmes exemples du contrat |\n'
                             '|\n'
                             '\n'
                             "Les tests Kotlin tournent en CI ; aucun test n'a tourné sur une montre ni sur un émulateur.",
@@ -540,6 +552,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Ogni esempio del contratto, i limiti, le costanti Kotlin e le note del protocollo |\n'
                             '| `WatchProtocolTest.kt` | 6 | Gli stessi esempi contro il parser Kotlin, i limiti e la conferma |\n'
                             '| `AlertInboxTest.kt` | 10 | Spento di default, ordine, sostituzione, scadenza, cancellazione, una sola conferma, il limite di otto |\n'
+                            '| `WatchSessionTest.kt` | 11 | La conversazione dell\'orologio con un telefono che esiste solo in memoria |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | La sessione condivisa dell\'app Wear OS, il percorso degli avvisi e il pulsante |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | Il nucleo Swift dell\'app Apple Watch contro gli stessi esempi del contratto |\n'
                             '\n'
                             'I test Kotlin girano in CI; nessun test è stato eseguito su un orologio o su un emulatore.',
                  'troubleshooting': '| Vedi | Perché | Fai |\n'
@@ -645,6 +660,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | 契約のすべての例、上限、Kotlin の定数、プロトコルの説明 |\n'
                             '| `WatchProtocolTest.kt` | 6 | Kotlin パーサーに対する同じ例、上限、確認 |\n'
                             '| `AlertInboxTest.kt` | 10 | 既定でオフ、順序、置換、期限切れ、解除、確認は 1 回、上限 8 件 |\n'
+                            '| `WatchSessionTest.kt` | 11 | メモリ上にしかない電話を相手にした腕時計側の会話 |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | Wear OS アプリの共有セッション、アラートの経路、ボタン |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | Apple Watch アプリの Swift コアを契約の同じ例で検証 |\n'
                             '\n'
                             'Kotlin テストは CI で動きます。ウォッチでもエミュレーターでもテストは実行されていません。',
                  'troubleshooting': '| 表示 | 原因 | 対処 |\n'
@@ -746,6 +764,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | 契约的每个示例、限制、Kotlin 常量和协议说明 |\n'
                             '| `WatchProtocolTest.kt` | 6 | 针对 Kotlin 解析器的相同示例、限制和确认 |\n'
                             '| `AlertInboxTest.kt` | 10 | 默认关闭、顺序、替换、过期、清除、仅一次确认、八条上限 |\n'
+                            '| `WatchSessionTest.kt` | 11 | 手表一端与仅存在于内存中的手机之间的对话 |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | Wear OS 应用的共享会话、警报路径和按钮 |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | Apple Watch 应用的 Swift 核心,对照契约的同一批示例 |\n'
                             '\n'
                             'Kotlin 测试在 CI 中运行；没有任何测试在手表或模拟器上运行过。',
                  'troubleshooting': '| 你看到 | 原因 | 处理 |\n'
@@ -858,6 +879,9 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                             '| `test_watch_contract.py` | 10 | Cada exemplo do contrato, os limites, as constantes Kotlin e as notas do protocolo |\n'
                             '| `WatchProtocolTest.kt` | 6 | Os mesmos exemplos contra o leitor Kotlin, os limites e a confirmação |\n'
                             '| `AlertInboxTest.kt` | 10 | Desligado por predefinição, ordem, substituição, caducidade, limpeza, uma só confirmação, o limite de oito |\n'
+                            '| `WatchSessionTest.kt` | 11 | A conversa do relógio com um telemóvel que só existe em memória |\n'
+                            '| `WatchRuntimeTest.kt` | 5 | A sessão partilhada da app Wear OS, o caminho dos alertas e o botão |\n'
+                            '| `ArmorWatchCoreTests.swift` | 18 | O núcleo Swift da app Apple Watch contra os mesmos exemplos do contrato |\n'
                             '\n'
                             'Os testes Kotlin correm na CI; nenhum teste correu num relógio ou num emulador.',
                  'troubleshooting': '| Vê | Porque | Faça |\n'
