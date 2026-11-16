@@ -4,6 +4,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The compatibility page says it is the photograph of a train, and `make_compatibility.py --check` lists what moved on:** the page no longer calls the contracts version "current"; the new check (informational, `--strict` to fail) compares the lock with the manifests, runs in the nightly comparison and skips when the family is not next to this repository; three tests cover it.
+- **The claim about password hashing is tied to the code, not to a comment:** `users.scrypt` matches a call of `scrypt` or `scryptSync` instead of the word anywhere in the file.
+
 ## [0.8.2.1] - The README sources tell about the Apple Watch app and the phone apps
 
 - **The README sources tell about the Apple Watch app:** the sentences of ARMOR-WATCH (honesty check, glance table, status lights, file tree with `watchos/` and limits) say that the Wear OS app, the Apple Watch app and the senders of the two phone apps are built and tested in CI and never run on a watch, in the eight languages; the Android README no longer says the iPhone has no counterpart, and the iPhone README has its own bullet for the option of the Apple Watch.

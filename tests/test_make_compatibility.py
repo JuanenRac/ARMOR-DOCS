@@ -55,6 +55,25 @@ class CompatibilityTests(unittest.TestCase):
         self.assertIsInstance(number, int)
         self.assertGreaterEqual(number, 1)
 
+    def test_what_moved_on_since_the_train_is_listed(self):
+        written = {"contracts_version": "1", "repositories": {"A": {"version": "1"}, "B": {"version": "2"}, "C": {"version": "3"}}}
+        now = {"contracts_version": "2", "repositories": {"A": {"version": "1"}, "B": {"version": "3"}, "D": {"version": "1"}}}
+        self.assertEqual(
+            make_compatibility.moved_on(written, now),
+            ["contracts: 1 in the lock, 2 now", "B: 2 in the lock, 3 now", "D: not in the lock", "C: in the lock but not in the family"],
+        )
+        self.assertEqual(make_compatibility.moved_on(written, written), [])
+
+    def test_the_page_says_it_is_a_photograph_of_the_train(self):
+        text = make_compatibility.markdown({"train": "eco-1", "contracts_version": "9", "repositories": {}})
+        self.assertIn("when the train was prepared: **9**", text)
+        self.assertNotIn("Current version", text)
+
+    def test_the_page_of_the_repository_is_what_the_tool_writes_for_its_own_lock(self):
+        docs = Path(make_compatibility.DOCS)
+        data = json.loads((docs / "ecosystem.lock.json").read_text(encoding="utf-8"))
+        self.assertEqual((docs / "COMPATIBILITY.md").read_text(encoding="utf-8").replace("\r\n", "\n"), make_compatibility.markdown(data))
+
     def test_the_lock_is_stable_json(self):
         data = {"schema_version": "1.0", "contracts_version": "1", "repositories": {}}
         self.assertEqual(json.loads(make_compatibility.lock_text(data)), data)
