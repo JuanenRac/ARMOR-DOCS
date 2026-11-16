@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The security table of the ARMOR-SERVER README says how a disarm under duress is handled and what is left to chance:** a new row in the eight languages (the option `alarm.duress_hide_trail`, who is told, who reads the record apart, and that a wall panel shows the alarm to whoever stands in front of it).
 - **The README source of the electrical node says no PUBLISHED firmware image includes the switching layer:** the switching image is built on request and never published; the sentence says so in the seven languages that carry it.
 - **The compatibility page says it is the photograph of a train, and `make_compatibility.py --check` lists what moved on:** the page no longer calls the contracts version "current"; the new check (informational, `--strict` to fail) compares the lock with the manifests, runs in the nightly comparison and skips when the family is not next to this repository; three tests cover it.
 - **The claim about password hashing is tied to the code, not to a comment:** `users.scrypt` matches a call of `scrypt` or `scryptSync` instead of the word anywhere in the file.
