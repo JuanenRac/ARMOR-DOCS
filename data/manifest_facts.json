@@ -242,7 +242,7 @@
   "ARMOR-VOICE-AI": {
    "changelog_head": "0.3.6",
    "ci_simulation": true,
-   "evidence": "bench",
+   "evidence": "simulator",
    "hardware_bound": true,
    "latest_release": "v0.3.6",
    "manifest_version": "0.3.6",
