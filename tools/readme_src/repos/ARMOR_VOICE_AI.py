@@ -24,7 +24,7 @@ FACTS = {
     ],
     [
       "integration",
-      "yellow",
+      "orange",
     ],
     [
       "ui",
