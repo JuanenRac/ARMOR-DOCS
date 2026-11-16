@@ -1,82 +1,86 @@
 {
   "schema_version": "1.0",
   "train": "eco-1",
-  "contracts_version": "0.8.0.7",
+  "contracts_version": "0.8.1.4",
   "repositories": {
     "ARMOR-COMMON": {
-      "version": "0.8.0.7",
+      "version": "0.8.1.4",
       "contracts": null
     },
     "ARMOR-NODE-RADAR": {
-      "version": "0.8.0.8",
+      "version": "0.8.1.3",
       "contracts": "0.8.0.7"
     },
     "ARMOR-NODE-SOLAR": {
-      "version": "0.6.2",
+      "version": "0.6.7",
       "contracts": "0.8.0.7"
     },
     "ARMOR-NODE-ELECTRICAL": {
-      "version": "0.5.4",
+      "version": "0.5.9",
       "contracts": "0.8.0.7"
     },
     "ARMOR-NODE-ALARM": {
-      "version": "0.5.2",
+      "version": "0.5.7",
       "contracts": "0.8.0.7"
     },
     "ARMOR-NODE-HMI": {
-      "version": "0.4.3",
+      "version": "0.4.9",
       "contracts": "0.8.0.7"
     },
     "ARMOR-NETWORK": {
-      "version": "0.1.6",
+      "version": "0.1.8",
       "contracts": "0.8.0.7"
     },
     "ARMOR-SERVER": {
-      "version": "0.8.1.6",
-      "contracts": "0.8.0.6"
+      "version": "0.8.2.3",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-STUDIO": {
-      "version": "0.8.2.1",
-      "contracts": "0.8.0.6"
+      "version": "0.8.2.5",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-ANDROID-CONTROL": {
-      "version": "0.8.0.3",
-      "contracts": "0.8.0.6"
+      "version": "0.8.0.8",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-IOS-CONTROL": {
+      "version": "0.0.6",
+      "contracts": "0.8.0.7"
+    },
+    "ARMOR-WATCH": {
       "version": "0.0.2",
-      "contracts": "0.8.0.6"
+      "contracts": "0.8.0.7"
     },
     "ARMOR-SERVER-AI": {
-      "version": "0.3.1",
-      "contracts": "0.8.0.6"
+      "version": "0.3.3",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-VISION": {
-      "version": "0.1.1",
-      "contracts": "0.8.0.6"
+      "version": "0.1.7",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-VOICE-AI": {
-      "version": "0.3.4",
-      "contracts": "0.8.0.6"
+      "version": "0.3.6",
+      "contracts": "0.8.0.7"
     },
     "ARMOR-HARDWARE": {
-      "version": "0.2.8",
+      "version": "0.2.9",
       "contracts": "0.8.0.7"
     },
     "ARMOR-DEVOPS": {
-      "version": "0.7.1",
+      "version": "0.7.6",
       "contracts": "0.8.0.7"
     },
     "ARMOR-SIMULATOR": {
-      "version": "0.3.5",
+      "version": "0.3.8",
       "contracts": "0.8.0.7"
     },
     "ARMOR-UPDATER": {
-      "version": "0.1.9",
+      "version": "0.2.3",
       "contracts": "0.8.0.7"
     },
     "ARMOR-DOCS": {
-      "version": "0.8.1.6",
+      "version": "0.8.2.1",
       "contracts": "0.8.0.7"
     }
   }
