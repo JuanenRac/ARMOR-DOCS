@@ -151,6 +151,8 @@ As a library: `parse_config`, `Pipeline.process_detections` and `process_frame`.
 | `masks[]` | Polygons where movement is ignored; detections whose centre is inside are dropped |
 | `profiles` | Which zones are watched in each arming mode (`away`, `home`, ...) |
 | `activity configuration (separate file)` | `enabled` (default `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` up to 65536, `position`, `labels`) and `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` with `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); the heat map is normalised as weight divided by the maximum |
+| `delivery` (service configuration) | `retries` (0 to 5, default 0: more than 0 sends an event again, a little later each time, when the server could not be reached or answered with a server error, never after a refusal), `retry_backoff_s` (0 to 30, default 1) and `event_id` (default false: a stable id, the same on every retry); `/health` counts the repeats as `retried` when retries are on |
+| `ffmpeg_protocols` (stream pair of a camera) and `sha256` (ONNX model settings) | `ffmpeg_protocols` is a comma-separated list of protocol names ffmpeg may open for both streams (`-protocol_whitelist`; absent adds nothing); `sha256` is null or 64 hexadecimal digits, and a model file whose SHA-256 differs is refused before anything opens it |
 
 | Limit | Value |
 |---|---|
@@ -353,6 +355,8 @@ Como biblioteca: `parse_config`, `Pipeline.process_detections` y `process_frame`
 | `masks[]` | Polígonos donde se ignora el movimiento; se descartan las detecciones cuyo centro está dentro |
 | `profiles` | Qué zonas se vigilan en cada modo de armado (`away`, `home`, ...) |
 | `configuración de actividad (fichero aparte)` | `enabled` (por defecto `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` hasta 65536, `position`, `labels`) y `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); el mapa se normaliza como peso dividido por el máximo |
+| `delivery` (configuración del servicio) | `retries` (0 a 5, por defecto 0: con más de 0 un evento se envía de nuevo, un poco más tarde cada vez, cuando no se pudo llegar al servidor o respondió con un error suyo, nunca tras un rechazo), `retry_backoff_s` (0 a 30, por defecto 1) y `event_id` (por defecto falso: un id estable, el mismo en cada reintento); `/health` cuenta las repeticiones como `retried` si hay reintentos |
+| `ffmpeg_protocols` (par de streams de una cámara) y `sha256` (ajustes del modelo ONNX) | `ffmpeg_protocols` es una lista, separada por comas, de nombres de protocolo que ffmpeg puede abrir en ambos streams (`-protocol_whitelist`; si falta no añade nada); `sha256` es null o 64 dígitos hexadecimales, y un fichero de modelo con otro SHA-256 se rechaza antes de abrirlo |
 
 | Límite | Valor |
 |---|---|
@@ -555,6 +559,8 @@ Als Bibliothek: `parse_config`, `Pipeline.process_detections` und `process_frame
 | `masks[]` | Polygone, in denen Bewegung ignoriert wird; Erkennungen mit Mittelpunkt darin entfallen |
 | `profiles` | Welche Zonen in jedem Scharfschaltmodus überwacht werden (`away`, `home`, ...) |
 | `Aktivitätskonfiguration (eigene Datei)` | `enabled` (Standard `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` bis 65536, `position`, `labels`) und `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` mit `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); die Heatmap wird als Gewicht geteilt durch das Maximum normiert |
+| `delivery` (Dienstkonfiguration) | `retries` (0 bis 5, Standard 0: bei mehr als 0 wird ein Ereignis erneut gesendet, jedes Mal etwas später, wenn der Server nicht erreichbar war oder mit einem Serverfehler antwortete, nie nach einer Ablehnung), `retry_backoff_s` (0 bis 30, Standard 1) und `event_id` (Standard false: eine stabile ID, bei jeder Wiederholung dieselbe); `/health` zählt die Wiederholungen als `retried`, wenn Wiederholungen aktiv sind |
+| `ffmpeg_protocols` (Stream-Paar einer Kamera) und `sha256` (ONNX-Modelleinstellungen) | `ffmpeg_protocols` ist eine kommagetrennte Liste von Protokollnamen, die ffmpeg für beide Streams öffnen darf (`-protocol_whitelist`; fehlt sie, kommt nichts hinzu); `sha256` ist null oder 64 Hexadezimalziffern, und eine Modelldatei mit anderem SHA-256 wird abgelehnt, bevor sie geöffnet wird |
 
 | Grenze | Wert |
 |---|---|
@@ -757,6 +763,8 @@ En bibliothèque : `parse_config`, `Pipeline.process_detections` et `process_fra
 | `masks[]` | Polygones où le mouvement est ignoré ; les détections dont le centre est dedans sont écartées |
 | `profiles` | Quelles zones sont surveillées dans chaque mode d'armement (`away`, `home`, ...) |
 | `configuration d'activité (fichier à part)` | `enabled` (par défaut `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` jusqu'à 65536, `position`, `labels`) et `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` avec `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)) ; la carte est normalisée comme poids divisé par le maximum |
+| `delivery` (configuration du service) | `retries` (0 à 5, 0 par défaut : au-delà de 0 un événement est renvoyé, un peu plus tard à chaque fois, quand le serveur était injoignable ou a répondu par une erreur de son côté, jamais après un refus), `retry_backoff_s` (0 à 30, 1 par défaut) et `event_id` (faux par défaut : un identifiant stable, le même à chaque nouvel essai) ; `/health` compte les répétitions sous `retried` quand les nouveaux essais sont actifs |
+| `ffmpeg_protocols` (paire de flux d'une caméra) et `sha256` (réglages du modèle ONNX) | `ffmpeg_protocols` est une liste, séparée par des virgules, de noms de protocoles que ffmpeg peut ouvrir pour les deux flux (`-protocol_whitelist` ; absente, elle n'ajoute rien) ; `sha256` vaut null ou 64 chiffres hexadécimaux, et un fichier de modèle au SHA-256 différent est refusé avant d'être ouvert |
 
 | Limite | Valeur |
 |---|---|
@@ -959,6 +967,8 @@ Come libreria: `parse_config`, `Pipeline.process_detections` e `process_frame`. 
 | `masks[]` | Poligoni dove il movimento è ignorato; i rilevamenti con il centro all'interno vengono scartati |
 | `profiles` | Quali zone sono sorvegliate in ogni modalità di inserimento (`away`, `home`, ...) |
 | `configurazione di attività (file a parte)` | `enabled` (predefinito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` fino a 65536, `position`, `labels`) ed `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` con `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); la mappa è normalizzata come peso diviso per il massimo |
+| `delivery` (configurazione del servizio) | `retries` (da 0 a 5, predefinito 0: con più di 0 un evento viene inviato di nuovo, un po' più tardi ogni volta, quando il server non era raggiungibile o ha risposto con un errore suo, mai dopo un rifiuto), `retry_backoff_s` (da 0 a 30, predefinito 1) e `event_id` (predefinito falso: un id stabile, lo stesso a ogni nuovo tentativo); `/health` conta le ripetizioni come `retried` quando i tentativi sono attivi |
+| `ffmpeg_protocols` (coppia di flussi di una telecamera) e `sha256` (impostazioni del modello ONNX) | `ffmpeg_protocols` è un elenco, separato da virgole, di nomi di protocolli che ffmpeg può aprire per entrambi i flussi (`-protocol_whitelist`; se manca non aggiunge nulla); `sha256` è null o 64 cifre esadecimali, e un file di modello con SHA-256 diverso viene rifiutato prima di aprirlo |
 
 | Limite | Valore |
 |---|---|
@@ -1161,6 +1171,8 @@ ARMOR-VISION/
 | `masks[]` | 動きを無視する多角形。中心が内側にある検出は破棄されます |
 | `profiles` | 警戒モードごとに監視するゾーン（`away`、`home` など） |
 | `アクティビティ設定（別ファイル）` | `enabled`（既定 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、65536 までの `max_cells`、`position`、`labels`）、`events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、`id`・`a`・`b` を持つ `lines[]`、`sensitivity_floor`（`low`、`normal`、`high`））。ヒートマップは重みを最大値で割って正規化します |
+| `delivery`（サービス設定） | `retries`（0〜5、既定 0。0 より大きいと、サーバーに届かなかった場合やサーバー側エラーが返った場合に、間隔を少しずつ延ばしてイベントを再送し、拒否された後は再送しません）、`retry_backoff_s`（0〜30、既定 1）、`event_id`（既定 false。再送のたびに同じ安定した ID を付けます）。再送が有効なとき `/health` は再送回数を `retried` として数えます |
+| `ffmpeg_protocols`（カメラのストリームペア）と `sha256`（ONNX モデル設定） | `ffmpeg_protocols` は両方のストリームで ffmpeg が開いてよいプロトコル名のカンマ区切りリスト（`-protocol_whitelist`。省略すると何も追加しません）。`sha256` は null または 16 進 64 桁で、SHA-256 が異なるモデルファイルは開く前に拒否されます |
 
 | 制限 | 値 |
 |---|---|
@@ -1363,6 +1375,8 @@ ARMOR-VISION/
 | `masks[]` | 忽略运动的多边形；中心位于其中的检测会被丢弃 |
 | `profiles` | 每种布防模式下监视哪些区域（`away`、`home` 等） |
 | `活动配置（单独的文件）` | `enabled`（默认 `false`）、`heatmap`（`cols`、`rows`、`window_seconds`、`half_life_seconds`、`slices`、最大 65536 的 `max_cells`、`position`、`labels`）和 `events`（`dwell_seconds`、`loiter_seconds`、`loiter_radius`、`lost_seconds`、`labels`、含 `id`、`a`、`b` 的 `lines[]`、`sensitivity_floor`（`low`、`normal`、`high`））；热力图按权重除以最大值归一化 |
+| `delivery`（服务配置） | `retries`（0 到 5，默认 0：大于 0 时，若服务器无法连接或返回服务器错误，事件会重新发送，每次稍晚一些，被拒绝后绝不重发）、`retry_backoff_s`（0 到 30，默认 1）和 `event_id`（默认 false：每次重试都相同的稳定标识）；启用重试时 `/health` 把重发次数计为 `retried` |
+| `ffmpeg_protocols`（摄像头的流对）和 `sha256`（ONNX 模型设置） | `ffmpeg_protocols` 是 ffmpeg 可为两条流打开的协议名称列表，以逗号分隔（`-protocol_whitelist`；缺省则不增加任何协议）；`sha256` 为 null 或 64 位十六进制数字，SHA-256 不同的模型文件在打开之前就会被拒绝 |
 
 | 限制 | 值 |
 |---|---|
@@ -1565,6 +1579,8 @@ Como biblioteca: `parse_config`, `Pipeline.process_detections` e `process_frame`
 | `masks[]` | Polígonos onde o movimento é ignorado; as deteções com o centro lá dentro são descartadas |
 | `profiles` | Que zonas são vigiadas em cada modo de armação (`away`, `home`, ...) |
 | `configuração de atividade (ficheiro à parte)` | `enabled` (por defeito `false`), `heatmap` (`cols`, `rows`, `window_seconds`, `half_life_seconds`, `slices`, `max_cells` até 65536, `position`, `labels`) e `events` (`dwell_seconds`, `loiter_seconds`, `loiter_radius`, `lost_seconds`, `labels`, `lines[]` com `id`, `a`, `b`, `sensitivity_floor` (`low`, `normal`, `high`)); o mapa é normalizado como peso dividido pelo máximo |
+| `delivery` (configuração do serviço) | `retries` (0 a 5, predefinição 0: com mais de 0 um evento é enviado de novo, um pouco mais tarde de cada vez, quando o servidor não foi alcançado ou respondeu com um erro seu, nunca após uma recusa), `retry_backoff_s` (0 a 30, predefinição 1) e `event_id` (predefinição falso: um id estável, o mesmo em cada nova tentativa); `/health` conta as repetições como `retried` quando há novas tentativas |
+| `ffmpeg_protocols` (par de streams de uma câmara) e `sha256` (definições do modelo ONNX) | `ffmpeg_protocols` é uma lista, separada por vírgulas, de nomes de protocolo que o ffmpeg pode abrir nos dois streams (`-protocol_whitelist`; se faltar não acrescenta nada); `sha256` é null ou 64 dígitos hexadecimais, e um ficheiro de modelo com outro SHA-256 é recusado antes de ser aberto |
 
 | Limite | Valor |
 |---|---|

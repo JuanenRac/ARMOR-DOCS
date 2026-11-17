@@ -193,7 +193,8 @@ Mains (230 V AC) and the DC of a battery bank can kill and start fires. [docs/SA
 | `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |
 | `analog_stream.continuous` | off | Read the analog inputs as a stream the converter fills by itself (DMA) and take the effective value of an alternating input over whole cycles of the mains found by their zero crossings; takes effect after a restart |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | The stream's sample rate (2000-80000), the longest window an input is read for, the whole cycles needed to measure over cycles (2-50), the swing in millivolts that counts as a cycle and the frequencies that can be the mains |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | The calibration of an input, measured against a reference such as a multimeter: corrected = (reading in mV - offset) x gain; 1 and 0 leave the reading as the chip gave it (an alternating input has the gain only) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | The calibration of an input, measured against a reference such as a multimeter: corrected = (reading in mV - offset) x gain; 1 and 0 leave the reading as the chip gave it (an alternating input has the gain only) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Build option of the switching image: a node with no `command_key` then adds the switch as not allowed, every close is refused and the state says `switching_enabled` false |""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; an ESP32-S3 board (Ethernet or Wi-Fi).
 
 ```bash
@@ -395,7 +396,8 @@ La red (230 V CA) y la corriente continua de un banco de baterías pueden matar 
 | `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |
 | `analog_stream.continuous` | off | Leer las entradas analógicas como un flujo que el conversor llena por sí solo (DMA) y tomar el valor eficaz de una entrada alterna sobre ciclos completos de la red hallados por sus pasos por cero; se aplica tras reiniciar |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La frecuencia de muestreo del flujo (2000-80000), la ventana más larga con que se lee una entrada, los ciclos completos necesarios para medir sobre ciclos (2-50), la oscilación en milivoltios que cuenta como ciclo y las frecuencias que pueden ser la red |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibración de una entrada, medida frente a una referencia como un polímetro: corregido = (lectura en mV - desfase) x ganancia; 1 y 0 dejan la lectura como la dio el chip (una entrada alterna solo tiene ganancia) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibración de una entrada, medida frente a una referencia como un polímetro: corregido = (lectura en mV - desfase) x ganancia; 1 y 0 dejan la lectura como la dio el chip (una entrada alterna solo tiene ganancia) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Opción de compilación de la imagen de conmutación: un nodo sin `command_key` añade entonces el interruptor como no permitido, se rechaza todo cierre y el estado dice `switching_enabled` falso |""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una placa ESP32-S3 (Ethernet o Wi-Fi).
 
 ```bash
@@ -597,7 +599,8 @@ Netzspannung (230 V AC) und die Gleichspannung einer Batteriebank können töten
 | `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |
 | `analog_stream.continuous` | off | Die Analogeingänge als Datenstrom lesen, den der Wandler selbst füllt (DMA), und den Effektivwert eines Wechselsignals über ganze Netzperioden bilden, die an ihren Nulldurchgängen erkannt werden; wirkt nach einem Neustart |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | Die Abtastrate des Datenstroms (2000-80000), das längste Fenster, über das ein Eingang gelesen wird, die nötigen ganzen Perioden für die Messung über Perioden (2-50), der Hub in Millivolt, der als Periode zählt, und die Frequenzen, die das Netz sein können |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | Die Kalibrierung eines Eingangs, gemessen gegen eine Referenz wie ein Multimeter: korrigiert = (Messwert in mV - Offset) x Faktor; 1 und 0 lassen den Messwert so, wie ihn der Chip liefert (ein Wechselsignal hat nur den Faktor) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | Die Kalibrierung eines Eingangs, gemessen gegen eine Referenz wie ein Multimeter: korrigiert = (Messwert in mV - Offset) x Faktor; 1 und 0 lassen den Messwert so, wie ihn der Chip liefert (ein Wechselsignal hat nur den Faktor) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Build-Option des Schalt-Images: Ein Knoten ohne `command_key` fügt den Schalter dann als nicht erlaubt hinzu, jedes Schließen wird abgelehnt und der Status meldet `switching_enabled` false |""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; eine ESP32-S3-Platine (Ethernet oder WLAN).
 
 ```bash
@@ -799,7 +802,8 @@ Le secteur (230 V CA) et le courant continu d'un banc de batteries peuvent tuer 
 | `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |
 | `analog_stream.continuous` | off | Lire les entrées analogiques en flux que le convertisseur remplit seul (DMA) et prendre la valeur efficace d'une entrée alternative sur des cycles entiers du secteur repérés par leurs passages par zéro ; effet après un redémarrage |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La fréquence d'échantillonnage du flux (2000-80000), la fenêtre la plus longue pendant laquelle une entrée est lue, les cycles entiers requis pour mesurer sur des cycles (2-50), l'excursion en millivolts qui compte comme un cycle et les fréquences qui peuvent être le secteur |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | L'étalonnage d'une entrée, mesuré par rapport à une référence comme un multimètre : corrigé = (lecture en mV - décalage) x gain ; 1 et 0 laissent la lecture telle que la puce l'a donnée (une entrée alternative n'a que le gain) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | L'étalonnage d'une entrée, mesuré par rapport à une référence comme un multimètre : corrigé = (lecture en mV - décalage) x gain ; 1 et 0 laissent la lecture telle que la puce l'a donnée (une entrée alternative n'a que le gain) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Option de compilation de l'image de commutation : un nœud sans `command_key` ajoute alors l'interrupteur comme non autorisé, toute fermeture est refusée et l'état indique `switching_enabled` faux |""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une carte ESP32-S3 (Ethernet ou Wi-Fi).
 
 ```bash
@@ -1001,7 +1005,8 @@ La rete (230 V CA) e la corrente continua di un banco di batterie possono uccide
 | `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |
 | `analog_stream.continuous` | off | Leggere gli ingressi analogici come flusso che il convertitore riempie da solo (DMA) e prendere il valore efficace di un ingresso alternato su cicli interi della rete trovati dai loro passaggi per lo zero; ha effetto dopo un riavvio |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | La frequenza di campionamento del flusso (2000-80000), la finestra più lunga per cui si legge un ingresso, i cicli interi necessari per misurare sui cicli (2-50), l'escursione in millivolt che conta come ciclo e le frequenze che possono essere la rete |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibrazione di un ingresso, misurata rispetto a un riferimento come un multimetro: corretto = (lettura in mV - offset) x guadagno; 1 e 0 lasciano la lettura come l'ha data il chip (un ingresso alternato ha solo il guadagno) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | La calibrazione di un ingresso, misurata rispetto a un riferimento come un multimetro: corretto = (lettura in mV - offset) x guadagno; 1 e 0 lasciano la lettura come l'ha data il chip (un ingresso alternato ha solo il guadagno) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Opzione di compilazione dell'immagine di commutazione: un nodo senza `command_key` aggiunge allora l'interruttore come non consentito, ogni chiusura è rifiutata e lo stato dice `switching_enabled` falso |""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una scheda ESP32-S3 (Ethernet o Wi-Fi).
 
 ```bash
@@ -1203,7 +1208,8 @@ ARMOR-NODE-ELECTRICAL/
 | `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |
 | `analog_stream.continuous` | off | アナログ入力を、変換器が自動で満たすストリーム（DMA）として読み、交流入力の実効値をゼロクロスで見つけた商用電源の整数サイクルにわたって求めます。再起動後に有効になります |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | ストリームのサンプリング周波数（2000〜80000）、1 つの入力を読む最長の時間枠、サイクル単位で測るために必要な整数サイクル数（2〜50）、1 サイクルと数える振幅（ミリボルト）、商用電源となりうる周波数 |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | テスターなどの基準と比べて測った入力の校正値。補正後 = (読み値 mV - オフセット) x ゲイン。1 と 0 ならチップの読み値のままです（交流入力はゲインのみ） |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | テスターなどの基準と比べて測った入力の校正値。補正後 = (読み値 mV - オフセット) x ゲイン。1 と 0 ならチップの読み値のままです（交流入力はゲインのみ） |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | 切替イメージのビルドオプション。`command_key` のないノードはスイッチを不許可として追加し、閉じる操作はすべて拒否され、状態は `switching_enabled` が false になります |""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、ESP32-S3 基板（Ethernet または Wi-Fi）。
 
 ```bash
@@ -1405,7 +1411,8 @@ ARMOR-NODE-ELECTRICAL/
 | `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |
 | `analog_stream.continuous` | off | 以转换器自行填充的数据流（DMA）读取模拟输入，并按过零点找到的整数个市电周期计算交流输入的有效值；重启后生效 |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | 数据流的采样率（2000–80000）、读取一个输入的最长窗口、按周期测量所需的完整周期数（2–50）、算作一个周期的摆幅（毫伏）以及可能是市电的频率 |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | 对照万用表等基准测得的输入校准：校正值 = (读数 mV - 偏移) x 增益；1 和 0 表示保持芯片给出的读数（交流输入只有增益） |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | 对照万用表等基准测得的输入校准：校正值 = (读数 mV - 偏移) x 增益；1 和 0 表示保持芯片给出的读数（交流输入只有增益） |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | 切换镜像的构建选项：没有 `command_key` 的节点会把开关添加为不允许，所有合闸都被拒绝，状态中 `switching_enabled` 为 false |""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；ESP32-S3 电路板（以太网或 Wi-Fi）。
 
 ```bash
@@ -1607,7 +1614,8 @@ A rede (230 V CA) e a corrente contínua de um banco de baterias podem matar e p
 | `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |
 | `analog_stream.continuous` | off | Ler as entradas analógicas como um fluxo que o conversor enche sozinho (DMA) e tomar o valor eficaz de uma entrada alternada sobre ciclos inteiros da rede encontrados pelas passagens por zero; aplica-se após reiniciar |
 | `analog_stream.sample_rate_hz`, `window_ms`, `min_cycles`, `hysteresis_mv`, `min_hz`, `max_hz` | 20000, 400, 5, 30, 40, 70 | A taxa de amostragem do fluxo (2000-80000), a janela mais longa com que uma entrada é lida, os ciclos inteiros necessários para medir sobre ciclos (2-50), a oscilação em milivolts que conta como ciclo e as frequências que podem ser a rede |
-| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | A calibração de uma entrada, medida contra uma referência como um multímetro: corrigido = (leitura em mV - desvio) x ganho; 1 e 0 deixam a leitura como o chip a deu (uma entrada alternada só tem ganho) |""",
+| `analogs[].cal_gain`, `cal_offset_mv` | 1 (0.5-2), 0 (+-500) | A calibração de uma entrada, medida contra uma referência como um multímetro: corrigido = (leitura em mV - desvio) x ganho; 1 e 0 deixam a leitura como o chip a deu (uma entrada alternada só tem ganho) |
+| `ARMOR_SWITCH_REQUIRE_KEY` | off | Opção de compilação da imagem de comutação: um nó sem `command_key` acrescenta então o interruptor como não permitido, todo o fecho é recusado e o estado diz `switching_enabled` falso |""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma placa ESP32-S3 (Ethernet ou Wi-Fi).
 
 ```bash
