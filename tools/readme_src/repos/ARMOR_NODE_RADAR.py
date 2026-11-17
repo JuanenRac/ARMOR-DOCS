@@ -232,7 +232,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | The TLS link to the broker (host only) and the release and signature checks |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python: the eight-language panel texts (832 rows), the tasks, the save paths, the Bluetooth session under its lock, the routes and the serial-bridge client |
 
-The web panel is also exercised in a real browser against a stand-in node (`tools/panel_mock.mjs`). The LD2461 and presence-sensor decoders match only the worked examples of their manuals.""",
+The web panel is also exercised in a real browser against a stand-in node (`tools/panel_mock.mjs`). The LD2461 and presence-sensor decoders match only the worked examples of their manuals.
+
+### Operation and tools
+
+* **Simulation bench:** the workflow `simulation.yml` builds `tests/sim_bench.cpp` from the core files of the firmware and plays the serial stream of the HLK-LD2450 radar modules, spoiled on purpose by ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus ld2450`), into it; no board and no ESP-IDF are involved.
+* **Matrix of faults:** the run writes the matrix of bus by fault into its summary and keeps `bench-report.json` and `bench-matrix.txt` for 14 days as the artifact `bench-matrix`. A green run says the code copes with the simulated bus; it says nothing about the real equipment.""",
       "build": "`tools/build_node.sh generic` builds ONE image for every Waveshare board in the ESP-IDF 5.5.5 container, and `tools/flash.bat` writes it by USB-C; the same firmware is built for the Wi-Fi-only board with `s3-wifi`. Releases carry the image, its SHA-256 and its Ed25519 signature, one per board.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -454,7 +459,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | El enlace TLS con el broker (solo en host) y las comprobaciones de versión y firma |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python: los textos del panel en ocho idiomas (832 filas), las tareas, las rutas de guardado, la sesión Bluetooth bajo su bloqueo, las rutas y el cliente del puente serie |
 
-El panel web también se ejercita en un navegador real contra un nodo de pruebas (`tools/panel_mock.mjs`). Los decodificadores LD2461 y de presencia solo coinciden con los ejemplos de sus manuales.""",
+El panel web también se ejercita en un navegador real contra un nodo de pruebas (`tools/panel_mock.mjs`). Los decodificadores LD2461 y de presencia solo coinciden con los ejemplos de sus manuales.
+
+### Operación y herramientas
+
+* **Banco de simulación:** el workflow `simulation.yml` compila `tests/sim_bench.cpp` con los ficheros del núcleo del firmware y le reproduce el flujo serie de los módulos de radar HLK-LD2450, estropeada a propósito por ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus ld2450`); no interviene ninguna placa ni ESP-IDF.
+* **Matriz de fallos:** la ejecución escribe en su resumen la matriz de bus por fallo y guarda `bench-report.json` y `bench-matrix.txt` durante 14 días como el artefacto `bench-matrix`. Una ejecución en verde dice que el código aguanta el bus simulado; no dice nada del equipo real.""",
       "build": "`tools/build_node.sh generic` construye UNA imagen para cada placa Waveshare en el contenedor ESP-IDF 5.5.5 y `tools/flash.bat` la graba por USB-C; el mismo firmware se compila para la placa solo Wi-Fi con `s3-wifi`. Las versiones llevan la imagen, su SHA-256 y su firma Ed25519, una por placa.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -676,7 +686,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | Die TLS-Verbindung zum Broker (nur Host) und die Release- und Signaturprüfungen |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python: die Panel-Texte in acht Sprachen (832 Zeilen), die Tasks, die Speicherpfade, die Bluetooth-Sitzung unter ihrer Sperre, die Routen und der Seriellbrücken-Client |
 
-Das Web-Panel wird außerdem in einem echten Browser gegen einen Ersatzknoten (`tools/panel_mock.mjs`) geprüft. Die Decoder für LD2461 und Präsenz stimmen nur mit den Beispielen ihrer Handbücher überein.""",
+Das Web-Panel wird außerdem in einem echten Browser gegen einen Ersatzknoten (`tools/panel_mock.mjs`) geprüft. Die Decoder für LD2461 und Präsenz stimmen nur mit den Beispielen ihrer Handbücher überein.
+
+### Betrieb und Werkzeuge
+
+* **Simulationsbank:** der Workflow `simulation.yml` baut `tests/sim_bench.cpp` aus den Kerndateien der Firmware und spielt ihr den seriellen Datenstrom der HLK-LD2450-Radarmodule vor, von ARMOR-SIMULATOR absichtlich gestört (`python -m armor_simulator.node_bench --bus ld2450`); weder eine Platine noch ESP-IDF sind beteiligt.
+* **Fehlermatrix:** der Lauf schreibt die Matrix Bus mal Fehler in seine Zusammenfassung und behält `bench-report.json` und `bench-matrix.txt` 14 Tage lang als Artefakt `bench-matrix`. Ein grüner Lauf sagt, dass der Code mit dem simulierten Bus zurechtkommt; über das echte Gerät sagt er nichts.""",
       "build": "`tools/build_node.sh generic` baut EIN Image für jede Waveshare-Platine im ESP-IDF-5.5.5-Container, und `tools/flash.bat` schreibt es per USB-C; dieselbe Firmware wird mit `s3-wifi` für die reine WLAN-Platine gebaut. Releases tragen das Image, sein SHA-256 und seine Ed25519-Signatur, je eines pro Platine.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -898,7 +913,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | Le lien TLS avec le broker (hôte seulement) et les contrôles de version et de signature |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python : les textes du panneau en huit langues (832 lignes), les tâches, les chemins de sauvegarde, la session Bluetooth sous son verrou, les routes et le client du pont série |
 
-Le panneau web est aussi exercé dans un vrai navigateur contre un nœud de substitution (`tools/panel_mock.mjs`). Les décodeurs LD2461 et de présence ne correspondent qu'aux exemples de leurs manuels.""",
+Le panneau web est aussi exercé dans un vrai navigateur contre un nœud de substitution (`tools/panel_mock.mjs`). Les décodeurs LD2461 et de présence ne correspondent qu'aux exemples de leurs manuels.
+
+### Exploitation et outils
+
+* **Banc de simulation :** le workflow `simulation.yml` compile `tests/sim_bench.cpp` à partir des fichiers du cœur du firmware et lui rejoue le flux série des modules radar HLK-LD2450, abîmée exprès par ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus ld2450`) ; aucune carte ni ESP-IDF n'intervient.
+* **Matrice de pannes :** l'exécution écrit dans son résumé la matrice bus par panne et garde `bench-report.json` et `bench-matrix.txt` pendant 14 jours comme artefact `bench-matrix`. Une exécution verte dit que le code supporte le bus simulé ; elle ne dit rien du matériel réel.""",
       "build": "`tools/build_node.sh generic` construit UNE image pour chaque carte Waveshare dans le conteneur ESP-IDF 5.5.5, et `tools/flash.bat` l'écrit par USB-C ; le même firmware est construit pour la carte Wi-Fi seul avec `s3-wifi`. Les versions portent l'image, son SHA-256 et sa signature Ed25519, une par carte.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -1120,7 +1140,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | Il collegamento TLS al broker (solo host) e le verifiche di versione e firma |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python: i testi del pannello in otto lingue (832 righe), i task, i percorsi di salvataggio, la sessione Bluetooth sotto il suo lock, i percorsi e il client del ponte seriale |
 
-Il pannello web è anche provato in un browser reale contro un nodo sostitutivo (`tools/panel_mock.mjs`). I decodificatori LD2461 e di presenza coincidono solo con gli esempi dei loro manuali.""",
+Il pannello web è anche provato in un browser reale contro un nodo sostitutivo (`tools/panel_mock.mjs`). I decodificatori LD2461 e di presenza coincidono solo con gli esempi dei loro manuali.
+
+### Operatività e strumenti
+
+* **Banco di simulazione:** il workflow `simulation.yml` compila `tests/sim_bench.cpp` con i file del nucleo del firmware e gli riproduce il flusso seriale dei moduli radar HLK-LD2450, guastata apposta da ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus ld2450`); non intervengono né una scheda né ESP-IDF.
+* **Matrice dei guasti:** l'esecuzione scrive nel riepilogo la matrice bus per guasto e conserva `bench-report.json` e `bench-matrix.txt` per 14 giorni come artefatto `bench-matrix`. Un'esecuzione verde dice che il codice regge il bus simulato; non dice nulla dell'apparecchiatura reale.""",
       "build": "`tools/build_node.sh generic` costruisce UNA immagine per ogni scheda Waveshare nel container ESP-IDF 5.5.5, e `tools/flash.bat` la scrive via USB-C; lo stesso firmware è costruito per la scheda solo Wi-Fi con `s3-wifi`. Le versioni portano l'immagine, il suo SHA-256 e la sua firma Ed25519, una per scheda.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -1342,7 +1367,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | ブローカーへの TLS 接続（ホストのみ）とリリース・署名の検査 |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python：8 言語のパネル文言（832 行）、タスク、保存パス、ロック下の Bluetooth セッション、ルート、シリアルブリッジのクライアント |
 
-Web パネルは、代役ノード（`tools/panel_mock.mjs`）を相手に実際のブラウザでも検証します。LD2461 と人感センサーのデコーダーはマニュアルの例とだけ一致しています。""",
+Web パネルは、代役ノード（`tools/panel_mock.mjs`）を相手に実際のブラウザでも検証します。LD2461 と人感センサーのデコーダーはマニュアルの例とだけ一致しています。
+
+### 運用とツール
+
+* **シミュレーションベンチ：** ワークフロー `simulation.yml` が、ファームウェアのコアファイルから `tests/sim_bench.cpp` をビルドし、ARMOR-SIMULATOR がわざと劣化させたHLK-LD2450 レーダーモジュールのシリアルストリームを流し込みます（`python -m armor_simulator.node_bench --bus ld2450`）。ボードも ESP-IDF も使いません。
+* **故障マトリクス：** 実行はバスごと・故障ごとのマトリクスをサマリーに書き、`bench-report.json` と `bench-matrix.txt` をアーティファクト `bench-matrix` として 14 日間保存します。緑の実行は、コードが模擬バスに耐えることを示すだけで、実機については何も示しません。""",
       "build": "`tools/build_node.sh generic` は ESP-IDF 5.5.5 コンテナで全 Waveshare 基板共通の 1 つのイメージをビルドし、`tools/flash.bat` が USB-C で書き込みます。Wi-Fi のみの基板向けには `s3-wifi` で同じファームウェアをビルドします。リリースにはイメージ、その SHA-256 と Ed25519 署名が基板ごとに付きます。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1564,7 +1594,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | 与代理的 TLS 连接（仅主机）以及发布和签名检查 |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python：八种语言的面板文字（832 行）、任务、保存路径、受锁保护的蓝牙会话、路由和串口桥客户端 |
 
-网页面板还会在真实浏览器中对着模拟节点（`tools/panel_mock.mjs`）进行验证。LD2461 和存在传感器的解码器只与其手册中的示例相符。""",
+网页面板还会在真实浏览器中对着模拟节点（`tools/panel_mock.mjs`）进行验证。LD2461 和存在传感器的解码器只与其手册中的示例相符。
+
+### 运维与工具
+
+* **仿真台架：** 工作流 `simulation.yml` 用固件核心文件构建 `tests/sim_bench.cpp`，并向其输入由 ARMOR-SIMULATOR 故意破坏的HLK-LD2450 雷达模块的串口数据流（`python -m armor_simulator.node_bench --bus ld2450`）；不涉及任何开发板，也不使用 ESP-IDF。
+* **故障矩阵：** 运行会把“总线 × 故障”矩阵写入摘要，并将 `bench-report.json` 和 `bench-matrix.txt` 作为工件 `bench-matrix` 保留 14 天。绿色的运行只说明代码能应对模拟总线，并不说明真实设备的情况。""",
       "build": "`tools/build_node.sh generic` 在 ESP-IDF 5.5.5 容器中为所有 Waveshare 电路板构建同一个镜像，`tools/flash.bat` 通过 USB-C 写入；仅 Wi-Fi 的电路板用 `s3-wifi` 构建同一固件。每个发布版都带有镜像、其 SHA-256 和 Ed25519 签名，每块电路板一份。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1786,7 +1821,12 @@ python -I tools/armor_ci_validate.py
 | `test_mqtt_tls`, `test_release` | A ligação TLS ao broker (só anfitrião) e as verificações de versão e assinatura |
 | `check_panel_text`, `check_task_safety`, `check_save_paths`, `check_ble_session`, `check_routes`, `check_bridge_client` | Python: os textos do painel em oito línguas (832 linhas), as tarefas, os caminhos de gravação, a sessão Bluetooth sob o seu bloqueio, as rotas e o cliente da ponte série |
 
-O painel web também é exercitado num navegador real contra um nó de substituição (`tools/panel_mock.mjs`). Os descodificadores LD2461 e de presença só coincidem com os exemplos dos seus manuais.""",
+O painel web também é exercitado num navegador real contra um nó de substituição (`tools/panel_mock.mjs`). Os descodificadores LD2461 e de presença só coincidem com os exemplos dos seus manuais.
+
+### Operação e ferramentas
+
+* **Banco de simulação:** o workflow `simulation.yml` compila `tests/sim_bench.cpp` com os ficheiros do núcleo do firmware e reproduz-lhe o fluxo série dos módulos de radar HLK-LD2450, estragada de propósito pelo ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus ld2450`); não intervêm placa nem ESP-IDF.
+* **Matriz de falhas:** a execução escreve no seu resumo a matriz de bus por falha e guarda `bench-report.json` e `bench-matrix.txt` durante 14 dias como o artefacto `bench-matrix`. Uma execução verde diz que o código aguenta o bus simulado; não diz nada do equipamento real.""",
       "build": "`tools/build_node.sh generic` compila UMA imagem para cada placa Waveshare no contentor ESP-IDF 5.5.5, e `tools/flash.bat` grava-a por USB-C; o mesmo firmware compila-se para a placa só Wi-Fi com `s3-wifi`. As versões levam a imagem, o seu SHA-256 e a sua assinatura Ed25519, uma por placa.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
