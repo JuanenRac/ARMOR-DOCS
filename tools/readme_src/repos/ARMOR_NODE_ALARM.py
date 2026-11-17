@@ -216,7 +216,12 @@ Python checks: the panel texts in eight languages, the tasks, the save paths, th
 
 The host tests need any C++17 compiler (Linux, WSL, MSYS2); the web panel is also exercised in a real browser against a stand-in node (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-Most of the checks are exhaustive sweeps of the panel rules; the loops, the siren and the Zigbee link are stand-ins.""",
+Most of the checks are exhaustive sweeps of the panel rules; the loops, the siren and the Zigbee link are stand-ins.
+
+### Operation and tools
+
+* **Simulation bench:** the workflow `simulation.yml` builds `tests/sim_bench.cpp` from the core files of the firmware and plays the voltage of a wired alarm loop, spoiled on purpose by ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus alarm-loop`), into it; no board and no ESP-IDF are involved.
+* **Matrix of faults:** the run writes the matrix of bus by fault into its summary and keeps `bench-report.json` and `bench-matrix.txt` for 14 days as the artifact `bench-matrix`. A green run says the code copes with the simulated bus; it says nothing about the real equipment.""",
       "build": "`tools/build_node.sh` builds the image in the ESP-IDF 5.5.5 container and the release carries the image, its SHA-256 and its Ed25519 signature, one per board; the image is written by USB-C the first time and updated from the panel afterwards.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -418,7 +423,12 @@ Comprobaciones Python: los textos del panel en ocho idiomas, las tareas, las rut
 
 Las pruebas de host necesitan cualquier compilador C++17 (Linux, WSL, MSYS2); el panel web también se ejercita en un navegador real contra un nodo de pruebas (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La mayoría de las comprobaciones son barridos exhaustivos de las reglas de la central; los lazos, la sirena y el enlace Zigbee son sustitutos.""",
+La mayoría de las comprobaciones son barridos exhaustivos de las reglas de la central; los lazos, la sirena y el enlace Zigbee son sustitutos.
+
+### Operación y herramientas
+
+* **Banco de simulación:** el workflow `simulation.yml` compila `tests/sim_bench.cpp` con los ficheros del núcleo del firmware y le reproduce la tensión de un lazo de alarma cableado, estropeada a propósito por ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus alarm-loop`); no interviene ninguna placa ni ESP-IDF.
+* **Matriz de fallos:** la ejecución escribe en su resumen la matriz de bus por fallo y guarda `bench-report.json` y `bench-matrix.txt` durante 14 días como el artefacto `bench-matrix`. Una ejecución en verde dice que el código aguanta el bus simulado; no dice nada del equipo real.""",
       "build": "`tools/build_node.sh` compila la imagen en el contenedor ESP-IDF 5.5.5 y la versión lleva la imagen, su SHA-256 y su firma Ed25519, una por placa; la imagen se graba por USB-C la primera vez y después se actualiza desde el panel.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -620,7 +630,12 @@ Python-Prüfungen: die Panel-Texte in acht Sprachen, die Tasks, die Speicherpfad
 
 Die Host-Tests brauchen einen beliebigen C++17-Compiler (Linux, WSL, MSYS2); das Web-Panel wird außerdem in einem echten Browser gegen einen Ersatzknoten geprüft (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-Die meisten Prüfungen sind erschöpfende Durchläufe der Panel-Regeln; Schleifen, Sirene und Zigbee-Verbindung sind Ersatz.""",
+Die meisten Prüfungen sind erschöpfende Durchläufe der Panel-Regeln; Schleifen, Sirene und Zigbee-Verbindung sind Ersatz.
+
+### Betrieb und Werkzeuge
+
+* **Simulationsbank:** der Workflow `simulation.yml` baut `tests/sim_bench.cpp` aus den Kerndateien der Firmware und spielt ihr die Spannung einer verdrahteten Alarmschleife vor, von ARMOR-SIMULATOR absichtlich gestört (`python -m armor_simulator.node_bench --bus alarm-loop`); weder eine Platine noch ESP-IDF sind beteiligt.
+* **Fehlermatrix:** der Lauf schreibt die Matrix Bus mal Fehler in seine Zusammenfassung und behält `bench-report.json` und `bench-matrix.txt` 14 Tage lang als Artefakt `bench-matrix`. Ein grüner Lauf sagt, dass der Code mit dem simulierten Bus zurechtkommt; über das echte Gerät sagt er nichts.""",
       "build": "`tools/build_node.sh` baut das Image im ESP-IDF-5.5.5-Container, und die Version trägt das Image, sein SHA-256 und seine Ed25519-Signatur, je eines pro Platine; das Image wird beim ersten Mal per USB-C geschrieben und danach vom Panel aktualisiert.",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
 |---|---|---|
@@ -822,7 +837,12 @@ Contrôles Python : les textes du panneau en huit langues, les tâches, les chem
 
 Les tests sur hôte demandent un compilateur C++17 quelconque (Linux, WSL, MSYS2) ; le panneau web est aussi exercé dans un vrai navigateur contre un nœud de substitution (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La plupart des vérifications sont des balayages exhaustifs des règles de la centrale ; les boucles, la sirène et la liaison Zigbee sont des substituts.""",
+La plupart des vérifications sont des balayages exhaustifs des règles de la centrale ; les boucles, la sirène et la liaison Zigbee sont des substituts.
+
+### Exploitation et outils
+
+* **Banc de simulation :** le workflow `simulation.yml` compile `tests/sim_bench.cpp` à partir des fichiers du cœur du firmware et lui rejoue la tension d'une boucle d'alarme câblée, abîmée exprès par ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus alarm-loop`) ; aucune carte ni ESP-IDF n'intervient.
+* **Matrice de pannes :** l'exécution écrit dans son résumé la matrice bus par panne et garde `bench-report.json` et `bench-matrix.txt` pendant 14 jours comme artefact `bench-matrix`. Une exécution verte dit que le code supporte le bus simulé ; elle ne dit rien du matériel réel.""",
       "build": "`tools/build_node.sh` construit l'image dans le conteneur ESP-IDF 5.5.5 et la version porte l'image, son SHA-256 et sa signature Ed25519, une par carte ; l'image est écrite par USB-C la première fois, puis mise à jour depuis le panneau.",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
 |---|---|---|
@@ -1024,7 +1044,12 @@ Verifiche Python: i testi del pannello in otto lingue, i task, i percorsi di sal
 
 I test su host richiedono un qualsiasi compilatore C++17 (Linux, WSL, MSYS2); il pannello web è anche provato in un browser reale contro un nodo sostitutivo (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-La maggior parte delle verifiche sono scansioni esaustive delle regole della centrale; anelli, sirena e collegamento Zigbee sono sostituti.""",
+La maggior parte delle verifiche sono scansioni esaustive delle regole della centrale; anelli, sirena e collegamento Zigbee sono sostituti.
+
+### Operatività e strumenti
+
+* **Banco di simulazione:** il workflow `simulation.yml` compila `tests/sim_bench.cpp` con i file del nucleo del firmware e gli riproduce la tensione di un anello d'allarme cablato, guastata apposta da ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus alarm-loop`); non intervengono né una scheda né ESP-IDF.
+* **Matrice dei guasti:** l'esecuzione scrive nel riepilogo la matrice bus per guasto e conserva `bench-report.json` e `bench-matrix.txt` per 14 giorni come artefatto `bench-matrix`. Un'esecuzione verde dice che il codice regge il bus simulato; non dice nulla dell'apparecchiatura reale.""",
       "build": "`tools/build_node.sh` costruisce l'immagine nel container ESP-IDF 5.5.5 e la versione porta l'immagine, il suo SHA-256 e la sua firma Ed25519, una per scheda; l'immagine si scrive via USB-C la prima volta e poi si aggiorna dal pannello.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -1226,7 +1251,12 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 
 ホストテストには任意の C++17 コンパイラ（Linux、WSL、MSYS2）が必要です。Web パネルは代役ノード（`tools/panel_mock.mjs`、`tools/panel_browser_test.mjs`）を相手に実際のブラウザでも検証します。
 
-検査の大半はパネルのルールの網羅的な総当たりで、ループ、サイレン、Zigbee 接続は代役です。""",
+検査の大半はパネルのルールの網羅的な総当たりで、ループ、サイレン、Zigbee 接続は代役です。
+
+### 運用とツール
+
+* **シミュレーションベンチ：** ワークフロー `simulation.yml` が、ファームウェアのコアファイルから `tests/sim_bench.cpp` をビルドし、ARMOR-SIMULATOR がわざと劣化させた有線の警報ループの電圧を流し込みます（`python -m armor_simulator.node_bench --bus alarm-loop`）。ボードも ESP-IDF も使いません。
+* **故障マトリクス：** 実行はバスごと・故障ごとのマトリクスをサマリーに書き、`bench-report.json` と `bench-matrix.txt` をアーティファクト `bench-matrix` として 14 日間保存します。緑の実行は、コードが模擬バスに耐えることを示すだけで、実機については何も示しません。""",
       "build": "`tools/build_node.sh` が ESP-IDF 5.5.5 コンテナでイメージをビルドし、リリースにはイメージ、その SHA-256 と Ed25519 署名が基板ごとに付きます。イメージは初回のみ USB-C で書き込み、その後はパネルから更新します。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1428,7 +1458,12 @@ Python 检查：八种语言的面板文字、任务、保存路径、受锁保�
 
 主机测试需要任意 C++17 编译器（Linux、WSL、MSYS2）；网页面板还会在真实浏览器中对着模拟节点（`tools/panel_mock.mjs`、`tools/panel_browser_test.mjs`）进行验证。
 
-大部分检查是对面板规则的穷举遍历；回路、警笛和 Zigbee 连接都是替身。""",
+大部分检查是对面板规则的穷举遍历；回路、警笛和 Zigbee 连接都是替身。
+
+### 运维与工具
+
+* **仿真台架：** 工作流 `simulation.yml` 用固件核心文件构建 `tests/sim_bench.cpp`，并向其输入由 ARMOR-SIMULATOR 故意破坏的有线报警回路的电压（`python -m armor_simulator.node_bench --bus alarm-loop`）；不涉及任何开发板，也不使用 ESP-IDF。
+* **故障矩阵：** 运行会把“总线 × 故障”矩阵写入摘要，并将 `bench-report.json` 和 `bench-matrix.txt` 作为工件 `bench-matrix` 保留 14 天。绿色的运行只说明代码能应对模拟总线，并不说明真实设备的情况。""",
       "build": "`tools/build_node.sh` 在 ESP-IDF 5.5.5 容器中构建镜像，发布版带有镜像、其 SHA-256 和 Ed25519 签名，每块电路板一份；镜像第一次通过 USB-C 写入，之后从面板更新。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1630,7 +1665,12 @@ Verificações Python: os textos do painel em oito línguas, as tarefas, os cami
 
 Os testes de anfitrião precisam de qualquer compilador C++17 (Linux, WSL, MSYS2); o painel web também é exercitado num navegador real contra um nó de substituição (`tools/panel_mock.mjs`, `tools/panel_browser_test.mjs`).
 
-A maior parte das verificações são varrimentos exaustivos das regras da central; os laços, a sirene e a ligação Zigbee são substitutos.""",
+A maior parte das verificações são varrimentos exaustivos das regras da central; os laços, a sirene e a ligação Zigbee são substitutos.
+
+### Operação e ferramentas
+
+* **Banco de simulação:** o workflow `simulation.yml` compila `tests/sim_bench.cpp` com os ficheiros do núcleo do firmware e reproduz-lhe a tensão de um laço de alarme cablado, estragada de propósito pelo ARMOR-SIMULATOR (`python -m armor_simulator.node_bench --bus alarm-loop`); não intervêm placa nem ESP-IDF.
+* **Matriz de falhas:** a execução escreve no seu resumo a matriz de bus por falha e guarda `bench-report.json` e `bench-matrix.txt` durante 14 dias como o artefacto `bench-matrix`. Uma execução verde diz que o código aguenta o bus simulado; não diz nada do equipamento real.""",
       "build": "`tools/build_node.sh` compila a imagem no contentor ESP-IDF 5.5.5 e a versão leva a imagem, o seu SHA-256 e a sua assinatura Ed25519, uma por placa; a imagem grava-se por USB-C da primeira vez e depois atualiza-se a partir do painel.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|

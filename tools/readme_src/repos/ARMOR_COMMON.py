@@ -996,7 +996,7 @@ def build_lg(lg):
         "architecture": arch(lg, "ARMOR-COMMON", "ARMOR-COMMON architecture: who uses it, what the repository owns (schemas, vectors, validator, generated types, OpenAPI, firmware base) and who receives it", DIAGRAM),
         "features": FEATURES[lg],
         "security": table(lg, "threat", SECURITY_ROWS) + "\n\n" + SECURITY_NOT[lg],
-        "interfaces": TOPICS_INTRO[lg] + "\n\n" + table(lg, "topic", TOPICS) + "\n\n" + INTERFACES_SCHEMAS[lg] + "\n\n" + TOOLS_INTRO[lg] + "\n\n" + table(lg, "tool", TOOLS),
+        "interfaces": TOPICS_INTRO[lg] + "\n\n" + table(lg, "topic", TOPICS) + "\n\n" + INTERFACES_SCHEMAS[lg] + "\n\n" + TOOLS_INTRO[lg] + "\n\n" + table(lg, "tool", TOOLS) + "\n\n" + OPERATION[lg],
         "configuration": config_body(lg),
         "quickstart": f"{QUICK_LEAD[lg]}\n\n" + code(lg, QUICK_CODE) + "\n\n",
         "testing": code(lg, [("python -m unittest discover -s tests", T("{{fact:tests:ARMOR-COMMON}} tests | {{fact:tests:ARMOR-COMMON}} pruebas | {{fact:tests:ARMOR-COMMON}} Tests | {{fact:tests:ARMOR-COMMON}} tests | {{fact:tests:ARMOR-COMMON}} test | {{fact:tests:ARMOR-COMMON}} 件 | {{fact:tests:ARMOR-COMMON}} 项 | {{fact:tests:ARMOR-COMMON}} testes")), "python -I tools/armor_ci_validate.py"]) + "\n\n" + table(lg, "tests", TEST_FILES) + "\n\n" + TEST_NOTE[lg],
@@ -1007,6 +1007,17 @@ def build_lg(lg):
     }
     return text_for(lg, tagline=L(lg, "tagline"), honest=L(lg, "honest"), glance=GLANCE, status=status,
                     docs=DOCS, contributing_first=CONTRIB, body=body)
+
+
+OPERATION = P(
+    '### Operation and tools\n\n* **Activity events are recorded once:** `POST /api/v1/ai/activity-events` takes an optional `event_id` (8 to 64 letters, digits, `-` and `_`); the same identifier on the same camera is recorded once and a repeat is answered `{ raised: false, reason: duplicate }`. The generated REST types carry the field.',
+    '### Operación y herramientas\n\n* **Los eventos de actividad se registran una sola vez:** `POST /api/v1/ai/activity-events` admite un `event_id` opcional (de 8 a 64 letras, dígitos, `-` y `_`); el mismo identificador en la misma cámara se registra una vez y la repetición recibe `{ raised: false, reason: duplicate }`. Los tipos REST generados llevan el campo.',
+    '### Betrieb und Werkzeuge\n\n* **Aktivitätsereignisse werden nur einmal erfasst:** `POST /api/v1/ai/activity-events` nimmt eine optionale `event_id` (8 bis 64 Buchstaben, Ziffern, `-` und `_`); dieselbe Kennung bei derselben Kamera wird einmal erfasst, eine Wiederholung bekommt `{ raised: false, reason: duplicate }`. Die erzeugten REST-Typen tragen das Feld.',
+    "### Exploitation et outils\n\n* **Les événements d'activité ne sont enregistrés qu'une fois :** `POST /api/v1/ai/activity-events` accepte un `event_id` facultatif (8 à 64 lettres, chiffres, `-` et `_`) ; le même identifiant sur la même caméra n'est enregistré qu'une fois et une répétition reçoit `{ raised: false, reason: duplicate }`. Les types REST générés portent le champ.",
+    '### Operatività e strumenti\n\n* **Gli eventi di attività vengono registrati una sola volta:** `POST /api/v1/ai/activity-events` accetta un `event_id` facoltativo (da 8 a 64 lettere, cifre, `-` e `_`); lo stesso identificatore sulla stessa telecamera viene registrato una volta e una ripetizione riceve `{ raised: false, reason: duplicate }`. I tipi REST generati portano il campo.',
+    '### 運用とツール\n\n* **アクティビティイベントは一度だけ記録されます：** `POST /api/v1/ai/activity-events` は任意の `event_id`（英数字・`-`・`_` で 8〜64 文字）を受け付けます。同じカメラで同じ識別子は一度だけ記録され、再送には `{ raised: false, reason: duplicate }` が返ります。生成される REST 型にもこのフィールドがあります。',
+    '### 运维与工具\n\n* **活动事件只记录一次：** `POST /api/v1/ai/activity-events` 接受可选的 `event_id`（8 到 64 个字母、数字、`-` 和 `_`）；同一摄像头上相同的标识只记录一次，重复提交会收到 `{ raised: false, reason: duplicate }`。生成的 REST 类型包含该字段。',
+    '### Operação e ferramentas\n\n* **Os eventos de atividade são registados uma só vez:** `POST /api/v1/ai/activity-events` aceita um `event_id` opcional (de 8 a 64 letras, dígitos, `-` e `_`); o mesmo identificador na mesma câmara é registado uma vez e a repetição recebe `{ raised: false, reason: duplicate }`. Os tipos REST gerados trazem o campo.')
 
 
 TEXT = {lg: build_lg(lg) for lg in LGS}
