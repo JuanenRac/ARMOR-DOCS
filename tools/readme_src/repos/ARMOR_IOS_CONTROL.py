@@ -163,6 +163,7 @@ Permission texts (Face ID, local network) exist in all eight languages. Nothing 
 | Xcode / Swift | 15+ / 5.9+ | To build the app / to run the tests |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | The version of the app, from `project.yml` |
 | `GoogleService-Info.plist` | for push | The installation's own file, never kept in the repository |
+| `pins_strict_chain` | on | Also require that the chain of the server leads to the very certificate kept when it was paired (signed link by link); a pairing made before it was kept still works, with a notice. A switch in the certificate pairing panel turns it off |
 
 In the app: the two addresses, *Remember me*, the lock of the phone and the language (the eight languages or following the phone) in *More > Language*.""",
       "quickstart": r"""**Requirements:** a Mac with Xcode 15+ and iOS 16+ to build the app; Swift 5.9+ (macOS or Linux) for the tests; Python 3.11 for the checks.
@@ -347,6 +348,7 @@ Los textos de permisos (Face ID, red local) existen en los ocho idiomas. Nada de
 | Xcode / Swift | 15+ / 5.9+ | Para compilar la app / para ejecutar las pruebas |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | La versión de la app, de `project.yml` |
 | `GoogleService-Info.plist` | para push | El fichero propio de la instalación, nunca guardado en el repositorio |
+| `pins_strict_chain` | on | Exigir además que la cadena del servidor lleve al mismo certificado guardado al emparejar (firmado eslabón a eslabón); un emparejamiento anterior a guardarlo sigue valiendo, con un aviso. Un interruptor del panel de emparejamiento de certificados lo apaga |
 
 En la app: las dos direcciones, *Recordarme*, el bloqueo del teléfono y el idioma (los ocho o seguir al teléfono) en *Más > Idioma*.""",
       "quickstart": r"""**Requisitos:** un Mac con Xcode 15+ e iOS 16+ para compilar la app; Swift 5.9+ (macOS o Linux) para las pruebas; Python 3.11 para las comprobaciones.
@@ -531,6 +533,7 @@ Die Berechtigungstexte (Face ID, lokales Netzwerk) gibt es in allen acht Sprache
 | Xcode / Swift | 15+ / 5.9+ | Zum Bauen der App / zum Ausführen der Tests |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | Die Version der App, aus `project.yml` |
 | `GoogleService-Info.plist` | für Push | Die eigene Datei der Installation, nie im Repository |
+| `pins_strict_chain` | on | Zusätzlich verlangen, dass die Kette des Servers zu dem beim Koppeln gespeicherten Zertifikat führt (Glied für Glied signiert); eine Kopplung vor dem Speichern gilt weiter, mit Hinweis. Ein Schalter im Kopplungsbereich der Zertifikate schaltet es ab |
 
 In der App: die zwei Adressen, *Angemeldet bleiben*, die Telefonsperre und die Sprache (die acht Sprachen oder dem Telefon folgen) unter *Mehr > Sprache*.""",
       "quickstart": r"""**Voraussetzungen:** ein Mac mit Xcode 15+ und iOS 16+ zum Bauen der App; Swift 5.9+ (macOS oder Linux) für die Tests; Python 3.11 für die Prüfungen.
@@ -715,6 +718,7 @@ Les textes d'autorisation (Face ID, réseau local) existent dans les huit langue
 | Xcode / Swift | 15+ / 5.9+ | Pour compiler l'app / pour lancer les tests |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | La version de l'app, de `project.yml` |
 | `GoogleService-Info.plist` | pour le push | Le fichier propre à l'installation, jamais gardé dans le dépôt |
+| `pins_strict_chain` | on | Exiger aussi que la chaîne du serveur mène au certificat gardé lors de l'appairage (signée maillon par maillon) ; un appairage antérieur reste valable, avec un avis. Un interrupteur du panneau d'appairage des certificats le désactive |
 
 Dans l'app : les deux adresses, *Se souvenir de moi*, le verrouillage du téléphone et la langue (les huit langues ou suivre le téléphone) dans *Plus > Langue*.""",
       "quickstart": r"""**Prérequis:** un Mac avec Xcode 15+ et iOS 16+ pour compiler l'app ; Swift 5.9+ (macOS ou Linux) pour les tests ; Python 3.11 pour les contrôles.
@@ -899,6 +903,7 @@ I testi dei permessi (Face ID, rete locale) esistono in tutte e otto le lingue. 
 | Xcode / Swift | 15+ / 5.9+ | Per compilare l'app / per eseguire i test |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | La versione dell'app, da `project.yml` |
 | `GoogleService-Info.plist` | per il push | Il file proprio dell'installazione, mai conservato nel repository |
+| `pins_strict_chain` | on | Richiedere anche che la catena del server porti allo stesso certificato conservato all'abbinamento (firmato anello per anello); un abbinamento precedente resta valido, con un avviso. Un interruttore nel pannello di abbinamento dei certificati lo spegne |
 
 Nell'app: i due indirizzi, *Ricordami*, il blocco del telefono e la lingua (le otto lingue o seguire il telefono) in *Altro > Lingua*.""",
       "quickstart": r"""**Requisiti:** un Mac con Xcode 15+ e iOS 16+ per compilare l'app; Swift 5.9+ (macOS o Linux) per i test; Python 3.11 per le verifiche.
@@ -1083,6 +1088,7 @@ ARMOR-IOS-CONTROL/
 | Xcode / Swift | 15+ / 5.9+ | アプリのビルド／テスト実行用 |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | アプリのバージョン（`project.yml` より） |
 | `GoogleService-Info.plist` | プッシュ用 | 設置環境ごとのファイル。リポジトリには置きません |
+| `pins_strict_chain` | on | サーバーのチェーンが、ペアリング時に保存した証明書そのものに（リンクごとの署名で）つながることも要求します。保存前のペアリングは通知付きで引き続き有効です。証明書ペアリングのパネルのスイッチでオフにできます |
 
 アプリ内：2 つのアドレス、*ログイン状態を保持*、電話のロック、言語（8 言語または電話に従う）は *その他 > 言語* にあります。""",
       "quickstart": r"""**必要なもの:** アプリのビルドには Xcode 15+ と iOS 16+ の Mac、テストには Swift 5.9+（macOS または Linux）、検査には Python 3.11。
@@ -1267,6 +1273,7 @@ ARMOR-IOS-CONTROL/
 | Xcode / Swift | 15+ / 5.9+ | 用于构建应用／运行测试 |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | 应用版本，来自 `project.yml` |
 | `GoogleService-Info.plist` | 用于推送 | 安装环境自己的文件，绝不保存在仓库中 |
+| `pins_strict_chain` | on | 还要求服务器证书链指向配对时保存的那张证书（逐级签名）；保存之前完成的配对仍然有效，并给出提示。可通过证书配对面板中的开关关闭 |
 
 应用内：两个地址、*记住我*、手机锁和语言（八种语言或跟随手机）位于*更多 > 语言*。""",
       "quickstart": r"""**要求:** 构建应用需要装有 Xcode 15+ 和 iOS 16+ 的 Mac；测试需要 Swift 5.9+（macOS 或 Linux）；检查需要 Python 3.11。
@@ -1451,6 +1458,7 @@ Os textos de permissões (Face ID, rede local) existem nas oito línguas. Nada d
 | Xcode / Swift | 15+ / 5.9+ | Para compilar a app / para executar os testes |
 | `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION` | 0.0.1, 1 | A versão da app, de `project.yml` |
 | `GoogleService-Info.plist` | para push | O ficheiro próprio da instalação, nunca guardado no repositório |
+| `pins_strict_chain` | on | Exigir também que a cadeia do servidor leve ao mesmo certificado guardado no emparelhamento (assinado elo a elo); um emparelhamento anterior continua válido, com um aviso. Um interruptor do painel de emparelhamento de certificados desliga-o |
 
 Na app: os dois endereços, *Lembrar-me*, o bloqueio do telemóvel e a língua (as oito ou seguir o telemóvel) em *Mais > Língua*.""",
       "quickstart": r"""**Requisitos:** um Mac com Xcode 15+ e iOS 16+ para compilar a app; Swift 5.9+ (macOS ou Linux) para os testes; Python 3.11 para as verificações.

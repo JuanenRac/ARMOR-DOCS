@@ -194,6 +194,7 @@ Read [SECURITY.md](SECURITY.md) to report a vulnerability. There has been no ind
 | `system.login_limit_per_minute` | 30 (0-120) | Wrong passwords per minute before the panel locks sign-in for everyone (0 = no global limit); read and change it from Studio (a button on every node) or with `POST /api/v1/admin/nodes/settings`, where the panel login is used once and never kept |
 | `security.ota_check_board` | on | Refuse an uploaded firmware that was built for the other board (Wi-Fi or Ethernet); the image carries a mark of its board that the node reads while it arrives |
 | `security.ota_require_board_mark` | on | Also refuse an image that carries no board mark (an older firmware); turn it off to go back to a version made before the marks |
+| `web.metrics_basic_over_http` | on | Whether `/metrics` also takes a name and password (HTTP Basic) over the plain port; off, they are taken only over HTTPS (the cookie of a session works on both) |
 
 The settings that are tuned live in the panel and are kept in flash (for example `system.reader_idle_ms`, `security.seal_secrets`, the failed-login limit per minute (30, 0 to 120) and the zones of the perimeter engine); the defaults of the firmware are in `sdkconfig.defaults` and `sdkconfig.board.*`. The flash of 16 MB holds `nvs` (64 KB), `otadata`, `phy_init`, two 3 MB slots `ota_0` and `ota_1`, `coredump` (128 KB) and `nvs_keys` (4 KB) (`partitions.csv`).""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; a Waveshare ESP32-S3-ETH or an ESP32-S3-WROOM-1 N16R8.
@@ -415,6 +416,7 @@ Lee [SECURITY.md](SECURITY.md) para informar de una vulnerabilidad. No ha habido
 | `system.login_limit_per_minute` | 30 (0-120) | Contraseñas erróneas por minuto antes de que el panel bloquee el acceso a todos (0 = sin límite global); se lee y se cambia desde Studio (un botón en cada nodo) o con `POST /api/v1/admin/nodes/settings`, donde el acceso al panel se usa una vez y nunca se guarda |
 | `security.ota_check_board` | on | Rechazar un firmware subido hecho para la otra placa (Wi-Fi o Ethernet); la imagen lleva una marca de su placa que el nodo lee mientras llega |
 | `security.ota_require_board_mark` | on | Rechazar también una imagen sin marca de placa (un firmware antiguo); desactívelo para volver a una versión hecha antes de las marcas |
+| `web.metrics_basic_over_http` | on | Si `/metrics` acepta también nombre y contraseña (HTTP Basic) por el puerto sin cifrar; apagado, solo se aceptan por HTTPS (la cookie de una sesión vale en ambos) |
 
 Los ajustes que se afinan en vivo están en el panel y se guardan en flash (por ejemplo `system.reader_idle_ms`, `security.seal_secrets`, el límite de fallos de acceso por minuto (30, de 0 a 120) y las zonas del motor de perímetro); los valores por defecto del firmware están en `sdkconfig.defaults` y `sdkconfig.board.*`. La flash de 16 MB contiene `nvs` (64 KB), `otadata`, `phy_init`, dos ranuras de 3 MB `ota_0` y `ota_1`, `coredump` (128 KB) y `nvs_keys` (4 KB) (`partitions.csv`).""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una Waveshare ESP32-S3-ETH o una ESP32-S3-WROOM-1 N16R8.
@@ -636,6 +638,7 @@ Lies [SECURITY.md](SECURITY.md), um eine Schwachstelle zu melden. Es gab keine u
 | `system.login_limit_per_minute` | 30 (0-120) | Falsche Passwörter pro Minute, bevor das Panel die Anmeldung für alle sperrt (0 = kein globales Limit); in Studio (eine Schaltfläche an jedem Knoten) oder mit `POST /api/v1/admin/nodes/settings` lesen und ändern, wobei die Panel-Anmeldung einmal benutzt und nie gespeichert wird |
 | `security.ota_check_board` | on | Eine hochgeladene Firmware für die andere Platine (WLAN oder Ethernet) abweisen; das Image trägt ein Kennzeichen seiner Platine, das der Knoten beim Empfang liest |
 | `security.ota_require_board_mark` | on | Auch ein Image ohne Platinenkennzeichen (eine ältere Firmware) abweisen; zum Zurückgehen auf eine Version aus der Zeit vor den Kennzeichen ausschalten |
+| `web.metrics_basic_over_http` | on | Ob `/metrics` auch Name und Passwort (HTTP Basic) über den unverschlüsselten Port annimmt; aus, nur über HTTPS (das Cookie einer Sitzung gilt auf beiden) |
 
 Die live abgestimmten Einstellungen stehen im Panel und liegen im Flash (zum Beispiel `system.reader_idle_ms`, `security.seal_secrets`, das Limit fehlgeschlagener Anmeldungen pro Minute (30, 0 bis 120) und die Zonen der Perimeter-Engine); die Standardwerte der Firmware stehen in `sdkconfig.defaults` und `sdkconfig.board.*`. Der 16-MB-Flash enthält `nvs` (64 KB), `otadata`, `phy_init`, zwei 3-MB-Slots `ota_0` und `ota_1`, `coredump` (128 KB) und `nvs_keys` (4 KB) (`partitions.csv`).""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; ein Waveshare ESP32-S3-ETH oder ein ESP32-S3-WROOM-1 N16R8.
@@ -857,6 +860,7 @@ Lisez [SECURITY.md](SECURITY.md) pour signaler une vulnérabilité. Il n'y a pas
 | `system.login_limit_per_minute` | 30 (0-120) | Mots de passe erronés par minute avant que le panneau verrouille la connexion pour tous (0 = pas de limite globale) ; on le lit et le change depuis Studio (un bouton sur chaque nœud) ou avec `POST /api/v1/admin/nodes/settings`, l'identifiant du panneau étant utilisé une fois et jamais conservé |
 | `security.ota_check_board` | on | Refuser un firmware envoyé construit pour l'autre carte (Wi-Fi ou Ethernet) ; l'image porte une marque de sa carte que le nœud lit à l'arrivée |
 | `security.ota_require_board_mark` | on | Refuser aussi une image sans marque de carte (un ancien firmware) ; à désactiver pour revenir à une version faite avant les marques |
+| `web.metrics_basic_over_http` | on | Si `/metrics` accepte aussi un nom et un mot de passe (HTTP Basic) sur le port non chiffré ; désactivé, seulement en HTTPS (le cookie d'une session vaut sur les deux) |
 
 Les réglages ajustés en direct sont dans le panneau et gardés en flash (par exemple `system.reader_idle_ms`, `security.seal_secrets`, la limite d'échecs de connexion par minute (30, de 0 à 120) et les zones du moteur de périmètre) ; les valeurs par défaut du firmware sont dans `sdkconfig.defaults` et `sdkconfig.board.*`. La flash de 16 Mo contient `nvs` (64 Ko), `otadata`, `phy_init`, deux emplacements de 3 Mo `ota_0` et `ota_1`, `coredump` (128 Ko) et `nvs_keys` (4 Ko) (`partitions.csv`).""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une Waveshare ESP32-S3-ETH ou une ESP32-S3-WROOM-1 N16R8.
@@ -1078,6 +1082,7 @@ Leggi [SECURITY.md](SECURITY.md) per segnalare una vulnerabilità. Non c'è stat
 | `system.login_limit_per_minute` | 30 (0-120) | Password errate al minuto prima che il pannello blocchi l'accesso a tutti (0 = nessun limite globale); si legge e si cambia da Studio (un pulsante su ogni nodo) o con `POST /api/v1/admin/nodes/settings`, dove l'accesso al pannello è usato una volta e mai conservato |
 | `security.ota_check_board` | on | Rifiutare un firmware caricato costruito per l'altra scheda (Wi-Fi o Ethernet); l'immagine porta una marca della sua scheda che il nodo legge mentre arriva |
 | `security.ota_require_board_mark` | on | Rifiutare anche un'immagine senza marca della scheda (un firmware vecchio); disattivare per tornare a una versione fatta prima delle marche |
+| `web.metrics_basic_over_http` | on | Se `/metrics` accetta anche nome e password (HTTP Basic) sulla porta non cifrata; spento, solo via HTTPS (il cookie di una sessione vale su entrambe) |
 
 Le impostazioni regolate dal vivo sono nel pannello e salvate in flash (ad esempio `system.reader_idle_ms`, `security.seal_secrets`, il limite di accessi falliti al minuto (30, da 0 a 120) e le zone del motore di perimetro); i valori predefiniti del firmware sono in `sdkconfig.defaults` e `sdkconfig.board.*`. La flash da 16 MB contiene `nvs` (64 KB), `otadata`, `phy_init`, due slot da 3 MB `ota_0` e `ota_1`, `coredump` (128 KB) e `nvs_keys` (4 KB) (`partitions.csv`).""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una Waveshare ESP32-S3-ETH o una ESP32-S3-WROOM-1 N16R8.
@@ -1299,6 +1304,7 @@ ARMOR-NODE-RADAR/
 | `system.login_limit_per_minute` | 30 (0-120) | パネルが全員のログインをロックするまでの 1 分あたりの誤パスワード数（0 = 全体の上限なし）。Studio（各ノードのボタン）または `POST /api/v1/admin/nodes/settings` で読み取り・変更でき、パネルのログイン情報は 1 回だけ使われ保存されません |
 | `security.ota_check_board` | on | もう一方の基板（Wi-Fi または Ethernet）用に作られたファームウェアのアップロードを拒否します。イメージには基板の印が入っており、ノードは到着中にそれを読み取ります |
 | `security.ota_require_board_mark` | on | 基板の印のないイメージ（古いファームウェア）も拒否します。印ができる前の版に戻すときはオフにします |
+| `web.metrics_basic_over_http` | on | `/metrics` が暗号化なしのポートでも名前とパスワード（HTTP Basic）を受け付けるか。無効にすると HTTPS のみ（セッションの Cookie は両方で有効） |
 
 ライブで調整する設定はパネルにあり、フラッシュに保存されます（例：`system.reader_idle_ms`、`security.seal_secrets`、1 分あたりのログイン失敗上限（30、0〜120）、境界エンジンのゾーン）。ファームウェアの既定値は `sdkconfig.defaults` と `sdkconfig.board.*` にあります。16 MB のフラッシュには `nvs`（64 KB）、`otadata`、`phy_init`、3 MB のスロット `ota_0` と `ota_1`、`coredump`（128 KB）、`nvs_keys`（4 KB）があります（`partitions.csv`）。""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、Waveshare ESP32-S3-ETH または ESP32-S3-WROOM-1 N16R8。
@@ -1520,6 +1526,7 @@ ARMOR-NODE-RADAR/
 | `system.login_limit_per_minute` | 30 (0-120) | 面板对所有人锁定登录前每分钟允许的错误密码次数（0 = 无全局限制）；可在 Studio（每个节点上的按钮）或通过 `POST /api/v1/admin/nodes/settings` 读取和修改，面板登录信息只使用一次，绝不保存 |
 | `security.ota_check_board` | on | 拒绝为另一种电路板（Wi-Fi 或以太网）构建的上传固件；镜像带有所属电路板的标记，节点在接收时读取 |
 | `security.ota_require_board_mark` | on | 同时拒绝不带电路板标记的镜像（较旧的固件）；要退回到标记出现之前的版本时请关闭 |
+| `web.metrics_basic_over_http` | on | `/metrics` 是否也在未加密端口上接受用户名和密码（HTTP Basic）；关闭后仅限 HTTPS（会话 Cookie 在两个端口都有效） |
 
 现场调节的设置在面板中并保存在闪存里（例如 `system.reader_idle_ms`、`security.seal_secrets`、每分钟登录失败上限（30，范围 0 到 120）以及周界引擎的区域）；固件默认值在 `sdkconfig.defaults` 和 `sdkconfig.board.*` 中。16 MB 闪存包含 `nvs`（64 KB）、`otadata`、`phy_init`、两个 3 MB 槽位 `ota_0` 和 `ota_1`、`coredump`（128 KB）和 `nvs_keys`（4 KB）（`partitions.csv`）。""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；Waveshare ESP32-S3-ETH 或 ESP32-S3-WROOM-1 N16R8。
@@ -1741,6 +1748,7 @@ Leia [SECURITY.md](SECURITY.md) para comunicar uma vulnerabilidade. Não houve r
 | `system.login_limit_per_minute` | 30 (0-120) | Palavras-passe erradas por minuto antes de o painel bloquear o início de sessão a todos (0 = sem limite global); lê-se e altera-se no Studio (um botão em cada nó) ou com `POST /api/v1/admin/nodes/settings`, onde o acesso ao painel é usado uma vez e nunca guardado |
 | `security.ota_check_board` | on | Recusar um firmware enviado feito para a outra placa (Wi-Fi ou Ethernet); a imagem leva uma marca da sua placa que o nó lê enquanto chega |
 | `security.ota_require_board_mark` | on | Recusar também uma imagem sem marca de placa (um firmware antigo); desligue para voltar a uma versão feita antes das marcas |
+| `web.metrics_basic_over_http` | on | Se `/metrics` aceita também nome e palavra-passe (HTTP Basic) na porta sem cifra; desligado, só por HTTPS (o cookie de uma sessão vale nas duas) |
 
 As definições afinadas em direto estão no painel e guardam-se na flash (por exemplo `system.reader_idle_ms`, `security.seal_secrets`, o limite de falhas de início de sessão por minuto (30, de 0 a 120) e as zonas do motor de perímetro); os valores por omissão do firmware estão em `sdkconfig.defaults` e `sdkconfig.board.*`. A flash de 16 MB contém `nvs` (64 KB), `otadata`, `phy_init`, duas ranhuras de 3 MB `ota_0` e `ota_1`, `coredump` (128 KB) e `nvs_keys` (4 KB) (`partitions.csv`).""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma Waveshare ESP32-S3-ETH ou uma ESP32-S3-WROOM-1 N16R8.

@@ -182,6 +182,7 @@ No independent security review. Read [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUND
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 or later on the phone |
 | `versionName` | = `armor.project.json` | The build fails when the manifest and the version differ |
 | JDK / Android SDK | 17+ / 37 | To build the app and run the tests |
+| `pins_strict_chain` | on | Also require that the chain of the server leads to the very certificate kept when it was paired (signed link by link); a pairing made before it was kept still works, with a notice. A switch in the certificate pairing panel turns it off |
 
 In the app (not in files): the language (the eight or following the phone), the two addresses, *Remember me*, the lock of the phone, the spoken alarm and the notifications, in *More > Settings*. Limits in the code: the watch polls every 10 s, backs off to 60 s and ignores alarms older than 15 minutes.""",
       "quickstart": r"""**Requirements:** JDK 17+, the Android SDK (compile SDK 37), an Android 8.0+ phone (minSdk 26).
@@ -381,6 +382,7 @@ No hay revisión de seguridad independiente. Lee [docs/CLIENT_BOUNDARY.md](docs/
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 o posterior en el móvil |
 | `versionName` | = `armor.project.json` | La compilación falla si el manifiesto y la versión difieren |
 | JDK / Android SDK | 17+ / 37 | Para compilar la app y ejecutar las pruebas |
+| `pins_strict_chain` | on | Exigir además que la cadena del servidor lleve al mismo certificado guardado al emparejar (firmado eslabón a eslabón); un emparejamiento anterior a guardarlo sigue valiendo, con un aviso. Un interruptor del panel de emparejamiento de certificados lo apaga |
 
 En la app (no en ficheros): el idioma (los ocho o seguir al móvil), las dos direcciones, *Recordarme*, el bloqueo del móvil, la alarma hablada y las notificaciones, en *Más > Ajustes*. Límites en el código: la vigilancia sondea cada 10 s, retrocede hasta 60 s e ignora alarmas de más de 15 minutos.""",
       "quickstart": r"""**Requisitos:** JDK 17+, el SDK de Android (compile SDK 37), un móvil con Android 8.0+ (minSdk 26).
@@ -580,6 +582,7 @@ Es gibt keine unabhängige Sicherheitsprüfung. Lies [docs/CLIENT_BOUNDARY.md](d
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 oder neuer auf dem Telefon |
 | `versionName` | = `armor.project.json` | Der Build schlägt fehl, wenn Manifest und Version abweichen |
 | JDK / Android SDK | 17+ / 37 | Zum Bauen der App und Ausführen der Tests |
+| `pins_strict_chain` | on | Zusätzlich verlangen, dass die Kette des Servers zu dem beim Koppeln gespeicherten Zertifikat führt (Glied für Glied signiert); eine Kopplung vor dem Speichern gilt weiter, mit Hinweis. Ein Schalter im Kopplungsbereich der Zertifikate schaltet es ab |
 
 In der App (nicht in Dateien): die Sprache (die acht oder dem Telefon folgen), die zwei Adressen, *Angemeldet bleiben*, die Telefonsperre, der gesprochene Alarm und die Benachrichtigungen, unter *Mehr > Einstellungen*. Grenzen im Code: Die Überwachung fragt alle 10 s ab, weicht bis 60 s zurück und ignoriert Alarme, die älter als 15 Minuten sind.""",
       "quickstart": r"""**Voraussetzungen:** JDK 17+, das Android SDK (compile SDK 37), ein Telefon mit Android 8.0+ (minSdk 26).
@@ -779,6 +782,7 @@ Il n'y a pas eu de revue de sécurité indépendante. Lis [docs/CLIENT_BOUNDARY.
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 ou plus récent sur le téléphone |
 | `versionName` | = `armor.project.json` | Le build échoue si le manifeste et la version diffèrent |
 | JDK / Android SDK | 17+ / 37 | Pour compiler l'app et lancer les tests |
+| `pins_strict_chain` | on | Exiger aussi que la chaîne du serveur mène au certificat gardé lors de l'appairage (signée maillon par maillon) ; un appairage antérieur reste valable, avec un avis. Un interrupteur du panneau d'appairage des certificats le désactive |
 
 Dans l'app (pas dans des fichiers) : la langue (les huit ou suivre le téléphone), les deux adresses, *Se souvenir de moi*, le verrouillage du téléphone, l'alarme parlée et les notifications, dans *Plus > Réglages*. Limites dans le code : la surveillance interroge toutes les 10 s, s'espace jusqu'à 60 s et ignore les alarmes de plus de 15 minutes.""",
       "quickstart": r"""**Prérequis:** JDK 17+, le SDK Android (compile SDK 37), un téléphone Android 8.0+ (minSdk 26).
@@ -978,6 +982,7 @@ Non c'è stata una revisione di sicurezza indipendente. Leggi [docs/CLIENT_BOUND
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 o successivo sul telefono |
 | `versionName` | = `armor.project.json` | La build fallisce se manifesto e versione differiscono |
 | JDK / Android SDK | 17+ / 37 | Per compilare l'app ed eseguire i test |
+| `pins_strict_chain` | on | Richiedere anche che la catena del server porti allo stesso certificato conservato all'abbinamento (firmato anello per anello); un abbinamento precedente resta valido, con un avviso. Un interruttore nel pannello di abbinamento dei certificati lo spegne |
 
 Nell'app (non nei file): la lingua (le otto o seguire il telefono), i due indirizzi, *Ricordami*, il blocco del telefono, l'allarme parlato e le notifiche, in *Altro > Impostazioni*. Limiti nel codice: la sorveglianza interroga ogni 10 s, rallenta fino a 60 s e ignora gli allarmi più vecchi di 15 minuti.""",
       "quickstart": r"""**Requisiti:** JDK 17+, l'SDK Android (compile SDK 37), un telefono con Android 8.0+ (minSdk 26).
@@ -1177,6 +1182,7 @@ ARMOR-ANDROID-CONTROL/
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | 電話は Android 8.0 以降 |
 | `versionName` | = `armor.project.json` | マニフェストとバージョンが違うとビルドが失敗 |
 | JDK / Android SDK | 17+ / 37 | アプリのビルドとテストの実行用 |
+| `pins_strict_chain` | on | サーバーのチェーンが、ペアリング時に保存した証明書そのものに（リンクごとの署名で）つながることも要求します。保存前のペアリングは通知付きで引き続き有効です。証明書ペアリングのパネルのスイッチでオフにできます |
 
 アプリ内（ファイルではなく）：言語（8 言語または電話に従う）、2 つのアドレス、*ログイン状態を保持*、電話のロック、音声アラーム、通知は *その他 > 設定* にあります。コード内の制限：監視は 10 秒ごとに問い合わせ、最大 60 秒まで間隔を延ばし、15 分より古いアラームは無視します。""",
       "quickstart": r"""**必要なもの:** JDK 17+、Android SDK（compile SDK 37）、Android 8.0+ の電話（minSdk 26）。
@@ -1376,6 +1382,7 @@ ARMOR-ANDROID-CONTROL/
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | 手机需 Android 8.0 或更高 |
 | `versionName` | = `armor.project.json` | 清单与版本不一致时构建失败 |
 | JDK / Android SDK | 17+ / 37 | 用于构建应用和运行测试 |
+| `pins_strict_chain` | on | 还要求服务器证书链指向配对时保存的那张证书（逐级签名）；保存之前完成的配对仍然有效，并给出提示。可通过证书配对面板中的开关关闭 |
 
 应用内（不在文件中）：语言（八种语言或跟随手机）、两个地址、*记住我*、手机锁、语音报警和通知，位于*更多 > 设置*。代码中的限制：监视每 10 秒轮询一次，最多退避到 60 秒，并忽略超过 15 分钟的报警。""",
       "quickstart": r"""**要求:** JDK 17+、Android SDK（compile SDK 37）、Android 8.0+ 手机（minSdk 26）。
@@ -1575,6 +1582,7 @@ Não houve revisão de segurança independente. Lê [docs/CLIENT_BOUNDARY.md](do
 | `compileSdk` / `targetSdk` / `minSdk` | 37 / 37 / 26 | Android 8.0 ou posterior no telemóvel |
 | `versionName` | = `armor.project.json` | A compilação falha se o manifesto e a versão diferirem |
 | JDK / Android SDK | 17+ / 37 | Para compilar a app e executar os testes |
+| `pins_strict_chain` | on | Exigir também que a cadeia do servidor leve ao mesmo certificado guardado no emparelhamento (assinado elo a elo); um emparelhamento anterior continua válido, com um aviso. Um interruptor do painel de emparelhamento de certificados desliga-o |
 
 Na app (não em ficheiros): a língua (as oito ou seguir o telemóvel), os dois endereços, *Lembrar-me*, o bloqueio do telemóvel, o alarme falado e as notificações, em *Mais > Definições*. Limites no código: a vigilância consulta a cada 10 s, recua até 60 s e ignora alarmes com mais de 15 minutos.""",
       "quickstart": r"""**Requisitos:** JDK 17+, o Android SDK (compile SDK 37), um telemóvel com Android 8.0+ (minSdk 26).

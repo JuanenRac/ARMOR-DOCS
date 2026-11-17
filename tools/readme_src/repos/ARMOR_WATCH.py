@@ -60,7 +60,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | How long an alert stays before it disappears by itself |\n'
                                   '| `pendingMax` | 8 | Alerts kept at once; a critical one is never dropped for a lesser one |\n'
                                   '| `rawMax` | 4096 | A message longer than this is not read |\n'
-                                  '| `relay.enabled` | false | Set by the phone; the watch shows nothing until it is true |',
+                                  '| `relay.enabled` | false | Set by the phone; the watch shows nothing until it is true |\n'
+                                  '| `bindSender` | false | Wear OS only; set from the app. On, the watch listens only to the phone that switched the alerts on, until they are switched off; off, any phone in reach may send |',
                  'quickstart': '**Requirements:** Python 3.11+ for the checks; a JDK 21 for the Kotlin core (the Gradle wrapper downloads Gradle itself).\n'
                                '\n'
                                '```powershell\n'
@@ -181,7 +182,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | Cuánto dura una alerta antes de desaparecer sola |\n'
                                   '| `pendingMax` | 8 | Alertas guardadas a la vez; una crítica nunca se descarta por una menor |\n'
                                   '| `rawMax` | 4096 | Un mensaje más largo no se lee |\n'
-                                  '| `relay.enabled` | false | Lo fija el móvil; el reloj no muestra nada hasta que es verdadero |',
+                                  '| `relay.enabled` | false | Lo fija el móvil; el reloj no muestra nada hasta que es verdadero |\n'
+                                  '| `bindSender` | false | Solo en Wear OS; se fija desde la app. Activado, el reloj escucha solo al móvil que encendió las alertas, hasta que se apagan; apagado, cualquier móvil al alcance puede enviar |',
                  'quickstart': '**Requisitos:** Python 3.11+ para las comprobaciones; un JDK 21 para el núcleo Kotlin (el wrapper de Gradle descarga el propio Gradle).\n'
                                '\n'
                                '```powershell\n'
@@ -300,7 +302,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | Wie lange ein Alarm bleibt, bevor er von selbst verschwindet |\n'
                                   '| `pendingMax` | 8 | Gleichzeitig gehaltene Alarme; ein kritischer wird nie für einen geringeren verworfen |\n'
                                   '| `rawMax` | 4096 | Eine längere Nachricht wird nicht gelesen |\n'
-                                  '| `relay.enabled` | false | Vom Telefon gesetzt; die Uhr zeigt nichts, bis er wahr ist |',
+                                  '| `relay.enabled` | false | Vom Telefon gesetzt; die Uhr zeigt nichts, bis er wahr ist |\n'
+                                  '| `bindSender` | false | Nur Wear OS; in der App gesetzt. An: Die Uhr hört nur auf das Telefon, das die Warnungen eingeschaltet hat, bis sie ausgeschaltet werden; aus: Jedes Telefon in Reichweite darf senden |',
                  'quickstart': '**Voraussetzungen:** Python 3.11+ für die Prüfungen; ein JDK 21 für den Kotlin-Kern (der Gradle-Wrapper lädt Gradle selbst herunter).\n'
                                '\n'
                                '```powershell\n'
@@ -423,7 +426,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   "| `ttlSeconds` | 5 - 600 | Combien de temps une alerte reste avant de disparaître d'elle-même |\n"
                                   "| `pendingMax` | 8 | Alertes gardées à la fois ; une critique n'est jamais jetée pour une moindre |\n"
                                   "| `rawMax` | 4096 | Un message plus long n'est pas lu |\n"
-                                  "| `relay.enabled` | false | Fixé par le téléphone ; la montre ne montre rien tant qu'il n'est pas vrai |",
+                                  "| `relay.enabled` | false | Fixé par le téléphone ; la montre ne montre rien tant qu'il n'est pas vrai |\n"
+                                  "| `bindSender` | false | Wear OS uniquement ; réglé depuis l'app. Activé, la montre n'écoute que le téléphone qui a activé les alertes, jusqu'à leur arrêt ; désactivé, tout téléphone à portée peut envoyer |",
                  'quickstart': '**Prérequis :** Python 3.11+ pour les vérifications ; un JDK 21 pour le noyau Kotlin (le wrapper Gradle télécharge Gradle lui-même).\n'
                                '\n'
                                '```powershell\n'
@@ -543,7 +547,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | Quanto resta un avviso prima di sparire da solo |\n'
                                   '| `pendingMax` | 8 | Avvisi tenuti insieme; uno critico non viene mai scartato per uno minore |\n'
                                   '| `rawMax` | 4096 | Un messaggio più lungo non viene letto |\n'
-                                  "| `relay.enabled` | false | Impostato dal telefono; l'orologio non mostra nulla finché non è vero |",
+                                  "| `relay.enabled` | false | Impostato dal telefono; l'orologio non mostra nulla finché non è vero |\n"
+                                  "| `bindSender` | false | Solo Wear OS; si imposta dall'app. Acceso, l'orologio ascolta solo il telefono che ha attivato gli avvisi, finché non vengono spenti; spento, qualsiasi telefono a portata può inviare |",
                  'quickstart': '**Requisiti:** Python 3.11+ per i controlli; un JDK 21 per il nucleo Kotlin (il wrapper di Gradle scarica Gradle stesso).\n'
                                '\n'
                                '```powershell\n'
@@ -654,7 +659,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | アラートが自動で消えるまでの時間 |\n'
                                   '| `pendingMax` | 8 | 同時に保持するアラート数。重大なものは軽いもののために破棄されません |\n'
                                   '| `rawMax` | 4096 | これより長いメッセージは読みません |\n'
-                                  '| `relay.enabled` | false | スマートフォンが設定。true になるまでウォッチは何も表示しません |',
+                                  '| `relay.enabled` | false | スマートフォンが設定。true になるまでウォッチは何も表示しません |\n'
+                                  '| `bindSender` | false | Wear OS のみ。アプリから設定します。オンの間、ウォッチは通知を有効にしたスマートフォンだけを聞き、無効にするまで続きます。オフでは、届く範囲のどのスマートフォンでも送信できます |',
                  'quickstart': '**要件：** 検査には Python 3.11+、Kotlin コアには JDK 21（Gradle ラッパーが Gradle 自体をダウンロードします）。\n'
                                '\n'
                                '```powershell\n'
@@ -761,7 +767,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | 警报在自动消失前保留多久 |\n'
                                   '| `pendingMax` | 8 | 同时保留的警报数；严重警报不会为较轻的警报而被丢弃 |\n'
                                   '| `rawMax` | 4096 | 更长的消息不会被读取 |\n'
-                                  '| `relay.enabled` | false | 由手机设置；在其为 true 之前手表不显示任何内容 |',
+                                  '| `relay.enabled` | false | 由手机设置；在其为 true 之前手表不显示任何内容 |\n'
+                                  '| `bindSender` | false | 仅 Wear OS；在应用中设置。开启时，手表只听取开启提醒的那部手机，直到提醒被关闭；关闭时，范围内的任何手机都可以发送 |',
                  'quickstart': '**要求：** 检查需要 Python 3.11+；Kotlin 核心需要 JDK 21（Gradle 包装器会自行下载 Gradle）。\n'
                                '\n'
                                '```powershell\n'
@@ -879,7 +886,8 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                   '| `ttlSeconds` | 5 - 600 | Quanto tempo um alerta fica antes de desaparecer sozinho |\n'
                                   '| `pendingMax` | 8 | Alertas guardados ao mesmo tempo; um crítico nunca é descartado por um menor |\n'
                                   '| `rawMax` | 4096 | Uma mensagem mais longa não é lida |\n'
-                                  '| `relay.enabled` | false | Definido pelo telemóvel; o relógio não mostra nada até ser verdadeiro |',
+                                  '| `relay.enabled` | false | Definido pelo telemóvel; o relógio não mostra nada até ser verdadeiro |\n'
+                                  '| `bindSender` | false | Só Wear OS; definido na app. Ligado, o relógio ouve apenas o telemóvel que ligou os alertas, até serem desligados; desligado, qualquer telemóvel ao alcance pode enviar |',
                  'quickstart': '**Requisitos:** Python 3.11+ para as verificações; um JDK 21 para o núcleo Kotlin (o wrapper do Gradle descarrega o próprio Gradle).\n'
                                '\n'
                                '```powershell\n'
