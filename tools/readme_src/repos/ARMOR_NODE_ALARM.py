@@ -255,6 +255,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
 ├── CMakeLists.txt                       the ESP-IDF project
+├── firmware_base.lock                   the version of the shared base this copy was synced from
 ├── partitions.csv                       the flash table
 ├── sdkconfig.defaults                   the firmware settings
 ├── sdkconfig.board.s3-eth               the settings of one board
@@ -462,6 +463,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
 ├── CMakeLists.txt                       el proyecto ESP-IDF
+├── firmware_base.lock                   la versión de la base compartida de la que se sincronizó esta copia
 ├── partitions.csv                       la tabla de la flash
 ├── sdkconfig.defaults                   los ajustes del firmware
 ├── sdkconfig.board.s3-eth               los ajustes de una placa
@@ -669,6 +671,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
 ├── CMakeLists.txt                       das ESP-IDF-Projekt
+├── firmware_base.lock                   die Version der gemeinsamen Basis, mit der diese Kopie abgeglichen wurde
 ├── partitions.csv                       die Flash-Tabelle
 ├── sdkconfig.defaults                   die Firmware-Einstellungen
 ├── sdkconfig.board.s3-eth               die Einstellungen einer Platine
@@ -876,6 +879,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
 ├── CMakeLists.txt                       le projet ESP-IDF
+├── firmware_base.lock                   la version de la base partagée dont cette copie a été synchronisée
 ├── partitions.csv                       la table de la flash
 ├── sdkconfig.defaults                   les réglages du firmware
 ├── sdkconfig.board.s3-eth               les réglages d'une carte
@@ -1083,6 +1087,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
 ├── CMakeLists.txt                       il progetto ESP-IDF
+├── firmware_base.lock                   la versione della base condivisa da cui è stata sincronizzata questa copia
 ├── partitions.csv                       la tabella della flash
 ├── sdkconfig.defaults                   le impostazioni del firmware
 ├── sdkconfig.board.s3-eth               le impostazioni di una scheda
@@ -1290,6 +1295,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
 ├── CMakeLists.txt                       ESP-IDF プロジェクト
+├── firmware_base.lock                   この複製が同期された共有ベースのバージョン
 ├── partitions.csv                       フラッシュのテーブル
 ├── sdkconfig.defaults                   ファームウェアの設定
 ├── sdkconfig.board.s3-eth               基板ごとの設定
@@ -1497,6 +1503,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
 ├── CMakeLists.txt                       ESP-IDF 项目
+├── firmware_base.lock                   此副本所同步的共享基础版本
 ├── partitions.csv                       闪存分区表
 ├── sdkconfig.defaults                   固件设置
 ├── sdkconfig.board.s3-eth               某块电路板的设置
@@ -1704,6 +1711,7 @@ ARMOR-NODE-ALARM/
 ├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
 ├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
 ├── CMakeLists.txt                       o projeto ESP-IDF
+├── firmware_base.lock                   a versão da base partilhada de que esta cópia foi sincronizada
 ├── partitions.csv                       a tabela da flash
 ├── sdkconfig.defaults                   as definições do firmware
 ├── sdkconfig.board.s3-eth               as definições de uma placa
