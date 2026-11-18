@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-NODE-HMI, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "🖥️",
   "layout": "universal",
@@ -219,43 +221,7 @@ The host tests need any C++17 compiler (Linux, WSL, MSYS2); the web panel is als
 | An update from GitHub is refused | The release has no checksum or signature, they do not match (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), has no image for this board (`e_no_asset_for_board`) or is for another project (`e_wrong_firmware`) | Nothing changed on the node; try again or let an administrator upload the file by hand |
 | The voice does not start | `voice.enabled` is off, or `voice.url` is `required` or `invalid` | Turn it on in the panel and give a valid address; changing the host erases the token |
 | The footer says sending, then confirmed or the reason | An order is on its way, was confirmed for a few seconds, or was refused and keeps its reason | Read the reason; the server decides, not the panel |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                the firmware: an ESP-IDF component
-├── core/                                the logic with no ESP-IDF, tested on a computer
-├── panel/                               the web panel embedded in the firmware
-├── tests/                               host tests and Python checks
-├── simulator/                           the screen drawn on a computer, in eight languages
-├── docs/                                9 guides: design, voice, fonts, hardware
-├── tools/                               build, pack and check tools
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon, README pictures, screenshots
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── CMakeLists.txt                       the ESP-IDF project
-├── firmware_base.lock                   the version of the shared base this copy was synced from
-├── partitions.csv                       the flash table
-├── sdkconfig.defaults                   the firmware settings
-├── sdkconfig.board.lcd7box              the settings of one board
-├── secrets/                             example of the node file (the real ones are not versioned)
-├── dependencies.lock                    the pinned versions of the ESP-IDF components
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Known limits today**
 
 * The firmware has been built once (ESP-IDF 5.5.5), but the build is not checked by the continuous integration and it has never run on a board.
@@ -422,43 +388,7 @@ Las pruebas de host necesitan cualquier compilador C++17 (Linux, WSL, MSYS2); el
 | Se rechaza una actualización desde GitHub | La versión no trae suma de comprobación ni firma, no coinciden (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), no trae imagen para esta placa (`e_no_asset_for_board`) o es de otro proyecto (`e_wrong_firmware`) | El nodo no cambió; reintenta o deja que un administrador suba el fichero a mano |
 | La voz no arranca | `voice.enabled` está apagado, o `voice.url` es `required` o `invalid` | Enciéndelo en el panel y da una dirección válida; cambiar de host borra el token |
 | El pie dice enviando, luego confirmada o el motivo | Una orden va en camino, se confirmó unos segundos, o se rechazó y conserva su motivo | Lee el motivo; decide el servidor, no el panel |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                el firmware: un componente de ESP-IDF
-├── core/                                la lógica sin ESP-IDF, probada en un ordenador
-├── panel/                               el panel web embebido en el firmware
-├── tests/                               pruebas de host y comprobaciones Python
-├── simulator/                           la pantalla dibujada en un ordenador, en ocho idiomas
-├── docs/                                9 guías: diseño, voz, fuentes, hardware
-├── tools/                               herramientas de compilación, empaquetado y comprobación
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono, imágenes del README, capturas
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── CMakeLists.txt                       el proyecto ESP-IDF
-├── firmware_base.lock                   la versión de la base compartida de la que se sincronizó esta copia
-├── partitions.csv                       la tabla de la flash
-├── sdkconfig.defaults                   los ajustes del firmware
-├── sdkconfig.board.lcd7box              los ajustes de una placa
-├── secrets/                             ejemplo del fichero del nodo (los reales no se versionan)
-├── dependencies.lock                    las versiones fijadas de los componentes de ESP-IDF
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * El firmware se ha compilado una vez (ESP-IDF 5.5.5), pero la compilación no la comprueba la integración continua y nunca ha funcionado en una placa.
@@ -625,43 +555,7 @@ Die Host-Tests brauchen einen beliebigen C++17-Compiler (Linux, WSL, MSYS2); das
 | Ein Update von GitHub wird abgelehnt | Die Version enthält keine Prüfsumme oder Signatur, sie passen nicht (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), hat kein Image für diese Platine (`e_no_asset_for_board`) oder gehört zu einem anderen Projekt (`e_wrong_firmware`) | Der Knoten blieb unverändert; erneut versuchen oder einen Administrator die Datei von Hand hochladen lassen |
 | Die Sprache startet nicht | `voice.enabled` ist aus, oder `voice.url` ist `required` oder `invalid` | Schalte es im Panel ein und gib eine gültige Adresse an; ein Hostwechsel löscht das Token |
 | Die Fußzeile sagt „sendet“, dann „bestätigt“ oder den Grund | Ein Befehl ist unterwegs, wurde einige Sekunden bestätigt oder abgelehnt und behält seinen Grund | Lies den Grund; der Server entscheidet, nicht das Panel |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                die Firmware: eine ESP-IDF-Komponente
-├── core/                                die Logik ohne ESP-IDF, am Rechner getestet
-├── panel/                               das in die Firmware eingebettete Web-Panel
-├── tests/                               Host-Tests und Python-Prüfungen
-├── simulator/                           der Bildschirm auf einem Computer gezeichnet, in acht Sprachen
-├── docs/                                9 Anleitungen: Entwurf, Sprache, Schriften, Hardware
-├── tools/                               Werkzeuge für Build, Packen und Prüfung
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol, README-Bilder, Screenshots
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── CMakeLists.txt                       das ESP-IDF-Projekt
-├── firmware_base.lock                   die Version der gemeinsamen Basis, mit der diese Kopie abgeglichen wurde
-├── partitions.csv                       die Flash-Tabelle
-├── sdkconfig.defaults                   die Firmware-Einstellungen
-├── sdkconfig.board.lcd7box              die Einstellungen einer Platine
-├── secrets/                             Beispiel der Knotendatei (die echten sind nicht versioniert)
-├── dependencies.lock                    die festgelegten Versionen der ESP-IDF-Komponenten
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Firmware wurde einmal gebaut (ESP-IDF 5.5.5), der Build wird aber nicht von der kontinuierlichen Integration geprüft, und sie lief nie auf einer Platine.
@@ -828,43 +722,7 @@ Les tests sur hôte demandent un compilateur C++17 quelconque (Linux, WSL, MSYS2
 | Une mise à jour depuis GitHub est refusée | La version n'a ni somme de contrôle ni signature, elles ne concordent pas (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), n'a pas d'image pour cette carte (`e_no_asset_for_board`) ou est d'un autre projet (`e_wrong_firmware`) | Le nœud n'a pas changé ; réessayez ou laissez un administrateur envoyer le fichier à la main |
 | La voix ne démarre pas | `voice.enabled` est désactivé, ou `voice.url` est `required` ou `invalid` | Activez-la dans le panneau et donnez une adresse valide ; changer d'hôte efface le jeton |
 | Le pied d'écran dit envoi, puis confirmée ou le motif | Un ordre est en route, a été confirmé quelques secondes, ou refusé et garde son motif | Lisez le motif ; c'est le serveur qui décide, pas le panneau |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                le firmware : un composant ESP-IDF
-├── core/                                la logique sans ESP-IDF, testée sur ordinateur
-├── panel/                               le panneau web intégré au firmware
-├── tests/                               tests sur hôte et contrôles Python
-├── simulator/                           l'écran dessiné sur un ordinateur, en huit langues
-├── docs/                                9 guides : conception, voix, polices, matériel
-├── tools/                               outils de build, d'empaquetage et de contrôle
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône, images du README, captures
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── CMakeLists.txt                       le projet ESP-IDF
-├── firmware_base.lock                   la version de la base partagée dont cette copie a été synchronisée
-├── partitions.csv                       la table de la flash
-├── sdkconfig.defaults                   les réglages du firmware
-├── sdkconfig.board.lcd7box              les réglages d'une carte
-├── secrets/                             exemple du fichier de nœud (les vrais ne sont pas versionnés)
-├── dependencies.lock                    les versions épinglées des composants ESP-IDF
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Le firmware a été compilé une fois (ESP-IDF 5.5.5), mais la compilation n'est pas contrôlée par l'intégration continue et il n'a jamais tourné sur une carte.
@@ -1031,43 +889,7 @@ I test su host richiedono un qualsiasi compilatore C++17 (Linux, WSL, MSYS2); il
 | Un aggiornamento da GitHub è rifiutato | La versione non ha checksum o firma, non corrispondono (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), non ha un'immagine per questa scheda (`e_no_asset_for_board`) o è di un altro progetto (`e_wrong_firmware`) | Il nodo non è cambiato; riprova o lascia che un amministratore carichi il file a mano |
 | La voce non parte | `voice.enabled` è spento, o `voice.url` è `required` o `invalid` | Accendila nel pannello e dai un indirizzo valido; cambiare host cancella il token |
 | Il piè di pagina dice invio, poi confermata o il motivo | Un ordine è in viaggio, è stato confermato per qualche secondo, o è stato rifiutato e conserva il suo motivo | Leggi il motivo; decide il server, non il pannello |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                il firmware: un componente ESP-IDF
-├── core/                                la logica senza ESP-IDF, testata su un computer
-├── panel/                               il pannello web incorporato nel firmware
-├── tests/                               test su host e verifiche Python
-├── simulator/                           lo schermo disegnato su un computer, in otto lingue
-├── docs/                                9 guide: progetto, voce, caratteri, hardware
-├── tools/                               strumenti di build, impacchettamento e verifica
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona, immagini del README, schermate
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── CMakeLists.txt                       il progetto ESP-IDF
-├── firmware_base.lock                   la versione della base condivisa da cui è stata sincronizzata questa copia
-├── partitions.csv                       la tabella della flash
-├── sdkconfig.defaults                   le impostazioni del firmware
-├── sdkconfig.board.lcd7box              le impostazioni di una scheda
-├── secrets/                             esempio del file del nodo (quelli veri non sono versionati)
-├── dependencies.lock                    le versioni fissate dei componenti ESP-IDF
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Limiti noti oggi**
 
 * Il firmware è stato compilato una volta (ESP-IDF 5.5.5), ma la compilazione non è controllata dall'integrazione continua e non ha mai girato su una scheda.
@@ -1234,43 +1056,7 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 | GitHub からの更新が拒否される | リリースにチェックサムや署名がない、一致しない（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`）、この基板用のイメージがない（`e_no_asset_for_board`）、または別プロジェクトのもの（`e_wrong_firmware`） | ノードは変更されていません。再試行するか、管理者が手動でファイルをアップロード |
 | 音声が始まらない | `voice.enabled` がオフ、または `voice.url` が `required` か `invalid` | パネルでオンにして有効なアドレスを入れる（ホストを変えるとトークンは消える） |
 | フッターが「送信中」のあと「確認済み」か理由を表示する | 命令が送信中、数秒間確認済み、または拒否されて理由が残っている状態 | 理由を読む（決めるのはサーバーでパネルではない） |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-HMI のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                ファームウェア（ESP-IDF コンポーネント）
-├── core/                                ESP-IDF なしのロジック（コンピューターでテスト）
-├── panel/                               ファームウェアに埋め込まれた Web パネル
-├── tests/                               ホストテストと Python 検査
-├── simulator/                           コンピューター上で描画した画面（8 言語）
-├── docs/                                9 つのガイド：設計、音声、フォント、ハードウェア
-├── tools/                               ビルド・パッケージ・検査のツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、README の図、スクリーンショット
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── CMakeLists.txt                       ESP-IDF プロジェクト
-├── firmware_base.lock                   この複製が同期された共有ベースのバージョン
-├── partitions.csv                       フラッシュのテーブル
-├── sdkconfig.defaults                   ファームウェアの設定
-├── sdkconfig.board.lcd7box              基板ごとの設定
-├── secrets/                             ノードファイルの例（本物はバージョン管理しません）
-├── dependencies.lock                    ESP-IDF コンポーネントの固定バージョン
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-NODE-HMI"),
       "roadmap": r"""**現時点の既知の制限**
 
 * ファームウェアは一度ビルドしました（ESP-IDF 5.5.5）が、そのビルドは継続的インテグレーションでは確認されておらず、ボード上でも動かしていません。
@@ -1437,43 +1223,7 @@ Python 检查：八种语言的面板文字、任务、保存路径、受锁保�
 | 来自 GitHub 的更新被拒绝 | 发布版缺少校验和或签名，或二者不匹配（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`），没有适用于此电路板的镜像（`e_no_asset_for_board`），或属于另一个项目（`e_wrong_firmware`） | 节点未发生任何变化；请重试，或由管理员手动上传文件 |
 | 语音无法启动 | `voice.enabled` 已关闭，或 `voice.url` 为 `required` 或 `invalid` | 在面板中开启并填写有效地址；更换主机会清除令牌 |
 | 页脚先显示发送中，然后显示已确认或原因 | 命令正在发送、已确认数秒，或被拒绝并保留原因 | 阅读原因；决定权在服务器而非面板 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-HMI 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                固件：一个 ESP-IDF 组件
-├── core/                                不依赖 ESP-IDF 的逻辑，在计算机上测试
-├── panel/                               嵌入固件的网页面板
-├── tests/                               主机测试和 Python 检查
-├── simulator/                           在计算机上绘制的屏幕（八种语言）
-├── docs/                                9 份指南：设计、语音、字体、硬件
-├── tools/                               构建、打包和检查工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标、README 图片、屏幕截图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── CMakeLists.txt                       ESP-IDF 项目
-├── firmware_base.lock                   此副本所同步的共享基础版本
-├── partitions.csv                       闪存分区表
-├── sdkconfig.defaults                   固件设置
-├── sdkconfig.board.lcd7box              某块电路板的设置
-├── secrets/                             节点文件示例（真实文件不纳入版本管理）
-├── dependencies.lock                    ESP-IDF 组件的固定版本
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-NODE-HMI"),
       "roadmap": r"""**目前已知的限制**
 
 * 固件构建过一次（ESP-IDF 5.5.5），但该构建不在持续集成的检查范围内，也从未在板子上运行过。
@@ -1640,43 +1390,7 @@ O `check_font_glyphs.py` verifica que os tipos de letra têm todos os glifos das
 | Uma atualização do GitHub é recusada | A versão não traz soma de verificação nem assinatura, não coincidem (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), não traz imagem para esta placa (`e_no_asset_for_board`) ou é de outro projeto (`e_wrong_firmware`) | O nó não mudou; tente de novo ou deixe um administrador enviar o ficheiro à mão |
 | A voz não arranca | `voice.enabled` está desligado, ou `voice.url` é `required` ou `invalid` | Ligue-a no painel e dê um endereço válido; mudar de anfitrião apaga o token |
 | O rodapé diz a enviar, depois confirmada ou o motivo | Uma ordem vai a caminho, foi confirmada durante alguns segundos, ou foi recusada e guarda o seu motivo | Leia o motivo; decide o servidor, não o painel |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-NODE-HMI" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-NODE-HMI/
-├── main/                                o firmware: um componente ESP-IDF
-├── core/                                a lógica sem ESP-IDF, testada num computador
-├── panel/                               o painel web embebido no firmware
-├── tests/                               testes de anfitrião e verificações Python
-├── simulator/                           o ecrã desenhado num computador, em oito idiomas
-├── docs/                                9 guias: desenho, voz, tipos de letra, hardware
-├── tools/                               ferramentas de compilação, empacotamento e verificação
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone, imagens do README, capturas de ecrã
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── CMakeLists.txt                       o projeto ESP-IDF
-├── firmware_base.lock                   a versão da base partilhada de que esta cópia foi sincronizada
-├── partitions.csv                       a tabela da flash
-├── sdkconfig.defaults                   as definições do firmware
-├── sdkconfig.board.lcd7box              as definições de uma placa
-├── secrets/                             exemplo do ficheiro do nó (os verdadeiros não são versionados)
-├── dependencies.lock                    as versões fixadas dos componentes ESP-IDF
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-NODE-HMI"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * O firmware foi compilado uma vez (ESP-IDF 5.5.5), mas a compilação não é verificada pela integração contínua e nunca funcionou numa placa.

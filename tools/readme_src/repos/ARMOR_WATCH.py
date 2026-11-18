@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-WATCH, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {'emoji': '⌚',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
@@ -96,36 +98,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     '| An alert disappears by itself | Its `ttlSeconds` ran out or the phone cleared it | Raise it again from the phone |\n'
                                     '| The confirmation does nothing | The alert does not ask for one, it expired, or it was already confirmed once | Confirm the alarm '
                                     'in the phone app |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>Text version of the tree</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol (the messages and their checks) and AlertInbox (the alerts on the screen)\n'
-                              '│   └── test/                               the same examples as the contract, and the rules of the inbox\n'
-                              '├── wear/                               the Wear OS app: screen, Data Layer service and runtime\n'
-                              '├── watchos/                            the Apple Watch app: Swift core, screen and WatchConnectivity\n'
-                              '├── tests/                                  the contract checked in Python\n'
-                              '├── docs/                                   the contract and the protocol\n'
-                              '├── tools/                                  checks and contract\n'
-                              '├── gradle/                                 Gradle wrapper\n'
-                              '├── .github/                                CI workflow, issue and pull-request templates\n'
-                              '├── images/                                 banner, icon and the two pictures of the README\n'
-                              '├── armor.project.json                      manifest: version, role, maturity, build command\n'
-                              '├── CHANGELOG.md                            what changed in each version\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          security policy, support and license\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      how to contribute and the code of conduct\n'
-                              '├── build.gradle.kts settings.gradle.kts    the Kotlin build\n'
-                              '├── gradle.properties gradlew gradlew.bat   Gradle settings and the wrapper scripts\n'
-                              '└── .gitattributes .gitignore               Git settings\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("en", "ARMOR-WATCH"),
                  'roadmap': '**Known limits today**\n\n* The Wear OS app (`wear/`, built with `-ParmorWear`), the Apple Watch app (`watchos/`, built only on a Mac) and the senders in ARMOR-ANDROID-CONTROL and ARMOR-IOS-CONTROL (off by default) are built and pass their tests in CI, but nothing has run on a real watch, an emulator or a simulator.\n* The Apple Watch app is built inside the iPhone project (embedded in ARMOR-IOS-CONTROL and built for the simulator in CI), but the pairing of the two is still to be tried on real devices; an iPhone does not pair with a Wear OS watch and an Android phone does not pair with an Apple Watch.\n* The contract is kept here; the Kotlin core, the Swift core and the phone apps run the same examples.\n\n**Next**\n\n* Prove it on a real watch, one of each kind: pair it, switch the option on, raise a test alarm, see it on the watch, confirm it with a tap and see it confirmed in ARMOR-SERVER; then switch the option off and see the alert disappear.'}},
  'es': {'tagline': 'El reloj mínimo de A.R.M.O.R.: avisos de alarma y un toque para confirmar una alarma',
         'honest': 'El contrato de mensajes, los núcleos Kotlin y Swift y la sesión del reloj se prueban en un ordenador, y la app de Wear OS, la app del Apple Watch y el lado que envía de las apps Android e iPhone se compilan y pasan sus pruebas en CI; **nada ha corrido en un reloj real ni en un emulador (solo un gemelo simulado del teléfono, el enlace y el reloj), y la app del Apple Watch, compilada dentro del proyecto del iPhone, nunca se ha emparejado con un iPhone real.**',
@@ -217,36 +190,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     'con `enabled: true` | Activa la opción en la app del móvil |\n'
                                     '| Una alerta desaparece sola | Se acabó su `ttlSeconds` o el móvil la borró | Vuelve a lanzarla desde el móvil |\n'
                                     '| La confirmación no hace nada | La alerta no la pide, caducó o ya se confirmó una vez | Confirma la alarma en la app del móvil |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>Versión en texto del árbol</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol (los mensajes y sus comprobaciones) y AlertInbox (las alertas en pantalla)\n'
-                              '│   └── test/                               los mismos ejemplos que el contrato y las reglas de la bandeja\n'
-                              '├── wear/                               la app de Wear OS: pantalla, servicio del Data Layer y runtime\n'
-                              '├── watchos/                            la app del Apple Watch: núcleo Swift, pantalla y WatchConnectivity\n'
-                              '├── tests/                                  el contrato comprobado en Python\n'
-                              '├── docs/                                   el contrato y el protocolo\n'
-                              '├── tools/                                  comprobaciones y contrato\n'
-                              '├── gradle/                                 wrapper de Gradle\n'
-                              '├── .github/                                flujo de CI y plantillas de issues y pull requests\n'
-                              '├── images/                                 banner, icono y los dos dibujos del README\n'
-                              '├── armor.project.json                      manifiesto: versión, rol, madurez, comando de build\n'
-                              '├── CHANGELOG.md                            qué cambió en cada versión\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          política de seguridad, soporte y licencia\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      cómo contribuir y el código de conducta\n'
-                              '├── build.gradle.kts settings.gradle.kts    el build de Kotlin\n'
-                              '├── gradle.properties gradlew gradlew.bat   ajustes de Gradle y scripts del wrapper\n'
-                              '└── .gitattributes .gitignore               ajustes de Git\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("es", "ARMOR-WATCH"),
                  'roadmap': '**Límites conocidos hoy**\n\n* La app de Wear OS (`wear/`, se compila con `-ParmorWear`), la app del Apple Watch (`watchos/`, solo se compila en un Mac) y los emisores de ARMOR-ANDROID-CONTROL y ARMOR-IOS-CONTROL (apagados por defecto) se compilan y pasan sus pruebas en CI, pero nada ha corrido en un reloj real, un emulador ni un simulador.\n* La app del Apple Watch se compila dentro del proyecto del iPhone (incrustada en ARMOR-IOS-CONTROL y compilada para el simulador en CI), pero el emparejamiento de las dos está por probar en dispositivos reales; un iPhone no se empareja con un reloj Wear OS ni un móvil Android con un Apple Watch.\n* El contrato vive aquí; el núcleo Kotlin, el núcleo Swift y las apps del móvil ejecutan los mismos ejemplos.\n\n**Siguiente**\n\n* Probarlo en un reloj real de cada tipo: emparejarlo, activar la opción, lanzar una alarma de prueba, verla en el reloj, confirmarla con un toque y ver la confirmación en ARMOR-SERVER; después apagar la opción y ver desaparecer el aviso.'}},
  'de': {'tagline': 'Die minimale A.R.M.O.R.-Uhr: Alarmmeldungen und ein Tipp zum Bestätigen eines Alarms',
         'honest': 'Der Nachrichtenvertrag, die Kotlin- und Swift-Kerne und die Uhr-Sitzung werden auf einem Computer getestet, und die Wear-OS-App, die Apple-Watch-App und die Sendeseite der Android- und iPhone-Apps werden in CI gebaut und bestehen ihre Tests; **nichts lief auf einer echten Uhr oder einem Emulator (nur ein simulierter Zwilling von Telefon, Verbindung und Uhr), und die Apple-Watch-App, im iPhone-Projekt mitgebaut, wurde nie mit einem echten iPhone gekoppelt.**',
@@ -339,37 +283,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     'erneut aus |\n'
                                     '| Die Bestätigung bewirkt nichts | Der Alarm verlangt keine, er ist abgelaufen oder wurde schon einmal bestätigt | Bestätige den '
                                     'Alarm in der Telefon-App |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>Textversion des Baums</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol (die Nachrichten und ihre Prüfungen) und AlertInbox (die Alarme auf dem '
-                              'Bildschirm)\n'
-                              '│   └── test/                               dieselben Beispiele wie der Vertrag und die Regeln des Posteingangs\n'
-                              '├── wear/                               die Wear-OS-App: Bildschirm, Data-Layer-Dienst und Laufzeit\n'
-                              '├── watchos/                            die Apple-Watch-App: Swift-Kern, Bildschirm und WatchConnectivity\n'
-                              '├── tests/                                  der Vertrag in Python geprüft\n'
-                              '├── docs/                                   der Vertrag und das Protokoll\n'
-                              '├── tools/                                  Prüfungen, Vertrag\n'
-                              '├── gradle/                                 Gradle-Wrapper\n'
-                              '├── .github/                                CI-Workflow sowie Vorlagen für Issues und Pull Requests\n'
-                              '├── images/                                 Banner, Symbol und die zwei Bilder des READMEs\n'
-                              '├── armor.project.json                      Manifest: Version, Rolle, Reifegrad, Build-Befehl\n'
-                              '├── CHANGELOG.md                            was sich in jeder Version geändert hat\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          Sicherheitsrichtlinie, Support und Lizenz\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      wie man beiträgt und der Verhaltenskodex\n'
-                              '├── build.gradle.kts settings.gradle.kts    der Kotlin-Build\n'
-                              '├── gradle.properties gradlew gradlew.bat   Gradle-Einstellungen und Wrapper-Skripte\n'
-                              '└── .gitattributes .gitignore               Git-Einstellungen\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("de", "ARMOR-WATCH"),
                  'roadmap': '**Bekannte Grenzen heute**\n\n* Die Wear-OS-App (`wear/`, gebaut mit `-ParmorWear`), die Apple-Watch-App (`watchos/`, nur auf einem Mac gebaut) und die Sender in ARMOR-ANDROID-CONTROL und ARMOR-IOS-CONTROL (standardmäßig aus) werden in CI gebaut und bestehen ihre Unit-Tests, aber nichts lief auf einer echten Uhr, einem Emulator oder einem Simulator.\n* Die Apple-Watch-App wird im iPhone-Projekt mitgebaut (in ARMOR-IOS-CONTROL eingebettet und in CI für den Simulator gebaut), die Kopplung beider ist aber auf echten Geräten noch zu prüfen; ein iPhone koppelt nicht mit einer Wear-OS-Uhr und ein Android-Telefon nicht mit einer Apple Watch.\n* Der Vertrag liegt hier; der Kotlin-Kern, der Swift-Kern und die Telefon-Apps führen dieselben Beispiele aus.\n\n**Als Nächstes**\n\n* Auf einer echten Uhr jeder Art beweisen: koppeln, die Option einschalten, einen Testalarm auslösen, ihn auf der Uhr sehen, mit einem Tipp bestätigen und die Bestätigung in ARMOR-SERVER sehen; dann die Option ausschalten und die Meldung verschwinden sehen.'}},
  'fr': {'tagline': "La montre minimale d'A.R.M.O.R. : avis d'alarme et un toucher pour confirmer une alarme",
         'honest': "Le contrat des messages, les noyaux Kotlin et Swift et la session de la montre sont testés sur un ordinateur, et l'app Wear OS, l'app Apple Watch et le côté émetteur des apps Android et iPhone se compilent et passent leurs tests en CI ; **rien n'a tourné sur une vraie montre ni un émulateur (seul un jumeau simulé du téléphone, de la liaison et de la montre), et l'app Apple Watch, compilée dans le projet de l'iPhone, n'a jamais été appairée à un vrai iPhone.**",
@@ -462,36 +376,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     "| Une alerte disparaît d'elle-même | Son `ttlSeconds` est écoulé ou le téléphone l'a effacée | Relance-la depuis le téléphone |\n"
                                     "| La confirmation ne fait rien | L'alerte n'en demande pas, elle a expiré ou a déjà été confirmée une fois | Confirme l'alarme dans "
                                     "l'app du téléphone |",
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              "<summary>Version texte de l'arborescence</summary>\n"
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              "│   ├── main/                               WatchProtocol (les messages et leurs contrôles) et AlertInbox (les alertes à l'écran)\n"
-                              '│   └── test/                               les mêmes exemples que le contrat et les règles de la boîte\n'
-                              '├── wear/                               l\'app Wear OS : écran, service Data Layer et runtime\n'
-                              '├── watchos/                            l\'app Apple Watch : noyau Swift, écran et WatchConnectivity\n'
-                              '├── tests/                                  le contrat vérifié en Python\n'
-                              '├── docs/                                   le contrat et le protocole\n'
-                              '├── tools/                                  contrôles et contrat\n'
-                              '├── gradle/                                 wrapper Gradle\n'
-                              "├── .github/                                workflow CI et modèles d'issues et de pull requests\n"
-                              '├── images/                                 bannière, icône et les deux images du README\n'
-                              '├── armor.project.json                      manifeste : version, rôle, maturité, commande de build\n'
-                              '├── CHANGELOG.md                            ce qui a changé à chaque version\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          politique de sécurité, support et licence\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      comment contribuer et le code de conduite\n'
-                              '├── build.gradle.kts settings.gradle.kts    le build Kotlin\n'
-                              '├── gradle.properties gradlew gradlew.bat   réglages Gradle et scripts du wrapper\n'
-                              '└── .gitattributes .gitignore               réglages de Git\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("fr", "ARMOR-WATCH"),
                  'roadmap': "**Limites connues aujourd'hui**\n\n* L'app Wear OS (`wear/`, compilée avec `-ParmorWear`), l'app Apple Watch (`watchos/`, compilée seulement sur un Mac) et les émetteurs d'ARMOR-ANDROID-CONTROL et d'ARMOR-IOS-CONTROL (désactivés par défaut) se compilent et passent leurs tests en CI, mais rien n'a tourné sur une vraie montre, un émulateur ou un simulateur.\n* L'app Apple Watch est compilée dans le projet de l'iPhone (intégrée à ARMOR-IOS-CONTROL et compilée pour le simulateur en CI), mais l'appairage des deux reste à essayer sur de vrais appareils ; un iPhone ne s'appaire pas avec une montre Wear OS ni un téléphone Android avec une Apple Watch.\n* Le contrat est conservé ici ; le noyau Kotlin, le noyau Swift et les apps du téléphone exécutent les mêmes exemples.\n\n**Ensuite**\n\n* Le prouver sur une vraie montre de chaque type : l'appairer, activer l'option, lancer une alarme d'essai, la voir sur la montre, la confirmer d'un toucher et voir la confirmation dans ARMOR-SERVER ; puis désactiver l'option et voir l'alerte disparaître."}},
  'it': {'tagline': "L'orologio minimale di A.R.M.O.R.: avvisi di allarme e un tocco per confermare un allarme",
         'honest': "Il contratto dei messaggi, i nuclei Kotlin e Swift e la sessione dell'orologio sono testati su un computer, e l'app Wear OS, l'app Apple Watch e il lato che invia delle app Android e iPhone si compilano e superano i test in CI; **nulla è stato eseguito su un orologio reale né su un emulatore (solo un gemello simulato di telefono, collegamento e orologio), e l'app Apple Watch, compilata nel progetto dell'iPhone, non è mai stata associata a un iPhone reale.**",
@@ -583,36 +468,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     "| Un avviso sparisce da solo | Il suo `ttlSeconds` è scaduto o il telefono l'ha cancellato | Rilancialo dal telefono |\n"
                                     "| La conferma non fa nulla | L'avviso non la richiede, è scaduto o è già stato confermato una volta | Conferma l'allarme nell'app "
                                     'del telefono |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              "<summary>Versione testuale dell'albero</summary>\n"
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol (i messaggi e i loro controlli) e AlertInbox (gli avvisi sullo schermo)\n'
-                              '│   └── test/                               gli stessi esempi del contratto e le regole della casella\n'
-                              '├── wear/                               l\'app Wear OS: schermo, servizio Data Layer e runtime\n'
-                              '├── watchos/                            l\'app Apple Watch: nucleo Swift, schermo e WatchConnectivity\n'
-                              '├── tests/                                  il contratto verificato in Python\n'
-                              '├── docs/                                   il contratto e il protocollo\n'
-                              '├── tools/                                  controlli e contratto\n'
-                              '├── gradle/                                 wrapper Gradle\n'
-                              '├── .github/                                workflow CI e modelli per issue e pull request\n'
-                              '├── images/                                 banner, icona e le due immagini del README\n'
-                              '├── armor.project.json                      manifesto: versione, ruolo, maturità, comando di build\n'
-                              '├── CHANGELOG.md                            cosa è cambiato in ogni versione\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          politica di sicurezza, supporto e licenza\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      come contribuire e il codice di condotta\n'
-                              '├── build.gradle.kts settings.gradle.kts    il build Kotlin\n'
-                              '├── gradle.properties gradlew gradlew.bat   impostazioni Gradle e script del wrapper\n'
-                              '└── .gitattributes .gitignore               impostazioni di Git\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("it", "ARMOR-WATCH"),
                  'roadmap': "**Limiti noti oggi**\n\n* L'app Wear OS (`wear/`, compilata con `-ParmorWear`), l'app Apple Watch (`watchos/`, compilata solo su un Mac) e i mittenti di ARMOR-ANDROID-CONTROL e ARMOR-IOS-CONTROL (spenti per impostazione predefinita) si compilano e superano i test in CI, ma nulla è stato eseguito su un orologio reale, un emulatore o un simulatore.\n* L'app Apple Watch è compilata nel progetto dell'iPhone (incorporata in ARMOR-IOS-CONTROL e compilata per il simulatore in CI), ma l'associazione dei due è ancora da provare su dispositivi reali; un iPhone non si associa a un orologio Wear OS né un telefono Android a un Apple Watch.\n* Il contratto è custodito qui; il nucleo Kotlin, il nucleo Swift e le app del telefono eseguono gli stessi esempi.\n\n**Prossimi passi**\n\n* Provarlo su un orologio reale di ciascun tipo: associarlo, attivare l'opzione, lanciare un allarme di prova, vederlo sull'orologio, confermarlo con un tocco e vedere la conferma in ARMOR-SERVER; poi spegnere l'opzione e vedere sparire l'avviso."}},
  'ja': {'tagline': 'A.R.M.O.R. の最小ウォッチ：アラーム通知と、タップ 1 回でのアラーム確認',
         'honest': 'メッセージ契約、Kotlin と Swift のコア、ウォッチのセッションはコンピューター上でテストされ、Wear OS アプリ、Apple Watch アプリ、Android と iPhone アプリの送信側は CI でビルドされてテストに合格しています。**実機のウォッチやエミュレーターではまだ何も動かしていません（動いたのは、スマートフォン・接続・ウォッチの模擬ツインだけです）。iPhone プロジェクトに組み込んでビルドする Apple Watch アプリは、実機の iPhone とペアリングしたことがありません。**',
@@ -693,36 +549,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     '| ウォッチに何も表示されない | スマートフォンアプリでウォッチのアラートがオフ、またはスマートフォンが `enabled: true` の `relay` を送っていません | スマートフォンアプリでオプションをオンにする |\n'
                                     '| アラートが勝手に消える | `ttlSeconds` が切れたか、スマートフォンが解除しました | スマートフォンからもう一度発生させる |\n'
                                     '| 確認しても何も起きない | アラートが確認を求めていない、期限切れ、または既に 1 回確認済みです | スマートフォンアプリでアラームを確認する |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>ツリーのテキスト版</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol（メッセージとその検査）と AlertInbox（画面上のアラート）\n'
-                              '│   └── test/                               契約と同じ例と受信箱のルール\n'
-                              '├── wear/                               Wear OS アプリ：画面、Data Layer サービス、ランタイム\n'
-                              '├── watchos/                            Apple Watch アプリ：Swift コア、画面、WatchConnectivity\n'
-                              '├── tests/                                  Python で検査した契約\n'
-                              '├── docs/                                   契約とプロトコル\n'
-                              '├── tools/                                  検査と契約\n'
-                              '├── gradle/                                 Gradle ラッパー\n'
-                              '├── .github/                                CI ワークフローと Issue・Pull Request のテンプレート\n'
-                              '├── images/                                 バナー、アイコン、README の 2 つの図\n'
-                              '├── armor.project.json                      マニフェスト：バージョン、役割、成熟度、ビルドコマンド\n'
-                              '├── CHANGELOG.md                            各バージョンの変更点\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          セキュリティポリシー、サポート、ライセンス\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      貢献方法と行動規範\n'
-                              '├── build.gradle.kts settings.gradle.kts    Kotlin のビルド\n'
-                              '├── gradle.properties gradlew gradlew.bat   Gradle 設定とラッパースクリプト\n'
-                              '└── .gitattributes .gitignore               Git の設定\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("ja", "ARMOR-WATCH"),
                  'roadmap': '**現時点の既知の制限**\n\n* Wear OS アプリ（`wear/`、`-ParmorWear` でビルド）、Apple Watch アプリ（`watchos/`、Mac でのみビルド）、ARMOR-ANDROID-CONTROL と ARMOR-IOS-CONTROL の送信側（既定ではオフ）は CI でビルドされ単体テストに合格していますが、実機のウォッチ、エミュレーター、シミュレーターでは何も動かしていません。\n* Apple Watch アプリは iPhone プロジェクトに組み込まれており（ARMOR-IOS-CONTROL に埋め込み、CI でシミュレーター向けにビルド）、両者のペアリングは実機では未確認です。iPhone は Wear OS ウォッチと、Android スマートフォンは Apple Watch とペアリングできません。\n* 契約はここで管理されます。Kotlin コア、Swift コア、スマートフォンアプリは同じ例を実行します。\n\n**次のステップ**\n\n* 各種類の実機ウォッチで確認する：ペアリングし、オプションをオンにし、テストアラームを発生させ、ウォッチで見て、タップで確認し、ARMOR-SERVER で確認済みになるのを見る。その後オプションをオフにして通知が消えるのを見る。'}},
  'zh': {'tagline': 'A.R.M.O.R. 的极简手表：警报通知，轻点一下确认警报',
         'honest': '消息契约、Kotlin 和 Swift 核心以及手表会话已在电脑上测试，Wear OS 应用、Apple Watch 应用以及 Android 和 iPhone 应用的发送端在 CI 中构建并通过测试；**尚未在真实手表或模拟器上运行（只有手机、链路和手表的模拟孪生体运行过），构建在 iPhone 工程内的 Apple Watch 应用也从未与真实 iPhone 配对。**',
@@ -801,36 +628,7 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     '| 手表上什么也没有出现 | 手机应用中手表警报选项已关闭，或手机未发送 `enabled: true` 的 `relay` | 在手机应用中打开该选项 |\n'
                                     '| 警报自己消失了 | 它的 `ttlSeconds` 已用完，或手机已将其清除 | 从手机重新触发 |\n'
                                     '| 确认没有任何反应 | 该警报不要求确认、已过期，或已确认过一次 | 在手机应用中确认警报 |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>目录树的文本版本</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol（消息及其检查）和 AlertInbox（屏幕上的警报）\n'
-                              '│   └── test/                               与契约相同的示例以及收件箱的规则\n'
-                              '├── wear/                               Wear OS 应用：界面、Data Layer 服务和运行时\n'
-                              '├── watchos/                            Apple Watch 应用：Swift 核心、界面和 WatchConnectivity\n'
-                              '├── tests/                                  用 Python 检查的契约\n'
-                              '├── docs/                                   契约与协议\n'
-                              '├── tools/                                  检查与契约\n'
-                              '├── gradle/                                 Gradle 包装器\n'
-                              '├── .github/                                CI 工作流以及 Issue 和 Pull Request 模板\n'
-                              '├── images/                                 横幅图、图标和 README 的两幅图\n'
-                              '├── armor.project.json                      清单：版本、角色、成熟度、构建命令\n'
-                              '├── CHANGELOG.md                            每个版本的变化\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          安全策略、支持和许可证\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      如何贡献及行为准则\n'
-                              '├── build.gradle.kts settings.gradle.kts    Kotlin 构建\n'
-                              '├── gradle.properties gradlew gradlew.bat   Gradle 设置和包装器脚本\n'
-                              '└── .gitattributes .gitignore               Git 设置\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("zh", "ARMOR-WATCH"),
                  'roadmap': '**当前已知限制**\n\n* Wear OS 应用（`wear/`，用 `-ParmorWear` 构建）、Apple Watch 应用（`watchos/`，只在 Mac 上构建）以及 ARMOR-ANDROID-CONTROL 和 ARMOR-IOS-CONTROL 的发送端（默认关闭）在 CI 中构建并通过单元测试，但尚未在真实手表、模拟器或仿真器上运行。\n* Apple Watch 应用已构建在 iPhone 工程内（嵌入 ARMOR-IOS-CONTROL，并在 CI 中针对模拟器构建），但两者的配对尚待在真实设备上试验；iPhone 不能与 Wear OS 手表配对，Android 手机也不能与 Apple Watch 配对。\n* 契约保存在这里；Kotlin 核心、Swift 核心和手机应用运行相同的示例。\n\n**下一步**\n\n* 在每种真实手表上验证：配对，打开选项，触发测试警报，在手表上看到它，轻点确认，并在 ARMOR-SERVER 中看到已确认；然后关闭选项，看到提醒消失。'}},
  'pt': {'tagline': 'O relógio mínimo do A.R.M.O.R.: avisos de alarme e um toque para confirmar um alarme',
         'honest': 'O contrato das mensagens, os núcleos Kotlin e Swift e a sessão do relógio são testados num computador, e a app Wear OS, a app do Apple Watch e o lado que envia das apps Android e iPhone compilam e passam os seus testes na CI; **nada correu num relógio real nem num emulador (só um gémeo simulado do telemóvel, da ligação e do relógio), e a app do Apple Watch, compilada dentro do projeto do iPhone, nunca foi emparelhada com um iPhone real.**',
@@ -921,34 +719,5 @@ TEXT = {'en': {'tagline': 'The minimal A.R.M.O.R. watch: alarm notices and one t
                                     'com `enabled: true` | Ativa a opção na app do telemóvel |\n'
                                     '| Um alerta desaparece sozinho | O seu `ttlSeconds` acabou ou o telemóvel limpou-o | Volta a lançá-lo a partir do telemóvel |\n'
                                     '| A confirmação não faz nada | O alerta não a pede, caducou ou já foi confirmado uma vez | Confirma o alarme na app do telemóvel |',
-                 'structure': '<p align="center">\n'
-                              '  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-WATCH" width="100%">\n'
-                              '</p>\n'
-                              '\n'
-                              '<details>\n'
-                              '<summary>Versão em texto da árvore</summary>\n'
-                              '\n'
-                              '```text\n'
-                              'ARMOR-WATCH/\n'
-                              '├── src/\n'
-                              '│   ├── main/                               WatchProtocol (as mensagens e as suas verificações) e AlertInbox (os alertas no ecrã)\n'
-                              '│   └── test/                               os mesmos exemplos do contrato e as regras da caixa\n'
-                              '├── wear/                               a app Wear OS: ecrã, serviço Data Layer e runtime\n'
-                              '├── watchos/                            a app do Apple Watch: núcleo Swift, ecrã e WatchConnectivity\n'
-                              '├── tests/                                  o contrato verificado em Python\n'
-                              '├── docs/                                   o contrato e o protocolo\n'
-                              '├── tools/                                  verificações e contrato\n'
-                              '├── gradle/                                 wrapper do Gradle\n'
-                              '├── .github/                                fluxo de CI e modelos de issues e pull requests\n'
-                              '├── images/                                 banner, ícone e os dois desenhos do README\n'
-                              '├── armor.project.json                      manifesto: versão, função, maturidade, comando de build\n'
-                              '├── CHANGELOG.md                            o que mudou em cada versão\n'
-                              '├── SECURITY.md SUPPORT.md LICENSE          política de segurança, suporte e licença\n'
-                              '├── CONTRIBUTING.md CODE_OF_CONDUCT.md      como contribuir e o código de conduta\n'
-                              '├── build.gradle.kts settings.gradle.kts    o build Kotlin\n'
-                              '├── gradle.properties gradlew gradlew.bat   definições do Gradle e scripts do wrapper\n'
-                              '└── .gitattributes .gitignore               definições do Git\n'
-                              '```\n'
-                              '\n'
-                              '</details>',
+                 'structure': structure("pt", "ARMOR-WATCH"),
                  'roadmap': '**Limites conhecidos hoje**\n\n* A app Wear OS (`wear/`, compilada com `-ParmorWear`), a app do Apple Watch (`watchos/`, compilada só num Mac) e os emissores do ARMOR-ANDROID-CONTROL e do ARMOR-IOS-CONTROL (desligados por predefinição) compilam e passam os testes unitários na CI, mas nada correu num relógio real, num emulador nem num simulador.\n* A app do Apple Watch é compilada dentro do projeto do iPhone (incorporada no ARMOR-IOS-CONTROL e compilada para o simulador na CI), mas o emparelhamento das duas está por tentar em dispositivos reais; um iPhone não emparelha com um relógio Wear OS nem um telemóvel Android com um Apple Watch.\n* O contrato fica aqui; o núcleo Kotlin, o núcleo Swift e as apps do telemóvel executam os mesmos exemplos.\n\n**A seguir**\n\n* Prová-lo num relógio real de cada tipo: emparelhá-lo, ativar a opção, lançar um alarme de teste, vê-lo no relógio, confirmá-lo com um toque e ver a confirmação no ARMOR-SERVER; depois desligar a opção e ver o aviso desaparecer.'}}}

@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-NODE-ALARM, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "🚨",
   "layout": "universal",
@@ -230,42 +232,7 @@ Most of the checks are exhaustive sweeps of the panel rules; the loops, the sire
 | The panel will not arm | A zone is in `trouble` (the converter does not start or 5 rounds gave no reading) | Fix the wiring, or force the arming (the zone is then excluded and noted) |
 | The PIN is refused even when it is right | The panel is locked after failed attempts (even the right PIN is refused) | Wait `lockout_s`; the lockout survives a restart |
 | The BOOT reset does nothing | The panel is armed: the reset only erases a disarmed panel | Disarm with the PIN first |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                the firmware: an ESP-IDF component
-├── core/                                the logic with no ESP-IDF, tested on a computer
-├── panel/                               the web panel embedded in the firmware
-├── tests/                               host tests and Python checks
-├── docs/                                11 guides: safety, messages, Zigbee, failover
-├── tools/                               build, pack and check tools
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── CMakeLists.txt                       the ESP-IDF project
-├── firmware_base.lock                   the version of the shared base this copy was synced from
-├── partitions.csv                       the flash table
-├── sdkconfig.defaults                   the firmware settings
-├── sdkconfig.board.s3-eth               the settings of one board
-├── sdkconfig.board.s3-wifi              the settings of one board
-├── secrets/                             example of the node file (the real ones are not versioned)
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Known limits today**
 
 * The node's own Zigbee conversation with a coordinator, local or on the network, is tested only against a stand-in coordinator; it has never met a real coordinator or sensor.
@@ -438,42 +405,7 @@ La mayoría de las comprobaciones son barridos exhaustivos de las reglas de la c
 | La central no arma | Una zona está en `trouble` (el convertidor no arranca o 5 rondas sin lectura) | Arregla el cableado, o fuerza el armado (la zona queda entonces excluida y anotada) |
 | Se rechaza el PIN aunque sea correcto | La central está bloqueada tras intentos fallidos (se rechaza incluso el PIN correcto) | Espera `lockout_s`; el bloqueo sobrevive a un reinicio |
 | El reinicio con BOOT no hace nada | La central está armada: el reinicio solo borra una central desarmada | Desarma primero con el PIN |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                el firmware: un componente de ESP-IDF
-├── core/                                la lógica sin ESP-IDF, probada en un ordenador
-├── panel/                               el panel web embebido en el firmware
-├── tests/                               pruebas de host y comprobaciones Python
-├── docs/                                11 guías: seguridad, mensajes, Zigbee, relevo
-├── tools/                               herramientas de compilación, empaquetado y comprobación
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── CMakeLists.txt                       el proyecto ESP-IDF
-├── firmware_base.lock                   la versión de la base compartida de la que se sincronizó esta copia
-├── partitions.csv                       la tabla de la flash
-├── sdkconfig.defaults                   los ajustes del firmware
-├── sdkconfig.board.s3-eth               los ajustes de una placa
-├── sdkconfig.board.s3-wifi              los ajustes de una placa
-├── secrets/                             ejemplo del fichero del nodo (los reales no se versionan)
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * La conversación Zigbee del propio nodo con un coordinador, local o en la red, solo se ha probado contra un coordinador simulado; nunca se ha encontrado con un coordinador o un sensor reales.
@@ -646,42 +578,7 @@ Die meisten Prüfungen sind erschöpfende Durchläufe der Panel-Regeln; Schleife
 | Das Panel schaltet nicht scharf | Eine Zone steht auf `trouble` (der Wandler startet nicht oder 5 Runden ohne Messwert) | Behebe die Verdrahtung oder erzwinge das Scharfschalten (die Zone wird dann ausgeschlossen und vermerkt) |
 | Die PIN wird abgelehnt, auch wenn sie stimmt | Das Panel ist nach Fehlversuchen gesperrt (auch die richtige PIN wird abgelehnt) | Warte `lockout_s`; die Sperre überlebt einen Neustart |
 | Der BOOT-Reset bewirkt nichts | Das Panel ist scharf: Der Reset löscht nur ein unscharfes Panel | Zuerst mit der PIN unscharf schalten |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                die Firmware: eine ESP-IDF-Komponente
-├── core/                                die Logik ohne ESP-IDF, am Rechner getestet
-├── panel/                               das in die Firmware eingebettete Web-Panel
-├── tests/                               Host-Tests und Python-Prüfungen
-├── docs/                                11 Anleitungen: Sicherheit, Nachrichten, Zigbee, Ausfallübernahme
-├── tools/                               Werkzeuge für Build, Packen und Prüfung
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── CMakeLists.txt                       das ESP-IDF-Projekt
-├── firmware_base.lock                   die Version der gemeinsamen Basis, mit der diese Kopie abgeglichen wurde
-├── partitions.csv                       die Flash-Tabelle
-├── sdkconfig.defaults                   die Firmware-Einstellungen
-├── sdkconfig.board.s3-eth               die Einstellungen einer Platine
-├── sdkconfig.board.s3-wifi              die Einstellungen einer Platine
-├── secrets/                             Beispiel der Knotendatei (die echten sind nicht versioniert)
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Zigbee-Kommunikation des Knotens selbst mit einem Koordinator, lokal oder im Netz, ist nur gegen einen nachgebildeten Koordinator getestet; sie ist nie auf einen echten Koordinator oder Sensor getroffen.
@@ -854,42 +751,7 @@ La plupart des vérifications sont des balayages exhaustifs des règles de la ce
 | La centrale n'arme pas | Une zone est en `trouble` (le convertisseur ne démarre pas ou 5 tours sans lecture) | Réparez le câblage, ou forcez l'armement (la zone est alors exclue et notée) |
 | Le PIN est refusé même quand il est bon | La centrale est bloquée après des échecs (même le bon PIN est refusé) | Attendez `lockout_s` ; le blocage survit à un redémarrage |
 | La réinitialisation par BOOT ne fait rien | La centrale est armée : la réinitialisation n'efface qu'une centrale désarmée | Désarmez d'abord avec le PIN |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                le firmware : un composant ESP-IDF
-├── core/                                la logique sans ESP-IDF, testée sur ordinateur
-├── panel/                               le panneau web intégré au firmware
-├── tests/                               tests sur hôte et contrôles Python
-├── docs/                                11 guides : sécurité, messages, Zigbee, relève
-├── tools/                               outils de build, d'empaquetage et de contrôle
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── CMakeLists.txt                       le projet ESP-IDF
-├── firmware_base.lock                   la version de la base partagée dont cette copie a été synchronisée
-├── partitions.csv                       la table de la flash
-├── sdkconfig.defaults                   les réglages du firmware
-├── sdkconfig.board.s3-eth               les réglages d'une carte
-├── sdkconfig.board.s3-wifi              les réglages d'une carte
-├── secrets/                             exemple du fichier de nœud (les vrais ne sont pas versionnés)
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * La conversation Zigbee du nœud lui-même avec un coordinateur, local ou sur le réseau, n'est testée que contre un coordinateur simulé ; elle n'a jamais rencontré un vrai coordinateur ni un vrai capteur.
@@ -1062,42 +924,7 @@ La maggior parte delle verifiche sono scansioni esaustive delle regole della cen
 | La centrale non inserisce | Una zona è in `trouble` (il convertitore non parte o 5 giri senza lettura) | Correggi il cablaggio, o forza l'inserimento (la zona viene allora esclusa e annotata) |
 | Il PIN è rifiutato anche se è giusto | La centrale è bloccata dopo tentativi falliti (anche il PIN giusto è rifiutato) | Attendi `lockout_s`; il blocco sopravvive a un riavvio |
 | Il ripristino con BOOT non fa nulla | La centrale è inserita: il ripristino cancella solo una centrale disinserita | Disinserisci prima con il PIN |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                il firmware: un componente ESP-IDF
-├── core/                                la logica senza ESP-IDF, testata su un computer
-├── panel/                               il pannello web incorporato nel firmware
-├── tests/                               test su host e verifiche Python
-├── docs/                                11 guide: sicurezza, messaggi, Zigbee, subentro
-├── tools/                               strumenti di build, impacchettamento e verifica
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── CMakeLists.txt                       il progetto ESP-IDF
-├── firmware_base.lock                   la versione della base condivisa da cui è stata sincronizzata questa copia
-├── partitions.csv                       la tabella della flash
-├── sdkconfig.defaults                   le impostazioni del firmware
-├── sdkconfig.board.s3-eth               le impostazioni di una scheda
-├── sdkconfig.board.s3-wifi              le impostazioni di una scheda
-├── secrets/                             esempio del file del nodo (quelli veri non sono versionati)
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Limiti noti oggi**
 
 * La conversazione Zigbee del nodo stesso con un coordinatore, locale o in rete, è provata solo contro un coordinatore simulato; non ha mai incontrato un coordinatore o un sensore reali.
@@ -1270,42 +1097,7 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 | パネルがアームできない | ゾーンが `trouble`（コンバーターが起動しない、または 5 周期読み取りなし） | 配線を直すか、強制アームする（その場合ゾーンは除外され記録される） |
 | 正しい PIN でも拒否される | 失敗が続いてパネルがロック中（正しい PIN も拒否） | `lockout_s` だけ待つ（ロックは再起動後も続く） |
 | BOOT のリセットが効かない | パネルがアーム中：リセットはディスアーム中のパネルだけを消去する | 先に PIN でディスアームする |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-ALARM のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                ファームウェア（ESP-IDF コンポーネント）
-├── core/                                ESP-IDF なしのロジック（コンピューターでテスト）
-├── panel/                               ファームウェアに埋め込まれた Web パネル
-├── tests/                               ホストテストと Python 検査
-├── docs/                                11 のガイド：安全、メッセージ、Zigbee、フェイルオーバー
-├── tools/                               ビルド・パッケージ・検査のツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── CMakeLists.txt                       ESP-IDF プロジェクト
-├── firmware_base.lock                   この複製が同期された共有ベースのバージョン
-├── partitions.csv                       フラッシュのテーブル
-├── sdkconfig.defaults                   ファームウェアの設定
-├── sdkconfig.board.s3-eth               基板ごとの設定
-├── sdkconfig.board.s3-wifi              基板ごとの設定
-├── secrets/                             ノードファイルの例（本物はバージョン管理しません）
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**現時点の既知の制限**
 
 * ノード自身のコーディネーター（ローカルまたはネットワーク上）との Zigbee のやり取りは、模擬のコーディネーターに対してのみテストしています。本物のコーディネーターやセンサーとはまだ接続していません。
@@ -1478,42 +1270,7 @@ Python 检查：八种语言的面板文字、任务、保存路径、受锁保�
 | 面板无法布防 | 某个区域处于 `trouble`（转换器无法启动或连续 5 轮无读数） | 修复接线，或强制布防（该区域随后被排除并记录） |
 | 即使 PIN 正确也被拒绝 | 多次失败后面板被锁定（即使正确 PIN 也会被拒绝） | 等待 `lockout_s`；锁定在重启后仍然有效 |
 | BOOT 重置没有反应 | 面板处于布防状态：重置只会擦除已撤防的面板 | 先用 PIN 撤防 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-ALARM 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                固件：一个 ESP-IDF 组件
-├── core/                                不依赖 ESP-IDF 的逻辑，在计算机上测试
-├── panel/                               嵌入固件的网页面板
-├── tests/                               主机测试和 Python 检查
-├── docs/                                11 份指南：安全、消息、Zigbee、故障接管
-├── tools/                               构建、打包和检查工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── CMakeLists.txt                       ESP-IDF 项目
-├── firmware_base.lock                   此副本所同步的共享基础版本
-├── partitions.csv                       闪存分区表
-├── sdkconfig.defaults                   固件设置
-├── sdkconfig.board.s3-eth               某块电路板的设置
-├── sdkconfig.board.s3-wifi              某块电路板的设置
-├── secrets/                             节点文件示例（真实文件不纳入版本管理）
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**目前已知的限制**
 
 * 节点自身与协调器（本地或网络上）的 Zigbee 通信只对照模拟协调器测试过；从未遇到过真实的协调器或传感器。
@@ -1686,42 +1443,7 @@ A maior parte das verificações são varrimentos exaustivos das regras da centr
 | A central não arma | Uma zona está em `trouble` (o conversor não arranca ou 5 rondas sem leitura) | Corrija a cablagem, ou force a armação (a zona fica então excluída e anotada) |
 | O PIN é recusado mesmo estando certo | A central está bloqueada após tentativas falhadas (até o PIN certo é recusado) | Espere `lockout_s`; o bloqueio sobrevive a um reinício |
 | O reset com BOOT não faz nada | A central está armada: o reset só apaga uma central desarmada | Desarme primeiro com o PIN |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-NODE-ALARM" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-NODE-ALARM/
-├── main/                                o firmware: um componente ESP-IDF
-├── core/                                a lógica sem ESP-IDF, testada num computador
-├── panel/                               o painel web embebido no firmware
-├── tests/                               testes de anfitrião e verificações Python
-├── docs/                                11 guias: segurança, mensagens, Zigbee, redundância
-├── tools/                               ferramentas de compilação, empacotamento e verificação
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── CMakeLists.txt                       o projeto ESP-IDF
-├── firmware_base.lock                   a versão da base partilhada de que esta cópia foi sincronizada
-├── partitions.csv                       a tabela da flash
-├── sdkconfig.defaults                   as definições do firmware
-├── sdkconfig.board.s3-eth               as definições de uma placa
-├── sdkconfig.board.s3-wifi              as definições de uma placa
-├── secrets/                             exemplo do ficheiro do nó (os verdadeiros não são versionados)
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-NODE-ALARM"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * A conversa Zigbee do próprio nó com um coordenador, local ou na rede, só foi testada contra um coordenador simulado; nunca encontrou um coordenador ou um sensor reais.

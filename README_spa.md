@@ -159,7 +159,7 @@ No hay nada que compilar. La versión vive en `armor.project.json` y en la insig
 ## 📂 Estructura del repositorio
 
 <p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-DOCS" width="100%">
+  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-DOCS" width="100%">
 </p>
 
 <details>

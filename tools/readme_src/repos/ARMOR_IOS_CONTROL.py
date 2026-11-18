@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-IOS-CONTROL, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "📱",
   "layout": "universal",
@@ -206,33 +208,7 @@ The 516 tests run with fixtures of a real server. `tools/ios_lint.py` passes wit
 | The connection is refused and you are told | The key of the installation's certificate changed | Pair again with the QR of Studio if you changed it on purpose |
 | Neither address answers | Wrong address, no network, or http to a place outside the home (refused: the password is not sent in clear) | Check both addresses; use https away from home |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | The server refuses the disarm PIN; the app shows the code in your language | Type the PIN again or wait for the lock to end; set it in Studio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   the rules of the app: a Swift package
-├── App/                                 the SwiftUI screens and the parts that need an iPhone
-├── Tests/                               516 tests and fixtures of a real server
-├── docs/                                the guides of this repository
-├── tools/                               the shared CI checks and project tooling
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
-├── Radar/                               the radar page of the weather screen
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── Package.swift                        the Swift package: ArmorCore and its tests
-├── project.yml                          XcodeGen: the Xcode project is generated from it
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Known limits today**
 
 * Nothing has run on an iPhone: the SwiftUI screens have not been built in Xcode; Face ID, the Keychain, the certificate rules, the live camera, the sounds of the notices, the voice and push through Firebase are untested.
@@ -391,33 +367,7 @@ Las 516 pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac
 | Se rechaza la conexión y se te avisa | Cambió la clave del certificado de la instalación | Vuelve a emparejar con el QR de Studio si lo cambiaste a propósito |
 | Ninguna de las dos direcciones responde | Dirección errónea, sin red, o http a un lugar fuera de casa (rechazado: la contraseña no se envía en claro) | Revisa las dos direcciones; usa https fuera de casa |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | El servidor rechaza el PIN de desarmado; la app muestra el código en tu idioma | Escribe el PIN de nuevo o espera a que acabe el bloqueo; defínelo en Studio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   las reglas de la app: un paquete Swift
-├── App/                                 las pantallas SwiftUI y las partes que necesitan un iPhone
-├── Tests/                               516 pruebas y datos de un servidor real
-├── docs/                                las guías de este repositorio
-├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
-├── Radar/                               la página del radar de la pantalla del tiempo
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── Package.swift                        el paquete Swift: ArmorCore y sus pruebas
-├── project.yml                          XcodeGen: de aquí se genera el proyecto de Xcode
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Nada ha corrido en un iPhone: las pantallas SwiftUI no se han compilado en Xcode; Face ID, el Keychain, las reglas de certificado, la cámara en vivo, los sonidos de los avisos, la voz y el push de Firebase están sin probar.
@@ -576,33 +526,7 @@ Die 516 Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht
 | Die Verbindung wird verweigert und du wirst benachrichtigt | Der Schlüssel des Installationszertifikats hat sich geändert | Koppele erneut mit dem QR von Studio, wenn du es absichtlich geändert hast |
 | Keine der beiden Adressen antwortet | Falsche Adresse, kein Netz oder http zu einem Ziel außerhalb des Hauses (abgelehnt: das Passwort wird nicht im Klartext gesendet) | Prüfe beide Adressen; nutze unterwegs https |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | Der Server lehnt die Entschärfungs-PIN ab; die App zeigt den Code in deiner Sprache | Gib die PIN erneut ein oder warte das Ende der Sperre ab; lege sie in Studio fest |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   die Regeln der App: ein Swift-Paket
-├── App/                                 die SwiftUI-Bildschirme und die Teile, die ein iPhone brauchen
-├── Tests/                               516 Tests und Daten eines echten Servers
-├── docs/                                die Anleitungen dieses Repositorys
-├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── Radar/                               die Radarseite des Wetterbildschirms
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── Package.swift                        das Swift-Paket: ArmorCore und seine Tests
-├── project.yml                          XcodeGen: daraus wird das Xcode-Projekt erzeugt
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Nichts lief auf einem iPhone: Die SwiftUI-Bildschirme wurden nie in Xcode gebaut; Face ID, der Keychain, die Zertifikatsregeln, die Live-Kamera, die Töne der Meldungen, die Stimme und Push über Firebase sind ungetestet.
@@ -761,33 +685,7 @@ Les 516 tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réu
 | La connexion est refusée et tu es prévenu | La clé du certificat de l'installation a changé | Apparie de nouveau avec le QR de Studio si tu l'as changé exprès |
 | Aucune des deux adresses ne répond | Mauvaise adresse, pas de réseau, ou http vers un lieu hors de la maison (refusé : le mot de passe n'est pas envoyé en clair) | Vérifie les deux adresses ; utilise https hors de la maison |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | Le serveur refuse le PIN de désarmement ; l'app affiche le code dans ta langue | Saisis de nouveau le PIN ou attends la fin du blocage ; définis-le dans Studio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   les règles de l'app : un paquet Swift
-├── App/                                 les écrans SwiftUI et les parties qui exigent un iPhone
-├── Tests/                               516 tests et données d'un vrai serveur
-├── docs/                                les guides de ce dépôt
-├── tools/                               les contrôles CI partagés et les outils du projet
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
-├── Radar/                               la page radar de l'écran météo
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── Package.swift                        le paquet Swift : ArmorCore et ses tests
-├── project.yml                          XcodeGen : le projet Xcode en est généré
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Rien n'a tourné sur un iPhone : les écrans SwiftUI n'ont pas été compilés dans Xcode ; Face ID, le Keychain, les règles de certificat, la caméra en direct, les sons des avis, la voix et le push via Firebase ne sont pas testés.
@@ -946,33 +844,7 @@ I 516 test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 1
 | La connessione è rifiutata e ne sei avvisato | La chiave del certificato dell'installazione è cambiata | Associa di nuovo con il QR di Studio se l'hai cambiato di proposito |
 | Nessuno dei due indirizzi risponde | Indirizzo errato, nessuna rete, o http verso un luogo fuori casa (rifiutato: la password non si invia in chiaro) | Controlla i due indirizzi; usa https fuori casa |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | Il server rifiuta il PIN di disinserimento; l'app mostra il codice nella tua lingua | Digita di nuovo il PIN o attendi la fine del blocco; impostalo in Studio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   le regole dell'app: un pacchetto Swift
-├── App/                                 le schermate SwiftUI e le parti che richiedono un iPhone
-├── Tests/                               516 test e dati di un server reale
-├── docs/                                le guide di questo repository
-├── tools/                               i controlli CI condivisi e gli strumenti del progetto
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
-├── Radar/                               la pagina radar della schermata del meteo
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── Package.swift                        il pacchetto Swift: ArmorCore e i suoi test
-├── project.yml                          XcodeGen: da qui si genera il progetto Xcode
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Limiti noti oggi**
 
 * Nulla è girato su un iPhone: le schermate SwiftUI non sono state compilate in Xcode; Face ID, il Keychain, le regole del certificato, la telecamera dal vivo, i suoni degli avvisi, la voce e il push via Firebase non sono testati.
@@ -1131,33 +1003,7 @@ python -I tools/armor_ci_validate.py
 | 接続が拒否され通知される | 設置環境の証明書の鍵が変わった | 意図して変えたなら Studio の QR で再ペアリング |
 | どちらのアドレスも応答しない | アドレスの誤り、ネットワークなし、または自宅外への http（拒否：パスワードは平文で送りません） | 両方のアドレスを確認し、外出先では https を使う |
 | `wrong_pin`、`pin_locked`、`pin_not_set` | サーバーが解除 PIN を拒否。アプリはコードをあなたの言語で表示します | PIN を入れ直すかロック解除を待つ。PIN は Studio で設定 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-IOS-CONTROL のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   アプリのルール：Swift パッケージ
-├── App/                                 SwiftUI 画面と iPhone が必要な部分
-├── Tests/                               516 件のテストと実サーバーのデータ
-├── docs/                                このリポジトリのガイド
-├── tools/                               共通の CI チェックとプロジェクトツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── Radar/                               天気画面のレーダーページ
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── Package.swift                        Swift パッケージ：ArmorCore とそのテスト
-├── project.yml                          XcodeGen：ここから Xcode プロジェクトを生成
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**現時点の既知の制限**
 
 * iPhone では何も動いていません。SwiftUI 画面は Xcode でビルドしておらず、Face ID、キーチェーン、証明書ルール、ライブカメラ、通知の音、読み上げの声、Firebase のプッシュは未検証です。
@@ -1316,33 +1162,7 @@ python -I tools/armor_ci_validate.py
 | 连接被拒绝并通知你 | 安装环境证书的密钥发生了变化 | 若是有意更改，请用 Studio 的二维码重新配对 |
 | 两个地址都无响应 | 地址错误、没有网络，或对家庭之外使用 http（会被拒绝：密码不会以明文发送） | 检查两个地址；在外时使用 https |
 | `wrong_pin`、`pin_locked`、`pin_not_set` | 服务器拒绝撤防 PIN；应用会用你的语言显示该代码 | 重新输入 PIN 或等待锁定结束；在 Studio 中设置 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-IOS-CONTROL 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   应用的规则：一个 Swift 包
-├── App/                                 SwiftUI 界面和需要 iPhone 的部分
-├── Tests/                               516 个测试和真实服务器的数据
-├── docs/                                本仓库的指南
-├── tools/                               共享的 CI 检查和项目工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
-├── Radar/                               天气界面的雷达页面
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── Package.swift                        Swift 包：ArmorCore 及其测试
-├── project.yml                          XcodeGen：由此生成 Xcode 项目
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**目前已知的限制**
 
 * 尚未在 iPhone 上运行过：SwiftUI 界面没有在 Xcode 中构建；Face ID、钥匙串、证书规则、实时摄像头、通知声音、朗读声音和 Firebase 推送均未测试。
@@ -1501,33 +1321,7 @@ Os 516 testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Ma
 | A ligação é recusada e és avisado | A chave do certificado da instalação mudou | Emparelha de novo com o QR do Studio se o mudaste de propósito |
 | Nenhum dos dois endereços responde | Endereço errado, sem rede, ou http para um sítio fora de casa (recusado: a palavra-passe não é enviada em claro) | Verifica os dois endereços; usa https fora de casa |
 | `wrong_pin`, `pin_locked`, `pin_not_set` | O servidor recusa o PIN de desarmar; a app mostra o código na tua língua | Escreve o PIN de novo ou espera o fim do bloqueio; define-o no Studio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-IOS-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-IOS-CONTROL/
-├── Sources/ArmorCore/                   as regras da app: um pacote Swift
-├── App/                                 os ecrãs SwiftUI e as partes que precisam de um iPhone
-├── Tests/                               516 testes e dados de um servidor real
-├── docs/                                os guias deste repositório
-├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
-├── Radar/                               a página do radar do ecrã do tempo
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── Package.swift                        o pacote Swift: ArmorCore e os seus testes
-├── project.yml                          XcodeGen: daqui gera-se o projeto Xcode
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-IOS-CONTROL"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * Nada correu num iPhone: os ecrãs SwiftUI não foram compilados no Xcode; o Face ID, o Keychain, as regras de certificado, a câmara em direto, os sons dos avisos, a voz e o push via Firebase não foram testados.

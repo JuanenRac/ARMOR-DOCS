@@ -37,12 +37,19 @@ def tearDownModule():
     _FACT_PATCH.stop()
 
 
+def structure_spec(name, tests="the tests"):
+    """The smallest docs/structure.json that draws a tree: the file the READMEs of a repository take their file tree from."""
+    return {"repo": name, "cards": [{"name": "src/", "tree": "the code"}, {"name": "tests/", "tree": tests}]}
+
+
 def fake_root(version="1.2.3", maturity="functional"):
     holder = tempfile.TemporaryDirectory()
     root = Path(holder.name)
     for name in ORDER:
         (root / name).mkdir()
         (root / name / "armor.project.json").write_text(json.dumps({"name": name, "version": version, "maturity": maturity, "stack": "Python / Test"}), encoding="utf-8")
+        (root / name / "docs").mkdir()
+        (root / name / "docs" / "structure.json").write_text(json.dumps(structure_spec(name)), encoding="utf-8")
     return holder, root
 
 
@@ -283,6 +290,67 @@ class RenderTests(unittest.TestCase):
         files = make_readmes.outputs()
         self.assertEqual(len(files), len(ORDER) * 8)
         self.assertIn(self.root / "ARMOR-NODE-RADAR" / "README_zho.md", files)
+
+
+class FileTreeTests(unittest.TestCase):
+    """The file tree of every README is drawn from docs/structure.json of its repository and never typed in a source."""
+
+    def test_no_source_types_the_file_tree(self):
+        self.assertEqual(make_readmes.literal_tree_problems(), [])
+
+    def test_a_tree_typed_in_a_source_is_found(self):
+        typed = "<details>\n\n```text\nARMOR-X/\n\u251c\u2500\u2500 src/   the code\n\u2514\u2500\u2500 tests/   the tests\n```\n\n</details>"
+        data = mock.Mock(TEXT={code: {"body": {"structure": typed}} for code in CODES}, FACTS={})
+        with mock.patch.object(make_readmes, "load", return_value=data):
+            problems = make_readmes.literal_tree_problems(["ARMOR-COMMON"])
+        self.assertEqual(len(problems), len(CODES))
+        self.assertIn("types the file tree by hand", problems[0])
+
+    def test_every_source_asks_for_the_tree_with_a_marker(self):
+        for name in ORDER:
+            data = make_readmes.load(name)
+            for code in CODES:
+                body = data.TEXT[code].get("body", {}).get("structure") or data.TEXT[code].get("structure_own") or ""
+                self.assertIn("{{tree:" + code + ":" + name + "}}", body, f"{name} {code}")
+
+    def test_the_picture_text_is_in_the_language_of_the_readme(self):
+        from readme_src import _kit
+        alts = {_kit.structure(code, "ARMOR-X").split('alt="')[1].split('"')[0] for code in CODES}
+        self.assertEqual(len(alts), len(CODES))
+        self.assertTrue(all("ARMOR-X" in alt for alt in alts))
+
+    def test_the_marker_is_replaced_by_the_tree_of_the_repository(self):
+        holder, root = fake_root()
+        self.addCleanup(holder.cleanup)
+        with mock.patch.object(make_readmes, "ROOT", root), mock.patch("readme_src._kit.ROOT", root):
+            for code in CODES:
+                text = make_readmes.render("ARMOR-NODE-HMI", code)
+                self.assertNotIn("{{tree:", text)
+                self.assertIn("\u251c\u2500\u2500 src/      the code\n\u2514\u2500\u2500 tests/    the tests", text, code)
+
+    def test_a_readme_that_differs_from_the_generated_one_fails_the_check(self):
+        holder, root = fake_root()
+        self.addCleanup(holder.cleanup)
+        with mock.patch.object(make_readmes, "ROOT", root), mock.patch("readme_src._kit.ROOT", root), mock.patch("sys.argv", ["make_readmes.py"]):
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(make_readmes.main(), 0)
+            spec = root / "ARMOR-SERVER" / "docs" / "structure.json"
+            spec.write_text(json.dumps(structure_spec("ARMOR-SERVER", tests="1389 tests")), encoding="utf-8")
+            err = io.StringIO()
+            with mock.patch("sys.argv", ["make_readmes.py", "--check"]), contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(err):
+                self.assertEqual(make_readmes.main(), 1)
+            self.assertIn("ARMOR-SERVER", err.getvalue())
+            self.assertNotIn("ARMOR-NODE-HMI", err.getvalue())
+
+    def test_the_trees_of_the_readmes_next_to_this_repository_are_the_generated_ones(self):
+        from readme_src import _kit
+        names = [name for name in ORDER if (REAL_ROOT / name / "docs" / "structure.json").is_file() and (REAL_ROOT / name / "README.md").is_file()]
+        if not names:
+            self.skipTest("no sibling repository with docs/structure.json next to this one")
+        for name in names:
+            for code, file, *_ in LANGUAGES:
+                text = (REAL_ROOT / name / file).read_text(encoding="utf-8").replace("\r\n", "\n")
+                self.assertIn(_kit.tree_text(code, name), text, f"{name}/{file} does not carry the tree of docs/structure.json")
 
 
 class MainTests(unittest.TestCase):

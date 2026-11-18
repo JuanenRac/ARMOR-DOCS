@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The file tree of every README is generated from the structure source:** the sources in `tools/readme_src/repos` no longer type the tree; `structure(lg, repo)` leaves a `{{tree:LG:REPO}}` marker and `make_readmes.py` draws the tree of the repository's `docs/structure.json` (the same file that draws its picture) in all eight languages, so the text tree and the picture cannot drift apart. `make_readmes.py --check` fails when a source types a tree by hand or when a README differs from the generated one, the picture text is now in the language of each README, and the tests cover the marker, the detection and the comparison with the repositories next to this one.
 - **The README sources count sixteen voice commands, not fifteen:** the eight READMEs of ARMOR-VOICE-AI name the `last_camera` question (eleven that ask, five that act, 450 phrases), the capability matrix says sixteen, and the shared picture tool rounds its coordinates to two decimals.
 - **The README sources carry the new lines of the repository trees:** `firmware_base.lock` in the five node repositories, the movement model, the learning of areas to ignore and the radar geometry in the server AI, and the full list of modules in the voice service, in the eight languages.
 - **The catalogue, the compatibility page and its lock, and the computed manifest facts follow the repositories again:** the shared contracts at 0.8.1.5, the deployment repository at 0.7.7 and the evidence of eight manifests now reading simulator.

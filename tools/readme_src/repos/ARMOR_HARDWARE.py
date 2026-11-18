@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-HARDWARE, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "🧱",
   "layout": "universal",
@@ -143,33 +145,7 @@ OpenSCAD renders every piece on a machine that has it: the radar base and cover,
 | `preset must be solar, electrical or alarm` | The `preset` is something else | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | A parameter made the posts too big for the inside | Restore `post_d` or choose a bigger preset |
 | The lid does not close | Your printer is tighter than the 0.3 mm of play | Raise `clear` and print again |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                the enclosures and their model files
-├── docs/                                the guides of this repository
-├── tests/                               the tests
-├── tools/                               the shared CI checks and project tooling
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-HARDWARE"),
       "roadmap": r"""**Known limits today**
 
 * Nothing has been printed or measured; the board sizes come from data sheets and every row of the bench acceptance matrix is *not tested*.
@@ -287,33 +263,7 @@ OpenSCAD renderiza cada pieza en una máquina que lo tenga: la base y la tapa de
 | `preset must be solar, electrical or alarm` | El `preset` es otro valor | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | Un parámetro hizo los postes demasiado grandes para el interior | Restaura `post_d` o elige un preset mayor |
 | La tapa no cierra | Tu impresora es más ajustada que los 0,3 mm de holgura | Sube `clear` y vuelve a imprimir |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                las cajas y sus ficheros de modelo
-├── docs/                                las guías de este repositorio
-├── tests/                               las pruebas
-├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-HARDWARE"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Nada se ha impreso ni medido; los tamaños de placa salen de hojas de datos y cada fila de la matriz de aceptación en banco está *sin probar*.
@@ -431,33 +381,7 @@ OpenSCAD rendert jedes Teil auf einem Rechner, der es hat: Radarbasis und -decke
 | `preset must be solar, electrical or alarm` | Das `preset` ist etwas anderes | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | Ein Parameter machte die Pfosten für das Innere zu groß | Setze `post_d` zurück oder wähle ein größeres Preset |
 | Der Deckel schließt nicht | Dein Drucker ist enger als das Spiel von 0,3 mm | Erhöhe `clear` und drucke neu |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                die Gehäuse und ihre Modelldateien
-├── docs/                                die Anleitungen dieses Repositorys
-├── tests/                               die Tests
-├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-HARDWARE"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Nichts wurde gedruckt oder gemessen; die Platinengrößen stammen aus Datenblättern, und jede Zeile der Prüfstand-Abnahmematrix ist *nicht getestet*.
@@ -575,33 +499,7 @@ OpenSCAD rend chaque pièce sur une machine qui l'a : la base et le couvercle du
 | `preset must be solar, electrical or alarm` | Le `preset` est autre chose | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | Un paramètre a rendu les plots trop grands pour l'intérieur | Rétablissez `post_d` ou choisissez un préréglage plus grand |
 | Le couvercle ne ferme pas | Votre imprimante est plus serrée que le jeu de 0,3 mm | Augmentez `clear` et réimprimez |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                les boîtiers et leurs fichiers de modèle
-├── docs/                                les guides de ce dépôt
-├── tests/                               les tests
-├── tools/                               les contrôles CI partagés et les outils du projet
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-HARDWARE"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Rien n'a été imprimé ni mesuré ; les tailles de carte viennent des fiches techniques et chaque ligne de la matrice d'acceptation sur banc est *non testée*.
@@ -719,33 +617,7 @@ OpenSCAD è in grado di renderizzare ogni pezzo su una macchina che lo ha: base 
 | `preset must be solar, electrical or alarm` | Il `preset` è un altro valore | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | Un parametro ha reso i supporti troppo grandi per l'interno | Ripristina `post_d` o scegli un preset più grande |
 | Il coperchio non si chiude | La tua stampante è più stretta del gioco di 0,3 mm | Aumenta `clear` e ristampa |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                gli involucri e i loro file di modello
-├── docs/                                le guide di questo repository
-├── tests/                               i test
-├── tools/                               i controlli CI condivisi e gli strumenti del progetto
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-HARDWARE"),
       "roadmap": r"""**Limiti noti oggi**
 
 * Nulla è stato stampato né misurato; le dimensioni delle schede vengono dai datasheet e ogni riga della matrice di accettazione al banco è *non testata*.
@@ -863,33 +735,7 @@ OpenSCAD が使える環境では各部品（レーダーのベースとカバ�
 | `preset must be solar, electrical or alarm` | `preset` が別の値 | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | パラメーターのせいでポストが内側に収まらない | `post_d` を戻すか大きいプリセットを選ぶ |
 | 蓋が閉まらない | プリンターの精度が 0.3 mm の隙間より厳しい | `clear` を大きくして再印刷 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-HARDWARE のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                筐体とそのモデルファイル
-├── docs/                                このリポジトリのガイド
-├── tests/                               テスト
-├── tools/                               共通の CI チェックとプロジェクトツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-HARDWARE"),
       "roadmap": r"""**現時点の既知の制限**
 
 * 印刷も測定もしておらず、基板サイズはデータシート由来で、ベンチ受け入れマトリクスの全行が*未試験*です。
@@ -1007,33 +853,7 @@ python -I tools/armor_ci_validate.py
 | `preset must be solar, electrical or alarm` | `preset` 取了其他值 | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | 某个参数使立柱对内部来说太大 | 恢复 `post_d` 或选择更大的预设 |
 | 盖子盖不上 | 打印机比 0.3 mm 的间隙更紧 | 增大 `clear` 后重新打印 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-HARDWARE 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                外壳及其模型文件
-├── docs/                                本仓库的指南
-├── tests/                               测试
-├── tools/                               共享的 CI 检查和项目工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-HARDWARE"),
       "roadmap": r"""**目前已知的限制**
 
 * 尚未打印或测量；电路板尺寸来自数据手册，台架验收矩阵的每一行都是*未测试*。
@@ -1151,33 +971,7 @@ O OpenSCAD renderiza cada peça numa máquina que o tenha: a base e a tampa do r
 | `preset must be solar, electrical or alarm` | O `preset` é outro valor | `-D 'preset="alarm"'` |
 | `the board and its posts do not fit inside the box` | Um parâmetro tornou os postes demasiado grandes para o interior | Reponha `post_d` ou escolha um preset maior |
 | A tampa não fecha | A sua impressora é mais apertada do que a folga de 0,3 mm | Aumente `clear` e imprima de novo |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-HARDWARE" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-HARDWARE/
-├── scad/                                as caixas e os seus ficheiros de modelo
-├── docs/                                os guias deste repositório
-├── tests/                               os testes
-├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-HARDWARE"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * Nada foi impresso nem medido; os tamanhos das placas vêm de folhas de dados e cada linha da matriz de aceitação em bancada está *por testar*.

@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-SIMULATOR, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "🧪",
   "layout": "universal",
@@ -187,50 +189,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | The ingest token is wrong; a strict server wants one token per node | `--per-node-token` |
 | `--allow-invalid` | The fault breaks the contract on purpose | Add it, and do not use `--validate` |
 | The server shows the messages as old | The default start date is 0 and the server replaces it | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           the options and the run
-│   ├── scenarios.py cycle.py            the five scenarios, the 270 degree geometry and the day of light
-│   ├── alarm_scenarios.py               alarm scenarios from JSON files, their messages and the check of the answer
-│   ├── vision_scenarios.py              vision scenarios: objects walking across detection zones in each arming mode
-│   ├── solar.py                         an inverter and a two-module battery stack
-│   ├── electrical.py                    the three channels of an electrical node
-│   ├── meter_bus.py                     the serial line of the energy meters over TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  fake IP cameras over HTTP (snapshots, logins, faults)
-│   ├── nodes.py                         the information of a node, an alarm panel and a network watcher
-│   ├── mqtt_out.py                      publishing the messages on an MQTT broker
-│   ├── energy.py                        realistic solar and electrical data: sun with clouds, house, tariff, battery, meter
-│   ├── faults.py                        the seven repeatable faults
-│   └── publisher.py                     delivery to a server with retries
-├── tests/                               the tests
-├── docs/                                the guides of this repository
-├── tools/                               the shared CI checks and project tooling
-├── .github/                             CI workflow, issue and pull-request templates
-├── examples/                            alarm scenarios and settings of the energy model to start from
-├── images/                              banner, icon and the two pictures of this README
-├── Dockerfile .dockerignore             virtual bench image
-├── docker/                              bench.sh, the entry of the virtual bench
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-├── pyproject.toml                       package metadata
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Known limits today**
 
 * The geometry is illustrative, not a model of the real LD2450 radar, and nothing has been compared with real hardware.
@@ -381,50 +340,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | El token de ingesta es erróneo; un servidor estricto quiere un token por nodo | `--per-node-token` |
 | `--allow-invalid` | La avería rompe el contrato a propósito | Añádelo y no uses `--validate` |
 | El servidor ve los mensajes como antiguos | La fecha de inicio por defecto es 0 y el servidor la sustituye | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           las opciones y la ejecución
-│   ├── scenarios.py cycle.py            los cinco escenarios, la geometría de 270 grados y el día de luz
-│   ├── alarm_scenarios.py               escenarios de alarma desde ficheros JSON, sus mensajes y la comprobación de la respuesta
-│   ├── vision_scenarios.py              escenarios de visión: objetos que cruzan zonas de detección en cada modo
-│   ├── solar.py                         un inversor y una pila de dos módulos
-│   ├── electrical.py                    los tres canales de un nodo eléctrico
-│   ├── meter_bus.py                     la línea serie de los contadores de energía por TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  cámaras IP falsas por HTTP (imágenes, login, fallos)
-│   ├── nodes.py                         la información de un nodo, una central de alarma y un vigilante de red
-│   ├── mqtt_out.py                      publicar los mensajes en un broker MQTT
-│   ├── energy.py                        datos solares y eléctricos realistas: sol con nubes, casa, tarifa, batería, contador
-│   ├── faults.py                        las siete averías repetibles
-│   └── publisher.py                     entrega a un servidor con reintentos
-├── tests/                               las pruebas
-├── docs/                                las guías de este repositorio
-├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── examples/                            escenarios de alarma y ajustes del modelo de energía para empezar
-├── images/                              banner, icono y las dos imágenes de este README
-├── Dockerfile .dockerignore             imagen del banco virtual
-├── docker/                              bench.sh, la entrada del banco virtual
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-├── pyproject.toml                       metadatos del paquete
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * La geometría es ilustrativa, no un modelo del radar LD2450 real, y nada se ha comparado con hardware real.
@@ -575,50 +491,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | Das Ingest-Token ist falsch; ein strikter Server will ein Token je Knoten | `--per-node-token` |
 | `--allow-invalid` | Der Fehler bricht den Vertrag absichtlich | Füge es hinzu und nutze nicht `--validate` |
 | Der Server hält die Nachrichten für alt | Das Standard-Startdatum ist 0 und der Server ersetzt es | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           die Optionen und der Ablauf
-│   ├── scenarios.py cycle.py            die fünf Szenarien, die 270-Grad-Geometrie und der Lichttag
-│   ├── alarm_scenarios.py               Alarmszenarien aus JSON-Dateien, ihre Nachrichten und die Prüfung der Antwort
-│   ├── vision_scenarios.py              Visionsszenarien: Objekte, die in jedem Modus durch Erkennungszonen laufen
-│   ├── solar.py                         ein Wechselrichter und ein Batteriestapel aus zwei Modulen
-│   ├── electrical.py                    die drei Kanäle eines Elektroknotens
-│   ├── meter_bus.py                     die serielle Leitung der Energiezähler über TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  falsche IP-Kameras per HTTP (Bilder, Login, Fehler)
-│   ├── nodes.py                         die Angaben eines Knotens, eine Alarmzentrale und ein Netzwächter
-│   ├── mqtt_out.py                      die Nachrichten auf einem MQTT-Broker veröffentlichen
-│   ├── energy.py                        realistische Solar- und Stromdaten: Sonne mit Wolken, Haus, Tarif, Batterie, Zähler
-│   ├── faults.py                        die sieben wiederholbaren Fehler
-│   └── publisher.py                     Zustellung an einen Server mit Wiederholungen
-├── tests/                               die Tests
-├── docs/                                die Anleitungen dieses Repositorys
-├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── examples/                            Alarmszenarien und Einstellungen des Energiemodells als Ausgangspunkt
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── Dockerfile .dockerignore             Image der virtuellen Werkbank
-├── docker/                              bench.sh, der Einstieg der virtuellen Werkbank
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-├── pyproject.toml                       Paketmetadaten
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Geometrie ist illustrativ, kein Modell des echten LD2450-Radars, und nichts wurde mit echter Hardware verglichen.
@@ -769,50 +642,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | Le jeton est faux ; un serveur strict veut un jeton par nœud | `--per-node-token` |
 | `--allow-invalid` | La panne viole le contrat exprès | Ajoutez-le et n'utilisez pas `--validate` |
 | Le serveur voit les messages comme anciens | La date de départ par défaut est 0 et le serveur la remplace | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           les options et l'exécution
-│   ├── scenarios.py cycle.py            les cinq scénarios, la géométrie de 270 degrés et le jour de lumière
-│   ├── alarm_scenarios.py               scénarios d'alarme depuis des fichiers JSON, leurs messages et la vérification de la réponse
-│   ├── vision_scenarios.py              scénarios de vision : des objets qui traversent des zones de détection dans chaque mode
-│   ├── solar.py                         un onduleur et une pile de deux modules
-│   ├── electrical.py                    les trois canaux d'un nœud électrique
-│   ├── meter_bus.py                     la ligne série des compteurs d'énergie sur TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  fausses caméras IP sur HTTP (images, login, pannes)
-│   ├── nodes.py                         les informations d'un nœud, une centrale d'alarme et un surveillant de réseau
-│   ├── mqtt_out.py                      publier les messages sur un broker MQTT
-│   ├── energy.py                        données solaires et électriques réalistes : soleil et nuages, maison, tarif, batterie, compteur
-│   ├── faults.py                        les sept pannes répétables
-│   └── publisher.py                     livraison à un serveur avec nouvelles tentatives
-├── tests/                               les tests
-├── docs/                                les guides de ce dépôt
-├── tools/                               les contrôles CI partagés et les outils du projet
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── examples/                            scénarios d'alarme et réglages du modèle d'énergie pour commencer
-├── images/                              bannière, icône et les deux images de ce README
-├── Dockerfile .dockerignore             image du banc virtuel
-├── docker/                              bench.sh, l'entrée du banc virtuel
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-├── pyproject.toml                       métadonnées du paquet
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * La géométrie est illustrative, pas un modèle du vrai radar LD2450, et rien n'a été comparé à du matériel réel.
@@ -963,50 +793,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | Il token è errato; un server rigoroso vuole un token per nodo | `--per-node-token` |
 | `--allow-invalid` | Il guasto viola il contratto di proposito | Aggiungilo e non usare `--validate` |
 | Il server vede i messaggi come vecchi | La data di inizio predefinita è 0 e il server la sostituisce | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           le opzioni e l'esecuzione
-│   ├── scenarios.py cycle.py            i cinque scenari, la geometria a 270 gradi e il giorno di luce
-│   ├── alarm_scenarios.py               scenari d'allarme da file JSON, i loro messaggi e la verifica della risposta
-│   ├── vision_scenarios.py              scenari di visione: oggetti che attraversano le zone di rilevamento in ogni modalità
-│   ├── solar.py                         un inverter e una pila di due moduli
-│   ├── electrical.py                    i tre canali di un nodo elettrico
-│   ├── meter_bus.py                     la linea seriale dei contatori di energia su TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  false telecamere IP su HTTP (immagini, login, guasti)
-│   ├── nodes.py                         le informazioni di un nodo, una centrale di allarme e un sorvegliante di rete
-│   ├── mqtt_out.py                      pubblicare i messaggi su un broker MQTT
-│   ├── energy.py                        dati solari ed elettrici realistici: sole con nuvole, casa, tariffa, batteria, contatore
-│   ├── faults.py                        i sette guasti ripetibili
-│   └── publisher.py                     consegna a un server con nuovi tentativi
-├── tests/                               i test
-├── docs/                                le guide di questo repository
-├── tools/                               i controlli CI condivisi e gli strumenti del progetto
-├── .github/                             workflow CI e modelli per issue e pull request
-├── examples/                            scenari d'allarme e impostazioni del modello energetico da cui partire
-├── images/                              banner, icona e le due immagini di questo README
-├── Dockerfile .dockerignore             immagine del banco virtuale
-├── docker/                              bench.sh, l'ingresso del banco virtuale
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-├── pyproject.toml                       metadati del pacchetto
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Limiti noti oggi**
 
 * La geometria è illustrativa, non un modello del radar LD2450 reale, e nulla è stato confrontato con hardware reale.
@@ -1157,50 +944,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | 取り込みトークンが誤り。厳格なサーバーはノードごとのトークンを要求 | `--per-node-token` |
 | `--allow-invalid` | その障害は意図的にコントラクトを破ります | 追加し、`--validate` は使わない |
 | サーバーがメッセージを古いと判断する | 既定の開始日時は 0 でサーバーが置き換える | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-SIMULATOR のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           オプションと実行
-│   ├── scenarios.py cycle.py            5つのシナリオ、270度の形状、光の一日
-│   ├── alarm_scenarios.py               JSON ファイルのアラームシナリオ、そのメッセージ、応答の検証
-│   ├── vision_scenarios.py              ビジョンシナリオ：各モードで検知ゾーンを横切る物体
-│   ├── solar.py                         インバーターと 2 モジュールのバッテリー
-│   ├── electrical.py                    電気ノードの 3 チャンネル
-│   ├── meter_bus.py                     エネルギーメーターのシリアル回線をTCPで再現 (PZEM-004T、PZEM-017)
-│   ├── fake_cameras.py                  HTTP の偽 IP カメラ (静止画、ログイン、故障)
-│   ├── nodes.py                         ノードの情報、警報パネル、ネットワーク監視
-│   ├── mqtt_out.py                      メッセージをMQTTブローカーへ公開
-│   ├── energy.py                        現実的な太陽光・電力データ: 雲のある日射、住宅、料金、バッテリー、メーター
-│   ├── faults.py                        再現可能な 7 つの障害
-│   └── publisher.py                     再試行つきのサーバーへの配信
-├── tests/                               テスト
-├── docs/                                このリポジトリのガイド
-├── tools/                               共通の CI チェックとプロジェクトツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── examples/                            出発点となるアラームシナリオとエネルギーモデルの設定
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── Dockerfile .dockerignore             仮想ベンチのイメージ
-├── docker/                              bench.sh、仮想ベンチの入口
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-├── pyproject.toml                       パッケージのメタデータ
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-SIMULATOR"),
       "roadmap": r"""**現時点の既知の制限**
 
 * 配置は説明用で、実際の LD2450 レーダーのモデルではなく、実機との比較はしていません。
@@ -1351,50 +1095,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | 摄取令牌错误；严格的服务器要求每个节点一个令牌 | `--per-node-token` |
 | `--allow-invalid` | 该故障故意违反合约 | 加上它，并且不要用 `--validate` |
 | 服务器认为消息已过期 | 默认起始时间为 0，服务器会替换它 | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-SIMULATOR 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           选项与运行
-│   ├── scenarios.py cycle.py            五个场景、270 度几何和一天的光照
-│   ├── alarm_scenarios.py               来自 JSON 文件的报警场景、其消息以及对响应的检查
-│   ├── vision_scenarios.py              视觉场景：各模式下穿过检测区域的物体
-│   ├── solar.py                         逆变器和两模块电池组
-│   ├── electrical.py                    电气节点的三个通道
-│   ├── meter_bus.py                     通过 TCP 模拟能量电表的串行线路 (PZEM-004T、PZEM-017)
-│   ├── fake_cameras.py                  通过 HTTP 模拟 IP 摄像头 (图像、登录、故障)
-│   ├── nodes.py                         节点信息、报警面板和网络监视器
-│   ├── mqtt_out.py                      把消息发布到 MQTT 代理
-│   ├── energy.py                        真实的太阳能与电力数据:带云的日照、住宅、电价、电池、电表
-│   ├── faults.py                        七种可重复的故障
-│   └── publisher.py                     带重试的服务器投递
-├── tests/                               测试
-├── docs/                                本仓库的指南
-├── tools/                               共享的 CI 检查和项目工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── examples/                            可供起步的报警场景与能源模型设置
-├── images/                              横幅、图标和本 README 的两幅图
-├── Dockerfile .dockerignore             虚拟测试台镜像
-├── docker/                              bench.sh,虚拟测试台的入口
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-├── pyproject.toml                       包元数据
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-SIMULATOR"),
       "roadmap": r"""**目前已知的限制**
 
 * 几何仅作演示，不是真实 LD2450 雷达的模型，也没有与真实硬件对比过。
@@ -1545,50 +1246,7 @@ python -I tools/armor_ci_validate.py
 | HTTP 401 / 403 | O token está errado; um servidor estrito quer um token por nó | `--per-node-token` |
 | `--allow-invalid` | A falha viola o contrato de propósito | Acrescente-o e não use `--validate` |
 | O servidor vê as mensagens como antigas | A data de início predefinida é 0 e o servidor substitui-a | `--start-ms now` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-SIMULATOR" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-SIMULATOR/
-├── src/armor_simulator/
-│   ├── cli.py                           as opções e a execução
-│   ├── scenarios.py cycle.py            os cinco cenários, a geometria de 270 graus e o dia de luz
-│   ├── alarm_scenarios.py               cenários de alarme a partir de ficheiros JSON, as suas mensagens e a verificação da resposta
-│   ├── vision_scenarios.py              cenários de visão: objetos que atravessam zonas de deteção em cada modo
-│   ├── solar.py                         um inversor e uma pilha de dois módulos
-│   ├── electrical.py                    os três canais de um nó elétrico
-│   ├── meter_bus.py                     a linha série dos contadores de energia por TCP (PZEM-004T, PZEM-017)
-│   ├── fake_cameras.py                  câmaras IP falsas por HTTP (imagens, login, falhas)
-│   ├── nodes.py                         a informação de um nó, uma central de alarme e um vigilante de rede
-│   ├── mqtt_out.py                      publicar as mensagens num broker MQTT
-│   ├── energy.py                        dados solares e elétricos realistas: sol com nuvens, casa, tarifa, bateria, contador
-│   ├── faults.py                        as sete falhas repetíveis
-│   └── publisher.py                     entrega a um servidor com novas tentativas
-├── tests/                               os testes
-├── docs/                                os guias deste repositório
-├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── examples/                            cenários de alarme e definições do modelo de energia para começar
-├── images/                              faixa, ícone e as duas imagens deste README
-├── Dockerfile .dockerignore             imagem do banco virtual
-├── docker/                              bench.sh, a entrada do banco virtual
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-├── pyproject.toml                       metadados do pacote
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-SIMULATOR"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * A geometria é ilustrativa, não um modelo do radar LD2450 real, e nada foi comparado com hardware real.
