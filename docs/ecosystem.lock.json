@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "train": "eco-1",
-  "contracts_version": "0.8.1.4",
+  "contracts_version": "0.8.1.5",
   "repositories": {
     "ARMOR-COMMON": {
-      "version": "0.8.1.4",
+      "version": "0.8.1.5",
       "contracts": null
     },
     "ARMOR-NODE-RADAR": {
@@ -68,7 +68,7 @@
       "contracts": "0.8.0.7"
     },
     "ARMOR-DEVOPS": {
-      "version": "0.7.6",
+      "version": "0.7.7",
       "contracts": "0.8.0.7"
     },
     "ARMOR-SIMULATOR": {
