@@ -82,7 +82,7 @@ TEXT = {
      ],
      [
        "Commands",
-       "15 (10 that ask, 5 that act), 420 phrases, 8 languages",
+       "16 (11 that ask, 5 that act), 450 phrases, 8 languages",
      ],
      [
        "Listens on",
@@ -119,13 +119,13 @@ TEXT = {
    "contributing_first": "Before a pull request run `python -I tools/armor_ci_validate.py` and the tests: both must pass. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).",
    "languages_extra": "Every sentence the service says back, every spoken command, every yes and no and every digit word of a PIN exists in all eight languages.",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI is the part of A.R.M.O.R. that turns **what a person says into one of fifteen commands, or into nothing**. It never does anything by itself: it decides, and [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authenticates, authorises and carries out what was accepted, exactly as it would a click in the console.
+     "overview": r"""ARMOR-VOICE-AI is the part of A.R.M.O.R. that turns **what a person says into one of sixteen commands, or into nothing**. It never does anything by itself: it decides, and [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authenticates, authorises and carries out what was accepted, exactly as it would a click in the console.
 
-The text that comes out of a speech recogniser is *untrusted input*. So it is not interpreted, searched for keywords or forwarded as a command: it is cleaned (accents, punctuation, polite filler) and must then be **exactly** one of 420 known phrases. Anything else, anything too long and any phrase that could mean two commands is *not understood*.
+The text that comes out of a speech recogniser is *untrusted input*. So it is not interpreted, searched for keywords or forwarded as a command: it is cleaned (accents, punctuation, polite filler) and must then be **exactly** one of 450 known phrases. Anything else, anything too long and any phrase that could mean two commands is *not understood*.
 
 **What it does**
 
-* Understands fifteen commands in **eight languages** (English, Spanish, German, French, Italian, Japanese, Chinese and Portuguese).
+* Understands sixteen commands in **eight languages** (English, Spanish, German, French, Italian, Japanese, Chinese and Portuguese).
 * Makes `arm` and `disarm` need a **second turn with a token the service signed**, tied to the intent and to the person who asked.
 * Can make `silence` need a spoken **PIN** or a second confirming turn, when ARMOR-SERVER asks for it.
 * Runs as a **local HTTP service** and as a **JSON-lines gateway** for adapters and tests.
@@ -183,12 +183,12 @@ sequenceDiagram
 
 **Why it is built this way**
 
-* **Why a closed list and not intent classification.** A recogniser makes mistakes and anyone can speak near a microphone. With 420 exact phrases the worst a wrong transcript can do is be ignored, and a test checks that no phrase belongs to two commands.
+* **Why a closed list and not intent classification.** A recogniser makes mistakes and anyone can speak near a microphone. With 450 exact phrases the worst a wrong transcript can do is be ignored, and a test checks that no phrase belongs to two commands.
 * **Why the service only decides.** Authentication, authorisation, the audit trail and the action stay in one place, ARMOR-SERVER; a bug here can wrongly accept a phrase but cannot touch an alarm.
 * **Why the confirmation is a signed token the service issues.** A flag the caller sets (`confirmed: true`) proves nothing, so it is refused. The token is HMAC-SHA-256 signed, tied to the command and to the person, valid for 30 seconds and good once.
 * **Why the speech engines are separate programs.** Models change faster than a security gateway should. They are run without a shell, with a short environment and a time limit, and the service's own secrets never reach them.
 * **Why nothing is kept.** The log shows what was decided without keeping what was said.""",
-     "features": r"""### The fifteen commands
+     "features": r"""### The sixteen commands
 
 | Command | Kind | Meaning | Confirmation |
 |---|---|---|---|
@@ -196,6 +196,7 @@ sequenceDiagram
 | `alarms` | asks | The alarms that are active | no |
 | `nodes` | asks | The state of the nodes | no |
 | `cameras` | asks | The state of the cameras | no |
+| `last_camera` | asks | Which camera saw movement last | no |
 | `radar` | asks | The state of the radars | no |
 | `solar` | asks | The state of the solar system | no |
 | `electrical` | asks | The electrical consumption | no |
@@ -208,11 +209,11 @@ sequenceDiagram
 | `arm` | acts | Arm the perimeter | **yes** |
 | `disarm` | acts | Disarm the perimeter | **yes** |
 
-The ten that *ask* change nothing. The five that *act* are carried out by ARMOR-SERVER with the session of the person who spoke, never by this service.
+The eleven that *ask* change nothing. The five that *act* are carried out by ARMOR-SERVER with the session of the person who spoke, never by this service.
 
 ### Eight languages
 
-English, Spanish, German, French, Italian, Japanese, Chinese and European Portuguese: the phrases (420 in all), the yes and no of a confirmation, the digit words of a spoken PIN and every sentence the service says back. Phrases are written the way a person says them and normalised when the module loads with the same function that normalises what is heard, so the two cannot drift apart. Polite filler (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) is dropped before comparing; Japanese and Chinese, written without spaces, list their phrases with and without the polite ending.
+English, Spanish, German, French, Italian, Japanese, Chinese and European Portuguese: the phrases (450 in all), the yes and no of a confirmation, the digit words of a spoken PIN and every sentence the service says back. Phrases are written the way a person says them and normalised when the module loads with the same function that normalises what is heard, so the two cannot drift apart. Polite filler (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) is dropped before comparing; Japanese and Chinese, written without spaces, list their phrases with and without the polite ending.
 
 ### The two-turn confirmation
 
@@ -446,7 +447,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Comandos",
-       "15 (10 que preguntan, 5 que actúan), 420 frases, 8 idiomas",
+       "16 (11 que preguntan, 5 que actúan), 450 frases, 8 idiomas",
      ],
      [
        "Escucha en",
@@ -483,13 +484,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Antes de un pull request ejecuta `python -I tools/armor_ci_validate.py` y las pruebas: ambos deben pasar. Mira [CONTRIBUTING.md](CONTRIBUTING.md) y el [código de conducta](CODE_OF_CONDUCT.md).",
    "languages_extra": "Cada frase que el servicio responde, cada comando hablado, cada sí y no y cada palabra de dígito de un PIN existe en los ocho idiomas.",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI es la parte de A.R.M.O.R. que convierte **lo que dice una persona en uno de quince comandos, o en nada**. Nunca hace nada por sí misma: decide, y [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autoriza y ejecuta lo aceptado, igual que haría con un clic en la consola.
+     "overview": r"""ARMOR-VOICE-AI es la parte de A.R.M.O.R. que convierte **lo que dice una persona en uno de dieciséis comandos, o en nada**. Nunca hace nada por sí misma: decide, y [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autoriza y ejecuta lo aceptado, igual que haría con un clic en la consola.
 
-El texto que sale de un reconocedor de voz es *entrada no fiable*. Por eso no se interpreta, ni se buscan palabras clave, ni se reenvía como comando: se limpia (acentos, puntuación, cortesías) y entonces debe ser **exactamente** una de 420 frases conocidas. Cualquier otra cosa, cualquier texto demasiado largo y cualquier frase que pudiera significar dos comandos *no se entiende*.
+El texto que sale de un reconocedor de voz es *entrada no fiable*. Por eso no se interpreta, ni se buscan palabras clave, ni se reenvía como comando: se limpia (acentos, puntuación, cortesías) y entonces debe ser **exactamente** una de 450 frases conocidas. Cualquier otra cosa, cualquier texto demasiado largo y cualquier frase que pudiera significar dos comandos *no se entiende*.
 
 **Qué hace**
 
-* Entiende quince comandos en **ocho idiomas** (inglés, español, alemán, francés, italiano, japonés, chino y portugués).
+* Entiende dieciséis comandos en **ocho idiomas** (inglés, español, alemán, francés, italiano, japonés, chino y portugués).
 * Hace que `arm` y `disarm` necesiten un **segundo turno con un token que firmó el servicio**, ligado a la orden y a quien la pidió.
 * Puede hacer que `silence` necesite un **PIN** hablado o un segundo turno de confirmación, cuando ARMOR-SERVER lo pide.
 * Funciona como **servicio HTTP local** y como **pasarela de líneas JSON** para adaptadores y pruebas.
@@ -547,12 +548,12 @@ sequenceDiagram
 
 **Por qué está construido así**
 
-* **Por qué una lista cerrada y no clasificación de intenciones.** Un reconocedor se equivoca y cualquiera puede hablar cerca de un micrófono. Con 420 frases exactas lo peor que puede hacer una transcripción errónea es ser ignorada, y una prueba comprueba que ninguna frase pertenece a dos comandos.
+* **Por qué una lista cerrada y no clasificación de intenciones.** Un reconocedor se equivoca y cualquiera puede hablar cerca de un micrófono. Con 450 frases exactas lo peor que puede hacer una transcripción errónea es ser ignorada, y una prueba comprueba que ninguna frase pertenece a dos comandos.
 * **Por qué el servicio solo decide.** La autenticación, la autorización, el registro de auditoría y la acción están en un único sitio, ARMOR-SERVER; un fallo aquí puede aceptar mal una frase, pero no puede tocar una alarma.
 * **Por qué la confirmación es un token firmado que emite el servicio.** Una marca que pone quien llama (`confirmed: true`) no demuestra nada, así que se rechaza. El token va firmado con HMAC-SHA-256, ligado al comando y a la persona, vale 30 segundos y sirve una vez.
 * **Por qué los motores de voz son programas aparte.** Los modelos cambian más deprisa de lo que debe cambiar una pasarela de seguridad. Se ejecutan sin shell, con un entorno corto y un límite de tiempo, y los secretos del propio servicio nunca les llegan.
 * **Por qué no se guarda nada.** El registro muestra qué se decidió sin guardar qué se dijo.""",
-     "features": r"""### Los quince comandos
+     "features": r"""### Los dieciséis comandos
 
 | Comando | Tipo | Significado | Confirmación |
 |---|---|---|---|
@@ -560,6 +561,7 @@ sequenceDiagram
 | `alarms` | pregunta | Las alarmas activas | no |
 | `nodes` | pregunta | El estado de los nodos | no |
 | `cameras` | pregunta | El estado de las cámaras | no |
+| `last_camera` | pregunta | Qué cámara vio movimiento por última vez | no |
 | `radar` | pregunta | El estado de los radares | no |
 | `solar` | pregunta | El estado del sistema solar | no |
 | `electrical` | pregunta | El consumo eléctrico | no |
@@ -572,11 +574,11 @@ sequenceDiagram
 | `arm` | actúa | Armar el perímetro | **sí** |
 | `disarm` | actúa | Desarmar el perímetro | **sí** |
 
-Los diez que *preguntan* no cambian nada. Los cinco que *actúan* los ejecuta ARMOR-SERVER con la sesión de quien habló, nunca este servicio.
+Los once que *preguntan* no cambian nada. Los cinco que *actúan* los ejecuta ARMOR-SERVER con la sesión de quien habló, nunca este servicio.
 
 ### Ocho idiomas
 
-Inglés, español, alemán, francés, italiano, japonés, chino y portugués de Portugal: las frases (420 en total), el sí y el no de una confirmación, las palabras de los dígitos de un PIN hablado y cada frase que el servicio responde. Las frases se escriben como las dice una persona y se normalizan al cargar el módulo con la misma función que normaliza lo que se oye, así que no pueden separarse. Las cortesías (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) se descartan antes de comparar; el japonés y el chino, que se escriben sin espacios, listan sus frases con y sin la terminación cortés.
+Inglés, español, alemán, francés, italiano, japonés, chino y portugués de Portugal: las frases (450 en total), el sí y el no de una confirmación, las palabras de los dígitos de un PIN hablado y cada frase que el servicio responde. Las frases se escriben como las dice una persona y se normalizan al cargar el módulo con la misma función que normaliza lo que se oye, así que no pueden separarse. Las cortesías (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) se descartan antes de comparar; el japonés y el chino, que se escriben sin espacios, listan sus frases con y sin la terminación cortés.
 
 ### La confirmación en dos turnos
 
@@ -810,7 +812,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Commandes",
-       "15 (10 qui interrogent, 5 qui agissent), 420 phrases, 8 langues",
+       "16 (11 qui interrogent, 5 qui agissent), 450 phrases, 8 langues",
      ],
      [
        "Écoute sur",
@@ -847,13 +849,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Avant une pull request, exécutez `python -I tools/armor_ci_validate.py` et les tests : les deux doivent réussir. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).",
    "languages_extra": "Chaque phrase que le service répond, chaque commande vocale, chaque oui et non et chaque mot de chiffre d'un PIN existe dans les huit langues.",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI est la partie d'A.R.M.O.R. qui transforme **ce qu'une personne dit en l'une de quinze commandes, ou en rien**. Il ne fait jamais rien par lui-même : il décide, et [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authentifie, autorise et exécute ce qui a été accepté, exactement comme pour un clic dans la console.
+     "overview": r"""ARMOR-VOICE-AI est la partie d'A.R.M.O.R. qui transforme **ce qu'une personne dit en l'une de seize commandes, ou en rien**. Il ne fait jamais rien par lui-même : il décide, et [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authentifie, autorise et exécute ce qui a été accepté, exactement comme pour un clic dans la console.
 
-Le texte produit par un moteur de reconnaissance vocale est une *entrée non fiable*. Il n'est donc ni interprété, ni fouillé à la recherche de mots-clés, ni transmis comme commande : il est nettoyé (accents, ponctuation, formules de politesse) puis doit correspondre **exactement** à l'une des 420 phrases connues. Tout le reste, tout texte trop long et toute phrase qui pourrait signifier deux commandes *n'est pas compris*.
+Le texte produit par un moteur de reconnaissance vocale est une *entrée non fiable*. Il n'est donc ni interprété, ni fouillé à la recherche de mots-clés, ni transmis comme commande : il est nettoyé (accents, ponctuation, formules de politesse) puis doit correspondre **exactement** à l'une des 450 phrases connues. Tout le reste, tout texte trop long et toute phrase qui pourrait signifier deux commandes *n'est pas compris*.
 
 **Ce qu'il fait**
 
-* Comprend quinze commandes en **huit langues** (anglais, espagnol, allemand, français, italien, japonais, chinois et portugais).
+* Comprend seize commandes en **huit langues** (anglais, espagnol, allemand, français, italien, japonais, chinois et portugais).
 * Exige pour `arm` et `disarm` un **second tour avec un jeton signé par le service**, lié à l'intention et à la personne qui l'a demandée.
 * Peut exiger pour `silence` un **code PIN** prononcé ou un second tour de confirmation, quand ARMOR-SERVER le demande.
 * Fonctionne comme **service HTTP local** et comme **passerelle en lignes JSON** pour les adaptateurs et les tests.
@@ -911,12 +913,12 @@ sequenceDiagram
 
 **Pourquoi il est construit ainsi**
 
-* **Pourquoi une liste fermée et non une classification d'intentions.** Un moteur de reconnaissance se trompe et n'importe qui peut parler près d'un microphone. Avec 420 phrases exactes, le pire qu'une mauvaise transcription puisse provoquer est d'être ignorée, et un test vérifie qu'aucune phrase n'appartient à deux commandes.
+* **Pourquoi une liste fermée et non une classification d'intentions.** Un moteur de reconnaissance se trompe et n'importe qui peut parler près d'un microphone. Avec 450 phrases exactes, le pire qu'une mauvaise transcription puisse provoquer est d'être ignorée, et un test vérifie qu'aucune phrase n'appartient à deux commandes.
 * **Pourquoi le service ne fait que décider.** L'authentification, l'autorisation, la piste d'audit et l'action restent en un seul endroit, ARMOR-SERVER ; un bogue ici peut accepter une phrase à tort, mais ne peut pas toucher à une alarme.
 * **Pourquoi la confirmation est un jeton signé émis par le service.** Un indicateur fixé par l'appelant (`confirmed: true`) ne prouve rien, il est donc refusé. Le jeton est signé en HMAC-SHA-256, lié à la commande et à la personne, valable 30 secondes et utilisable une seule fois.
 * **Pourquoi les moteurs vocaux sont des programmes séparés.** Les modèles évoluent plus vite qu'une passerelle de sécurité ne devrait le faire. Ils sont exécutés sans shell, avec un environnement réduit et une limite de temps, et les secrets propres au service ne leur parviennent jamais.
 * **Pourquoi rien n'est conservé.** Le journal montre ce qui a été décidé sans conserver ce qui a été dit.""",
-     "features": r"""### Les quinze commandes
+     "features": r"""### Les seize commandes
 
 | Commande | Type | Signification | Confirmation |
 |---|---|---|---|
@@ -924,6 +926,7 @@ sequenceDiagram
 | `alarms` | interroge | Les alarmes actives | non |
 | `nodes` | interroge | L'état des nœuds | non |
 | `cameras` | interroge | L'état des caméras | non |
+| `last_camera` | interroge | Quelle caméra a vu un mouvement en dernier | non |
 | `radar` | interroge | L'état des radars | non |
 | `solar` | interroge | L'état du système solaire | non |
 | `electrical` | interroge | La consommation électrique | non |
@@ -936,11 +939,11 @@ sequenceDiagram
 | `arm` | agit | Armer le périmètre | **oui** |
 | `disarm` | agit | Désarmer le périmètre | **oui** |
 
-Les dix qui *interrogent* ne changent rien. Les cinq qui *agissent* sont exécutées par ARMOR-SERVER avec la session de la personne qui a parlé, jamais par ce service.
+Les onze qui *interrogent* ne changent rien. Les cinq qui *agissent* sont exécutées par ARMOR-SERVER avec la session de la personne qui a parlé, jamais par ce service.
 
 ### Huit langues
 
-Anglais, espagnol, allemand, français, italien, japonais, chinois et portugais européen : les phrases (420 au total), le oui et le non d'une confirmation, les mots des chiffres d'un PIN prononcé et chaque phrase que le service répond. Les phrases sont écrites comme une personne les dit et normalisées au chargement du module avec la même fonction que celle qui normalise ce qui est entendu, de sorte que les deux ne peuvent pas diverger. Les formules de politesse (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) sont écartées avant la comparaison ; le japonais et le chinois, écrits sans espaces, listent leurs phrases avec et sans la terminaison polie.
+Anglais, espagnol, allemand, français, italien, japonais, chinois et portugais européen : les phrases (450 au total), le oui et le non d'une confirmation, les mots des chiffres d'un PIN prononcé et chaque phrase que le service répond. Les phrases sont écrites comme une personne les dit et normalisées au chargement du module avec la même fonction que celle qui normalise ce qui est entendu, de sorte que les deux ne peuvent pas diverger. Les formules de politesse (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) sont écartées avant la comparaison ; le japonais et le chinois, écrits sans espaces, listent leurs phrases avec et sans la terminaison polie.
 
 ### La confirmation en deux tours
 
@@ -1174,7 +1177,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Comandi",
-       "15 (10 che interrogano, 5 che agiscono), 420 frasi, 8 lingue",
+       "16 (11 che interrogano, 5 che agiscono), 450 frasi, 8 lingue",
      ],
      [
        "In ascolto su",
@@ -1211,13 +1214,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Prima di una pull request esegui `python -I tools/armor_ci_validate.py` e i test: devono passare entrambi. Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il [codice di condotta](CODE_OF_CONDUCT.md).",
    "languages_extra": "Ogni frase che il servizio dice in risposta, ogni comando vocale, ogni sì e no e ogni parola di cifra di un PIN esiste in tutte e otto le lingue.",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI è la parte di A.R.M.O.R. che trasforma **ciò che dice una persona in uno di quindici comandi, oppure in niente**. Non fa mai nulla da sé: decide, e [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autorizza ed esegue ciò che è stato accettato, esattamente come farebbe con un clic nella console.
+     "overview": r"""ARMOR-VOICE-AI è la parte di A.R.M.O.R. che trasforma **ciò che dice una persona in uno di sedici comandi, oppure in niente**. Non fa mai nulla da sé: decide, e [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autorizza ed esegue ciò che è stato accettato, esattamente come farebbe con un clic nella console.
 
-Il testo che esce da un riconoscitore vocale è un *input non attendibile*. Perciò non viene interpretato, né cercato per parole chiave, né inoltrato come comando: viene ripulito (accenti, punteggiatura, formule di cortesia) e deve poi corrispondere **esattamente** a una delle 420 frasi note. Tutto il resto, ogni testo troppo lungo e ogni frase che potrebbe significare due comandi *non viene capito*.
+Il testo che esce da un riconoscitore vocale è un *input non attendibile*. Perciò non viene interpretato, né cercato per parole chiave, né inoltrato come comando: viene ripulito (accenti, punteggiatura, formule di cortesia) e deve poi corrispondere **esattamente** a una delle 450 frasi note. Tutto il resto, ogni testo troppo lungo e ogni frase che potrebbe significare due comandi *non viene capito*.
 
 **Cosa fa**
 
-* Capisce quindici comandi in **otto lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese).
+* Capisce sedici comandi in **otto lingue** (inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese).
 * Fa sì che `arm` e `disarm` richiedano un **secondo turno con un token firmato dal servizio**, legato all'intento e a chi l'ha richiesto.
 * Può far sì che `silence` richieda un **PIN** pronunciato o un secondo turno di conferma, quando ARMOR-SERVER lo chiede.
 * Gira come **servizio HTTP locale** e come **gateway a righe JSON** per adattatori e test.
@@ -1275,12 +1278,12 @@ sequenceDiagram
 
 **Perché è costruito così**
 
-* **Perché una lista chiusa e non una classificazione degli intenti.** Un riconoscitore sbaglia e chiunque può parlare vicino a un microfono. Con 420 frasi esatte il peggio che una trascrizione errata possa fare è essere ignorata, e un test verifica che nessuna frase appartenga a due comandi.
+* **Perché una lista chiusa e non una classificazione degli intenti.** Un riconoscitore sbaglia e chiunque può parlare vicino a un microfono. Con 450 frasi esatte il peggio che una trascrizione errata possa fare è essere ignorata, e un test verifica che nessuna frase appartenga a due comandi.
 * **Perché il servizio si limita a decidere.** Autenticazione, autorizzazione, traccia di audit e azione restano in un solo posto, ARMOR-SERVER; un bug qui può accettare per errore una frase, ma non può toccare un allarme.
 * **Perché la conferma è un token firmato emesso dal servizio.** Un flag impostato da chi chiama (`confirmed: true`) non prova nulla, quindi viene rifiutato. Il token è firmato con HMAC-SHA-256, legato al comando e alla persona, valido 30 secondi e utilizzabile una sola volta.
 * **Perché i motori vocali sono programmi separati.** I modelli cambiano più in fretta di quanto dovrebbe fare un gateway di sicurezza. Vengono eseguiti senza shell, con un ambiente ridotto e un limite di tempo, e i segreti del servizio non li raggiungono mai.
 * **Perché non si conserva nulla.** Il registro mostra cosa è stato deciso senza conservare cosa è stato detto.""",
-     "features": r"""### I quindici comandi
+     "features": r"""### I sedici comandi
 
 | Comando | Tipo | Significato | Conferma |
 |---|---|---|---|
@@ -1288,6 +1291,7 @@ sequenceDiagram
 | `alarms` | interroga | Gli allarmi attivi | no |
 | `nodes` | interroga | Lo stato dei nodi | no |
 | `cameras` | interroga | Lo stato delle telecamere | no |
+| `last_camera` | interroga | Quale telecamera ha visto movimento per ultima | no |
 | `radar` | interroga | Lo stato dei radar | no |
 | `solar` | interroga | Lo stato dell'impianto solare | no |
 | `electrical` | interroga | Il consumo elettrico | no |
@@ -1300,11 +1304,11 @@ sequenceDiagram
 | `arm` | agisce | Inserire il perimetro | **sì** |
 | `disarm` | agisce | Disinserire il perimetro | **sì** |
 
-I dieci che *interrogano* non cambiano nulla. I cinque che *agiscono* sono eseguiti da ARMOR-SERVER con la sessione di chi ha parlato, mai da questo servizio.
+Gli undici che *interrogano* non cambiano nulla. I cinque che *agiscono* sono eseguiti da ARMOR-SERVER con la sessione di chi ha parlato, mai da questo servizio.
 
 ### Otto lingue
 
-Inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese europeo: le frasi (420 in tutto), il sì e il no di una conferma, le parole delle cifre di un PIN pronunciato e ogni frase che il servizio dice in risposta. Le frasi sono scritte come le dice una persona e normalizzate al caricamento del modulo con la stessa funzione che normalizza ciò che si sente, così le due non possono divergere. Le formule di cortesia (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) vengono scartate prima del confronto; il giapponese e il cinese, scritti senza spazi, elencano le loro frasi con e senza la terminazione cortese.
+Inglese, spagnolo, tedesco, francese, italiano, giapponese, cinese e portoghese europeo: le frasi (450 in tutto), il sì e il no di una conferma, le parole delle cifre di un PIN pronunciato e ogni frase che il servizio dice in risposta. Le frasi sono scritte come le dice una persona e normalizzate al caricamento del modulo con la stessa funzione che normalizza ciò che si sente, così le due non possono divergere. Le formule di cortesia (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) vengono scartate prima del confronto; il giapponese e il cinese, scritti senza spazi, elencano le loro frasi con e senza la terminazione cortese.
 
 ### La conferma in due turni
 
@@ -1538,7 +1542,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Befehle",
-       "15 (10 fragen ab, 5 handeln), 420 Sätze, 8 Sprachen",
+       "16 (11 fragen ab, 5 handeln), 450 Sätze, 8 Sprachen",
      ],
      [
        "Lauscht auf",
@@ -1575,13 +1579,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Führe vor einem Pull Request `python -I tools/armor_ci_validate.py` und die Tests aus: Beide müssen bestehen. Siehe [CONTRIBUTING.md](CONTRIBUTING.md) und den [Verhaltenskodex](CODE_OF_CONDUCT.md).",
    "languages_extra": "Jeder Satz, den der Dienst zurückspricht, jeder gesprochene Befehl, jedes Ja und Nein und jedes Ziffernwort einer PIN existiert in allen acht Sprachen.",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI ist der Teil von A.R.M.O.R., der **das, was eine Person sagt, in einen von fünfzehn Befehlen oder in nichts** verwandelt. Er tut nie etwas von sich aus: Er entscheidet, und [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authentifiziert, autorisiert und führt aus, was akzeptiert wurde, genau wie bei einem Klick in der Konsole.
+     "overview": r"""ARMOR-VOICE-AI ist der Teil von A.R.M.O.R., der **das, was eine Person sagt, in einen von sechzehn Befehlen oder in nichts** verwandelt. Er tut nie etwas von sich aus: Er entscheidet, und [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) authentifiziert, autorisiert und führt aus, was akzeptiert wurde, genau wie bei einem Klick in der Konsole.
 
-Der Text, der aus einer Spracherkennung kommt, ist eine *nicht vertrauenswürdige Eingabe*. Deshalb wird er weder interpretiert noch nach Schlüsselwörtern durchsucht noch als Befehl weitergeleitet: Er wird bereinigt (Akzente, Satzzeichen, Höflichkeitsfloskeln) und muss dann **genau** einem der 420 bekannten Sätze entsprechen. Alles andere, jeder zu lange Text und jeder Satz, der zwei Befehle bedeuten könnte, wird *nicht verstanden*.
+Der Text, der aus einer Spracherkennung kommt, ist eine *nicht vertrauenswürdige Eingabe*. Deshalb wird er weder interpretiert noch nach Schlüsselwörtern durchsucht noch als Befehl weitergeleitet: Er wird bereinigt (Akzente, Satzzeichen, Höflichkeitsfloskeln) und muss dann **genau** einem der 450 bekannten Sätze entsprechen. Alles andere, jeder zu lange Text und jeder Satz, der zwei Befehle bedeuten könnte, wird *nicht verstanden*.
 
 **Was er tut**
 
-* Versteht fünfzehn Befehle in **acht Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und Portugiesisch).
+* Versteht sechzehn Befehle in **acht Sprachen** (Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und Portugiesisch).
 * Verlangt für `arm` und `disarm` einen **zweiten Turn mit einem vom Dienst signierten Token**, gebunden an die Absicht und an die Person, die sie geäußert hat.
 * Kann für `silence` eine gesprochene **PIN** oder einen zweiten Bestätigungs-Turn verlangen, wenn ARMOR-SERVER es anfordert.
 * Läuft als **lokaler HTTP-Dienst** und als **JSON-Lines-Gateway** für Adapter und Tests.
@@ -1639,12 +1643,12 @@ sequenceDiagram
 
 **Warum er so gebaut ist**
 
-* **Warum eine geschlossene Liste und keine Absichtsklassifikation.** Eine Spracherkennung macht Fehler, und jeder kann in der Nähe eines Mikrofons sprechen. Bei 420 exakten Sätzen kann ein falsches Transkript schlimmstenfalls ignoriert werden, und ein Test prüft, dass kein Satz zu zwei Befehlen gehört.
+* **Warum eine geschlossene Liste und keine Absichtsklassifikation.** Eine Spracherkennung macht Fehler, und jeder kann in der Nähe eines Mikrofons sprechen. Bei 450 exakten Sätzen kann ein falsches Transkript schlimmstenfalls ignoriert werden, und ein Test prüft, dass kein Satz zu zwei Befehlen gehört.
 * **Warum der Dienst nur entscheidet.** Authentifizierung, Autorisierung, Audit-Spur und Aktion bleiben an einem Ort, ARMOR-SERVER; ein Fehler hier kann einen Satz fälschlich akzeptieren, aber keinen Alarm anrühren.
 * **Warum die Bestätigung ein signierter, vom Dienst ausgestellter Token ist.** Ein Flag, das der Aufrufer setzt (`confirmed: true`), beweist nichts und wird deshalb abgelehnt. Der Token ist mit HMAC-SHA-256 signiert, an den Befehl und die Person gebunden, 30 Sekunden gültig und nur einmal verwendbar.
 * **Warum die Sprach-Engines eigene Programme sind.** Modelle ändern sich schneller, als ein Sicherheits-Gateway es sollte. Sie laufen ohne Shell, mit kurzer Umgebung und Zeitlimit, und die eigenen Geheimnisse des Dienstes erreichen sie nie.
 * **Warum nichts aufbewahrt wird.** Das Protokoll zeigt, was entschieden wurde, ohne zu speichern, was gesagt wurde.""",
-     "features": r"""### Die fünfzehn Befehle
+     "features": r"""### Die sechzehn Befehle
 
 | Befehl | Art | Bedeutung | Bestätigung |
 |---|---|---|---|
@@ -1652,6 +1656,7 @@ sequenceDiagram
 | `alarms` | fragt ab | Die aktiven Alarme | nein |
 | `nodes` | fragt ab | Der Zustand der Knoten | nein |
 | `cameras` | fragt ab | Der Zustand der Kameras | nein |
+| `last_camera` | fragt ab | Welche Kamera zuletzt Bewegung gesehen hat | nein |
 | `radar` | fragt ab | Der Zustand der Radare | nein |
 | `solar` | fragt ab | Der Zustand der Solaranlage | nein |
 | `electrical` | fragt ab | Der Stromverbrauch | nein |
@@ -1664,11 +1669,11 @@ sequenceDiagram
 | `arm` | handelt | Den Perimeter scharf schalten | **ja** |
 | `disarm` | handelt | Den Perimeter unscharf schalten | **ja** |
 
-Die zehn, die *abfragen*, ändern nichts. Die fünf, die *handeln*, führt ARMOR-SERVER mit der Sitzung der Person aus, die gesprochen hat, nie dieser Dienst.
+Die elf, die *abfragen*, ändern nichts. Die fünf, die *handeln*, führt ARMOR-SERVER mit der Sitzung der Person aus, die gesprochen hat, nie dieser Dienst.
 
 ### Acht Sprachen
 
-Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und europäisches Portugiesisch: die Sätze (insgesamt 420), das Ja und Nein einer Bestätigung, die Ziffernwörter einer gesprochenen PIN und jeder Satz, den der Dienst zurückspricht. Die Sätze sind so geschrieben, wie eine Person sie sagt, und werden beim Laden des Moduls mit derselben Funktion normalisiert, die das Gehörte normalisiert, sodass beide nicht auseinanderlaufen können. Höflichkeitsfloskeln (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) werden vor dem Vergleich entfernt; Japanisch und Chinesisch, ohne Leerzeichen geschrieben, listen ihre Sätze mit und ohne höfliche Endung.
+Englisch, Spanisch, Deutsch, Französisch, Italienisch, Japanisch, Chinesisch und europäisches Portugiesisch: die Sätze (insgesamt 450), das Ja und Nein einer Bestätigung, die Ziffernwörter einer gesprochenen PIN und jeder Satz, den der Dienst zurückspricht. Die Sätze sind so geschrieben, wie eine Person sie sagt, und werden beim Laden des Moduls mit derselben Funktion normalisiert, die das Gehörte normalisiert, sodass beide nicht auseinanderlaufen können. Höflichkeitsfloskeln (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) werden vor dem Vergleich entfernt; Japanisch und Chinesisch, ohne Leerzeichen geschrieben, listen ihre Sätze mit und ohne höfliche Endung.
 
 ### Die Bestätigung in zwei Turns
 
@@ -1902,7 +1907,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "命令",
-       "15 个（10 个查询类，5 个执行类），420 个短语，8 种语言",
+       "16 个（11 个查询类，5 个执行类），450 个短语，8 种语言",
      ],
      [
        "监听地址",
@@ -1939,13 +1944,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "提交 pull request 之前，请运行 `python -I tools/armor_ci_validate.py` 和测试：两者都必须通过。请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。",
    "languages_extra": "服务回应的每一句话、每个语音命令、每个“是”和“否”以及 PIN 的每个数字词，都有这八种语言。",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI 是 A.R.M.O.R. 中负责把**人说的话转换为十五个命令之一，或者什么都不转换**的部分。它自己从不做任何事：它只负责判定，由 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 对被接受的内容进行认证、授权并执行，就像处理控制台上的一次点击一样。
+     "overview": r"""ARMOR-VOICE-AI 是 A.R.M.O.R. 中负责把**人说的话转换为十六个命令之一，或者什么都不转换**的部分。它自己从不做任何事：它只负责判定，由 [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) 对被接受的内容进行认证、授权并执行，就像处理控制台上的一次点击一样。
 
-语音识别器输出的文字是*不可信输入*。因此它不会被解释、不会按关键词搜索，也不会作为命令转发：它先被清理（重音、标点、客套用语），之后必须与 420 个已知短语之一**完全一致**。其他任何内容、任何过长的内容，以及任何可能对应两个命令的短语，都*不会被理解*。
+语音识别器输出的文字是*不可信输入*。因此它不会被解释、不会按关键词搜索，也不会作为命令转发：它先被清理（重音、标点、客套用语），之后必须与 450 个已知短语之一**完全一致**。其他任何内容、任何过长的内容，以及任何可能对应两个命令的短语，都*不会被理解*。
 
 **它做什么**
 
-* 用**八种语言**（英语、西班牙语、德语、法语、意大利语、日语、汉语和葡萄牙语）理解十五个命令。
+* 用**八种语言**（英语、西班牙语、德语、法语、意大利语、日语、汉语和葡萄牙语）理解十六个命令。
 * 让 `arm` 和 `disarm` 需要**带有服务签名令牌的第二个轮次**，该令牌与意图以及提出请求的人绑定。
 * 当 ARMOR-SERVER 要求时，可让 `silence` 需要口述的 **PIN** 或第二个确认轮次。
 * 既作为**本地 HTTP 服务**运行，也作为面向适配器和测试的 **JSON 行网关**运行。
@@ -2003,12 +2008,12 @@ sequenceDiagram
 
 **为什么这样构建**
 
-* **为什么用封闭列表而不是意图分类。** 识别器会出错，任何人都可以在麦克风附近说话。有了 420 个精确短语，错误的转写最坏也只是被忽略，并且有一项测试检查没有任何短语同时属于两个命令。
+* **为什么用封闭列表而不是意图分类。** 识别器会出错，任何人都可以在麦克风附近说话。有了 450 个精确短语，错误的转写最坏也只是被忽略，并且有一项测试检查没有任何短语同时属于两个命令。
 * **为什么服务只负责判定。** 认证、授权、审计记录和动作都集中在 ARMOR-SERVER 一处；这里的缺陷可能错误地接受一个短语，但无法触碰报警。
 * **为什么确认是服务签发的签名令牌。** 调用方自己设置的标记（`confirmed: true`）什么也证明不了，所以会被拒绝。令牌使用 HMAC-SHA-256 签名，与命令和人绑定，有效期 30 秒，且只能使用一次。
 * **为什么语音引擎是独立的程序。** 模型的变化比安全网关应有的变化速度更快。它们在没有 shell、环境变量精简并带时间限制的条件下运行，服务自身的机密永远不会传给它们。
 * **为什么什么都不保存。** 日志显示做出了什么决策，但不保存说过什么。""",
-     "features": r"""### 十五个命令
+     "features": r"""### 十六个命令
 
 | 命令 | 类型 | 含义 | 确认 |
 |---|---|---|---|
@@ -2016,6 +2021,7 @@ sequenceDiagram
 | `alarms` | 查询 | 当前处于激活状态的报警 | 否 |
 | `nodes` | 查询 | 节点状态 | 否 |
 | `cameras` | 查询 | 摄像头状态 | 否 |
+| `last_camera` | 查询 | 最后一次检测到移动的摄像头 | 否 |
 | `radar` | 查询 | 雷达状态 | 否 |
 | `solar` | 查询 | 太阳能系统状态 | 否 |
 | `electrical` | 查询 | 用电情况 | 否 |
@@ -2028,11 +2034,11 @@ sequenceDiagram
 | `arm` | 执行 | 对周界布防 | **是** |
 | `disarm` | 执行 | 对周界撤防 | **是** |
 
-十个*查询*类命令不会改变任何东西。五个*执行*类命令由 ARMOR-SERVER 使用说话人的会话来执行，绝不由本服务执行。
+十一个*查询*类命令不会改变任何东西。五个*执行*类命令由 ARMOR-SERVER 使用说话人的会话来执行，绝不由本服务执行。
 
 ### 八种语言
 
-英语、西班牙语、德语、法语、意大利语、日语、汉语和欧洲葡萄牙语：短语（共 420 个）、确认时的“是”和“否”、口述 PIN 的数字词，以及服务回应的每一句话。短语按人们的说法书写，并在模块加载时用与规范化听到内容相同的函数进行规范化，因此两者不会产生偏差。客套用语（`please`、`por favor`、`bitte`、`s'il vous plaît`、`per favore`……）在比较前会被丢弃；日语和汉语书写时没有空格，会分别列出带礼貌结尾和不带礼貌结尾的短语。
+英语、西班牙语、德语、法语、意大利语、日语、汉语和欧洲葡萄牙语：短语（共 450 个）、确认时的“是”和“否”、口述 PIN 的数字词，以及服务回应的每一句话。短语按人们的说法书写，并在模块加载时用与规范化听到内容相同的函数进行规范化，因此两者不会产生偏差。客套用语（`please`、`por favor`、`bitte`、`s'il vous plaît`、`per favore`……）在比较前会被丢弃；日语和汉语书写时没有空格，会分别列出带礼貌结尾和不带礼貌结尾的短语。
 
 ### 两轮确认
 
@@ -2266,7 +2272,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "コマンド",
-       "15（問い合わせ 10、操作 5）、420 フレーズ、8 言語",
+       "16（問い合わせ 11、操作 5）、450 フレーズ、8 言語",
      ],
      [
        "待ち受け",
@@ -2303,13 +2309,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Pull Request の前に `python -I tools/armor_ci_validate.py` とテストを実行してください。どちらも通る必要があります。[CONTRIBUTING.md](CONTRIBUTING.md) と[行動規範](CODE_OF_CONDUCT.md)を参照してください。",
    "languages_extra": "サービスが返すすべての文、すべての音声コマンド、すべての「はい」と「いいえ」、PIN のすべての数字の言葉が、8 言語すべてに存在します。",
    "body": {
-     "overview": r"""ARMOR-VOICE-AI は A.R.M.O.R. の一部で、**人が話したことを 15 のコマンドのどれか、または何でもないもの**に変換します。自分では何も実行しません。判断するだけで、受け入れられたものは [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) がコンソールでのクリックと同じように認証、認可、実行します。
+     "overview": r"""ARMOR-VOICE-AI は A.R.M.O.R. の一部で、**人が話したことを 16 のコマンドのどれか、または何でもないもの**に変換します。自分では何も実行しません。判断するだけで、受け入れられたものは [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) がコンソールでのクリックと同じように認証、認可、実行します。
 
-音声認識器から出てくるテキストは*信頼できない入力*です。そのため解釈もキーワード検索もコマンドとしての転送もしません。まず整形（アクセント、句読点、丁寧な前置き）してから、既知の 420 フレーズのどれかと**完全に一致**しなければなりません。それ以外のもの、長すぎるもの、2 つのコマンドに取れるフレーズは*理解されません*。
+音声認識器から出てくるテキストは*信頼できない入力*です。そのため解釈もキーワード検索もコマンドとしての転送もしません。まず整形（アクセント、句読点、丁寧な前置き）してから、既知の 450 フレーズのどれかと**完全に一致**しなければなりません。それ以外のもの、長すぎるもの、2 つのコマンドに取れるフレーズは*理解されません*。
 
 **できること**
 
-* 15 のコマンドを **8 言語**（英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ポルトガル語）で理解します。
+* 16 のコマンドを **8 言語**（英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ポルトガル語）で理解します。
 * `arm` と `disarm` には、インテントと依頼した人に結び付いた、**サービスが署名したトークンを伴う 2 回目のターン**を必要とします。
 * ARMOR-SERVER が求めたとき、`silence` に音声での **PIN** または確認の 2 回目のターンを必要とさせることができます。
 * **ローカル HTTP サービス**として、またアダプターとテスト用の **JSON Lines ゲートウェイ**として動作します。
@@ -2367,12 +2373,12 @@ sequenceDiagram
 
 **この作りにした理由**
 
-* **インテント分類ではなく閉じたリストにする理由。** 認識器は間違えますし、マイクの近くでは誰でも話せます。420 の正確なフレーズなら、誤った書き起こしが起こせる最悪の事態は無視されることだけで、どのフレーズも 2 つのコマンドに属さないことはテストで確認しています。
+* **インテント分類ではなく閉じたリストにする理由。** 認識器は間違えますし、マイクの近くでは誰でも話せます。450 の正確なフレーズなら、誤った書き起こしが起こせる最悪の事態は無視されることだけで、どのフレーズも 2 つのコマンドに属さないことはテストで確認しています。
 * **サービスが判断だけをする理由。** 認証、認可、監査記録、アクションは ARMOR-SERVER の 1 か所にあります。ここのバグはフレーズを誤って受け入れることはあっても、警報には触れられません。
 * **確認をサービスが発行する署名付きトークンにする理由。** 呼び出し側が立てるフラグ（`confirmed: true`）は何も証明しないので拒否されます。トークンは HMAC-SHA-256 で署名され、コマンドと人に結び付き、30 秒間有効で、一度だけ使えます。
 * **音声エンジンを別プログラムにする理由。** モデルはセキュリティゲートウェイが変わるべき速度より速く変わります。シェルなし、短い環境変数、時間制限つきで実行し、サービス自身のシークレットは決して渡しません。
 * **何も保存しない理由。** ログには何が判断されたかが残り、何が話されたかは残りません。""",
-     "features": r"""### 15 のコマンド
+     "features": r"""### 16 のコマンド
 
 | コマンド | 種類 | 意味 | 確認 |
 |---|---|---|---|
@@ -2380,6 +2386,7 @@ sequenceDiagram
 | `alarms` | 問い合わせ | 有効な警報 | なし |
 | `nodes` | 問い合わせ | ノードの状態 | なし |
 | `cameras` | 問い合わせ | カメラの状態 | なし |
+| `last_camera` | 問い合わせ | 最後に動きを検知したカメラ | なし |
 | `radar` | 問い合わせ | レーダーの状態 | なし |
 | `solar` | 問い合わせ | ソーラーシステムの状態 | なし |
 | `electrical` | 問い合わせ | 電気の消費量 | なし |
@@ -2392,11 +2399,11 @@ sequenceDiagram
 | `arm` | 操作 | 境界を警戒状態にする | **あり** |
 | `disarm` | 操作 | 境界の警戒を解除する | **あり** |
 
-*問い合わせ*の 10 個は何も変更しません。*操作*の 5 個は、このサービスではなく ARMOR-SERVER が、話した人のセッションで実行します。
+*問い合わせ*の 11 個は何も変更しません。*操作*の 5 個は、このサービスではなく ARMOR-SERVER が、話した人のセッションで実行します。
 
 ### 8 言語
 
-英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ヨーロッパポルトガル語：フレーズ（合計 420）、確認の「はい」と「いいえ」、音声 PIN の数字の言葉、そしてサービスが返すすべての文。フレーズは人が言う形で書かれ、モジュールの読み込み時に、聞き取った内容を整形するのと同じ関数で整形されるため、両者がずれることはありません。丁寧な前置き（`please`、`por favor`、`bitte`、`s'il vous plaît`、`per favore`…）は比較の前に取り除かれます。スペースなしで書く日本語と中国語は、丁寧な語尾ありとなしの両方のフレーズを並べています。
+英語、スペイン語、ドイツ語、フランス語、イタリア語、日本語、中国語、ヨーロッパポルトガル語：フレーズ（合計 450）、確認の「はい」と「いいえ」、音声 PIN の数字の言葉、そしてサービスが返すすべての文。フレーズは人が言う形で書かれ、モジュールの読み込み時に、聞き取った内容を整形するのと同じ関数で整形されるため、両者がずれることはありません。丁寧な前置き（`please`、`por favor`、`bitte`、`s'il vous plaît`、`per favore`…）は比較の前に取り除かれます。スペースなしで書く日本語と中国語は、丁寧な語尾ありとなしの両方のフレーズを並べています。
 
 ### 2 ターンの確認
 
@@ -2630,7 +2637,7 @@ ARMOR-VOICE-AI/
      ],
      [
        "Comandos",
-       "15 (10 que consultam, 5 que atuam), 420 frases, 8 idiomas",
+       "16 (11 que consultam, 5 que atuam), 450 frases, 8 idiomas",
      ],
      [
        "Escuta em",
@@ -2667,13 +2674,13 @@ ARMOR-VOICE-AI/
    "contributing_first": "Antes de um pull request execute `python -I tools/armor_ci_validate.py` e os testes: ambos têm de passar. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).",
    "languages_extra": "Cada frase que o serviço diz em resposta, cada comando falado, cada sim e não e cada palavra de dígito de um PIN existe nos oito idiomas.",
    "body": {
-     "overview": r"""O ARMOR-VOICE-AI é a parte do A.R.M.O.R. que transforma **o que uma pessoa diz num de quinze comandos, ou em nada**. Nunca faz nada por si: decide, e o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autoriza e executa o que foi aceite, exatamente como faria com um clique na consola.
+     "overview": r"""O ARMOR-VOICE-AI é a parte do A.R.M.O.R. que transforma **o que uma pessoa diz num de dezasseis comandos, ou em nada**. Nunca faz nada por si: decide, e o [ARMOR-SERVER](https://github.com/JuanenRac/ARMOR-SERVER) autentica, autoriza e executa o que foi aceite, exatamente como faria com um clique na consola.
 
-O texto que sai de um reconhecedor de voz é *entrada não fiável*. Por isso não é interpretado, não se procuram palavras-chave nele nem é reenviado como comando: é limpo (acentos, pontuação, fórmulas de cortesia) e tem então de ser **exatamente** uma de 420 frases conhecidas. Qualquer outra coisa, qualquer texto demasiado longo e qualquer frase que pudesse significar dois comandos *não é compreendida*.
+O texto que sai de um reconhecedor de voz é *entrada não fiável*. Por isso não é interpretado, não se procuram palavras-chave nele nem é reenviado como comando: é limpo (acentos, pontuação, fórmulas de cortesia) e tem então de ser **exatamente** uma de 450 frases conhecidas. Qualquer outra coisa, qualquer texto demasiado longo e qualquer frase que pudesse significar dois comandos *não é compreendida*.
 
 **O que faz**
 
-* Compreende quinze comandos em **oito idiomas** (inglês, espanhol, alemão, francês, italiano, japonês, chinês e português).
+* Compreende dezasseis comandos em **oito idiomas** (inglês, espanhol, alemão, francês, italiano, japonês, chinês e português).
 * Faz com que `arm` e `disarm` precisem de um **segundo turno com um token que o serviço assinou**, ligado à intenção e a quem a pediu.
 * Pode fazer com que `silence` precise de um **PIN** falado ou de um segundo turno de confirmação, quando o ARMOR-SERVER o pede.
 * Funciona como **serviço HTTP local** e como **porta de ligação de linhas JSON** para adaptadores e testes.
@@ -2731,12 +2738,12 @@ sequenceDiagram
 
 **Porque é construído assim**
 
-* **Porquê uma lista fechada e não classificação de intenções.** Um reconhecedor engana-se e qualquer pessoa pode falar perto de um microfone. Com 420 frases exatas, o pior que uma transcrição errada pode fazer é ser ignorada, e um teste verifica que nenhuma frase pertence a dois comandos.
+* **Porquê uma lista fechada e não classificação de intenções.** Um reconhecedor engana-se e qualquer pessoa pode falar perto de um microfone. Com 450 frases exatas, o pior que uma transcrição errada pode fazer é ser ignorada, e um teste verifica que nenhuma frase pertence a dois comandos.
 * **Porquê o serviço apenas decide.** A autenticação, a autorização, o registo de auditoria e a ação ficam num único sítio, o ARMOR-SERVER; uma falha aqui pode aceitar mal uma frase, mas não consegue tocar num alarme.
 * **Porquê a confirmação é um token assinado emitido pelo serviço.** Uma marca que quem chama define (`confirmed: true`) não prova nada, pelo que é recusada. O token é assinado com HMAC-SHA-256, ligado ao comando e à pessoa, válido durante 30 segundos e utilizável uma só vez.
 * **Porquê os motores de voz são programas separados.** Os modelos mudam mais depressa do que uma porta de ligação de segurança deve mudar. Executam-se sem shell, com um ambiente reduzido e um limite de tempo, e os segredos do próprio serviço nunca lhes chegam.
 * **Porquê não se guarda nada.** O registo mostra o que foi decidido sem guardar o que foi dito.""",
-     "features": r"""### Os quinze comandos
+     "features": r"""### Os dezasseis comandos
 
 | Comando | Tipo | Significado | Confirmação |
 |---|---|---|---|
@@ -2744,6 +2751,7 @@ sequenceDiagram
 | `alarms` | consulta | Os alarmes que estão ativos | não |
 | `nodes` | consulta | O estado dos nós | não |
 | `cameras` | consulta | O estado das câmaras | não |
+| `last_camera` | consulta | Que câmara viu movimento por último | não |
 | `radar` | consulta | O estado dos radares | não |
 | `solar` | consulta | O estado do sistema solar | não |
 | `electrical` | consulta | O consumo elétrico | não |
@@ -2756,11 +2764,11 @@ sequenceDiagram
 | `arm` | atua | Armar o perímetro | **sim** |
 | `disarm` | atua | Desarmar o perímetro | **sim** |
 
-Os dez que *consultam* não alteram nada. Os cinco que *atuam* são executados pelo ARMOR-SERVER com a sessão da pessoa que falou, nunca por este serviço.
+Os onze que *consultam* não alteram nada. Os cinco que *atuam* são executados pelo ARMOR-SERVER com a sessão da pessoa que falou, nunca por este serviço.
 
 ### Oito idiomas
 
-Inglês, espanhol, alemão, francês, italiano, japonês, chinês e português europeu: as frases (420 no total), o sim e o não de uma confirmação, as palavras dos dígitos de um PIN falado e cada frase que o serviço diz em resposta. As frases escrevem-se como uma pessoa as diz e normalizam-se quando o módulo carrega, com a mesma função que normaliza o que se ouve, para que as duas não se possam afastar. As fórmulas de cortesia (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) são descartadas antes de comparar; o japonês e o chinês, escritos sem espaços, listam as suas frases com e sem a terminação cortês.
+Inglês, espanhol, alemão, francês, italiano, japonês, chinês e português europeu: as frases (450 no total), o sim e o não de uma confirmação, as palavras dos dígitos de um PIN falado e cada frase que o serviço diz em resposta. As frases escrevem-se como uma pessoa as diz e normalizam-se quando o módulo carrega, com a mesma função que normaliza o que se ouve, para que as duas não se possam afastar. As fórmulas de cortesia (`please`, `por favor`, `bitte`, `s'il vous plaît`, `per favore`...) são descartadas antes de comparar; o japonês e o chinês, escritos sem espaços, listam as suas frases com e sem a terminação cortês.
 
 ### A confirmação em dois turnos
 
