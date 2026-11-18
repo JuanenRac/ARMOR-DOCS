@@ -20,7 +20,7 @@ FACTS = {
     ],
     [
       "hardware",
-      "yellow",
+      "orange",
     ],
     [
       "security",
