@@ -340,7 +340,7 @@ TYPED_PROBLEMS: list[str] = []
 
 def render(name: str, language: str) -> str:
     """The README of a repository in a language: the figures written as {{fact:NAME}} are read from the repositories, and a figure typed by hand that is not the real one is remembered."""
-    text = with_trees(render_text(name, language))
+    text = with_trees(render_text(name, language), ROOT)
     TYPED_PROBLEMS.extend(typed_figure_problems(Path(name) / "README.md", text))
     return facts_in(text, f"{name}/{language}")
 

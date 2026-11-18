@@ -103,16 +103,16 @@ STRUCTURE_ALT = P("Repository structure of {repo}", "Estructura del repositorio 
 TREE_TOKEN = re.compile(r"\{\{tree:([a-z]{2}):([A-Za-z0-9_.\-]+)\}\}")
 
 
-def tree_text(lg: str, repo: str) -> str:
+def tree_text(lg: str, repo: str, root: Path | None = None) -> str:
     """The text tree of a repository in a language, drawn from the docs/structure.json of that repository (the same file that draws its picture)."""
     tool = _structure_tool()
-    spec = json.loads((ROOT / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
+    spec = json.loads(((root or ROOT) / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
     return tool.render_tree(spec, lg)
 
 
-def with_trees(text: str) -> str:
+def with_trees(text: str, root: Path | None = None) -> str:
     """The text with every {{tree:LG:REPO}} written as the tree of that repository; a source never holds the tree itself."""
-    return TREE_TOKEN.sub(lambda match: tree_text(match.group(1), match.group(2)), text)
+    return TREE_TOKEN.sub(lambda match: tree_text(match.group(1), match.group(2), root), text)
 
 
 def structure(lg: str, repo: str, before: str = "", after: str = "") -> str:

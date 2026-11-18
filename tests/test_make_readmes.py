@@ -322,7 +322,7 @@ class FileTreeTests(unittest.TestCase):
     def test_the_marker_is_replaced_by_the_tree_of_the_repository(self):
         holder, root = fake_root()
         self.addCleanup(holder.cleanup)
-        with mock.patch.object(make_readmes, "ROOT", root), mock.patch("readme_src._kit.ROOT", root):
+        with mock.patch.object(make_readmes, "ROOT", root):
             for code in CODES:
                 text = make_readmes.render("ARMOR-NODE-HMI", code)
                 self.assertNotIn("{{tree:", text)
@@ -331,7 +331,7 @@ class FileTreeTests(unittest.TestCase):
     def test_a_readme_that_differs_from_the_generated_one_fails_the_check(self):
         holder, root = fake_root()
         self.addCleanup(holder.cleanup)
-        with mock.patch.object(make_readmes, "ROOT", root), mock.patch("readme_src._kit.ROOT", root), mock.patch("sys.argv", ["make_readmes.py"]):
+        with mock.patch.object(make_readmes, "ROOT", root), mock.patch("sys.argv", ["make_readmes.py"]):
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(make_readmes.main(), 0)
             spec = root / "ARMOR-SERVER" / "docs" / "structure.json"
