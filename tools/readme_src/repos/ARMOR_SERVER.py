@@ -10,9 +10,9 @@ FACTS: dict[str, Any] = {'emoji': '🛡️',
  'status': [['software', 'green'],
             ['tests', 'green'],
             ['protocols', 'yellow'],
-            ['hardware', 'yellow'],
+            ['hardware', 'orange'],
             ['security', 'yellow'],
-            ['integration', 'yellow'],
+            ['integration', 'orange'],
             ['docs', 'green']],
  'badges': [['Language', 'TypeScript', '3178c6'], ['Runtime', 'Node%2022%2B', '43853d'], ['Tests', '696%20passing', '2ea44f']]}
 
@@ -1089,7 +1089,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      Tresor, PTZ, RTSP, Suche, Zustand\n'
        '│   ├── media/                        FFmpeg-Relais und Beweisbibliothek\n'
        '│   └── devices/                      Gerätemodell und MQTT-Brücke\n'
-       '├── tests/                            1152 Tests, Unit und HTTP-Integration\n'
+       '├── tests/                            1389 Tests, Unit und HTTP-Integration\n'
        '├── docs/                             8 Leitfäden, Routentabelle, Umgebung\n'
        '├── tools/                            Generatoren für docs/ROUTES.md und docs/ENVIRONMENT.md, gemeinsame CI-Prüfungen, Starter\n'
        '├── images/                           Banner, Symbol und die Bilder des READMEs\n'
@@ -1120,7 +1120,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      vault, PTZ, RTSP, discovery, health\n'
        '│   ├── media/                        FFmpeg relay and evidence library\n'
        '│   └── devices/                      device model and its MQTT bridge\n'
-       '├── tests/                            1152 tests, unit and HTTP integration\n'
+       '├── tests/                            1389 tests, unit and HTTP integration\n'
        '├── docs/                             8 guides, route table, environment\n'
        '├── tools/                            generators of docs/ROUTES.md and docs/ENVIRONMENT.md, shared CI checks, launcher\n'
        '├── images/                           banner, icon and the pictures of the README\n'
@@ -1151,7 +1151,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      caja fuerte, PTZ, RTSP, descubrimiento, salud\n'
        '│   ├── media/                        relé FFmpeg y biblioteca de evidencias\n'
        '│   └── devices/                      modelo de dispositivos y su puente MQTT\n'
-       '├── tests/                            1152 pruebas, unitarias e integración HTTP\n'
+       '├── tests/                            1389 pruebas, unitarias e integración HTTP\n'
        '├── docs/                             8 guías, tabla de rutas, entorno\n'
        '├── tools/                            generadores de docs/ROUTES.md y docs/ENVIRONMENT.md, comprobaciones de CI, lanzador\n'
        '├── images/                           banner, icono y las imágenes del README\n'
@@ -1182,7 +1182,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      coffre, PTZ, RTSP, découverte, santé\n'
        '│   ├── media/                        relais FFmpeg et bibliothèque de preuves\n'
        "│   └── devices/                      modèle d'appareils et son pont MQTT\n"
-       '├── tests/                            1152 tests, unitaires et intégration HTTP\n'
+       '├── tests/                            1389 tests, unitaires et intégration HTTP\n'
        '├── docs/                             8 guides, table des routes, environnement\n'
        '├── tools/                            générateurs de docs/ROUTES.md et docs/ENVIRONMENT.md, vérifications CI, lanceur\n'
        '├── images/                           bannière, icône et images du README\n'
@@ -1213,7 +1213,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cassaforte, PTZ, RTSP, scoperta, salute\n'
        '│   ├── media/                        relè FFmpeg e libreria di prove\n'
        '│   └── devices/                      modello dei dispositivi e ponte MQTT\n'
-       '├── tests/                            1152 test, unitari e integrazione HTTP\n'
+       '├── tests/                            1389 test, unitari e integrazione HTTP\n'
        '├── docs/                             8 guide, tabella delle rotte, ambiente\n'
        '├── tools/                            generatori di docs/ROUTES.md e docs/ENVIRONMENT.md, controlli CI, avviatore\n'
        '├── images/                           banner, icona e immagini del README\n'
@@ -1244,7 +1244,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      金庫、PTZ、RTSP、探索、健全性\n'
        '│   ├── media/                        FFmpeg 中継と証拠ライブラリ\n'
        '│   └── devices/                      デバイスモデルと MQTT ブリッジ\n'
-       '├── tests/                            1152 件（単体と HTTP 結合）\n'
+       '├── tests/                            1389 件（単体と HTTP 結合）\n'
        '├── docs/                             8 つのガイド、ルート表、環境変数\n'
        '├── tools/                            docs/ROUTES.md と docs/ENVIRONMENT.md の生成、CI 検査、ランチャー\n'
        '├── images/                           バナー、アイコン、README の画像\n'
@@ -1275,7 +1275,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      cofre, PTZ, RTSP, descoberta, saúde\n'
        '│   ├── media/                        relé FFmpeg e biblioteca de provas\n'
        '│   └── devices/                      modelo de dispositivos e a sua ponte MQTT\n'
-       '├── tests/                            1152 testes, unitários e integração HTTP\n'
+       '├── tests/                            1389 testes, unitários e integração HTTP\n'
        '├── docs/                             8 guias, tabela de rotas, ambiente\n'
        '├── tools/                            geradores de docs/ROUTES.md e docs/ENVIRONMENT.md, verificações de CI, lançador\n'
        '├── images/                           faixa, ícone e as imagens do README\n'
@@ -1306,7 +1306,7 @@ TREE = {'de': 'ARMOR-SERVER/\n'
        '│   ├── cameras/                      保险库、PTZ、RTSP、发现、健康\n'
        '│   ├── media/                        FFmpeg 中继与证据库\n'
        '│   └── devices/                      设备模型及其 MQTT 桥\n'
-       '├── tests/                            1152 项测试（单元与 HTTP 集成）\n'
+       '├── tests/                            1389 项测试（单元与 HTTP 集成）\n'
        '├── docs/                             8 份指南、路由表、环境变量\n'
        '├── tools/                            docs/ROUTES.md 和 docs/ENVIRONMENT.md 的生成器、CI 检查、启动器\n'
        '├── images/                           横幅图、图标和 README 的图片\n'
@@ -1337,7 +1337,7 @@ NEW_BULLETS: dict[str, Any] = {
 for _lg in NEW_BULLETS:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + NEW_BULLETS[_lg]
 
-NT = "1152"
+NT = "1389"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
@@ -1402,7 +1402,7 @@ SECURITY_ROWS = [
     S("A session from outside the house | Una sesión desde fuera de casa | Eine Sitzung von außerhalb des Hauses | Une session depuis l'extérieur | Una sessione da fuori casa | 家の外からのセッション | 来自屋外的会话 | Uma sessão vinda de fora de casa",
       "A second factor (`ARMOR_TOTP_REQUIRED`: off, remote, always), a policy for what it may do (`ARMOR_REMOTE_POLICY`: full, operate, view), proof of identity again for critical actions (5 minutes by default) and an alert on a sign-in from a new place | Segundo factor (`ARMOR_TOTP_REQUIRED`: off, remote, always), una política de lo que puede hacer (`ARMOR_REMOTE_POLICY`: full, operate, view), nueva prueba de identidad para acciones críticas (5 minutos por defecto) y aviso al entrar desde un sitio nuevo | Zweiter Faktor (`ARMOR_TOTP_REQUIRED`: off, remote, always), eine Richtlinie, was sie darf (`ARMOR_REMOTE_POLICY`: full, operate, view), erneuter Identitätsnachweis bei kritischen Aktionen (standardmäßig 5 Minuten) und ein Hinweis bei Anmeldung von einem neuen Ort | Second facteur (`ARMOR_TOTP_REQUIRED` : off, remote, always), une politique de ce qu'elle peut faire (`ARMOR_REMOTE_POLICY` : full, operate, view), nouvelle preuve d'identité pour les actions critiques (5 minutes par défaut) et alerte lors d'une connexion depuis un nouveau lieu | Secondo fattore (`ARMOR_TOTP_REQUIRED`: off, remote, always), una politica su cosa può fare (`ARMOR_REMOTE_POLICY`: full, operate, view), nuova prova d'identità per le azioni critiche (5 minuti di default) e avviso per un accesso da un luogo nuovo | 2 要素（`ARMOR_TOTP_REQUIRED`：off、remote、always）、できることの方針（`ARMOR_REMOTE_POLICY`：full、operate、view）、重要操作での再認証（既定 5 分）、新しい場所からのログイン通知 | 第二因素（`ARMOR_TOTP_REQUIRED`：off、remote、always）、可做事项的策略（`ARMOR_REMOTE_POLICY`：full、operate、view）、关键操作前重新验证身份（默认 5 分钟）以及从新地点登录时的提醒 | Segundo fator (`ARMOR_TOTP_REQUIRED`: off, remote, always), uma política do que pode fazer (`ARMOR_REMOTE_POLICY`: full, operate, view), nova prova de identidade para ações críticas (5 minutos por predefinição) e aviso ao entrar de um sítio novo"),
     S("A node panel used as an open proxy | Un panel de nodo usado como proxy abierto | Ein Knoten-Panel als offener Proxy | Un panneau de nœud utilisé comme proxy ouvert | Un pannello di nodo usato come proxy aperto | 開放プロキシとして使われるノードパネル | 被当作开放代理的节点面板 | Um painel de nó usado como proxy aberto",
-      "The address never comes from the request; HTTPS is pinned to the SHA-256 fingerprint of the node's certificate | La dirección nunca sale de la petición; HTTPS queda fijado a la huella SHA-256 del certificado del nodo | Die Adresse stammt nie aus der Anfrage; HTTPS ist an den SHA-256-Fingerabdruck des Knotenzertifikats gebunden | L'adresse ne vient jamais de la requête ; HTTPS est épinglé à l'empreinte SHA-256 du certificat du nœud | L'indirizzo non arriva mai dalla richiesta; HTTPS è vincolato all'impronta SHA-256 del certificato del nodo | アドレスはリクエストから取らず、HTTPS はノード証明書の SHA-256 指紋に固定 | 地址从不取自请求；HTTPS 固定到节点证书的 SHA-256 指纹 | O endereço nunca vem do pedido; o HTTPS fica fixado à impressão digital SHA-256 do certificado do nó"),
+      "The address never comes from the request; HTTPS is pinned to the SHA-256 fingerprint of the node's certificate; with `panel.separate_origin` (off by default) the panels come from a second origin (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), entered with a ticket of one use that lasts 30 seconds, and the API refuses any request that comes from that origin. It has only run in the automated tests so far, not on the real server | La dirección nunca sale de la petición; HTTPS queda fijado a la huella SHA-256 del certificado del nodo; con `panel.separate_origin` (apagado por defecto) los paneles se sirven desde un segundo origen (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), al que se entra con un billete de un solo uso que dura 30 segundos, y la API rechaza toda petición que venga de ese origen. Hasta ahora solo ha corrido en las pruebas automáticas, no en el servidor real | Die Adresse stammt nie aus der Anfrage; HTTPS ist an den SHA-256-Fingerabdruck des Knotenzertifikats gebunden; mit `panel.separate_origin` (standardmäßig aus) kommen die Panels von einem zweiten Origin (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), betreten mit einem Einmal-Ticket, das 30 Sekunden gilt, und die API weist jede Anfrage von diesem Origin ab. Bisher lief es nur in den automatischen Tests, nicht auf dem echten Server | L'adresse ne vient jamais de la requête ; HTTPS est épinglé à l'empreinte SHA-256 du certificat du nœud ; avec `panel.separate_origin` (désactivé par défaut), les panneaux viennent d'une seconde origine (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), où l'on entre avec un billet à usage unique valable 30 secondes, et l'API refuse toute requête venant de cette origine. Elle n'a tourné jusqu'ici que dans les tests automatiques, pas sur le vrai serveur | L'indirizzo non arriva mai dalla richiesta; HTTPS è vincolato all'impronta SHA-256 del certificato del nodo; con `panel.separate_origin` (spento di default) i pannelli arrivano da una seconda origine (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), a cui si accede con un biglietto monouso valido 30 secondi, e l'API rifiuta ogni richiesta che arriva da quell'origine. Finora ha girato solo nei test automatici, non sul server reale | アドレスはリクエストから取らず、HTTPS はノード証明書の SHA-256 指紋に固定。`panel.separate_origin`（初期はオフ）をオンにすると、パネルは別のオリジン（`ARMOR_PANEL_PORT`、`ARMOR_PANEL_ORIGIN`）から配信され、30 秒だけ有効な 1 回限りのチケットで開き、API はそのオリジンからのリクエストをすべて拒否します。これまでは自動テストでのみ動作し、実機のサーバーではまだ試していません | 地址从不取自请求；HTTPS 固定到节点证书的 SHA-256 指纹；开启 `panel.separate_origin`（默认关闭）后，面板由第二个源（`ARMOR_PANEL_PORT`、`ARMOR_PANEL_ORIGIN`）提供，凭只能使用一次、有效期 30 秒的票据进入，API 会拒绝来自该源的任何请求。目前只在自动化测试中运行过，尚未在真实服务器上试过 | O endereço nunca vem do pedido; o HTTPS fica fixado à impressão digital SHA-256 do certificado do nó; com `panel.separate_origin` (desligado por predefinição) os painéis vêm de uma segunda origem (`ARMOR_PANEL_PORT`, `ARMOR_PANEL_ORIGIN`), à qual se entra com um bilhete de uma só utilização válido durante 30 segundos, e a API recusa qualquer pedido que venha dessa origem. Até agora só correu nos testes automáticos, não no servidor real"),
     S("Voice: silencing without checking, long text, huge audio | Voz: silenciar sin comprobar, texto largo, audio enorme | Sprache: Stummschalten ohne Prüfung, langer Text, riesiges Audio | Voix : couper sans vérifier, texte long, audio énorme | Voce: silenziare senza verifica, testo lungo, audio enorme | 音声：確認なしの消音、長文、巨大な音声 | 语音：未确认就静音、超长文本、超大音频 | Voz: silenciar sem verificar, texto longo, áudio enorme",
       "The policy `voice.silence_confirmation` (off, pin, double_turn, challenge) travels with every turn; confirmation tied to the person; 200 characters, 8 languages, 30 requests a minute; audio of 480 000 bytes and a reply of 200 000 bytes at most | La política `voice.silence_confirmation` (off, pin, double_turn, challenge) viaja en cada turno; confirmación atada a la persona; 200 caracteres, 8 idiomas, 30 peticiones por minuto; audio de 480 000 bytes y respuesta de 200 000 bytes como máximo | Die Richtlinie `voice.silence_confirmation` (off, pin, double_turn, challenge) reist mit jedem Turn; Bestätigung an die Person gebunden; 200 Zeichen, 8 Sprachen, 30 Anfragen pro Minute; Audio höchstens 480 000 Bytes, Antwort höchstens 200 000 Bytes | La politique `voice.silence_confirmation` (off, pin, double_turn, challenge) accompagne chaque tour ; confirmation liée à la personne ; 200 caractères, 8 langues, 30 requêtes par minute ; audio de 480 000 octets et réponse de 200 000 octets au plus | La politica `voice.silence_confirmation` (off, pin, double_turn, challenge) viaggia con ogni turno; conferma legata alla persona; 200 caratteri, 8 lingue, 30 richieste al minuto; audio al massimo 480 000 byte e risposta 200 000 byte | ポリシー `voice.silence_confirmation`（off、pin、double_turn、challenge）を毎ターン送信。確認は本人に紐づく。200 文字、8 言語、毎分 30 リクエスト、音声は最大 480 000 バイト、応答は最大 200 000 バイト | 策略 `voice.silence_confirmation`（off、pin、double_turn、challenge）随每个轮次发送；确认与本人绑定；200 个字符、8 种语言、每分钟 30 个请求；音频最多 480 000 字节，回复最多 200 000 字节 | A política `voice.silence_confirmation` (off, pin, double_turn, challenge) viaja em cada turno; confirmação ligada à pessoa; 200 caracteres, 8 idiomas, 30 pedidos por minuto; áudio de 480 000 bytes e resposta de 200 000 bytes no máximo"),
     S("Dangerous writes by mistake | Escrituras peligrosas por error | Gefährliche Schreibzugriffe aus Versehen | Écritures dangereuses par erreur | Scritture pericolose per errore | 誤った危険な書き込み | 误操作的危险写入 | Escritas perigosas por engano",
@@ -1462,6 +1462,7 @@ CFG = [
     ("`ARMOR_ALARM_COMMANDS`  `ARMOR_BATTERY_WRITE`  `ARMOR_ELECTRICAL_SWITCHING`  `ARMOR_INGEST_STRICT`  `ARMOR_CONTROL_DISARM`", "0", T("dangerous writes and strict modes, all off | escrituras peligrosas y modos estrictos, todo apagado | gefährliche Schreibzugriffe und strenge Modi, alles aus | écritures dangereuses et modes stricts, tout désactivé | scritture pericolose e modalità rigorose, tutto spento | 危険な書き込みと厳格モード（すべてオフ） | 危险写入与严格模式，全部关闭 | escritas perigosas e modos estritos, tudo desligado")),
     ("`ARMOR_COOKIE_SECURE`  `ARMOR_STUDIO_ORIGIN`", "-", T("set `1` behind TLS; the origin of Studio | pon `1` tras TLS; el origen de Studio | `1` hinter TLS setzen; der Ursprung von Studio | mettre `1` derrière TLS ; l'origine de Studio | metti `1` dietro TLS; l'origine di Studio | TLS の背後では `1`。Studio のオリジン | 在 TLS 之后设为 `1`；Studio 的来源 | pôr `1` atrás de TLS; a origem do Studio")),
     ("`ARMOR_STRICT_ROUTES`", "off", T("match the routes exactly as they are written: a different capitalization or a slash at the end of the path is then a 404 (off, Express accepts both) | casar las rutas exactamente como están escritas: otra capitalización o una barra al final de la ruta da entonces 404 (apagado, Express acepta ambas) | die Routen genau so abgleichen, wie sie geschrieben sind: eine andere Groß-/Kleinschreibung oder ein Schrägstrich am Pfadende ergibt dann 404 (aus, Express akzeptiert beides) | faire correspondre les routes exactement comme écrites : une autre casse ou une barre à la fin du chemin donne alors 404 (désactivé, Express accepte les deux) | far corrispondere le rotte esattamente come scritte: un'altra capitalizzazione o una barra finale nel percorso dà allora 404 (spento, Express accetta entrambe) | ルートを書かれたとおりに厳密に照合します。大文字小文字が違うパスや末尾のスラッシュは 404 になります（無効時は Express が両方を受け付けます） | 严格按书写形式匹配路由：大小写不同或路径末尾带斜杠时返回 404（关闭时 Express 两者都接受） | casar as rotas exatamente como estão escritas: outra capitalização ou uma barra no fim do caminho dá então 404 (desligado, o Express aceita ambas)")),
+    ("`ARMOR_PANEL_PORT`  `ARMOR_PANEL_ORIGIN`", "0  (empty)", T("the port and the public address of the second origin that serves the node panels while `panel.separate_origin` is on (0 = the port of the server plus one; the address is needed behind a proxy or with another name) | el puerto y la dirección pública del segundo origen que sirve los paneles de los nodos mientras `panel.separate_origin` está activo (0 = el puerto del servidor más uno; la dirección hace falta tras un proxy o con otro nombre) | der Port und die öffentliche Adresse des zweiten Origins, der die Knoten-Panels ausliefert, solange `panel.separate_origin` an ist (0 = Port des Servers plus eins; die Adresse ist hinter einem Proxy oder mit anderem Namen nötig) | le port et l'adresse publique de la seconde origine qui sert les panneaux des nœuds tant que `panel.separate_origin` est actif (0 = le port du serveur plus un ; l'adresse est nécessaire derrière un proxy ou avec un autre nom) | la porta e l'indirizzo pubblico della seconda origine che serve i pannelli dei nodi finché `panel.separate_origin` è attivo (0 = la porta del server più uno; l'indirizzo serve dietro un proxy o con un altro nome) | `panel.separate_origin` がオンの間、ノードのパネルを配信する 2 つ目のオリジンのポートと公開アドレス（0 = サーバーのポート + 1。プロキシの背後や別の名前で使うときはアドレスが必要） | `panel.separate_origin` 开启期间提供节点面板的第二个源的端口和公开地址（0 = 服务器端口加一；在代理之后或使用其他名称时需要该地址） | a porta e o endereço público da segunda origem que serve os painéis dos nós enquanto `panel.separate_origin` está ativo (0 = a porta do servidor mais um; o endereço é preciso atrás de um proxy ou com outro nome)")),
 ]
 
 CONFIG_LEAD = P(

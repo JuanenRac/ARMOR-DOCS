@@ -4,6 +4,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The shared tools of the manifest and the status lights gain an opt-in strict check of the evidence:** `sync_manifests.py` and `status_lights.py` take `--strict-evidence` (off by default; `ARMOR_STRICT_EVIDENCE=1` switches it on for `armor_ci_validate.py`).
+- **The README sources follow what the repositories gained:** the lights that went down with the evidence of eight manifests, the settings that sign the orders to the radar node and the wall panel, the node panels on an origin of their own (server and Studio) and the test counts of the server and Studio.
+- **The project catalogue lists the newest version of the deployment repository.**
 - **The publication check allows the sample keys of the conformance vectors:** a value such as the counting sequence `0123456789ab...` in `conformance/`, in the tool that writes the vectors or in a test is no longer listed for review; any other value in those files is still reviewed, and a private key, an address, a personal e-mail or a secret in a build setting still blocks there. Four tests cover it.
 - **The sentences about the code are checked against the code, not against its comments:** `doc_claims.py` takes the comments out of the file before it looks for the expression (an entry can opt out with `code_only: false`), an entry can ask for several matches (`min_matches`), and `--coverage` counts the bullets of the security baseline that carry no claim marker. The scrypt entry now looks for the call itself.
 - **The security table of the ARMOR-SERVER README says how a disarm under duress is handled and what is left to chance:** a new row in the eight languages (the option `alarm.duress_hide_trail`, who is told, who reads the record apart, and that a wall panel shows the alarm to whoever stands in front of it).
