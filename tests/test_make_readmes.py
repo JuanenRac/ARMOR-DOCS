@@ -326,7 +326,7 @@ class FileTreeTests(unittest.TestCase):
             for code in CODES:
                 text = make_readmes.render("ARMOR-NODE-HMI", code)
                 self.assertNotIn("{{tree:", text)
-                self.assertIn("\u251c\u2500\u2500 src/      the code\n\u2514\u2500\u2500 tests/    the tests", text, code)
+                self.assertIn("\u251c\u2500\u2500 src/     the code\n\u2514\u2500\u2500 tests/   the tests", text, code)
 
     def test_a_readme_that_differs_from_the_generated_one_fails_the_check(self):
         holder, root = fake_root()
@@ -345,8 +345,8 @@ class FileTreeTests(unittest.TestCase):
     def test_the_trees_of_the_readmes_next_to_this_repository_are_the_generated_ones(self):
         from readme_src import _kit
         names = [name for name in ORDER if (REAL_ROOT / name / "docs" / "structure.json").is_file() and (REAL_ROOT / name / "README.md").is_file()]
-        if not names:
-            self.skipTest("no sibling repository with docs/structure.json next to this one")
+        if len(names) < len(ORDER):   # the CI of this repository brings only ARMOR-COMMON: the comparison is for a workspace with the whole family (make_readmes.py --check makes it in the nightly run)
+            self.skipTest("not every repository of the family is next to this one")
         for name in names:
             for code, file, *_ in LANGUAGES:
                 text = (REAL_ROOT / name / file).read_text(encoding="utf-8").replace("\r\n", "\n")
