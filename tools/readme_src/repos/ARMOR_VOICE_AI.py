@@ -385,25 +385,31 @@ GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the 
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        the code (standard library only)
-│   ├── phrases.py             the 420 phrases of the fifteen commands, in eight languages
-│   ├── intent.py              normalising and exact matching: the closed allow-list
-│   ├── confirmation.py        signed, single-use, per-person confirmation tokens
-│   ├── silence_policy.py      off / pin / double_turn, the spoken PIN, the lock
-│   ├── session.py             the two-turn rule for each command
-│   ├── gateway.py             JSON lines on stdin/stdout, the audit, the sentences said back
-│   ├── service.py             the local HTTP service (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                one spoken turn: engines, yes/no, time budget
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} tests: silence, edges, gateway, turn, languages, service
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     the shared CI checks and project tooling
-├── images/                    banner and icon
-├── .github/                   CI workflow, dashboard notice, issue and pull-request templates
-├── armor.project.json         manifest: version, role, maturity, build command
-├── pyproject.toml             package metadata and the `armor-voice-gateway` command
-├── run.sh run.bat             start through the shared project workflow
-├── build.sh build.bat         build and test through the shared project workflow
-├── CHANGELOG.md               what changed in each version
+├── src/armor_voice_ai/
+│   ├── turn.py                    one spoken turn: audio, then words, then the answer
+│   ├── intent.py                  the closed list of commands, eight languages
+│   ├── phrases.py                 the words of each command and the spoken answers
+│   ├── confirmation.py            signed single-use confirmation tied to the speaker
+│   ├── silence_policy.py          what it takes to silence the alarms: off, pin, double turn, challenge
+│   ├── session.py                 the two-turn rule for arm and disarm
+│   ├── gateway.py                 JSON lines in, answers out, and the audit line
+│   ├── service.py                 the local HTTP service on the loopback address
+│   ├── wakeword.py                the local wake word detector, off by default
+│   ├── wake_model_check.py        checks a trained wake word model before it is trusted
+│   ├── wake_release.py            prepares the wake word models for a release: manifest and signature
+│   └── wyoming.py                 Wyoming handler for Home Assistant Assist: queries only, off by default
+├── tests/                         intents, languages, silence, service, wake word
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         the shared CI checks and project tooling
+├── images/                        banner, icon and the pictures of the README
+├── .github/                       CI workflow, dashboard notice, issue and pull-request templates
+├── armor.project.json             manifest: version, role, maturity
+├── pyproject.toml                 package metadata, entry points
+├── CHANGELOG.md                   what changed in each version
+├── run.sh run.bat                 start, shared workflow
+├── build.sh build.bat             build and test, shared workflow
+├── build-test.sh build-test.bat   build, test and package
+├── test.sh test.bat               only the tests, never the version
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -743,25 +749,31 @@ GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la val
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        el código (solo biblioteca estándar)
-│   ├── phrases.py             las 420 frases de los quince comandos, en ocho idiomas
-│   ├── intent.py              normalización y coincidencia exacta: la lista cerrada
-│   ├── confirmation.py        tokens de confirmación firmados, de un solo uso y por persona
-│   ├── silence_policy.py      off / pin / double_turn, el PIN hablado, el bloqueo
-│   ├── session.py             la regla de dos turnos de cada comando
-│   ├── gateway.py             líneas JSON por stdin/stdout, la auditoría, las frases que se responden
-│   ├── service.py             el servicio HTTP local (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                un turno hablado: motores, sí/no, presupuesto de tiempo
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} pruebas: silencio, bordes, pasarela, turno, idiomas, servicio
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     las comprobaciones de CI compartidas y la herramienta de proyecto
-├── images/                    banner e icono
-├── .github/                   flujo de CI, aviso al panel, plantillas de incidencias y de pull request
-├── armor.project.json         manifiesto: versión, función, madurez, orden de compilación
-├── pyproject.toml             metadatos del paquete y el comando `armor-voice-gateway`
-├── run.sh run.bat             arrancan con el flujo de proyecto compartido
-├── build.sh build.bat         compilan y prueban con el flujo de proyecto compartido
-├── CHANGELOG.md               qué cambió en cada versión
+├── src/armor_voice_ai/
+│   ├── turn.py                    un turno hablado: audio, palabras y respuesta
+│   ├── intent.py                  la lista cerrada de órdenes, ocho idiomas
+│   ├── phrases.py                 las palabras de cada orden y las respuestas habladas
+│   ├── confirmation.py            confirmación firmada de un solo uso ligada a quien habla
+│   ├── silence_policy.py          lo que hace falta para silenciar las alarmas: off, pin, doble turno, desafío
+│   ├── session.py                 la regla de dos turnos para armar y desarmar
+│   ├── gateway.py                 líneas JSON de entrada, respuestas y la línea de auditoría
+│   ├── service.py                 el servicio HTTP local en la dirección de loopback
+│   ├── wakeword.py                el detector local de la palabra de activación, desactivado por defecto
+│   ├── wake_model_check.py        comprueba un modelo de palabra de activación antes de fiarse de él
+│   ├── wake_release.py            prepara los modelos de activación para una versión: manifiesto y firma
+│   └── wyoming.py                 manejador Wyoming para Assist de Home Assistant: solo consultas, desactivado por defecto
+├── tests/                         órdenes, idiomas, silencio, servicio, activación
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         las comprobaciones de CI y las herramientas compartidas
+├── images/                        banner, icono y las imágenes del README
+├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests
+├── armor.project.json             manifiesto: versión, función, madurez
+├── pyproject.toml                 metadatos del paquete, entradas
+├── CHANGELOG.md                   qué cambió en cada versión
+├── run.sh run.bat                 arrancar, flujo compartido
+├── build.sh build.bat             construir y probar, flujo compartido
+├── build-test.sh build-test.bat   construir, probar y empaquetar
+├── test.sh test.bat               solo las pruebas, nunca la versión
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -1101,25 +1113,31 @@ GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la v
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        le code (bibliothèque standard uniquement)
-│   ├── phrases.py             les 420 phrases des quinze commandes, en huit langues
-│   ├── intent.py              normalisation et correspondance exacte : la liste d'autorisation fermée
-│   ├── confirmation.py        jetons de confirmation signés, à usage unique, par personne
-│   ├── silence_policy.py      off / pin / double_turn, le PIN prononcé, le blocage
-│   ├── session.py             la règle des deux tours pour chaque commande
-│   ├── gateway.py             lignes JSON sur stdin/stdout, l'audit, les phrases répondues
-│   ├── service.py             le service HTTP local (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                un tour vocal : moteurs, oui/non, budget de temps
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} tests : silence, limites, passerelle, tour, langues, service
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     les contrôles CI partagés et l'outillage du projet
-├── images/                    bannière et icône
-├── .github/                   workflow CI, avis du tableau de bord, modèles de tickets et de pull requests
-├── armor.project.json         manifeste : version, rôle, maturité, commande de compilation
-├── pyproject.toml             métadonnées du paquet et la commande `armor-voice-gateway`
-├── run.sh run.bat             démarrent via le flux de projet partagé
-├── build.sh build.bat         compilent et testent via le flux de projet partagé
-├── CHANGELOG.md               ce qui a changé dans chaque version
+├── src/armor_voice_ai/
+│   ├── turn.py                    un tour de parole : audio, mots, réponse
+│   ├── intent.py                  la liste fermée de commandes, huit langues
+│   ├── phrases.py                 les mots de chaque commande et les réponses parlées
+│   ├── confirmation.py            confirmation signée à usage unique liée à l'orateur
+│   ├── silence_policy.py          ce qu'il faut pour couper les alarmes : off, pin, double tour, défi
+│   ├── session.py                 la règle des deux tours pour armer et désarmer
+│   ├── gateway.py                 lignes JSON en entrée, réponses et ligne d'audit
+│   ├── service.py                 le service HTTP local sur l'adresse de bouclage
+│   ├── wakeword.py                le détecteur local du mot d'éveil, désactivé par défaut
+│   ├── wake_model_check.py        vérifie un modèle de mot d'éveil avant de lui faire confiance
+│   ├── wake_release.py            prépare les modèles d'éveil pour une version : manifeste et signature
+│   └── wyoming.py                 gestionnaire Wyoming pour Assist de Home Assistant : requêtes seules, désactivé par défaut
+├── tests/                         commandes, langues, silence, service, éveil
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         les vérifications CI et les outils partagés
+├── images/                        bannière, icône et images du README
+├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests
+├── armor.project.json             manifeste : version, rôle, maturité
+├── pyproject.toml                 métadonnées du paquet, entrées
+├── CHANGELOG.md                   ce qui a changé à chaque version
+├── run.sh run.bat                 démarrer, flux partagé
+├── build.sh build.bat             construire et tester, flux partagé
+├── build-test.sh build-test.bat   construire, tester, empaqueter
+├── test.sh test.bat               seulement les tests, jamais la version
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -1459,25 +1477,31 @@ GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazi
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        il codice (solo libreria standard)
-│   ├── phrases.py             le 420 frasi dei quindici comandi, in otto lingue
-│   ├── intent.py              normalizzazione e corrispondenza esatta: la lista consentita chiusa
-│   ├── confirmation.py        token di conferma firmati, monouso, per persona
-│   ├── silence_policy.py      off / pin / double_turn, il PIN pronunciato, il blocco
-│   ├── session.py             la regola dei due turni per ogni comando
-│   ├── gateway.py             righe JSON su stdin/stdout, l'audit, le frasi dette in risposta
-│   ├── service.py             il servizio HTTP locale (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                un turno vocale: motori, sì/no, budget di tempo
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} test: silenzio, limiti, gateway, turno, lingue, servizio
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     i controlli CI condivisi e gli strumenti del progetto
-├── images/                    banner e icona
-├── .github/                   workflow CI, avviso della dashboard, modelli di issue e di pull request
-├── armor.project.json         manifesto: versione, ruolo, maturità, comando di compilazione
-├── pyproject.toml             metadati del pacchetto e il comando `armor-voice-gateway`
-├── run.sh run.bat             avviano tramite il flusso di progetto condiviso
-├── build.sh build.bat         compilano e testano tramite il flusso di progetto condiviso
-├── CHANGELOG.md               cosa è cambiato in ogni versione
+├── src/armor_voice_ai/
+│   ├── turn.py                    un turno parlato: audio, parole, risposta
+│   ├── intent.py                  l'elenco chiuso di comandi, otto lingue
+│   ├── phrases.py                 le parole di ogni comando e le risposte parlate
+│   ├── confirmation.py            conferma firmata monouso legata a chi parla
+│   ├── silence_policy.py          cosa serve per silenziare gli allarmi: off, pin, doppio turno, sfida
+│   ├── session.py                 la regola dei due turni per inserire e disinserire
+│   ├── gateway.py                 righe JSON in ingresso, risposte e riga di audit
+│   ├── service.py                 il servizio HTTP locale sull'indirizzo di loopback
+│   ├── wakeword.py                il rilevatore locale della parola di attivazione, disattivato di default
+│   ├── wake_model_check.py        controlla un modello di parola di attivazione prima di fidarsene
+│   ├── wake_release.py            prepara i modelli di attivazione per una release: manifesto e firma
+│   └── wyoming.py                 gestore Wyoming per Assist di Home Assistant: solo interrogazioni, disattivato di default
+├── tests/                         comandi, lingue, silenzio, servizio, attivazione
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         i controlli CI e gli strumenti condivisi
+├── images/                        banner, icona e immagini del README
+├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request
+├── armor.project.json             manifesto: versione, ruolo, maturità
+├── pyproject.toml                 metadati del pacchetto, ingressi
+├── CHANGELOG.md                   cosa è cambiato in ogni versione
+├── run.sh run.bat                 avvio, flusso condiviso
+├── build.sh build.bat             compila e prova, flusso condiviso
+├── build-test.sh build-test.bat   compila, prova e impacchetta
+├── test.sh test.bat               solo i test, mai la versione
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -1817,25 +1841,31 @@ GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: 
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        der Code (nur Standardbibliothek)
-│   ├── phrases.py             die 420 Sätze der fünfzehn Befehle, in acht Sprachen
-│   ├── intent.py              Normalisierung und exakter Abgleich: die geschlossene Erlaubnisliste
-│   ├── confirmation.py        signierte, einmalige Bestätigungs-Tokens pro Person
-│   ├── silence_policy.py      off / pin / double_turn, die gesprochene PIN, die Sperre
-│   ├── session.py             die Zwei-Turn-Regel für jeden Befehl
-│   ├── gateway.py             JSON-Zeilen über stdin/stdout, das Audit, die zurückgesprochenen Sätze
-│   ├── service.py             der lokale HTTP-Dienst (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                ein gesprochener Turn: Engines, Ja/Nein, Zeitbudget
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} Tests: Stummschaltung, Grenzfälle, Gateway, Turn, Sprachen, Dienst
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── images/                    Banner und Symbol
-├── .github/                   CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests
-├── armor.project.json         Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── pyproject.toml             Paketmetadaten und der Befehl `armor-voice-gateway`
-├── run.sh run.bat             starten über den gemeinsamen Projektablauf
-├── build.sh build.bat         bauen und testen über den gemeinsamen Projektablauf
-├── CHANGELOG.md               was sich in jeder Version geändert hat
+├── src/armor_voice_ai/
+│   ├── turn.py                    ein gesprochener Zug: Audio, Wörter, Antwort
+│   ├── intent.py                  die geschlossene Befehlsliste, acht Sprachen
+│   ├── phrases.py                 die Wörter jedes Befehls und die gesprochenen Antworten
+│   ├── confirmation.py            signierte Einmal-Bestätigung, an den Sprecher gebunden
+│   ├── silence_policy.py          was zum Stummschalten der Alarme nötig ist: aus, PIN, Doppelzug, Challenge
+│   ├── session.py                 die Zwei-Züge-Regel für Scharf- und Unscharfschalten
+│   ├── gateway.py                 JSON-Zeilen hinein, Antworten heraus, dazu die Audit-Zeile
+│   ├── service.py                 der lokale HTTP-Dienst auf der Loopback-Adresse
+│   ├── wakeword.py                der lokale Weckwort-Detektor, standardmäßig aus
+│   ├── wake_model_check.py        prüft ein trainiertes Weckwort-Modell, bevor man ihm traut
+│   ├── wake_release.py            bereitet die Weckwort-Modelle für ein Release vor: Manifest und Signatur
+│   └── wyoming.py                 Wyoming-Handler für Home Assistant Assist: nur Abfragen, standardmäßig aus
+├── tests/                         Befehle, Sprachen, Stille, Dienst, Weckwort
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         die gemeinsamen CI-Prüfungen und Werkzeuge
+├── images/                        Banner, Symbol und die Bilder des READMEs
+├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests
+├── armor.project.json             Manifest: Version, Rolle, Reife
+├── pyproject.toml                 Paket-Metadaten, Einstiege
+├── CHANGELOG.md                   was sich in jeder Version geändert hat
+├── run.sh run.bat                 Start, gemeinsamer Ablauf
+├── build.sh build.bat             Bauen und Testen, gemeinsamer Ablauf
+├── build-test.sh build-test.bat   Bauen, Testen und Verpacken
+├── test.sh test.bat               nur die Tests, nie die Version
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -2175,25 +2205,31 @@ GitHub Actions 在每次 push 和 pull request 时运行 A.R.M.O.R. 基线：先
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        代码（仅使用标准库）
-│   ├── phrases.py             十五个命令的 420 个短语，八种语言
-│   ├── intent.py              规范化与精确匹配：封闭的允许列表
-│   ├── confirmation.py        签名的、一次性的、按人区分的确认令牌
-│   ├── silence_policy.py      off / pin / double_turn、口述 PIN、锁定
-│   ├── session.py             每个命令的两轮规则
-│   ├── gateway.py             stdin/stdout 上的 JSON 行、审计、回应的语句
-│   ├── service.py             本地 HTTP 服务（/healthz、/v1/command、/v1/turn）
-│   └── turn.py                一个语音轮次：引擎、是/否、时间预算
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} 项测试：静音、边界、网关、轮次、语言、服务
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     共享的 CI 检查和项目工具
-├── images/                    横幅和图标
-├── .github/                   CI 工作流、仪表板通知、issue 和 pull request 模板
-├── armor.project.json         清单：版本、角色、成熟度、构建命令
-├── pyproject.toml             包元数据和 `armor-voice-gateway` 命令
-├── run.sh run.bat             通过共享项目工作流启动
-├── build.sh build.bat         通过共享项目工作流构建和测试
-├── CHANGELOG.md               每个版本的变更
+├── src/armor_voice_ai/
+│   ├── turn.py                    一轮语音：音频、文字、回答
+│   ├── intent.py                  封闭的命令列表，八种语言
+│   ├── phrases.py                 每条命令的词语与语音回答
+│   ├── confirmation.py            绑定说话人的签名一次性确认
+│   ├── silence_policy.py          静音报警所需条件：关闭、PIN、双轮、质询
+│   ├── session.py                 布防与撤防的两轮规则
+│   ├── gateway.py                 输入 JSON 行，输出回答与审计行
+│   ├── service.py                 回环地址上的本地 HTTP 服务
+│   ├── wakeword.py                本地唤醒词检测，默认关闭
+│   ├── wake_model_check.py        在信任前检查已训练的唤醒词模型
+│   ├── wake_release.py            为发布准备唤醒词模型：清单与签名
+│   └── wyoming.py                 Home Assistant Assist 的 Wyoming 处理器：仅查询，默认关闭
+├── tests/                         命令、语言、静音、服务、唤醒词
+├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         共用的 CI 检查和工具
+├── images/                        横幅图、图标和 README 的图片
+├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板
+├── armor.project.json             清单：版本、角色、成熟度
+├── pyproject.toml                 包元数据、入口
+├── CHANGELOG.md                   每个版本的变化
+├── run.sh run.bat                 启动（共用流程）
+├── build.sh build.bat             构建并测试（共用流程）
+├── build-test.sh build-test.bat   构建、测试并打包
+├── test.sh test.bat               只运行测试，不改版本
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -2533,25 +2569,31 @@ GitHub Actions は、push と pull request のたびに A.R.M.O.R. のベース�
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        コード（標準ライブラリのみ）
-│   ├── phrases.py             15 のコマンドの 420 フレーズ、8 言語
-│   ├── intent.py              整形と完全一致：閉じた許可リスト
-│   ├── confirmation.py        署名付き・一度限り・人ごとの確認トークン
-│   ├── silence_policy.py      off / pin / double_turn、音声 PIN、ロック
-│   ├── session.py             コマンドごとの 2 ターンのルール
-│   ├── gateway.py             stdin/stdout の JSON Lines、監査、返す文
-│   ├── service.py             ローカル HTTP サービス（/healthz、/v1/command、/v1/turn）
-│   └── turn.py                1 回の音声ターン：エンジン、はい/いいえ、時間の持ち時間
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} 件のテスト：サイレンス、エッジ、ゲートウェイ、ターン、言語、サービス
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     共通の CI チェックとプロジェクトのツール
-├── images/                    バナーとアイコン
-├── .github/                   CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート
-├── armor.project.json         マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── pyproject.toml             パッケージのメタデータと `armor-voice-gateway` コマンド
-├── run.sh run.bat             共通プロジェクトワークフローで起動
-├── build.sh build.bat         共通プロジェクトワークフローでビルドとテスト
-├── CHANGELOG.md               各バージョンの変更点
+├── src/armor_voice_ai/
+│   ├── turn.py                    1 回の発話ターン：音声、言葉、応答
+│   ├── intent.py                  限定されたコマンド一覧（8 言語）
+│   ├── phrases.py                 各コマンドの言葉と音声応答
+│   ├── confirmation.py            話者に結び付いた署名付き使い捨て確認
+│   ├── silence_policy.py          警報を消音する条件：off、PIN、二度の発話、チャレンジ
+│   ├── session.py                 警戒・解除の 2 ターン規則
+│   ├── gateway.py                 JSON 行の入力、応答、監査行
+│   ├── service.py                 ループバック上のローカル HTTP サービス
+│   ├── wakeword.py                ローカルのウェイクワード検出（既定はオフ）
+│   ├── wake_model_check.py        学習済みウェイクワードモデルを信頼前に検査
+│   ├── wake_release.py            リリース用ウェイクワードモデルの準備：マニフェストと署名
+│   └── wyoming.py                 Home Assistant Assist 用 Wyoming ハンドラー：照会のみ、既定はオフ
+├── tests/                         コマンド、言語、消音、サービス、ウェイクワード
+├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         共通の CI 検査とツール
+├── images/                        バナー、アイコン、README の画像
+├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート
+├── armor.project.json             マニフェスト：版・役割・成熟度
+├── pyproject.toml                 パッケージ情報とエントリー
+├── CHANGELOG.md                   各バージョンの変更点
+├── run.sh run.bat                 起動（共通フロー）
+├── build.sh build.bat             ビルドとテスト（共通フロー）
+├── build-test.sh build-test.bat   ビルド、テスト、パッケージ化
+├── test.sh test.bat               テストのみ（版は変えません）
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 
@@ -2891,25 +2933,31 @@ O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a val
 
 ```text
 ARMOR-VOICE-AI/
-├── src/armor_voice_ai/        o código (apenas biblioteca padrão)
-│   ├── phrases.py             as 420 frases dos quinze comandos, em oito idiomas
-│   ├── intent.py              normalização e correspondência exata: a lista fechada
-│   ├── confirmation.py        tokens de confirmação assinados, de uso único e por pessoa
-│   ├── silence_policy.py      off / pin / double_turn, o PIN falado, o bloqueio
-│   ├── session.py             a regra de dois turnos de cada comando
-│   ├── gateway.py             linhas JSON em stdin/stdout, a auditoria, as frases dadas em resposta
-│   ├── service.py             o serviço HTTP local (/healthz, /v1/command, /v1/turn)
-│   └── turn.py                um turno falado: motores, sim/não, orçamento de tempo
-├── tests/                     {{fact:tests:ARMOR-VOICE-AI}} testes: silêncio, limites, porta de ligação, turno, idiomas, serviço
-├── docs/                      SAFETY.md, SERVICE.md, SILENCE_POLICY.md
-├── tools/                     as verificações de CI partilhadas e as ferramentas do projeto
-├── images/                    faixa e ícone
-├── .github/                   fluxo de CI, aviso do painel, modelos de issues e de pull requests
-├── armor.project.json         manifesto: versão, função, maturidade, comando de compilação
-├── pyproject.toml             metadados do pacote e o comando `armor-voice-gateway`
-├── run.sh run.bat             arrancam pelo fluxo de projeto partilhado
-├── build.sh build.bat         compilam e testam pelo fluxo de projeto partilhado
-├── CHANGELOG.md               o que mudou em cada versão
+├── src/armor_voice_ai/
+│   ├── turn.py                    uma vez falada: áudio, palavras, resposta
+│   ├── intent.py                  a lista fechada de comandos, oito idiomas
+│   ├── phrases.py                 as palavras de cada comando e as respostas faladas
+│   ├── confirmation.py            confirmação assinada de uso único ligada a quem fala
+│   ├── silence_policy.py          o que é preciso para silenciar os alarmes: off, pin, dupla volta, desafio
+│   ├── session.py                 a regra das duas voltas para armar e desarmar
+│   ├── gateway.py                 linhas JSON de entrada, respostas e a linha de auditoria
+│   ├── service.py                 o serviço HTTP local no endereço de loopback
+│   ├── wakeword.py                o detetor local da palavra de ativação, desativado por omissão
+│   ├── wake_model_check.py        verifica um modelo de palavra de ativação antes de confiar nele
+│   ├── wake_release.py            prepara os modelos de ativação para uma versão: manifesto e assinatura
+│   └── wyoming.py                 gestor Wyoming para o Assist do Home Assistant: só consultas, desativado por omissão
+├── tests/                         comandos, idiomas, silêncio, serviço, ativação
+├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
+├── tools/                         as verificações de CI e as ferramentas partilhadas
+├── images/                        faixa, ícone e as imagens do README
+├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests
+├── armor.project.json             manifesto: versão, função, maturidade
+├── pyproject.toml                 metadados do pacote, entradas
+├── CHANGELOG.md                   o que mudou em cada versão
+├── run.sh run.bat                 arrancar, fluxo partilhado
+├── build.sh build.bat             compilar e testar, fluxo partilhado
+├── build-test.sh build-test.bat   compilar, testar e empacotar
+├── test.sh test.bat               só os testes, nunca a versão
 └── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
 ```
 

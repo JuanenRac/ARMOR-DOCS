@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The README sources carry the new lines of the repository trees:** `firmware_base.lock` in the five node repositories, the movement model, the learning of areas to ignore and the radar geometry in the server AI, and the full list of modules in the voice service, in the eight languages.
 - **The catalogue, the compatibility page and its lock, and the computed manifest facts follow the repositories again:** the shared contracts at 0.8.1.5, the deployment repository at 0.7.7 and the evidence of eight manifests now reading simulator.
 - **The shared tools of the manifest and the status lights gain an opt-in strict check of the evidence:** `sync_manifests.py` and `status_lights.py` take `--strict-evidence` (off by default; `ARMOR_STRICT_EVIDENCE=1` switches it on for `armor_ci_validate.py`).
 - **The README sources follow what the repositories gained:** the lights that went down with the evidence of eight manifests, the settings that sign the orders to the radar node and the wall panel, the node panels on an origin of their own (server and Studio) and the test counts of the server and Studio.
