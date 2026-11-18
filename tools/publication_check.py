@@ -37,6 +37,15 @@ VECTOR_PATH = re.compile(r"(^|/)conformance/|(^|/)make_conformance\.py(:\d+)?$|(
 VECTOR_VALUE_PREFIXES = ("0123456789ab", "ab12cd34", "armor-diag-")
 ALLOWED_AUTHOR = "JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>"   # the one clean_history.py gives the single commit it makes
 ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>", "JuanenRac <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
+# The committer a squash merge made on GitHub gets (the author stays the project's own), and the bots that open the pull requests of the family: an explicit list, never "any bot".
+GITHUB_COMMITTER = "GitHub <noreply@github.com>"
+KNOWN_BOTS = {"github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>", "dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>"}
+ALLOWED_COMMITTERS = ALLOWED_AUTHORS | KNOWN_BOTS | {GITHUB_COMMITTER}
+ALLOWED_AUTHORS = ALLOWED_AUTHORS | KNOWN_BOTS
+# The tests of this repository's own checks (the publication check, the figures of the documents, the site) carry sample keys, addresses and e-mails on purpose, to prove that
+# the checks refuse them: those files, in ARMOR-DOCS only, are not scanned for such samples. The same file name in another repository, or any other file here, is.
+SELF_TEST_REPOSITORY = "ARMOR-DOCS"
+SELF_TEST_FILES = re.compile(r"^tests/test_(publication_check|doc_facts|make_site)\.py(:\d+)?$")
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
 
 PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
@@ -91,6 +100,8 @@ def public_ip(text: str) -> bool:
 
 
 def scan_text(name: str, where: str, text: str, findings: list[tuple[str, str, str, str]]) -> None:
+    if name == SELF_TEST_REPOSITORY and SELF_TEST_FILES.match(where):
+        return
     for number, line in enumerate(text.splitlines(), 1):
         if len(line) > 2000:
             continue
@@ -168,7 +179,7 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
         if len(parts) < 4:
             continue
         sha, author, committer, message = parts[0][:10], parts[1], parts[2], parts[3]
-        if author not in ALLOWED_AUTHORS or committer not in ALLOWED_AUTHORS:
+        if author not in ALLOWED_AUTHORS or committer not in ALLOWED_COMMITTERS:
             findings.append(("BLOCK", name, f"commit {sha}", f"author or committer is not the project's ({author.split('<')[0].strip()})"))
         if re.search(r"(?im)^(co-authored-by|generated with|signed-off-by)\b", message) or "claude" in message.lower():
             findings.append(("BLOCK", name, f"commit {sha}", "the message has a co-author, AI or sign-off trailer"))

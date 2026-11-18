@@ -1,5 +1,7 @@
 import contextlib
 import io
+import os
+import subprocess
 import unittest
 from unittest import mock
 
@@ -100,6 +102,26 @@ class ScanTextTests(unittest.TestCase):
         self.assertFalse(check.FIXTURE_PATH.search("src/contest/a.py"))
 
 
+class SelfTestFileTests(unittest.TestCase):
+    """The tests of the checks of ARMOR-DOCS carry samples on purpose; nothing else is let through."""
+
+    def scan_in(self, repository, where):
+        findings = []
+        check.scan_text(repository, where, "KEY = '-----BEGIN PRIVATE KEY-----'\nIP = '93.184.216.34'\nMAIL = 'someone@gmail.com'\n", findings)
+        return findings
+
+    def test_the_samples_of_the_own_tests_of_the_checks_are_not_findings(self):
+        for name in ("test_publication_check.py", "test_doc_facts.py", "test_make_site.py"):
+            self.assertEqual(self.scan_in("ARMOR-DOCS", "tests/" + name), [], name)
+
+    def test_any_other_file_of_the_repository_still_blocks(self):
+        self.assertEqual(len(self.scan_in("ARMOR-DOCS", "tests/test_other.py")), 3)
+        self.assertEqual(len(self.scan_in("ARMOR-DOCS", "tools/publication_check.py")), 3)
+
+    def test_the_same_file_name_in_another_repository_still_blocks(self):
+        self.assertEqual(len(self.scan_in("ARMOR-COMMON", "tests/test_publication_check.py")), 3)
+
+
 class ConformanceVectorTests(unittest.TestCase):
     SAMPLE = '"token": "0123456789abcdef0123456789abcdef"'
 
@@ -164,6 +186,32 @@ class CheckRepoTests(unittest.TestCase):
             repo.write("a.txt", "x\n")
             repo.commit("Add", name="Electro Hobby 3D", email="electrohobby3d@gmail.com")
             self.assertEqual(check.check_repo(repo.path, history=False), [])
+
+    def commit_as(self, repo, author, committer):
+        repo.write("a.txt", "x\n")
+        repo.git("add", "-A")
+        env = dict(os.environ, GIT_AUTHOR_NAME=author[0], GIT_AUTHOR_EMAIL=author[1], GIT_COMMITTER_NAME=committer[0], GIT_COMMITTER_EMAIL=committer[1])
+        subprocess.run(["git", "-C", str(repo.path), "commit", "-q", "-m", "Add"], check=True, env=env, capture_output=True)
+
+    def test_the_committer_of_a_squash_merge_on_github_is_allowed_with_the_projects_author(self):
+        with TempRepo() as repo:
+            self.commit_as(repo, ("Electro Hobby 3D", "electrohobby3d@gmail.com"), ("GitHub", "noreply@github.com"))
+            self.assertEqual(check.check_repo(repo.path, history=False), [])
+
+    def test_a_foreign_author_is_refused_even_when_github_committed_it(self):
+        with TempRepo() as repo:
+            self.commit_as(repo, ("Somebody Else", "else@example.org"), ("GitHub", "noreply@github.com"))
+            self.assertEqual(len(check.check_repo(repo.path, history=False)), 1)
+
+    def test_the_listed_bots_are_allowed_and_another_bot_is_not(self):
+        with TempRepo() as repo:
+            bot = ("github-actions[bot]", "41898282+github-actions[bot]@users.noreply.github.com")
+            self.commit_as(repo, bot, bot)
+            self.assertEqual(check.check_repo(repo.path, history=False), [])
+        with TempRepo() as repo:
+            other = ("some-app[bot]", "1+some-app[bot]@users.noreply.github.com")
+            self.commit_as(repo, other, other)
+            self.assertEqual(len(check.check_repo(repo.path, history=False)), 1)
 
     def test_trailers_and_ai_mentions_in_commit_messages_block(self):
         for message in ("Fix\n\nCo-Authored-By: Someone <a@b.c>", "Fix\n\nGenerated with a tool", "Fix\n\nSigned-off-by: X", "Ask " + "Cla" + "ude about it"):   # the word the check refuses, written in two pieces so that this file does not carry it
