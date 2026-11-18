@@ -100,6 +100,27 @@ class ScanTextTests(unittest.TestCase):
         self.assertFalse(check.FIXTURE_PATH.search("src/contest/a.py"))
 
 
+class ConformanceVectorTests(unittest.TestCase):
+    SAMPLE = '"token": "0123456789abcdef0123456789abcdef"'
+
+    def test_the_documented_sample_values_of_the_vectors_are_allowed(self):
+        for where in ("conformance/node_control_command.json", "conformance/wire_cases.tsv", "tools/make_conformance.py", "tests/test_contracts.py"):
+            self.assertEqual(scan(self.SAMPLE, where), [], where)
+        self.assertEqual(scan('"token": "AB12CD34EF56AB12"', "conformance/electrical_command.json"), [])
+        self.assertEqual(scan('"token": "ab12cd34ef56ab12"', "conformance/electrical_result.json"), [])
+
+    def test_the_same_value_outside_the_vector_files_is_still_reviewed(self):
+        self.assertEqual([f[0] for f in scan(self.SAMPLE, "src/config.py")], ["REVIEW"])
+
+    def test_another_value_in_a_vector_file_is_still_reviewed(self):
+        self.assertEqual([f[0] for f in scan('"token": "Zk3q9Xw7Lm2Pv8Rt"', "conformance/node_control_command.json")], ["REVIEW"])
+
+    def test_real_secrets_still_block_in_a_vector_file(self):
+        self.assertEqual([f[0] for f in scan("-----BEGIN RSA PRIVATE KEY-----", "conformance/a.json")], ["BLOCK"])
+        self.assertEqual([f[0] for f in scan("server at 93.184.216.34", "conformance/a.json")], ["BLOCK"])
+        self.assertEqual([f[0] for f in scan("write to somebody.private@gmail.com", "conformance/a.json")], ["BLOCK"])
+
+
 class CheckRepoTests(unittest.TestCase):
     def test_clean_repository_has_no_findings(self):
         with TempRepo() as repo:

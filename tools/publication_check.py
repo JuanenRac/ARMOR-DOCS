@@ -29,6 +29,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE_PATH = re.compile(r"(^|/)(tests?|conformance)/|(^|/)test_[^/]*$")
+# The conformance vectors (conformance/*.json, *.tsv), the tool that writes them and the tests that read them carry sample keys on purpose
+# ("literal token 0123456789ab..."): the allow list is these files AND these documented sample values (a counting sequence and a pattern of
+# letters and digits). Any other value in the same file is still reported for a human look, and a private key, an address or a secret in a
+# build setting still blocks there.
+VECTOR_PATH = re.compile(r"(^|/)conformance/|(^|/)make_conformance\.py(:\d+)?$|(^|/)tests?/|(^|/)test_[^/]*$")
+VECTOR_VALUE_PREFIXES = ("0123456789ab", "ab12cd34", "armor-diag-")
 ALLOWED_AUTHOR = "JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>"   # the one clean_history.py gives the single commit it makes
 ALLOWED_AUTHORS = {ALLOWED_AUTHOR, "Electro Hobby 3D <electrohobby3d@gmail.com>", "JuanenRac <electrohobby3d@gmail.com>"}   # both names of the same person are the project's own
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
@@ -71,6 +77,11 @@ def git(repo: Path, *args: str, check: bool = True) -> str:
     return result.stdout
 
 
+def is_conformance_vector(where: str, value: str) -> bool:
+    """A value of the conformance vectors (or of the tool that writes them) is data of the contract, not a secret: it is one of the documented sample values and it sits in a vector file."""
+    return bool(VECTOR_PATH.search(where)) and value.lower().startswith(VECTOR_VALUE_PREFIXES)
+
+
 def public_ip(text: str) -> bool:
     try:
         address = ipaddress.ip_address(text)
@@ -100,6 +111,8 @@ def scan_text(name: str, where: str, text: str, findings: list[tuple[str, str, s
         for match in LITERAL.finditer(line):
             value = match.group(2)
             if not HARMLESS.search(value) and not HARMLESS.search(line) and len(set(value)) > 3:
+                if is_conformance_vector(where, value):
+                    continue
                 findings.append(("REVIEW", name, ref, f"literal {match.group(1).lower()} {value[:3]}..."))
 
 
