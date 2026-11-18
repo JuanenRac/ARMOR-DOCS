@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -88,7 +89,7 @@ def arch(lg: str, repo: str, alt: str, mermaid: str | None = None, before: str =
 
 
 def _structure_tool():
-    path = ROOT / "ARMOR-DOCS" / "tools" / "make_structure.py"
+    path = Path(__file__).resolve().parents[1] / "make_structure.py"   # next to make_readmes.py, whatever the folder of this repository is called
     spec = importlib.util.spec_from_file_location("_a2_make_structure", path)
     module = importlib.util.module_from_spec(spec)
     import sys
@@ -97,21 +98,34 @@ def _structure_tool():
     return module
 
 
-def structure(lg: str, repo: str, tree: str | None = None, before: str = "", after: str = "") -> str:
-    """The Repository Structure section: the picture and the text tree. The tree is the one of docs/structure.json of the repository, carried by the source of its README
-    (a source must not read a sibling repository: in CI there is none); `make_structure.py --check --readmes` of the repository fails when the two disagree."""
-    if tree is None:
-        tool = _structure_tool()
-        spec = json.loads((ROOT / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
-        tree = tool.render_tree(spec, lg)
+STRUCTURE_ALT = P("Repository structure of {repo}", "Estructura del repositorio de {repo}", "Repository-Struktur von {repo}", "Structure du dépôt de {repo}",
+                  "Struttura del repository di {repo}", "{repo} のリポジトリ構造", "{repo} 的仓库结构", "Estrutura do repositório de {repo}")
+TREE_TOKEN = re.compile(r"\{\{tree:([a-z]{2}):([A-Za-z0-9_.\-]+)\}\}")
+
+
+def tree_text(lg: str, repo: str, root: Path | None = None) -> str:
+    """The text tree of a repository in a language, drawn from the docs/structure.json of that repository (the same file that draws its picture)."""
+    tool = _structure_tool()
+    spec = json.loads(((root or ROOT) / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
+    return tool.render_tree(spec, lg)
+
+
+def with_trees(text: str, root: Path | None = None) -> str:
+    """The text with every {{tree:LG:REPO}} written as the tree of that repository; a source never holds the tree itself."""
+    return TREE_TOKEN.sub(lambda match: tree_text(match.group(1), match.group(2), root), text)
+
+
+def structure(lg: str, repo: str, before: str = "", after: str = "") -> str:
+    """The Repository Structure section: the picture and the text tree. The tree is NOT written in the source: it is the marker {{tree:LG:REPO}}, which make_readmes.py
+    replaces by the tree of docs/structure.json of the repository when it renders (a source must not read a sibling repository at import: in CI there is none)."""
     parts = []
     if before.strip():
         parts.append(before.strip())
-    parts.append('<p align="center">'+chr(10)+f'  <img src="images/repository-structure.svg" alt="Repository structure of {repo}" width="100%">'+chr(10)+'</p>')
-    parts.append('<details>'+chr(10)+f'<summary>{SUMMARY_TREE[lg]}</summary>'+chr(10)*2+'```text'+chr(10)+tree+chr(10)+'```'+chr(10)*2+'</details>')
+    parts.append('<p align="center">' + chr(10) + f'  <img src="images/repository-structure.svg" alt="{STRUCTURE_ALT[lg].format(repo=repo)}" width="100%">' + chr(10) + '</p>')
+    parts.append('<details>' + chr(10) + f'<summary>{SUMMARY_TREE[lg]}</summary>' + chr(10) * 2 + '```text' + chr(10) + "{{tree:" + lg + ":" + repo + "}}" + chr(10) + '```' + chr(10) * 2 + '</details>')
     if after.strip():
         parts.append(after.strip())
-    return (chr(10)*2).join(parts)
+    return (chr(10) * 2).join(parts)
 
 
 def code(lg: str, lines, shell: str = "powershell") -> str:

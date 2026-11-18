@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-NODE-RADAR, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "📡",
   "layout": "universal",
@@ -247,41 +249,7 @@ The web panel is also exercised in a real browser against a stand-in node (`tool
 | An update from GitHub is refused | The release has no checksum or signature, they do not match (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), has no image for this board (`e_no_asset_for_board`) or is for another project (`e_wrong_firmware`) | Nothing changed on the node; try again or let an administrator upload the file by hand |
 | The radar commands answer `no_answer`, `refused` or `disabled` | The radar's TX wire is not connected, the module hung, or the node closes its Bluetooth first | Check the wiring (see the bench bring-up), restart the module from the panel |
 | The node shows no sensor 3 or lets a radar sleep | The module stopped talking (silence with no bad frames) | Use *restart module* in the radars page, then close the sensor's own Bluetooth |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                the firmware: an ESP-IDF component
-├── panel/                               the web panel embedded in the firmware
-├── tests/                               host tests and Python checks
-├── docs/                                7 guides for the bench and the panel
-├── tools/                               build, flash, adopt, fleet and check tools
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── CMakeLists.txt                       the ESP-IDF project
-├── firmware_base.lock                   the version of the shared base this copy was synced from
-├── partitions.csv                       the flash table
-├── sdkconfig.defaults                   the firmware settings
-├── sdkconfig.board.s3-eth               the Ethernet board
-├── sdkconfig.board.s3-wifi              the Wi-Fi board
-├── secrets/                             fleet and node file examples
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Known limits today**
 
 * The LD2461 and presence-sensor decoders match only the worked examples of their manuals, with no module behind them; the radar command channel is unchecked against a module other than the LD2450.
@@ -477,41 +445,7 @@ El panel web también se ejercita en un navegador real contra un nodo de pruebas
 | Se rechaza una actualización desde GitHub | La versión no trae suma de comprobación ni firma, no coinciden (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), no trae imagen para esta placa (`e_no_asset_for_board`) o es de otro proyecto (`e_wrong_firmware`) | El nodo no cambió; reintenta o deja que un administrador suba el fichero a mano |
 | Las órdenes al radar responden `no_answer`, `refused` o `disabled` | El hilo TX del radar no está conectado, el módulo se colgó o el nodo cierra antes su Bluetooth | Revisa el cableado (mira la puesta en marcha en banco), reinicia el módulo desde el panel |
 | El nodo no muestra el sensor 3 o deja dormir un radar | El módulo dejó de hablar (silencio sin tramas malas) | Usa *reiniciar módulo* en la página de radares y luego cierra el Bluetooth del propio sensor |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                el firmware: un componente de ESP-IDF
-├── panel/                               el panel web embebido en el firmware
-├── tests/                               pruebas de host y comprobaciones Python
-├── docs/                                7 guías del banco y del panel
-├── tools/                               herramientas de compilación, grabación, adopción, flota y comprobación
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── CMakeLists.txt                       el proyecto ESP-IDF
-├── firmware_base.lock                   la versión de la base compartida de la que se sincronizó esta copia
-├── partitions.csv                       la tabla de la flash
-├── sdkconfig.defaults                   los ajustes del firmware
-├── sdkconfig.board.s3-eth               la placa Ethernet
-├── sdkconfig.board.s3-wifi              la placa Wi-Fi
-├── secrets/                             ejemplos de ficheros de flota y nodo
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Los decodificadores LD2461 y de presencia solo coinciden con los ejemplos de sus manuales, sin módulo detrás; el canal de órdenes del radar no se ha comprobado con otro módulo que el LD2450.
@@ -707,41 +641,7 @@ Das Web-Panel wird außerdem in einem echten Browser gegen einen Ersatzknoten (`
 | Ein Update von GitHub wird abgelehnt | Die Version enthält keine Prüfsumme oder Signatur, sie passen nicht (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), hat kein Image für diese Platine (`e_no_asset_for_board`) oder gehört zu einem anderen Projekt (`e_wrong_firmware`) | Der Knoten blieb unverändert; erneut versuchen oder einen Administrator die Datei von Hand hochladen lassen |
 | Die Radar-Befehle antworten `no_answer`, `refused` oder `disabled` | Die TX-Leitung des Radars ist nicht angeschlossen, das Modul hängt, oder der Knoten schließt zuerst sein Bluetooth | Prüfe die Verdrahtung (siehe Prüfstand-Inbetriebnahme), starte das Modul im Panel neu |
 | Der Knoten zeigt Sensor 3 nicht oder lässt ein Radar schlafen | Das Modul hat aufgehört zu senden (Stille ohne fehlerhafte Frames) | Nutze *Modul neu starten* auf der Radar-Seite und schließe dann das eigene Bluetooth des Sensors |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                die Firmware: eine ESP-IDF-Komponente
-├── panel/                               das im Firmware eingebettete Web-Panel
-├── tests/                               Host-Tests und Python-Prüfungen
-├── docs/                                7 Anleitungen für Prüfstand und Panel
-├── tools/                               Werkzeuge für Build, Flashen, Adoption, Flotte und Prüfung
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── CMakeLists.txt                       das ESP-IDF-Projekt
-├── firmware_base.lock                   die Version der gemeinsamen Basis, mit der diese Kopie abgeglichen wurde
-├── partitions.csv                       die Flash-Tabelle
-├── sdkconfig.defaults                   die Firmware-Einstellungen
-├── sdkconfig.board.s3-eth               die Ethernet-Platine
-├── sdkconfig.board.s3-wifi              die WLAN-Platine
-├── secrets/                             Beispiele für Flotten- und Knotendatei
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Decoder für LD2461 und Präsenz stimmen nur mit den Beispielen ihrer Handbücher überein, ohne Modul dahinter; der Befehlskanal wurde nur am LD2450 geprüft.
@@ -937,41 +837,7 @@ Le panneau web est aussi exercé dans un vrai navigateur contre un nœud de subs
 | Une mise à jour depuis GitHub est refusée | La version n'a ni somme de contrôle ni signature, elles ne concordent pas (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), n'a pas d'image pour cette carte (`e_no_asset_for_board`) ou est d'un autre projet (`e_wrong_firmware`) | Le nœud n'a pas changé ; réessayez ou laissez un administrateur envoyer le fichier à la main |
 | Les commandes du radar répondent `no_answer`, `refused` ou `disabled` | Le fil TX du radar n'est pas connecté, le module s'est bloqué ou le nœud ferme d'abord son Bluetooth | Vérifiez le câblage (voir la mise en service sur banc), redémarrez le module depuis le panneau |
 | Le nœud ne montre pas le capteur 3 ou laisse un radar dormir | Le module a cessé de parler (silence sans trame mauvaise) | Utilisez *redémarrer le module* dans la page des radars, puis fermez le Bluetooth du capteur |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                le firmware : un composant ESP-IDF
-├── panel/                               le panneau web intégré au firmware
-├── tests/                               tests sur hôte et contrôles Python
-├── docs/                                7 guides du banc et du panneau
-├── tools/                               outils de build, flashage, adoption, flotte et contrôle
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── CMakeLists.txt                       le projet ESP-IDF
-├── firmware_base.lock                   la version de la base partagée dont cette copie a été synchronisée
-├── partitions.csv                       la table de la flash
-├── sdkconfig.defaults                   les réglages du firmware
-├── sdkconfig.board.s3-eth               la carte Ethernet
-├── sdkconfig.board.s3-wifi              la carte Wi-Fi
-├── secrets/                             exemples de fichiers de flotte et de nœud
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Les décodeurs LD2461 et de présence ne correspondent qu'aux exemples de leurs manuels, sans module derrière ; le canal de commandes n'a été vérifié qu'avec le LD2450.
@@ -1167,41 +1033,7 @@ Il pannello web è anche provato in un browser reale contro un nodo sostitutivo 
 | Un aggiornamento da GitHub è rifiutato | La versione non ha checksum o firma, non corrispondono (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), non ha un'immagine per questa scheda (`e_no_asset_for_board`) o è di un altro progetto (`e_wrong_firmware`) | Il nodo non è cambiato; riprova o lascia che un amministratore carichi il file a mano |
 | I comandi al radar rispondono `no_answer`, `refused` o `disabled` | Il filo TX del radar non è collegato, il modulo si è bloccato o il nodo chiude prima il suo Bluetooth | Controlla il cablaggio (vedi la messa in servizio al banco), riavvia il modulo dal pannello |
 | Il nodo non mostra il sensore 3 o lascia dormire un radar | Il modulo ha smesso di parlare (silenzio senza frame errati) | Usa *riavvia modulo* nella pagina dei radar, poi chiudi il Bluetooth del sensore |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                il firmware: un componente ESP-IDF
-├── panel/                               il pannello web incorporato nel firmware
-├── tests/                               test su host e verifiche Python
-├── docs/                                7 guide per il banco e il pannello
-├── tools/                               strumenti di build, flash, adozione, flotta e verifica
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── CMakeLists.txt                       il progetto ESP-IDF
-├── firmware_base.lock                   la versione della base condivisa da cui è stata sincronizzata questa copia
-├── partitions.csv                       la tabella della flash
-├── sdkconfig.defaults                   le impostazioni del firmware
-├── sdkconfig.board.s3-eth               la scheda Ethernet
-├── sdkconfig.board.s3-wifi              la scheda Wi-Fi
-├── secrets/                             esempi di file di flotta e nodo
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Limiti noti oggi**
 
 * I decodificatori LD2461 e di presenza coincidono solo con gli esempi dei loro manuali, senza modulo dietro; il canale dei comandi è stato verificato solo con l'LD2450.
@@ -1397,41 +1229,7 @@ Web パネルは、代役ノード（`tools/panel_mock.mjs`）を相手に実際
 | GitHub からの更新が拒否される | リリースにチェックサムや署名がない、一致しない（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`）、この基板用のイメージがない（`e_no_asset_for_board`）、または別プロジェクトのもの（`e_wrong_firmware`） | ノードは変更されていません。再試行するか、管理者が手動でファイルをアップロード |
 | レーダーのコマンドが `no_answer`、`refused`、`disabled` を返す | レーダーの TX 線が未接続、モジュールがフリーズ、またはノードが先に Bluetooth を閉じている | 配線（ベンチ立ち上げの手順）を確認し、パネルからモジュールを再起動 |
 | センサー 3 が表示されない、またはレーダーが眠ったままになる | モジュールが応答しなくなった（不正フレームなしの無音） | レーダーページの*モジュール再起動*を使い、その後センサー自身の Bluetooth を閉じる |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-RADAR のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                ファームウェア（ESP-IDF コンポーネント）
-├── panel/                               ファームウェアに埋め込まれた Web パネル
-├── tests/                               ホストテストと Python 検査
-├── docs/                                ベンチとパネルの 7 つのガイド
-├── tools/                               ビルド・書き込み・採用・フリート・検査のツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── CMakeLists.txt                       ESP-IDF プロジェクト
-├── firmware_base.lock                   この複製が同期された共有ベースのバージョン
-├── partitions.csv                       フラッシュのテーブル
-├── sdkconfig.defaults                   ファームウェアの設定
-├── sdkconfig.board.s3-eth               Ethernet 基板
-├── sdkconfig.board.s3-wifi              Wi-Fi 基板
-├── secrets/                             フリートとノードのファイルの例
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**現時点の既知の制限**
 
 * LD2461 と人感センサーのデコーダーはマニュアルの例とだけ一致し、実モジュールはありません。コマンドチャネルは LD2450 でしか確認していません。
@@ -1627,41 +1425,7 @@ python -I tools/armor_ci_validate.py
 | 来自 GitHub 的更新被拒绝 | 发布版缺少校验和或签名，或二者不匹配（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`），没有适用于此电路板的镜像（`e_no_asset_for_board`），或属于另一个项目（`e_wrong_firmware`） | 节点未发生任何变化；请重试，或由管理员手动上传文件 |
 | 雷达命令返回 `no_answer`、`refused` 或 `disabled` | 雷达的 TX 线未连接、模块卡死，或节点先关闭了其蓝牙 | 检查接线（见台架调试），在面板中重启模块 |
 | 节点没有显示传感器 3，或让雷达休眠 | 模块不再发送数据（静默，且没有坏帧） | 在雷达页面使用*重启模块*，然后关闭传感器自带的蓝牙 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-RADAR 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                固件：一个 ESP-IDF 组件
-├── panel/                               嵌入固件的网页面板
-├── tests/                               主机测试和 Python 检查
-├── docs/                                7 份台架与面板指南
-├── tools/                               构建、刷写、接入、机群和检查工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── CMakeLists.txt                       ESP-IDF 项目
-├── firmware_base.lock                   此副本所同步的共享基础版本
-├── partitions.csv                       闪存分区表
-├── sdkconfig.defaults                   固件设置
-├── sdkconfig.board.s3-eth               以太网电路板
-├── sdkconfig.board.s3-wifi              Wi-Fi 电路板
-├── secrets/                             机群和节点文件示例
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**目前已知的限制**
 
 * LD2461 和存在传感器的解码器只与手册中的示例相符，没有真实模块；命令通道只对 LD2450 验证过。
@@ -1857,41 +1621,7 @@ O painel web também é exercitado num navegador real contra um nó de substitui
 | Uma atualização do GitHub é recusada | A versão não traz soma de verificação nem assinatura, não coincidem (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), não traz imagem para esta placa (`e_no_asset_for_board`) ou é de outro projeto (`e_wrong_firmware`) | O nó não mudou; tente de novo ou deixe um administrador enviar o ficheiro à mão |
 | Os comandos ao radar respondem `no_answer`, `refused` ou `disabled` | O fio TX do radar não está ligado, o módulo bloqueou ou o nó fecha primeiro o seu Bluetooth | Verifique a cablagem (veja o arranque em bancada), reinicie o módulo no painel |
 | O nó não mostra o sensor 3 ou deixa um radar a dormir | O módulo deixou de falar (silêncio sem tramas más) | Use *reiniciar módulo* na página de radares e depois feche o Bluetooth do próprio sensor |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-NODE-RADAR" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-NODE-RADAR/
-├── main/                                o firmware: um componente ESP-IDF
-├── panel/                               o painel web embebido no firmware
-├── tests/                               testes de anfitrião e verificações Python
-├── docs/                                7 guias da bancada e do painel
-├── tools/                               ferramentas de compilação, gravação, adoção, frota e verificação
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── CMakeLists.txt                       o projeto ESP-IDF
-├── firmware_base.lock                   a versão da base partilhada de que esta cópia foi sincronizada
-├── partitions.csv                       a tabela da flash
-├── sdkconfig.defaults                   as definições do firmware
-├── sdkconfig.board.s3-eth               a placa Ethernet
-├── sdkconfig.board.s3-wifi              a placa Wi-Fi
-├── secrets/                             exemplos de ficheiros de frota e nó
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-NODE-RADAR"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * Os descodificadores LD2461 e de presença só coincidem com os exemplos dos seus manuais, sem módulo atrás; o canal de comandos só foi verificado com o LD2450.

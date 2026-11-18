@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-VISION, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "👁️",
   "layout": "universal",
@@ -201,51 +203,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` exits with 2 | The file cannot be read | Check the path and that it is JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")`: no settings, no engine file or no Jetson packages | Give `TensorrtSettings` and an engine file on the Jetson, or use `ScriptedDetector` |
 | A zone never fires | The feet are outside the polygon, the label is not accepted, a mask hides it, or the mode has no profile with that zone | Run `simulate` with the same file and mode |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      polygons on normalised coordinates
-│   ├── config.py                        zones, masks, profiles and their validation
-│   ├── motion.py                        the 16 x 9 motion check, masks ignored
-│   ├── detector.py                      scripted, ONNX and TensorRT detectors (simulated engine off the Jetson)
-│   ├── tracker.py                       identity between pictures; stationary objects
-│   ├── rules.py                         zones to events: armor.vision.event/v1
-│   ├── tensorrt_detector.py             the TensorRT detector for the Jetson; a simulated engine
-│   ├── streams.py recording.py          sub stream to analyse, main stream to record; clips and retention
-│   ├── analytics.py schedule.py         speed in a zone, left objects, PTZ follow; masks by hour
-│   ├── phase2.py                        search by meaning, plates, faces: all off, with privacy notices
-│   ├── activity_config.py               activity pipeline settings, off by default
-│   ├── sources.py heatmap.py            synthetic and recorded sources; heat map
-│   ├── activity.py                      events and the /heatmap handler
-│   ├── heatmap_service.py               the /heatmap route as a command
-│   ├── service.py                       the live service: the engine in memory, POST /ingest and GET /heatmap
-│   ├── delivery.py                      the delivery of events to the server (off by default)
-│   └── pipeline.py cli.py __main__.py   the whole chain and the command line
-├── tests/                               the tests
-├── docs/                                the guides of this repository
-├── tools/                               the shared CI checks and project tooling
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon and the two pictures of this README
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-├── pyproject.toml                       package metadata
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-VISION"),
       "roadmap": r"""**Known limits today**
 
 * There is no real detector model yet, and nothing has run on a camera or on the Jetson Orin NX: the simulation uses scripted detections.
@@ -405,51 +363,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` termina con 2 | No se puede leer el fichero | Comprueba la ruta y que sea JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")`: sin configuración, sin fichero de motor o sin los paquetes de la Jetson | Da `TensorrtSettings` y un fichero de motor en la Jetson, o usa `ScriptedDetector` |
 | Una zona nunca salta | Los pies están fuera del polígono, la etiqueta no se acepta, una máscara la oculta, o el modo no tiene un perfil con esa zona | Ejecuta `simulate` con el mismo fichero y modo |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      polígonos en coordenadas normalizadas
-│   ├── config.py                        zonas, máscaras, perfiles y su validación
-│   ├── motion.py                        la comprobación de movimiento 16 x 9, máscaras ignoradas
-│   ├── detector.py                      detectores guionizado, ONNX y TensorRT (motor simulado fuera de la Jetson)
-│   ├── tracker.py                       identidad entre imágenes; objetos quietos
-│   ├── rules.py                         de zonas a eventos: armor.vision.event/v1
-│   ├── tensorrt_detector.py             el detector TensorRT para la Jetson; un motor simulado
-│   ├── streams.py recording.py          subcorriente para analizar, principal para grabar; clips y retención
-│   ├── analytics.py schedule.py         velocidad en zona, objetos abandonados, seguimiento PTZ; máscaras por hora
-│   ├── phase2.py                        búsqueda semántica, matrículas, caras: todo apagado, con avisos de privacidad
-│   ├── activity_config.py               ajustes del canal de actividad, apagado por defecto
-│   ├── sources.py heatmap.py            fuentes sintética y grabada; mapa de calor
-│   ├── activity.py                      eventos y manejador de /heatmap
-│   ├── heatmap_service.py               la ruta /heatmap como comando
-│   ├── service.py                       el servicio vivo: el motor en memoria, POST /ingest y GET /heatmap
-│   ├── delivery.py                      la entrega de eventos al servidor (apagada por defecto)
-│   └── pipeline.py cli.py __main__.py   toda la cadena y la línea de órdenes
-├── tests/                               las pruebas
-├── docs/                                las guías de este repositorio
-├── tools/                               las comprobaciones de CI compartidas y las herramientas del proyecto
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono y las dos imágenes de este README
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-├── pyproject.toml                       metadatos del paquete
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-VISION"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Aún no hay un modelo de detección real y nada se ha ejecutado en una cámara ni en la Jetson Orin NX: la simulación usa detecciones guionizadas.
@@ -609,51 +523,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` endet mit 2 | Die Datei kann nicht gelesen werden | Prüfe den Pfad und dass es JSON ist |
 | `DetectorUnavailable` | `load_detector("tensorrt")`: keine Einstellungen, keine Engine-Datei oder keine Jetson-Pakete | Gib `TensorrtSettings` und eine Engine-Datei auf dem Jetson an oder nutze `ScriptedDetector` |
 | Eine Zone löst nie aus | Die Füße liegen außerhalb, das Label wird nicht akzeptiert, eine Maske verdeckt sie, oder der Modus hat kein Profil mit dieser Zone | Starte `simulate` mit derselben Datei und demselben Modus |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      Polygone in normalisierten Koordinaten
-│   ├── config.py                        Zonen, Masken, Profile und ihre Prüfung
-│   ├── motion.py                        die 16-x-9-Bewegungsprüfung ohne Masken
-│   ├── detector.py                      geskriptete, ONNX- und TensorRT-Detektoren (simulierte Engine außerhalb des Jetson)
-│   ├── tracker.py                       Identität zwischen Bildern; ruhende Objekte
-│   ├── rules.py                         von Zonen zu Ereignissen: armor.vision.event/v1
-│   ├── tensorrt_detector.py             der TensorRT-Detektor für den Jetson; eine simulierte Engine
-│   ├── streams.py recording.py          Substream zum Analysieren, Hauptstream zum Aufnehmen; Clips und Aufbewahrung
-│   ├── analytics.py schedule.py         Geschwindigkeit in einer Zone, zurückgelassene Objekte, PTZ-Verfolgung; Masken nach Uhrzeit
-│   ├── phase2.py                        semantische Suche, Kennzeichen, Gesichter: alles aus, mit Datenschutzhinweisen
-│   ├── activity_config.py               Einstellungen der Aktivitätspipeline, standardmäßig aus
-│   ├── sources.py heatmap.py            synthetische und aufgezeichnete Quellen; Heatmap
-│   ├── activity.py                      Ereignisse und der /heatmap-Handler
-│   ├── heatmap_service.py               die /heatmap-Route als Befehl
-│   ├── service.py                       der Live-Dienst: die Engine im Speicher, POST /ingest und GET /heatmap
-│   ├── delivery.py                      die Zustellung von Ereignissen an den Server (standardmäßig aus)
-│   └── pipeline.py cli.py __main__.py   die ganze Kette und die Kommandozeile
-├── tests/                               die Tests
-├── docs/                                die Anleitungen dieses Repositorys
-├── tools/                               die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol und die zwei Bilder dieses READMEs
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-├── pyproject.toml                       Paketmetadaten
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-VISION"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Es gibt noch kein echtes Erkennungsmodell, und nichts lief auf einer Kamera oder dem Jetson Orin NX: Die Simulation nutzt geskriptete Erkennungen.
@@ -813,51 +683,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` se termine par 2 | Le fichier est illisible | Vérifiez le chemin et que c'est du JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")` : pas de réglages, pas de fichier de moteur ou pas de paquets Jetson | Donnez `TensorrtSettings` et un fichier de moteur sur le Jetson, ou utilisez `ScriptedDetector` |
 | Une zone ne se déclenche jamais | Les pieds sont hors du polygone, l'étiquette n'est pas acceptée, un masque la cache, ou le mode n'a pas de profil avec cette zone | Lancez `simulate` avec le même fichier et mode |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      polygones en coordonnées normalisées
-│   ├── config.py                        zones, masques, profils et leur validation
-│   ├── motion.py                        le contrôle de mouvement 16 x 9, masques ignorés
-│   ├── detector.py                      détecteurs scripté, ONNX et TensorRT (moteur simulé hors Jetson)
-│   ├── tracker.py                       identité entre images ; objets immobiles
-│   ├── rules.py                         des zones aux événements : armor.vision.event/v1
-│   ├── tensorrt_detector.py             le détecteur TensorRT pour le Jetson ; un moteur simulé
-│   ├── streams.py recording.py          sous-flux à analyser, flux principal à enregistrer ; clips et rétention
-│   ├── analytics.py schedule.py         vitesse dans une zone, objets abandonnés, suivi PTZ ; masques par heure
-│   ├── phase2.py                        recherche sémantique, plaques, visages : tout éteint, avec avis de confidentialité
-│   ├── activity_config.py               réglages de la chaîne d'activité, éteinte par défaut
-│   ├── sources.py heatmap.py            sources synthétique et enregistrée ; carte de chaleur
-│   ├── activity.py                      événements et gestionnaire /heatmap
-│   ├── heatmap_service.py               la route /heatmap en commande
-│   ├── service.py                       le service vivant : le moteur en mémoire, POST /ingest et GET /heatmap
-│   ├── delivery.py                      la remise des événements au serveur (éteinte par défaut)
-│   └── pipeline.py cli.py __main__.py   toute la chaîne et la ligne de commande
-├── tests/                               les tests
-├── docs/                                les guides de ce dépôt
-├── tools/                               les contrôles CI partagés et les outils du projet
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône et les deux images de ce README
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-├── pyproject.toml                       métadonnées du paquet
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-VISION"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Il n'y a pas encore de vrai modèle de détection et rien n'a tourné sur une caméra ni sur le Jetson Orin NX : la simulation utilise des détections scriptées.
@@ -1017,51 +843,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` termina con 2 | Il file non può essere letto | Controlla il percorso e che sia JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")`: nessuna impostazione, nessun file di motore o nessun pacchetto Jetson | Dai `TensorrtSettings` e un file di motore sul Jetson, oppure usa `ScriptedDetector` |
 | Una zona non scatta mai | I piedi sono fuori dal poligono, l'etichetta non è accettata, una maschera la nasconde, o la modalità non ha un profilo con quella zona | Esegui `simulate` con lo stesso file e modalità |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      poligoni in coordinate normalizzate
-│   ├── config.py                        zone, maschere, profili e la loro validazione
-│   ├── motion.py                        il controllo del movimento 16 x 9, maschere ignorate
-│   ├── detector.py                      rilevatori scriptato, ONNX e TensorRT (motore simulato fuori dal Jetson)
-│   ├── tracker.py                       identità tra immagini; oggetti fermi
-│   ├── rules.py                         dalle zone agli eventi: armor.vision.event/v1
-│   ├── tensorrt_detector.py             il rilevatore TensorRT per il Jetson; un motore simulato
-│   ├── streams.py recording.py          sottoflusso da analizzare, flusso principale da registrare; clip e conservazione
-│   ├── analytics.py schedule.py         velocità in una zona, oggetti abbandonati, tracciamento PTZ; maschere per ora
-│   ├── phase2.py                        ricerca semantica, targhe, volti: tutto spento, con avvisi sulla privacy
-│   ├── activity_config.py               impostazioni della pipeline di attività, spenta di default
-│   ├── sources.py heatmap.py            sorgenti sintetica e registrata; mappa di calore
-│   ├── activity.py                      eventi e gestore /heatmap
-│   ├── heatmap_service.py               la rotta /heatmap come comando
-│   ├── service.py                       il servizio vivo: il motore in memoria, POST /ingest e GET /heatmap
-│   ├── delivery.py                      la consegna degli eventi al server (spenta di default)
-│   └── pipeline.py cli.py __main__.py   tutta la catena e la riga di comando
-├── tests/                               i test
-├── docs/                                le guide di questo repository
-├── tools/                               i controlli CI condivisi e gli strumenti del progetto
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona e le due immagini di questo README
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-├── pyproject.toml                       metadati del pacchetto
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-VISION"),
       "roadmap": r"""**Limiti noti oggi**
 
 * Non esiste ancora un vero modello di rilevamento e nulla ha girato su una telecamera né sul Jetson Orin NX: la simulazione usa rilevamenti scriptati.
@@ -1221,51 +1003,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` が終了コード 2 | ファイルを読み取れない | パスと JSON 形式を確認する |
 | `DetectorUnavailable` | `load_detector("tensorrt")`：設定、エンジンファイル、または Jetson のパッケージが無い | Jetson 上で `TensorrtSettings` とエンジンファイルを渡すか、`ScriptedDetector` を使う |
 | ゾーンが反応しない | 足元がポリゴン外、ラベルが非対象、マスクで隠れている、またはそのモードのプロファイルにゾーンがない | 同じファイルとモードで `simulate` を実行 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-VISION のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      正規化座標の多角形
-│   ├── config.py                        ゾーン、マスク、プロファイルとその検証
-│   ├── motion.py                        16 x 9 の動き判定（マスクは無視）
-│   ├── detector.py                      スクリプト化・ONNX・TensorRT の検知器（Jetson 以外では模擬エンジン）
-│   ├── tracker.py                       画像間の識別、静止物
-│   ├── rules.py                         ゾーンからイベントへ：armor.vision.event/v1
-│   ├── tensorrt_detector.py             Jetson 用の TensorRT 検知器。模擬エンジン
-│   ├── streams.py recording.py          解析用サブストリームと録画用メインストリーム。クリップと保存期間
-│   ├── analytics.py schedule.py         ゾーン内の速度、置き去り物、PTZ 追従。時間帯別マスク
-│   ├── phase2.py                        意味検索、ナンバープレート、顔：すべて既定でオフ、プライバシー通知付き
-│   ├── activity_config.py               アクティビティ処理の設定（既定でオフ）
-│   ├── sources.py heatmap.py            合成・記録ソース、ヒートマップ
-│   ├── activity.py                      イベントと /heatmap ハンドラ
-│   ├── heatmap_service.py               /heatmap ルートをコマンドとして
-│   ├── service.py                       ライブサービス：メモリ上のエンジン、POST /ingest と GET /heatmap
-│   ├── delivery.py                      サーバーへのイベント配信（既定でオフ）
-│   └── pipeline.py cli.py __main__.py   全体の流れとコマンドライン
-├── tests/                               テスト
-├── docs/                                このリポジトリのガイド
-├── tools/                               共通の CI チェックとプロジェクトツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、この README の 2 つの図
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-├── pyproject.toml                       パッケージのメタデータ
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-VISION"),
       "roadmap": r"""**現時点の既知の制限**
 
 * 実際の検出モデルはまだなく、カメラや Jetson Orin NX では何も動いていません。シミュレーションはスクリプト化した検出を使います。
@@ -1425,51 +1163,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` 退出码为 2 | 无法读取文件 | 检查路径以及是否为 JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")`：没有设置、没有引擎文件或没有 Jetson 软件包 | 在 Jetson 上提供 `TensorrtSettings` 和引擎文件，或使用 `ScriptedDetector` |
 | 区域从不触发 | 脚部在多边形之外、标签不被接受、被遮罩挡住，或该模式的配置文件不含此区域 | 用同样的文件和模式运行 `simulate` |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-VISION 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      归一化坐标的多边形
-│   ├── config.py                        区域、遮罩、配置文件及其校验
-│   ├── motion.py                        16 x 9 运动检测（忽略遮罩）
-│   ├── detector.py                      脚本化、ONNX 和 TensorRT 检测器（非 Jetson 上用模拟引擎）
-│   ├── tracker.py                       跨画面的身份；静止物体
-│   ├── rules.py                         从区域到事件：armor.vision.event/v1
-│   ├── tensorrt_detector.py             Jetson 的 TensorRT 检测器；模拟引擎
-│   ├── streams.py recording.py          用于分析的子码流和用于录制的主码流；片段与保留
-│   ├── analytics.py schedule.py         区域内速度、遗留物、PTZ 跟随；按时间的遮罩
-│   ├── phase2.py                        语义搜索、车牌、人脸：默认全部关闭，附隐私提示
-│   ├── activity_config.py               活动管线设置，默认关闭
-│   ├── sources.py heatmap.py            合成与记录的来源；热力图
-│   ├── activity.py                      事件与 /heatmap 处理器
-│   ├── heatmap_service.py               作为命令的 /heatmap 路由
-│   ├── service.py                       实时服务：内存中的引擎、POST /ingest 与 GET /heatmap
-│   ├── delivery.py                      向服务器投递事件（默认关闭）
-│   └── pipeline.py cli.py __main__.py   整个流程与命令行
-├── tests/                               测试
-├── docs/                                本仓库的指南
-├── tools/                               共享的 CI 检查和项目工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标和本 README 的两幅图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-├── pyproject.toml                       包元数据
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-VISION"),
       "roadmap": r"""**目前已知的限制**
 
 * 目前还没有真实的检测模型，也没有在摄像头或 Jetson Orin NX 上运行过：模拟使用脚本化的检测。
@@ -1629,51 +1323,7 @@ python -I tools/armor_ci_validate.py
 | `check-config` termina com 2 | Não é possível ler o ficheiro | Verifique o caminho e que é JSON |
 | `DetectorUnavailable` | `load_detector("tensorrt")`: sem definições, sem ficheiro do motor ou sem os pacotes do Jetson | Dê `TensorrtSettings` e um ficheiro do motor no Jetson, ou use `ScriptedDetector` |
 | Uma zona nunca dispara | Os pés estão fora do polígono, a etiqueta não é aceite, uma máscara esconde-a, ou o modo não tem um perfil com essa zona | Execute `simulate` com o mesmo ficheiro e modo |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-VISION" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-VISION/
-├── src/armor_vision/
-│   ├── geometry.py                      polígonos em coordenadas normalizadas
-│   ├── config.py                        zonas, máscaras, perfis e a sua validação
-│   ├── motion.py                        a verificação de movimento 16 x 9, máscaras ignoradas
-│   ├── detector.py                      detetores com guião, ONNX e TensorRT (motor simulado fora do Jetson)
-│   ├── tracker.py                       identidade entre imagens; objetos parados
-│   ├── rules.py                         das zonas aos eventos: armor.vision.event/v1
-│   ├── tensorrt_detector.py             o detetor TensorRT para o Jetson; um motor simulado
-│   ├── streams.py recording.py          subcorrente a analisar, principal a gravar; clipes e retenção
-│   ├── analytics.py schedule.py         velocidade numa zona, objetos abandonados, seguimento PTZ; máscaras por hora
-│   ├── phase2.py                        pesquisa semântica, matrículas, rostos: tudo desligado, com avisos de privacidade
-│   ├── activity_config.py               definições da cadeia de atividade, desligada por defeito
-│   ├── sources.py heatmap.py            fontes sintética e gravada; mapa de calor
-│   ├── activity.py                      eventos e tratador de /heatmap
-│   ├── heatmap_service.py               a rota /heatmap como comando
-│   ├── service.py                       o serviço vivo: o motor em memória, POST /ingest e GET /heatmap
-│   ├── delivery.py                      a entrega de eventos ao servidor (desligada por omissão)
-│   └── pipeline.py cli.py __main__.py   toda a cadeia e a linha de comandos
-├── tests/                               os testes
-├── docs/                                os guias deste repositório
-├── tools/                               as verificações de CI partilhadas e as ferramentas do projeto
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone e as duas imagens deste README
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-├── pyproject.toml                       metadados do pacote
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-VISION"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * Ainda não há um modelo de deteção real e nada correu numa câmara nem no Jetson Orin NX: a simulação usa deteções guionizadas.

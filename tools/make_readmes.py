@@ -31,6 +31,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from readme_src import shots  # noqa: E402
 from readme_src.shots import HEADING as SHOTS_HEADING  # noqa: E402
 from readme_src.ui import RELATED, UI  # noqa: E402
+from readme_src._kit import with_trees  # noqa: E402
 from registry import NAMES  # noqa: E402
 import doc_facts  # noqa: E402
 
@@ -339,7 +340,7 @@ TYPED_PROBLEMS: list[str] = []
 
 def render(name: str, language: str) -> str:
     """The README of a repository in a language: the figures written as {{fact:NAME}} are read from the repositories, and a figure typed by hand that is not the real one is remembered."""
-    text = render_text(name, language)
+    text = with_trees(render_text(name, language), ROOT)
     TYPED_PROBLEMS.extend(typed_figure_problems(Path(name) / "README.md", text))
     return facts_in(text, f"{name}/{language}")
 
@@ -420,6 +421,24 @@ def render_text(name: str, language: str) -> str:
     return "\n".join(parts)
 
 
+TREE_DRAWING = re.compile(r"^[ │]*[├└]──", re.M)
+
+
+def literal_tree_problems(names=None) -> list[str]:
+    """The sources whose Repository Structure holds a tree typed by hand: it must be `structure(lg, repo)`, which draws it from docs/structure.json of the repository."""
+    problems: list[str] = []
+    for name in (names if names is not None else ORDER):
+        if (VERBATIM / name).is_dir():
+            continue
+        data = load(name)
+        for code, *_ in LANGUAGES:
+            text = data.TEXT[code]
+            for key, value in (("structure_own", text.get("structure_own")), ("FACTS.structure", data.FACTS.get("structure")), ("body.structure", text.get("body", {}).get("structure"))):
+                if value and TREE_DRAWING.search(value):
+                    problems.append(f"{name}: the {code} source types the file tree by hand in {key} (write structure(lg, repo))")
+    return problems
+
+
 def outputs() -> dict[Path, str]:
     files: dict[Path, str] = {}
     for name in ORDER:
@@ -436,6 +455,10 @@ def main() -> int:
     problems = status_problems()
     if problems:
         print("Status tables incomplete:", *problems, sep="\n  ", file=sys.stderr)
+        return 1
+    problems = literal_tree_problems()
+    if problems:
+        print("The file tree is typed by hand in a source:", *problems, sep="\n  ", file=sys.stderr)
         return 1
     files = outputs()
     drifted = sorted(set(TYPED_PROBLEMS))

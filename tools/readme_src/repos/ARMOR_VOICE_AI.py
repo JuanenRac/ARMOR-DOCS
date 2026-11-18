@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-VOICE-AI, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "🎙️",
   "layout": "universal",
@@ -377,44 +379,7 @@ GitHub Actions runs the A.R.M.O.R. baseline on every push and pull request: the 
 | 504 `turn_too_slow` | The speech engine took more than nine seconds | Use a faster model; nothing was executed |
 | "Disarming needs your PIN" | Disarming is never done by voice from the panel | Use the screen |
 | A spoken "yes" does nothing | The question was not remembered (it took over 12 s to ask, more than 30 s passed, or another panel answered) | Say the command again |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    one spoken turn: audio, then words, then the answer
-│   ├── intent.py                  the closed list of commands, eight languages
-│   ├── phrases.py                 the words of each command and the spoken answers
-│   ├── confirmation.py            signed single-use confirmation tied to the speaker
-│   ├── silence_policy.py          what it takes to silence the alarms: off, pin, double turn, challenge
-│   ├── session.py                 the two-turn rule for arm and disarm
-│   ├── gateway.py                 JSON lines in, answers out, and the audit line
-│   ├── service.py                 the local HTTP service on the loopback address
-│   ├── wakeword.py                the local wake word detector, off by default
-│   ├── wake_model_check.py        checks a trained wake word model before it is trusted
-│   ├── wake_release.py            prepares the wake word models for a release: manifest and signature
-│   └── wyoming.py                 Wyoming handler for Home Assistant Assist: queries only, off by default
-├── tests/                         intents, languages, silence, service, wake word
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         the shared CI checks and project tooling
-├── images/                        banner, icon and the pictures of the README
-├── .github/                       CI workflow, dashboard notice, issue and pull-request templates
-├── armor.project.json             manifest: version, role, maturity
-├── pyproject.toml                 package metadata, entry points
-├── CHANGELOG.md                   what changed in each version
-├── run.sh run.bat                 start, shared workflow
-├── build.sh build.bat             build and test, shared workflow
-├── build-test.sh build-test.bat   build, test and package
-├── test.sh test.bat               only the tests, never the version
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("en", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Known limits today**
 
 * No speech engine ships with it, and none has been tried with a real microphone.
@@ -742,44 +707,7 @@ GitHub Actions ejecuta la base de A.R.M.O.R. en cada push y pull request: la val
 | 504 `turn_too_slow` | El motor de voz tardó más de nueve segundos | Usa un modelo más rápido; no se ejecutó nada |
 | "Para desarmar hace falta tu PIN" | Desarmar nunca se hace por voz desde el panel | Usa la pantalla |
 | Un "sí" hablado no hace nada | No se recordaba la pregunta (tardó más de 12 s en hacerse, pasaron más de 30 s, o contestó otro panel) | Di de nuevo la orden |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    un turno hablado: audio, palabras y respuesta
-│   ├── intent.py                  la lista cerrada de órdenes, ocho idiomas
-│   ├── phrases.py                 las palabras de cada orden y las respuestas habladas
-│   ├── confirmation.py            confirmación firmada de un solo uso ligada a quien habla
-│   ├── silence_policy.py          lo que hace falta para silenciar las alarmas: off, pin, doble turno, desafío
-│   ├── session.py                 la regla de dos turnos para armar y desarmar
-│   ├── gateway.py                 líneas JSON de entrada, respuestas y la línea de auditoría
-│   ├── service.py                 el servicio HTTP local en la dirección de loopback
-│   ├── wakeword.py                el detector local de la palabra de activación, desactivado por defecto
-│   ├── wake_model_check.py        comprueba un modelo de palabra de activación antes de fiarse de él
-│   ├── wake_release.py            prepara los modelos de activación para una versión: manifiesto y firma
-│   └── wyoming.py                 manejador Wyoming para Assist de Home Assistant: solo consultas, desactivado por defecto
-├── tests/                         órdenes, idiomas, silencio, servicio, activación
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         las comprobaciones de CI y las herramientas compartidas
-├── images/                        banner, icono y las imágenes del README
-├── .github/                       flujo de CI, aviso al panel, plantillas de incidencias y pull requests
-├── armor.project.json             manifiesto: versión, función, madurez
-├── pyproject.toml                 metadatos del paquete, entradas
-├── CHANGELOG.md                   qué cambió en cada versión
-├── run.sh run.bat                 arrancar, flujo compartido
-├── build.sh build.bat             construir y probar, flujo compartido
-├── build-test.sh build-test.bat   construir, probar y empaquetar
-├── test.sh test.bat               solo las pruebas, nunca la versión
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("es", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Límites conocidos hoy**
 
 * No incluye ningún motor de voz, y ninguno se ha probado con un micrófono real.
@@ -1107,44 +1035,7 @@ GitHub Actions exécute la base A.R.M.O.R. à chaque push et pull request : la v
 | 504 `turn_too_slow` | Le moteur vocal a mis plus de neuf secondes | Utilisez un modèle plus rapide ; rien n'a été exécuté |
 | « Le désarmement exige votre PIN » | Le désarmement n'est jamais fait par la voix depuis le panneau | Utilisez l'écran |
 | Un « oui » prononcé ne fait rien | La question n'a pas été mémorisée (elle a mis plus de 12 s à être posée, plus de 30 s se sont écoulées, ou un autre panneau a répondu) | Redites la commande |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    un tour de parole : audio, mots, réponse
-│   ├── intent.py                  la liste fermée de commandes, huit langues
-│   ├── phrases.py                 les mots de chaque commande et les réponses parlées
-│   ├── confirmation.py            confirmation signée à usage unique liée à l'orateur
-│   ├── silence_policy.py          ce qu'il faut pour couper les alarmes : off, pin, double tour, défi
-│   ├── session.py                 la règle des deux tours pour armer et désarmer
-│   ├── gateway.py                 lignes JSON en entrée, réponses et ligne d'audit
-│   ├── service.py                 le service HTTP local sur l'adresse de bouclage
-│   ├── wakeword.py                le détecteur local du mot d'éveil, désactivé par défaut
-│   ├── wake_model_check.py        vérifie un modèle de mot d'éveil avant de lui faire confiance
-│   ├── wake_release.py            prépare les modèles d'éveil pour une version : manifeste et signature
-│   └── wyoming.py                 gestionnaire Wyoming pour Assist de Home Assistant : requêtes seules, désactivé par défaut
-├── tests/                         commandes, langues, silence, service, éveil
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         les vérifications CI et les outils partagés
-├── images/                        bannière, icône et images du README
-├── .github/                       workflow CI, avis au tableau de bord, modèles d'issues et de pull requests
-├── armor.project.json             manifeste : version, rôle, maturité
-├── pyproject.toml                 métadonnées du paquet, entrées
-├── CHANGELOG.md                   ce qui a changé à chaque version
-├── run.sh run.bat                 démarrer, flux partagé
-├── build.sh build.bat             construire et tester, flux partagé
-├── build-test.sh build-test.bat   construire, tester, empaqueter
-├── test.sh test.bat               seulement les tests, jamais la version
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("fr", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Limites connues aujourd'hui**
 
 * Aucun moteur vocal n'est fourni, et aucun n'a été essayé avec un vrai microphone.
@@ -1472,44 +1363,7 @@ GitHub Actions esegue la base A.R.M.O.R. a ogni push e pull request: la validazi
 | 504 `turn_too_slow` | Il motore vocale ha impiegato più di nove secondi | Usa un modello più veloce; non è stato eseguito nulla |
 | «Per disinserire serve il tuo PIN» | Il disinserimento non avviene mai a voce dal pannello | Usa lo schermo |
 | Un «sì» pronunciato non fa nulla | La domanda non era stata ricordata (ci ha messo più di 12 s a essere posta, sono passati più di 30 s, o ha risposto un altro pannello) | Ripeti il comando |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    un turno parlato: audio, parole, risposta
-│   ├── intent.py                  l'elenco chiuso di comandi, otto lingue
-│   ├── phrases.py                 le parole di ogni comando e le risposte parlate
-│   ├── confirmation.py            conferma firmata monouso legata a chi parla
-│   ├── silence_policy.py          cosa serve per silenziare gli allarmi: off, pin, doppio turno, sfida
-│   ├── session.py                 la regola dei due turni per inserire e disinserire
-│   ├── gateway.py                 righe JSON in ingresso, risposte e riga di audit
-│   ├── service.py                 il servizio HTTP locale sull'indirizzo di loopback
-│   ├── wakeword.py                il rilevatore locale della parola di attivazione, disattivato di default
-│   ├── wake_model_check.py        controlla un modello di parola di attivazione prima di fidarsene
-│   ├── wake_release.py            prepara i modelli di attivazione per una release: manifesto e firma
-│   └── wyoming.py                 gestore Wyoming per Assist di Home Assistant: solo interrogazioni, disattivato di default
-├── tests/                         comandi, lingue, silenzio, servizio, attivazione
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         i controlli CI e gli strumenti condivisi
-├── images/                        banner, icona e immagini del README
-├── .github/                       workflow CI, avviso alla dashboard, modelli per issue e pull request
-├── armor.project.json             manifesto: versione, ruolo, maturità
-├── pyproject.toml                 metadati del pacchetto, ingressi
-├── CHANGELOG.md                   cosa è cambiato in ogni versione
-├── run.sh run.bat                 avvio, flusso condiviso
-├── build.sh build.bat             compila e prova, flusso condiviso
-├── build-test.sh build-test.bat   compila, prova e impacchetta
-├── test.sh test.bat               solo i test, mai la versione
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("it", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Limiti noti oggi**
 
 * Non include alcun motore vocale, e nessuno è stato provato con un vero microfono.
@@ -1837,44 +1691,7 @@ GitHub Actions führt bei jedem Push und Pull Request die A.R.M.O.R.-Basis aus: 
 | 504 `turn_too_slow` | Die Sprach-Engine brauchte mehr als neun Sekunden | Verwende ein schnelleres Modell; nichts wurde ausgeführt |
 | „Zum Unscharfschalten brauchst du deine PIN“ | Unscharfschalten geschieht nie per Sprache vom Panel aus | Nutze den Bildschirm |
 | Ein gesprochenes „Ja“ bewirkt nichts | Die Frage wurde nicht gemerkt (sie brauchte über 12 s, es vergingen mehr als 30 s, oder ein anderes Panel antwortete) | Sage den Befehl erneut |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    ein gesprochener Zug: Audio, Wörter, Antwort
-│   ├── intent.py                  die geschlossene Befehlsliste, acht Sprachen
-│   ├── phrases.py                 die Wörter jedes Befehls und die gesprochenen Antworten
-│   ├── confirmation.py            signierte Einmal-Bestätigung, an den Sprecher gebunden
-│   ├── silence_policy.py          was zum Stummschalten der Alarme nötig ist: aus, PIN, Doppelzug, Challenge
-│   ├── session.py                 die Zwei-Züge-Regel für Scharf- und Unscharfschalten
-│   ├── gateway.py                 JSON-Zeilen hinein, Antworten heraus, dazu die Audit-Zeile
-│   ├── service.py                 der lokale HTTP-Dienst auf der Loopback-Adresse
-│   ├── wakeword.py                der lokale Weckwort-Detektor, standardmäßig aus
-│   ├── wake_model_check.py        prüft ein trainiertes Weckwort-Modell, bevor man ihm traut
-│   ├── wake_release.py            bereitet die Weckwort-Modelle für ein Release vor: Manifest und Signatur
-│   └── wyoming.py                 Wyoming-Handler für Home Assistant Assist: nur Abfragen, standardmäßig aus
-├── tests/                         Befehle, Sprachen, Stille, Dienst, Weckwort
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         die gemeinsamen CI-Prüfungen und Werkzeuge
-├── images/                        Banner, Symbol und die Bilder des READMEs
-├── .github/                       CI-Workflow, Dashboard-Hinweis, Vorlagen für Issues und Pull Requests
-├── armor.project.json             Manifest: Version, Rolle, Reife
-├── pyproject.toml                 Paket-Metadaten, Einstiege
-├── CHANGELOG.md                   was sich in jeder Version geändert hat
-├── run.sh run.bat                 Start, gemeinsamer Ablauf
-├── build.sh build.bat             Bauen und Testen, gemeinsamer Ablauf
-├── build-test.sh build-test.bat   Bauen, Testen und Verpacken
-├── test.sh test.bat               nur die Tests, nie die Version
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("de", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Bekannte Grenzen heute**
 
 * Es wird keine Sprach-Engine mitgeliefert, und keine wurde mit einem echten Mikrofon ausprobiert.
@@ -2202,44 +2019,7 @@ GitHub Actions 在每次 push 和 pull request 时运行 A.R.M.O.R. 基线：先
 | 504 `turn_too_slow` | 语音引擎耗时超过九秒 | 使用更快的模型；没有执行任何东西 |
 | “Disarming needs your PIN” | 撤防绝不能通过面板上的语音完成 | 使用屏幕 |
 | 说出的“是”没有任何反应 | 询问没有被记住（询问耗时超过 12 秒、已超过 30 秒，或由另一个面板作答） | 重新说一遍命令 |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版本</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    一轮语音：音频、文字、回答
-│   ├── intent.py                  封闭的命令列表，八种语言
-│   ├── phrases.py                 每条命令的词语与语音回答
-│   ├── confirmation.py            绑定说话人的签名一次性确认
-│   ├── silence_policy.py          静音报警所需条件：关闭、PIN、双轮、质询
-│   ├── session.py                 布防与撤防的两轮规则
-│   ├── gateway.py                 输入 JSON 行，输出回答与审计行
-│   ├── service.py                 回环地址上的本地 HTTP 服务
-│   ├── wakeword.py                本地唤醒词检测，默认关闭
-│   ├── wake_model_check.py        在信任前检查已训练的唤醒词模型
-│   ├── wake_release.py            为发布准备唤醒词模型：清单与签名
-│   └── wyoming.py                 Home Assistant Assist 的 Wyoming 处理器：仅查询，默认关闭
-├── tests/                         命令、语言、静音、服务、唤醒词
-├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         共用的 CI 检查和工具
-├── images/                        横幅图、图标和 README 的图片
-├── .github/                       CI 工作流、仪表板通知、议题和 pull request 模板
-├── armor.project.json             清单：版本、角色、成熟度
-├── pyproject.toml                 包元数据、入口
-├── CHANGELOG.md                   每个版本的变化
-├── run.sh run.bat                 启动（共用流程）
-├── build.sh build.bat             构建并测试（共用流程）
-├── build-test.sh build-test.bat   构建、测试并打包
-├── test.sh test.bat               只运行测试，不改版本
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("zh", "ARMOR-VOICE-AI"),
      "roadmap": r"""**当前已知限制**
 
 * 没有随附任何语音引擎，也没有任何一个用真实麦克风试过。
@@ -2567,44 +2347,7 @@ GitHub Actions は、push と pull request のたびに A.R.M.O.R. のベース�
 | 504 `turn_too_slow` | 音声エンジンが 9 秒以上かかった | より速いモデルを使う。何も実行されていない |
 | "Disarming needs your PIN" | パネルからの音声による解除は一切行われない | 画面を使う |
 | 話した「はい」が何も起こさない | 質問が記憶されていなかった（質問に 12 秒超かかった、30 秒以上経過した、または別のパネルが答えた） | コマンドをもう一度言う |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    1 回の発話ターン：音声、言葉、応答
-│   ├── intent.py                  限定されたコマンド一覧（8 言語）
-│   ├── phrases.py                 各コマンドの言葉と音声応答
-│   ├── confirmation.py            話者に結び付いた署名付き使い捨て確認
-│   ├── silence_policy.py          警報を消音する条件：off、PIN、二度の発話、チャレンジ
-│   ├── session.py                 警戒・解除の 2 ターン規則
-│   ├── gateway.py                 JSON 行の入力、応答、監査行
-│   ├── service.py                 ループバック上のローカル HTTP サービス
-│   ├── wakeword.py                ローカルのウェイクワード検出（既定はオフ）
-│   ├── wake_model_check.py        学習済みウェイクワードモデルを信頼前に検査
-│   ├── wake_release.py            リリース用ウェイクワードモデルの準備：マニフェストと署名
-│   └── wyoming.py                 Home Assistant Assist 用 Wyoming ハンドラー：照会のみ、既定はオフ
-├── tests/                         コマンド、言語、消音、サービス、ウェイクワード
-├── docs/                          INFERENCE_BOUNDARY.md、SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         共通の CI 検査とツール
-├── images/                        バナー、アイコン、README の画像
-├── .github/                       CI ワークフロー、ダッシュボード通知、Issue と Pull Request のテンプレート
-├── armor.project.json             マニフェスト：版・役割・成熟度
-├── pyproject.toml                 パッケージ情報とエントリー
-├── CHANGELOG.md                   各バージョンの変更点
-├── run.sh run.bat                 起動（共通フロー）
-├── build.sh build.bat             ビルドとテスト（共通フロー）
-├── build-test.sh build-test.bat   ビルド、テスト、パッケージ化
-├── test.sh test.bat               テストのみ（版は変えません）
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("ja", "ARMOR-VOICE-AI"),
      "roadmap": r"""**現時点の既知の制限**
 
 * 音声エンジンは同梱されておらず、実際のマイクでどれも試していません。
@@ -2932,44 +2675,7 @@ O GitHub Actions executa a base do A.R.M.O.R. em cada push e pull request: a val
 | 504 `turn_too_slow` | O motor de voz demorou mais de nove segundos | Use um modelo mais rápido; não se executou nada |
 | "Disarming needs your PIN" | Desarmar nunca se faz por voz a partir do painel | Use o ecrã |
 | Um "sim" falado não faz nada | A pergunta não foi recordada (demorou mais de 12 s a fazer-se, passaram mais de 30 s, ou respondeu outro painel) | Diga o comando outra vez |""",
-     "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-VOICE-AI" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-VOICE-AI/
-├── src/armor_voice_ai/
-│   ├── turn.py                    uma vez falada: áudio, palavras, resposta
-│   ├── intent.py                  a lista fechada de comandos, oito idiomas
-│   ├── phrases.py                 as palavras de cada comando e as respostas faladas
-│   ├── confirmation.py            confirmação assinada de uso único ligada a quem fala
-│   ├── silence_policy.py          o que é preciso para silenciar os alarmes: off, pin, dupla volta, desafio
-│   ├── session.py                 a regra das duas voltas para armar e desarmar
-│   ├── gateway.py                 linhas JSON de entrada, respostas e a linha de auditoria
-│   ├── service.py                 o serviço HTTP local no endereço de loopback
-│   ├── wakeword.py                o detetor local da palavra de ativação, desativado por omissão
-│   ├── wake_model_check.py        verifica um modelo de palavra de ativação antes de confiar nele
-│   ├── wake_release.py            prepara os modelos de ativação para uma versão: manifesto e assinatura
-│   └── wyoming.py                 gestor Wyoming para o Assist do Home Assistant: só consultas, desativado por omissão
-├── tests/                         comandos, idiomas, silêncio, serviço, ativação
-├── docs/                          INFERENCE_BOUNDARY.md, SERVICE.md, DAILY_SUMMARY.md
-├── tools/                         as verificações de CI e as ferramentas partilhadas
-├── images/                        faixa, ícone e as imagens do README
-├── .github/                       fluxo de CI, aviso ao painel, modelos de issues e pull requests
-├── armor.project.json             manifesto: versão, função, maturidade
-├── pyproject.toml                 metadados do pacote, entradas
-├── CHANGELOG.md                   o que mudou em cada versão
-├── run.sh run.bat                 arrancar, fluxo partilhado
-├── build.sh build.bat             compilar e testar, fluxo partilhado
-├── build-test.sh build-test.bat   compilar, testar e empacotar
-├── test.sh test.bat               só os testes, nunca a versão
-└── SECURITY.md SUPPORT.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE
-```
-
-</details>""",
+     "structure": structure("pt", "ARMOR-VOICE-AI"),
      "roadmap": r"""**Limites conhecidos hoje**
 
 * Não inclui nenhum motor de voz, e nenhum foi experimentado com um microfone real.

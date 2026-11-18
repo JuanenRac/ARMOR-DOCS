@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-ANDROID-CONTROL, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "📱",
   "layout": "universal",
@@ -220,37 +222,7 @@ python -I tools/armor_ci_validate.py
 | The connection is refused after it worked | The key of the installation's certificate changed | Pair again with the text of Studio's QR if you changed it on purpose |
 | Alarms arrive late or not at all in the background | The battery rules of the phone maker stop the watch; push needs a Firebase project of its own | Exempt the app from battery saving; follow [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | The update is refused | The signing certificate of the download shares none with the installed app | Do not install it; take the APK from the releases of this repository |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   the app: screens, rules, network and updates
-├── app/src/main/assets/                         eight language tables, alarm codes, weather map
-├── app/src/test/                                565 tests and a fake server
-├── docs/                                        the guides of this repository
-├── tools/                                       the shared CI checks and project tooling
-├── .github/                                     CI workflow, issue and pull-request templates
-├── images/                                      banner, icon and the two pictures of this README
-├── build.sh build.bat                           build through the shared project workflow
-├── test.sh test.bat                             run the tests through the shared workflow
-├── run.sh run.bat                               start through the shared project workflow
-├── armor.project.json                           manifest: version, role, maturity, build command
-├── CHANGELOG.md                                 what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE               security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           how to contribute and the code of conduct
-├── build.gradle.kts settings.gradle.kts         the Gradle build of the project
-├── gradle.properties                            Gradle settings
-├── gradlew gradlew.bat gradle/                  the Gradle wrapper
-├── build-test.sh build-test.bat                 run the tests through the shared workflow
-└── .gitattributes .gitignore                    Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Known limits today**
 
 * The solar, electrical and alarm-panel screens have not met real equipment (only a radar node exists).
@@ -420,37 +392,7 @@ python -I tools/armor_ci_validate.py
 | La conexión se rechaza tras haber funcionado | Cambió la clave del certificado de la instalación | Vuelve a emparejar con el texto del QR de Studio si lo cambiaste a propósito |
 | Las alarmas llegan tarde o no llegan en segundo plano | Las reglas de batería del fabricante detienen la vigilancia; el push necesita un proyecto Firebase propio | Excluye la app del ahorro de batería; sigue [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | La actualización se rechaza | El certificado de firma de la descarga no comparte ninguno con la app instalada | No lo instales; toma el APK de las versiones de este repositorio |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   la app: pantallas, reglas, red y actualizaciones
-├── app/src/main/assets/                         ocho tablas de idioma, códigos de alarma, mapa del tiempo
-├── app/src/test/                                565 pruebas y un servidor falso
-├── docs/                                        las guías de este repositorio
-├── tools/                                       las comprobaciones de CI compartidas y las herramientas del proyecto
-├── .github/                                     flujo de CI y plantillas de issues y pull requests
-├── images/                                      banner, icono y las dos imágenes de este README
-├── build.sh build.bat                           compilar con el flujo de proyecto compartido
-├── test.sh test.bat                             ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                               arrancar con el flujo de proyecto compartido
-├── armor.project.json                           manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                                 qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE               política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           cómo contribuir y el código de conducta
-├── build.gradle.kts settings.gradle.kts         la compilación Gradle del proyecto
-├── gradle.properties                            ajustes de Gradle
-├── gradlew gradlew.bat gradle/                  el envoltorio de Gradle
-├── build-test.sh build-test.bat                 ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore                    ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Las pantallas de solar, eléctrico y panel de alarma no han conocido equipo real (solo existe un nodo radar).
@@ -620,37 +562,7 @@ python -I tools/armor_ci_validate.py
 | Die Verbindung wird verweigert, nachdem sie funktionierte | Der Schlüssel des Installationszertifikats hat sich geändert | Koppele erneut mit dem QR-Text von Studio, wenn du es absichtlich geändert hast |
 | Alarme kommen im Hintergrund spät oder gar nicht an | Die Akkuregeln des Herstellers stoppen die Überwachung; Push braucht ein eigenes Firebase-Projekt | Nimm die App vom Energiesparen aus; folge [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | Das Update wird abgelehnt | Das Signaturzertifikat des Downloads teilt keines mit der installierten App | Installiere sie nicht; nimm die APK aus den Releases dieses Repositorys |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   die App: Bildschirme, Regeln, Netz und Updates
-├── app/src/main/assets/                         acht Sprachtabellen, Alarmcodes, Wetterkarte
-├── app/src/test/                                565 Tests und ein Fake-Server
-├── docs/                                        die Anleitungen dieses Repositorys
-├── tools/                                       die gemeinsamen CI-Prüfungen und Projektwerkzeuge
-├── .github/                                     CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                                      Banner, Symbol und die zwei Bilder dieses READMEs
-├── build.sh build.bat                           Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                             Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                               Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                           Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                                 was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE               Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           Mitwirkung und Verhaltenskodex
-├── build.gradle.kts settings.gradle.kts         der Gradle-Build des Projekts
-├── gradle.properties                            Gradle-Einstellungen
-├── gradlew gradlew.bat gradle/                  der Gradle-Wrapper
-├── build-test.sh build-test.bat                 Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore                    Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Bildschirme für Solar, Elektro und Alarmzentrale kennen keine echte Ausrüstung (es gibt nur einen Radarknoten).
@@ -820,37 +732,7 @@ python -I tools/armor_ci_validate.py
 | La connexion est refusée alors qu'elle marchait | La clé du certificat de l'installation a changé | Apparie de nouveau avec le texte du QR de Studio si tu l'as changé exprès |
 | Les alarmes arrivent en retard ou pas du tout en arrière-plan | Les règles de batterie du fabricant arrêtent la surveillance ; le push exige un projet Firebase propre | Exempte l'app des économies de batterie ; suis [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | La mise à jour est refusée | Le certificat de signature du téléchargement n'en partage aucun avec l'app installée | Ne l'installe pas ; prends l'APK dans les versions de ce dépôt |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   l'app : écrans, règles, réseau et mises à jour
-├── app/src/main/assets/                         huit tables de langue, codes d'alarme, carte météo
-├── app/src/test/                                565 tests et un faux serveur
-├── docs/                                        les guides de ce dépôt
-├── tools/                                       les contrôles CI partagés et les outils du projet
-├── .github/                                     workflow CI et modèles d'issues et de pull requests
-├── images/                                      bannière, icône et les deux images de ce README
-├── build.sh build.bat                           build par le flux de projet partagé
-├── test.sh test.bat                             lancer les tests par le flux partagé
-├── run.sh run.bat                               démarrer par le flux de projet partagé
-├── armor.project.json                           manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                                 ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE               politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           comment contribuer et le code de conduite
-├── build.gradle.kts settings.gradle.kts         le build Gradle du projet
-├── gradle.properties                            réglages Gradle
-├── gradlew gradlew.bat gradle/                  l'enveloppe Gradle
-├── build-test.sh build-test.bat                 lancer les tests par le flux partagé
-└── .gitattributes .gitignore                    réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Les écrans solaire, électrique et centrale d'alarme n'ont pas connu de vrai matériel (seul un nœud radar existe).
@@ -1020,37 +902,7 @@ python -I tools/armor_ci_validate.py
 | La connessione è rifiutata dopo aver funzionato | La chiave del certificato dell'installazione è cambiata | Associa di nuovo con il testo del QR di Studio se l'hai cambiato di proposito |
 | Gli allarmi arrivano in ritardo o non arrivano in background | Le regole di batteria del produttore fermano la sorveglianza; il push richiede un progetto Firebase proprio | Escludi l'app dal risparmio batteria; segui [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | L'aggiornamento è rifiutato | Il certificato di firma del download non ne condivide nessuno con l'app installata | Non installarlo; prendi l'APK dalle versioni di questo repository |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   l'app: schermate, regole, rete e aggiornamenti
-├── app/src/main/assets/                         otto tabelle di lingua, codici di allarme, mappa meteo
-├── app/src/test/                                565 test e un server finto
-├── docs/                                        le guide di questo repository
-├── tools/                                       i controlli CI condivisi e gli strumenti del progetto
-├── .github/                                     workflow CI e modelli per issue e pull request
-├── images/                                      banner, icona e le due immagini di questo README
-├── build.sh build.bat                           build tramite il flusso di progetto condiviso
-├── test.sh test.bat                             eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                               avvio tramite il flusso di progetto condiviso
-├── armor.project.json                           manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                                 cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE               politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           come contribuire e il codice di condotta
-├── build.gradle.kts settings.gradle.kts         la build Gradle del progetto
-├── gradle.properties                            impostazioni di Gradle
-├── gradlew gradlew.bat gradle/                  il wrapper di Gradle
-├── build-test.sh build-test.bat                 eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore                    impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Limiti noti oggi**
 
 * Le schermate di solare, elettrico e centrale di allarme non hanno incontrato apparecchiature reali (esiste solo un nodo radar).
@@ -1220,37 +1072,7 @@ python -I tools/armor_ci_validate.py
 | 動いていた接続が拒否される | 設置環境の証明書の鍵が変わった | 意図して変えたなら Studio の QR テキストで再ペアリング |
 | バックグラウンドでアラームが遅れる、または届かない | メーカーのバッテリー制限が監視を止める。プッシュには独自の Firebase プロジェクトが必要 | アプリを省電力の対象外にし、[docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) に従う |
 | 更新が拒否される | ダウンロードの署名証明書がインストール済みアプリと共通しない | インストールせず、このリポジトリのリリースから APK を取得する |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-ANDROID-CONTROL のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   アプリ：画面、ルール、ネットワーク、更新
-├── app/src/main/assets/                         8 言語の表、アラームコード、天気マップ
-├── app/src/test/                                565 件のテストと擬似サーバー
-├── docs/                                        このリポジトリのガイド
-├── tools/                                       共通の CI チェックとプロジェクトツール
-├── .github/                                     CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                                      バナー、アイコン、この README の 2 つの図
-├── build.sh build.bat                           共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                             共通のワークフローでテストを実行
-├── run.sh run.bat                               共通のプロジェクトワークフローで起動
-├── armor.project.json                           マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                                 各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE               セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           貢献方法と行動規範
-├── build.gradle.kts settings.gradle.kts         プロジェクトの Gradle ビルド
-├── gradle.properties                            Gradle の設定
-├── gradlew gradlew.bat gradle/                  Gradle ラッパー
-├── build-test.sh build-test.bat                 共通のワークフローでテストを実行
-└── .gitattributes .gitignore                    Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**現時点の既知の制限**
 
 * ソーラー、電気、アラームパネルの画面は実機に触れていません（レーダーノードしかありません）。
@@ -1420,37 +1242,7 @@ python -I tools/armor_ci_validate.py
 | 原本可用的连接被拒绝 | 安装环境证书的密钥发生了变化 | 若是有意更改，请用 Studio 二维码文本重新配对 |
 | 后台报警延迟或收不到 | 手机厂商的电池策略会停止监视；推送需要自己的 Firebase 项目 | 将应用排除在省电限制之外；按 [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) 操作 |
 | 更新被拒绝 | 下载文件的签名证书与已安装应用没有任何共同项 | 不要安装；请从本仓库的发布版本获取 APK |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-ANDROID-CONTROL 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   应用：界面、规则、网络与更新
-├── app/src/main/assets/                         八种语言表、报警代码、天气地图
-├── app/src/test/                                565 个测试和一个模拟服务器
-├── docs/                                        本仓库的指南
-├── tools/                                       共享的 CI 检查和项目工具
-├── .github/                                     CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                                      横幅、图标和本 README 的两幅图
-├── build.sh build.bat                           通过共享的项目工作流构建
-├── test.sh test.bat                             通过共享工作流运行测试
-├── run.sh run.bat                               通过共享的项目工作流启动
-├── armor.project.json                           清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                                 每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE               安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           如何贡献与行为准则
-├── build.gradle.kts settings.gradle.kts         项目的 Gradle 构建
-├── gradle.properties                            Gradle 设置
-├── gradlew gradlew.bat gradle/                  Gradle 包装器
-├── build-test.sh build-test.bat                 通过共享工作流运行测试
-└── .gitattributes .gitignore                    Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**目前已知的限制**
 
 * 太阳能、电气和报警面板的界面尚未接触过真实设备（目前只有一个雷达节点）。
@@ -1620,37 +1412,7 @@ python -I tools/armor_ci_validate.py
 | A ligação é recusada depois de ter funcionado | A chave do certificado da instalação mudou | Emparelha de novo com o texto do QR do Studio se o mudaste de propósito |
 | Os alarmes chegam tarde ou não chegam em segundo plano | As regras de bateria do fabricante param a vigilância; o push precisa de um projeto Firebase próprio | Exclui a app da poupança de bateria; segue [docs/PUSH_NOTIFICATIONS.md](docs/PUSH_NOTIFICATIONS.md) |
 | A atualização é recusada | O certificado de assinatura da transferência não partilha nenhum com a app instalada | Não o instales; usa o APK das versões deste repositório |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-ANDROID-CONTROL" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-ANDROID-CONTROL/
-├── app/src/main/java/es/electrohobby3d/armor/   a app: ecrãs, regras, rede e atualizações
-├── app/src/main/assets/                         oito tabelas de língua, códigos de alarme, mapa do tempo
-├── app/src/test/                                565 testes e um servidor falso
-├── docs/                                        os guias deste repositório
-├── tools/                                       as verificações de CI partilhadas e as ferramentas do projeto
-├── .github/                                     fluxo de CI e modelos de issues e pull requests
-├── images/                                      faixa, ícone e as duas imagens deste README
-├── build.sh build.bat                           compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                             executar os testes pelo fluxo partilhado
-├── run.sh run.bat                               arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                           manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                                 o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE               política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md           como contribuir e o código de conduta
-├── build.gradle.kts settings.gradle.kts         a compilação Gradle do projeto
-├── gradle.properties                            definições do Gradle
-├── gradlew gradlew.bat gradle/                  o wrapper do Gradle
-├── build-test.sh build-test.bat                 executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore                    definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-ANDROID-CONTROL"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * Os ecrãs de solar, elétrico e painel de alarme não conheceram equipamento real (só existe um nó radar).

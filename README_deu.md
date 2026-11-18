@@ -159,7 +159,7 @@ Es gibt nichts zu kompilieren. Die Version steht in `armor.project.json` und im 
 ## 📂 Struktur des Repositorys
 
 <p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-DOCS" width="100%">
+  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-DOCS" width="100%">
 </p>
 
 <details>

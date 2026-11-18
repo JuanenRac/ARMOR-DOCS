@@ -159,7 +159,7 @@ Non c'è nulla da compilare. La versione risiede in `armor.project.json` e nel b
 ## 📂 Struttura del repository
 
 <p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-DOCS" width="100%">
+  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-DOCS" width="100%">
 </p>
 
 <details>

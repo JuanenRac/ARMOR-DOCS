@@ -159,7 +159,7 @@ Il n'y a rien à compiler. La version se trouve dans `armor.project.json` et dan
 ## 📂 Structure du dépôt
 
 <p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-DOCS" width="100%">
+  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-DOCS" width="100%">
 </p>
 
 <details>

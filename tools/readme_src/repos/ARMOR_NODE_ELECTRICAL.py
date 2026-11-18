@@ -1,6 +1,8 @@
 # The facts that do not depend on the language, and the words of every language, of ARMOR-NODE-ELECTRICAL, in the universal README layout.
 # Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
 
+from readme_src._kit import structure
+
 FACTS = {
   "emoji": "⚡",
   "layout": "universal",
@@ -231,43 +233,7 @@ Most of the checks are exhaustive sweeps of the switching rules (`test_switch_se
 | An update from GitHub is refused | The release has no checksum or signature, they do not match (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), has no image for this board (`e_no_asset_for_board`) or is for another project (`e_wrong_firmware`) | Nothing changed on the node; try again or let an administrator upload the file by hand |
 | A switch shows a fault | The contactor did not show open or closed as ordered (`kDidNotOpen`, `kDidNotClose`); it stays until acknowledged | Check the wiring of the auxiliary contact, then send `acknowledge` |
 | A command is refused | Switching is off (`switching_enabled` false), the token is invalid or expired, or the node was not armed just before | Arm again and send the order with the new token |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository structure of ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Text version of the tree</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                the firmware: an ESP-IDF component
-├── core/                                the logic with no ESP-IDF, tested on a computer
-├── panel/                               the web panel embedded in the firmware
-├── tests/                               host tests and Python checks
-├── docs/                                12 guides: safety, switching, messages, hardware
-├── tools/                               build, pack and check tools
-├── .github/                             CI workflow, issue and pull-request templates
-├── images/                              banner, icon, README pictures, screenshots
-├── build.sh build.bat                   build through the shared project workflow
-├── test.sh test.bat                     run the tests through the shared workflow
-├── run.sh run.bat                       start through the shared project workflow
-├── armor.project.json                   manifest: version, role, maturity, build command
-├── CHANGELOG.md                         what changed in each version
-├── SECURITY.md SUPPORT.md LICENSE       security policy, support and license
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   how to contribute and the code of conduct
-├── CMakeLists.txt                       the ESP-IDF project
-├── firmware_base.lock                   the version of the shared base this copy was synced from
-├── partitions.csv                       the flash table
-├── sdkconfig.defaults                   the firmware settings
-├── sdkconfig.board.s3-eth               the settings of one board
-├── sdkconfig.board.s3-wifi              the settings of one board
-├── sdkconfig.switching                  the switching image (off by default, never published)
-├── secrets/                             example of the node file (the real ones are not versioned)
-├── build-test.sh build-test.bat         run the tests through the shared workflow
-└── .gitattributes .gitignore            Git settings
-```
-
-</details>""",
+      "structure": structure("en", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Known limits today**
 
 * The PZEM-004T v3 and PZEM-017 frames and readings are checked against the documented frames and recorded samples; no meter has answered yet.
@@ -441,43 +407,7 @@ La mayoría de las comprobaciones son barridos exhaustivos de las reglas de mani
 | Se rechaza una actualización desde GitHub | La versión no trae suma de comprobación ni firma, no coinciden (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), no trae imagen para esta placa (`e_no_asset_for_board`) o es de otro proyecto (`e_wrong_firmware`) | El nodo no cambió; reintenta o deja que un administrador suba el fichero a mano |
 | Un conmutador muestra un fallo | El contactor no mostró abierto o cerrado como se ordenó (`kDidNotOpen`, `kDidNotClose`); se queda hasta reconocerlo | Revisa el cableado del contacto auxiliar y envía `acknowledge` |
 | Se rechaza una orden | La maniobra está apagada (`switching_enabled` falso), el token no es válido o caducó, o el nodo no estaba armado justo antes | Arma otra vez y manda la orden con el token nuevo |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estructura del repositorio de ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Versión en texto del árbol</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                el firmware: un componente de ESP-IDF
-├── core/                                la lógica sin ESP-IDF, probada en un ordenador
-├── panel/                               el panel web embebido en el firmware
-├── tests/                               pruebas de host y comprobaciones Python
-├── docs/                                12 guías: seguridad, maniobra, mensajes, hardware
-├── tools/                               herramientas de compilación, empaquetado y comprobación
-├── .github/                             flujo de CI y plantillas de issues y pull requests
-├── images/                              banner, icono, imágenes del README, capturas
-├── build.sh build.bat                   compilar con el flujo de proyecto compartido
-├── test.sh test.bat                     ejecutar las pruebas con el flujo compartido
-├── run.sh run.bat                       arrancar con el flujo de proyecto compartido
-├── armor.project.json                   manifiesto: versión, rol, madurez, comando de build
-├── CHANGELOG.md                         qué cambió en cada versión
-├── SECURITY.md SUPPORT.md LICENSE       política de seguridad, soporte y licencia
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   cómo contribuir y el código de conducta
-├── CMakeLists.txt                       el proyecto ESP-IDF
-├── firmware_base.lock                   la versión de la base compartida de la que se sincronizó esta copia
-├── partitions.csv                       la tabla de la flash
-├── sdkconfig.defaults                   los ajustes del firmware
-├── sdkconfig.board.s3-eth               los ajustes de una placa
-├── sdkconfig.board.s3-wifi              los ajustes de una placa
-├── sdkconfig.switching                  la imagen con conmutación (apagada por defecto, nunca publicada)
-├── secrets/                             ejemplo del fichero del nodo (los reales no se versionan)
-├── build-test.sh build-test.bat         ejecutar las pruebas con el flujo compartido
-└── .gitattributes .gitignore            ajustes de Git
-```
-
-</details>""",
+      "structure": structure("es", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Límites conocidos hoy**
 
 * Las tramas y lecturas de los PZEM-004T v3 y PZEM-017 se comprueban contra las tramas documentadas y muestras grabadas; ningún medidor ha respondido todavía.
@@ -651,43 +581,7 @@ Die meisten Prüfungen sind erschöpfende Durchläufe der Schaltregeln (`test_sw
 | Ein Update von GitHub wird abgelehnt | Die Version enthält keine Prüfsumme oder Signatur, sie passen nicht (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), hat kein Image für diese Platine (`e_no_asset_for_board`) oder gehört zu einem anderen Projekt (`e_wrong_firmware`) | Der Knoten blieb unverändert; erneut versuchen oder einen Administrator die Datei von Hand hochladen lassen |
 | Ein Schalter zeigt einen Fehler | Das Schütz zeigte nicht offen oder geschlossen wie befohlen (`kDidNotOpen`, `kDidNotClose`); es bleibt bis zur Quittierung | Prüfe die Verdrahtung des Hilfskontakts, dann sende `acknowledge` |
 | Ein Befehl wird abgelehnt | Schalten ist aus (`switching_enabled` falsch), das Token ist ungültig oder abgelaufen, oder der Knoten war nicht kurz zuvor scharf gemacht | Erneut scharf machen und den Befehl mit dem neuen Token senden |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Repository-Struktur von ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Textversion des Baums</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                die Firmware: eine ESP-IDF-Komponente
-├── core/                                die Logik ohne ESP-IDF, am Rechner getestet
-├── panel/                               das in die Firmware eingebettete Web-Panel
-├── tests/                               Host-Tests und Python-Prüfungen
-├── docs/                                12 Anleitungen: Sicherheit, Schalten, Nachrichten, Hardware
-├── tools/                               Werkzeuge für Build, Packen und Prüfung
-├── .github/                             CI-Workflow sowie Vorlagen für Issues und Pull Requests
-├── images/                              Banner, Symbol, README-Bilder, Screenshots
-├── build.sh build.bat                   Build über den gemeinsamen Projekt-Workflow
-├── test.sh test.bat                     Tests über den gemeinsamen Workflow ausführen
-├── run.sh run.bat                       Start über den gemeinsamen Projekt-Workflow
-├── armor.project.json                   Manifest: Version, Rolle, Reifegrad, Build-Befehl
-├── CHANGELOG.md                         was sich in jeder Version geändert hat
-├── SECURITY.md SUPPORT.md LICENSE       Sicherheitsrichtlinie, Support und Lizenz
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   Mitwirkung und Verhaltenskodex
-├── CMakeLists.txt                       das ESP-IDF-Projekt
-├── firmware_base.lock                   die Version der gemeinsamen Basis, mit der diese Kopie abgeglichen wurde
-├── partitions.csv                       die Flash-Tabelle
-├── sdkconfig.defaults                   die Firmware-Einstellungen
-├── sdkconfig.board.s3-eth               die Einstellungen einer Platine
-├── sdkconfig.board.s3-wifi              die Einstellungen einer Platine
-├── sdkconfig.switching                  das Schaltabbild (standardmäßig aus, nie veröffentlicht)
-├── secrets/                             Beispiel der Knotendatei (die echten sind nicht versioniert)
-├── build-test.sh build-test.bat         Tests über den gemeinsamen Workflow ausführen
-└── .gitattributes .gitignore            Git-Einstellungen
-```
-
-</details>""",
+      "structure": structure("de", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Bekannte Grenzen heute**
 
 * Die Telegramme und Messwerte der PZEM-004T v3 und PZEM-017 werden gegen die dokumentierten Telegramme und aufgezeichnete Beispiele geprüft; noch hat kein Zähler geantwortet.
@@ -861,43 +755,7 @@ La plupart des vérifications sont des balayages exhaustifs des règles de manœ
 | Une mise à jour depuis GitHub est refusée | La version n'a ni somme de contrôle ni signature, elles ne concordent pas (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), n'a pas d'image pour cette carte (`e_no_asset_for_board`) ou est d'un autre projet (`e_wrong_firmware`) | Le nœud n'a pas changé ; réessayez ou laissez un administrateur envoyer le fichier à la main |
 | Un interrupteur montre un défaut | Le contacteur n'a pas montré ouvert ou fermé comme ordonné (`kDidNotOpen`, `kDidNotClose`) ; il reste jusqu'à l'acquittement | Vérifiez le câblage du contact auxiliaire, puis envoyez `acknowledge` |
 | Une commande est refusée | La manœuvre est désactivée (`switching_enabled` faux), le jeton est invalide ou expiré, ou le nœud n'était pas armé juste avant | Armez de nouveau et envoyez l'ordre avec le nouveau jeton |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Structure du dépôt de ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Version texte de l'arborescence</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                le firmware : un composant ESP-IDF
-├── core/                                la logique sans ESP-IDF, testée sur ordinateur
-├── panel/                               le panneau web intégré au firmware
-├── tests/                               tests sur hôte et contrôles Python
-├── docs/                                12 guides : sécurité, manœuvre, messages, matériel
-├── tools/                               outils de build, d'empaquetage et de contrôle
-├── .github/                             workflow CI et modèles d'issues et de pull requests
-├── images/                              bannière, icône, images du README, captures
-├── build.sh build.bat                   build par le flux de projet partagé
-├── test.sh test.bat                     lancer les tests par le flux partagé
-├── run.sh run.bat                       démarrer par le flux de projet partagé
-├── armor.project.json                   manifeste : version, rôle, maturité, commande de build
-├── CHANGELOG.md                         ce qui a changé à chaque version
-├── SECURITY.md SUPPORT.md LICENSE       politique de sécurité, support et licence
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   comment contribuer et le code de conduite
-├── CMakeLists.txt                       le projet ESP-IDF
-├── firmware_base.lock                   la version de la base partagée dont cette copie a été synchronisée
-├── partitions.csv                       la table de la flash
-├── sdkconfig.defaults                   les réglages du firmware
-├── sdkconfig.board.s3-eth               les réglages d'une carte
-├── sdkconfig.board.s3-wifi              les réglages d'une carte
-├── sdkconfig.switching                  l'image de commutation (désactivée par défaut, jamais publiée)
-├── secrets/                             exemple du fichier de nœud (les vrais ne sont pas versionnés)
-├── build-test.sh build-test.bat         lancer les tests par le flux partagé
-└── .gitattributes .gitignore            réglages Git
-```
-
-</details>""",
+      "structure": structure("fr", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Limites connues aujourd'hui**
 
 * Les trames et lectures des PZEM-004T v3 et PZEM-017 sont vérifiées par rapport aux trames documentées et à des échantillons enregistrés ; aucun compteur n'a encore répondu.
@@ -1071,43 +929,7 @@ La maggior parte delle verifiche sono scansioni esaustive delle regole di manovr
 | Un aggiornamento da GitHub è rifiutato | La versione non ha checksum o firma, non corrispondono (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), non ha un'immagine per questa scheda (`e_no_asset_for_board`) o è di un altro progetto (`e_wrong_firmware`) | Il nodo non è cambiato; riprova o lascia che un amministratore carichi il file a mano |
 | Un interruttore mostra un guasto | Il contattore non ha mostrato aperto o chiuso come ordinato (`kDidNotOpen`, `kDidNotClose`); resta fino al riconoscimento | Controlla il cablaggio del contatto ausiliario, poi invia `acknowledge` |
 | Un comando è rifiutato | La manovra è spenta (`switching_enabled` falso), il token non è valido o è scaduto, o il nodo non era armato poco prima | Arma di nuovo e invia l'ordine con il nuovo token |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Struttura del repository di ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Versione testuale dell'albero</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                il firmware: un componente ESP-IDF
-├── core/                                la logica senza ESP-IDF, testata su un computer
-├── panel/                               il pannello web incorporato nel firmware
-├── tests/                               test su host e verifiche Python
-├── docs/                                12 guide: sicurezza, manovra, messaggi, hardware
-├── tools/                               strumenti di build, impacchettamento e verifica
-├── .github/                             workflow CI e modelli per issue e pull request
-├── images/                              banner, icona, immagini del README, schermate
-├── build.sh build.bat                   build tramite il flusso di progetto condiviso
-├── test.sh test.bat                     eseguire i test tramite il flusso condiviso
-├── run.sh run.bat                       avvio tramite il flusso di progetto condiviso
-├── armor.project.json                   manifesto: versione, ruolo, maturità, comando di build
-├── CHANGELOG.md                         cosa è cambiato in ogni versione
-├── SECURITY.md SUPPORT.md LICENSE       politica di sicurezza, supporto e licenza
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   come contribuire e il codice di condotta
-├── CMakeLists.txt                       il progetto ESP-IDF
-├── firmware_base.lock                   la versione della base condivisa da cui è stata sincronizzata questa copia
-├── partitions.csv                       la tabella della flash
-├── sdkconfig.defaults                   le impostazioni del firmware
-├── sdkconfig.board.s3-eth               le impostazioni di una scheda
-├── sdkconfig.board.s3-wifi              le impostazioni di una scheda
-├── sdkconfig.switching                  l'immagine di commutazione (spenta per impostazione predefinita, mai pubblicata)
-├── secrets/                             esempio del file del nodo (quelli veri non sono versionati)
-├── build-test.sh build-test.bat         eseguire i test tramite il flusso condiviso
-└── .gitattributes .gitignore            impostazioni di Git
-```
-
-</details>""",
+      "structure": structure("it", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Limiti noti oggi**
 
 * I frame e le letture dei PZEM-004T v3 e PZEM-017 sono verificati contro i frame documentati e campioni registrati; nessun contatore ha ancora risposto.
@@ -1281,43 +1103,7 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 | GitHub からの更新が拒否される | リリースにチェックサムや署名がない、一致しない（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`）、この基板用のイメージがない（`e_no_asset_for_board`）、または別プロジェクトのもの（`e_wrong_firmware`） | ノードは変更されていません。再試行するか、管理者が手動でファイルをアップロード |
 | スイッチが故障を示す | 接触器が命令どおりの開閉を示さなかった（`kDidNotOpen`、`kDidNotClose`）。確認応答するまで残ります | 補助接点の配線を確認してから `acknowledge` を送る |
 | コマンドが拒否される | 開閉がオフ（`switching_enabled` が false）、トークンが無効か期限切れ、または直前にノードがアームされていない | もう一度アームして新しいトークンで命令を送る |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-ELECTRICAL のリポジトリ構造" width="100%">
-</p>
-
-<details>
-<summary>ツリーのテキスト版</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                ファームウェア（ESP-IDF コンポーネント）
-├── core/                                ESP-IDF なしのロジック（コンピューターでテスト）
-├── panel/                               ファームウェアに埋め込まれた Web パネル
-├── tests/                               ホストテストと Python 検査
-├── docs/                                12 のガイド：安全、開閉、メッセージ、ハードウェア
-├── tools/                               ビルド・パッケージ・検査のツール
-├── .github/                             CI ワークフローと Issue・Pull Request のテンプレート
-├── images/                              バナー、アイコン、README の図、スクリーンショット
-├── build.sh build.bat                   共通のプロジェクトワークフローでビルド
-├── test.sh test.bat                     共通のワークフローでテストを実行
-├── run.sh run.bat                       共通のプロジェクトワークフローで起動
-├── armor.project.json                   マニフェスト：バージョン、役割、成熟度、ビルドコマンド
-├── CHANGELOG.md                         各バージョンの変更点
-├── SECURITY.md SUPPORT.md LICENSE       セキュリティポリシー、サポート、ライセンス
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   貢献方法と行動規範
-├── CMakeLists.txt                       ESP-IDF プロジェクト
-├── firmware_base.lock                   この複製が同期された共有ベースのバージョン
-├── partitions.csv                       フラッシュのテーブル
-├── sdkconfig.defaults                   ファームウェアの設定
-├── sdkconfig.board.s3-eth               基板ごとの設定
-├── sdkconfig.board.s3-wifi              基板ごとの設定
-├── sdkconfig.switching                  切替イメージ（既定ではオフ、公開しません）
-├── secrets/                             ノードファイルの例（本物はバージョン管理しません）
-├── build-test.sh build-test.bat         共通のワークフローでテストを実行
-└── .gitattributes .gitignore            Git の設定
-```
-
-</details>""",
+      "structure": structure("ja", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**現時点の既知の制限**
 
 * PZEM-004T v3 と PZEM-017 のフレームと読み取り値は、文書化されたフレームと記録したサンプルに対して検証済みです。実際のメーターはまだ応答していません。
@@ -1491,43 +1277,7 @@ Python 检查：八种语言的面板文字、任务、保存路径、受锁保�
 | 来自 GitHub 的更新被拒绝 | 发布版缺少校验和或签名，或二者不匹配（`e_no_checksum`、`e_no_signature`、`e_checksum_mismatch`、`e_bad_signature`），没有适用于此电路板的镜像（`e_no_asset_for_board`），或属于另一个项目（`e_wrong_firmware`） | 节点未发生任何变化；请重试，或由管理员手动上传文件 |
 | 开关显示故障 | 接触器没有按命令显示断开或闭合（`kDidNotOpen`、`kDidNotClose`）；会保持到被确认 | 检查辅助触点的接线，然后发送 `acknowledge` |
 | 命令被拒绝 | 开关操作已关闭（`switching_enabled` 为 false）、令牌无效或已过期，或节点刚才没有布防 | 重新布防并用新令牌发送命令 |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="ARMOR-NODE-ELECTRICAL 的仓库结构" width="100%">
-</p>
-
-<details>
-<summary>目录树的文本版</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                固件：一个 ESP-IDF 组件
-├── core/                                不依赖 ESP-IDF 的逻辑，在计算机上测试
-├── panel/                               嵌入固件的网页面板
-├── tests/                               主机测试和 Python 检查
-├── docs/                                12 份指南：安全、开关、消息、硬件
-├── tools/                               构建、打包和检查工具
-├── .github/                             CI 工作流以及 Issue 和 Pull Request 模板
-├── images/                              横幅、图标、README 图片、屏幕截图
-├── build.sh build.bat                   通过共享的项目工作流构建
-├── test.sh test.bat                     通过共享工作流运行测试
-├── run.sh run.bat                       通过共享的项目工作流启动
-├── armor.project.json                   清单：版本、角色、成熟度、构建命令
-├── CHANGELOG.md                         每个版本的变化
-├── SECURITY.md SUPPORT.md LICENSE       安全策略、支持和许可证
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   如何贡献与行为准则
-├── CMakeLists.txt                       ESP-IDF 项目
-├── firmware_base.lock                   此副本所同步的共享基础版本
-├── partitions.csv                       闪存分区表
-├── sdkconfig.defaults                   固件设置
-├── sdkconfig.board.s3-eth               某块电路板的设置
-├── sdkconfig.board.s3-wifi              某块电路板的设置
-├── sdkconfig.switching                  切换镜像（默认关闭，从不发布）
-├── secrets/                             节点文件示例（真实文件不纳入版本管理）
-├── build-test.sh build-test.bat         通过共享工作流运行测试
-└── .gitattributes .gitignore            Git 设置
-```
-
-</details>""",
+      "structure": structure("zh", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**目前已知的限制**
 
 * PZEM-004T v3 和 PZEM-017 的帧与读数已对照文档中的帧和录制的样本检查；目前还没有电表响应过。
@@ -1701,43 +1451,7 @@ A maior parte das verificações são varrimentos exaustivos das regras de manob
 | Uma atualização do GitHub é recusada | A versão não traz soma de verificação nem assinatura, não coincidem (`e_no_checksum`, `e_no_signature`, `e_checksum_mismatch`, `e_bad_signature`), não traz imagem para esta placa (`e_no_asset_for_board`) ou é de outro projeto (`e_wrong_firmware`) | O nó não mudou; tente de novo ou deixe um administrador enviar o ficheiro à mão |
 | Um interruptor mostra uma falha | O contactor não mostrou aberto ou fechado como ordenado (`kDidNotOpen`, `kDidNotClose`); fica até ser reconhecido | Verifique a cablagem do contacto auxiliar e envie `acknowledge` |
 | Uma ordem é recusada | A manobra está desligada (`switching_enabled` falso), o token é inválido ou expirou, ou o nó não estava armado mesmo antes | Arme de novo e envie a ordem com o novo token |""",
-      "structure": r"""<p align="center">
-  <img src="images/repository-structure.svg" alt="Estrutura do repositório de ARMOR-NODE-ELECTRICAL" width="100%">
-</p>
-
-<details>
-<summary>Versão em texto da árvore</summary>
-
-```text
-ARMOR-NODE-ELECTRICAL/
-├── main/                                o firmware: um componente ESP-IDF
-├── core/                                a lógica sem ESP-IDF, testada num computador
-├── panel/                               o painel web embebido no firmware
-├── tests/                               testes de anfitrião e verificações Python
-├── docs/                                12 guias: segurança, manobra, mensagens, hardware
-├── tools/                               ferramentas de compilação, empacotamento e verificação
-├── .github/                             fluxo de CI e modelos de issues e pull requests
-├── images/                              faixa, ícone, imagens do README, capturas de ecrã
-├── build.sh build.bat                   compilar pelo fluxo de projeto partilhado
-├── test.sh test.bat                     executar os testes pelo fluxo partilhado
-├── run.sh run.bat                       arrancar pelo fluxo de projeto partilhado
-├── armor.project.json                   manifesto: versão, função, maturidade, comando de build
-├── CHANGELOG.md                         o que mudou em cada versão
-├── SECURITY.md SUPPORT.md LICENSE       política de segurança, apoio e licença
-├── CONTRIBUTING.md CODE_OF_CONDUCT.md   como contribuir e o código de conduta
-├── CMakeLists.txt                       o projeto ESP-IDF
-├── firmware_base.lock                   a versão da base partilhada de que esta cópia foi sincronizada
-├── partitions.csv                       a tabela da flash
-├── sdkconfig.defaults                   as definições do firmware
-├── sdkconfig.board.s3-eth               as definições de uma placa
-├── sdkconfig.board.s3-wifi              as definições de uma placa
-├── sdkconfig.switching                  a imagem de comutação (desligada por defeito, nunca publicada)
-├── secrets/                             exemplo do ficheiro do nó (os verdadeiros não são versionados)
-├── build-test.sh build-test.bat         executar os testes pelo fluxo partilhado
-└── .gitattributes .gitignore            definições do Git
-```
-
-</details>""",
+      "structure": structure("pt", "ARMOR-NODE-ELECTRICAL"),
       "roadmap": r"""**Limites conhecidos hoje**
 
 * As tramas e leituras dos PZEM-004T v3 e PZEM-017 são verificadas contra as tramas documentadas e amostras gravadas; nenhum contador respondeu ainda.
