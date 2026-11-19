@@ -260,7 +260,7 @@ for _lg, _b in {'en': '**A daily summary of the events (optional, off by default
 NT = "{{fact:tests:ARMOR-SERVER-AI}}"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 FACTS["status"] = [x for x in FACTS["status"] if x[0] != "security"]
-FACTS["status"].insert(len(FACTS["status"]) - 1, ["security", "yellow"])
+FACTS["status"].insert(len(FACTS["status"]) - 1, ["security", "orange"])
 
 SEC_NOTE = P("The service never acts (every decision carries `authorizes_action = false`), refuses a token under 24 characters and a server address that is not `https://` or this same machine, and never stores a picture; tested, with no independent review.",
              "El servicio nunca actúa (toda decisión lleva `authorizes_action = false`), rechaza un token de menos de 24 caracteres y una dirección de servidor que no sea `https://` ni esta misma máquina, y nunca guarda una imagen; probado, sin revisión independiente.",

@@ -26,7 +26,7 @@ FACTS = {
     ],
     [
       "security",
-      "yellow",
+      "orange",
     ],
     [
       "integration",

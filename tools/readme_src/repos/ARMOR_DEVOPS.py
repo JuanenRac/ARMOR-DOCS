@@ -5,7 +5,7 @@ from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, s
 FACTS = {'emoji': '🚀',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
- 'status': [['software', 'yellow'], ['tests', 'yellow'], ['hardware', 'orange'], ['updates', 'green'], ['docs', 'green']],
+ 'status': [['software', 'yellow'], ['tests', 'yellow'], ['hardware', 'orange'], ['updates', 'orange'], ['docs', 'green']],
  'badges': [['Deploy', 'Docker%20Compose', '2496ed'], ['Bench', 'systemd', 'FFB020'], ['Tests', '{{fact:tests:ARMOR-DEVOPS}}', '00E5FF']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)

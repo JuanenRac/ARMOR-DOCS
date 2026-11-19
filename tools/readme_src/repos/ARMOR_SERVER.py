@@ -11,7 +11,7 @@ FACTS: dict[str, Any] = {'emoji': '🛡️',
             ['tests', 'green'],
             ['protocols', 'yellow'],
             ['hardware', 'orange'],
-            ['security', 'yellow'],
+            ['security', 'orange'],
             ['integration', 'orange'],
             ['docs', 'green']],
  'badges': [['Language', 'TypeScript', '3178c6'], ['Runtime', 'Node%2022%2B', '43853d'], ['Tests', '696%20passing', '2ea44f']]}

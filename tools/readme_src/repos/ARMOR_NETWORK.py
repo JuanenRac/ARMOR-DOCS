@@ -9,7 +9,7 @@ FACTS = {'emoji': '🛰️',
             ['tests', 'green'],
             ['protocols', 'yellow'],
             ['hardware', 'orange'],
-            ['security', 'yellow'],
+            ['security', 'orange'],
             ['integration', 'orange'],
             ['docs', 'green']],
  'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Tests', '{{fact:tests:ARMOR-NETWORK}}', '00E5FF']]}
