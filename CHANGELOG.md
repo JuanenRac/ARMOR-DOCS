@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The figures of the repository structure files are read from the code:** `doc_facts.py` gains `test_modules` and `tests_in`, a description in `docs/structure.json` may carry `{{fact:NAME|LAST}}`, `--structure` fails when LAST is not the figure and `--structure --fix` writes it, and the tree of the README resolves the markers. The five node sources no longer type the number of checks the host programs count.
 - **The Security and Updates lights of the Project status table of the repositories follow the evidence ceiling:** the sources of the READMEs hold the lowered lights (Security is never green and is limited like Hardware), and `tools/status_lights.py` is the new shared copy.
 
 - **The figures that were typed by hand are read from the code, or checked against it:** `doc_facts.py` gains `conformance_files`, `security_settings` (the keys of the defaults of the server's security file) and `studio_security_options` (the entries of the security screen of Studio), and the README sources of the common, server and Studio repositories use them instead of `35`, `43` and `17`; `doc_facts.py --structure` (also run by `--check`) compares the tests, test modules, JSON Schemas and payloads typed in the `docs/structure.json` of every repository with the real ones and fails when a language does not carry the same figure as the English text.

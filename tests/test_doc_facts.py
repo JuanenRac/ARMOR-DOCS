@@ -192,6 +192,55 @@ class SourceFigureTests(unittest.TestCase):
             self.assertEqual(doc_facts.main(["--structure"]), 1)
         self.assertIn("STRUCTURE_FIGURES=FAIL", [call.args[0] for call in shown.call_args_list])
 
+    def test_the_test_modules_and_the_tests_of_one_file_are_counted(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("def test_one(): pass\ndef test_two(): pass\n", encoding="utf-8")
+        (common / "tests" / "test_b.py").write_text("def test_three(): pass\n", encoding="utf-8")
+        (common / "tests" / "helper.py").write_text("def test_not_a_module(): pass\n", encoding="utf-8")
+        self.assertEqual(doc_facts.value("test_modules:ARMOR-COMMON"), "2")
+        self.assertEqual(doc_facts.value("tests_in:ARMOR-COMMON:test_a.py"), "2")
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("tests_in:ARMOR-COMMON:test_missing.py")
+
+    def test_a_figure_of_a_description_is_written_as_a_marker_with_its_last_value(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("def test_one(): pass\n", encoding="utf-8")
+        self.write_structure("ARMOR-COMMON", [
+            self.entry("tests/", "{{fact:tests:ARMOR-COMMON|1}} tests", "{{fact:tests:ARMOR-COMMON|1}} pruebas"),
+            self.entry("schemas/", "{{fact:schemas|2}} JSON Schemas", "{{fact:schemas|2}} JSON Schema"),
+        ])
+        self.assertEqual(doc_facts.structure_problems(["ARMOR-COMMON"]), [])
+
+    def test_a_marker_whose_last_value_is_not_the_figure_is_named_and_fix_rewrites_it(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("def test_one(): pass\ndef test_two(): pass\n", encoding="utf-8")
+        self.write_structure("ARMOR-COMMON", [self.entry("docs/", "{{fact:tests:ARMOR-COMMON|9}} checks", "{{fact:tests:ARMOR-COMMON|9}} comprobaciones")])
+        found = doc_facts.structure_problems(["ARMOR-COMMON"])
+        self.assertEqual(len(found), 2)
+        self.assertTrue(all("{{fact:tests:ARMOR-COMMON|9}} but the figure is 2" in item for item in found))
+        self.assertEqual(doc_facts.fix_structure(["ARMOR-COMMON"]), ["ARMOR-COMMON"])
+        self.assertEqual(doc_facts.structure_problems(["ARMOR-COMMON"]), [])
+        self.assertEqual(doc_facts.fix_structure(["ARMOR-COMMON"]), [])   # nothing left to write
+
+    def test_a_marker_whose_source_is_not_here_keeps_its_last_value_and_one_that_means_nothing_is_named(self):
+        self.write_structure("ARMOR-COMMON", [self.entry("docs/", "{{fact:tests:ARMOR-VISION|43}} checks", "{{fact:tests:ARMOR-VISION|43}} comprobaciones")])
+        self.assertEqual(doc_facts.structure_problems(["ARMOR-COMMON"]), [])
+        self.write_structure("ARMOR-COMMON", [self.entry("docs/", "{{fact:no_such_figure|1}} checks", "{{fact:no_such_figure|1}} comprobaciones")])
+        self.assertTrue(any("means nothing" in item for item in doc_facts.structure_problems(["ARMOR-COMMON"])))
+
+    def test_the_picture_tool_writes_the_figure_where_doc_facts_can_read_it_and_the_last_value_where_it_cannot(self):
+        import make_structure   # noqa: PLC0415
+
+        spec = {"a": ["{{fact:schemas|99}} schemas"], "b": {"c": "{{fact:vectors:network|98}} vectors, {{fact:tests:ARMOR-VISION|43}} tests"}, "n": 3}
+        self.assertEqual(make_structure.resolve_facts(spec), {"a": ["2 schemas"], "b": {"c": "7 vectors, 43 tests"}, "n": 3})
+        with self.assertRaises(make_structure.SpecError):
+            make_structure.resolve_facts("{{fact:no_such_figure|1}}")
+        with mock.patch.dict("sys.modules", {"doc_facts": None}):   # a repository that does not have the tool
+            self.assertEqual(make_structure.resolve_facts(spec["a"]), ["99 schemas"])
+
 
 class VerifiedTests(unittest.TestCase):
     def setUp(self):
