@@ -106,7 +106,7 @@ TREE_TOKEN = re.compile(r"\{\{tree:([a-z]{2}):([A-Za-z0-9_.\-]+)\}\}")
 def tree_text(lg: str, repo: str, root: Path | None = None) -> str:
     """The text tree of a repository in a language, drawn from the docs/structure.json of that repository (the same file that draws its picture)."""
     tool = _structure_tool()
-    spec = json.loads(((root or ROOT) / repo / "docs" / "structure.json").read_text(encoding="utf-8"))
+    spec = tool.resolve_facts(json.loads(((root or ROOT) / repo / "docs" / "structure.json").read_text(encoding="utf-8")))
     return tool.render_tree(spec, lg)
 
 

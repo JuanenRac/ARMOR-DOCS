@@ -7,6 +7,7 @@ Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
     python tools/doc_facts.py --check    # fail when one is out of date (a figure whose source is not next to this repository is skipped, and said)
     python tools/doc_facts.py --list     # print every figure and its value
     python tools/doc_facts.py --stale    # the rows verified in a version older than the one the repository has now
+    python tools/doc_facts.py --structure --fix  # write the real figure after the bar of every {{fact:NAME|LAST}} of the structure.json files next to this repository
     python tools/doc_facts.py --structure  # the figures typed in the docs/structure.json of the repositories (tests, test modules, JSON Schemas, conformance payloads) against the real ones (--check does it too)
 
 A figure in a document is written between two markers, which stay invisible when the page is rendered:
@@ -26,6 +27,12 @@ The name says where the number comes from:
     ctest_cpp:ARMOR-X    the host test programs a node registers with CTest (`add_test` in tests/CMakeLists.txt, each name once, without the Python checks)
     ctest_python:ARMOR-X the Python checks that file registers with CTest
     version:ARMOR-X      the version in the manifest of a repository
+    test_modules:ARMOR-X the test files (`tests/test_*.py`) of a Python repository
+    tests_in:ARMOR-X:test_y.py  the test functions of one test file of a repository
+
+The descriptions of a repository's docs/structure.json may carry a figure too, as `{{fact:NAME|LAST}}` (LAST is the figure it had when last written: tools/make_structure.py draws the
+picture and the tree with the real figure where this tool and its source are next to the repository, and with LAST everywhere else, so a repository still builds on its own);
+`--structure` fails when a LAST is not the real figure and `--structure --fix` rewrites it.
 
 A row of the capability matrix says in which version it was verified with `<!--verified:ARMOR-NODE-RADAR 0.8.0.1-->` after its evidence. `--check` fails when that version is newer than the one the
 repository has now (a typo or a row ahead of its repository), and `--stale` lists the rows whose repository has moved on since, so that a later change that could invalidate them is not forgotten.
@@ -192,6 +199,10 @@ def value(name: str) -> str:
         return str(_ctest(argument, base == "ctest_python"))
     if base == "version" and argument:
         return version(argument)
+    if base == "test_modules" and argument:
+        return str(test_modules(argument))
+    if base == "tests_in" and argument.count(":") == 1:
+        return str(tests_in(*argument.split(":")))
     raise KeyError(name)
 
 
@@ -210,6 +221,79 @@ def test_modules(repository: str) -> int:
     if not files:
         raise Unavailable(f"{repository} has no Python tests")
     return len(files)
+
+
+def tests_in(repository: str, filename: str) -> int:
+    """The test functions of one test file of a Python repository (as committed)."""
+    folder = "scripts" if repository in TESTS_NEXT_TO_SCRIPTS else "tests"
+    text = _tracked(_repo(repository), folder, ".py").get(filename)
+    if text is None:
+        raise Unavailable(f"{repository} has no {folder}/{filename}")
+    return len(re.findall(r"^\s*(?:async )?def test_", text, re.M))
+
+
+STRUCTURE_FACT = re.compile(r"\{\{fact:([A-Za-z0-9_:.\-]+)\|([^{}|]*)\}\}")
+
+
+_SEEN: dict[tuple[str, str, bool], str | Exception] = {}
+
+
+def _once(name: str) -> str:
+    """The figure `name`, read once per run and per place it is read from (the same figure stands in every language of every structure file); what could not be read is raised again."""
+    key = (name, str(FAMILY), _worktree())
+    if key not in _SEEN:
+        try:
+            _SEEN[key] = value(name)
+        except (Unavailable, KeyError) as problem:
+            _SEEN[key] = problem
+    found = _SEEN[key]
+    if isinstance(found, Exception):
+        raise found
+    return found
+
+
+def structure_facts(repository: str, text: str) -> tuple[str, list[str]]:
+    """The text of a structure.json with every `{{fact:NAME|LAST}}` written as its real figure (as LAST where the source is not here), and the markers whose LAST is not the real figure."""
+    problems: list[str] = []
+
+    def replace(match: re.Match[str]) -> str:
+        try:
+            real = _once(match.group(1))
+        except Unavailable:
+            return match.group(2)
+        except KeyError:
+            problems.append(f"{repository}: docs/structure.json has the figure {{{{fact:{match.group(1)}}}}}, which means nothing")
+            return match.group(2)
+        if real != match.group(2):
+            problems.append(f"{repository}: docs/structure.json says {{{{fact:{match.group(1)}|{match.group(2)}}}}} but the figure is {real} (python tools/doc_facts.py --structure --fix)")
+        return real
+
+    return STRUCTURE_FACT.sub(replace, text), problems
+
+
+def fix_structure(repositories: list[str] | None = None) -> list[str]:
+    """Write the real figure after the bar of every marker of the structure.json files in the working trees next to this repository; the files it changed."""
+    names = repositories if repositories is not None else sorted(path.name for path in FAMILY.glob("ARMOR-*") if (path / "armor.project.json").exists())
+    changed: list[str] = []
+    for repository in names:
+        path = FAMILY / repository / "docs" / "structure.json"
+        if not path.is_file():
+            continue
+        with open(path, encoding="utf-8", newline="") as handle:
+            text = handle.read()
+
+        def replace(match: re.Match[str]) -> str:
+            try:
+                return "{{fact:" + match.group(1) + "|" + _once(match.group(1)) + "}}"
+            except (Unavailable, KeyError):
+                return match.group(0)
+
+        new = STRUCTURE_FACT.sub(replace, text)
+        if new != text:
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                handle.write(new)
+            changed.append(repository)
+    return changed
 
 
 def _structure_entries(node: object):
@@ -236,6 +320,8 @@ def structure_problems(repositories: list[str] | None = None) -> list[str]:
             continue
         if text is None:
             continue
+        text, marker_problems = structure_facts(repository, text)
+        problems.extend(marker_problems)
         for entry in _structure_entries(json.loads(text)):
             english = entry["desc"].get("en", "")
             for name, pattern, figure in STRUCTURE_RULES:
@@ -321,6 +407,9 @@ def main(argv: list[str]) -> int:
                 print(f"{name:32} unavailable ({problem})")
         return 0
     if "--structure" in argv:
+        if "--fix" in argv:
+            for repository in fix_structure():
+                print("FIXED " + repository)
         found = structure_problems()
         for item in found:
             print("FAIL " + item)
