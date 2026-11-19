@@ -58,6 +58,9 @@ BUILD_SECRET = re.compile(_SECRET_NAME + r"""\s*=\s*"?([^"\s\0{}$<]{4,})""")   #
 BUILD_SECRET_BYTES = re.compile(_SECRET_NAME.encode() + rb"""\s*=\s*"?([^"\s\0{}$<]{4,})""")
 FIRMWARE_SUFFIXES = {".bin", ".elf", ".img", ".hex", ".uf2", ".apk", ".jar", ".zip", ".gz"}
 BAD_PATH = re.compile(r"(^|/)(secrets/(?!.*example)|\.env$|.*\.env$|.*\.pem$|.*\.key$|id_[a-z0-9]+$)", re.I)
+# the public registry of ports that ARMOR-COMMON generates: only comments and ARMOR_PORT_*=<number> lines, nothing a person could keep secret
+PORTS_REGISTRY = "generated/armor-ports.env"
+PORTS_LINE = re.compile(r"^(#.*|ARMOR_PORT_[A-Z0-9_]+=\d{1,5}|)$")
 BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".webp", ".pdf", ".zip", ".gz", ".bin", ".woff", ".woff2", ".ttf", ".jar", ".apk", ".stl", ".step", ".fcstd"}
 # addresses that are public but say nothing about anyone: the well-known DNS resolvers and the boundary values that the private-address tests use
 BENIGN_IPS = {
@@ -136,14 +139,24 @@ def scan_bytes(name: str, where: str, data: bytes, findings: list[tuple[str, str
             return
 
 
+def is_bad_path(path: str, content: bytes | None = None) -> bool:
+    """BAD_PATH, except the one file that is the generated port registry and whose lines are only comments or ARMOR_PORT_*=<integer>."""
+    if not BAD_PATH.search(path):
+        return False
+    if path == PORTS_REGISTRY and content is not None:
+        lines = content.decode("utf-8", errors="replace").replace("\r", "").split("\n")
+        return not all(PORTS_LINE.match(line.strip()) for line in lines)
+    return True
+
+
 def check_staged(repo: Path) -> list[tuple[str, str, str, str]]:
     """What is staged for the next commit: the paths and the content of the staged files, never the history."""
     name = repo.name
     findings: list[tuple[str, str, str, str]] = []
     for path in [p for p in git(repo, "diff", "--cached", "--name-only", "--diff-filter=ACMR").splitlines() if p]:
-        if BAD_PATH.search(path):
-            findings.append(("BLOCK", name, path, "a secrets, key or environment file is staged"))
         shown = subprocess.run(["git", "-C", str(repo), "show", f":{path}"], capture_output=True)
+        if is_bad_path(path, shown.stdout if shown.returncode == 0 else None):
+            findings.append(("BLOCK", name, path, "a secrets, key or environment file is staged"))
         if shown.returncode != 0:
             continue
         suffix = Path(path).suffix.lower()
@@ -159,7 +172,11 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
     findings: list[tuple[str, str, str, str]] = []
     tracked = [path for path in git(repo, "ls-files").splitlines() if path]
     for path in tracked:
-        if BAD_PATH.search(path):
+        try:
+            tracked_bytes = (repo / path).read_bytes() if path == PORTS_REGISTRY else None
+        except OSError:
+            tracked_bytes = None
+        if is_bad_path(path, tracked_bytes):
             findings.append(("BLOCK", name, path, "a secrets, key or environment file is tracked"))
         if Path(path).suffix.lower() in FIRMWARE_SUFFIXES:
             try:
@@ -189,7 +206,7 @@ def check_repo(repo: Path, history: bool, ref: str | None = None) -> list[tuple[
         for revision in revisions:
             names = git(repo, "ls-tree", "-r", "--name-only", revision).splitlines()
             for path in names:
-                if BAD_PATH.search(path) and ("path", path) not in seen:
+                if BAD_PATH.search(path) and ("path", path) not in seen and (path != PORTS_REGISTRY or is_bad_path(path, git(repo, "show", f"{revision}:{path}", check=False).encode())):
                     seen.add(("path", path))
                     findings.append(("BLOCK", name, f"{path} @ {revision[:10]}", "a secrets, key or environment file was tracked in the history"))
         # removed lines only: what was once committed and later taken out is still public

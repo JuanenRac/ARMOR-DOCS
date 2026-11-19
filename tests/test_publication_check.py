@@ -102,6 +102,23 @@ class ScanTextTests(unittest.TestCase):
         self.assertFalse(check.FIXTURE_PATH.search("src/contest/a.py"))
 
 
+class PortRegistryTests(unittest.TestCase):
+    GENERATED = b"# Generated from the contract. Do not edit.\nARMOR_PORT_SERVER=18080\nARMOR_PORT_MQTT=1883\n\n"
+
+    def test_the_generated_registry_of_ports_passes(self):
+        self.assertFalse(check.is_bad_path("generated/armor-ports.env", self.GENERATED))
+
+    def test_the_registry_with_another_key_or_a_secret_still_blocks(self):
+        self.assertTrue(check.is_bad_path("generated/armor-ports.env", self.GENERATED + b"ARMOR_API_TOKEN=abc\n"))
+        self.assertTrue(check.is_bad_path("generated/armor-ports.env", self.GENERATED + b"ARMOR_PORT_SERVER=http\n"))
+        self.assertTrue(check.is_bad_path("generated/armor-ports.env", None))
+
+    def test_any_other_env_file_blocks_even_with_the_same_content(self):
+        self.assertTrue(check.is_bad_path("other/armor-ports.env", self.GENERATED))
+        self.assertTrue(check.is_bad_path(".env", self.GENERATED))
+        self.assertTrue(check.is_bad_path("generated/other.env", self.GENERATED))
+
+
 class SelfTestFileTests(unittest.TestCase):
     """The tests of the checks of ARMOR-DOCS carry samples on purpose; nothing else is let through."""
 
