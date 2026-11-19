@@ -7,6 +7,7 @@ Copyright (C) 2026 JuanenRac (Electro Hobby 3D). GPL-3.0-or-later.
     python tools/doc_facts.py --check    # fail when one is out of date (a figure whose source is not next to this repository is skipped, and said)
     python tools/doc_facts.py --list     # print every figure and its value
     python tools/doc_facts.py --stale    # the rows verified in a version older than the one the repository has now
+    python tools/doc_facts.py --structure  # the figures typed in the docs/structure.json of the repositories (tests, test modules, JSON Schemas, conformance payloads) against the real ones (--check does it too)
 
 A figure in a document is written between two markers, which stay invisible when the page is rendered:
 
@@ -17,6 +18,9 @@ The name says where the number comes from:
     vectors              every conformance vector of ARMOR-COMMON         vectors:network   the vectors of one schema (conformance/network.json); vectors:a+b adds those of several
     schemas              the JSON Schemas of ARMOR-COMMON                 openapi_paths     the paths of the OpenAPI file of the server
     openapi_operations   the operations (method and path) of that file
+    conformance_files    the conformance files of ARMOR-COMMON (one per message)
+    security_settings    the settings of the security file of ARMOR-SERVER (the keys of SECURITY_DEFAULTS in src/security_settings.ts)
+    studio_security_options  the options the security screen of ARMOR-STUDIO offers (the entries of OPTIONS in src/SecurityPanel.tsx)
     tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository (the count `python -m unittest discover` prints); ARMOR-DEVOPS keeps them in scripts/test_*.py
     unittest:ARMOR-X     the same figure under the name of the runner
     ctest_cpp:ARMOR-X    the host test programs a node registers with CTest (`add_test` in tests/CMakeLists.txt, each name once, without the Python checks)
@@ -92,6 +96,33 @@ def schemas() -> int:
     return len(_tracked(_repo("ARMOR-COMMON"), "src/armor_common/schemas", ".schema.json"))
 
 
+def conformance_files() -> int:
+    return len(_tracked(_repo("ARMOR-COMMON"), "conformance", ".json"))
+
+
+def _entries(repository: str, folder: str, suffix: str, name: str, start: str, end: str, entry: str) -> int:
+    """How many lines matching `entry` sit between the line that matches `start` and the first line that matches `end` after it."""
+    text = _tracked(_repo(repository), folder, suffix).get(name)
+    if text is None:
+        raise Unavailable(f"{repository} has no {folder}/{name}")
+    begin = re.search(start, text, re.M)
+    if begin is None:
+        raise Unavailable(f"{folder}/{name} of {repository} has no block that starts with {start!r}")
+    block = text[begin.end():]
+    close = re.search(end, block, re.M)
+    if close is None:
+        raise Unavailable(f"the block of {folder}/{name} of {repository} does not end")
+    return len(re.findall(entry, block[: close.start()], re.M))
+
+
+def security_settings() -> int:
+    return _entries("ARMOR-SERVER", "src", ".ts", "security_settings.ts", r"^export const SECURITY_DEFAULTS\b.*$", r"^\}\)", r'^\s+"[A-Za-z0-9_.]+":')
+
+
+def studio_security_options() -> int:
+    return _entries("ARMOR-STUDIO", "src", ".tsx", "SecurityPanel.tsx", r"^const OPTIONS\b.*$", r"^\];", r'^\s+\{ key: "[A-Za-z0-9_.]+"')
+
+
 def openapi_paths() -> int:
     text = _tracked(_repo("ARMOR-COMMON"), "openapi", ".yaml").get("armor-server.yaml")
     if text is None:
@@ -145,6 +176,12 @@ def value(name: str) -> str:
         return str(sum(vectors(part) for part in argument.split("+")) if argument else vectors())
     if base == "schemas" and not argument:
         return str(schemas())
+    if base == "conformance_files" and not argument:
+        return str(conformance_files())
+    if base == "security_settings" and not argument:
+        return str(security_settings())
+    if base == "studio_security_options" and not argument:
+        return str(studio_security_options())
     if base == "openapi_paths" and not argument:
         return str(openapi_paths())
     if base == "openapi_operations" and not argument:
@@ -156,6 +193,72 @@ def value(name: str) -> str:
     if base == "version" and argument:
         return version(argument)
     raise KeyError(name)
+
+
+STRUCTURE_RULES = (
+    # (name of the entry, what its English text must start with, the figure it states, how to read it)
+    ("tests/", re.compile(r"^(\d+) tests?\b"), "tests"),
+    ("tests/", re.compile(r"\bin (\d+) modules?\b"), "test modules"),
+    ("schemas/", re.compile(r"^(\d+) JSON Schemas?\b"), "schemas"),
+    ("conformance/", re.compile(r"^(\d+) accepted and rejected payloads\b"), "vectors"),
+)
+
+
+def test_modules(repository: str) -> int:
+    """The test files of a Python repository (tests/test_*.py as committed)."""
+    files = [name for name in _tracked(_repo(repository), "tests", ".py") if name.startswith("test_")]
+    if not files:
+        raise Unavailable(f"{repository} has no Python tests")
+    return len(files)
+
+
+def _structure_entries(node: object):
+    """Every entry (a dict with a plain `name` and a `desc` per language) of a structure.json, at any depth."""
+    if isinstance(node, dict):
+        if isinstance(node.get("name"), str) and isinstance(node.get("desc"), dict):
+            yield node
+        for child in node.values():
+            yield from _structure_entries(child)
+    elif isinstance(node, list):
+        for child in node:
+            yield from _structure_entries(child)
+
+
+def structure_problems(repositories: list[str] | None = None) -> list[str]:
+    """The figures typed in docs/structure.json (tests, test modules, JSON Schemas, payloads) that are not the real ones, and the languages whose text does not carry the same figure
+    as the English one. A repository whose figure cannot be read here (its tests are not Python, or it is not next to this one) is skipped."""
+    names = repositories if repositories is not None else sorted(path.name for path in FAMILY.glob("ARMOR-*") if (path / "armor.project.json").exists())
+    problems: list[str] = []
+    for repository in names:
+        try:
+            text = _tracked(_repo(repository), "docs", ".json").get("structure.json")
+        except Unavailable:
+            continue
+        if text is None:
+            continue
+        for entry in _structure_entries(json.loads(text)):
+            english = entry["desc"].get("en", "")
+            for name, pattern, figure in STRUCTURE_RULES:
+                match = pattern.search(english) if entry["name"] == name else None
+                if match is None:
+                    continue
+                try:
+                    if figure == "tests":
+                        real = tests(repository)
+                    elif figure == "test modules":
+                        real = test_modules(repository)
+                    elif figure == "schemas":
+                        real = schemas()
+                    else:
+                        real = vectors()
+                except Unavailable:
+                    continue
+                if int(match.group(1)) != real:
+                    problems.append(f"{repository}: docs/structure.json says {match.group(1)} {figure} in {entry['name']} but the repository has {real}")
+                for language, words in entry["desc"].items():
+                    if match.group(1) not in re.findall(r"\d+", str(words)):
+                        problems.append(f"{repository}: docs/structure.json {entry['name']} does not carry the figure {match.group(1)} in {language}")
+    return problems
 
 
 def render(text: str) -> tuple[str, list[str], list[str]]:
@@ -217,7 +320,17 @@ def main(argv: list[str]) -> int:
             except Unavailable as problem:
                 print(f"{name:32} unavailable ({problem})")
         return 0
+    if "--structure" in argv:
+        found = structure_problems()
+        for item in found:
+            print("FAIL " + item)
+        print("STRUCTURE_FIGURES=" + ("FAIL" if found else "CURRENT"))
+        return 1 if found else 0
     failed = False
+    if check:
+        for item in structure_problems():
+            print("FAIL " + item)
+            failed = True
     for path in documents():
         with open(path, encoding="utf-8", newline="") as handle:
             text = handle.read()

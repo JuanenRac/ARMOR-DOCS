@@ -99,6 +99,100 @@ class FactTests(unittest.TestCase):
             self.assertEqual(doc_facts.value("vectors"), "75")
 
 
+class SourceFigureTests(unittest.TestCase):
+    """The figures read from the source of the server and of Studio, and the figures typed in docs/structure.json."""
+
+    def setUp(self):
+        self.holder = tempfile.TemporaryDirectory()
+        self.root = Path(self.holder.name)
+        family_with_contracts(self.root, {"telemetry": 5, "network": 7})
+        patcher = mock.patch.object(doc_facts, "FAMILY", self.root)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        self.addCleanup(self.holder.cleanup)
+
+    def repository(self, name: str) -> Path:
+        path = self.root / name
+        (path / "src").mkdir(parents=True, exist_ok=True)
+        (path / "armor.project.json").write_text(json.dumps({"version": "0.0.1"}), encoding="utf-8")
+        return path
+
+    def test_the_conformance_files_are_counted(self):
+        self.assertEqual(doc_facts.value("conformance_files"), "2")
+
+    def test_the_settings_of_the_security_file_are_the_keys_of_its_defaults_and_nothing_after_them(self):
+        server = self.repository("ARMOR-SERVER")
+        (server / "src" / "security_settings.ts").write_text(
+            'export const OTHER = {\n  "not.counted": 1,\n};\n'
+            'export const SECURITY_DEFAULTS: Readonly<Values> = Object.freeze({\n'
+            '  "alarm.disarm_pin": "if_set",\n  "voice.turn_max_bytes": TURN.default,\n  "vision.service_url": "",\n});\n'
+            'const NUMBER_RANGES = {\n  "voice.turn_max_bytes": TURN,\n};\n', encoding="utf-8")
+        self.assertEqual(doc_facts.value("security_settings"), "3")
+
+    def test_the_options_of_the_security_screen_are_the_entries_of_its_table(self):
+        studio = self.repository("ARMOR-STUDIO")
+        (studio / "src" / "SecurityPanel.tsx").write_text(
+            'const OPTIONS: Array<Option> = [\n'
+            '  { key: "alarm.disarm_pin", id: "pin", values: ["always"] },\n'
+            '  { key: "voice.wake_word", id: "wakeword", values: [false, true], optional: true },   // a comment\n'
+            '];\n'
+            'const LIMITS = [\n  { key: "voice.turn_max_bytes", id: "turn" },\n];\n', encoding="utf-8")
+        self.assertEqual(doc_facts.value("studio_security_options"), "2")
+
+    def test_a_source_without_the_table_is_unavailable_not_zero(self):
+        server = self.repository("ARMOR-SERVER")
+        (server / "src" / "security_settings.ts").write_text("export const NOTHING = 1;\n", encoding="utf-8")
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("security_settings")
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("studio_security_options")   # Studio is not next to this repository
+
+    def write_structure(self, name: str, entries: list[dict]) -> None:
+        folder = self.repository(name) / "docs"
+        folder.mkdir(exist_ok=True)
+        (folder / "structure.json").write_text(json.dumps({"repo": name, "cards": [{"name": "group", "rows": entries}]}), encoding="utf-8")
+
+    @staticmethod
+    def entry(name: str, english: str, other: str) -> dict:
+        return {"name": name, "desc": {"en": english, "es": other}}
+
+    def test_a_structure_that_states_the_real_figures_has_no_problem(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("def test_one(): pass\ndef test_two(): pass\n", encoding="utf-8")
+        (common / "tests" / "test_b.py").write_text("def test_three(): pass\n", encoding="utf-8")
+        self.write_structure("ARMOR-COMMON", [
+            self.entry("tests/", "3 tests in 2 modules", "3 pruebas en 2 modulos"),
+            self.entry("schemas/", "2 JSON Schemas", "2 JSON Schema"),
+            self.entry("conformance/", "12 accepted and rejected payloads", "12 casos"),
+        ])
+        self.assertEqual(doc_facts.structure_problems(["ARMOR-COMMON"]), [])
+
+    def test_a_figure_that_is_not_the_real_one_or_that_a_language_does_not_carry_is_named(self):
+        common = self.root / "ARMOR-COMMON"
+        (common / "tests").mkdir()
+        (common / "tests" / "test_a.py").write_text("def test_one(): pass\n", encoding="utf-8")
+        self.write_structure("ARMOR-COMMON", [
+            self.entry("tests/", "9 tests in 4 modules", "9 pruebas en 4 modulos"),
+            self.entry("schemas/", "2 JSON Schemas", "dos JSON Schema"),
+        ])
+        found = doc_facts.structure_problems(["ARMOR-COMMON"])
+        self.assertEqual(len(found), 3)
+        self.assertTrue(any("9 tests in tests/ but the repository has 1" in item for item in found))
+        self.assertTrue(any("4 test modules in tests/ but the repository has 1" in item for item in found))
+        self.assertTrue(any("does not carry the figure 2 in es" in item for item in found))
+
+    def test_a_repository_whose_tests_are_not_python_is_skipped(self):
+        self.write_structure("ARMOR-SERVER", [self.entry("tests/", "1389 tests, unit and HTTP", "1389 pruebas")])
+        self.assertEqual(doc_facts.structure_problems(["ARMOR-SERVER"]), [])
+
+    def test_the_structure_flag_and_the_check_fail_on_a_wrong_figure(self):
+        self.write_structure("ARMOR-COMMON", [self.entry("schemas/", "7 JSON Schemas", "7 JSON Schema")])
+        with mock.patch("builtins.print") as shown:
+            self.assertEqual(doc_facts.main(["--structure"]), 1)
+        self.assertIn("STRUCTURE_FIGURES=FAIL", [call.args[0] for call in shown.call_args_list])
+
+
 class VerifiedTests(unittest.TestCase):
     def setUp(self):
         self.holder = tempfile.TemporaryDirectory()
