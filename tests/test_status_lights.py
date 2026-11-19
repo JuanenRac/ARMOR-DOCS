@@ -47,7 +47,7 @@ class Kinds(unittest.TestCase):
         self.assertEqual(status_lights.kind_of("Tests"), "tests")
         self.assertEqual(status_lights.kind_of("Documentation"), "docs")
         self.assertEqual(status_lights.kind_of("Software"), "software")
-        self.assertEqual(status_lights.kind_of("Security"), "other")
+        self.assertEqual(status_lights.kind_of("Security"), "security")
 
 
 class Ceilings(unittest.TestCase):
