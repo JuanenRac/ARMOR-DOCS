@@ -30,7 +30,7 @@ FACTS = {
     ],
     [
       "security",
-      "yellow",
+      "orange",
     ],
     [
       "updates",

@@ -7,7 +7,7 @@ from readme_src._kit import CONTRIB, GL, LGS, LICENSE_VALUE, P, T, arch, code, s
 FACTS: dict[str, Any] = {'emoji': '🎛️',
  'layout': 'universal',
  'license_badge': 'License-GPL%203.0--or--later-blue',
- 'status': [['software', 'green'], ['tests', 'green'], ['ui', 'yellow'], ['hardware', 'orange'], ['security', 'yellow'], ['integration', 'orange'], ['docs', 'green']],
+ 'status': [['software', 'green'], ['tests', 'green'], ['ui', 'yellow'], ['hardware', 'orange'], ['security', 'orange'], ['integration', 'orange'], ['docs', 'green']],
  'badges': [['Language', 'TypeScript', '3178c6'], ['UI', 'React%2019', '61dafb'], ['Languages', '8', '00E5FF'], ['Tests', '990%20passing', '2ea44f']]}
 
 # the sentences of the previous layout that the new one keeps (already written in the eight languages)

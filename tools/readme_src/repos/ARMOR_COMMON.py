@@ -12,7 +12,7 @@ FACTS: dict[str, Any] = {'emoji': '🧾',
             ['protocols', 'yellow'],
             ['integration', 'orange'],
             ['hardware', 'orange'],
-            ['security', 'yellow'],
+            ['security', 'orange'],
             ['docs', 'green']],
  'badges': [['Language', 'Python%203.11%2B', '3776ab'], ['Dependencies', 'none', '2ea44f'], ['Vectors', '{{fact:vectors}}', '00E5FF']]}
 
