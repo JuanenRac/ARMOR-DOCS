@@ -22,7 +22,7 @@
 | ARMOR-DEVOPS | 0.7.8 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.3.9 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.2.4 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
-| ARMOR-DOCS | 0.8.2.1 | System architecture and operator documentation | Established |
+| ARMOR-DOCS | 0.8.2.2 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
 
 ## Dependency direction

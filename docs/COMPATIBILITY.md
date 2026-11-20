@@ -9,22 +9,22 @@ This table is a photograph of the train, not of today: the versions are those of
 | Repository | Version | Contracts it was checked against |
 |---|---|---|
 | ARMOR-COMMON | 0.8.1.5 | - |
-| ARMOR-NODE-RADAR | 0.8.1.3 | 0.8.0.7 (behind) |
-| ARMOR-NODE-SOLAR | 0.6.7 | 0.8.0.7 (behind) |
-| ARMOR-NODE-ELECTRICAL | 0.5.9 | 0.8.0.7 (behind) |
-| ARMOR-NODE-ALARM | 0.5.7 | 0.8.0.7 (behind) |
-| ARMOR-NODE-HMI | 0.4.9 | 0.8.0.7 (behind) |
-| ARMOR-NETWORK | 0.1.8 | 0.8.0.7 (behind) |
-| ARMOR-SERVER | 0.8.2.3 | 0.8.0.7 (behind) |
-| ARMOR-STUDIO | 0.8.2.5 | 0.8.0.7 (behind) |
-| ARMOR-ANDROID-CONTROL | 0.8.0.8 | 0.8.0.7 (behind) |
-| ARMOR-IOS-CONTROL | 0.0.6 | 0.8.0.7 (behind) |
-| ARMOR-WATCH | 0.0.2 | 0.8.0.7 (behind) |
-| ARMOR-SERVER-AI | 0.3.3 | 0.8.0.7 (behind) |
-| ARMOR-VISION | 0.1.7 | 0.8.0.7 (behind) |
-| ARMOR-VOICE-AI | 0.3.6 | 0.8.0.7 (behind) |
-| ARMOR-HARDWARE | 0.2.9 | 0.8.0.7 (behind) |
-| ARMOR-DEVOPS | 0.7.7 | 0.8.0.7 (behind) |
-| ARMOR-SIMULATOR | 0.3.8 | 0.8.0.7 (behind) |
-| ARMOR-UPDATER | 0.2.3 | 0.8.0.7 (behind) |
-| ARMOR-DOCS | 0.8.2.1 | 0.8.0.7 (behind) |
+| ARMOR-NODE-RADAR | 0.8.1.4 | 0.8.0.7 (behind) |
+| ARMOR-NODE-SOLAR | 0.6.8 | 0.8.0.7 (behind) |
+| ARMOR-NODE-ELECTRICAL | 0.6.0 | 0.8.0.7 (behind) |
+| ARMOR-NODE-ALARM | 0.5.8 | 0.8.0.7 (behind) |
+| ARMOR-NODE-HMI | 0.5.0 | 0.8.0.7 (behind) |
+| ARMOR-NETWORK | 0.1.9 | 0.8.0.7 (behind) |
+| ARMOR-SERVER | 0.8.2.4 | 0.8.0.7 (behind) |
+| ARMOR-STUDIO | 0.8.2.6 | 0.8.0.7 (behind) |
+| ARMOR-ANDROID-CONTROL | 0.8.0.9 | 0.8.0.7 (behind) |
+| ARMOR-IOS-CONTROL | 0.0.7 | 0.8.0.7 (behind) |
+| ARMOR-WATCH | 0.0.3 | 0.8.0.7 (behind) |
+| ARMOR-SERVER-AI | 0.3.4 | 0.8.0.7 (behind) |
+| ARMOR-VISION | 0.1.8 | 0.8.0.7 (behind) |
+| ARMOR-VOICE-AI | 0.3.7 | 0.8.0.7 (behind) |
+| ARMOR-HARDWARE | 0.3.0 | 0.8.0.7 (behind) |
+| ARMOR-DEVOPS | 0.7.8 | 0.8.0.7 (behind) |
+| ARMOR-SIMULATOR | 0.3.9 | 0.8.0.7 (behind) |
+| ARMOR-UPDATER | 0.2.4 | 0.8.0.7 (behind) |
+| ARMOR-DOCS | 0.8.2.2 | 0.8.0.7 (behind) |
