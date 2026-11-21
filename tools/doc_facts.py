@@ -24,6 +24,7 @@ The name says where the number comes from:
     studio_security_options  the options the security screen of ARMOR-STUDIO offers (the entries of OPTIONS in src/SecurityPanel.tsx)
     tests:ARMOR-X        the test functions (`def test_`) of the Python tests of a repository (the count `python -m unittest discover` prints); ARMOR-DEVOPS keeps them in scripts/test_*.py
     unittest:ARMOR-X     the same figure under the name of the runner
+    swift_tests:ARMOR-X  the XCTest functions (`func test`) of the Swift package tests (`Tests/ArmorCoreTests/`), the ones `swift test` runs
     ctest_cpp:ARMOR-X    the host test programs a node registers with CTest (`add_test` in tests/CMakeLists.txt, each name once, without the Python checks)
     ctest_python:ARMOR-X the Python checks that file registers with CTest
     version:ARMOR-X      the version in the manifest of a repository
@@ -161,6 +162,45 @@ def tests(repository: str) -> int:
     return sum(len(re.findall(r"^\s*(?:async )?def test_", text, re.M)) for text in files.values())
 
 
+def kotlin_tests(repository: str) -> int:
+    """The `@Test` functions of the Kotlin test files (`*Test.kt` under any `src/test/` folder) of a repository, as committed (or as in the working tree when asked)."""
+    repo = _repo(repository)
+    names: list[str] = []
+    if not _worktree() and (repo / ".git").exists():
+        listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "--name-only", "HEAD"], capture_output=True, text=True, encoding="utf-8")
+        if listing.returncode == 0:
+            names = [name for name in listing.stdout.split(chr(10)) if name.endswith("Test.kt") and "src/test/" in name]
+        texts = []
+        for name in names:
+            shown = subprocess.run(["git", "-C", str(repo), "show", f"HEAD:{name}"], capture_output=True, text=True, encoding="utf-8")
+            if shown.returncode == 0:
+                texts.append(shown.stdout)
+    else:
+        texts = [path.read_text(encoding="utf-8") for path in sorted(repo.rglob("*Test.kt")) if "src/test/" in path.as_posix()]
+    if not texts:
+        raise Unavailable(f"{repository} has no Kotlin tests")
+    return sum(len(re.findall(r"^\s*@Test(?![A-Za-z])", text, re.M)) for text in texts)
+
+
+def swift_tests(repository: str) -> int:
+    """The XCTest functions (`func test...`) of the Swift package tests (`*.swift` under any `Tests/ArmorCoreTests/` folder) of a repository: the ones `swift test` runs, as committed (or as in the working tree when asked)."""
+    repo = _repo(repository)
+    texts: list[str] = []
+    if not _worktree() and (repo / ".git").exists():
+        listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "--name-only", "HEAD"], capture_output=True, text=True, encoding="utf-8")
+        if listing.returncode == 0:
+            for name in listing.stdout.split(chr(10)):
+                if name.endswith(".swift") and "Tests/ArmorCoreTests/" in name:
+                    shown = subprocess.run(["git", "-C", str(repo), "show", f"HEAD:{name}"], capture_output=True, text=True, encoding="utf-8")
+                    if shown.returncode == 0:
+                        texts.append(shown.stdout)
+    else:
+        texts = [path.read_text(encoding="utf-8") for path in sorted(repo.rglob("*.swift")) if "Tests/ArmorCoreTests/" in path.as_posix()]
+    if not texts:
+        raise Unavailable(f"{repository} has no Swift package tests")
+    return sum(len(re.findall(r"^\s*func test\w*\(", text, re.M)) for text in texts)
+
+
 def _ctest(repository: str, python: bool) -> int:
     """The tests registered with CTest in tests/CMakeLists.txt, by name: the two branches of an if/else that register the same test count once."""
     text = _tracked(_repo(repository), "tests", ".txt").get("CMakeLists.txt")
@@ -195,6 +235,12 @@ def value(name: str) -> str:
         return str(openapi_operations())
     if base in ("tests", "unittest") and argument:
         return str(tests(argument))
+    if base == "kotlin_tests" and argument:
+        return str(kotlin_tests(argument))
+    if base == "swift_tests" and argument:
+        return str(swift_tests(argument))
+    if base == "tests_all" and argument:
+        return str(tests(argument) + kotlin_tests(argument))
     if base in ("ctest_cpp", "ctest_python") and argument:
         return str(_ctest(argument, base == "ctest_python"))
     if base == "version" and argument:
