@@ -91,6 +91,20 @@ class FactTests(unittest.TestCase):
             (app / name).write_text(body, encoding="utf-8")
         self.assertEqual(doc_facts.value("swift_tests:ARMOR-X"), "3")
 
+    def test_swift_tests_read_the_committed_state_and_the_working_tree_when_asked(self):
+        app = self.root / "ARMOR-Y"
+        (app / "Tests" / "ArmorCoreTests").mkdir(parents=True)
+        (app / "armor.project.json").write_text("{}", encoding="utf-8")
+        (app / "Tests" / "ArmorCoreTests" / "ATests.swift").write_text("final class A: XCTestCase {\n    func testOne() {}\n}\n", encoding="utf-8")
+        (app / "Tests" / "ArmorCoreTests" / "notes.txt").write_text("func testIgnored() {}", encoding="utf-8")
+        environment = _support.git_environment()
+        for args in (["init", "-q", "-b", "main"], ["add", "-A"], ["commit", "-q", "-m", "Add"]):
+            subprocess.run(["git", "-C", str(app), *args], check=True, capture_output=True, env=environment)
+        (app / "Tests" / "ArmorCoreTests" / "ATests.swift").write_text("final class A: XCTestCase {\n    func testOne() {}\n    func testTwo() {}\n}\n", encoding="utf-8")   # edited, not committed
+        self.assertEqual(doc_facts.value("swift_tests:ARMOR-Y"), "1")
+        with mock.patch.dict("os.environ", {"ARMOR_FACTS_SOURCE": "worktree"}):
+            self.assertEqual(doc_facts.value("swift_tests:ARMOR-Y"), "2")
+
     def test_swift_tests_of_a_repository_without_any_are_unavailable_not_zero(self):
         with self.assertRaises(doc_facts.Unavailable):
             doc_facts.value("swift_tests:ARMOR-COMMON")
