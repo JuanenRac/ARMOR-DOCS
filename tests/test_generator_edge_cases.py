@@ -216,11 +216,11 @@ class PublicationEdgeTests(unittest.TestCase):
         self.assertEqual(self.scan("ElectroHobby3D@Gmail.com"), [])
 
     def test_private_key_header_blocks(self):
-        found = self.scan("-----BEGIN RSA PRIVATE KEY-----")
+        found = self.scan("-----BEGIN RSA " + "PRIVATE KEY-----")
         self.assertEqual([item[3] for item in found], ["private key"])
 
     def test_fake_key_body_in_a_test_is_not_a_key(self):
-        self.assertEqual(self.scan("-----BEGIN PRIVATE KEY----- abcdefghijklmnopqrstuvwxyz"), [])
+        self.assertEqual(self.scan("-----BEGIN " + "PRIVATE KEY----- abcdefghijklmnopqrstuvwxyz"), [])
 
     def test_line_longer_than_2000_chars_is_skipped(self):
         self.assertEqual(self.scan("x@gmail.com " + "a" * 2100), [])
