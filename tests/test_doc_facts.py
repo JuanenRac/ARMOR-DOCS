@@ -77,6 +77,24 @@ class FactTests(unittest.TestCase):
         self.assertEqual(doc_facts.value("kotlin_tests:ARMOR-X"), "3")
         self.assertEqual(doc_facts.value("tests_all:ARMOR-X"), "4")
 
+    def test_swift_tests_are_counted_in_the_package_test_folder_only(self):
+        app = self.root / "ARMOR-X"
+        files = {
+            "Tests/ArmorCoreTests/ATests.swift": "final class A: XCTestCase {\n    func testOne() {}\n    func testTwo() throws {}\n    func helper() {}\n}\n",
+            "Tests/ArmorCoreTests/Simulation/BTests.swift": "final class B: XCTestCase {\n    func testThree() {}\n}\n",
+            "Tests/ARMORUITests/CTests.swift": "final class C: XCTestCase {\n    func testIgnored() {}\n}\n",
+        }
+        app.mkdir()
+        (app / "armor.project.json").write_text("{}", encoding="utf-8")
+        for name, body in files.items():
+            (app / name).parent.mkdir(parents=True, exist_ok=True)
+            (app / name).write_text(body, encoding="utf-8")
+        self.assertEqual(doc_facts.value("swift_tests:ARMOR-X"), "3")
+
+    def test_swift_tests_of_a_repository_without_any_are_unavailable_not_zero(self):
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("swift_tests:ARMOR-COMMON")
+
     def test_kotlin_tests_of_a_repository_without_any_are_unavailable_not_zero(self):
         with self.assertRaises(doc_facts.Unavailable):
             doc_facts.value("kotlin_tests:ARMOR-COMMON")

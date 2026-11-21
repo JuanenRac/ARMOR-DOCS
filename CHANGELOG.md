@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The test counts of the Android and iOS apps are read from their tests:** `doc_facts.py` gains `swift_tests` (the XCTest functions of the Swift package, the ones `swift test` runs), the Android README source uses `kotlin_tests` and the iOS one `swift_tests` instead of a typed number, and the Studio count is the one the Vitest run reports.
 - **The publication check lets the generated port registry through:** `generated/armor-ports.env` of ARMOR-COMMON is public by design (comments and `ARMOR_PORT_*=<number>` lines only); the exemption is that exact path and only while its lines are of that form, so any other environment file, or this one with another key, still blocks.
 - **The figures of the repository structure files are read from the code:** `doc_facts.py` gains `test_modules` and `tests_in`, a description in `docs/structure.json` may carry `{{fact:NAME|LAST}}`, `--structure` fails when LAST is not the figure and `--structure --fix` writes it, and the tree of the README resolves the markers. The five node sources no longer type the number of checks the host programs count.
 - **The Security and Updates lights of the Project status table of the repositories follow the evidence ceiling:** the sources of the READMEs hold the lowered lights (Security is never green and is limited like Hardware), and `tools/status_lights.py` is the new shared copy.
