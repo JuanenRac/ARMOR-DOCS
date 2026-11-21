@@ -60,6 +60,27 @@ class FactTests(unittest.TestCase):
         with self.assertRaises(doc_facts.Unavailable):
             doc_facts.value("ctest_cpp:ARMOR-COMMON")   # no tests/CMakeLists.txt there
 
+    def test_kotlin_tests_are_counted_in_every_test_folder_and_added_to_the_python_ones(self):
+        watch = self.root / "ARMOR-X"
+        files = {
+            "src/test/kotlin/a/ATest.kt": "class A {\n    @Test\n    fun one() {}\n    @Test fun two() {}\n    @TestOnly fun not() {}\n}\n",
+            "wear/src/test/kotlin/b/BTest.kt": "class B {\n    @Test\n    fun three() {}\n}\n",
+            "src/main/kotlin/c/CTest.kt": "class C {\n    @Test\n    fun ignored() {}\n}\n",
+        }
+        watch.mkdir()
+        (watch / "armor.project.json").write_text("{}", encoding="utf-8")
+        for name, body in files.items():
+            (watch / name).parent.mkdir(parents=True, exist_ok=True)
+            (watch / name).write_text(body, encoding="utf-8")
+        (watch / "tests").mkdir()
+        (watch / "tests" / "test_a.py").write_text("def test_x(): pass\n", encoding="utf-8")
+        self.assertEqual(doc_facts.value("kotlin_tests:ARMOR-X"), "3")
+        self.assertEqual(doc_facts.value("tests_all:ARMOR-X"), "4")
+
+    def test_kotlin_tests_of_a_repository_without_any_are_unavailable_not_zero(self):
+        with self.assertRaises(doc_facts.Unavailable):
+            doc_facts.value("kotlin_tests:ARMOR-COMMON")
+
     def test_unittest_is_the_count_of_test_functions_under_another_name(self):
         common = self.root / "ARMOR-COMMON"
         (common / "tests").mkdir()

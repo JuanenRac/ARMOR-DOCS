@@ -161,6 +161,26 @@ def tests(repository: str) -> int:
     return sum(len(re.findall(r"^\s*(?:async )?def test_", text, re.M)) for text in files.values())
 
 
+def kotlin_tests(repository: str) -> int:
+    """The `@Test` functions of the Kotlin test files (`*Test.kt` under any `src/test/` folder) of a repository, as committed (or as in the working tree when asked)."""
+    repo = _repo(repository)
+    names: list[str] = []
+    if not _worktree() and (repo / ".git").exists():
+        listing = subprocess.run(["git", "-C", str(repo), "ls-tree", "-r", "--name-only", "HEAD"], capture_output=True, text=True, encoding="utf-8")
+        if listing.returncode == 0:
+            names = [name for name in listing.stdout.split(chr(10)) if name.endswith("Test.kt") and "src/test/" in name]
+        texts = []
+        for name in names:
+            shown = subprocess.run(["git", "-C", str(repo), "show", f"HEAD:{name}"], capture_output=True, text=True, encoding="utf-8")
+            if shown.returncode == 0:
+                texts.append(shown.stdout)
+    else:
+        texts = [path.read_text(encoding="utf-8") for path in sorted(repo.rglob("*Test.kt")) if "src/test/" in path.as_posix()]
+    if not texts:
+        raise Unavailable(f"{repository} has no Kotlin tests")
+    return sum(len(re.findall(r"^\s*@Test(?![A-Za-z])", text, re.M)) for text in texts)
+
+
 def _ctest(repository: str, python: bool) -> int:
     """The tests registered with CTest in tests/CMakeLists.txt, by name: the two branches of an if/else that register the same test count once."""
     text = _tracked(_repo(repository), "tests", ".txt").get("CMakeLists.txt")
@@ -195,6 +215,10 @@ def value(name: str) -> str:
         return str(openapi_operations())
     if base in ("tests", "unittest") and argument:
         return str(tests(argument))
+    if base == "kotlin_tests" and argument:
+        return str(kotlin_tests(argument))
+    if base == "tests_all" and argument:
+        return str(tests(argument) + kotlin_tests(argument))
     if base in ("ctest_cpp", "ctest_python") and argument:
         return str(_ctest(argument, base == "ctest_python"))
     if base == "version" and argument:
