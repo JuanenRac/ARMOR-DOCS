@@ -1,87 +1,87 @@
 {
   "schema_version": "1.0",
   "train": "eco-1",
-  "contracts_version": "0.8.1.5",
+  "contracts_version": "0.8.1.6",
   "repositories": {
     "ARMOR-COMMON": {
-      "version": "0.8.1.5",
+      "version": "0.8.1.6",
       "contracts": null
     },
     "ARMOR-NODE-RADAR": {
-      "version": "0.8.1.3",
-      "contracts": "0.8.0.7"
+      "version": "0.8.1.4",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-NODE-SOLAR": {
-      "version": "0.6.7",
-      "contracts": "0.8.0.7"
+      "version": "0.6.8",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-NODE-ELECTRICAL": {
-      "version": "0.5.9",
-      "contracts": "0.8.0.7"
+      "version": "0.6.0",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-NODE-ALARM": {
-      "version": "0.5.7",
-      "contracts": "0.8.0.7"
+      "version": "0.5.8",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-NODE-HMI": {
-      "version": "0.4.9",
-      "contracts": "0.8.0.7"
+      "version": "0.5.0",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-NETWORK": {
-      "version": "0.1.8",
-      "contracts": "0.8.0.7"
+      "version": "0.1.9",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-SERVER": {
-      "version": "0.8.2.3",
-      "contracts": "0.8.0.7"
+      "version": "0.8.2.4",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-STUDIO": {
-      "version": "0.8.2.5",
-      "contracts": "0.8.0.7"
+      "version": "0.8.2.6",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-ANDROID-CONTROL": {
-      "version": "0.8.0.8",
-      "contracts": "0.8.0.7"
+      "version": "0.8.0.9",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-IOS-CONTROL": {
-      "version": "0.0.6",
-      "contracts": "0.8.0.7"
+      "version": "0.0.7",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-WATCH": {
-      "version": "0.0.2",
-      "contracts": "0.8.0.7"
+      "version": "0.0.3",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-SERVER-AI": {
-      "version": "0.3.3",
-      "contracts": "0.8.0.7"
+      "version": "0.3.4",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-VISION": {
-      "version": "0.1.7",
-      "contracts": "0.8.0.7"
+      "version": "0.1.8",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-VOICE-AI": {
-      "version": "0.3.6",
-      "contracts": "0.8.0.7"
+      "version": "0.3.7",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-HARDWARE": {
-      "version": "0.2.9",
-      "contracts": "0.8.0.7"
+      "version": "0.3.0",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-DEVOPS": {
-      "version": "0.7.7",
-      "contracts": "0.8.0.7"
+      "version": "0.7.8",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-SIMULATOR": {
-      "version": "0.3.8",
-      "contracts": "0.8.0.7"
+      "version": "0.3.9",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-UPDATER": {
-      "version": "0.2.3",
-      "contracts": "0.8.0.7"
+      "version": "0.2.4",
+      "contracts": "0.8.1.5"
     },
     "ARMOR-DOCS": {
-      "version": "0.8.2.1",
-      "contracts": "0.8.0.7"
+      "version": "0.8.2.2",
+      "contracts": "0.8.1.5"
     }
   }
 }

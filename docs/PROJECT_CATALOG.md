@@ -3,7 +3,7 @@
 <!-- catalog:begin -->
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
-| ARMOR-COMMON | 0.8.1.5 | Shared contracts and validation library | Established |
+| ARMOR-COMMON | 0.8.1.6 | Shared contracts and validation library | Established |
 | ARMOR-NODE-RADAR | 0.8.1.4 | ESP32-S3 PoE field-node firmware | Established |
 | ARMOR-NODE-SOLAR | 0.6.8 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-NODE-ELECTRICAL | 0.6.0 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
@@ -22,7 +22,7 @@
 | ARMOR-DEVOPS | 0.7.8 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.3.9 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.2.4 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
-| ARMOR-DOCS | 0.8.2.1 | System architecture and operator documentation | Established |
+| ARMOR-DOCS | 0.8.2.2 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
 
 ## Dependency direction
