@@ -42,6 +42,9 @@ def glyph(name: str) -> str:
     <path d="M-40,34 q10,-18 20,0 t20,0 t20,0 t20,0" stroke-width="4"/>""",
         "ARMOR-NODE-ELECTRICAL": f"""<path d="M10,-46 L-24,4 H-2 L-10,46 L26,-8 H4 Z" stroke="{AMBER}" stroke-width="4"/>
     <path d="M-44,-30 q8,-14 16,0 t16,0" stroke-width="3" opacity=".7"/><path d="M-44,30 h20 M24,30 h20" stroke-width="3" opacity=".7"/>""",
+        "ARMOR-NODE-SOLAR-HMI": f"""<rect x="-44" y="-36" width="88" height="56" rx="7"/><path d="M-30,10 v-14 M-20,10 v-22 M-10,10 v-18" stroke-width="5"/>
+    <circle cx="20" cy="-12" r="9" stroke="{AMBER}" stroke-width="3.4"/><path d="M20,-29 v-3 M20,5 v3 M3,-12 h-1 M37,-12 h2" stroke="{AMBER}" stroke-width="3"/>
+    <path d="M-14,36 h28 M0,20 v16" stroke-width="3"/>""",
         "ARMOR-NODE-HMI": f"""<rect x="-44" y="-36" width="88" height="56" rx="7"/><path d="M-30,-20 h30 M-30,-8 h44 M-30,4 h22" stroke-width="3" opacity=".7"/>
     <rect x="12" y="-6" width="9" height="16" rx="4.5" stroke="{AMBER}" stroke-width="3"/><path d="M8,6 a9,9 0 0 0 17,0 M16.5,15 v6" stroke="{AMBER}" stroke-width="2.6"/>
     <path d="M-16,34 h32 M0,20 v14" stroke-width="3"/>""",
