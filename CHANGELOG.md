@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The shared CI workflow pins the current setup-java action:** the line follows the template of the shared repository.
+
 - **README source of the solar node: the battery modules asked cell by cell are up to sixteen,** not eight, in the eight languages.
 - **The test count of this repository is current:** the READMEs are regenerated after the new tests of the shared validator.
 - **README source of the solar node:** a bullet, in the eight languages, for the catalogue of protocols (Modbus, DALY, JBD, JK, VE.Direct, PI41, PI34) and for what a silent or half-answering inverter port now does.
