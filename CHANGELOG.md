@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The README of the solar node tells its new Readings page and how the data of several battery stacks stays out of the internal memory,** in the eight languages, with the current number of rows of its panel texts.
 - **The publication check no longer blocks on its own sample addresses:** the generator edge-case tests carry made-up mailboxes on purpose, so they are listed with the other test files of the checks that are not scanned for them.
 
 ## [0.8.2.2] - Code-read figures, generated file trees, a stricter publication check and a catalogue that follows the repositories
