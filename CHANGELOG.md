@@ -5,6 +5,10 @@ All notable changes to this project are documented here.
 ## [Unreleased]
 
 - **README source of the solar node:** a bullet, in the eight languages, for the catalogue of protocols (Modbus, DALY, JBD, JK, VE.Direct, PI41, PI34) and for what a silent or half-answering inverter port now does.
+- **The README of the solar node tells its new Readings page and how the data of several battery stacks stays out of the internal memory,** in the eight languages, with the current number of rows of its panel texts.
+
+- **Studio's README tells about the detailed battery menu:** the whole bank, blinking faults, charts by bank, pack, battery and cell, and Verify, in the eight languages.
+
 - **The publication check no longer blocks on its own sample addresses:** the generator edge-case tests carry made-up mailboxes on purpose, so they are listed with the other test files of the checks that are not scanned for them.
 
 ## [0.8.2.2] - Code-read figures, generated file trees, a stricter publication check and a catalogue that follows the repositories

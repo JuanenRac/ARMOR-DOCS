@@ -47,6 +47,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     "*Batteries* shows each stack with its capacities, each module and every cell; *Electrical* shows the grid input, each channel and the meters' "
                     'alarms; in both you declare your equipment (Voltronic, MPP Solar, Pylontech, ANT-BMS…) and a *Show example readings* button lets you try the menu '
                     'first.',
+                    '**Battery bank in detail:** sockets, batteries, cells, capacity, current and the lowest and highest cell with their place; a fault in a cell or battery blinks once a second with an icon and words (still when less motion is asked for); charts by bank, pack, battery and cell with zoom, levels and CSV (by battery and cell, what the browser has read since Studio was opened); *Verify* reads a high figure again and, only for the statistics counters of the first battery of a stack, offers the documented `statc` command, confirmed and recorded, with the server switch off by default. Never tried on a real battery.',
                     "**Electrical Designer:** draw the house's electrical diagram (grid, meter, protections, transfer switches, distribution, PV, inverters, batteries "
                     'and loads, AC and DC), tie it to the solar devices the server reads to see live values, and let the checks review it (two sources on one line, '
                     'breakers and cables against the current…).',
@@ -168,6 +169,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     '*Baterías* muestra cada pila con sus capacidades, cada módulo y cada celda; *Eléctrico* muestra la entrada de red, cada canal y las alarmas de los '
                     'medidores; en ambos declaras tu equipo (Voltronic, MPP Solar, Pylontech, ANT-BMS…) y un botón *Mostrar lecturas de ejemplo* te deja probar el menú '
                     'antes.',
+                    '**El banco de baterías en detalle:** tomas, baterías, celdas, capacidad, corriente y la celda más baja y más alta con su sitio; un fallo en una celda o batería parpadea una vez por segundo con icono y texto (fijo si se pide menos movimiento); gráficas por banco, pack, batería y celda con zoom, umbrales y CSV (por batería y celda, lo que el navegador ha leído desde que se abrió Studio); *Verificar* relee un valor alto y, solo para los contadores estadísticos de la primera batería de un pack, ofrece la orden documentada `statc`, confirmada y registrada, con el interruptor del servidor apagado por defecto. Nunca probada en una batería real.',
                     '**Diseñador eléctrico:** dibuja el esquema eléctrico de la casa (red, contador, protecciones, conmutadores, distribución, FV, inversores, baterías '
                     'y cargas, CA y CC), átalo a los dispositivos solares que lee el servidor para ver valores en vivo, y deja que las comprobaciones lo revisen (dos '
                     'fuentes en una línea, magnetotérmicos y cables frente a la corriente…).',
@@ -291,6 +293,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     "d'historique ; *Batteries* montre chaque bloc avec ses capacités, chaque module et chaque cellule ; *Électrique* montre l'entrée réseau, chaque "
                     'canal et les alarmes des compteurs ; dans les deux vous déclarez votre matériel (Voltronic, MPP Solar, Pylontech, ANT-BMS…) et un bouton *Afficher '
                     "des mesures d'exemple* permet d'essayer le menu d'abord.",
+                    "**Le parc de batteries en détail :** prises, batteries, cellules, capacité, courant et la cellule la plus basse et la plus haute avec leur emplacement ; un défaut de cellule ou de batterie clignote une fois par seconde avec icône et texte (fixe si l'on demande moins de mouvement) ; graphiques par parc, pack, batterie et cellule avec zoom, seuils et CSV (par batterie et cellule, ce que le navigateur a lu depuis l'ouverture de Studio) ; *Vérifier* relit une valeur élevée et, seulement pour les compteurs statistiques de la première batterie d'un pack, propose la commande documentée `statc`, confirmée et consignée, l'interrupteur du serveur étant coupé par défaut. Jamais essayée sur une vraie batterie.",
                     '**Concepteur électrique :** dessinez le schéma électrique de la maison (réseau, compteur, protections, inverseurs, distribution, PV, onduleurs, '
                     'batteries et charges, AC et DC), liez-le aux appareils solaires que lit le serveur pour voir les valeurs en direct, et laissez les vérifications le '
                     'relire (deux sources sur une ligne, disjoncteurs et câbles face au courant…).',
@@ -418,6 +421,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     "*Batterie* mostra ogni pacco con le sue capacità, ogni modulo e ogni cella; *Elettrico* mostra l'ingresso di rete, ogni canale e gli allarmi dei "
                     'contatori; in entrambi dichiari le tue apparecchiature (Voltronic, MPP Solar, Pylontech, ANT-BMS…) e un pulsante *Mostra letture di esempio* ti '
                     'lascia provare prima il menu.',
+                    "**Il banco di batterie nel dettaglio:** prese, batterie, celle, capacità, corrente e la cella più bassa e più alta con la loro posizione; un guasto di cella o batteria lampeggia una volta al secondo con icona e testo (fisso se si chiede meno movimento); grafici per banco, pacco, batteria e cella con zoom, soglie e CSV (per batteria e cella, quanto il browser ha letto da quando Studio è aperto); *Verifica* rilegge un valore alto e, solo per i contatori statistici della prima batteria di un pacco, propone il comando documentato `statc`, confermato e registrato, con l'interruttore del server spento per impostazione predefinita. Mai provato su una batteria reale.",
                     '**Progettista elettrico:** disegna lo schema elettrico della casa (rete, contatore, protezioni, commutatori, distribuzione, FV, inverter, batterie '
                     'e carichi, CA e CC), legalo ai dispositivi solari che il server legge per vedere i valori in diretta, e lascia che i controlli lo rivedano (due '
                     'sorgenti su una linea, interruttori e cavi rispetto alla corrente…).',
@@ -542,6 +546,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     '*Batterien* zeigt jeden Stapel mit seinen Kapazitäten, jedes Modul und jede Zelle; *Elektro* zeigt den Netzeingang, jeden Kanal und die Alarme der '
                     'Zähler; in beiden melden Sie Ihre Geräte an (Voltronic, MPP Solar, Pylontech, ANT-BMS…), und eine Taste *Beispielwerte zeigen* lässt Sie das Menü '
                     'zuerst ausprobieren.',
+                    '**Die Batteriebank im Detail:** Anschlüsse, Batterien, Zellen, Kapazität, Strom sowie niedrigste und höchste Zelle mit Ort; ein Fehler einer Zelle oder Batterie blinkt einmal pro Sekunde mit Symbol und Text (ruhig, wenn weniger Bewegung gewünscht ist); Diagramme je Bank, Stack, Batterie und Zelle mit Zoom, Grenzwerten und CSV (je Batterie und Zelle das, was der Browser seit dem Öffnen von Studio gelesen hat); *Prüfen* liest einen hohen Wert erneut und bietet nur für die Statistikzähler der ersten Batterie eines Stacks den dokumentierten Befehl `statc` an, bestätigt und protokolliert, mit standardmäßig ausgeschaltetem Serverschalter. Nie an einer echten Batterie erprobt.',
                     '**Elektro-Designer:** zeichnen Sie den Elektroplan des Hauses (Netz, Zähler, Schutzorgane, Umschalter, Verteilung, PV, Wechselrichter, Batterien '
                     'und Lasten, AC und DC), verbinden Sie ihn mit den Solargeräten, die der Server liest, um Live-Werte zu sehen, und lassen Sie die Prüfungen ihn '
                     'durchsehen (zwei Quellen auf einer Leitung, Sicherungen und Kabel gegen den Strom…).',
@@ -649,6 +654,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     '**报警主机与报警设计器：**每个 ARMOR-NODE-ALARM 节点的状态、其防区和事件、绑定到防区的 Zigbee 传感器，以及可绘制住宅报警系统（主机、触点、移动、烟雾、燃气和漏水探测器、警笛、键盘、布线和无线链路）并把每个绘制的元素绑定到真实防区的设计器。',
                     '**太阳能与电气能源：***逆变器*菜单把住宅画成动画能量流，带仪表、读数和历史图表；*电池*显示每个电池组的容量、每个模块和每个电芯；*电气*显示电网输入、每个通道和电表报警；两者都可以声明你的设备（Voltronic、MPP '
                     'Solar、Pylontech、ANT-BMS……），并可先用*显示示例读数*按钮试用菜单。',
+                    '**电池组详情：** 接口、电池、单体、容量、电流，以及最低和最高单体及其位置；单体或电池故障时每秒闪烁一次，并配有图标和文字（要求减少动效时保持静止）；按整组、电池包、电池和单体查看图表，支持缩放、阈值线和 CSV（按电池和单体显示的是打开 Studio 以来浏览器读到的数据）；*核实* 会重新读取偏高的数值，仅对电池组第一个电池的统计计数器提供有文档记载的 `statc` 命令，需确认并记录，服务器开关默认关闭。从未在真实电池上试过。',
                     '**电气设计器：**绘制住宅的电气图（电网、电表、保护、转换开关、配电、光伏、逆变器、电池和负载，交流和直流），把它与服务器读取的太阳能设备关联以查看实时值，并让检查来审阅它（一条线上有两个电源、断路器和电缆与电流的匹配……）。',
                     '**雷达：**根据你的场地设计绘制的实时地图，显示每个雷达报告的目标、其近期轨迹以及**要忽略的画面区域**；节点实时状态，沉默的节点显示为*过期*；每个节点自己的面板只需点击一次。',
                     '**场地设计器：**绘制地形、多层建筑（五种屋顶）、门、窗、灯、烟囱、太阳能板、桅杆、道路和小径，然后在任意位置放置摄像头和雷达；CAD 风格的 2D 平面图以及可环绕、逐层查看的 3D 视图；撤销和重做；设计版本。',
@@ -711,6 +717,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     'センサー、そして家の警報（警報盤、接点、動き、煙・ガス・浸水検知器、サイレン、キーパッド、配線、無線リンク）を描き、描いた各要素を実際のゾーンに結び付けるデザイナー。',
                     '**ソーラーと電気のエネルギー：***インバーター*メニューは家をゲージ、数値、履歴グラフ付きのアニメーションするエネルギーフローとして描き、*バッテリー*は各スタックの容量、各モジュール、すべてのセルを表示し、*電気*は系統入力、各チャンネル、メーターの警報を表示します。どちらも機器（Voltronic、MPP '
                     'Solar、Pylontech、ANT-BMS など）を登録でき、*例示の測定値を表示*ボタンで先にメニューを試せます。',
+                    '**バッテリーバンクの詳細：** 接続口、バッテリー、セル、容量、電流、最低・最高セルとその場所。セルやバッテリーの異常はアイコンと文字を添えて1秒に1回点滅します（視差効果を減らす設定では静止）。バンク・スタック・バッテリー・セルごとのグラフはズーム、しきい値、CSVに対応します（バッテリー別とセル別は、Studio を開いてからブラウザーが読み取った値）。*確認する* は高い値を読み直し、スタック先頭のバッテリーの統計カウンタに限り、文書化された `statc` 命令を確認と記録付きで提供します。サーバーのスイッチは既定でオフです。実機のバッテリーでは未検証です。',
                     '**電気デザイナー：**家の電気図（系統、メーター、保護、切替器、配電、PV、インバーター、バッテリー、負荷、AC と DC）を描き、サーバーが読むソーラー機器に結び付けてライブ値を見て、検査に見直させます（1 本の線に 2 つの電源、電流に対するブレーカーとケーブルなど）。',
                     '**レーダー：**サイト設計から描いたライブマップに、各レーダーが報告する対象、その最近の経路、**無視する映像ゾーン**を表示。ノードのライブ状態（無応答は*古い*と表示）、各ノード自身のパネルへ 1 クリック。',
                     '**サイトデザイナー：**地形、複数階の建物（5 種類の屋根）、ドア、窓、街灯、煙突、ソーラーパネル、マスト、道路や小道を描き、カメラとレーダーを好きな場所に配置。CAD 風の 2D 図面と、階ごとに回転できる 3D 表示、元に戻す・やり直し、設計のバージョン。',
@@ -801,6 +808,7 @@ LEGACY: dict[str, Any] = {'en': {'tagline': 'Operations and design console: came
                     'histórico; *Baterias* mostra cada pilha com as suas capacidades, cada módulo e cada célula; *Elétrico* mostra a entrada de rede, cada canal e os '
                     'alarmes dos contadores; em ambos declara o seu equipamento (Voltronic, MPP Solar, Pylontech, ANT-BMS…) e um botão *Mostrar leituras de exemplo* '
                     'deixa-o experimentar o menu antes.',
+                    '**O banco de baterias em detalhe:** tomadas, baterias, células, capacidade, corrente e a célula mais baixa e mais alta com o seu lugar; uma falha numa célula ou bateria pisca uma vez por segundo com ícone e texto (fixo se for pedido menos movimento); gráficos por banco, pack, bateria e célula com zoom, limites e CSV (por bateria e célula, o que o navegador leu desde que o Studio foi aberto); *Verificar* relê um valor alto e, apenas para os contadores estatísticos da primeira bateria de um pack, propõe a ordem documentada `statc`, confirmada e registada, com o interruptor do servidor desligado por omissão. Nunca experimentada numa bateria real.',
                     '**Desenhador elétrico:** desenhe o esquema elétrico da casa (rede, contador, proteções, comutadores, distribuição, FV, inversores, baterias e '
                     'cargas, CA e CC), ligue-o aos dispositivos solares que o servidor lê para ver valores em direto, e deixe que as verificações o revejam (duas fontes '
                     'numa linha, disjuntores e cabos face à corrente…).',
