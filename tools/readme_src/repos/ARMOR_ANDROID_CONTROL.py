@@ -213,7 +213,7 @@ python -I tools/armor_ci_validate.py
 | Radar and cameras | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Translations, plain words, voice | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} tests in 76 files, run with `testDebugUnitTest`; a fake server (`FakeServer.kt`) and fixtures taken from a real server (`tools/capture_fixtures.mjs`) feed them. Every phrase is checked to be in the eight language tables.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} tests in 84 files, run with `testDebugUnitTest`; a fake server (`FakeServer.kt`) and fixtures taken from a real server (`tools/capture_fixtures.mjs`) feed them. Every phrase is checked to be in the eight language tables.""",
       "build": "Releases are published on GitHub, from where the app itself checks for updates; the app looks for the asset `ARMOR-ANDROID-CONTROL-release.apk`. The APK is signed with the maintainer's own release key, kept outside the repository, and the app compares the signing certificate of a download with its own before it hands the file to Android's installer. The `versionCode` goes up before each APK, or Android does not treat it as an update.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -383,7 +383,7 @@ python -I tools/armor_ci_validate.py
 | Radar y cámaras | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Traducciones, palabras sencillas, voz | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} pruebas en 76 ficheros, con `testDebugUnitTest`; un servidor falso (`FakeServer.kt`) y datos tomados de un servidor real (`tools/capture_fixtures.mjs`) las alimentan. Se comprueba que cada frase esté en las ocho tablas de idioma.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} pruebas en 84 ficheros, con `testDebugUnitTest`; un servidor falso (`FakeServer.kt`) y datos tomados de un servidor real (`tools/capture_fixtures.mjs`) las alimentan. Se comprueba que cada frase esté en las ocho tablas de idioma.""",
       "build": "Las versiones se publican en GitHub, desde donde la propia app comprueba las actualizaciones; la app busca el recurso `ARMOR-ANDROID-CONTROL-release.apk`. El APK se firma con la clave de versión del mantenedor, guardada fuera del repositorio, y la app compara el certificado de firma de una descarga con el suyo antes de pasar el fichero al instalador de Android. El `versionCode` sube antes de cada APK, o Android no lo trata como actualización.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -553,7 +553,7 @@ python -I tools/armor_ci_validate.py
 | Radar und Kameras | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Übersetzungen, einfache Worte, Sprache | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} Tests in 76 Dateien, ausgeführt mit `testDebugUnitTest`; ein Fake-Server (`FakeServer.kt`) und von einem echten Server geholte Daten (`tools/capture_fixtures.mjs`) speisen sie. Es wird geprüft, dass jeder Satz in den acht Sprachtabellen steht.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} Tests in 84 Dateien, ausgeführt mit `testDebugUnitTest`; ein Fake-Server (`FakeServer.kt`) und von einem echten Server geholte Daten (`tools/capture_fixtures.mjs`) speisen sie. Es wird geprüft, dass jeder Satz in den acht Sprachtabellen steht.""",
       "build": "Releases werden auf GitHub veröffentlicht, von wo die App selbst nach Updates sucht; die App sucht nach dem Asset `ARMOR-ANDROID-CONTROL-release.apk`. Die APK ist mit dem eigenen Release-Schlüssel des Maintainers signiert, der außerhalb des Repositorys liegt, und die App vergleicht das Signaturzertifikat eines Downloads mit ihrem eigenen, bevor sie die Datei an Androids Installer übergibt. Der `versionCode` steigt vor jeder APK, sonst gilt sie für Android nicht als Update.",
       "troubleshooting": r"""| Du siehst | Weil | Tu das |
 |---|---|---|
@@ -723,7 +723,7 @@ python -I tools/armor_ci_validate.py
 | Radar et caméras | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Traductions, mots simples, voix | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} tests dans 76 fichiers, lancés avec `testDebugUnitTest` ; un faux serveur (`FakeServer.kt`) et des données prises sur un vrai serveur (`tools/capture_fixtures.mjs`) les alimentent. On vérifie que chaque phrase figure dans les huit tables de langue.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} tests dans 84 fichiers, lancés avec `testDebugUnitTest` ; un faux serveur (`FakeServer.kt`) et des données prises sur un vrai serveur (`tools/capture_fixtures.mjs`) les alimentent. On vérifie que chaque phrase figure dans les huit tables de langue.""",
       "build": "Les versions sont publiées sur GitHub, d'où l'app vérifie elle-même les mises à jour ; l'app cherche l'élément `ARMOR-ANDROID-CONTROL-release.apk`. L'APK est signé avec la clé de version propre au mainteneur, gardée hors du dépôt, et l'app compare le certificat de signature d'un téléchargement au sien avant de passer le fichier à l'installateur d'Android. Le `versionCode` monte avant chaque APK, sinon Android ne le traite pas comme une mise à jour.",
       "troubleshooting": r"""| Tu vois | Parce que | Fais |
 |---|---|---|
@@ -893,7 +893,7 @@ python -I tools/armor_ci_validate.py
 | Radar e telecamere | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Traduzioni, parole semplici, voce | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} test in 76 file, eseguiti con `testDebugUnitTest`; un server finto (`FakeServer.kt`) e dati presi da un server reale (`tools/capture_fixtures.mjs`) li alimentano. Si verifica che ogni frase sia nelle otto tabelle di lingua.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} test in 84 file, eseguiti con `testDebugUnitTest`; un server finto (`FakeServer.kt`) e dati presi da un server reale (`tools/capture_fixtures.mjs`) li alimentano. Si verifica che ogni frase sia nelle otto tabelle di lingua.""",
       "build": "Le versioni sono pubblicate su GitHub, da dove l'app stessa controlla gli aggiornamenti; l'app cerca l'asset `ARMOR-ANDROID-CONTROL-release.apk`. L'APK è firmato con la chiave di rilascio del manutentore, tenuta fuori dal repository, e l'app confronta il certificato di firma di un download con il proprio prima di passare il file all'installer di Android. Il `versionCode` sale prima di ogni APK, altrimenti Android non lo tratta come aggiornamento.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -1063,7 +1063,7 @@ python -I tools/armor_ci_validate.py
 | レーダーとカメラ | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | 翻訳、平易な言葉、音声 | 14 | `Tr`, `Friendly`, `Voice` |
 
-76 ファイル {{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} 件のテストを `testDebugUnitTest` で実行します。擬似サーバー（`FakeServer.kt`）と実サーバーから取得したデータ（`tools/capture_fixtures.mjs`）を使います。すべてのフレーズが 8 つの言語表にあることも検査します。""",
+84 ファイル {{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} 件のテストを `testDebugUnitTest` で実行します。擬似サーバー（`FakeServer.kt`）と実サーバーから取得したデータ（`tools/capture_fixtures.mjs`）を使います。すべてのフレーズが 8 つの言語表にあることも検査します。""",
       "build": "リリースは GitHub で公開され、アプリ自身がそこで更新を確認します。アプリはアセット `ARMOR-ANDROID-CONTROL-release.apk` を探します。APK はリポジトリ外に保管したメンテナー自身のリリース鍵で署名され、アプリはダウンロードした署名証明書を自分のものと比較してから Android のインストーラーに渡します。APK ごとに事前に `versionCode` を上げないと、Android は更新として扱いません。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1233,7 +1233,7 @@ python -I tools/armor_ci_validate.py
 | 雷达与摄像头 | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | 翻译、通俗措辞、语音 | 14 | `Tr`, `Friendly`, `Voice` |
 
-76 个文件共 {{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} 个测试，用 `testDebugUnitTest` 运行；由模拟服务器（`FakeServer.kt`）和从真实服务器获取的数据（`tools/capture_fixtures.mjs`）驱动。还会检查每条短语都在八张语言表中。""",
+84 个文件共 {{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} 个测试，用 `testDebugUnitTest` 运行；由模拟服务器（`FakeServer.kt`）和从真实服务器获取的数据（`tools/capture_fixtures.mjs`）驱动。还会检查每条短语都在八张语言表中。""",
       "build": "版本发布在 GitHub，应用自己从那里检查更新；应用查找资源 `ARMOR-ANDROID-CONTROL-release.apk`。APK 使用维护者自己的发布密钥签名（密钥保存在仓库之外），应用在把文件交给 Android 安装程序之前，会比较下载文件的签名证书与自身证书。每个 APK 之前都要提高 `versionCode`，否则 Android 不会把它当作更新。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1403,7 +1403,7 @@ python -I tools/armor_ci_validate.py
 | Radar e câmaras | 14 | `RadarGeometry`, `CameraTraits`, `CameraLenses` |
 | Traduções, palavras simples, voz | 14 | `Tr`, `Friendly`, `Voice` |
 
-{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} testes em 76 ficheiros, executados com `testDebugUnitTest`; um servidor falso (`FakeServer.kt`) e dados tirados de um servidor real (`tools/capture_fixtures.mjs`) alimentam-nos. Verifica-se que cada frase está nas oito tabelas de língua.""",
+{{fact:kotlin_tests:ARMOR-ANDROID-CONTROL}} testes em 84 ficheiros, executados com `testDebugUnitTest`; um servidor falso (`FakeServer.kt`) e dados tirados de um servidor real (`tools/capture_fixtures.mjs`) alimentam-nos. Verifica-se que cada frase está nas oito tabelas de língua.""",
       "build": "As versões são publicadas no GitHub, de onde a própria app verifica as atualizações; a app procura o recurso `ARMOR-ANDROID-CONTROL-release.apk`. O APK é assinado com a chave de versão do mantenedor, guardada fora do repositório, e a app compara o certificado de assinatura de uma transferência com o seu antes de passar o ficheiro ao instalador do Android. O `versionCode` sobe antes de cada APK, senão o Android não o trata como atualização.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
