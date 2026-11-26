@@ -11,9 +11,9 @@
 | ARMOR-NODE-HMI | 0.5.1 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NODE-SOLAR-HMI | 0.0.1 | Solar touch screen: shows the batteries and the inverters of the installation from ARMOR-SERVER on a 7-inch wall screen | Scaffolding |
 | ARMOR-NETWORK | 0.1.9 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
-| ARMOR-SERVER | 0.8.2.5 | Central event coordinator and web API | Established |
-| ARMOR-STUDIO | 0.8.2.7 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.8.1.0 | Android operator client | Established |
+| ARMOR-SERVER | 0.8.2.6 | Central event coordinator and web API | Established |
+| ARMOR-STUDIO | 0.8.2.8 | Web administration and calibration console | Established |
+| ARMOR-ANDROID-CONTROL | 0.8.1.1 | Android operator client | Established |
 | ARMOR-IOS-CONTROL | 0.0.8 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.3 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.4 | Camera movement observation service (CM5 today, Jetson planned) | Established |
