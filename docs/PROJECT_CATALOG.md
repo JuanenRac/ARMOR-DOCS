@@ -3,18 +3,18 @@
 <!-- catalog:begin -->
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
-| ARMOR-COMMON | 0.8.1.6 | Shared contracts and validation library | Established |
-| ARMOR-NODE-RADAR | 0.8.1.4 | ESP32-S3 PoE field-node firmware | Established |
-| ARMOR-NODE-SOLAR | 0.6.8 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
-| ARMOR-NODE-ELECTRICAL | 0.6.0 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
-| ARMOR-NODE-ALARM | 0.5.8 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
-| ARMOR-NODE-HMI | 0.5.0 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
+| ARMOR-COMMON | 0.8.1.7 | Shared contracts and validation library | Established |
+| ARMOR-NODE-RADAR | 0.8.1.5 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-NODE-SOLAR | 0.6.9 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
+| ARMOR-NODE-ELECTRICAL | 0.6.1 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
+| ARMOR-NODE-ALARM | 0.5.9 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
+| ARMOR-NODE-HMI | 0.5.1 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NODE-SOLAR-HMI | 0.0.1 | Solar touch screen: shows the batteries and the inverters of the installation from ARMOR-SERVER on a 7-inch wall screen | Scaffolding |
 | ARMOR-NETWORK | 0.1.9 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
-| ARMOR-SERVER | 0.8.2.4 | Central event coordinator and web API | Established |
-| ARMOR-STUDIO | 0.8.2.6 | Web administration and calibration console | Established |
-| ARMOR-ANDROID-CONTROL | 0.8.0.9 | Android operator client | Established |
-| ARMOR-IOS-CONTROL | 0.0.7 | iPhone operator client | Scaffolding |
+| ARMOR-SERVER | 0.8.2.5 | Central event coordinator and web API | Established |
+| ARMOR-STUDIO | 0.8.2.7 | Web administration and calibration console | Established |
+| ARMOR-ANDROID-CONTROL | 0.8.1.0 | Android operator client | Established |
+| ARMOR-IOS-CONTROL | 0.0.8 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.3 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.4 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.1.8 | Camera zones, masks and detection rules | Functional |
@@ -23,7 +23,7 @@
 | ARMOR-DEVOPS | 0.7.8 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.3.9 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.2.4 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
-| ARMOR-DOCS | 0.8.2.2 | System architecture and operator documentation | Established |
+| ARMOR-DOCS | 0.8.2.3 | System architecture and operator documentation | Established |
 <!-- catalog:end -->
 
 ## Dependency direction
