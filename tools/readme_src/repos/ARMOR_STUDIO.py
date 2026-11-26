@@ -971,6 +971,19 @@ MACHINE_UPDATE_BULLET = {
 for _lg in MACHINE_UPDATE_BULLET:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [MACHINE_UPDATE_BULLET[_lg]]
 
+HISTORY_BULLET = {
+    'en': '**Battery charts from the server, and a code for the console from outside:** the charts by battery and cell show what ARMOR-SERVER recorded, so they do not start empty each time Studio is opened, and from outside the house the maintenance console asks for a code of the second factor besides the password. Tried only in the automated tests so far.',
+    'es': '**Gráficas de batería desde el servidor y un código para la consola desde fuera:** las gráficas por batería y celda muestran lo que registró ARMOR-SERVER, así que no empiezan vacías cada vez que se abre Studio, y desde fuera de casa la consola de mantenimiento pide un código del segundo factor además de la contraseña. Hasta ahora solo probado en las pruebas automáticas.',
+    'de': '**Batteriediagramme vom Server und ein Code für die Konsole von außen:** die Diagramme je Batterie und Zelle zeigen, was ARMOR-SERVER aufgezeichnet hat, sie beginnen also nicht bei jedem Öffnen von Studio leer, und von außer Haus verlangt die Wartungskonsole neben dem Passwort einen Code des zweiten Faktors. Bisher nur in den automatischen Tests erprobt.',
+    'fr': "**Graphiques de batterie issus du serveur et un code pour la console depuis l'extérieur :** les graphiques par batterie et cellule montrent ce qu'ARMOR-SERVER a enregistré, ils ne repartent donc pas de zéro à chaque ouverture de Studio, et hors de la maison la console de maintenance demande un code du second facteur en plus du mot de passe. Essayé pour l'instant uniquement dans les tests automatiques.",
+    'it': '**Grafici delle batterie dal server e un codice per la console da fuori:** i grafici per batteria e cella mostrano ciò che ARMOR-SERVER ha registrato, quindi non ripartono vuoti a ogni apertura di Studio, e da fuori casa la console di manutenzione chiede un codice del secondo fattore oltre alla password. Finora provato solo nei test automatici.',
+    'ja': '**サーバー由来のバッテリーグラフと、外部からのコンソール用コード：** バッテリーとセルごとのグラフは ARMOR-SERVER が記録した内容を表示するため、Studio を開くたびに空から始まりません。家の外からは、保守コンソールがパスワードに加えて二要素認証のコードを求めます。これまで自動テストでのみ確認しています。',
+    'zh': '**来自服务器的电池图表与外部控制台验证码：** 按电池和单体的图表显示 ARMOR-SERVER 记录的数据，因此不会在每次打开 Studio 时从空白开始；在房屋之外，维护控制台除密码外还要求第二因素验证码。目前仅在自动化测试中验证过。',
+    'pt': '**Gráficos de bateria vindos do servidor e um código para a consola a partir do exterior:** os gráficos por bateria e célula mostram o que o ARMOR-SERVER registou, por isso não começam vazios cada vez que o Studio é aberto, e fora de casa a consola de manutenção pede um código do segundo fator além da palavra-passe. Até agora só experimentado nos testes automáticos.',
+}
+for _lg in HISTORY_BULLET:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [HISTORY_BULLET[_lg]]
+
 NT = "1933"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
