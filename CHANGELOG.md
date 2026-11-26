@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **README source of the solar node:** a bullet, in the eight languages, for the catalogue of protocols (Modbus, DALY, JBD, JK, VE.Direct, PI41, PI34) and for what a silent or half-answering inverter port now does.
 - **The publication check no longer blocks on its own sample addresses:** the generator edge-case tests carry made-up mailboxes on purpose, so they are listed with the other test files of the checks that are not scanned for them.
 
 ## [0.8.2.2] - Code-read figures, generated file trees, a stricter publication check and a catalogue that follows the repositories
