@@ -53,6 +53,56 @@ class Project:
         return code, out.getvalue(), err.getvalue()
 
 
+class ServedJavaScriptTests(unittest.TestCase):
+    """The scripts under panel/ and public/ must parse; node itself is stood in for."""
+
+    def setUp(self):
+        self.project = Project()
+        self.addCleanup(self.project.holder.cleanup)
+
+    def script(self, relative):
+        (self.project.root / relative).parent.mkdir(parents=True, exist_ok=True)
+        self.project.write(relative, "const a = 1;")
+
+    def check(self, node="node", returncode=0, stderr="", actions=""):
+        calls = []
+        err = io.StringIO()
+
+        def run(command, **_kwargs):
+            calls.append(Path(command[-1]).name)
+            return mock.Mock(returncode=returncode, stderr=stderr)
+        with mock.patch.object(validate, "ROOT", self.project.root), mock.patch("shutil.which", return_value=node), \
+                mock.patch("subprocess.run", run), mock.patch.dict("os.environ", {"GITHUB_ACTIONS": actions}), contextlib.redirect_stderr(err):
+            try:
+                validate.validate_served_javascript()
+                code = 0
+            except SystemExit as stop:
+                code = stop.code
+        return code, calls, err.getvalue()
+
+    def test_a_repository_without_served_scripts_is_not_affected(self):
+        self.assertEqual(self.check(node=None, actions="true")[:2], (0, []))
+
+    def test_only_the_served_scripts_are_parsed(self):
+        for relative in ("panel/app.js", "public/sw.mjs", "public/lib.min.js", "public/node_modules/x.js", "src/other.js"):
+            self.script(relative)
+        code, calls, _ = self.check()
+        self.assertEqual((code, sorted(calls)), (0, ["app.js", "sw.mjs"]))
+
+    def test_a_script_that_does_not_parse_fails(self):
+        self.script("panel/app.js")
+        code, _, err = self.check(returncode=1, stderr=chr(10).join(("x", "SyntaxError: Unexpected token", "")))
+        self.assertNotEqual(code, 0)
+        self.assertIn("panel/app.js: SyntaxError", err)
+
+    def test_without_node_it_warns_here_and_fails_on_a_runner(self):
+        self.script("panel/app.js")
+        code, calls, err = self.check(node=None)
+        self.assertEqual((code, calls), (0, []))
+        self.assertIn("warning: node not found", err)
+        self.assertNotEqual(self.check(node=None, actions="true")[0], 0)
+
+
 class ValidateTests(unittest.TestCase):
     def setUp(self):
         self.project = Project()
