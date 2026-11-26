@@ -984,7 +984,20 @@ HISTORY_BULLET = {
 for _lg in HISTORY_BULLET:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [HISTORY_BULLET[_lg]]
 
-NT = "1933"
+CELL_CHART_BULLET = {
+    'en': '**A small chart for each cell:** the charts by cell can also draw one small chart per cell on a common scale, off until you tick it and remembered by the browser; a cell in fault blinks. Tried only in the automated tests so far.',
+    'es': '**Una gráfica pequeña por cada celda:** las gráficas por celda pueden dibujar además una pequeña por cada celda con la misma escala, apagado hasta que lo marcas y recordado por el navegador; una celda en fallo parpadea. Probado de momento solo en las pruebas automáticas.',
+    'de': '**Ein kleines Diagramm je Zelle:** Die Zelldiagramme können zusätzlich je Zelle ein kleines Diagramm mit gemeinsamer Skala zeichnen, aus bis du es ankreuzt und vom Browser gemerkt; eine fehlerhafte Zelle blinkt. Bisher nur in den automatischen Tests erprobt.',
+    'fr': "**Un petit graphique par cellule :** les graphiques par cellule peuvent aussi dessiner un petit graphique par cellule à la même échelle, désactivé tant que tu ne le coches pas et mémorisé par le navigateur ; une cellule en défaut clignote. Essayé seulement dans les tests automatiques pour l'instant.",
+    'it': '**Un piccolo grafico per ogni cella:** i grafici per cella possono disegnare anche un piccolo grafico per ogni cella con la stessa scala, spento finché non lo spunti e ricordato dal browser; una cella in guasto lampeggia. Provato finora solo nei test automatici.',
+    'ja': '**セルごとの小さなグラフ：** セルのグラフでは、同じ目盛りでセルごとの小さなグラフも描けます。チェックするまではオフで、ブラウザーが記憶します。異常のあるセルは点滅します。今のところ自動テストでのみ確認しています。',
+    'zh': '**每个单体一张小图：** 单体图表还可以按相同刻度为每个单体画一张小图，勾选前不显示，由浏览器记住；故障单体会闪烁。目前仅在自动化测试中验证过。',
+    'pt': '**Um pequeno gráfico por célula:** os gráficos por célula também podem desenhar um pequeno gráfico por célula com a mesma escala, desligado até o assinalar e lembrado pelo navegador; uma célula em falha pisca. Experimentado por agora apenas nos testes automáticos.',
+}
+for _lg in CELL_CHART_BULLET:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [CELL_CHART_BULLET[_lg]]
+
+NT = "1939"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 # the claims of the previous README that the code no longer supports, corrected in every language
