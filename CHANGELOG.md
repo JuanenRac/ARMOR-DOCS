@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **README source of the solar node: the battery modules asked cell by cell are up to sixteen,** not eight, in the eight languages.
 - **README source of the solar node:** a bullet, in the eight languages, for the catalogue of protocols (Modbus, DALY, JBD, JK, VE.Direct, PI41, PI34) and for what a silent or half-answering inverter port now does.
 - **The README of the solar node tells its new Readings page and how the data of several battery stacks stays out of the internal memory,** in the eight languages, with the current number of rows of its panel texts.
 

@@ -180,7 +180,7 @@ No frame has been read from a real inverter or battery; the formats are written 
 |---|---|
 | MQTT | `armor/solar/<node>/<device>/state` (one message per inverter or battery stack, kind `inverter` or `battery` of the ARMOR-COMMON contract), `armor/solar/<node>/maintenance/{command,result}`, `armor/health/<node>` (last will), `armor/control/<id>/{command,result,maintenance}` and `armor/control/all/command` |
 | Ports | 10 serial ports (3 hardware UARTs and 7 emulated, up to 19200 baud when emulated); per port a type: `voltronic` (2400 baud, every 5 s), `pylontech` (115200, every 10 s), `ant` (19200, every 5 s) or `raw` (9600, listen only, publishes nothing); inverter dialects `auto`, `pi30`, `revo`, `pi18`; the mux profile has 3 groups of ports |
-| Queries | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (and `QPIGS2`, `QPGS` on a standard inverter with the mux); Pylontech console: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, event log, up to 8 modules asked cell by cell |
+| Queries | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (and `QPIGS2`, `QPGS` on a standard inverter with the mux); Pylontech console: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, event log, up to 16 modules asked cell by cell |
 | Panel | The family routes (`tests/check_routes.py` checks that every route the panel calls exists) plus the ports and readings pages; 51 error codes with a text in eight languages (839 rows in `panel/text.js`); see [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) for the menus of Studio |""",
       "configuration": r"""| Variable | Default | What it sets |
 |---|---|---|
@@ -347,7 +347,7 @@ Ninguna trama se ha leído de un inversor o una batería reales; los formatos es
 |---|---|
 | MQTT | `armor/solar/<nodo>/<dispositivo>/state` (un mensaje por inversor o pila de baterías, tipo `inverter` o `battery` del contrato de ARMOR-COMMON), `armor/solar/<nodo>/maintenance/{command,result}`, `armor/health/<nodo>` (última voluntad), `armor/control/<id>/{command,result,maintenance}` y `armor/control/all/command` |
 | Puertos | 10 puertos serie (3 UART de hardware y 7 emuladas, hasta 19200 baudios si son emuladas); por puerto un tipo: `voltronic` (2400 baudios, cada 5 s), `pylontech` (115200, cada 10 s), `ant` (19200, cada 5 s) o `raw` (9600, solo escucha, no publica); dialectos de inversor `auto`, `pi30`, `revo`, `pi18`; el perfil mux tiene 3 grupos de puertos |
-| Consultas | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (y `QPIGS2`, `QPGS` en un inversor estándar con el mux); consola Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registro de eventos, hasta 8 módulos pedidos celda a celda |
+| Consultas | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (y `QPIGS2`, `QPGS` en un inversor estándar con el mux); consola Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registro de eventos, hasta 16 módulos pedidos celda a celda |
 | Panel | Las rutas de la familia (`tests/check_routes.py` comprueba que toda ruta que llama el panel existe) más las páginas de puertos y lecturas; 51 códigos de error con texto en ocho idiomas (839 filas en `panel/text.js`); los menús de Studio, en [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| Variable | Por defecto | Qué define |
 |---|---|---|
@@ -514,7 +514,7 @@ Es wurde noch kein Frame von einem echten Wechselrichter oder einer echten Batte
 |---|---|
 | MQTT | `armor/solar/<Knoten>/<Gerät>/state` (eine Nachricht je Wechselrichter oder Batteriestapel, Art `inverter` oder `battery` des ARMOR-COMMON-Vertrags), `armor/solar/<Knoten>/maintenance/{command,result}`, `armor/health/<Knoten>` (Last Will), `armor/control/<id>/{command,result,maintenance}` und `armor/control/all/command` |
 | Ports | 10 serielle Ports (3 Hardware-UARTs und 7 emulierte, emuliert bis 19200 Baud); je Port ein Typ: `voltronic` (2400 Baud, alle 5 s), `pylontech` (115200, alle 10 s), `ant` (19200, alle 5 s) oder `raw` (9600, nur hören, veröffentlicht nichts); Wechselrichter-Dialekte `auto`, `pi30`, `revo`, `pi18`; das Mux-Profil hat 3 Portgruppen |
-| Abfragen | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (und `QPIGS2`, `QPGS` bei einem Standard-Wechselrichter mit dem Mux); Pylontech-Konsole: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, Ereignisprotokoll, bis zu 8 Module zellenweise abgefragt |
+| Abfragen | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (und `QPIGS2`, `QPGS` bei einem Standard-Wechselrichter mit dem Mux); Pylontech-Konsole: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, Ereignisprotokoll, bis zu 16 Module zellenweise abgefragt |
 | Panel | Die Familien-Routen (`tests/check_routes.py` prüft, dass jede vom Panel aufgerufene Route existiert) plus die Seiten für Ports und Messwerte; 51 Fehlercodes mit Text in acht Sprachen (839 Zeilen in `panel/text.js`); die Menüs von Studio stehen in [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| Variable | Standard | Was sie festlegt |
 |---|---|---|
@@ -681,7 +681,7 @@ Aucune trame n'a été lue d'un vrai onduleur ou d'une vraie batterie ; les form
 |---|---|
 | MQTT | `armor/solar/<nœud>/<appareil>/state` (un message par onduleur ou pile de batteries, type `inverter` ou `battery` du contrat d'ARMOR-COMMON), `armor/solar/<nœud>/maintenance/{command,result}`, `armor/health/<nœud>` (testament), `armor/control/<id>/{command,result,maintenance}` et `armor/control/all/command` |
 | Ports | 10 ports série (3 UART matérielles et 7 émulées, jusqu'à 19200 bauds en émulation) ; par port un type : `voltronic` (2400 bauds, toutes les 5 s), `pylontech` (115200, toutes les 10 s), `ant` (19200, toutes les 5 s) ou `raw` (9600, écoute seule, ne publie rien) ; dialectes d'onduleur `auto`, `pi30`, `revo`, `pi18` ; le profil mux a 3 groupes de ports |
-| Requêtes | Voltronic : `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (et `QPIGS2`, `QPGS` sur un onduleur standard avec le mux) ; console Pylontech : `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, journal d'événements, jusqu'à 8 modules interrogés cellule par cellule |
+| Requêtes | Voltronic : `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (et `QPIGS2`, `QPGS` sur un onduleur standard avec le mux) ; console Pylontech : `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, journal d'événements, jusqu'à 16 modules interrogés cellule par cellule |
 | Panneau | Les routes de la famille (`tests/check_routes.py` vérifie que toute route appelée par le panneau existe) plus les pages des ports et des mesures ; 51 codes d'erreur avec texte en huit langues (839 lignes dans `panel/text.js`) ; les menus de Studio sont dans [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| Variable | Par défaut | Ce qu'elle règle |
 |---|---|---|
@@ -848,7 +848,7 @@ Nessun frame è stato letto da un vero inverter o da una vera batteria; i format
 |---|---|
 | MQTT | `armor/solar/<nodo>/<dispositivo>/state` (un messaggio per inverter o pila di batterie, tipo `inverter` o `battery` del contratto di ARMOR-COMMON), `armor/solar/<nodo>/maintenance/{command,result}`, `armor/health/<nodo>` (last will), `armor/control/<id>/{command,result,maintenance}` e `armor/control/all/command` |
 | Porte | 10 porte seriali (3 UART hardware e 7 emulate, fino a 19200 baud se emulate); per porta un tipo: `voltronic` (2400 baud, ogni 5 s), `pylontech` (115200, ogni 10 s), `ant` (19200, ogni 5 s) o `raw` (9600, solo ascolto, non pubblica nulla); dialetti dell'inverter `auto`, `pi30`, `revo`, `pi18`; il profilo mux ha 3 gruppi di porte |
-| Richieste | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (e `QPIGS2`, `QPGS` su un inverter standard con il mux); console Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registro eventi, fino a 8 moduli richiesti cella per cella |
+| Richieste | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (e `QPIGS2`, `QPGS` su un inverter standard con il mux); console Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registro eventi, fino a 16 moduli richiesti cella per cella |
 | Pannello | I percorsi della famiglia (`tests/check_routes.py` verifica che ogni percorso chiamato dal pannello esista) più le pagine di porte e letture; 51 codici di errore con testo in otto lingue (839 righe in `panel/text.js`); i menu di Studio sono in [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| Variabile | Predefinito | Cosa imposta |
 |---|---|---|
@@ -1015,7 +1015,7 @@ I test su host richiedono un qualsiasi compilatore C++17 (Linux, WSL, MSYS2); il
 |---|---|
 | MQTT | `armor/solar/<ノード>/<機器>/state`（インバーターまたはバッテリースタックごとに 1 メッセージ、ARMOR-COMMON のコントラクトの種別 `inverter` または `battery`）、`armor/solar/<ノード>/maintenance/{command,result}`、`armor/health/<ノード>`（遺言）、`armor/control/<id>/{command,result,maintenance}`、`armor/control/all/command` |
 | ポート | シリアルポート 10 本（ハードウェア UART 3 本とエミュレート 7 本、エミュレート時は最大 19200 ボー）。ポートごとの種別：`voltronic`（2400 ボー、5 秒ごと）、`pylontech`（115200、10 秒ごと）、`ant`（19200、5 秒ごと）、`raw`（9600、受信のみで何も発行しない）。インバーターの方言は `auto`、`pi30`、`revo`、`pi18`。mux プロファイルにはポートのグループが 3 つあります |
-| 問い合わせ | Voltronic：`QPIGS`、`QMOD`、`QPIWS`、`QPIRI`（mux 付きの標準インバーターでは `QPIGS2`、`QPGS` も）。Pylontech コンソール：`pwr`、`bat <n>`、`info <n>`、`stat`、`soh`、イベントログ。最大 8 モジュールをセル単位で問い合わせます |
+| 問い合わせ | Voltronic：`QPIGS`、`QMOD`、`QPIWS`、`QPIRI`（mux 付きの標準インバーターでは `QPIGS2`、`QPGS` も）。Pylontech コンソール：`pwr`、`bat <n>`、`info <n>`、`stat`、`soh`、イベントログ。最大 16 モジュールをセル単位で問い合わせます |
 | パネル | ファミリー共通のルート（`tests/check_routes.py` がパネルの呼ぶルートの存在を検査）に加え、ポートと測定値のページ。8 言語の文言つきエラーコード 51 個（`panel/text.js` に 839 行）。Studio のメニューは [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| 変数 | 既定値 | 設定内容 |
 |---|---|---|
@@ -1182,7 +1182,7 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 |---|---|
 | MQTT | `armor/solar/<节点>/<设备>/state`（每个逆变器或电池组一条消息，类型为 ARMOR-COMMON 合约中的 `inverter` 或 `battery`）、`armor/solar/<节点>/maintenance/{command,result}`、`armor/health/<节点>`（遗嘱）、`armor/control/<id>/{command,result,maintenance}` 和 `armor/control/all/command` |
 | 端口 | 10 个串口（3 个硬件 UART 和 7 个模拟 UART，模拟时最高 19200 波特）；每个端口有一个类型：`voltronic`（2400 波特，每 5 秒）、`pylontech`（115200，每 10 秒）、`ant`（19200，每 5 秒）或 `raw`（9600，仅监听，不发布任何内容）；逆变器方言有 `auto`、`pi30`、`revo`、`pi18`；mux 方案有 3 组端口 |
-| 查询 | Voltronic：`QPIGS`、`QMOD`、`QPIWS`、`QPIRI`（带 mux 的标准逆变器还有 `QPIGS2`、`QPGS`）；Pylontech 控制台：`pwr`、`bat <n>`、`info <n>`、`stat`、`soh`、事件日志，最多 8 个模块逐个电芯查询 |
+| 查询 | Voltronic：`QPIGS`、`QMOD`、`QPIWS`、`QPIRI`（带 mux 的标准逆变器还有 `QPIGS2`、`QPGS`）；Pylontech 控制台：`pwr`、`bat <n>`、`info <n>`、`stat`、`soh`、事件日志，最多 16 个模块逐个电芯查询 |
 | 面板 | 系列共有的路由（`tests/check_routes.py` 检查面板调用的每条路由都存在）加上端口和读数页面；51 个带八种语言文字的错误码（`panel/text.js` 中 839 行）；Studio 的菜单见 [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| 变量 | 默认值 | 作用 |
 |---|---|---|
@@ -1349,7 +1349,7 @@ Nenhuma trama foi lida de um inversor ou bateria reais; os formatos estão escri
 |---|---|
 | MQTT | `armor/solar/<nó>/<dispositivo>/state` (uma mensagem por inversor ou pilha de baterias, tipo `inverter` ou `battery` do contrato do ARMOR-COMMON), `armor/solar/<nó>/maintenance/{command,result}`, `armor/health/<nó>` (testamento), `armor/control/<id>/{command,result,maintenance}` e `armor/control/all/command` |
 | Portas | 10 portas série (3 UART de hardware e 7 emuladas, até 19200 baud se emuladas); por porta um tipo: `voltronic` (2400 baud, a cada 5 s), `pylontech` (115200, a cada 10 s), `ant` (19200, a cada 5 s) ou `raw` (9600, só escuta, não publica nada); dialetos de inversor `auto`, `pi30`, `revo`, `pi18`; o perfil mux tem 3 grupos de portas |
-| Consultas | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (e `QPIGS2`, `QPGS` num inversor padrão com o mux); consola Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registo de eventos, até 8 módulos pedidos célula a célula |
+| Consultas | Voltronic: `QPIGS`, `QMOD`, `QPIWS`, `QPIRI` (e `QPIGS2`, `QPGS` num inversor padrão com o mux); consola Pylontech: `pwr`, `bat <n>`, `info <n>`, `stat`, `soh`, registo de eventos, até 16 módulos pedidos célula a célula |
 | Painel | As rotas da família (`tests/check_routes.py` verifica que toda a rota que o painel chama existe) mais as páginas de portas e leituras; 51 códigos de erro com texto em oito línguas (839 linhas em `panel/text.js`); os menus do Studio estão em [docs/STUDIO_MENUS.md](docs/STUDIO_MENUS.md) |""",
       "configuration": r"""| Variável | Predefinição | O que define |
 |---|---|---|
