@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.8.2.3] - The solar screen node, the battery menu and the confirmed updater roles
+
 - **The shared project tool is the current one:** the copy follows the shared repository, which now knows the new solar panel node.
 
 - **The READMEs of the two phone apps say how a node panel on its own origin is opened** (a one-use ticket, with the proof of identity when the server asks).
