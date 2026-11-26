@@ -8,6 +8,7 @@ All notable changes to this project are documented here.
 
 - **Studio's README tells about the detailed battery menu:** the whole bank, blinking faults, charts by bank, pack, battery and cell, and Verify, in the eight languages.
 
+- **The copy of the shared validator is current:** `tools/armor_ci_validate.py` now also checks with `node --check` that the scripts served to a browser parse, in a repository that has them under `panel/` or `public/`.
 - **The publication check no longer blocks on its own sample addresses:** the generator edge-case tests carry made-up mailboxes on purpose, so they are listed with the other test files of the checks that are not scanned for them.
 
 ## [0.8.2.2] - Code-read figures, generated file trees, a stricter publication check and a catalogue that follows the repositories
