@@ -80,7 +80,7 @@ TEXT = {
       ],
       [
         "Languages",
-        "8 (1229 phrases per language, checked by `ios_lint.py`)",
+        "8 (1253 phrases per language, checked by `ios_lint.py`)",
       ],
       [
         "Runs on",
@@ -152,7 +152,7 @@ TEXT = {
 | The assistant arms or disarms by mistake | Written commands only (the keyboard's microphone dictates); arming and disarming need a confirmation bound to you, behind the lock of the phone |
 
 Permission texts (Face ID, local network) exist in all eight languages. Nothing here has run on an iPhone: Face ID, the Keychain and the certificate rules are untested on a device. Read [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) and [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""It is a client: it calls 70 paths of ARMOR-SERVER (`tools/ios_lint.py` counts them and checks that the Android client calls them too), and cuts the MJPEG stream of the cameras with its own parser (`MjpegParser.swift`).
+      "interfaces": r"""It is a client: it calls 71 paths of ARMOR-SERVER (`tools/ios_lint.py` counts them and checks that the Android client calls them too), and cuts the MJPEG stream of the cameras with its own parser (`MjpegParser.swift`).
 
 | Part | What it sets |
 |---|---|
@@ -201,7 +201,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | The alarm policy and the alarm codes |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, batteries, electrical network and the client calls |
 
-The {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 108 Swift files, 1229 phrases in 8 languages, 70 server paths. No test runs on a device.""",
+The {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests run with fixtures of a real server. `tools/ios_lint.py` passes without a Mac: 112 Swift files, 1253 phrases in 8 languages, 71 server paths. No test runs on a device.""",
       "build": "The Xcode project is generated from `project.yml` with XcodeGen: choose a signing team, add the app icon to `App/Resources/Assets.xcassets/AppIcon.appiconset` and, for push, the installation's `GoogleService-Info.plist`. It has never been built in Xcode.",
       "troubleshooting": r"""| You see | Because | Do |
 |---|---|---|
@@ -239,7 +239,7 @@ The {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests run with fixtures of a real ser
       ],
       [
         "Idiomas",
-        "8 (1229 frases por idioma, comprobadas por `ios_lint.py`)",
+        "8 (1253 frases por idioma, comprobadas por `ios_lint.py`)",
       ],
       [
         "Funciona en",
@@ -311,7 +311,7 @@ The {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests run with fixtures of a real ser
 | El asistente arma o desarma por error | Solo órdenes escritas (el micrófono del teclado dicta); armar y desarmar exigen una confirmación atada a ti, tras el bloqueo del teléfono |
 
 Los textos de permisos (Face ID, red local) existen en los ocho idiomas. Nada de esto ha corrido en un iPhone: Face ID, el Keychain y las reglas de certificado no se han probado en un dispositivo. Lee [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) y [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""Es un cliente: llama a 70 rutas de ARMOR-SERVER (`tools/ios_lint.py` las cuenta y comprueba que el cliente Android también las llama) y corta el flujo MJPEG de las cámaras con su propio intérprete (`MjpegParser.swift`).
+      "interfaces": r"""Es un cliente: llama a 71 rutas de ARMOR-SERVER (`tools/ios_lint.py` las cuenta y comprueba que el cliente Android también las llama) y corta el flujo MJPEG de las cámaras con su propio intérprete (`MjpegParser.swift`).
 
 | Parte | Qué define |
 |---|---|
@@ -360,7 +360,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La política de alarmas y los códigos de alarma |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, baterías, red eléctrica y las llamadas del cliente |
 
-Las {{fact:swift_tests:ARMOR-IOS-CONTROL}} pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 108 ficheros Swift, 1229 frases en 8 idiomas, 70 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
+Las {{fact:swift_tests:ARMOR-IOS-CONTROL}} pruebas usan datos de un servidor real. `tools/ios_lint.py` pasa sin Mac: 112 ficheros Swift, 1253 frases en 8 idiomas, 71 rutas del servidor. Ninguna prueba corre en un dispositivo.""",
       "build": "El proyecto de Xcode se genera desde `project.yml` con XcodeGen: elige un equipo de firma, añade el icono de la app a `App/Resources/Assets.xcassets/AppIcon.appiconset` y, para push, el `GoogleService-Info.plist` de la instalación. Nunca se ha compilado en Xcode.",
       "troubleshooting": r"""| Ves | Porque | Haz |
 |---|---|---|
@@ -398,7 +398,7 @@ Las {{fact:swift_tests:ARMOR-IOS-CONTROL}} pruebas usan datos de un servidor rea
       ],
       [
         "Sprachen",
-        "8 (1229 Sätze je Sprache, von `ios_lint.py` geprüft)",
+        "8 (1253 Sätze je Sprache, von `ios_lint.py` geprüft)",
       ],
       [
         "Läuft auf",
@@ -470,7 +470,7 @@ Las {{fact:swift_tests:ARMOR-IOS-CONTROL}} pruebas usan datos de un servidor rea
 | Der Assistent schaltet versehentlich scharf oder unscharf | Nur geschriebene Befehle (das Mikrofon der Tastatur diktiert); Scharf- und Unscharfschalten brauchen eine an dich gebundene Bestätigung, hinter der Telefonsperre |
 
 Die Berechtigungstexte (Face ID, lokales Netzwerk) gibt es in allen acht Sprachen. Nichts davon lief auf einem iPhone: Face ID, der Keychain und die Zertifikatsregeln sind nicht auf einem Gerät getestet. Lies [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) und [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""Er ist ein Client: Er ruft 70 Pfade von ARMOR-SERVER auf (`tools/ios_lint.py` zählt sie und prüft, dass auch der Android-Client sie aufruft) und zerlegt den MJPEG-Strom der Kameras mit eigenem Parser (`MjpegParser.swift`).
+      "interfaces": r"""Er ist ein Client: Er ruft 71 Pfade von ARMOR-SERVER auf (`tools/ios_lint.py` zählt sie und prüft, dass auch der Android-Client sie aufruft) und zerlegt den MJPEG-Strom der Kameras mit eigenem Parser (`MjpegParser.swift`).
 
 | Teil | Was sie festlegt |
 |---|---|
@@ -519,7 +519,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | Die Alarmrichtlinie und die Alarmcodes |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, Batterien, Stromnetz und die Aufrufe des Clients |
 
-Die {{fact:swift_tests:ARMOR-IOS-CONTROL}} Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 108 Swift-Dateien, 1229 Sätze in 8 Sprachen, 70 Serverpfade. Kein Test läuft auf einem Gerät.""",
+Die {{fact:swift_tests:ARMOR-IOS-CONTROL}} Tests laufen mit Daten eines echten Servers. `tools/ios_lint.py` besteht ohne Mac: 112 Swift-Dateien, 1253 Sätze in 8 Sprachen, 71 Serverpfade. Kein Test läuft auf einem Gerät.""",
       "build": "Das Xcode-Projekt wird aus `project.yml` mit XcodeGen erzeugt: Wähle ein Signing-Team, füge das App-Symbol zu `App/Resources/Assets.xcassets/AppIcon.appiconset` hinzu und für Push die `GoogleService-Info.plist` der Installation. Es wurde nie in Xcode gebaut.",
       "troubleshooting": r"""| Du siehst | Weil | Tu das |
 |---|---|---|
@@ -557,7 +557,7 @@ Die {{fact:swift_tests:ARMOR-IOS-CONTROL}} Tests laufen mit Daten eines echten S
       ],
       [
         "Langues",
-        "8 (1229 phrases par langue, vérifiées par `ios_lint.py`)",
+        "8 (1253 phrases par langue, vérifiées par `ios_lint.py`)",
       ],
       [
         "Fonctionne sur",
@@ -629,7 +629,7 @@ Die {{fact:swift_tests:ARMOR-IOS-CONTROL}} Tests laufen mit Daten eines echten S
 | L'assistant arme ou désarme par erreur | Seulement des ordres écrits (le micro du clavier dicte) ; armer et désarmer exigent une confirmation liée à toi, derrière le verrouillage du téléphone |
 
 Les textes d'autorisation (Face ID, réseau local) existent dans les huit langues. Rien de tout cela n'a tourné sur un iPhone : Face ID, le Keychain et les règles de certificat ne sont pas testés sur un appareil. Lis [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) et [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""C'est un client : il appelle 70 chemins d'ARMOR-SERVER (`tools/ios_lint.py` les compte et vérifie que le client Android les appelle aussi) et découpe le flux MJPEG des caméras avec son propre analyseur (`MjpegParser.swift`).
+      "interfaces": r"""C'est un client : il appelle 71 chemins d'ARMOR-SERVER (`tools/ios_lint.py` les compte et vérifie que le client Android les appelle aussi) et découpe le flux MJPEG des caméras avec son propre analyseur (`MjpegParser.swift`).
 
 | Partie | Ce qu'elle règle |
 |---|---|
@@ -678,7 +678,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La politique d'alarme et les codes d'alarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solaire, batteries, réseau électrique et appels du client |
 
-Les {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 108 fichiers Swift, 1229 phrases en 8 langues, 70 chemins du serveur. Aucun test ne tourne sur un appareil.""",
+Les {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests utilisent des données d'un vrai serveur. `tools/ios_lint.py` réussit sans Mac : 112 fichiers Swift, 1253 phrases en 8 langues, 71 chemins du serveur. Aucun test ne tourne sur un appareil.""",
       "build": "Le projet Xcode est généré depuis `project.yml` avec XcodeGen : choisis une équipe de signature, ajoute l'icône de l'app à `App/Resources/Assets.xcassets/AppIcon.appiconset` et, pour le push, le `GoogleService-Info.plist` de l'installation. Il n'a jamais été compilé dans Xcode.",
       "troubleshooting": r"""| Tu vois | Parce que | Fais |
 |---|---|---|
@@ -716,7 +716,7 @@ Les {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests utilisent des données d'un vra
       ],
       [
         "Lingue",
-        "8 (1229 frasi per lingua, verificate da `ios_lint.py`)",
+        "8 (1253 frasi per lingua, verificate da `ios_lint.py`)",
       ],
       [
         "Gira su",
@@ -788,7 +788,7 @@ Les {{fact:swift_tests:ARMOR-IOS-CONTROL}} tests utilisent des données d'un vra
 | L'assistente inserisce o disinserisce per errore | Solo comandi scritti (il microfono della tastiera detta); inserire e disinserire richiedono una conferma legata a te, dietro il blocco del telefono |
 
 I testi dei permessi (Face ID, rete locale) esistono in tutte e otto le lingue. Nulla di tutto ciò è girato su un iPhone: Face ID, il Keychain e le regole del certificato non sono testati su un dispositivo. Leggi [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) e [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""È un client: chiama 70 percorsi di ARMOR-SERVER (`tools/ios_lint.py` li conta e verifica che li chiami anche il client Android) e taglia il flusso MJPEG delle telecamere con un parser proprio (`MjpegParser.swift`).
+      "interfaces": r"""È un client: chiama 71 percorsi di ARMOR-SERVER (`tools/ios_lint.py` li conta e verifica che li chiami anche il client Android) e taglia il flusso MJPEG delle telecamere con un parser proprio (`MjpegParser.swift`).
 
 | Parte | Cosa imposta |
 |---|---|
@@ -837,7 +837,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | La politica degli allarmi e i codici di allarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solare, batterie, rete elettrica e chiamate del client |
 
-I {{fact:swift_tests:ARMOR-IOS-CONTROL}} test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 108 file Swift, 1229 frasi in 8 lingue, 70 percorsi del server. Nessun test gira su un dispositivo.""",
+I {{fact:swift_tests:ARMOR-IOS-CONTROL}} test usano dati di un server reale. `tools/ios_lint.py` passa senza Mac: 112 file Swift, 1253 frasi in 8 lingue, 71 percorsi del server. Nessun test gira su un dispositivo.""",
       "build": "Il progetto Xcode si genera da `project.yml` con XcodeGen: scegli un team di firma, aggiungi l'icona dell'app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, per il push, il `GoogleService-Info.plist` dell'installazione. Non è mai stato compilato in Xcode.",
       "troubleshooting": r"""| Vedi | Perché | Fai |
 |---|---|---|
@@ -875,7 +875,7 @@ I {{fact:swift_tests:ARMOR-IOS-CONTROL}} test usano dati di un server reale. `to
       ],
       [
         "言語",
-        "8（言語ごとに 1229 フレーズ、`ios_lint.py` が検査）",
+        "8（言語ごとに 1253 フレーズ、`ios_lint.py` が検査）",
       ],
       [
         "動作環境",
@@ -947,7 +947,7 @@ I {{fact:swift_tests:ARMOR-IOS-CONTROL}} test usano dati di un server reale. `to
 | アシスタントが誤ってアーム・ディスアームする | 入力したコマンドのみ（音声入力はキーボードのマイク）。アームとディスアームには、あなたに結び付いた確認が必要で、電話のロックの内側で行います |
 
 権限のテキスト（Face ID、ローカルネットワーク）は 8 言語すべてにあります。ここにあるものは iPhone では一度も動いていません。Face ID、キーチェーン、証明書ルールは実機で未検証です。[docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) と [SECURITY.md](SECURITY.md) を参照してください。""",
-      "interfaces": r"""これはクライアントです。ARMOR-SERVER の 70 のパスを呼び出し（`tools/ios_lint.py` が数え、Android クライアントも呼ぶことを検査）、カメラの MJPEG ストリームを独自のパーサー（`MjpegParser.swift`）で切り出します。
+      "interfaces": r"""これはクライアントです。ARMOR-SERVER の 71 のパスを呼び出し（`tools/ios_lint.py` が数え、Android クライアントも呼ぶことを検査）、カメラの MJPEG ストリームを独自のパーサー（`MjpegParser.swift`）で切り出します。
 
 | 部分 | 設定内容 |
 |---|---|
@@ -996,7 +996,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | アラームポリシーとアラームコード |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | 太陽光、バッテリー、電力網、クライアントの呼び出し |
 
-{{fact:swift_tests:ARMOR-IOS-CONTROL}} 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 108、8 言語の 1229 フレーズ、サーバーパス 70。実機で動くテストはありません。""",
+{{fact:swift_tests:ARMOR-IOS-CONTROL}} 件のテストは実サーバーのデータで動きます。`tools/ios_lint.py` は Mac なしで通ります：Swift ファイル 112、8 言語の 1253 フレーズ、サーバーパス 71。実機で動くテストはありません。""",
       "build": "Xcode プロジェクトは XcodeGen で `project.yml` から生成します。署名チームを選び、アプリのアイコンを `App/Resources/Assets.xcassets/AppIcon.appiconset` に、プッシュ用に設置環境の `GoogleService-Info.plist` を追加してください。Xcode でビルドしたことはありません。",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
 |---|---|---|
@@ -1034,7 +1034,7 @@ python -I tools/armor_ci_validate.py
       ],
       [
         "语言",
-        "8（每种语言 1229 条短语，由 `ios_lint.py` 检查）",
+        "8（每种语言 1253 条短语，由 `ios_lint.py` 检查）",
       ],
       [
         "运行位置",
@@ -1106,7 +1106,7 @@ python -I tools/armor_ci_validate.py
 | 助手误操作布防或撤防 | 仅限文字命令（键盘麦克风负责听写）；布防和撤防需要与你绑定的确认，并位于手机锁之后 |
 
 权限文字（Face ID、本地网络）有全部八种语言。这里的一切都没有在 iPhone 上运行过：Face ID、钥匙串和证书规则都没有在真机上测试。请阅读 [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) 和 [SECURITY.md](SECURITY.md)。""",
-      "interfaces": r"""它是客户端：调用 ARMOR-SERVER 的 70 条路径（`tools/ios_lint.py` 会统计并检查 Android 客户端也调用它们），并用自己的解析器切分摄像头的 MJPEG 流（`MjpegParser.swift`）。
+      "interfaces": r"""它是客户端：调用 ARMOR-SERVER 的 71 条路径（`tools/ios_lint.py` 会统计并检查 Android 客户端也调用它们），并用自己的解析器切分摄像头的 MJPEG 流（`MjpegParser.swift`）。
 
 | 部分 | 作用 |
 |---|---|
@@ -1155,7 +1155,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | 报警策略和报警代码 |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | 太阳能、电池、电网和客户端调用 |
 
-这 {{fact:swift_tests:ARMOR-IOS-CONTROL}} 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：108 个 Swift 文件、8 种语言的 1229 条短语、70 条服务器路径。没有任何测试在真机上运行。""",
+这 {{fact:swift_tests:ARMOR-IOS-CONTROL}} 个测试使用真实服务器的数据。`tools/ios_lint.py` 无需 Mac 即可通过：112 个 Swift 文件、8 种语言的 1253 条短语、71 条服务器路径。没有任何测试在真机上运行。""",
       "build": "Xcode 项目由 XcodeGen 根据 `project.yml` 生成：选择签名团队，把应用图标加入 `App/Resources/Assets.xcassets/AppIcon.appiconset`，推送还需加入安装环境的 `GoogleService-Info.plist`。从未在 Xcode 中构建过。",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
 |---|---|---|
@@ -1193,7 +1193,7 @@ python -I tools/armor_ci_validate.py
       ],
       [
         "Línguas",
-        "8 (1229 frases por língua, verificadas pelo `ios_lint.py`)",
+        "8 (1253 frases por língua, verificadas pelo `ios_lint.py`)",
       ],
       [
         "Funciona em",
@@ -1265,7 +1265,7 @@ python -I tools/armor_ci_validate.py
 | O assistente arma ou desarma por engano | Só ordens escritas (o microfone do teclado dita); armar e desarmar exigem uma confirmação ligada a si, atrás do bloqueio do telemóvel |
 
 Os textos de permissões (Face ID, rede local) existem nas oito línguas. Nada disto correu num iPhone: o Face ID, o Keychain e as regras de certificado não foram testados num dispositivo. Leia [docs/CLIENT_BOUNDARY.md](docs/CLIENT_BOUNDARY.md) e [SECURITY.md](SECURITY.md).""",
-      "interfaces": r"""É um cliente: chama 70 caminhos do ARMOR-SERVER (o `tools/ios_lint.py` conta-os e verifica que o cliente Android também os chama) e corta o fluxo MJPEG das câmaras com um analisador próprio (`MjpegParser.swift`).
+      "interfaces": r"""É um cliente: chama 71 caminhos do ARMOR-SERVER (o `tools/ios_lint.py` conta-os e verifica que o cliente Android também os chama) e corta o fluxo MJPEG das câmaras com um analisador próprio (`MjpegParser.swift`).
 
 | Parte | O que define |
 |---|---|
@@ -1314,7 +1314,7 @@ python -I tools/armor_ci_validate.py
 | `PolicyTests.swift`, `AlarmCodesTests.swift`, `AlarmFactsTests.swift` | 6 + 4 + 7 | A política de alarmes e os códigos de alarme |
 | `SolarTests.swift`, `BatteryTests.swift`, `ElectricalTests.swift`, `ScreenPollingTests.swift`, `EquipmentClientTests.swift`, `AlarmRouteTests.swift`, `NetworkTests.swift`, `WeatherTests.swift`, `ServicesSecurityTests.swift` | 14 + 10 + 5 + 3 + 10 + 2 + 9 + 11 + 8 | Solar, baterias, rede elétrica e as chamadas do cliente |
 
-Os {{fact:swift_tests:ARMOR-IOS-CONTROL}} testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 108 ficheiros Swift, 1229 frases em 8 línguas, 70 caminhos do servidor. Nenhum teste corre num dispositivo.""",
+Os {{fact:swift_tests:ARMOR-IOS-CONTROL}} testes usam dados de um servidor real. O `tools/ios_lint.py` passa sem Mac: 112 ficheiros Swift, 1253 frases em 8 línguas, 71 caminhos do servidor. Nenhum teste corre num dispositivo.""",
       "build": "O projeto Xcode gera-se a partir de `project.yml` com o XcodeGen: escolhe uma equipa de assinatura, junta o ícone da app a `App/Resources/Assets.xcassets/AppIcon.appiconset` e, para push, o `GoogleService-Info.plist` da instalação. Nunca foi compilado no Xcode.",
       "troubleshooting": r"""| Vê | Porque | Faça |
 |---|---|---|
@@ -1345,7 +1345,7 @@ for _lg, _bullet in ARMING_BULLET.items():
     _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet
 
 # solar, batteries and the electrical network, in the eight languages
-EQUIPMENT_BULLET = {'en': '**Solar, batteries and the electrical network, for administrators and operators:** More > Solar shows the sums (sun, consumption, state of charge, grid) and every inverter and battery with its numbers, cells, counters and event log; More > Electrical shows the grid input, the circuits and the DC buses with the transfer switches; More > Battery maintenance (administrators only) offers the simple operations on a Pylontech battery in two steps (the node checks, the screen shows exactly what will be done, and it is written only after the serial number is typed again). Screens ask again every few seconds, at a pace kept in a configuration file. It follows the Android app; the code and its tests are written and were not compiled or tried on an iPhone.', 'es': '**Solar, baterías y red eléctrica, para administradores y operadores:** Más > Solar muestra las sumas (sol, consumo, estado de carga, red) y cada inversor y batería con sus números, celdas, contadores y registro de eventos; Más > Eléctrica muestra la entrada de red, los circuitos y los buses de continua con las conmutaciones; Más > Mantenimiento de baterías (solo administradores) ofrece las operaciones sencillas sobre una batería Pylontech en dos pasos (el nodo comprueba, la pantalla muestra exactamente lo que se hará y solo se escribe tras teclear de nuevo el número de serie). Las pantallas preguntan de nuevo cada pocos segundos, a un ritmo guardado en un fichero de configuración. Sigue a la app de Android; el código y sus pruebas están escritos y no se compilaron ni se probaron en un iPhone.', 'de': '**Solar, Batterien und Stromnetz, für Administratoren und Bediener:** Mehr > Solar zeigt die Summen (Sonne, Verbrauch, Ladezustand, Netz) und jeden Wechselrichter und jede Batterie mit Werten, Zellen, Zählern und Ereignisprotokoll; Mehr > Elektrisch zeigt den Netzeingang, die Stromkreise und die Gleichstromschienen mit den Umschaltern; Mehr > Batteriewartung (nur Administratoren) bietet die einfachen Vorgänge an einer Pylontech-Batterie in zwei Schritten (der Knoten prüft, der Bildschirm zeigt genau, was geschehen wird, und geschrieben wird erst, nachdem die Seriennummer erneut eingegeben wurde). Die Bildschirme fragen alle paar Sekunden erneut, in einem Takt aus einer Konfigurationsdatei. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden weder kompiliert noch auf einem iPhone ausprobiert.', 'fr': "**Solaire, batteries et réseau électrique, pour les administrateurs et les opérateurs :** Plus > Solaire montre les totaux (soleil, consommation, état de charge, réseau) et chaque onduleur et batterie avec ses valeurs, cellules, compteurs et journal d'événements ; Plus > Électrique montre l'entrée réseau, les circuits et les bus continu avec les commutateurs ; Plus > Maintenance des batteries (administrateurs seulement) propose les opérations simples sur une batterie Pylontech en deux étapes (le nœud vérifie, l'écran montre exactement ce qui sera fait, et l'écriture n'a lieu qu'après avoir saisi à nouveau le numéro de série). Les écrans interrogent de nouveau toutes les quelques secondes, à un rythme gardé dans un fichier de configuration. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont été ni compilés ni essayés sur un iPhone.", 'it': "**Solare, batterie e rete elettrica, per amministratori e operatori:** Altro > Solare mostra i totali (sole, consumo, stato di carica, rete) e ogni inverter e batteria con i suoi valori, celle, contatori e registro eventi; Altro > Elettrica mostra l'ingresso di rete, i circuiti e i bus in continua con i commutatori; Altro > Manutenzione delle batterie (solo amministratori) offre le operazioni semplici su una batteria Pylontech in due passi (il nodo controlla, la schermata mostra esattamente cosa verrà fatto e si scrive solo dopo aver digitato di nuovo il numero di serie). Le schermate chiedono di nuovo ogni pochi secondi, con un ritmo tenuto in un file di configurazione. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati compilati né provati su un iPhone.", 'ja': '**管理者とオペレーター向けの太陽光、バッテリー、電力網:** その他 > 太陽光 には合計（太陽、消費、充電状態、系統）と、各インバーターとバッテリーの値、セル、カウンター、イベントログが表示されます。その他 > 電気 には系統入力、回路、切替スイッチ付きの直流バスが表示されます。その他 > バッテリーメンテナンス（管理者のみ）では、Pylontech バッテリーの簡単な操作を2段階で行います（ノードが確認し、画面が実行内容を正確に示し、シリアル番号を再入力した後にのみ書き込みます）。画面は数秒ごとに再取得し、その間隔は設定ファイルに保存されています。Android アプリに準拠しており、コードとテストは書かれていますが、コンパイルも iPhone での動作確認も行っていません。', 'zh': '**面向管理员和操作员的太阳能、电池和电网：** 更多 > 太阳能 显示汇总（太阳、用电、充电状态、电网）以及每台逆变器和电池的数值、电芯、计数器和事件日志；更多 > 电气 显示电网输入、回路以及带切换开关的直流母线；更多 > 电池维护（仅管理员）分两步提供对 Pylontech 电池的简单操作（节点检查，屏幕准确显示将要执行的内容，重新输入序列号后才会写入）。各屏幕每隔几秒重新查询，间隔保存在配置文件中。它与 Android 应用保持一致；代码及其测试已编写，但尚未编译，也未在 iPhone 上试用。', 'pt': '**Solar, baterias e rede elétrica, para administradores e operadores:** Mais > Solar mostra os totais (sol, consumo, estado de carga, rede) e cada inversor e bateria com os seus valores, células, contadores e registo de eventos; Mais > Elétrica mostra a entrada de rede, os circuitos e os barramentos de corrente contínua com os comutadores; Mais > Manutenção de baterias (só administradores) oferece as operações simples numa bateria Pylontech em dois passos (o nó verifica, o ecrã mostra exatamente o que será feito, e só se escreve depois de voltar a escrever o número de série). Os ecrãs voltam a perguntar a cada poucos segundos, num ritmo guardado num ficheiro de configuração. Segue a app Android; o código e os seus testes estão escritos e não foram compilados nem experimentados num iPhone.'}
+EQUIPMENT_BULLET = {'en': '**Solar, batteries and the electrical network, for administrators and operators:** More > Solar shows the sums (sun, consumption, state of charge, grid) and every inverter and battery with its numbers, cells, counters and event log; More > Electrical shows the grid input, the circuits and the DC buses with the transfer switches; More > Battery maintenance (administrators only) offers the simple operations on a Pylontech battery in two steps (the node checks, the screen shows exactly what will be done, and it is written only after the serial number is typed again). Screens ask again every few seconds, at a pace kept in a configuration file. It follows the Android app; the code and its tests are written and were not compiled or tried on an iPhone. Each battery module shows its state in icon, word and colour and every one of its cells (voltage and bar), with a soft pulse on a fault that stays still with Reduce Motion.', 'es': '**Solar, baterías y red eléctrica, para administradores y operadores:** Más > Solar muestra las sumas (sol, consumo, estado de carga, red) y cada inversor y batería con sus números, celdas, contadores y registro de eventos; Más > Eléctrica muestra la entrada de red, los circuitos y los buses de continua con las conmutaciones; Más > Mantenimiento de baterías (solo administradores) ofrece las operaciones sencillas sobre una batería Pylontech en dos pasos (el nodo comprueba, la pantalla muestra exactamente lo que se hará y solo se escribe tras teclear de nuevo el número de serie). Las pantallas preguntan de nuevo cada pocos segundos, a un ritmo guardado en un fichero de configuración. Sigue a la app de Android; el código y sus pruebas están escritos y no se compilaron ni se probaron en un iPhone. Cada módulo de batería muestra su estado en icono, palabra y color y todas sus celdas (tensión y barra), con un parpadeo suave en los fallos que queda quieto con Reducir movimiento.', 'de': '**Solar, Batterien und Stromnetz, für Administratoren und Bediener:** Mehr > Solar zeigt die Summen (Sonne, Verbrauch, Ladezustand, Netz) und jeden Wechselrichter und jede Batterie mit Werten, Zellen, Zählern und Ereignisprotokoll; Mehr > Elektrisch zeigt den Netzeingang, die Stromkreise und die Gleichstromschienen mit den Umschaltern; Mehr > Batteriewartung (nur Administratoren) bietet die einfachen Vorgänge an einer Pylontech-Batterie in zwei Schritten (der Knoten prüft, der Bildschirm zeigt genau, was geschehen wird, und geschrieben wird erst, nachdem die Seriennummer erneut eingegeben wurde). Die Bildschirme fragen alle paar Sekunden erneut, in einem Takt aus einer Konfigurationsdatei. Sie folgt der Android-App; der Code und seine Tests sind geschrieben und wurden weder kompiliert noch auf einem iPhone ausprobiert. Jedes Batteriemodul zeigt seinen Zustand als Symbol, Wort und Farbe und all seine Zellen (Spannung und Balken), mit sanftem Blinken bei einer Störung, das bei reduzierter Bewegung stillsteht.', 'fr': "**Solaire, batteries et réseau électrique, pour les administrateurs et les opérateurs :** Plus > Solaire montre les totaux (soleil, consommation, état de charge, réseau) et chaque onduleur et batterie avec ses valeurs, cellules, compteurs et journal d'événements ; Plus > Électrique montre l'entrée réseau, les circuits et les bus continu avec les commutateurs ; Plus > Maintenance des batteries (administrateurs seulement) propose les opérations simples sur une batterie Pylontech en deux étapes (le nœud vérifie, l'écran montre exactement ce qui sera fait, et l'écriture n'a lieu qu'après avoir saisi à nouveau le numéro de série). Les écrans interrogent de nouveau toutes les quelques secondes, à un rythme gardé dans un fichier de configuration. Elle suit l'application Android ; le code et ses tests sont écrits et n'ont été ni compilés ni essayés sur un iPhone. Chaque module de batterie montre son état en icône, mot et couleur et toutes ses cellules (tension et barre), avec un clignotement doux en cas de défaut qui reste fixe avec Réduire les animations.", 'it': "**Solare, batterie e rete elettrica, per amministratori e operatori:** Altro > Solare mostra i totali (sole, consumo, stato di carica, rete) e ogni inverter e batteria con i suoi valori, celle, contatori e registro eventi; Altro > Elettrica mostra l'ingresso di rete, i circuiti e i bus in continua con i commutatori; Altro > Manutenzione delle batterie (solo amministratori) offre le operazioni semplici su una batteria Pylontech in due passi (il nodo controlla, la schermata mostra esattamente cosa verrà fatto e si scrive solo dopo aver digitato di nuovo il numero di serie). Le schermate chiedono di nuovo ogni pochi secondi, con un ritmo tenuto in un file di configurazione. Segue l'app Android; il codice e i suoi test sono scritti e non sono stati compilati né provati su un iPhone. Ogni modulo di batteria mostra il suo stato in icona, parola e colore e tutte le sue celle (tensione e barra), con un lampeggio leggero in caso di guasto che resta fermo con Riduci movimento.", 'ja': '**管理者とオペレーター向けの太陽光、バッテリー、電力網:** その他 > 太陽光 には合計（太陽、消費、充電状態、系統）と、各インバーターとバッテリーの値、セル、カウンター、イベントログが表示されます。その他 > 電気 には系統入力、回路、切替スイッチ付きの直流バスが表示されます。その他 > バッテリーメンテナンス（管理者のみ）では、Pylontech バッテリーの簡単な操作を2段階で行います（ノードが確認し、画面が実行内容を正確に示し、シリアル番号を再入力した後にのみ書き込みます）。画面は数秒ごとに再取得し、その間隔は設定ファイルに保存されています。Android アプリに準拠しており、コードとテストは書かれていますが、コンパイルも iPhone での動作確認も行っていません。バッテリーの各モジュールは状態をアイコン・言葉・色で示し、すべてのセルを電圧とバーで表示します。故障時は穏やかに点滅し、「視差効果を減らす」が有効なら静止します。', 'zh': '**面向管理员和操作员的太阳能、电池和电网：** 更多 > 太阳能 显示汇总（太阳、用电、充电状态、电网）以及每台逆变器和电池的数值、电芯、计数器和事件日志；更多 > 电气 显示电网输入、回路以及带切换开关的直流母线；更多 > 电池维护（仅管理员）分两步提供对 Pylontech 电池的简单操作（节点检查，屏幕准确显示将要执行的内容，重新输入序列号后才会写入）。各屏幕每隔几秒重新查询，间隔保存在配置文件中。它与 Android 应用保持一致；代码及其测试已编写，但尚未编译，也未在 iPhone 上试用。每个电池模块以图标、文字和颜色显示状态，并显示全部电芯的电压和条形图；故障时柔和闪烁，开启“减弱动态效果”后保持静止。', 'pt': '**Solar, baterias e rede elétrica, para administradores e operadores:** Mais > Solar mostra os totais (sol, consumo, estado de carga, rede) e cada inversor e bateria com os seus valores, células, contadores e registo de eventos; Mais > Elétrica mostra a entrada de rede, os circuitos e os barramentos de corrente contínua com os comutadores; Mais > Manutenção de baterias (só administradores) oferece as operações simples numa bateria Pylontech em dois passos (o nó verifica, o ecrã mostra exatamente o que será feito, e só se escreve depois de voltar a escrever o número de série). Os ecrãs voltam a perguntar a cada poucos segundos, num ritmo guardado num ficheiro de configuração. Segue a app Android; o código e os seus testes estão escritos e não foram compilados nem experimentados num iPhone. Cada módulo de bateria mostra o seu estado em ícone, palavra e cor e todas as suas células (tensão e barra), com um piscar suave nas falhas que fica parado com Reduzir movimento.'}
 for _lg, _bullet in EQUIPMENT_BULLET.items():
     _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet
 
