@@ -1405,3 +1405,17 @@ WATCH_BULLET = {
 }
 for _lg, _bullet in WATCH_BULLET.items():
     _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet
+
+# the solar charts of the history the server keeps, in the eight languages
+SOLAR_CHARTS_BULLET = {
+    'en': '**Solar charts that fold away:** the Solar screen draws the history ARMOR-SERVER keeps of the whole bank, each pack, each battery and its cells, and each inverter, from 1 hour to 30 days, in sections the phone remembers. Built and tested by the CI only; not run on an iPhone.',
+    'es': '**Gráficas solares que se pliegan:** la pantalla Solar dibuja el histórico que guarda ARMOR-SERVER del banco completo, de cada pack, de cada batería y sus celdas y de cada inversor, de 1 hora a 30 días, en secciones que el teléfono recuerda. Compilado y probado solo por la integración continua; no se ha ejecutado en un iPhone.',
+    'de': '**Solardiagramme zum Einklappen:** Der Solar-Bildschirm zeichnet den Verlauf, den ARMOR-SERVER für die ganze Batteriebank, jeden Stack, jede Batterie mit ihren Zellen und jeden Wechselrichter speichert, von 1 Stunde bis 30 Tage, in Abschnitten, die sich das Telefon merkt. Nur von der CI gebaut und getestet; nicht auf einem iPhone gelaufen.',
+    'fr': "**Des graphiques solaires repliables :** l'écran Solaire dessine l'historique qu'ARMOR-SERVER conserve du parc complet, de chaque pack, de chaque batterie et de ses cellules et de chaque onduleur, de 1 heure à 30 jours, en sections que le téléphone mémorise. Compilé et testé uniquement par l'intégration continue ; jamais lancé sur un iPhone.",
+    'it': "**Grafici solari richiudibili:** la schermata Solare disegna lo storico che ARMOR-SERVER conserva dell'intero banco, di ogni pacco, di ogni batteria con le sue celle e di ogni inverter, da 1 ora a 30 giorni, in sezioni che il telefono ricorda. Compilato e provato solo dalla CI; non eseguito su un iPhone.",
+    'ja': '**折りたためる太陽光グラフ：** ソーラー画面は、ARMOR-SERVERが保存するバンク全体、各スタック、各バッテリーとそのセル、各インバーターの履歴を1時間から30日まで描きます。各セクションの開閉は端末が記憶します。CIでのビルドとテストのみで、iPhoneでは実行していません。',
+    'zh': '**可折叠的光伏图表：** 光伏页面按 1 小时到 30 天绘制 ARMOR-SERVER 保存的整个电池组、每个电池包、每块电池及其单体和每台逆变器的历史记录，各区域的展开状态由手机记住。仅经 CI 构建和测试，尚未在 iPhone 上运行。',
+    'pt': '**Gráficos solares que se recolhem:** o ecrã Solar desenha o histórico que o ARMOR-SERVER guarda do banco completo, de cada pack, de cada bateria e das suas células e de cada inversor, de 1 hora a 30 dias, em secções que o telemóvel memoriza. Compilado e testado apenas pela CI; não foi executado num iPhone.',
+}
+for _lg, _bullet in SOLAR_CHARTS_BULLET.items():
+    _text[_lg]["body"]["overview"] = _text[_lg]["body"]["overview"].rstrip("\n") + "\n* " + _bullet

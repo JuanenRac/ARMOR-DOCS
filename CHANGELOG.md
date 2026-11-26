@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The READMEs of Studio and the phone apps tell the new solar charts:** the small chart per cell of Studio and the folding history charts of the Android and iPhone apps, in the eight languages, with the current Studio test count.
 - **The test count of the Studio README source is the current one** (1933).
 
 ## [0.8.2.3] - The solar screen node, the battery menu and the confirmed updater roles
