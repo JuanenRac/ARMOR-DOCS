@@ -45,7 +45,7 @@ ALLOWED_AUTHORS = ALLOWED_AUTHORS | KNOWN_BOTS
 # The tests of this repository's own checks (the publication check, the figures of the documents, the site) carry sample keys, addresses and e-mails on purpose, to prove that
 # the checks refuse them: those files, in ARMOR-DOCS only, are not scanned for such samples. The same file name in another repository, or any other file here, is.
 SELF_TEST_REPOSITORY = "ARMOR-DOCS"
-SELF_TEST_FILES = re.compile(r"^tests/test_(publication_check|doc_facts|make_site)\.py(:\d+)?$")
+SELF_TEST_FILES = re.compile(r"^tests/test_(publication_check|doc_facts|make_site|generator_edge_cases)\.py(:\d+)?$")
 PUBLIC_EMAILS = {"electrohobby3d@gmail.com"}   # the project's own public address
 
 PRIVATE_KEY = re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")
