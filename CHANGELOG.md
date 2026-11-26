@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The publication check no longer blocks on its own sample addresses:** the generator edge-case tests carry made-up mailboxes on purpose, so they are listed with the other test files of the checks that are not scanned for them.
+
 ## [0.8.2.2] - Code-read figures, generated file trees, a stricter publication check and a catalogue that follows the repositories
 
 - **The test counts of the Android and iOS apps are read from their tests:** `doc_facts.py` gains `swift_tests` (the XCTest functions of the Swift package, the ones `swift test` runs), the Android README source uses `kotlin_tests` and the iOS one `swift_tests` instead of a typed number, and the Studio count is the one the Vitest run reports.
