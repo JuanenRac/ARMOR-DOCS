@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The test count of the Studio README source is the current one** (1933).
+
 ## [0.8.2.3] - The solar screen node, the battery menu and the confirmed updater roles
 
 - **The shared project tool is the current one:** the copy follows the shared repository, which now knows the new solar panel node.
