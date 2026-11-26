@@ -5,6 +5,7 @@ All notable changes to this project are documented here.
 ## [Unreleased]
 
 - **ARMOR-NODE-SOLAR-HMI joins the documentation of the family:** its README in the eight languages, its banner, its line in the related projects and in the project catalogue, and its clone in the nightly check.
+- **The machine roles of the updater are confirmed:** `data/update-profiles.json` no longer calls the components of the CM5, operator PC and development PC roles a proposal. The components are the same.
 - **The shared CI workflow pins the current setup-java action:** the line follows the template of the shared repository.
 
 - **README source of the solar node: the battery modules asked cell by cell are up to sixteen,** not eight, in the eight languages.
