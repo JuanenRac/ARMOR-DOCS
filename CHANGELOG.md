@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The shared project tool is the current one:** the copy follows the shared repository, which now knows the new solar panel node.
+
 - **The READMEs of the two phone apps say how a node panel on its own origin is opened** (a one-use ticket, with the proof of identity when the server asks).
 - **ARMOR-NODE-SOLAR-HMI joins the documentation of the family:** its README in the eight languages, its banner, its line in the related projects and in the project catalogue, and its clone in the nightly check.
 - **The machine roles of the updater are confirmed:** `data/update-profiles.json` no longer calls the components of the CM5, operator PC and development PC roles a proposal. The components are the same.
