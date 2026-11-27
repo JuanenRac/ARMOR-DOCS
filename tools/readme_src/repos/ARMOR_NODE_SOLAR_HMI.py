@@ -17,7 +17,7 @@ FACTS = {
     "emoji": "🔋",
     "layout": "universal",
     "license_badge": "License-GPL%203.0--or--later-blue",
-    "status": [["software", "orange"], ["tests", "yellow"], ["ui", "red"], ["hardware", "red"], ["security", "orange"], ["updates", "red"], ["integration", "red"], ["docs", "yellow"]],
+    "status": [["software", "orange"], ["tests", "yellow"], ["ui", "orange"], ["hardware", "red"], ["security", "orange"], ["updates", "red"], ["integration", "red"], ["docs", "yellow"]],
     "badges": [["Language", "C%2B%2B17", "00599c"], ["Board", "ESP32--P4%207%20inch%20(planned)", "e7352c"], ["Tests", TESTS + "%20host%20programs", "2ea44f"]],
 }
 
@@ -33,14 +33,14 @@ TAGLINE = P(
 )
 
 HONEST = P(
-    f"The logic behind the screen and a simulator of an installation are written and tested on a computer ({TESTS} host programs). **There is no firmware, no screen and no connection to a server yet; nothing here sends an order to a battery, and nothing has run on a board.**",
-    f"La lógica de la pantalla y un simulador de una instalación están escritos y probados en un ordenador ({TESTS} programas de host). **Todavía no hay firmware, ni pantallas, ni conexión con un servidor; nada de aquí envía órdenes a una batería y nada ha corrido en una placa.**",
-    f"Die Logik hinter dem Bildschirm und ein Simulator einer Anlage sind geschrieben und auf einem Computer getestet ({TESTS} Host-Programme). **Es gibt noch keine Firmware, keine Bildschirme und keine Verbindung zu einem Server; nichts hier sendet einen Befehl an eine Batterie, und nichts lief auf einer Platine.**",
-    f"La logique de l'écran et un simulateur d'installation sont écrits et testés sur un ordinateur ({TESTS} programmes hôte). **Il n'y a pas encore de firmware, d'écrans ni de connexion à un serveur ; rien ici n'envoie d'ordre à une batterie et rien n'a tourné sur une carte.**",
-    f"La logica dello schermo e un simulatore di impianto sono scritti e provati su un computer ({TESTS} programmi host). **Non ci sono ancora firmware, schermate né connessione a un server; nulla qui invia ordini a una batteria e nulla è girato su una scheda.**",
-    f"画面を支えるロジックと設備のシミュレータは作成済みで、コンピュータ上でテストしています（ホストプログラム {TESTS} 本）。**ファームウェア、画面、サーバーへの接続はまだありません。ここからバッテリーへ命令を送るものはなく、基板上で動いたものもありません。**",
-    f"屏幕背后的逻辑和一个设备模拟器已经编写完成，并在电脑上测试（{TESTS} 个主机程序）。**目前还没有固件、界面，也没有与服务器的连接；这里没有任何东西向电池发送指令，也没有任何内容在电路板上运行过。**",
-    f"A lógica do ecrã e um simulador de uma instalação estão escritos e testados num computador ({TESTS} programas de host). **Ainda não há firmware, ecrãs nem ligação a um servidor; nada aqui envia ordens a uma bateria e nada correu numa placa.**",
+    f"The logic behind the screen, a simulator of an installation and the screens are written and tested on a computer ({TESTS} host programs), and a firmware for the board compiles. **It has never run on a board, there is no connection to a server yet and nothing here sends an order to a battery.**",
+    f"La lógica de la pantalla, un simulador de una instalación y las pantallas están escritos y probados en un ordenador ({TESTS} programas de host), y hay un firmware para la placa que compila. **Nunca ha corrido en una placa, todavía no hay conexión con un servidor y nada de aquí envía órdenes a una batería.**",
+    f"Die Logik, ein Anlagensimulator und die Bildschirme sind geschrieben und auf einem Computer getestet ({TESTS} Host-Programme), und eine Firmware für die Platine wird übersetzt. **Sie lief noch nie auf einer Platine, es gibt noch keine Verbindung zu einem Server und nichts hier sendet einen Befehl an eine Batterie.**",
+    f"La logique de l'écran, un simulateur d'installation et les écrans sont écrits et testés sur un ordinateur ({TESTS} programmes hôte), et un firmware pour la carte se compile. **Il n'a jamais tourné sur une carte, il n'y a pas encore de connexion à un serveur et rien ici n'envoie d'ordre à une batterie.**",
+    f"La logica dello schermo, un simulatore di impianto e le schermate sono scritti e provati su un computer ({TESTS} programmi host), e un firmware per la scheda si compila. **Non è mai girato su una scheda, non c'è ancora connessione a un server e nulla qui invia ordini a una batteria.**",
+    f"画面のロジック、設備シミュレータ、画面表示は作成済みでコンピュータ上でテストしており（ホストプログラム {TESTS} 本）、基板向けファームウェアはビルドできます。**基板上で動かしたことはなく、サーバーへの接続はまだなく、ここからバッテリーへ命令を送るものはありません。**",
+    f"屏幕逻辑、设备模拟器和界面已编写并在电脑上测试（{TESTS} 个主机程序），面向电路板的固件可以编译。**它从未在电路板上运行过，尚未连接服务器，这里没有任何东西向电池发送指令。**",
+    f"A lógica do ecrã, um simulador de uma instalação e os ecrãs estão escritos e testados num computador ({TESTS} programas de host), e há um firmware para a placa que compila. **Nunca correu numa placa, ainda não há ligação a um servidor e nada aqui envia ordens a uma bateria.**",
 )
 
 GLANCE_LABELS = {
@@ -56,28 +56,28 @@ GLANCE_LABELS = {
 
 GLANCE_VALUES = {
     "en": ["Solar touch screen of A.R.M.O.R. (family: Clients, parent: ARMOR-SERVER)", "C++17 core and simulator, CMake; Python checks", f"{TESTS} host programs",
-           "Guition JC1060P470C (ESP32-P4 with ESP32-C6, 7-inch 1024 x 600); not yet supported by code", "A computer with CMake, a C++17 compiler and Python 3.11+", "Nothing has run on the board", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 with ESP32-C6, 7-inch 1024 x 600); code that compiles, never run on it", "A computer with CMake, a C++17 compiler and Python 3.11+", "Nothing has run on the board", "GPL-3.0-or-later"],
     "es": ["Pantalla táctil solar de A.R.M.O.R. (familia: Clients, padre: ARMOR-SERVER)", "Núcleo y simulador en C++17, CMake; comprobaciones en Python", f"{TESTS} programas de host",
-           "Guition JC1060P470C (ESP32-P4 con ESP32-C6, 7 pulgadas, 1024 x 600); aún sin código de placa", "Un ordenador con CMake, un compilador C++17 y Python 3.11+", "Nada ha corrido en la placa", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 con ESP32-C6, 7 pulgadas, 1024 x 600); código que compila, nunca ejecutado en ella", "Un ordenador con CMake, un compilador C++17 y Python 3.11+", "Nada ha corrido en la placa", "GPL-3.0-or-later"],
     "de": ["Solar-Touchscreen von A.R.M.O.R. (Familie: Clients, übergeordnet: ARMOR-SERVER)", "Kern und Simulator in C++17, CMake; Prüfungen in Python", f"{TESTS} Host-Programme",
-           "Guition JC1060P470C (ESP32-P4 mit ESP32-C6, 7 Zoll, 1024 x 600); noch ohne Platinencode", "Ein Computer mit CMake, C++17-Compiler und Python 3.11+", "Nichts lief auf der Platine", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 mit ESP32-C6, 7 Zoll, 1024 x 600); Code wird übersetzt, lief nie darauf", "Ein Computer mit CMake, C++17-Compiler und Python 3.11+", "Nichts lief auf der Platine", "GPL-3.0-or-later"],
     "fr": ["Écran tactile solaire d'A.R.M.O.R. (famille : Clients, parent : ARMOR-SERVER)", "Cœur et simulateur en C++17, CMake ; contrôles en Python", f"{TESTS} programmes hôte",
-           "Guition JC1060P470C (ESP32-P4 avec ESP32-C6, 7 pouces, 1024 x 600) ; pas encore de code carte", "Un ordinateur avec CMake, un compilateur C++17 et Python 3.11+", "Rien n'a tourné sur la carte", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 avec ESP32-C6, 7 pouces, 1024 x 600) ; code qui se compile, jamais exécuté dessus", "Un ordinateur avec CMake, un compilateur C++17 et Python 3.11+", "Rien n'a tourné sur la carte", "GPL-3.0-or-later"],
     "it": ["Schermo touch solare di A.R.M.O.R. (famiglia: Clients, genitore: ARMOR-SERVER)", "Nucleo e simulatore in C++17, CMake; controlli in Python", f"{TESTS} programmi host",
-           "Guition JC1060P470C (ESP32-P4 con ESP32-C6, 7 pollici, 1024 x 600); ancora senza codice di scheda", "Un computer con CMake, un compilatore C++17 e Python 3.11+", "Nulla è girato sulla scheda", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 con ESP32-C6, 7 pollici, 1024 x 600); codice che si compila, mai eseguito su di essa", "Un computer con CMake, un compilatore C++17 e Python 3.11+", "Nulla è girato sulla scheda", "GPL-3.0-or-later"],
     "ja": ["A.R.M.O.R. の太陽光タッチ画面（ファミリー：Clients、親：ARMOR-SERVER）", "C++17 のコアとシミュレータ、CMake、Python の検査", f"ホストプログラム {TESTS} 本",
-           "Guition JC1060P470C（ESP32-P4 と ESP32-C6、7 インチ 1024 x 600）。基板用コードは未作成", "CMake、C++17 コンパイラ、Python 3.11+ を備えた PC", "基板上では何も動いていません", "GPL-3.0-or-later"],
+           "Guition JC1060P470C（ESP32-P4 と ESP32-C6、7 インチ 1024 x 600）。コードはビルド可能、基板上では未実行", "CMake、C++17 コンパイラ、Python 3.11+ を備えた PC", "基板上では何も動いていません", "GPL-3.0-or-later"],
     "zh": ["A.R.M.O.R. 的太阳能触摸屏（家族：Clients，上级：ARMOR-SERVER）", "C++17 核心与模拟器、CMake；Python 检查", f"{TESTS} 个主机程序",
-           "Guition JC1060P470C（ESP32-P4 搭配 ESP32-C6，7 英寸 1024 x 600）；尚无板级代码", "装有 CMake、C++17 编译器和 Python 3.11+ 的电脑", "电路板上尚未运行任何内容", "GPL-3.0-or-later"],
+           "Guition JC1060P470C（ESP32-P4 搭配 ESP32-C6，7 英寸 1024 x 600）；代码可编译，从未在板上运行", "装有 CMake、C++17 编译器和 Python 3.11+ 的电脑", "电路板上尚未运行任何内容", "GPL-3.0-or-later"],
     "pt": ["Ecrã tátil solar do A.R.M.O.R. (família: Clients, principal: ARMOR-SERVER)", "Núcleo e simulador em C++17, CMake; verificações em Python", f"{TESTS} programas de host",
-           "Guition JC1060P470C (ESP32-P4 com ESP32-C6, 7 polegadas, 1024 x 600); ainda sem código de placa", "Um computador com CMake, um compilador C++17 e Python 3.11+", "Nada correu na placa", "GPL-3.0-or-later"],
+           "Guition JC1060P470C (ESP32-P4 com ESP32-C6, 7 polegadas, 1024 x 600); código que compila, nunca executado nela", "Um computador com CMake, um compilador C++17 e Python 3.11+", "Nada correu na placa", "GPL-3.0-or-later"],
 }
 
 STATUS = {
-    "software": P("The core that reads, judges and guards is written; the firmware is not.", "El núcleo que lee, juzga y protege está escrito; el firmware no.", "Der Kern zum Lesen, Bewerten und Schützen ist geschrieben, die Firmware nicht.", "Le cœur qui lit, juge et protège est écrit ; pas le firmware.", "Il nucleo che legge, giudica e protegge è scritto; il firmware no.", "読み取り・判定・保護のコアは作成済み。ファームウェアは未作成。", "负责读取、判断和保护的核心已编写；固件尚未编写。", "O núcleo que lê, avalia e protege está escrito; o firmware não."),
+    "software": P("Core, screens and a first firmware are written; no server link.", "Núcleo, pantallas y un primer firmware escritos; sin enlace con el servidor.", "Kern, Bildschirme und eine erste Firmware sind geschrieben; ohne Serveranbindung.", "Cœur, écrans et un premier firmware écrits ; pas de lien serveur.", "Nucleo, schermate e un primo firmware scritti; senza collegamento al server.", "コア、画面、最初のファームウェアは作成済み。サーバー接続は未実装。", "核心、界面和首版固件已编写；尚无服务器连接。", "Núcleo, ecrãs e um primeiro firmware escritos; sem ligação ao servidor."),
     "tests": P("Host programs and two checks against ARMOR-COMMON; early stage.", "Programas de host y dos comprobaciones contra ARMOR-COMMON; fase inicial.", "Host-Programme und zwei Prüfungen gegen ARMOR-COMMON; frühes Stadium.", "Programmes hôte et deux contrôles avec ARMOR-COMMON ; stade précoce.", "Programmi host e due controlli con ARMOR-COMMON; fase iniziale.", "ホストプログラムと ARMOR-COMMON に対する 2 つの検査。初期段階。", "主机程序以及两项对照 ARMOR-COMMON 的检查；处于早期阶段。", "Programas de host e duas verificações face ao ARMOR-COMMON; fase inicial."),
-    "ui": P("No screen is drawn yet.", "Todavía no se dibuja ninguna pantalla.", "Noch wird kein Bildschirm gezeichnet.", "Aucun écran n'est encore dessiné.", "Nessuna schermata è ancora disegnata.", "画面はまだ描画されません。", "尚未绘制任何界面。", "Ainda não se desenha nenhum ecrã."),
-    "hardware": P("The board has no code and nothing has run on it.", "La placa no tiene código y nada ha corrido en ella.", "Für die Platine gibt es keinen Code, nichts lief darauf.", "La carte n'a pas de code et rien n'y a tourné.", "La scheda non ha codice e nulla vi è girato.", "基板用のコードはなく、何も動いていません。", "电路板没有代码，也没有运行过任何内容。", "A placa não tem código e nada correu nela."),
+    "ui": P("The screens are drawn by a simulator on a computer; never on the panel.", "Las pantallas las dibuja un simulador en el ordenador; nunca en el panel.", "Die Bildschirme zeichnet ein Simulator am Computer; nie auf dem Panel.", "Les écrans sont dessinés par un simulateur sur ordinateur ; jamais sur la dalle.", "Le schermate sono disegnate da un simulatore su computer; mai sul pannello.", "画面はコンピュータ上のシミュレータで描画。実機パネルでは未表示。", "界面由电脑上的模拟器绘制；从未在面板上显示。", "Os ecrãs são desenhados por um simulador no computador; nunca no painel."),
+    "hardware": P("The firmware compiles; nothing has run on the board.", "El firmware compila; nada ha corrido en la placa.", "Die Firmware wird übersetzt; nichts lief auf der Platine.", "Le firmware se compile ; rien n'a tourné sur la carte.", "Il firmware si compila; nulla è girato sulla scheda.", "ファームウェアはビルド可能。基板上では何も動いていません。", "固件可编译；电路板上尚未运行任何内容。", "O firmware compila; nada correu na placa."),
     "security": P("PIN and write checks are tested logic only; no independent review.", "El PIN y la compuerta de escritura son solo lógica probada; sin revisión independiente.", "PIN und Schreibprüfung sind nur getestete Logik; keine unabhängige Prüfung.", "PIN et contrôle d'écriture ne sont que de la logique testée ; aucune revue indépendante.", "PIN e controllo di scrittura sono solo logica provata; nessuna revisione indipendente.", "PIN と書き込み判定はテスト済みロジックのみ。第三者レビューなし。", "PIN 与写入检查仅是经过测试的逻辑；没有独立审查。", "O PIN e a verificação de escrita são apenas lógica testada; sem revisão independente."),
     "updates": P("There is nothing to update yet.", "Todavía no hay nada que actualizar.", "Es gibt noch nichts zu aktualisieren.", "Il n'y a encore rien à mettre à jour.", "Non c'è ancora nulla da aggiornare.", "更新する対象はまだありません。", "尚无可更新的内容。", "Ainda não há nada para atualizar."),
     "integration": P("No link to ARMOR-SERVER yet; the compact solar route it needs does not exist.", "Aún sin enlace con ARMOR-SERVER; la ruta solar compacta que necesita no existe.", "Noch keine Verbindung zu ARMOR-SERVER; die nötige kompakte Solar-Route fehlt.", "Pas encore de lien avec ARMOR-SERVER ; la route solaire compacte nécessaire n'existe pas.", "Nessun collegamento con ARMOR-SERVER; la rotta solare compatta necessaria non esiste.", "ARMOR-SERVER との接続は未実装。必要な簡潔な太陽光ルートもありません。", "尚未连接 ARMOR-SERVER；所需的精简太阳能接口还不存在。", "Ainda sem ligação ao ARMOR-SERVER; a rota solar compacta necessária não existe."),
@@ -107,14 +107,14 @@ ROLE = P(
 )
 
 FEATURES = P(
-    ["A value that is missing or impossible is not shown, never as a zero.", "Cells, modules and stacks have a level with an icon and a word; only an alarm blinks, at most twice a second.", "A PIN kept as a salted hash, with growing locks and a short session.", "A battery operation is offered only when the server allows it, the data is fresh, the PIN is open and the person confirmed.", "A simulator with five scenarios, checked against the message schemas."],
-    ["Un valor que falta o es imposible no se muestra, nunca como cero.", "Celdas, módulos y baterías tienen un nivel con icono y palabra; solo parpadea una alarma, como mucho dos veces por segundo.", "PIN guardado como hash con sal, con bloqueos crecientes y sesión corta.", "Una operación de batería solo se ofrece si el servidor lo permite, los datos son recientes, el PIN está abierto y la persona ha confirmado.", "Simulador con cinco escenarios, comprobado contra los esquemas de los mensajes."],
-    ["Ein fehlender oder unmöglicher Wert wird nicht angezeigt, nie als Null.", "Zellen, Module und Stapel haben eine Stufe mit Symbol und Wort; nur ein Alarm blinkt, höchstens zweimal pro Sekunde.", "PIN als gesalzener Hash, mit wachsenden Sperren und kurzer Sitzung.", "Eine Batterieaktion wird nur angeboten, wenn der Server es erlaubt, die Daten frisch sind, die PIN offen ist und die Person bestätigt hat.", "Simulator mit fünf Szenarien, gegen die Nachrichtenschemas geprüft."],
-    ["Une valeur absente ou impossible n'est pas affichée, jamais comme un zéro.", "Cellules, modules et batteries ont un niveau avec icône et mot ; seule une alarme clignote, deux fois par seconde au plus.", "PIN conservé sous forme de hachage salé, avec blocages croissants et session courte.", "Une opération batterie n'est proposée que si le serveur l'autorise, les données sont récentes, le PIN est ouvert et la personne a confirmé.", "Simulateur à cinq scénarios, vérifié contre les schémas des messages."],
-    ["Un valore mancante o impossibile non viene mostrato, mai come zero.", "Celle, moduli e batterie hanno un livello con icona e parola; lampeggia solo un allarme, al massimo due volte al secondo.", "PIN conservato come hash con sale, con blocchi crescenti e sessione breve.", "Un'operazione sulla batteria è proposta solo se il server la consente, i dati sono recenti, il PIN è aperto e la persona ha confermato.", "Simulatore con cinque scenari, verificato con gli schemi dei messaggi."],
-    ["欠けている値やあり得ない値は表示せず、ゼロにもしません。", "セル、モジュール、スタックにはアイコンと言葉付きのレベルがあり、点滅するのは警報のみで毎秒 2 回までです。", "PIN はソルト付きハッシュで保存し、ロックは次第に長くなり、セッションは短時間です。", "バッテリー操作は、サーバーが許可し、データが新しく、PIN が開かれ、本人が確認した場合のみ提示します。", "5 つのシナリオを持つシミュレータ。メッセージスキーマと照合します。"],
-    ["缺失或不可能的数值不显示，也绝不显示为零。", "电芯、模块和电池组的级别带有图标和文字；只有警报闪烁，每秒最多两次。", "PIN 以加盐哈希保存，锁定时间递增，会话很短。", "仅当服务器允许、数据新鲜、PIN 已解锁且本人确认时，才提供电池操作。", "包含五个场景的模拟器，并对照消息模式进行检查。"],
-    ["Um valor em falta ou impossível não é mostrado, nunca como zero.", "Células, módulos e baterias têm um nível com ícone e palavra; só um alarme pisca, no máximo duas vezes por segundo.", "PIN guardado como hash com sal, com bloqueios crescentes e sessão curta.", "Uma operação na bateria só é proposta se o servidor permitir, os dados forem recentes, o PIN estiver aberto e a pessoa tiver confirmado.", "Simulador com cinco cenários, verificado face aos esquemas das mensagens."],
+    ["A value that is missing or impossible is not shown, never as a zero.", "Cells, modules and stacks have a level with an icon and a word; only an alarm blinks, at most twice a second.", "A PIN kept as a salted hash, with growing locks and a short session.", "A battery operation is offered only when the server allows it, the data is fresh, the PIN is open and the person confirmed.", "A simulator with five scenarios, checked against the message schemas.", "Screens at 1024 x 600 in eight languages, drawn on a computer by the same code as the firmware.", "A board check screen for the first day: chip, memory, panel, touch, I2C, cable network, colour bars and corners."],
+    ["Un valor que falta o es imposible no se muestra, nunca como cero.", "Celdas, módulos y baterías tienen un nivel con icono y palabra; solo parpadea una alarma, como mucho dos veces por segundo.", "PIN guardado como hash con sal, con bloqueos crecientes y sesión corta.", "Una operación de batería solo se ofrece si el servidor lo permite, los datos son recientes, el PIN está abierto y la persona ha confirmado.", "Simulador con cinco escenarios, comprobado contra los esquemas de los mensajes.", "Pantallas a 1024 x 600 en ocho idiomas, dibujadas en el ordenador con el mismo código que el firmware.", "Pantalla de comprobación para el primer día: chip, memoria, panel, táctil, I2C, red por cable, barras de color y esquinas."],
+    ["Ein fehlender oder unmöglicher Wert wird nicht angezeigt, nie als Null.", "Zellen, Module und Stapel haben eine Stufe mit Symbol und Wort; nur ein Alarm blinkt, höchstens zweimal pro Sekunde.", "PIN als gesalzener Hash, mit wachsenden Sperren und kurzer Sitzung.", "Eine Batterieaktion wird nur angeboten, wenn der Server es erlaubt, die Daten frisch sind, die PIN offen ist und die Person bestätigt hat.", "Simulator mit fünf Szenarien, gegen die Nachrichtenschemas geprüft.", "Bildschirme in 1024 x 600 in acht Sprachen, am Computer mit demselben Code wie die Firmware gezeichnet.", "Platinentest für den ersten Tag: Chip, Speicher, Panel, Touch, I2C, Kabelnetz, Farbbalken und Ecken."],
+    ["Une valeur absente ou impossible n'est pas affichée, jamais comme un zéro.", "Cellules, modules et batteries ont un niveau avec icône et mot ; seule une alarme clignote, deux fois par seconde au plus.", "PIN conservé sous forme de hachage salé, avec blocages croissants et session courte.", "Une opération batterie n'est proposée que si le serveur l'autorise, les données sont récentes, le PIN est ouvert et la personne a confirmé.", "Simulateur à cinq scénarios, vérifié contre les schémas des messages.", "Écrans 1024 x 600 en huit langues, dessinés sur ordinateur par le même code que le firmware.", "Écran de contrôle pour le premier jour : puce, mémoire, dalle, tactile, I2C, réseau filaire, barres de couleur et coins."],
+    ["Un valore mancante o impossibile non viene mostrato, mai come zero.", "Celle, moduli e batterie hanno un livello con icona e parola; lampeggia solo un allarme, al massimo due volte al secondo.", "PIN conservato come hash con sale, con blocchi crescenti e sessione breve.", "Un'operazione sulla batteria è proposta solo se il server la consente, i dati sono recenti, il PIN è aperto e la persona ha confermato.", "Simulatore con cinque scenari, verificato con gli schemi dei messaggi.", "Schermate 1024 x 600 in otto lingue, disegnate al computer dallo stesso codice del firmware.", "Schermata di controllo per il primo giorno: chip, memoria, pannello, tocco, I2C, rete via cavo, barre di colore e angoli."],
+    ["欠けている値やあり得ない値は表示せず、ゼロにもしません。", "セル、モジュール、スタックにはアイコンと言葉付きのレベルがあり、点滅するのは警報のみで毎秒 2 回までです。", "PIN はソルト付きハッシュで保存し、ロックは次第に長くなり、セッションは短時間です。", "バッテリー操作は、サーバーが許可し、データが新しく、PIN が開かれ、本人が確認した場合のみ提示します。", "5 つのシナリオを持つシミュレータ。メッセージスキーマと照合します。", "1024 x 600 の画面を 8 言語で表示。ファームウェアと同じコードをコンピュータ上で描画します。", "初日用の基板確認画面：チップ、メモリ、パネル、タッチ、I2C、有線ネットワーク、カラーバーと四隅。"],
+    ["缺失或不可能的数值不显示，也绝不显示为零。", "电芯、模块和电池组的级别带有图标和文字；只有警报闪烁，每秒最多两次。", "PIN 以加盐哈希保存，锁定时间递增，会话很短。", "仅当服务器允许、数据新鲜、PIN 已解锁且本人确认时，才提供电池操作。", "包含五个场景的模拟器，并对照消息模式进行检查。", "八种语言的 1024 x 600 界面，用与固件相同的代码在电脑上绘制。", "首日使用的电路板检查界面：芯片、内存、面板、触摸、I2C、有线网络、色条和四角。"],
+    ["Um valor em falta ou impossível não é mostrado, nunca como zero.", "Células, módulos e baterias têm um nível com ícone e palavra; só um alarme pisca, no máximo duas vezes por segundo.", "PIN guardado como hash com sal, com bloqueios crescentes e sessão curta.", "Uma operação na bateria só é proposta se o servidor permitir, os dados forem recentes, o PIN estiver aberto e a pessoa tiver confirmado.", "Simulador com cinco cenários, verificado face aos esquemas das mensagens.", "Ecrãs a 1024 x 600 em oito línguas, desenhados no computador com o mesmo código do firmware.", "Ecrã de verificação para o primeiro dia: chip, memória, painel, toque, I2C, rede por cabo, barras de cor e cantos."],
 )
 
 SECURITY = {
@@ -142,51 +142,54 @@ TEST_ROWS = [
     ["`test_pin_gate.cpp`", P("PIN hash, locks, session", "hash del PIN, bloqueos, sesión", "PIN-Hash, Sperren, Sitzung", "hachage du PIN, blocages, session", "hash del PIN, blocchi, sessione", "PIN のハッシュ、ロック、セッション", "PIN 哈希、锁定、会话", "hash do PIN, bloqueios, sessão")],
     ["`test_write_gate.cpp`", P("every reason that stops an operation", "cada motivo que impide una operación", "jeder Grund, der eine Aktion verhindert", "chaque raison qui bloque une opération", "ogni motivo che blocca un'operazione", "操作を止めるすべての理由", "阻止操作的每一种原因", "cada motivo que impede uma operação")],
     ["`test_plant.cpp`", P("the five scenarios", "los cinco escenarios", "die fünf Szenarien", "les cinq scénarios", "i cinque scenari", "5 つのシナリオ", "五个场景", "os cinco cenários")],
+    ["`test_screen_text.cpp`", P("every word in the eight languages", "cada texto en los ocho idiomas", "jeder Text in acht Sprachen", "chaque texte en huit langues", "ogni testo nelle otto lingue", "全文言の 8 言語", "每条文字的八种语言", "cada texto nas oito línguas")],
+    ["`test_screen_model.cpp`", P("the alarms listed, numbers, board pins", "las alarmas listadas, cifras, pines", "gelistete Alarme, Zahlen, Pins", "alarmes listées, chiffres, broches", "allarmi elencati, cifre, pin", "警報一覧、数値、ピン", "警报列表、数值、引脚", "alarmes listados, números, pinos")],
+    ["`check_font_glyphs.py`", P("the fonts hold every character", "las fuentes tienen cada carácter", "die Schriften haben jedes Zeichen", "les polices ont chaque caractère", "i font hanno ogni carattere", "フォントに全文字がある", "字体包含全部字符", "os tipos de letra têm cada carácter")],
     ["`check_simulator.py`", P("the simulator follows the schemas", "el simulador cumple los esquemas", "der Simulator folgt den Schemas", "le simulateur respecte les schémas", "il simulatore rispetta gli schemi", "シミュレータがスキーマに従う", "模拟器符合模式", "o simulador cumpre os esquemas")],
     ["`check_base_copies.py`", P("shared files match their source", "los ficheros compartidos coinciden con su origen", "gemeinsame Dateien entsprechen der Quelle", "les fichiers partagés correspondent à leur source", "i file condivisi coincidono con l'origine", "共有ファイルが元と一致", "共享文件与来源一致", "os ficheiros partilhados coincidem com a origem")],
 ]
 TEST_HEAD = P(["File", "What it covers"], ["Fichero", "Qué cubre"], ["Datei", "Was sie abdeckt"], ["Fichier", "Ce qu'il couvre"], ["File", "Cosa copre"], ["ファイル", "対象"], ["文件", "覆盖内容"], ["Ficheiro", "O que cobre"])
 
 BUILD = P(
-    "There is no firmware to build and no release yet. When there is, it will be built in GitHub Actions only.",
-    "Todavía no hay firmware que compilar ni release. Cuando lo haya, se compilará solo en GitHub Actions.",
-    "Es gibt noch keine Firmware und kein Release. Sobald es sie gibt, wird sie nur in GitHub Actions gebaut.",
-    "Il n'y a pas encore de firmware ni de version publiée. Quand il y en aura, il sera compilé uniquement dans GitHub Actions.",
-    "Non ci sono ancora firmware né release. Quando ci saranno, si compileranno solo in GitHub Actions.",
-    "ビルドするファームウェアもリリースもまだありません。用意できたら GitHub Actions のみでビルドします。",
-    "目前还没有可编译的固件，也没有发布版本。将来只在 GitHub Actions 中编译。",
-    "Ainda não há firmware para compilar nem release. Quando houver, será compilado apenas no GitHub Actions.",
+    "There is no release yet. The firmware is built only in GitHub Actions (workflow `Firmware check (ESP32-P4)`): each variant is one file written at address 0 with `esptool`. It has never run on a board. The workflow `Screen pictures (simulator)` draws the screens.",
+    "Todavía no hay release. El firmware se compila solo en GitHub Actions (flujo `Firmware check (ESP32-P4)`): cada variante es un fichero que se graba en la dirección 0 con `esptool`. Nunca ha corrido en una placa. El flujo `Screen pictures (simulator)` dibuja las pantallas.",
+    "Es gibt noch kein Release. Die Firmware wird nur in GitHub Actions gebaut (Workflow `Firmware check (ESP32-P4)`): Jede Variante ist eine Datei, die mit `esptool` ab Adresse 0 geschrieben wird. Sie lief noch nie auf einer Platine. Der Workflow `Screen pictures (simulator)` zeichnet die Bildschirme.",
+    "Il n'y a pas encore de version publiée. Le firmware est compilé uniquement dans GitHub Actions (workflow `Firmware check (ESP32-P4)`) : chaque variante est un fichier écrit à l'adresse 0 avec `esptool`. Il n'a jamais tourné sur une carte. Le workflow `Screen pictures (simulator)` dessine les écrans.",
+    "Non c'è ancora una release. Il firmware si compila solo in GitHub Actions (workflow `Firmware check (ESP32-P4)`): ogni variante è un file scritto all'indirizzo 0 con `esptool`. Non è mai girato su una scheda. Il workflow `Screen pictures (simulator)` disegna le schermate.",
+    "リリースはまだありません。ファームウェアは GitHub Actions のみでビルドします（ワークフロー `Firmware check (ESP32-P4)`）。各バリエーションは `esptool` でアドレス 0 に書き込む 1 ファイルです。基板上で動かしたことはありません。画面はワークフロー `Screen pictures (simulator)` が描画します。",
+    "尚未发布版本。固件仅在 GitHub Actions 中编译（工作流 `Firmware check (ESP32-P4)`）：每个变体是一个用 `esptool` 写入地址 0 的文件。从未在电路板上运行。工作流 `Screen pictures (simulator)` 负责绘制界面。",
+    "Ainda não há release. O firmware é compilado apenas no GitHub Actions (workflow `Firmware check (ESP32-P4)`): cada variante é um ficheiro gravado no endereço 0 com `esptool`. Nunca correu numa placa. O workflow `Screen pictures (simulator)` desenha os ecrãs.",
 )
 
 DOES_TEXT = P(
-    "Reads the server's solar answer, judges what it says and guards the PIN, on a computer.",
-    "Lee la respuesta solar del servidor, juzga lo que dice y protege el PIN, en un ordenador.",
-    "Liest die Solar-Antwort des Servers, bewertet sie und schützt die PIN, auf einem Computer.",
-    "Lit la réponse solaire du serveur, la juge et protège le PIN, sur un ordinateur.",
-    "Legge la risposta solare del server, la valuta e protegge il PIN, su un computer.",
-    "サーバーの太陽光応答を読み取り、判定し、PIN を守ります（コンピュータ上）。",
-    "在电脑上读取服务器的太阳能应答、进行判断并保护 PIN。",
-    "Lê a resposta solar do servidor, avalia o que diz e protege o PIN, num computador.",
+    "Reads the server's solar answer, judges it, guards the PIN, draws the screens on a computer and compiles a firmware for the board.",
+    "Lee la respuesta solar del servidor, la juzga, protege el PIN, dibuja las pantallas en el ordenador y compila un firmware para la placa.",
+    "Liest die Solar-Antwort des Servers, bewertet sie, schützt die PIN, zeichnet die Bildschirme am Computer und übersetzt eine Firmware für die Platine.",
+    "Lit la réponse solaire du serveur, la juge, protège le PIN, dessine les écrans sur ordinateur et compile un firmware pour la carte.",
+    "Legge la risposta solare del server, la valuta, protegge il PIN, disegna le schermate al computer e compila un firmware per la scheda.",
+    "サーバーの太陽光応答の読み取りと判定、PIN の保護、コンピュータ上での画面描画、基板向けファームウェアのビルド。",
+    "读取并判断服务器的太阳能应答、保护 PIN、在电脑上绘制界面，并编译面向电路板的固件。",
+    "Lê a resposta solar do servidor, avalia-a, protege o PIN, desenha os ecrãs no computador e compila um firmware para a placa.",
 )
 DOES_NOT_TEXT = P(
-    "Draw a screen, connect to anything, send an order or run on the board.",
-    "Dibujar una pantalla, conectarse a nada, enviar una orden ni correr en la placa.",
-    "Einen Bildschirm zeichnen, sich verbinden, Befehle senden oder auf der Platine laufen.",
-    "Dessiner un écran, se connecter, envoyer un ordre ou tourner sur la carte.",
-    "Disegnare schermate, collegarsi, inviare ordini o girare sulla scheda.",
-    "画面の描画、接続、命令の送信、基板上での動作。",
-    "绘制界面、建立连接、发送指令或在电路板上运行。",
-    "Desenhar ecrãs, ligar-se a nada, enviar ordens ou correr na placa.",
+    "Connect to a server or to Wi-Fi, update itself, send an order, or run on the board (never tried).",
+    "Conectarse a un servidor o a la Wi-Fi, actualizarse, enviar una orden ni correr en la placa (nunca probado).",
+    "Sich mit Server oder WLAN verbinden, sich aktualisieren, Befehle senden oder auf der Platine laufen (nie versucht).",
+    "Se connecter à un serveur ou au Wi-Fi, se mettre à jour, envoyer un ordre ou tourner sur la carte (jamais essayé).",
+    "Collegarsi a un server o al Wi-Fi, aggiornarsi, inviare ordini o girare sulla scheda (mai provato).",
+    "サーバーや Wi-Fi への接続、自己更新、命令の送信、基板上での動作（未実施）。",
+    "连接服务器或 Wi-Fi、自我更新、发送指令，或在电路板上运行（从未尝试）。",
+    "Ligar-se a um servidor ou ao Wi-Fi, atualizar-se, enviar uma ordem ou correr na placa (nunca tentado).",
 )
 NEXT_ITEMS = P(
-    ["A compact solar answer in ARMOR-SERVER for small screens, defined first in ARMOR-COMMON.", "The screens at 1024 x 600 drawn by a simulator on a computer, in eight languages.", "The board layer shared with ARMOR-NODE-HMI.", "The first power-up on the board."],
-    ["Una respuesta solar compacta en ARMOR-SERVER para pantallas pequeñas, definida antes en ARMOR-COMMON.", "Las pantallas a 1024 x 600 dibujadas por un simulador en el ordenador, en ocho idiomas.", "La capa de placa compartida con ARMOR-NODE-HMI.", "El primer encendido en la placa."],
-    ["Eine kompakte Solar-Antwort in ARMOR-SERVER für kleine Bildschirme, zuerst in ARMOR-COMMON festgelegt.", "Die Bildschirme in 1024 x 600, von einem Simulator am Computer gezeichnet, in acht Sprachen.", "Die mit ARMOR-NODE-HMI gemeinsame Platinenschicht.", "Das erste Einschalten auf der Platine."],
-    ["Une réponse solaire compacte dans ARMOR-SERVER pour petits écrans, définie d'abord dans ARMOR-COMMON.", "Les écrans en 1024 x 600 dessinés par un simulateur sur ordinateur, en huit langues.", "La couche carte partagée avec ARMOR-NODE-HMI.", "La première mise sous tension de la carte."],
-    ["Una risposta solare compatta in ARMOR-SERVER per piccoli schermi, definita prima in ARMOR-COMMON.", "Le schermate a 1024 x 600 disegnate da un simulatore su computer, in otto lingue.", "Lo strato di scheda condiviso con ARMOR-NODE-HMI.", "La prima accensione sulla scheda."],
-    ["小型画面向けの簡潔な太陽光応答を ARMOR-SERVER に追加（先に ARMOR-COMMON で定義）。", "1024 x 600 の画面をコンピュータ上のシミュレータで 8 言語描画。", "ARMOR-NODE-HMI と共有する基板レイヤー。", "基板での初回起動。"],
-    ["在 ARMOR-SERVER 中为小屏幕提供精简的太阳能应答，先在 ARMOR-COMMON 中定义。", "用电脑上的模拟器以八种语言绘制 1024 x 600 界面。", "与 ARMOR-NODE-HMI 共享的板级层。", "在电路板上首次上电。"],
-    ["Uma resposta solar compacta no ARMOR-SERVER para ecrãs pequenos, definida primeiro no ARMOR-COMMON.", "Os ecrãs a 1024 x 600 desenhados por um simulador no computador, em oito línguas.", "A camada de placa partilhada com o ARMOR-NODE-HMI.", "O primeiro arranque na placa."],
+    ["The first power-up on the board with the board check screen.", "A compact solar answer in ARMOR-SERVER, defined first in ARMOR-COMMON, and the link of the screen to it.", "Wi-Fi through the ESP32-C6, settings kept in flash and updates.", "The board layer shared with ARMOR-NODE-HMI."],
+    ["El primer encendido en la placa con la pantalla de comprobación.", "Una respuesta solar compacta en ARMOR-SERVER, definida antes en ARMOR-COMMON, y el enlace de la pantalla con ella.", "Wi-Fi por el ESP32-C6, ajustes guardados en flash y actualizaciones.", "La capa de placa compartida con ARMOR-NODE-HMI."],
+    ["Das erste Einschalten auf der Platine mit dem Platinentest.", "Eine kompakte Solar-Antwort in ARMOR-SERVER, zuerst in ARMOR-COMMON festgelegt, und die Anbindung des Bildschirms.", "WLAN über den ESP32-C6, Einstellungen im Flash und Updates.", "Die mit ARMOR-NODE-HMI gemeinsame Platinenschicht."],
+    ["La première mise sous tension avec l'écran de contrôle.", "Une réponse solaire compacte dans ARMOR-SERVER, définie d'abord dans ARMOR-COMMON, et le lien de l'écran avec elle.", "Le Wi-Fi par l'ESP32-C6, les réglages en flash et les mises à jour.", "La couche carte partagée avec ARMOR-NODE-HMI."],
+    ["La prima accensione sulla scheda con la schermata di controllo.", "Una risposta solare compatta in ARMOR-SERVER, definita prima in ARMOR-COMMON, e il collegamento dello schermo.", "Wi-Fi tramite l'ESP32-C6, impostazioni in flash e aggiornamenti.", "Lo strato di scheda condiviso con ARMOR-NODE-HMI."],
+    ["基板確認画面を使った基板での初回起動。", "先に ARMOR-COMMON で定義する ARMOR-SERVER の簡潔な太陽光応答と、画面からの接続。", "ESP32-C6 経由の Wi-Fi、フラッシュへの設定保存、更新。", "ARMOR-NODE-HMI と共有する基板レイヤー。"],
+    ["借助电路板检查界面在板上首次上电。", "在 ARMOR-SERVER 中提供精简的太阳能应答（先在 ARMOR-COMMON 中定义），并让屏幕连接它。", "通过 ESP32-C6 的 Wi-Fi、保存在闪存中的设置和更新。", "与 ARMOR-NODE-HMI 共享的板级层。"],
+    ["O primeiro arranque na placa com o ecrã de verificação.", "Uma resposta solar compacta no ARMOR-SERVER, definida primeiro no ARMOR-COMMON, e a ligação do ecrã a ela.", "Wi-Fi pelo ESP32-C6, definições na flash e atualizações.", "A camada de placa partilhada com o ARMOR-NODE-HMI."],
 )
 
 ALT = P(
