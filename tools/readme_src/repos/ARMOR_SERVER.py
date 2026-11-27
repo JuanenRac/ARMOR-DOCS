@@ -1102,7 +1102,20 @@ for _lg in HISTORY_BULLET:
 for _lg in NEW_BULLETS:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + NEW_BULLETS[_lg]
 
-NT = "1389"
+PORT_PROBLEMS_BULLET = {
+    'en': '**An unreadable serial port of a solar node is told:** when the health report of the node says that a port hears bytes and reads nothing, the health of the node carries `port_problems` (port, cause, speed, pins, polarity, byte count and the last bytes) for 30 minutes after the node last said it. Tested with generated reports.',
+    'es': '**Se avisa de un puerto serie ilegible de un nodo solar:** cuando el informe de salud del nodo dice que un puerto oye bytes y no lee nada, la salud del nodo lleva `port_problems` (puerto, causa, velocidad, pines, polaridad, número de bytes y los últimos) durante 30 minutos desde la última vez que el nodo lo dijo. Probado con informes generados.',
+    'de': '**Ein unlesbarer serieller Port eines Solar-Knotens wird gemeldet:** Sagt der Zustandsbericht des Knotens, dass ein Port Bytes empfängt und nichts liest, enthält der Zustand des Knotens `port_problems` (Port, Ursache, Geschwindigkeit, Pins, Polarität, Anzahl und letzte Bytes), und zwar 30 Minuten lang nach der letzten Meldung. Mit erzeugten Berichten getestet.',
+    'fr': "**Un port série illisible d'un nœud solaire est signalé :** quand le rapport de santé du nœud dit qu'un port reçoit des octets sans rien lire, la santé du nœud porte `port_problems` (port, cause, vitesse, broches, polarité, nombre d'octets et les derniers) pendant 30 minutes après la dernière annonce du nœud. Testé avec des rapports générés.",
+    'it': "**Viene segnalata una porta seriale illeggibile di un nodo solare:** quando il rapporto di salute del nodo dice che una porta riceve byte e non legge nulla, la salute del nodo porta `port_problems` (porta, causa, velocità, pin, polarità, numero di byte e gli ultimi) per 30 minuti dall'ultima volta che il nodo l'ha detto. Provato con rapporti generati.",
+    'ja': '**ソーラーノードの読めないシリアルポートを通知：** ノードの稼働報告で、あるポートがバイトを受信するのに何も読めないと伝えられると、ノードの健全性に `port_problems`（ポート、原因、速度、ピン、極性、バイト数、最後のバイト列）が、最後の報告から 30 分間含まれます。生成した報告で試験しています。',
+    'zh': '**报告太阳能节点无法读取的串口：** 当节点的健康报告指出某个端口收到字节却读不出任何内容时，该节点的健康信息会带上 `port_problems`（端口、原因、速率、引脚、极性、字节数和最后几个字节），自节点最后一次报告起保留 30 分钟。用生成的报告测试过。',
+    'pt': '**É assinalada uma porta série ilegível de um nó solar:** quando o relatório de saúde do nó diz que uma porta recebe bytes e não lê nada, a saúde do nó leva `port_problems` (porta, causa, velocidade, pinos, polaridade, número de bytes e os últimos) durante 30 minutos depois da última vez que o nó o disse. Testado com relatórios gerados.',
+}
+for _lg in PORT_PROBLEMS_BULLET:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [PORT_PROBLEMS_BULLET[_lg]]
+
+NT = "1408"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 
