@@ -99,6 +99,14 @@ value can disable a protection, discharge into a short, or destroy the battery f
 | The battery's service password leaks | It is a setting of the node (stored like its other secrets, never shown again), sent to nobody; every text kept (captures, transcript, results) has it replaced, even if the battery echoes it; no schema has a field for it; the tests use a made-up value | Whoever reads the node's flash reads it, as for its other secrets |
 | A change that leaves no trace | Every operation is kept (who, when, which battery, the reads before and after, the difference and the transcript) and told to the history under *Batteries* | The history is as safe as the server |
 
+### Battery alarms told discreetly
+
+| Threat | What is done | What is left |
+|---|---|---|
+| A real battery problem goes unseen because repeated alarms are told quietly | Quiet is only how a client shows an alarm: every alarm is still raised, kept in the history and sent to phones and other services. A new alarm, or one that gets worse (a protection that trips, new weak cells, a gap that doubles), is marked `new` again; protections the battery itself declares are immediate; `classic` brings back the former behaviour | A person who relies on the sound of the console alone may notice later a problem that comes back unchanged within 24 hours |
+| A silence hides a battery that later fails | A battery or one module is silenced on purpose, the list of silences is in sight and each one can be lifted | A silence stays until somebody lifts it; whoever may silence is trusted to look at the list |
+| A spoiled reading raises a false alarm, or the filter hides a true cell voltage | A cell voltage outside the believable range (1.0 to 4.5 V, configurable) is left out of the day's extremes and listed; a gap above the unbalance level needs two readings in a row | A true voltage outside the range does not count in the day's extremes (the battery's own protections still do), and the alarm of a gap comes one reading later |
+
 ### Controlling the nodes
 
 An administrator can order a node to restart, pause, resume, go on standby (its work off while it stays connected), identify itself, give a diagnostic or enter maintenance, one node or all of them, from Studio and from the phone. A stolen administrator session could use this to make a restart storm, to leave the house unprotected by pausing or putting the alarm panel and the radars on standby, or to hide an outage by putting a node in maintenance. The contract has no operation that erases settings or credentials, no factory reset, no deep sleep and no wake timer, so none of those can be ordered by anyone.
