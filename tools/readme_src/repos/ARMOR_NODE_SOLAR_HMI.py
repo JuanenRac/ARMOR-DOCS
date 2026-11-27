@@ -151,14 +151,14 @@ TEST_ROWS = [
 TEST_HEAD = P(["File", "What it covers"], ["Fichero", "Qué cubre"], ["Datei", "Was sie abdeckt"], ["Fichier", "Ce qu'il couvre"], ["File", "Cosa copre"], ["ファイル", "対象"], ["文件", "覆盖内容"], ["Ficheiro", "O que cobre"])
 
 BUILD = P(
-    "There is no release yet. The firmware is built only in GitHub Actions (workflow `Firmware check (ESP32-P4)`): each variant is one file written at address 0 with `esptool`. It has never run on a board. The workflow `Screen pictures (simulator)` draws the screens.",
-    "Todavía no hay release. El firmware se compila solo en GitHub Actions (flujo `Firmware check (ESP32-P4)`): cada variante es un fichero que se graba en la dirección 0 con `esptool`. Nunca ha corrido en una placa. El flujo `Screen pictures (simulator)` dibuja las pantallas.",
-    "Es gibt noch kein Release. Die Firmware wird nur in GitHub Actions gebaut (Workflow `Firmware check (ESP32-P4)`): Jede Variante ist eine Datei, die mit `esptool` ab Adresse 0 geschrieben wird. Sie lief noch nie auf einer Platine. Der Workflow `Screen pictures (simulator)` zeichnet die Bildschirme.",
-    "Il n'y a pas encore de version publiée. Le firmware est compilé uniquement dans GitHub Actions (workflow `Firmware check (ESP32-P4)`) : chaque variante est un fichier écrit à l'adresse 0 avec `esptool`. Il n'a jamais tourné sur une carte. Le workflow `Screen pictures (simulator)` dessine les écrans.",
-    "Non c'è ancora una release. Il firmware si compila solo in GitHub Actions (workflow `Firmware check (ESP32-P4)`): ogni variante è un file scritto all'indirizzo 0 con `esptool`. Non è mai girato su una scheda. Il workflow `Screen pictures (simulator)` disegna le schermate.",
-    "リリースはまだありません。ファームウェアは GitHub Actions のみでビルドします（ワークフロー `Firmware check (ESP32-P4)`）。各バリエーションは `esptool` でアドレス 0 に書き込む 1 ファイルです。基板上で動かしたことはありません。画面はワークフロー `Screen pictures (simulator)` が描画します。",
-    "尚未发布版本。固件仅在 GitHub Actions 中编译（工作流 `Firmware check (ESP32-P4)`）：每个变体是一个用 `esptool` 写入地址 0 的文件。从未在电路板上运行。工作流 `Screen pictures (simulator)` 负责绘制界面。",
-    "Ainda não há release. O firmware é compilado apenas no GitHub Actions (workflow `Firmware check (ESP32-P4)`): cada variante é um ficheiro gravado no endereço 0 com `esptool`. Nunca correu numa placa. O workflow `Screen pictures (simulator)` desenha os ecrãs.",
+    "The first release carries one file per variant (screen revision and chip), built in GitHub Actions and written at address 0 with `esptool`. **It is not tested on hardware: it has never run on a board.** The workflow `Screen pictures (simulator)` draws the screens.",
+    "La primera release lleva un fichero por variante (revisión de pantalla y chip), compilado en GitHub Actions y grabado en la dirección 0 con `esptool`. **No está probado en hardware: nunca ha corrido en una placa.** El flujo `Screen pictures (simulator)` dibuja las pantallas.",
+    "Das erste Release enthält eine Datei je Variante (Bildschirm- und Chiprevision), in GitHub Actions gebaut und mit `esptool` ab Adresse 0 geschrieben. **Nicht auf Hardware getestet: Sie lief noch nie auf einer Platine.** Der Workflow `Screen pictures (simulator)` zeichnet die Bildschirme.",
+    "La première version publiée contient un fichier par variante (révision de l'écran et de la puce), compilé dans GitHub Actions et écrit à l'adresse 0 avec `esptool`. **Non testée sur matériel : elle n'a jamais tourné sur une carte.** Le workflow `Screen pictures (simulator)` dessine les écrans.",
+    "La prima release contiene un file per variante (revisione dello schermo e del chip), compilato in GitHub Actions e scritto all'indirizzo 0 con `esptool`. **Non provata su hardware: non è mai girata su una scheda.** Il workflow `Screen pictures (simulator)` disegna le schermate.",
+    "最初のリリースには、画面とチップのリビジョンごとに1つのファイルがあります。GitHub Actions でビルドし、`esptool` でアドレス 0 に書き込みます。**実機ではテストしていません。基板上で動かしたことはありません。** ワークフロー `Screen pictures (simulator)` が画面を描画します。",
+    "首个发布版本为每个变体（屏幕和芯片版本）提供一个文件，在 GitHub Actions 中编译，用 `esptool` 写入地址 0。**未经硬件测试：从未在电路板上运行过。** 工作流 `Screen pictures (simulator)` 绘制各个屏幕。",
+    "A primeira release traz um ficheiro por variante (revisão do ecrã e do chip), compilado no GitHub Actions e gravado no endereço 0 com `esptool`. **Não testada em hardware: nunca correu numa placa.** O workflow `Screen pictures (simulator)` desenha os ecrãs.",
 )
 
 DOES_TEXT = P(
