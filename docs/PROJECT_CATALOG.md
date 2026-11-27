@@ -4,7 +4,7 @@
 | Repository | Version | Responsibility | Maturity |
 |---|---|---|---|
 | ARMOR-COMMON | 0.8.1.8 | Shared contracts and validation library | Established |
-| ARMOR-NODE-RADAR | 0.8.1.5 | ESP32-S3 PoE field-node firmware | Established |
+| ARMOR-NODE-RADAR | 0.8.1.6 | ESP32-S3 PoE field-node firmware | Established |
 | ARMOR-NODE-SOLAR | 0.7.3 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-NODE-ELECTRICAL | 0.6.2 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
 | ARMOR-NODE-ALARM | 0.6.0 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
@@ -17,7 +17,7 @@
 | ARMOR-IOS-CONTROL | 0.0.8 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.3 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.4 | Camera movement observation service (CM5 today, Jetson planned) | Established |
-| ARMOR-VISION | 0.1.8 | Camera zones, masks and detection rules | Functional |
+| ARMOR-VISION | 0.1.9 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.8 | Offline speech and intent gateway | Established |
 | ARMOR-HARDWARE | 0.3.0 | Open hardware and parametric enclosure designs | Functional |
 | ARMOR-DEVOPS | 0.7.9 | Repeatable deployment and operations | Established |
