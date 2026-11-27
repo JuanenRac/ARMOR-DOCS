@@ -997,7 +997,20 @@ CELL_CHART_BULLET = {
 for _lg in CELL_CHART_BULLET:
     LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [CELL_CHART_BULLET[_lg]]
 
-NT = "1939"
+PORT_PROBLEMS_BULLET = {
+    'en': "**Unreadable ports and silent data sheets are explained:** the health of a solar node says, for each serial port that hears bytes and reads none, what they look like (only zeros, the node's own question coming back, unreadable, other text or never a whole message) with its speed, pins, polarity and last bytes, and names the console of a slave battery of a stack; a battery that does not answer its data sheet says so. Tried only in the automated tests.",
+    'es': '**Puertos ilegibles y fichas mudas, explicados:** la salud de un nodo solar dice, de cada puerto serie que oye bytes y no lee nada, qué aspecto tienen (solo ceros, la propia pregunta del nodo que vuelve, ilegibles, texto de otro equipo o nunca un mensaje entero) con su velocidad, pines, polaridad y últimos bytes, y señala la consola de una batería esclava de una cadena; una batería que no responde a su ficha lo dice. Probado solo en los tests automáticos.',
+    'de': '**Unlesbare Ports und fehlende Datenblätter werden erklärt:** Der Zustand eines Solar-Knotens sagt für jeden seriellen Port, der Bytes empfängt und nichts liest, wie diese aussehen (nur Nullen, die eigene Anfrage des Knotens zurück, unlesbar, Text eines anderen Geräts oder nie eine ganze Nachricht), mit Geschwindigkeit, Pins, Polarität und letzten Bytes, und nennt die Konsole einer Slave-Batterie eines Stapels; eine Batterie, die ihr Datenblatt nicht beantwortet, sagt das. Nur in den automatischen Tests erprobt.',
+    'fr': "**Les ports illisibles et les fiches muettes sont expliqués :** la santé d'un nœud solaire dit, pour chaque port série qui reçoit des octets sans rien lire, à quoi ils ressemblent (seulement des zéros, la question du nœud qui revient, illisibles, un autre texte ou jamais un message entier), avec sa vitesse, ses broches, sa polarité et les derniers octets, et désigne la console d'une batterie esclave d'une pile ; une batterie qui ne répond pas à sa fiche le dit. Essayé seulement dans les tests automatiques.",
+    'it': '**Porte illeggibili e schede mute spiegate:** la salute di un nodo solare dice, per ogni porta seriale che riceve byte e non legge nulla, che aspetto hanno (solo zeri, la domanda del nodo che torna indietro, illeggibili, testo di un altro apparecchio o mai un messaggio intero) con velocità, pin, polarità e ultimi byte, e indica la console di una batteria slave di una pila; una batteria che non risponde alla sua scheda lo dice. Provato solo nei test automatici.',
+    'ja': '**読めないポートと応答しない仕様情報を説明：** ソーラーノードの健全性では、バイトを受信するのに何も読めないシリアルポートごとに、その様子（ゼロばかり、ノード自身の問い合わせが戻る、解読不能、別の機器の文字列、メッセージが完結しない）を速度、ピン、極性、最後のバイト列とともに示し、スタックのスレーブ電池のコンソールも指摘します。仕様情報に応答しない電池はその旨を表示します。自動テストでのみ試しています。',
+    'zh': '**说明无法读取的端口和无应答的资料卡：** 太阳能节点的健康信息会对每个收到字节却读不出内容的串口说明其特征（只有零、节点自己的询问原样返回、无法辨认、其他设备的文字，或始终没有完整报文），并给出速率、引脚、极性和最后几个字节，还会指出电池组中从机电池的控制台；不应答资料卡的电池会明确标出。目前仅在自动化测试中验证过。',
+    'pt': '**Portas ilegíveis e fichas mudas explicadas:** a saúde de um nó solar diz, para cada porta série que recebe bytes e não lê nada, que aspeto têm (só zeros, a própria pergunta do nó de volta, ilegíveis, texto de outro equipamento ou nunca uma mensagem inteira), com a velocidade, os pinos, a polaridade e os últimos bytes, e indica a consola de uma bateria escrava de uma pilha; uma bateria que não responde à sua ficha di-lo. Experimentado apenas nos testes automáticos.',
+}
+for _lg in PORT_PROBLEMS_BULLET:
+    LEGACY[_lg]["bullets"] = list(LEGACY[_lg]["bullets"]) + [PORT_PROBLEMS_BULLET[_lg]]
+
+NT = "1942"
 FACTS["badges"] = [x for x in FACTS["badges"] if x[0] != "Tests"] + [["Tests", NT + "%20passing", "2ea44f"]]
 
 # the claims of the previous README that the code no longer supports, corrected in every language
