@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The shared tools read the output of processes as UTF-8:** `tools/status_lights.py`, `tools/sync_manifests.py` and `tools/universal_readme_check.py` are the current copies; on Windows a character outside the code page no longer breaks a check.
+- **The shared tools read the output of processes as UTF-8:** `tools/status_lights.py`, `tools/sync_manifests.py` and `tools/universal_readme_check.py` are the current copies; on Windows a character outside the code page no longer breaks a check.
 - The READMEs of the server, Studio and the solar node tell the diagnosis of an unreadable serial port and the module without a data sheet, with the current test and panel text figures.
 - The README of the solar node describes the probe of a silent serial port and its current test figures; the catalogue gives its version.
 - **The READMEs of Studio and the phone apps tell the new solar charts:** the small chart per cell of Studio and the folding history charts of the Android and iPhone apps, in the eight languages, with the current Studio test count.
