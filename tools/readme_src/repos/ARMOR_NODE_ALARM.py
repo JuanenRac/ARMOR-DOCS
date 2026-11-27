@@ -196,6 +196,7 @@ This is not a certified alarm system ([docs/SAFETY.md](docs/SAFETY.md)): it is a
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | The return pin, the millivolts below which the wire is shorted and up to which the siren is there (above it the wire is cut), the time a reading must hold to report or lift a fault (100-60000 ms) and whether the line is also read while the siren sounds |
 | `siren_loop.block_arming` | off | Refuse to arm without `force` while the siren's wiring is in fault (as with an open zone); the fault is reported either way |
 | `server.persist_replay_floor` | off | Keep in flash (at most every 30 s) the highest timestamp of a signed command taken and the last sequence number of the zone feed, so that a restart does not forget them; off because it writes flash |
+| `server.refuse_pause_armed` | on | Refuse a `pause` or a `standby` ordered by the server while the panel is armed, counting down or ringing (`busy_guarding`); a restart is still taken. Settings stored with `false` are kept; to turn it off, clear *Refuse pause while armed* in the panel, save and restart. Not tried on a board |
 
 Re-sounds after a silence are limited to 3 (`kMaxResounds`). The siren relay starts open on every restart and does not fall open when the broker is lost.""",
       "quickstart": r"""**Requirements:** a C++17 compiler for the host tests; the ESP-IDF 5.5.5 container to build the image; an ESP32-S3 board (Ethernet or Wi-Fi) with the base board.
@@ -369,6 +370,7 @@ No es un sistema de alarma certificado ([docs/SAFETY.md](docs/SAFETY.md)): es un
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | El pin de retorno, los milivoltios por debajo de los cuales el cable está en cortocircuito y hasta los cuales la sirena está (por encima el cable está cortado), el tiempo que una lectura debe mantenerse para avisar o quitar un fallo (100-60000 ms) y si la línea también se lee mientras suena la sirena |
 | `siren_loop.block_arming` | off | Rechazar armar sin `force` mientras el cableado de la sirena esté en fallo (como con una zona abierta); el fallo se avisa en cualquier caso |
 | `server.persist_replay_floor` | off | Guardar en flash (como mucho cada 30 s) la marca de tiempo más alta de una orden firmada aceptada y el último número de secuencia de la fuente de zonas, para que un reinicio no los olvide; apagado porque escribe en flash |
+| `server.refuse_pause_armed` | on | Rechazar una `pause` o un `standby` ordenados por el servidor con el panel armado, en cuenta atrás o sonando (`busy_guarding`); el reinicio se sigue aceptando. Los ajustes guardados con `false` se mantienen; para apagarlo, desmarcar *Rechazar la pausa estando armado* en el panel, guardar y reiniciar. Sin probar en placa |
 
 Los resonidos tras un silencio se limitan a 3 (`kMaxResounds`). El relé de la sirena arranca abierto en cada reinicio y no cae a abierto si se pierde el broker.""",
       "quickstart": r"""**Requisitos:** un compilador C++17 para las pruebas de host; el contenedor ESP-IDF 5.5.5 para compilar la imagen; una placa ESP32-S3 (Ethernet o Wi-Fi) con la placa base.
@@ -542,6 +544,7 @@ Dies ist kein zertifiziertes Alarmsystem ([docs/SAFETY.md](docs/SAFETY.md)): Es 
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | Der Rückleseanschluss, die Millivolt, unter denen die Leitung kurzgeschlossen ist und bis zu denen die Sirene da ist (darüber ist die Leitung unterbrochen), die Zeit, die ein Messwert halten muss, um eine Störung zu melden oder aufzuheben (100-60000 ms), und ob die Leitung auch gelesen wird, während die Sirene ertönt |
 | `siren_loop.block_arming` | off | Scharfschalten ohne `force` verweigern, solange die Verkabelung der Sirene gestört ist (wie bei einer offenen Zone); die Störung wird in jedem Fall gemeldet |
 | `server.persist_replay_floor` | off | Den höchsten Zeitstempel eines angenommenen signierten Befehls und die letzte Sequenznummer des Zonenfeeds (höchstens alle 30 s) im Flash behalten, damit ein Neustart sie nicht vergisst; aus, weil es den Flash beschreibt |
+| `server.refuse_pause_armed` | on | Eine vom Server angeordnete `pause` oder `standby` ablehnen, solange die Anlage scharf ist, herunterzählt oder läutet (`busy_guarding`); ein Neustart wird weiterhin angenommen. Mit `false` gespeicherte Einstellungen bleiben; zum Abschalten *Pause im scharfen Zustand ablehnen* im Panel abwählen, speichern und neu starten. Nicht auf einer Platine erprobt |
 
 Erneutes Auslösen nach einem Stummschalten ist auf 3 begrenzt (`kMaxResounds`). Das Sirenenrelais startet bei jedem Neustart offen und fällt nicht auf offen, wenn der Broker verloren geht.""",
       "quickstart": r"""**Voraussetzungen:** ein C++17-Compiler für die Host-Tests; der ESP-IDF-5.5.5-Container zum Bauen des Images; eine ESP32-S3-Platine (Ethernet oder WLAN) mit der Basisplatine.
@@ -715,6 +718,7 @@ Ce n'est pas un système d'alarme certifié ([docs/SAFETY.md](docs/SAFETY.md)) :
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | La broche de retour, les millivolts sous lesquels le fil est en court-circuit et jusqu'auxquels la sirène est là (au-dessus le fil est coupé), le temps qu'une lecture doit tenir pour signaler ou lever un défaut (100-60000 ms) et si la ligne est aussi lue pendant que la sirène sonne |
 | `siren_loop.block_arming` | off | Refuser d'armer sans `force` tant que le câblage de la sirène est en défaut (comme avec une zone ouverte) ; le défaut est signalé dans tous les cas |
 | `server.persist_replay_floor` | off | Garder en flash (au plus toutes les 30 s) l'horodatage le plus haut d'un ordre signé accepté et le dernier numéro de séquence du flux de zones, pour qu'un redémarrage ne les oublie pas ; désactivé car cela écrit en flash |
+| `server.refuse_pause_armed` | on | Refuser une `pause` ou un `standby` ordonné par le serveur tant que la centrale est armée, en compte à rebours ou sonne (`busy_guarding`) ; le redémarrage reste accepté. Les réglages enregistrés avec `false` sont conservés ; pour le désactiver, décocher *Refuser la pause quand c'est armé* dans le panneau, enregistrer et redémarrer. Non essayé sur une carte |
 
 Les nouvelles sonneries après un silence sont limitées à 3 (`kMaxResounds`). Le relais de la sirène démarre ouvert à chaque redémarrage et ne retombe pas ouvert si le broker est perdu.""",
       "quickstart": r"""**Prérequis:** un compilateur C++17 pour les tests sur hôte ; le conteneur ESP-IDF 5.5.5 pour construire l'image ; une carte ESP32-S3 (Ethernet ou Wi-Fi) avec la carte de base.
@@ -888,6 +892,7 @@ Non è un sistema di allarme certificato ([docs/SAFETY.md](docs/SAFETY.md)): è 
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | Il pin di ritorno, i millivolt sotto i quali il filo è in cortocircuito e fino ai quali la sirena c'è (sopra il filo è tagliato), il tempo che una lettura deve durare per segnalare o togliere un guasto (100-60000 ms) e se la linea si legge anche mentre la sirena suona |
 | `siren_loop.block_arming` | off | Rifiutare l'armamento senza `force` finché il cablaggio della sirena è in guasto (come con una zona aperta); il guasto è segnalato comunque |
 | `server.persist_replay_floor` | off | Conservare in flash (al massimo ogni 30 s) il timestamp più alto di un comando firmato accettato e l'ultimo numero di sequenza del flusso delle zone, così che un riavvio non li dimentichi; spento perché scrive in flash |
+| `server.refuse_pause_armed` | on | Rifiutare una `pause` o uno `standby` ordinati dal server mentre la centrale è inserita, in conto alla rovescia o suona (`busy_guarding`); il riavvio è ancora accettato. Le impostazioni salvate con `false` restano; per spegnerlo, togliere la spunta a *Rifiutare la pausa se inserito* nel pannello, salvare e riavviare. Non provato su una scheda |
 
 I nuovi suoni dopo un silenzio sono limitati a 3 (`kMaxResounds`). Il relè della sirena parte aperto a ogni riavvio e non cade aperto se si perde il broker.""",
       "quickstart": r"""**Requisiti:** un compilatore C++17 per i test su host; il container ESP-IDF 5.5.5 per costruire l'immagine; una scheda ESP32-S3 (Ethernet o Wi-Fi) con la scheda base.
@@ -1061,6 +1066,7 @@ La maggior parte delle verifiche sono scansioni esaustive delle regole della cen
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | 戻りピン、配線が短絡と判定するミリボルト未満の値とサイレンありと判定する上限（それを超えると断線）、故障を報告・解除するために読み取りが続くべき時間（100〜60000 ms）、サイレンが鳴っている間も読むかどうか |
 | `siren_loop.block_arming` | off | サイレンの配線が故障している間は `force` なしの警戒開始を拒否します（開いたゾーンと同じ）。故障はどちらの場合も報告されます |
 | `server.persist_replay_floor` | off | 受理した署名付きコマンドの最大タイムスタンプとゾーンフィードの最後のシーケンス番号をフラッシュに保存します（最長 30 秒ごと）。再起動後も忘れませんが、フラッシュに書き込むため既定は無効です |
+| `server.refuse_pause_armed` | on | パネルが警戒中、カウントダウン中または鳴動中は、サーバーからの `pause` と `standby` を拒否します（`busy_guarding`）。再起動は引き続き受け付けます。`false` で保存された設定は維持されます。無効にするには、パネルで「警戒中の一時停止を拒否する」のチェックを外し、保存して再起動します。基板では未検証です |
 
 サイレン停止後の再鳴動は 3 回までです（`kMaxResounds`）。サイレンのリレーは再起動のたびに開いた状態で始まり、ブローカーを失っても開きません。""",
       "quickstart": r"""**必要なもの:** ホストテスト用の C++17 コンパイラ、イメージのビルド用の ESP-IDF 5.5.5 コンテナ、ベース基板付きの ESP32-S3 基板（Ethernet または Wi-Fi）。
@@ -1234,6 +1240,7 @@ Python の検査：8 言語のパネル文言、タスク、保存パス、ロ�
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | 回读引脚；低于多少毫伏为线路短路、不超过多少毫伏为警报器在位（高于则断线）；读数需持续多久才报告或解除故障（100–60000 毫秒）；警报器鸣响时是否也读取 |
 | `siren_loop.block_arming` | off | 在警报器接线故障期间，没有 `force` 就拒绝布防（如同有打开的防区）；无论如何都会报告故障 |
 | `server.persist_replay_floor` | off | 把已接受的签名命令的最大时间戳和区域信息流的最后序列号保存到闪存（最多每 30 秒一次），重启后不会忘记；因为会写闪存，默认关闭 |
+| `server.refuse_pause_armed` | on | 面板已布防、倒计时中或正在鸣响时，拒绝服务器下达的 `pause` 和 `standby`（`busy_guarding`）；仍接受重启。以 `false` 保存的设置保持不变；要关闭，请在面板中取消勾选“布防时拒绝暂停”，保存并重启。未在电路板上试验 |
 
 静音后的再次鸣响限制为 3 次（`kMaxResounds`）。警笛继电器每次重启时处于断开状态，代理丢失时也不会自动断开。""",
       "quickstart": r"""**要求:** 用于主机测试的 C++17 编译器；用于构建镜像的 ESP-IDF 5.5.5 容器；带底板的 ESP32-S3 电路板（以太网或 Wi-Fi）。
@@ -1407,6 +1414,7 @@ Não é um sistema de alarme certificado ([docs/SAFETY.md](docs/SAFETY.md)): é 
 | `siren_loop.pin`, `short_below_mv`, `ok_below_mv`, `hold_ms`, `clear_ms`, `read_while_sounding` | -1, 300, 2000, 3000, 3000, off | O pino de retorno, os milivolts abaixo dos quais o fio está em curto-circuito e até aos quais a sirene está (acima o fio está cortado), o tempo que uma leitura tem de manter-se para comunicar ou retirar uma avaria (100-60000 ms) e se a linha também é lida enquanto a sirene soa |
 | `siren_loop.block_arming` | off | Recusar armar sem `force` enquanto a cablagem da sirene estiver em avaria (como com uma zona aberta); a avaria é comunicada em qualquer caso |
 | `server.persist_replay_floor` | off | Guardar na flash (no máximo a cada 30 s) o carimbo de tempo mais alto de um comando assinado aceite e o último número de sequência do fluxo de zonas, para que um reinício não os esqueça; desligado porque escreve na flash |
+| `server.refuse_pause_armed` | on | Recusar uma `pause` ou um `standby` ordenados pelo servidor com o painel armado, em contagem decrescente ou a tocar (`busy_guarding`); o reinício continua a ser aceite. As definições guardadas com `false` mantêm-se; para o desligar, desmarcar *Recusar a pausa quando armado* no painel, guardar e reiniciar. Não experimentado numa placa |
 
 Os novos toques depois de um silêncio estão limitados a 3 (`kMaxResounds`). O relé da sirene arranca aberto a cada reinício e não cai para aberto se o broker se perder.""",
       "quickstart": r"""**Requisitos:** um compilador C++17 para os testes de anfitrião; o contentor ESP-IDF 5.5.5 para compilar a imagem; uma placa ESP32-S3 (Ethernet ou Wi-Fi) com a placa base.

@@ -4,6 +4,8 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- The README of the alarm node lists `server.refuse_pause_armed`, on by default: a pause or a standby is refused while the panel guards, and how to turn it off.
+
 ## [0.8.2.4] - Refreshed catalogue and notes for the battery releases
 
 - **The shared tools read the output of processes as UTF-8:** `tools/status_lights.py`, `tools/sync_manifests.py` and `tools/universal_readme_check.py` are the current copies; on Windows a character outside the code page no longer breaks a check.
