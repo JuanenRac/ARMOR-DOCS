@@ -7,7 +7,7 @@
 | ARMOR-NODE-RADAR | 0.8.1.6 | ESP32-S3 PoE field-node firmware | Established |
 | ARMOR-NODE-SOLAR | 0.7.7 | Solar gateway node: the firmware that reads inverters and batteries through up to ten serial ports, its web panel and the protocol library | Functional |
 | ARMOR-NODE-ELECTRICAL | 0.6.3 | Electrical node: reads the voltages, currents, power and energy of the house's AC and DC network, and holds the rules for switching it | Functional |
-| ARMOR-NODE-ALARM | 0.6.1 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
+| ARMOR-NODE-ALARM | 0.6.2 | Alarm node and panel: the zones, the arming, the delays, the siren and the PIN of the house's alarm, with the server or without it | Functional |
 | ARMOR-NODE-HMI | 0.5.2 | Touch panel: shows the state of the system on a wall screen, arms, disarms and acknowledges from there, and is where the voice assistant will live | Functional |
 | ARMOR-NODE-SOLAR-HMI | 0.0.2 | Solar touch screen: shows the batteries and the inverters of the installation from ARMOR-SERVER on a 7-inch wall screen | Scaffolding |
 | ARMOR-NETWORK | 0.1.9 | Local network monitor: the devices on the house's network, the internet's state and what changes | Established |
