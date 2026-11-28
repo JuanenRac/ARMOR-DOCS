@@ -12,7 +12,7 @@
     "app/build.gradle.kts": "0.8.1.2"
    },
    "tests_present": true,
-   "unreleased_entries": 1
+   "unreleased_entries": 3
   },
   "ARMOR-COMMON": {
    "changelog_head": "0.8.1.8",
@@ -26,19 +26,19 @@
     "pyproject.toml": "0.8.1.8"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 5
   },
   "ARMOR-DEVOPS": {
-   "changelog_head": "0.7.8",
+   "changelog_head": "0.7.9",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": true,
-   "latest_release": "v0.7.8",
-   "manifest_version": "0.7.8",
+   "latest_release": "v0.7.9",
+   "manifest_version": "0.7.9",
    "maturity": "established",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 1
   },
   "ARMOR-DOCS": {
    "changelog_head": "0.8.2.3",
@@ -50,7 +50,7 @@
    "maturity": "established",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 4
+   "unreleased_entries": 6
   },
   "ARMOR-HARDWARE": {
    "changelog_head": "0.3.0",
@@ -62,7 +62,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 2
+   "unreleased_entries": 3
   },
   "ARMOR-IOS-CONTROL": {
    "changelog_head": "0.0.8",
@@ -74,7 +74,7 @@
    "maturity": "scaffolding",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 5
   },
   "ARMOR-NETWORK": {
    "changelog_head": "0.1.9",
@@ -89,7 +89,7 @@
     "src/armor_network/__init__.py": "0.1.9"
    },
    "tests_present": true,
-   "unreleased_entries": 2
+   "unreleased_entries": 4
   },
   "ARMOR-NODE-ALARM": {
    "changelog_head": "0.6.0",
@@ -101,7 +101,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-NODE-ELECTRICAL": {
    "changelog_head": "0.6.2",
@@ -113,7 +113,7 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 5
   },
   "ARMOR-NODE-HMI": {
    "changelog_head": "0.5.2",
@@ -125,31 +125,31 @@
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-NODE-RADAR": {
-   "changelog_head": "0.8.1.5",
+   "changelog_head": "0.8.1.6",
    "ci_simulation": true,
    "evidence": "field",
    "hardware_bound": true,
-   "latest_release": "v0.8.1.5",
-   "manifest_version": "0.8.1.5",
+   "latest_release": "v0.8.1.6",
+   "manifest_version": "0.8.1.6",
    "maturity": "established",
    "native": {},
    "tests_present": true,
    "unreleased_entries": 4
   },
   "ARMOR-NODE-SOLAR": {
-   "changelog_head": "0.7.3",
+   "changelog_head": "0.7.4",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": true,
-   "latest_release": "v0.7.2",
-   "manifest_version": "0.7.3",
+   "latest_release": "v0.7.4",
+   "manifest_version": "0.7.4",
    "maturity": "functional",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-NODE-SOLAR-HMI": {
    "changelog_head": "0.0.1",
@@ -161,21 +161,21 @@
    "maturity": "scaffolding",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 5
+   "unreleased_entries": 9
   },
   "ARMOR-SERVER": {
    "changelog_head": "0.8.2.8",
    "ci_simulation": true,
    "evidence": "field",
    "hardware_bound": true,
-   "latest_release": "v0.8.2.7",
+   "latest_release": "v0.8.2.8",
    "manifest_version": "0.8.2.8",
    "maturity": "established",
    "native": {
     "package.json": "0.8.2.8"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-SERVER-AI": {
    "changelog_head": "0.3.4",
@@ -190,81 +190,81 @@
     "src/armor_server_ai/__init__.py": "0.3.4"
    },
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 5
   },
   "ARMOR-SIMULATOR": {
-   "changelog_head": "0.3.9",
+   "changelog_head": "0.4.0",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": false,
-   "latest_release": "v0.3.9",
-   "manifest_version": "0.3.9",
+   "latest_release": "v0.4.0",
+   "manifest_version": "0.4.0",
    "maturity": "established",
    "native": {
-    "pyproject.toml": "0.3.9",
-    "src/armor_simulator/__init__.py": "0.3.9"
+    "pyproject.toml": "0.4.0",
+    "src/armor_simulator/__init__.py": "0.4.0"
    },
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 1
   },
   "ARMOR-STUDIO": {
    "changelog_head": "0.8.3.0",
    "ci_simulation": true,
    "evidence": "field",
    "hardware_bound": true,
-   "latest_release": "v0.8.2.9",
+   "latest_release": "v0.8.3.0",
    "manifest_version": "0.8.3.0",
    "maturity": "established",
    "native": {
     "package.json": "0.8.3.0"
    },
    "tests_present": true,
-   "unreleased_entries": 0
+   "unreleased_entries": 4
   },
   "ARMOR-UPDATER": {
-   "changelog_head": "0.2.4",
+   "changelog_head": "0.2.5",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": false,
-   "latest_release": "v0.2.4",
-   "manifest_version": "0.2.4",
+   "latest_release": "v0.2.5",
+   "manifest_version": "0.2.5",
    "maturity": "established",
    "native": {
-    "pyproject.toml": "0.2.4",
-    "src/armor_updater/__init__.py": "0.2.4"
+    "pyproject.toml": "0.2.5",
+    "src/armor_updater/__init__.py": "0.2.5"
    },
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 1
   },
   "ARMOR-VISION": {
-   "changelog_head": "0.1.8",
+   "changelog_head": "0.1.9",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": true,
-   "latest_release": "v0.1.8",
-   "manifest_version": "0.1.8",
+   "latest_release": "v0.1.9",
+   "manifest_version": "0.1.9",
    "maturity": "functional",
    "native": {
-    "pyproject.toml": "0.1.8",
-    "src/armor_vision/__init__.py": "0.1.8"
+    "pyproject.toml": "0.1.9",
+    "src/armor_vision/__init__.py": "0.1.9"
    },
    "tests_present": true,
-   "unreleased_entries": 2
+   "unreleased_entries": 1
   },
   "ARMOR-VOICE-AI": {
-   "changelog_head": "0.3.7",
+   "changelog_head": "0.3.8",
    "ci_simulation": true,
    "evidence": "simulator",
    "hardware_bound": true,
-   "latest_release": "v0.3.7",
-   "manifest_version": "0.3.7",
+   "latest_release": "v0.3.8",
+   "manifest_version": "0.3.8",
    "maturity": "established",
    "native": {
-    "pyproject.toml": "0.3.7",
-    "src/armor_voice_ai/__init__.py": "0.3.7"
+    "pyproject.toml": "0.3.8",
+    "src/armor_voice_ai/__init__.py": "0.3.8"
    },
    "tests_present": true,
-   "unreleased_entries": 3
+   "unreleased_entries": 1
   },
   "ARMOR-WATCH": {
    "changelog_head": "0.0.3",
@@ -276,7 +276,7 @@
    "maturity": "scaffolding",
    "native": {},
    "tests_present": true,
-   "unreleased_entries": 2
+   "unreleased_entries": 3
   }
  }
 }
