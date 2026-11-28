@@ -3,98 +3,108 @@
   "releases": [
     {
       "project": "ARMOR-ANDROID-CONTROL",
-      "version": "0.8.0.7",
-      "commit": "e03a04039cdd51f45a78be4525e9590a092bb670"
+      "version": "0.8.1.3",
+      "commit": "df91193e9b8f2c74c7130729d7d4e8a187973037"
     },
     {
       "project": "ARMOR-COMMON",
-      "version": "0.8.1.4",
-      "commit": "3259d1af61f14dc353c330740c66b618900066fe"
+      "version": "0.8.1.9",
+      "commit": "64f32252cf8bf869e2ffe1cf52e0197444178e37"
     },
     {
       "project": "ARMOR-DEVOPS",
-      "version": "0.7.6",
-      "commit": "0e95b352a5528db655afe1559a3895d9eadefa09"
+      "version": "0.7.9",
+      "commit": "6c2cb00d3882c5f9268b834eb78a31dac6420420"
     },
     {
       "project": "ARMOR-DOCS",
-      "version": "0.8.2.0",
-      "commit": "f7ec2dbd23ec420d25e82408c1b2db5c089b3f30"
+      "version": "0.8.2.4",
+      "commit": "3da2f5f4541ca67bdfd0b16b3ee8332d1dafb4eb"
     },
     {
       "project": "ARMOR-HARDWARE",
-      "version": "0.2.9",
-      "commit": "7a57c649f94844e8f21289a26ba4d8b4cc02b367"
+      "version": "0.3.1",
+      "commit": "5329452dacf6195a88822e215a8f9eaaf6273269"
     },
     {
       "project": "ARMOR-IOS-CONTROL",
-      "version": "0.0.5",
-      "commit": "ba93673461356844942d72a3fcd361e5abcdd723"
+      "version": "0.1.0",
+      "commit": "91c888b88d3929ac34d5e273d15733fb50c5652c"
     },
     {
       "project": "ARMOR-NETWORK",
-      "version": "0.1.8",
-      "commit": "c7b148d6024d87150a586902fa921d248b21c687"
+      "version": "0.1.9",
+      "commit": "79fdf783f67163b8ea67a13b0475d5de07623e2f"
     },
     {
       "project": "ARMOR-NODE-ALARM",
-      "version": "0.5.6",
-      "commit": "7126242002de60057aae2450ebe881455ec71697"
+      "version": "0.6.2",
+      "commit": "068179239b8485547872122a18278b59acf86802"
     },
     {
       "project": "ARMOR-NODE-ELECTRICAL",
-      "version": "0.5.8",
-      "commit": "adc9e77d06405ea9908616e6818c0716a8c3555c"
+      "version": "0.6.3",
+      "commit": "b8b4d1bd8d532fd8fc9745112cb8367f900d7bf2"
     },
     {
       "project": "ARMOR-NODE-HMI",
-      "version": "0.4.8",
-      "commit": "01432778406d71099e1055aa586244c9311abe21"
+      "version": "0.5.2",
+      "commit": "2537ddb9fcbe8059a22124dd58d5fd07f114adbe"
     },
     {
       "project": "ARMOR-NODE-RADAR",
-      "version": "0.8.1.2",
-      "commit": "31e737cdc0e772f11bd47092df2bb5bb19558690"
+      "version": "0.8.1.6",
+      "commit": "f82b3f24c00d627525bfc56174ff628075e08cb8"
     },
     {
       "project": "ARMOR-NODE-SOLAR",
-      "version": "0.6.6",
-      "commit": "999e4a4cbaf4a645505b428883d87504e4155759"
+      "version": "0.7.8",
+      "commit": "a117425d7e957af5b213be835df96113138f74b0"
+    },
+    {
+      "project": "ARMOR-NODE-SOLAR-HMI",
+      "version": "0.0.2",
+      "commit": "f259da0868feecdab67da2267582f5654cf1fba4"
     },
     {
       "project": "ARMOR-SERVER",
-      "version": "0.8.2.2",
-      "commit": "00646b37d69ca0fd17183e7ca9772bb2424376ac"
+      "version": "0.8.3.2",
+      "commit": "c7130c233a182a24fd9069a089cbee74cbaed22d"
     },
     {
       "project": "ARMOR-SERVER-AI",
-      "version": "0.3.3",
-      "commit": "fd06c5f8ff6b9c72c5bf86bc29ff1a86da43ca21"
+      "version": "0.3.5",
+      "commit": "f1d8670807e931d97461cc41b16ea2604add0b34"
     },
     {
       "project": "ARMOR-SIMULATOR",
-      "version": "0.3.8",
-      "commit": "f5e39ddfb81dc3757b7cce69dc482fa0f17466e9"
+      "version": "0.4.0",
+      "commit": "9b5c47a1b2999d7ae652560c696de044fc0b7f63"
     },
     {
       "project": "ARMOR-STUDIO",
-      "version": "0.8.2.4",
-      "commit": "b2ed1b589fc3f1f0aaae5f4f1b77faeec91975aa"
+      "version": "0.8.3.3",
+      "commit": "0bae5ba2ee2ccc3b2bab576b16ea3576478e0a88"
     },
     {
       "project": "ARMOR-UPDATER",
-      "version": "0.2.2",
-      "commit": "2e72ce3d18b85d3d21d06b9b4b15b3ecc382a224"
+      "version": "0.2.5",
+      "commit": "adaf6b317fd79fdf661672ec36691b0870f9628c"
     },
     {
       "project": "ARMOR-VISION",
-      "version": "0.1.7",
-      "commit": "9dbe2c26d50c6322b4962c45c0d316405ca204a1"
+      "version": "0.1.9",
+      "commit": "381b55c5c51ecbf7009fdcdc06769e02b165aa72"
     },
     {
       "project": "ARMOR-VOICE-AI",
-      "version": "0.3.6",
-      "commit": "48b2287ececc6a8d4f6727c13a295c086c3f2606"
+      "version": "0.3.8",
+      "commit": "193d5e5a1b017533fe75d9f3ca9665995ef08145"
+    },
+    {
+      "project": "ARMOR-WATCH",
+      "version": "0.0.3",
+      "commit": "104a93af9e03fe4000f72ac5bcefc9247b234cb8"
     }
   ]
 }
