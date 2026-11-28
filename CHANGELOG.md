@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **ARMOR-NODE-SOLAR-HMI in the architecture and the capability matrix:** the diagram, the table of concerns and two matrix rows (its firmware compiles and has never run on a board), and its host tests in `tools/check_all.sh`.
 - The README of the alarm node lists `server.refuse_pause_armed`, on by default: a pause or a standby is refused while the panel guards, and how to turn it off.
 
 ## [0.8.2.4] - Refreshed catalogue and notes for the battery releases

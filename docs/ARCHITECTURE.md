@@ -9,6 +9,7 @@ flowchart LR
     AN["Alarm nodes<br/>zones, siren, PIN"]
     NN["Network node<br/>devices, internet"]
     HM["Touch panel (ARMOR-NODE-HMI)<br/>wall screen, voice"]
+    SH["Solar touch screen (ARMOR-NODE-SOLAR-HMI)<br/>never run on a board"]
     C["IP cameras (PTZ, RTSP)"]
   end
   subgraph core["VLAN 20 - core"]
@@ -27,6 +28,7 @@ flowchart LR
   AN -->|"MQTT, one identity per node"| B
   NN -->|"MQTT, one identity per node"| B
   HM -->|"HTTP session as a wall panel"| S
+  SH -.->|"planned: reads the solar data"| S
   B --> S
   C -->|"RTSP / ONVIF"| S
   C -->|"RTSP"| V
@@ -105,6 +107,7 @@ configurable silence.
 | Visual and voice decisions | ARMOR-SERVER-AI, ARMOR-VOICE-AI |
 | Operator consoles | ARMOR-STUDIO, ARMOR-ANDROID-CONTROL |
 | The touch panel on the wall (state, arming, the voice assistant) | ARMOR-NODE-HMI |
+| The wall screen of the batteries and inverters (its firmware compiles; never run on a board, no link to the server yet) | ARMOR-NODE-SOLAR-HMI |
 | Enclosures and electronics | ARMOR-HARDWARE |
 | Deployment | ARMOR-DEVOPS |
 | Ecosystem-wide CI baseline and cross-machine install/update | ARMOR-COMMON, ARMOR-UPDATER |
