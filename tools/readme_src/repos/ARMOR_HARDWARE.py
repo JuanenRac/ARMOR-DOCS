@@ -87,7 +87,7 @@ TEXT = {
     "contributing_first": "Before a pull request run `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: it must pass. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **The radar enclosure is `scad/node_enclosure_radar.scad`** (with two slicer projects, the base and the sliding cover; the STL and 3MF of every piece are made from the sources by `tools/export_models.py` and kept as an artifact of the CI, not in the repository): a 90-degree corner base with a visor, roof and floor, retaining steps, a sliding 2 mm front cover and side flaps, all driven by named parameters.
+      "overview": r"""* **The radar enclosure is `scad/node_enclosure_radar.scad`** (with two slicer projects, the base and the sliding cover, kept up with their source by `tools/slicer_projects.py` and a test; the STL and 3MF of every piece are made from the sources by `tools/export_models.py` and kept as an artifact of the CI, not in the repository): a 90-degree corner base with a visor, roof and floor, retaining steps, a sliding 2 mm front cover and side flaps, all driven by named parameters.
 * **One table of the pins and one shared file.** `docs/PINOUT.md` is made by `tools/pinout.py` from the tables the firmware is built with (the pins of the module, the ten serial ports, the Zigbee radio, the relays and the analog inputs of the base board, for both boards) and a test fails when it differs; `scad/node_common.scad` holds what both enclosures share: wall, lid, play and the cable-gland sizes of the shop (PG7 12.5 mm, M12 12 mm, PG9 15.2 mm, M16 16 mm), so a hole is a thread plus a play and not a round number.
 * **A parametric box for the solar, electrical and alarm nodes** (`scad/node_box.scad`, presets `solar`, `electrical` and `alarm`): walls, posts for the board, cable-gland holes, a vent, a pocket for a tamper micro-switch under the lid and a lid with a ring-shaped lip. It is a low-voltage box, not an enclosure for mains wiring.
 * **Holders** for three radar modules, a cable gland and drain holes. There are no volumes yet for the ESP32-S3-ETH-PoE board, the PoE magnetics, the PTC heater or the light-sensor window that the bench matrix wants to test. No metallic, conductive or carbon-loaded material in front of a 24 GHz aperture without measuring it first.
@@ -138,6 +138,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | The sources, the presets of the box, the model files and the numbers the documents quote |
 | `test_parametric_render.py` | 12 | The box rendered by OpenSCAD: the size of every piece of every preset, a changed parameter, and what the asserts of the source refuse (10 need OpenSCAD) |
+| `test_slicer_projects.py` | 11 | The slicer projects against their sources: the record, the envelope, the cable hole and the cover thickness of their meshes |
+| `test_measurement_record.py` | 12 | A filled measurement record and the bench matrix that rests on it, with made-up lines |
 
 OpenSCAD renders every piece on a machine that has it: the radar base and cover, and the box and lid of the three presets. The [bench acceptance matrix](docs/BENCH_ACCEPTANCE.md) is where a printed prototype is judged.""",
       "troubleshooting": r"""| You see | Because | Do |
@@ -205,7 +207,7 @@ OpenSCAD renders every piece on a machine that has it: the radar base and cover,
     "contributing_first": "Antes de un pull request ejecuta `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: debe pasar. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) y el [código de conducta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **La carcasa del radar es `scad/node_enclosure_radar.scad`** (con dos proyectos de laminador, la base y la tapa corredera; el STL y el 3MF de cada pieza los hace `tools/export_models.py` desde las fuentes y se guardan como artefacto del CI, no en el repositorio): una base de esquina de 90 grados con visera, techo y suelo, escalones de retención, una tapa frontal corredera de 2 mm y aletas laterales, todo gobernado por parámetros con nombre.
+      "overview": r"""* **La carcasa del radar es `scad/node_enclosure_radar.scad`** (con dos proyectos de laminador, la base y la tapa corredera, mantenidos al día con su fuente por `tools/slicer_projects.py` y una prueba; el STL y el 3MF de cada pieza los hace `tools/export_models.py` desde las fuentes y se guardan como artefacto del CI, no en el repositorio): una base de esquina de 90 grados con visera, techo y suelo, escalones de retención, una tapa frontal corredera de 2 mm y aletas laterales, todo gobernado por parámetros con nombre.
 * **Una tabla de pines y un fichero compartido.** `docs/PINOUT.md` lo hace `tools/pinout.py` con las tablas con las que se compila el firmware (los pines del módulo, los diez puertos serie, la radio Zigbee, los relés y las entradas analógicas de la placa base, para las dos placas) y un test falla si difiere; `scad/node_common.scad` guarda lo que comparten las dos cajas: pared, tapa, holgura y los tamaños de prensaestopas de tienda (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de modo que un agujero es una rosca más una holgura y no un número redondo.
 * **Una caja paramétrica para los nodos solar, eléctrico y de alarma** (`scad/node_box.scad`, preajustes `solar`, `electrical` y `alarm`): paredes, postes para la placa, agujeros para prensaestopas, una ventilación, un hueco para un microinterruptor antisabotaje bajo la tapa y una tapa con labio anular. Es una caja de baja tensión, no una envolvente para cableado de red.
 * **Soportes** para tres módulos de radar, un prensaestopas y agujeros de drenaje. Todavía no hay volúmenes para la placa ESP32-S3-ETH-PoE, la magnética PoE, el calefactor PTC ni la ventana del sensor de luz que la matriz de banco quiere probar. Ningún material metálico, conductor o cargado de carbono delante de una apertura de 24 GHz sin medirlo antes.
@@ -256,6 +258,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Las fuentes, los presets de la caja, los ficheros de modelo y las cifras que citan los documentos |
 | `test_parametric_render.py` | 12 | La caja renderizada con OpenSCAD: el tamaño de cada pieza de cada preset, un parámetro cambiado y lo que rechazan los asserts de la fuente (10 necesitan OpenSCAD) |
+| `test_slicer_projects.py` | 11 | Los proyectos de laminador contra sus fuentes: el registro, la envolvente, el agujero del cable y el grosor de la tapa de sus mallas |
+| `test_measurement_record.py` | 12 | Un registro de medidas relleno y la matriz de banco que se apoya en él, con líneas inventadas |
 
 OpenSCAD renderiza cada pieza en una máquina que lo tenga: la base y la tapa del radar, y la caja y la tapa de los tres presets. La [matriz de aceptación en banco](docs/BENCH_ACCEPTANCE.md) es donde se juzga un prototipo impreso.""",
       "troubleshooting": r"""| Ves | Porque | Haz |
@@ -323,7 +327,7 @@ OpenSCAD renderiza cada pieza en una máquina que lo tenga: la base y la tapa de
     "contributing_first": "Führe vor einem Pull Request `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` aus: Es muss bestehen. Siehe [CONTRIBUTING.md](CONTRIBUTING.md) und den [Verhaltenskodex](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **Das Radargehäuse ist `scad/node_enclosure_radar.scad`** (mit zwei Slicer-Projekten, der Basis und dem Schiebedeckel; STL und 3MF jedes Teils erzeugt `tools/export_models.py` aus den Quellen, und sie liegen als Artefakt der CI, nicht im Repository): eine 90-Grad-Eckbasis mit Blende, Dach und Boden, Haltestufen, einem 2 mm dicken Schiebedeckel vorn und Seitenklappen, alles über benannte Parameter gesteuert.
+      "overview": r"""* **Das Radargehäuse ist `scad/node_enclosure_radar.scad`** (mit zwei Slicer-Projekten, der Basis und dem Schiebedeckel, die `tools/slicer_projects.py` und ein Test auf dem Stand ihrer Quelle halten; STL und 3MF jedes Teils erzeugt `tools/export_models.py` aus den Quellen, und sie liegen als Artefakt der CI, nicht im Repository): eine 90-Grad-Eckbasis mit Blende, Dach und Boden, Haltestufen, einem 2 mm dicken Schiebedeckel vorn und Seitenklappen, alles über benannte Parameter gesteuert.
 * **Eine Pinbelegung und eine gemeinsame Datei.** `docs/PINOUT.md` erzeugt `tools/pinout.py` aus den Tabellen, mit denen die Firmware gebaut wird (die Pins des Moduls, die zehn seriellen Ports, das Zigbee-Funkmodul, die Relais und die Analogeingänge der Basisplatine, für beide Platinen), und ein Test schlägt fehl, wenn sie abweicht; `scad/node_common.scad` enthält, was beide Gehäuse teilen: Wand, Deckel, Spiel und die handelsüblichen Kabelverschraubungen (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), sodass ein Loch ein Gewinde plus Spiel ist und keine runde Zahl.
 * **Eine parametrische Box für die Knoten Solar, Elektro und Alarm** (`scad/node_box.scad`, Voreinstellungen `solar`, `electrical` und `alarm`): Wände, Pfosten für die Platine, Löcher für Kabelverschraubungen, eine Lüftung, eine Aufnahme für einen Sabotage-Mikroschalter unter dem Deckel und ein Deckel mit ringförmiger Lippe. Es ist eine Kleinspannungsbox, kein Gehäuse für Netzverdrahtung.
 * **Halter** für drei Radarmodule, eine Kabelverschraubung und Ablaufbohrungen. Für die Platine ESP32-S3-ETH-PoE, die PoE-Magnetik, die PTC-Heizung und das Lichtsensorfenster, die die Prüfstandmatrix testen will, gibt es noch keine Volumina. Kein metallisches, leitendes oder kohlenstoffhaltiges Material vor einer 24-GHz-Öffnung, ohne es vorher zu messen.
@@ -374,6 +378,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Die Quellen, die Presets der Box, die Modelldateien und die Zahlen, die die Dokumente nennen |
 | `test_parametric_render.py` | 12 | Die mit OpenSCAD gerenderte Box: die Größe jedes Teils jedes Presets, ein geänderter Parameter und was die Asserts der Quelle ablehnen (10 brauchen OpenSCAD) |
+| `test_slicer_projects.py` | 11 | Die Slicer-Projekte gegen ihre Quellen: das Verzeichnis, die Hüllmaße, die Kabelbohrung und die Deckeldicke ihrer Netze |
+| `test_measurement_record.py` | 12 | Ein ausgefülltes Messprotokoll und die Prüfstandmatrix, die darauf beruht, mit erfundenen Zeilen |
 
 OpenSCAD rendert jedes Teil auf einem Rechner, der es hat: Radarbasis und -deckel sowie Box und Deckel der drei Presets. In der [Prüfstand-Abnahmematrix](docs/BENCH_ACCEPTANCE.md) wird ein gedruckter Prototyp beurteilt.""",
       "troubleshooting": r"""| Sie sehen | Weil | Tun Sie |
@@ -441,7 +447,7 @@ OpenSCAD rendert jedes Teil auf einem Rechner, der es hat: Radarbasis und -decke
     "contributing_first": "Avant une pull request, lancez `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` : il doit réussir. Voir [CONTRIBUTING.md](CONTRIBUTING.md) et le [code de conduite](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **Le boîtier du radar est `scad/node_enclosure_radar.scad`** (avec deux projets de trancheur, la base et le couvercle coulissant ; le STL et le 3MF de chaque pièce sont produits depuis les sources par `tools/export_models.py` et conservés comme artefact de la CI, pas dans le dépôt) : une base d'angle à 90 degrés avec visière, toit et plancher, des gradins de retenue, un couvercle avant coulissant de 2 mm et des volets latéraux, le tout piloté par des paramètres nommés.
+      "overview": r"""* **Le boîtier du radar est `scad/node_enclosure_radar.scad`** (avec deux projets de trancheur, la base et le couvercle coulissant, tenus à jour avec leur source par `tools/slicer_projects.py` et un test ; le STL et le 3MF de chaque pièce sont produits depuis les sources par `tools/export_models.py` et conservés comme artefact de la CI, pas dans le dépôt) : une base d'angle à 90 degrés avec visière, toit et plancher, des gradins de retenue, un couvercle avant coulissant de 2 mm et des volets latéraux, le tout piloté par des paramètres nommés.
 * **Un tableau des broches et un fichier partagé.** `docs/PINOUT.md` est produit par `tools/pinout.py` à partir des tables avec lesquelles le firmware est compilé (les broches du module, les dix ports série, la radio Zigbee, les relais et les entrées analogiques de la carte de base, pour les deux cartes) et un test échoue s'il diffère ; `scad/node_common.scad` contient ce que les deux boîtiers partagent : paroi, couvercle, jeu et les tailles de presse-étoupe du commerce (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de sorte qu'un trou est un filetage plus un jeu et non un nombre rond.
 * **Une boîte paramétrique pour les nœuds solaire, électrique et alarme** (`scad/node_box.scad`, préréglages `solar`, `electrical` et `alarm`) : parois, plots pour la carte, trous de presse-étoupe, une aération, un logement pour un micro-interrupteur anti-sabotage sous le couvercle et un couvercle à lèvre annulaire. C'est une boîte basse tension, pas un coffret pour câblage secteur.
 * **Supports** pour trois modules radar, un presse-étoupe et des trous de drainage. Il n'y a pas encore de volumes pour la carte ESP32-S3-ETH-PoE, la magnétique PoE, le chauffage PTC ni la fenêtre du capteur de lumière que la matrice de banc veut tester. Aucun matériau métallique, conducteur ou chargé de carbone devant une ouverture 24 GHz sans l'avoir mesuré.
@@ -492,6 +498,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | Les sources, les préréglages de la boîte, les fichiers de modèle et les chiffres cités par les documents |
 | `test_parametric_render.py` | 12 | La boîte rendue par OpenSCAD : la taille de chaque pièce de chaque préréglage, un paramètre changé et ce que refusent les asserts de la source (10 demandent OpenSCAD) |
+| `test_slicer_projects.py` | 11 | Les projets de trancheur face à leurs sources : le registre, l'encombrement, le trou du câble et l'épaisseur du couvercle de leurs maillages |
+| `test_measurement_record.py` | 12 | Un relevé de mesures rempli et la matrice de banc qui s'appuie dessus, avec des lignes inventées |
 
 OpenSCAD rend chaque pièce sur une machine qui l'a : la base et le couvercle du radar, la boîte et le couvercle des trois préréglages. La [matrice d'acceptation sur banc](docs/BENCH_ACCEPTANCE.md) sert à juger un prototype imprimé.""",
       "troubleshooting": r"""| Vous voyez | Parce que | Faites |
@@ -559,7 +567,7 @@ OpenSCAD rend chaque pièce sur une machine qui l'a : la base et le couvercle du
     "contributing_first": "Prima di una pull request esegui `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: deve passare. Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il [codice di condotta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **L'involucro del radar è `scad/node_enclosure_radar.scad`** (con due progetti dello slicer, la base e il coperchio scorrevole; lo STL e il 3MF di ogni pezzo li crea `tools/export_models.py` dai sorgenti e restano come artefatto della CI, non nel repository): una base d'angolo a 90 gradi con visiera, tetto e pavimento, gradini di ritenuta, un coperchio frontale scorrevole da 2 mm e alette laterali, tutto governato da parametri con nome.
+      "overview": r"""* **L'involucro del radar è `scad/node_enclosure_radar.scad`** (con due progetti dello slicer, la base e il coperchio scorrevole, tenuti al passo con il sorgente da `tools/slicer_projects.py` e da un test; lo STL e il 3MF di ogni pezzo li crea `tools/export_models.py` dai sorgenti e restano come artefatto della CI, non nel repository): una base d'angolo a 90 gradi con visiera, tetto e pavimento, gradini di ritenuta, un coperchio frontale scorrevole da 2 mm e alette laterali, tutto governato da parametri con nome.
 * **Una tabella dei pin e un file condiviso.** `docs/PINOUT.md` lo crea `tools/pinout.py` dalle tabelle con cui si compila il firmware (i pin del modulo, le dieci porte seriali, la radio Zigbee, i relè e gli ingressi analogici della scheda base, per le due schede) e un test fallisce se differisce; `scad/node_common.scad` contiene ciò che i due involucri condividono: parete, coperchio, gioco e le misure dei pressacavi in commercio (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), così un foro è una filettatura più un gioco e non un numero tondo.
 * **Una scatola parametrica per i nodi solare, elettrico e allarme** (`scad/node_box.scad`, preset `solar`, `electrical` e `alarm`): pareti, colonnine per la scheda, fori per pressacavi, una ventilazione, un alloggiamento per un microinterruttore antimanomissione sotto il coperchio e un coperchio con labbro ad anello. È una scatola a bassa tensione, non un involucro per cablaggio di rete.
 * **Supporti** per tre moduli radar, un pressacavo e fori di drenaggio. Non ci sono ancora volumi per la scheda ESP32-S3-ETH-PoE, la magnetica PoE, il riscaldatore PTC né la finestra del sensore di luce che la matrice di banco vuole provare. Nessun materiale metallico, conduttivo o caricato con carbonio davanti a un'apertura a 24 GHz senza averlo misurato.
@@ -610,6 +618,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | I sorgenti, i preset della scatola, i file di modello e i numeri citati dai documenti |
 | `test_parametric_render.py` | 12 | La scatola resa con OpenSCAD: la dimensione di ogni pezzo di ogni preset, un parametro cambiato e ciò che rifiutano gli assert del sorgente (10 richiedono OpenSCAD) |
+| `test_slicer_projects.py` | 11 | I progetti dello slicer contro i sorgenti: il registro, l'ingombro, il foro del cavo e lo spessore del coperchio delle loro mesh |
+| `test_measurement_record.py` | 12 | Un registro di misure compilato e la matrice al banco che vi si appoggia, con righe inventate |
 
 OpenSCAD è in grado di renderizzare ogni pezzo su una macchina che lo ha: base e coperchio del radar, scatola e coperchio dei tre preset. Nella [matrice di accettazione al banco](docs/BENCH_ACCEPTANCE.md) si giudica un prototipo stampato.""",
       "troubleshooting": r"""| Vedi | Perché | Fai |
@@ -677,7 +687,7 @@ OpenSCAD è in grado di renderizzare ogni pezzo su una macchina che lo ha: base 
     "contributing_first": "Pull Request の前に `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py` を実行してください。通る必要があります。[CONTRIBUTING.md](CONTRIBUTING.md) と[行動規範](CODE_OF_CONDUCT.md)を参照してください。",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **レーダーの筐体は `scad/node_enclosure_radar.scad`**（ベースとスライドカバーの 2 つのスライサープロジェクト付き。各パーツの STL と 3MF は `tools/export_models.py` がソースから作り、リポジトリではなく CI のアーティファクトとして保管します）：バイザー、屋根、床、固定用の段差、2 mm のスライド式フロントカバー、側面フラップを備えた 90 度コーナーのベースで、すべて名前付きパラメーターで動きます。
+      "overview": r"""* **レーダーの筐体は `scad/node_enclosure_radar.scad`**（ベースとスライドカバーの 2 つのスライサープロジェクト付き。`tools/slicer_projects.py` とテストがソースと一致させます。各パーツの STL と 3MF は `tools/export_models.py` がソースから作り、リポジトリではなく CI のアーティファクトとして保管します）：バイザー、屋根、床、固定用の段差、2 mm のスライド式フロントカバー、側面フラップを備えた 90 度コーナーのベースで、すべて名前付きパラメーターで動きます。
 * **ピン表 1 つと共有ファイル 1 つ。** `docs/PINOUT.md` は、ファームウェアのビルドに使う表（モジュールのピン、10 個のシリアルポート、Zigbee 無線、ベースボードのリレーとアナログ入力。2 枚のボードの分）から `tools/pinout.py` が作り、食い違えばテストが失敗します。`scad/node_common.scad` は 2 つの筐体が共有する値（壁、蓋、遊び、市販ケーブルグランドの寸法：PG7 12.5 mm、M12 12 mm、PG9 15.2 mm、M16 16 mm）を持つので、穴はキリのよい数字ではなく、ねじ径に遊びを足した値です。
 * **太陽光・電気・警報ノード用のパラメトリックボックス**（`scad/node_box.scad`、プリセット `solar`、`electrical`、`alarm`）：壁、基板用のポスト、ケーブルグランド用の穴、通気口、蓋の下の改ざん検知マイクロスイッチ用ポケット、リング状のリップ付きの蓋。低電圧用のボックスであり、商用電源配線用の筐体ではありません。
 * **ホルダー**：3 つのレーダーモジュール、ケーブルグランド、排水穴用。ベンチマトリクスが試験したい ESP32-S3-ETH-PoE 基板、PoE マグネティクス、PTC ヒーター、光センサー窓の空間はまだありません。24 GHz の開口の前には、測定せずに金属・導電性・カーボン入りの材料を置かないでください。
@@ -728,6 +738,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | ソース、箱のプリセット、モデルファイル、文書が引用する数値 |
 | `test_parametric_render.py` | 12 | OpenSCAD でレンダリングした箱：各プリセットの各部品の寸法、変更したパラメータ、ソースの assert が拒否するもの（10 件は OpenSCAD が必要） |
+| `test_slicer_projects.py` | 11 | スライサープロジェクトとソースの照合：記録、外形、メッシュのケーブル穴とカバー厚 |
+| `test_measurement_record.py` | 12 | 記入済みの測定記録と、それに基づくベンチマトリクス（架空の行を使用） |
 
 OpenSCAD が使える環境では各部品（レーダーのベースとカバー、3 つのプリセットの箱と蓋）をレンダリングします。印刷した試作品は[ベンチ受け入れマトリクス](docs/BENCH_ACCEPTANCE.md)で評価します。""",
       "troubleshooting": r"""| 症状 | 原因 | 対処 |
@@ -795,7 +807,7 @@ OpenSCAD が使える環境では各部品（レーダーのベースとカバ�
     "contributing_first": "提交 Pull Request 之前请运行 `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`：必须通过。参见 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **雷达外壳是 `scad/node_enclosure_radar.scad`**（带两个切片项目：底座和滑动盖；每个零件的 STL 和 3MF 由 `tools/export_models.py` 从源文件生成，作为 CI 的构件保存，而不放在仓库里）：带遮阳罩、顶和底的 90 度转角底座、固定台阶、2 毫米的滑动前盖和侧翼，全部由命名参数驱动。
+      "overview": r"""* **雷达外壳是 `scad/node_enclosure_radar.scad`**（带两个切片项目：底座和滑动盖，由 `tools/slicer_projects.py` 和一项测试保持与源文件一致；每个零件的 STL 和 3MF 由 `tools/export_models.py` 从源文件生成，作为 CI 的构件保存，而不放在仓库里）：带遮阳罩、顶和底的 90 度转角底座、固定台阶、2 毫米的滑动前盖和侧翼，全部由命名参数驱动。
 * **一张引脚表和一个共享文件。** `docs/PINOUT.md` 由 `tools/pinout.py` 根据固件编译所用的表生成（模块引脚、十个串口、Zigbee 无线电、底板的继电器和模拟输入，两块板各一份），不一致时测试失败；`scad/node_common.scad` 保存两种外壳共用的值：壁厚、盖厚、间隙和市售线缆格兰头的尺寸（PG7 12.5 毫米、M12 12 毫米、PG9 15.2 毫米、M16 16 毫米），因此孔径是螺纹加间隙，而不是随手取的整数。
 * **用于太阳能、电气和报警节点的参数化盒子**（`scad/node_box.scad`，预设 `solar`、`electrical` 和 `alarm`）：墙壁、板子立柱、电缆格兰头孔、通风孔、盖下的防拆微动开关槽，以及带环形唇边的盖子。这是低压盒子，不是市电布线的外壳。
 * **支架**用于三个雷达模块、一个电缆格兰头和排水孔。台架矩阵要测试的 ESP32-S3-ETH-PoE 板、PoE 磁件、PTC 加热器和光传感器窗口还没有预留空间。未经测量，24 GHz 孔径前不要放置金属、导电或含碳的材料。
@@ -846,6 +858,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | 源文件、盒子预设、模型文件以及文档中引用的数字 |
 | `test_parametric_render.py` | 12 | 用 OpenSCAD 渲染的盒子：每个预设每个部件的尺寸、改变的参数，以及源文件的 assert 所拒绝的内容（其中 10 个需要 OpenSCAD） |
+| `test_slicer_projects.py` | 11 | 切片项目与源文件对照：记录、外形尺寸、网格中的电缆孔和盖板厚度 |
+| `test_measurement_record.py` | 12 | 已填写的测量记录以及以其为依据的台架矩阵（使用虚构行） |
 
 在装有 OpenSCAD 的机器上会渲染每个部件：雷达底座和盖板，以及三种预设的盒子和盖子。打印出的原型由[台架验收矩阵](docs/BENCH_ACCEPTANCE.md)评判。""",
       "troubleshooting": r"""| 现象 | 原因 | 处理 |
@@ -913,7 +927,7 @@ python -I tools/armor_ci_validate.py
     "contributing_first": "Antes de um pull request, execute `python -m unittest discover -s tests` and `python -I tools/armor_ci_validate.py`: tem de passar. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).",
     "languages_extra": "",
     "body": {
-      "overview": r"""* **A caixa do radar é `scad/node_enclosure_radar.scad`** (com dois projetos de fatiador, a base e a tampa deslizante; o STL e o 3MF de cada peça são feitos por `tools/export_models.py` a partir das fontes e guardados como artefacto da CI, não no repositório): uma base de canto de 90 graus com viseira, teto e chão, degraus de retenção, uma tampa frontal deslizante de 2 mm e abas laterais, tudo governado por parâmetros com nome.
+      "overview": r"""* **A caixa do radar é `scad/node_enclosure_radar.scad`** (com dois projetos de fatiador, a base e a tampa deslizante, mantidos em dia com a sua fonte por `tools/slicer_projects.py` e um teste; o STL e o 3MF de cada peça são feitos por `tools/export_models.py` a partir das fontes e guardados como artefacto da CI, não no repositório): uma base de canto de 90 graus com viseira, teto e chão, degraus de retenção, uma tampa frontal deslizante de 2 mm e abas laterais, tudo governado por parâmetros com nome.
 * **Uma tabela de pinos e um ficheiro partilhado.** O `docs/PINOUT.md` é feito por `tools/pinout.py` a partir das tabelas com que o firmware é compilado (os pinos do módulo, as dez portas série, o rádio Zigbee, os relés e as entradas analógicas da placa base, para as duas placas) e um teste falha se diferir; o `scad/node_common.scad` guarda o que as duas caixas partilham: parede, tampa, folga e os tamanhos de bucins de loja (PG7 12,5 mm, M12 12 mm, PG9 15,2 mm, M16 16 mm), de modo que um furo é uma rosca mais uma folga e não um número redondo.
 * **Uma caixa paramétrica para os nós solar, elétrico e de alarme** (`scad/node_box.scad`, predefinidos `solar`, `electrical` e `alarm`): paredes, pilares para a placa, furos para bucins, uma ventilação, um espaço para um microinterruptor antissabotagem sob a tampa e uma tampa com lábio anular. É uma caixa de baixa tensão, não um invólucro para cablagem de rede.
 * **Suportes** para três módulos de radar, um bucim e furos de drenagem. Ainda não há volumes para a placa ESP32-S3-ETH-PoE, a magnética PoE, o aquecedor PTC nem a janela do sensor de luz que a matriz de bancada quer testar. Nenhum material metálico, condutor ou carregado de carbono à frente de uma abertura de 24 GHz sem o medir.
@@ -964,6 +978,8 @@ python -I tools/armor_ci_validate.py
 |---|---|---|
 | `test_enclosure_sources.py` | 22 | As fontes, os presets da caixa, os ficheiros de modelo e os números que os documentos citam |
 | `test_parametric_render.py` | 12 | A caixa renderizada com o OpenSCAD: o tamanho de cada peça de cada preset, um parâmetro alterado e o que os asserts da fonte recusam (10 precisam do OpenSCAD) |
+| `test_slicer_projects.py` | 11 | Os projetos de fatiador face às suas fontes: o registo, o volume envolvente, o furo do cabo e a espessura da tampa das suas malhas |
+| `test_measurement_record.py` | 12 | Um registo de medidas preenchido e a matriz de bancada que assenta nele, com linhas inventadas |
 
 O OpenSCAD renderiza cada peça numa máquina que o tenha: a base e a tampa do radar, e a caixa e a tampa dos três presets. A [matriz de aceitação em bancada](docs/BENCH_ACCEPTANCE.md) é onde se avalia um protótipo impresso.""",
       "troubleshooting": r"""| Vê | Porque | Faça |
