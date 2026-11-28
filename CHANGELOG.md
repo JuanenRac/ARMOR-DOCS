@@ -4,6 +4,7 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+- **The solar touch screen is part of the Complete role:** `data/update-profiles.json` lists ARMOR-NODE-SOLAR-HMI in that profile only, and the line about it in the related projects says that its firmware compiles and has never run on a board.
 - **ARMOR-NODE-SOLAR-HMI in the architecture and the capability matrix:** the diagram, the table of concerns and two matrix rows (its firmware compiles and has never run on a board).
 - The README of the alarm node lists `server.refuse_pause_armed`, on by default: a pause or a standby is refused while the panel guards, and how to turn it off.
 

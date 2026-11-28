@@ -14,12 +14,12 @@
 | ARMOR-SERVER | 0.8.3.1 | Central event coordinator and web API | Established |
 | ARMOR-STUDIO | 0.8.3.3 | Web administration and calibration console | Established |
 | ARMOR-ANDROID-CONTROL | 0.8.1.3 | Android operator client | Established |
-| ARMOR-IOS-CONTROL | 0.0.9 | iPhone operator client | Scaffolding |
+| ARMOR-IOS-CONTROL | 0.1.0 | iPhone operator client | Scaffolding |
 | ARMOR-WATCH | 0.0.3 | Minimal watch client: alarm notices and alarm confirmation | Scaffolding |
 | ARMOR-SERVER-AI | 0.3.5 | Camera movement observation service (CM5 today, Jetson planned) | Established |
 | ARMOR-VISION | 0.1.9 | Camera zones, masks and detection rules | Functional |
 | ARMOR-VOICE-AI | 0.3.8 | Offline speech and intent gateway | Established |
-| ARMOR-HARDWARE | 0.3.0 | Open hardware and parametric enclosure designs | Functional |
+| ARMOR-HARDWARE | 0.3.1 | Open hardware and parametric enclosure designs | Functional |
 | ARMOR-DEVOPS | 0.7.9 | Repeatable deployment and operations | Established |
 | ARMOR-SIMULATOR | 0.4.0 | Offline telemetry and environment simulator | Established |
 | ARMOR-UPDATER | 0.2.5 | Detects, installs and updates the A.R.M.O.R. ecosystem's repositories on the machine it runs on | Established |
